@@ -58,6 +58,17 @@
   </developers>
   
   <!-- =================================================================== -->
+  <!-- Repositories -->
+  <!-- =================================================================== -->
+  <repositories>
+    <repository>
+      <id>in-project</id>
+      <name>In project repository</name>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
+  
+  <!-- =================================================================== -->
   <!-- Dependencies                                                        -->
   <!-- =================================================================== -->
   
@@ -72,7 +83,7 @@
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=/path/to/jsbml.jar -DgroupId=org.sbml -DartifactId=JSBML -Dversion=REVISION_NUMBER -Dpackaging=jar -->
+      <!-- mvn install:install-file -Dfile=./lib/jsbml.jar -DgroupId=org.sbml -DartifactId=JSBML -Dversion=2492 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>org.sbml</groupId>
       <artifactId>JSBML</artifactId>
       <version>2492</version>
@@ -80,7 +91,7 @@
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=/path/to/libSBGN.jar -DgroupId=org -DartifactId=sbgn -Dversion=0.2 -Dpackaging=jar -->
+      <!-- mvn install:install-file -Dfile=./lib/org.sbgn-with-dependencies.jar -DgroupId=org -DartifactId=sbgn -Dversion=0.2 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>org</groupId>
       <artifactId>sbgn</artifactId>
       <version>0.2</version>
@@ -94,7 +105,7 @@
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=/path/to/sysbio.jar -DgroupId=de.zbit -DartifactId=SysBio -Dversion=REVISION_NUMBER -Dpackaging=jar -->
+      <!-- mvn install:install-file -Dfile=./lib/sysbio.jar -DgroupId=de.zbit -DartifactId=SysBio -Dversion=1390 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>de.zbit</groupId>
       <artifactId>SysBio</artifactId>
       <version>1390</version> <!-- SVN revision -->
@@ -185,5 +196,24 @@
     </pluginManagement>
   
   </build>
+  
+  
+  <!-- =================================================================== -->
+  <!-- Building project documentation files                                -->
+  <!-- =================================================================== -->
+  
+  <!-- see https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <overview>${basedir}/overview.html</overview>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
   
 </project>
