@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EscherConverter">
+    <output-path>$PROJECT_DIR$/out/artifacts/EscherConverter</output-path>
+    <root id="archive" name="EscherConverter.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="EscherConverter" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/zbit/SysBio/1390/SysBio-1390.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/sbml/JSBML/2492/JSBML-2492.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/sbgn/0.2/sbgn-0.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
