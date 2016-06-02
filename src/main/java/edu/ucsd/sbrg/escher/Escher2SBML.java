@@ -28,7 +28,6 @@ import java.util.logging.Logger;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.sbml.jsbml.CVTerm;
 import org.sbml.jsbml.Compartment;
 import org.sbml.jsbml.Model;
 import org.sbml.jsbml.NamedSBase;
