@@ -37,7 +37,7 @@ public interface EscherIOOptions extends KeyProvider {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(EscherIOOptions.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
 
   /**

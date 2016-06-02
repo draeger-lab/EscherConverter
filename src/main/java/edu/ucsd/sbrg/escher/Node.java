@@ -62,7 +62,7 @@ public class Node extends AbstractBox implements Element {
 	/**
 	 * Localization support.
 	 */
-	private static final transient ResourceBundle bundle = ResourceManager.getBundle(Node.class.getPackage().getName() + ".Messages");
+	private static final transient ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
 	/**
 	 * A {@link Logger} for this class.

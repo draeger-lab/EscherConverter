@@ -60,7 +60,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(Escher2SBGN.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * The SBGN map builder.
