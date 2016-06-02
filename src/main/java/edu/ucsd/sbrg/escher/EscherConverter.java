@@ -64,11 +64,11 @@ public class EscherConverter extends Launcher {
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle baseBundle = ResourceManager.getBundle("edu.ucsd.sbrg.Messages");
+  private static final transient ResourceBundle baseBundle = ResourceManager.getBundle("Messages");
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle bundle = ResourceManager.getBundle(EscherConverter.class.getPackage().getName() + ".Messages");
+  private static final transient ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * A {@link Logger} for this class.
