@@ -157,19 +157,19 @@ public class EscherConverter extends Launcher {
    */
   public static void main(String args[]) {
     // Export validation reports to file for debugging
-    try {
-      SchematronValidator.setSvrlDump(true);
-
-      // validation will result in a list of issues
-      List<Issue> issues = SchematronValidator.validate(new File(System.clearProperty("user.home") + "/test.sbgn"));
-      // print each issue individually.
-      System.out.println ("There are " + issues.size() + " validation problems");
-      for (Issue issue : issues) {
-        System.out.println (issue);
-      }
-    } catch (Throwable exc) {
-      exc.printStackTrace();
-    }
+    //    try {
+    //      SchematronValidator.setSvrlDump(true);
+    //
+    //      // validation will result in a list of issues
+    //      List<Issue> issues = SchematronValidator.validate(new File(System.clearProperty("user.home") + "/test.sbgn"));
+    //      // print each issue individually.
+    //      System.out.println ("There are " + issues.size() + " validation problems");
+    //      for (Issue issue : issues) {
+    //        System.out.println (issue);
+    //      }
+    //    } catch (Throwable exc) {
+    //      exc.printStackTrace();
+    //    }
     new EscherConverter(args);
   }
 
@@ -219,7 +219,9 @@ public class EscherConverter extends Launcher {
     if (input.isFile()) {
       if (SBFileFilter.isJSONFile(input)) {
         if (output.isDirectory()) {
-          output = new File(Utils.ensureSlash(output.getAbsolutePath()) + input.getName());
+          String fName = input.getName();
+          fName = FileTools.removeFileExtension(fName) + ".xml";
+          output = new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
         }
         convert(input, output, properties);
         logger.info(MessageFormat.format("Output successfully written to file {0}.", output));
@@ -285,6 +287,7 @@ public class EscherConverter extends Launcher {
     case SBML:
       SBMLDocument doc = convert(input, SBMLDocument.class, properties);
       SBMLWriter.write(doc, output, System.getProperty("app.name"), getVersionNumber(), ' ', (short) 2);
+      break;
     case SBGN:
       Sbgn sbgn = convert(input, Sbgn.class, properties);
       SbgnUtil.writeToFile(sbgn, output);
@@ -297,6 +300,9 @@ public class EscherConverter extends Launcher {
           logger.warning(issue.toString());
         }
       }
+      break;
+    default:
+      break;
     }
   }
 
