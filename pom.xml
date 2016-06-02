@@ -167,9 +167,7 @@
           <configuration>
             <archive>
               <manifest>
-                <!--<mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>-->
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                <mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>
