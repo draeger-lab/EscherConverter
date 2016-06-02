@@ -41,7 +41,7 @@ public interface EscherOptions extends KeyProvider {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(EscherOptions.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * Enumeration of allowable output file formats.

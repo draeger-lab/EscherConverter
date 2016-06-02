@@ -66,7 +66,7 @@ public abstract class Escher2Standard<T> {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(Escher2Standard.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * Compartment codes.

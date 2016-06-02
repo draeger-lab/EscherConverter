@@ -31,7 +31,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 	/**
 	 * Localization support.
 	 */
-	private static final ResourceBundle bundle = ResourceManager.getBundle(EscherCompartment.class.getPackage().getName() + ".Messages");
+	private static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
 	/**
 	 * The mapping between compartment codes and human-readable names.
