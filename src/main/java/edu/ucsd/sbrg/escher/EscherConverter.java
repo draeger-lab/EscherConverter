@@ -54,6 +54,7 @@ import de.zbit.util.Utils;
 import de.zbit.util.prefs.KeyProvider;
 import de.zbit.util.prefs.SBProperties;
 import edu.ucsd.sbrg.escher.EscherOptions.OutputFormat;
+import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -406,7 +407,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public Window initGUI(AppConf appConf) {
-    return null; //new EscherConverterUI(appConf);
+    return new EscherConverterUI(appConf);
   }
 
   /* (non-Javadoc)
