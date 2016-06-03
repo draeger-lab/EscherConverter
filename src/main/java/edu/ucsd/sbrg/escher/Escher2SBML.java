@@ -70,7 +70,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(Escher2SBML.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   private String defaultCompartmentId;
   private String defaultCompartmentName;
