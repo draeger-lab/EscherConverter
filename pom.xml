@@ -28,6 +28,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
     <junit.version>4.11</junit.version>
+    <jsbml.version>2492</jsbml.version>  <!-- SVN revision -->
+    <sbgn.version>0.2</sbgn.version>
+    <sysbio.version>1390</sysbio.version> <!-- SVN revision -->
   </properties>
   
   <organization>
@@ -58,17 +61,6 @@
   </developers>
   
   <!-- =================================================================== -->
-  <!-- Repositories -->
-  <!-- =================================================================== -->
-  <repositories>
-    <repository>
-      <id>in-project</id>
-      <name>In project repository</name>
-      <url>file://${project.basedir}/lib</url>
-    </repository>
-  </repositories>
-  
-  <!-- =================================================================== -->
   <!-- Dependencies                                                        -->
   <!-- =================================================================== -->
   
@@ -83,19 +75,19 @@
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=./lib/jsbml.jar -DgroupId=org.sbml -DartifactId=JSBML -Dversion=2492 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>org.sbml</groupId>
       <artifactId>JSBML</artifactId>
-      <version>2492</version>
-      <scope>compile</scope>
+      <systemPath>${project.basedir}/lib/JSBML-${jsbml.version}.jar</systemPath>
+      <version>${jsbml.version}</version>
+      <scope>system</scope>
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=./lib/org.sbgn-with-dependencies.jar -DgroupId=org -DartifactId=sbgn -Dversion=0.2 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>org</groupId>
       <artifactId>sbgn</artifactId>
-      <version>0.2</version>
-      <scope>compile</scope>
+      <systemPath>${project.basedir}/lib/sbgn-${sbgn.version}.jar</systemPath>
+      <version>${sbgn.version}</version>
+      <scope>system</scope>
     </dependency>
     
     <dependency>
@@ -105,11 +97,11 @@
     </dependency>
     
     <dependency>
-      <!-- mvn install:install-file -Dfile=./lib/sysbio.jar -DgroupId=de.zbit -DartifactId=SysBio -Dversion=1390 -Dpackaging=jar -DlocalRepositoryPath=./lib/ -->
       <groupId>de.zbit</groupId>
       <artifactId>SysBio</artifactId>
-      <version>1390</version> <!-- SVN revision -->
-      <scope>compile</scope>
+      <systemPath>${project.basedir}/lib/SysBio-${sysbio.version}.jar</systemPath>
+      <version>${sysbio.version}</version>
+      <scope>system</scope>
     </dependency>
     
   </dependencies>
