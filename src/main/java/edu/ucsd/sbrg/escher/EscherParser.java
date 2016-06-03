@@ -62,7 +62,7 @@ public class EscherParser {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(EscherParser.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * 

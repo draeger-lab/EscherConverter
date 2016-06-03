@@ -42,7 +42,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle(EscherReaction.class.getPackage().getName() + ".Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
 
   /**
    * The reaction's BiGG id.
