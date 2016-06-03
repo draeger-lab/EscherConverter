@@ -3,7 +3,7 @@
 /.classpath
 /minimalSysBio.xml
 /.project
-
+*.log
 ## Java Specific
 
 *.class
