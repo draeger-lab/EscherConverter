@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.converters;
 
 import java.text.MessageFormat;
 import java.util.Collections;
@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import edu.ucsd.sbrg.escher.EscherReaction;
+import edu.ucsd.sbrg.escher.Metabolite;
 import edu.ucsd.sbrg.escher.models.EscherMap;
 import edu.ucsd.sbrg.escher.models.Node;
 import edu.ucsd.sbrg.escher.models.Point;
