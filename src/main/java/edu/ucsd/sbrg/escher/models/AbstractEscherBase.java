@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,7 +79,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#getUserObject(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#getUserObject(java.lang.String)
    */
   @Override
   public Object getUserObject(String key) {
@@ -98,7 +98,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#putUserObject(java.lang.String, T)
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#putUserObject(java.lang.String, T)
    */
   @Override
   public <T> Object putUserObject(String key, T value) {
@@ -106,7 +106,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#userObjectEntrySet()
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectEntrySet()
    */
   @Override
   public Set<Map.Entry<String, Object>> userObjectEntrySet() {
@@ -114,7 +114,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#userObjectKeys()
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectKeys()
    */
   @Override
   public Set<String> userObjectKeys() {

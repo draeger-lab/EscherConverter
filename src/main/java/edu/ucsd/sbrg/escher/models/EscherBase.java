@@ -14,35 +14,43 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
+ * 
  * @author Andreas Dr&auml;ger
  *
  */
-public class Canvas extends AbstractBox {
+public interface EscherBase extends Cloneable {
 
   /**
    * 
+   * @param key
+   * @param value
+   * @return
    */
-  public Canvas() {
-    super();
-  }
+  public abstract <T> Object putUserObject(String key, T value);
 
   /**
    * 
-   * @param canvas
+   * @param key
+   * @return
    */
-  public Canvas(Canvas canvas) {
-    super(canvas);
-  }
+  public abstract Object getUserObject(String key);
 
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+  /**
+   * 
+   * @return
    */
-  @Override
-  public Canvas clone() {
-    return new Canvas(this);
-  }
+  public abstract Set<String> userObjectKeys();
+
+  /**
+   * 
+   * @return
+   */
+  public abstract Set<Map.Entry<String, Object>> userObjectEntrySet();
 
 }

@@ -14,7 +14,9 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
+
+import edu.ucsd.sbrg.escher.EscherReaction;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -146,7 +148,7 @@ public class EscherMap extends AbstractEscherBase {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public EscherMap clone() {

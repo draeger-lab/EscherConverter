@@ -14,44 +14,57 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
+
 
 /**
- * 
  * @author Andreas Dr&auml;ger
  *
  */
-public abstract class AbstractBox extends AbstractPosition implements Box {
+public class Gene extends AbstractEscherBase implements Element {
+
+  /**
+   * The BiGG id of the gene.
+   */
+  private String biggId;
+
+  /**
+   * The name of the gene
+   */
+  private String name;
 
   /**
    * 
    */
-  protected Double height;
-  /**
-   * 
-   */
-  protected Double width;
-
-  /**
-   * 
-   */
-  public AbstractBox() {
-    super();
-    x = y = width = height = null;
+  public Gene() {
   }
 
   /**
    * 
-   * @param box
+   * @param gene
    */
-  public AbstractBox(AbstractBox box) {
-    super(box);
-    if (box.isSetHeight()) {
-      setHeight(box.getHeight().doubleValue());
+  public Gene(Gene gene) {
+    super(gene);
+    if (gene.isSetId()) {
+      setId(gene.getId());
     }
-    if (box.isSetWidth()) {
-      setWidth(box.getWidth().doubleValue());
+    if (gene.isSetName()) {
+      setName(gene.getName());
     }
+  }
+
+  public Gene(String biggId, String name) {
+    this();
+    setId(biggId);
+    setName(name);
+  }
+
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   */
+  @Override
+  public Gene clone() {
+    return new Gene(this);
   }
 
   /* (non-Javadoc)
@@ -68,38 +81,37 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    AbstractBox other = (AbstractBox) obj;
-    if (height == null) {
-      if (other.height != null) {
+    Gene other = (Gene) obj;
+    if (biggId == null) {
+      if (other.biggId != null) {
         return false;
       }
-    } else if (!height.equals(other.height)) {
+    } else if (!biggId.equals(other.biggId)) {
       return false;
     }
-    if (width == null) {
-      if (other.width != null) {
+    if (name == null) {
+      if (other.name != null) {
         return false;
       }
-    } else if (!width.equals(other.width)) {
+    } else if (!name.equals(other.name)) {
       return false;
     }
     return true;
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#getHeight()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
-  public Double getHeight() {
-    return height;
+  public String getId() {
+    return biggId;
   }
 
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#getWidth()
+  /**
+   * @return the name
    */
-  @Override
-  public Double getWidth() {
-    return width;
+  public String getName() {
+    return name;
   }
 
   /* (non-Javadoc)
@@ -109,41 +121,40 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result = prime * result + ((height == null) ? 0 : height.hashCode());
-    result = prime * result + ((width == null) ? 0 : width.hashCode());
+    result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
+    result = prime * result + ((name == null) ? 0 : name.hashCode());
     return result;
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#isSetHeight()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
-  public boolean isSetHeight() {
-    return height != null;
+  public boolean isSetId() {
+    return biggId != null;
+  }
+
+  /**
+   * 
+   * @return
+   */
+  public boolean isSetName() {
+    return name != null;
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#isSetWidth()
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
-  public boolean isSetWidth() {
-    return width != null;
+  public void setId(String id) {
+    biggId = id;
   }
 
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#setHeight(java.lang.Double)
+  /**
+   * @param name the name to set
    */
-  @Override
-  public void setHeight(Double height) {
-    this.height = height;
-  }
-
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#setWidth(java.lang.Double)
-   */
-  @Override
-  public void setWidth(Double width) {
-    this.width = width;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /* (non-Javadoc)
@@ -153,14 +164,10 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append(getClass().getSimpleName());
-    builder.append(" [x=");
-    builder.append(x);
-    builder.append(", y=");
-    builder.append(y);
-    builder.append(", width=");
-    builder.append(width);
-    builder.append(", height=");
-    builder.append(height);
+    builder.append(" [biggId=");
+    builder.append(biggId);
+    builder.append(", name=");
+    builder.append(name);
     builder.append("]");
     return builder.toString();
   }

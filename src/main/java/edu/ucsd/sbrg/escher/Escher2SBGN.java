@@ -28,6 +28,7 @@ import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import edu.ucsd.sbrg.escher.models.*;
 import org.sbgn.bindings.Arc;
 import org.sbgn.bindings.Arc.End;
 import org.sbgn.bindings.Arc.Next;
@@ -76,7 +77,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Escher2Standard#convert(edu.ucsd.sbrg.escher.EscherMap)
+   * @see edu.ucsd.sbrg.escher.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
    */
   @Override
   public Sbgn convert(EscherMap escherMap) {
@@ -233,7 +234,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param yOffset
    */
   private void createTextLabel(TextLabel textLabel, org.sbgn.bindings.Map map,
-    double xOffset, double yOffset) {
+                               double xOffset, double yOffset) {
     try {
       // This is important in order to skip cardinality labels. These are treated directly in the reaction conversion.
       Double.parseDouble(textLabel.getText());

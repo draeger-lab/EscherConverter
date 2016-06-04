@@ -16,6 +16,9 @@
  */
 package edu.ucsd.sbrg.escher;
 
+import edu.ucsd.sbrg.escher.models.AbstractEscherBase;
+import edu.ucsd.sbrg.escher.models.Element;
+
 /**
  * @author Andreas Dr&auml;ger
  *
@@ -63,7 +66,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public Metabolite clone() {
@@ -117,7 +120,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
   public String getId() {
@@ -153,7 +156,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -176,7 +179,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {

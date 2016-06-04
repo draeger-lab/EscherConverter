@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -75,7 +75,7 @@ public class Segment extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public Segment clone() {
@@ -157,7 +157,7 @@ public class Segment extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
   public String getId() {
@@ -211,7 +211,7 @@ public class Segment extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -268,7 +268,7 @@ public class Segment extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {

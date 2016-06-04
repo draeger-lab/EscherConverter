@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import edu.ucsd.sbrg.escher.models.*;
 import org.sbml.jsbml.util.ResourceManager;
 
 /**
@@ -217,7 +218,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public EscherReaction clone() {
@@ -367,7 +368,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
   public String getId() {
@@ -505,7 +506,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -584,7 +585,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {
