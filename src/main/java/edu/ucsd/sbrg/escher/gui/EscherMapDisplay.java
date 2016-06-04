@@ -31,7 +31,7 @@ import de.zbit.gui.GUITools;
 import de.zbit.gui.layout.LayoutHelper;
 import de.zbit.io.OpenedFile;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.EscherMap;
+import edu.ucsd.sbrg.escher.models.EscherMap;
 
 
 /**

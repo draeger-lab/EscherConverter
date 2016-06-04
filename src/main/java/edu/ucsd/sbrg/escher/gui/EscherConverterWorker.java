@@ -27,7 +27,7 @@ import org.sbml.jsbml.util.ResourceManager;
 
 import de.zbit.util.prefs.SBProperties;
 import edu.ucsd.sbrg.escher.EscherConverter;
-import edu.ucsd.sbrg.escher.EscherMap;
+import edu.ucsd.sbrg.escher.models.EscherMap;
 
 /**
  * 

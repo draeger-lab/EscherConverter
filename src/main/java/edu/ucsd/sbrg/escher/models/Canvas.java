@@ -14,67 +14,35 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
  *
  */
-public class Point extends AbstractPosition {
+public class Canvas extends AbstractBox {
 
   /**
    * 
    */
-  public Point() {
+  public Canvas() {
     super();
   }
 
   /**
    * 
-   * @param x
-   * @param y
+   * @param canvas
    */
-  public Point(Double x, Double y) {
-    super(x, y);
-  }
-
-  /**
-   * 
-   * @param point
-   */
-  public Point(Point point) {
-    this();
-    setX(point.getX());
-    setY(point.getY());
-  }
-
-  /**
-   * 
-   * @param p
-   */
-  public Point add(Point p) {
-    setX(getX() + p.getX());
-    setY(getY() + p.getY());
-    return this;
+  public Canvas(Canvas canvas) {
+    super(canvas);
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
-  public Point clone() {
-    return new Point(this);
-  }
-
-  /**
-   * 
-   * @param scale
-   */
-  public Point scale(double scale) {
-    setX(scale * getX());
-    setY(scale * getY());
-    return this;
+  public Canvas clone() {
+    return new Canvas(this);
   }
 
 }

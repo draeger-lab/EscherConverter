@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import edu.ucsd.sbrg.escher.Point;
+import edu.ucsd.sbrg.escher.models.Point;
 
 /**
  * @author Andreas Dr&auml;ger

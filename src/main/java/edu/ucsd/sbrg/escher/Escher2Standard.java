@@ -25,6 +25,10 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.models.Node;
+import edu.ucsd.sbrg.escher.models.Point;
+import edu.ucsd.sbrg.escher.models.Segment;
 import org.sbml.jsbml.util.ResourceManager;
 
 /**

@@ -31,7 +31,7 @@ import javax.swing.SwingWorker;
 import org.sbml.jsbml.util.ResourceManager;
 
 import de.zbit.io.OpenedFile;
-import edu.ucsd.sbrg.escher.EscherMap;
+import edu.ucsd.sbrg.escher.models.EscherMap;
 import edu.ucsd.sbrg.escher.EscherParser;
 
 

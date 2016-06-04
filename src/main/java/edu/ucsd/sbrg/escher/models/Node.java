@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -181,7 +181,7 @@ public class Node extends AbstractBox implements Element {
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+	 * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
 	 */
 	@Override
 	public Node clone() {
@@ -545,7 +545,7 @@ public class Node extends AbstractBox implements Element {
 	}
 
 	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+	 * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
 	 */
 	@Override
 	public void setId(String id) {

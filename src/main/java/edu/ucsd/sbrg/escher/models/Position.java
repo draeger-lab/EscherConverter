@@ -14,28 +14,44 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
  *
  */
-public interface Element extends EscherBase {
+public interface Position extends EscherBase {
 
 	/**
-	 * @return the id
+	 * @return the x
 	 */
-	public String getId();
+	public Double getX();
+
+	/**
+	 * @return the y
+	 */
+	public Double getY();
 
 	/**
 	 * 
 	 * @return {@code true} if the requested property is not {@code null}.
 	 */
-	public boolean isSetId();
+	public boolean isSetX();
 
 	/**
-	 * @param id the id to set
+	 * 
+	 * @return {@code true} if the requested property is not {@code null}.
 	 */
-	public void setId(String id);
+	public boolean isSetY();
+
+	/**
+	 * @param x the x to set
+	 */
+	public void setX(Double x);
+
+	/**
+	 * @param y the y to set
+	 */
+	public void setY(Double y);
 
 }

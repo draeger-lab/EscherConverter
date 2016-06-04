@@ -28,6 +28,7 @@ import java.util.logging.Logger;
 
 import javax.xml.stream.XMLStreamException;
 
+import edu.ucsd.sbrg.escher.models.*;
 import org.sbml.jsbml.Compartment;
 import org.sbml.jsbml.Model;
 import org.sbml.jsbml.NamedSBase;
@@ -82,7 +83,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   private double z;
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Escher2Standard#convert(edu.ucsd.sbrg.escher.EscherMap)
+   * @see edu.ucsd.sbrg.escher.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
    */
   @Override
   public SBMLDocument convert(EscherMap map) {
@@ -338,7 +339,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @return
    */
   private LineSegment convertSegment(Node fromNode, Node toNode, Point basePoint1,
-    Point basePoint2, Curve curve, double xOffset, double yOffset) {
+                                     Point basePoint2, Curve curve, double xOffset, double yOffset) {
     LineSegment lineSegment = null;
     if ((basePoint1 != null) && (basePoint2 != null)) {
       CubicBezier cb = curve.createCubicBezier();

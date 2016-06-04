@@ -54,7 +54,7 @@ import de.zbit.sbml.gui.SBMLWritingTask;
 import de.zbit.util.prefs.SBPreferences;
 import de.zbit.util.prefs.SBProperties;
 import edu.ucsd.sbrg.escher.EscherIOOptions;
-import edu.ucsd.sbrg.escher.EscherMap;
+import edu.ucsd.sbrg.escher.models.EscherMap;
 import edu.ucsd.sbrg.escher.EscherOptions;
 
 /**

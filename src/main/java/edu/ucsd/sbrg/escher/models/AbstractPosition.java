@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * 
@@ -99,7 +99,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#getX()
+   * @see edu.ucsd.sbrg.escher.models.Position#getX()
    */
   @Override
   public Double getX() {
@@ -107,7 +107,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#getY()
+   * @see edu.ucsd.sbrg.escher.models.Position#getY()
    */
   @Override
   public Double getY() {
@@ -127,7 +127,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#isSetX()
+   * @see edu.ucsd.sbrg.escher.models.Position#isSetX()
    */
   @Override
   public boolean isSetX() {
@@ -135,7 +135,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#isSetY()
+   * @see edu.ucsd.sbrg.escher.models.Position#isSetY()
    */
   @Override
   public boolean isSetY() {
@@ -143,7 +143,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#setX(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.Position#setX(java.lang.Double)
    */
   @Override
   public void setX(Double x) {
@@ -151,7 +151,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   }
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Position#setY(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.Position#setY(java.lang.Double)
    */
   @Override
   public void setY(Double y) {
