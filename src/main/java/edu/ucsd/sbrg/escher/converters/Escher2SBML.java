@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.converters;
 
 import java.text.MessageFormat;
 import java.util.Collections;
@@ -28,6 +28,8 @@ import java.util.logging.Logger;
 
 import javax.xml.stream.XMLStreamException;
 
+import edu.ucsd.sbrg.escher.EscherReaction;
+import edu.ucsd.sbrg.escher.Metabolite;
 import edu.ucsd.sbrg.escher.models.*;
 import org.sbml.jsbml.Compartment;
 import org.sbml.jsbml.Model;
@@ -83,7 +85,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   private double z;
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
+   * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
    */
   @Override
   public SBMLDocument convert(EscherMap map) {

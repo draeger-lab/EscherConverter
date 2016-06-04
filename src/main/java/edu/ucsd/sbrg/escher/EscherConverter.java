@@ -34,6 +34,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
+import edu.ucsd.sbrg.escher.converters.Escher2SBML;
+import edu.ucsd.sbrg.escher.converters.Escher2Standard;
 import edu.ucsd.sbrg.escher.models.EscherMap;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
