@@ -14,44 +14,25 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
-public interface Box extends EscherBase, Position {
+public interface Element extends EscherBase {
 
-	/**
-	 * @param height the height to set
-	 */
-	public abstract void setHeight(Double height);
+  /**
+   * @return the id
+   */
+  String getId();
 
-	/**
-	 * @return the height
-	 */
-	public abstract Double getHeight();
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetId();
 
-	/**
-	 * @param width the width to set
-	 */
-	public abstract void setWidth(Double width);
-
-	/**
-	 * @return the width
-	 */
-	public abstract Double getWidth();
-
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public abstract boolean isSetHeight();
-
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public abstract boolean isSetWidth();
-
+  /**
+   * @param id the id to set
+   */
+  void setId(String id);
 }

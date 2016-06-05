@@ -16,7 +16,7 @@
  */
 /**
  * Classes for the graphical user interface.
- * 
+ *
  * @author Andreas Dr&auml;ger
  */
 package edu.ucsd.sbrg.escher.gui;

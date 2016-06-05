@@ -12,22 +12,21 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
-
-import java.util.ResourceBundle;
-
-import org.sbml.jsbml.util.ResourceManager;
+package edu.ucsd.sbrg.escher.utilities;
 
 import de.zbit.util.objectwrapper.ValuePairUncomparable;
 import de.zbit.util.prefs.KeyProvider;
 import de.zbit.util.prefs.Option;
 import de.zbit.util.prefs.OptionGroup;
 import de.zbit.util.prefs.Range;
+import org.sbml.jsbml.util.ResourceManager;
+
+import java.util.ResourceBundle;
 
 /**
  * These options influence how the output will be created and how the Escher
  * maps are interpreted.
- * 
+ *
  * @author Andreas Dr&auml;ger
  */
 public interface EscherOptions extends KeyProvider {
@@ -35,20 +34,23 @@ public interface EscherOptions extends KeyProvider {
   /**
    * Helper constant for internal use.
    */
-  static final Range<OutputFormat> SBML_CONDITION = new Range<OutputFormat>(
-      OutputFormat.class, OutputFormat.SBML);
-
+  Range<OutputFormat>
+                                     SBML_CONDITION =
+      new Range<OutputFormat>(OutputFormat.class, OutputFormat.SBML);
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
+  ResourceBundle
+                                     bundle         =
+      ResourceManager.getBundle("Messages");
+
 
   /**
    * Enumeration of allowable output file formats.
-   * 
+   *
    * @author Andreas Dr&auml;ger
    */
-  public static enum OutputFormat {
+  enum OutputFormat {
     /**
      * Systems Biology Graphical Notation Markup Language (SBGN-ML).
      */
@@ -56,8 +58,9 @@ public interface EscherOptions extends KeyProvider {
     /**
      * Systems Biology Markup Language with layout extension.
      */
-    SBML;
+    SBML
   }
+
 
   /**
    * This converter can infer where the boundaries of compartments could be
@@ -69,27 +72,36 @@ public interface EscherOptions extends KeyProvider {
    * different compartment that is actually further outside. For this reason,
    * this option is deactivated by default.
    */
-  public static final Option<Boolean> INFER_COMPARTMENT_BOUNDS = new Option<Boolean>("INFER_COMPARTMENT_BOUNDS", Boolean.class, bundle, Boolean.FALSE);
-
+  Option<Boolean>
+                                           INFER_COMPARTMENT_BOUNDS =
+      new Option<Boolean>("INFER_COMPARTMENT_BOUNDS", Boolean.class, bundle,
+          Boolean.FALSE);
   /**
    * The desired format for the conversion, e.g., SBML.
    */
-  public static final Option<OutputFormat> FORMAT = new Option<OutputFormat>("FORMAT", OutputFormat.class, bundle, new Range<OutputFormat>(OutputFormat.class, Range.toRangeString(OutputFormat.class)), OutputFormat.SBML);
-
+  Option<OutputFormat>
+                                           FORMAT                   =
+      new Option<OutputFormat>("FORMAT", OutputFormat.class, bundle,
+          new Range<OutputFormat>(OutputFormat.class,
+              Range.toRangeString(OutputFormat.class)), OutputFormat.SBML);
   /**
    * This value is used when no width has been defined for the canvas. Since
    * the width attribute is mandatory for the layout, a default value must be
    * provided in these cases.
    */
-  public static final Option<Double> CANVAS_DEFAULT_WIDTH = new Option<Double>("CANVAS_DEFAULT_WIDTH", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 250d);
-
+  Option<Double>
+                                           CANVAS_DEFAULT_WIDTH     =
+      new Option<Double>("CANVAS_DEFAULT_WIDTH", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 250d);
   /**
    * Just as in the case of the width of the canvas, this value needs to be
    * specified for cases where the JSON input file lacks an explicit
    * specification of the canvas height.
    */
-  public static final Option<Double> CANVAS_DEFAULT_HEIGHT = new Option<Double>("CANVAS_DEFAULT_HEIGHT", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 250d);
-
+  Option<Double>
+                                           CANVAS_DEFAULT_HEIGHT    =
+      new Option<Double>("CANVAS_DEFAULT_HEIGHT", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 250d);
   /**
    * A compartment needs to have a unique identifier, which needs to be a
    * machine-readable Sting that must start with a letter or underscore and
@@ -98,8 +110,12 @@ public interface EscherOptions extends KeyProvider {
    * identifier.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<String> COMPARTMENT_ID = new Option<String>("COMPARTMENT_ID", String.class, bundle, bundle.getString("COMPARTMENT_ID_DEFAULT_VALUE"), new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<String>
+                                           COMPARTMENT_ID           =
+      new Option<String>("COMPARTMENT_ID", String.class, bundle,
+          bundle.getString("COMPARTMENT_ID_DEFAULT_VALUE"),
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * With this option it is possible to define a name for the default
    * compartment can be that needs to be generated for the conversion to SBML.
@@ -107,35 +123,51 @@ public interface EscherOptions extends KeyProvider {
    * used.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<String> COMPARTMENT_NAME = new Option<String>("COMPARTMENT_NAME", String.class, bundle, bundle.getString("COMPARTMENT_NAME_DEFAULT_VALUE"), new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<String>
+                                           COMPARTMENT_NAME         =
+      new Option<String>("COMPARTMENT_NAME", String.class, bundle,
+          bundle.getString("COMPARTMENT_NAME_DEFAULT_VALUE"),
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * This should be a human-readable name for the layout that is to be
    * created. This name might be displayed to describe the figure and should
    * therefore be explanatory.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<String> LAYOUT_NAME = new Option<String>("LAYOUT_NAME", String.class, bundle, bundle.getString("LAYOUT_NAME_DEFAULT_VALUE"), new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<String>
+                                           LAYOUT_NAME              =
+      new Option<String>("LAYOUT_NAME", String.class, bundle,
+          bundle.getString("LAYOUT_NAME_DEFAULT_VALUE"),
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * In contrast to the name, this identifier does not have to be
    * human-readable. This is a machine identifier, which must start with a
-   * letter or undrescore and can only contain ASCII characters.
+   * letter or underscore and can only contain ASCII characters.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<String> LAYOUT_ID = new Option<String>("LAYOUT_ID", String.class, bundle, bundle.getString("LAYOUT_ID_DEFAULT_NAME"), new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<String>
+                                           LAYOUT_ID                =
+      new Option<String>("LAYOUT_ID", String.class, bundle,
+          bundle.getString("LAYOUT_ID_DEFAULT_NAME"),
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * This option defines the width of bounding boxes for text labels.
    */
-  public static final Option<Double> LABEL_WIDTH = new Option<Double>("LABEL_WIDTH", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 160d);
-
+  Option<Double>
+                                           LABEL_WIDTH              =
+      new Option<Double>("LABEL_WIDTH", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 160d);
   /**
    * With this option you can specify the height of the bounding box of text
    * labels.
    */
-  public static final Option<Double> LABEL_HEIGHT = new Option<Double>("LABEL_HEIGHT", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 50d);
-
+  Option<Double>
+                                           LABEL_HEIGHT             =
+      new Option<Double>("LABEL_HEIGHT", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 50d);
   /**
    * The length of nodes along z-coordinate. Escher maps are actually
    * two-dimensional, but in general, a layout can be three-dimensional. This
@@ -143,75 +175,101 @@ public interface EscherOptions extends KeyProvider {
    * rendering engines might not display the node if its depth is zero.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<Double> NODE_DEPTH = new Option<Double>("NODE_DEPTH", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 1d, new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<Double>
+                                           NODE_DEPTH               =
+      new Option<Double>("NODE_DEPTH", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 1d,
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * The position on the z-axis where the entire two-dimensional graph should
    * be drawn.
    */
   @SuppressWarnings("unchecked")
-  public static final Option<Double> Z = new Option<Double>("Z", Double.class, bundle, new Range<Double>(Double.class, "{[-1E9,1E9]}"), 0d, new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));
-
+                      Option<Double>
+                                           Z                        =
+      new Option<Double>("Z", Double.class, bundle,
+          new Range<Double>(Double.class, "{[-1E9,1E9]}"), 0d,
+          new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(
+              FORMAT, SBML_CONDITION));
   /**
    * Node labels can have a size different from general labels in the graph.
    * Here you can specify how height the bounding box of the labels for nodes
    * should be.
    */
-  public static final Option<Double> NODE_LABEL_HEIGHT = new Option<Double>("NODE_LABEL_HEIGHT", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 20d);
-
+  Option<Double>
+                                           NODE_LABEL_HEIGHT        =
+      new Option<Double>("NODE_LABEL_HEIGHT", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 20d);
   /**
    * This option allows you to specify the height of labels for reactions.
    * This value can be different from other labels in the network.
    */
-  public static final Option<Double> REACTION_LABEL_HEIGHT = new Option<Double>("REACTION_LABEL_HEIGHT", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
-
+  Option<Double>
+                                           REACTION_LABEL_HEIGHT    =
+      new Option<Double>("REACTION_LABEL_HEIGHT", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
   /**
    * Escher maps distinguish between primary and secondary nodes. Primary
    * nodes should be larger than secondary nodes and display the main flow of
    * matter through the network. This option allows you to specify the width
    * of primary nodes.
    */
-  public static final Option<Double> PRIMARY_NODE_WIDTH = new Option<Double>("PRIMARY_NODE_WIDTH", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
-
+  Option<Double>
+                                           PRIMARY_NODE_WIDTH       =
+      new Option<Double>("PRIMARY_NODE_WIDTH", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
   /**
    * The primary node should be bigger than the secondary node. With this
    * option you can specify the height of this type of nodes.
    */
-  public static final Option<Double> PRIMARY_NODE_HEIGHT = new Option<Double>("PRIMARY_NODE_HEIGHT", Double.class, bundle, new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
-
+  Option<Double>
+                                           PRIMARY_NODE_HEIGHT      =
+      new Option<Double>("PRIMARY_NODE_HEIGHT", Double.class, bundle,
+          new Range<Double>(Double.class, "{[1,1E9]}"), 30d);
   /**
    * This value is used as a conversion factor to determine the size of the
    * reaction display box depending on the size of primary nodes. Height and
    * width of reaction nodes are determined by dividing the corresponding
    * values from the primary node size by this factor.
    */
-  public static final Option<Double> REACTION_NODE_RATIO = new Option<Double>("REACTION_NODE_RATIO", Double.class, bundle, new Range<Double>(Double.class, "{[0,1]}"), 1d/2d);
-
+  Option<Double>
+                                           REACTION_NODE_RATIO      =
+      new Option<Double>("REACTION_NODE_RATIO", Double.class, bundle,
+          new Range<Double>(Double.class, "{[0,1]}"), 1d / 2d);
   /**
    * Similar to the reaction node ratio, the size of secondary nodes (width
    * and height) is determined by dividing the corresponding values from the
    * primary nodes by this value.
    */
-  public static final Option<Double> SECONDARY_NODE_RATIO = new Option<Double>("SECONDARY_NODE_RATIO", Double.class, bundle, new Range<Double>(Double.class, "{[0,1]}"), 2d/3d);
-
+  Option<Double>
+                                           SECONDARY_NODE_RATIO     =
+      new Option<Double>("SECONDARY_NODE_RATIO", Double.class, bundle,
+          new Range<Double>(Double.class, "{[0,1]}"), 2d / 3d);
   //TODO: include styles (color etc.)
   /* *
    * These options allow you to customize the appearance of network elements.
    */
   //public static final OptionGroup<?> GROUP_STYLES = new OptionGroup<Object>("GROUP_STYLES", bundle, );
-
   /**
    * The options in this group allow you to influence how large certain
    * elements should be displayed.
    */
   @SuppressWarnings("unchecked")
-  public static final OptionGroup<?> GROUP_LAYOUT = new OptionGroup<Object>("GROUP_LAYOUT", bundle, CANVAS_DEFAULT_HEIGHT, CANVAS_DEFAULT_WIDTH, LABEL_HEIGHT, LABEL_WIDTH, NODE_DEPTH, NODE_LABEL_HEIGHT, PRIMARY_NODE_HEIGHT, PRIMARY_NODE_WIDTH, REACTION_LABEL_HEIGHT, REACTION_NODE_RATIO, SECONDARY_NODE_RATIO, Z);
-
+                      OptionGroup<?>
+                                           GROUP_LAYOUT             =
+      new OptionGroup<Object>("GROUP_LAYOUT", bundle, CANVAS_DEFAULT_HEIGHT,
+          CANVAS_DEFAULT_WIDTH, LABEL_HEIGHT, LABEL_WIDTH, NODE_DEPTH,
+          NODE_LABEL_HEIGHT, PRIMARY_NODE_HEIGHT, PRIMARY_NODE_WIDTH,
+          REACTION_LABEL_HEIGHT, REACTION_NODE_RATIO, SECONDARY_NODE_RATIO, Z);
   /**
    * Here you can influence how elements in the layout are called or
    * identified.
    */
   @SuppressWarnings("unchecked")
-  public static final OptionGroup<?> GROUP_NAMING = new OptionGroup<Object>("GROUP_NAMING", bundle, FORMAT, LAYOUT_ID, LAYOUT_NAME, COMPARTMENT_ID, COMPARTMENT_NAME, INFER_COMPARTMENT_BOUNDS);
-
+                      OptionGroup<?>
+                                           GROUP_NAMING             =
+      new OptionGroup<Object>("GROUP_NAMING", bundle, FORMAT, LAYOUT_ID,
+          LAYOUT_NAME, COMPARTMENT_ID, COMPARTMENT_NAME,
+          INFER_COMPARTMENT_BOUNDS);
 }

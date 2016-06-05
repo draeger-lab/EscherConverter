@@ -14,43 +14,65 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
-
-import java.util.Map;
-import java.util.Set;
+package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
-public interface EscherBase extends Cloneable {
+public class Point extends AbstractPosition {
 
   /**
-   * 
-   * @param key
-   * @param value
-   * @return
+   *
    */
-  public abstract <T> Object putUserObject(String key, T value);
+  public Point() {
+    super();
+  }
+
 
   /**
-   * 
-   * @param key
-   * @return
+   * @param x
+   * @param y
    */
-  public abstract Object getUserObject(String key);
+  public Point(Double x, Double y) {
+    super(x, y);
+  }
+
 
   /**
-   * 
-   * @return
+   * @param point
    */
-  public abstract Set<String> userObjectKeys();
+  public Point(Point point) {
+    this();
+    setX(point.getX());
+    setY(point.getY());
+  }
+
 
   /**
-   * 
-   * @return
+   * @param p
    */
-  public abstract Set<Map.Entry<String, Object>> userObjectEntrySet();
+  public Point add(Point p) {
+    setX(getX() + p.getX());
+    setY(getY() + p.getY());
+    return this;
+  }
 
+
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   */
+  @Override
+  public Point clone() {
+    return new Point(this);
+  }
+
+
+  /**
+   * @param scale
+   */
+  public Point scale(double scale) {
+    setX(scale * getX());
+    setY(scale * getY());
+    return this;
+  }
 }
