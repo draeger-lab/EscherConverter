@@ -32,7 +32,7 @@ import org.sbml.jsbml.util.ResourceManager;
 
 import de.zbit.io.OpenedFile;
 import edu.ucsd.sbrg.escher.models.EscherMap;
-import edu.ucsd.sbrg.escher.EscherParser;
+import edu.ucsd.sbrg.escher.utilities.EscherParser;
 
 
 /**

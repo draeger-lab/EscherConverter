@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import edu.ucsd.sbrg.escher.EscherReaction;
-import edu.ucsd.sbrg.escher.Metabolite;
+import edu.ucsd.sbrg.escher.models.EscherReaction;
+import edu.ucsd.sbrg.escher.models.Metabolite;
 import edu.ucsd.sbrg.escher.models.EscherMap;
 import edu.ucsd.sbrg.escher.models.Node;
 import edu.ucsd.sbrg.escher.models.Point;

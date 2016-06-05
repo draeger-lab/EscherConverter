@@ -38,6 +38,9 @@ import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
 import edu.ucsd.sbrg.escher.converters.Escher2SBML;
 import edu.ucsd.sbrg.escher.converters.Escher2Standard;
 import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
+import edu.ucsd.sbrg.escher.utilities.EscherOptions;
+import edu.ucsd.sbrg.escher.utilities.EscherParser;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -57,7 +60,7 @@ import de.zbit.util.ResourceManager;
 import de.zbit.util.Utils;
 import de.zbit.util.prefs.KeyProvider;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.EscherOptions.OutputFormat;
+import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
 import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
 
 /**

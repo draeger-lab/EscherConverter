@@ -14,10 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
-
-import edu.ucsd.sbrg.escher.models.AbstractEscherBase;
-import edu.ucsd.sbrg.escher.models.Element;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -189,7 +186,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   /**
    * @param nodeRefId the nodeRefId to set
    */
-  void setNodeRefId(String nodeRefId) {
+  public void setNodeRefId(String nodeRefId) {
     this.nodeRefId = nodeRefId;
   }
 
