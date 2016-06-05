@@ -56,7 +56,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 	}
 
 	/**
-	 * @param box
+	 *
 	 */
 	public EscherCompartment(EscherCompartment compartment) {
 		this();

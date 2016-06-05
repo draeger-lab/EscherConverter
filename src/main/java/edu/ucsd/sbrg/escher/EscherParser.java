@@ -246,8 +246,7 @@ public class EscherParser {
   }
 
   /**
-   * 
-   * @param json
+   *
    * @return
    */
   private Gene parseGene(Object gene) {

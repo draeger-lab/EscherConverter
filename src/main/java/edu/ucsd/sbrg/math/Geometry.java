@@ -94,9 +94,7 @@ public class Geometry {
 		c0x = (c0x + c1x) * diff + (c2x + c3x) * t;
 		c0y = (c0y + c1y) * diff + (c2y + c3y) * t;
 
-		Point c0 = new Point(c0x, c0y);
-
-		return c0;
+		return new Point(c0x, c0y);
 	}
 
 	public static void main(String args[]) {
@@ -228,8 +226,8 @@ public class Geometry {
 				}
 			}
 		} while ((r - l > error) && (count < maxCount));
-		Point2D.Double point = bezier((r - l) / 2d + l, curve);
-		return point;
+
+		return bezier((r - l) / 2d + l, curve);
 	}
 
 }

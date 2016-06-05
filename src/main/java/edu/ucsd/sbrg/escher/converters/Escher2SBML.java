@@ -601,7 +601,6 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
   /**
    * @param metabolite
-   * @param biggID
    * @param setOfNodes
    * @param layout
    * @param node2glyph
@@ -860,9 +859,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   }
 
   /**
-   * @param modelId
    * @param escherMap
-   * @param canvas
    * @param xOffset
    * @param yOffset
    */

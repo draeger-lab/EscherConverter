@@ -144,7 +144,6 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param escherMap
    * @param node2glyph
    * @param multimarkers
-   * @param layout
    * @param xOffset
    * @param yOffset
    */
@@ -324,12 +323,8 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
   }
 
   /**
-   * 
-   * @param connectedSegments
    * @param escherMap
    * @param map
-   * @param fromGlyph
-   * @param toGlyph
    * @param xOffset
    * @param yOffset
    * @return
@@ -503,7 +498,6 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param node
    * @param escherMap
    * @param multimarkers
-   * @param map
    * @param xOffset
    * @param yOffset
    * @return

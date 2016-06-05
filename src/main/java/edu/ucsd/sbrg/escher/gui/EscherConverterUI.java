@@ -290,7 +290,6 @@ public class EscherConverterUI extends BaseFrame {
   /**
    * @param result can be {@link SBMLDocument} or {@link Sbgn}
    * @param destination
-   * @param output
    * @throws FileNotFoundException
    */
   private <T> void saveFile(T result, File destination) throws FileNotFoundException {
