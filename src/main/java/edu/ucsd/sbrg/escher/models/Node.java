@@ -259,10 +259,7 @@ public class Node extends AbstractBox implements Element {
 		} else if (!name.equals(other.name)) {
 			return false;
 		}
-		if (nodeType != other.nodeType) {
-			return false;
-		}
-		return true;
+		return nodeType == other.nodeType;
 	}
 
 	/**
