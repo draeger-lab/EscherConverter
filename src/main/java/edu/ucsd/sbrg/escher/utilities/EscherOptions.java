@@ -120,7 +120,7 @@ public interface EscherOptions extends KeyProvider {
   /**
    * In contrast to the name, this identifier does not have to be
    * human-readable. This is a machine identifier, which must start with a
-   * letter or undrescore and can only contain ASCII characters.
+   * letter or underscore and can only contain ASCII characters.
    */
   @SuppressWarnings("unchecked")
   public static final Option<String> LAYOUT_ID = new Option<String>("LAYOUT_ID", String.class, bundle, bundle.getString("LAYOUT_ID_DEFAULT_NAME"), new ValuePairUncomparable<Option<OutputFormat>, Range<OutputFormat>>(FORMAT, SBML_CONDITION));

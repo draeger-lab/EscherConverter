@@ -171,7 +171,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         break;
       default:
         // This is also done at a different time.
-        //converteTextLabel(node, map, xOffset, yOffset);
+        // convertTextLabel(node, map, xOffset, yOffset);
         break;
       }
     }
