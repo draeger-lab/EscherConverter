@@ -18,7 +18,6 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class Metabolite extends AbstractEscherBase implements Element {
 
@@ -26,27 +25,26 @@ public class Metabolite extends AbstractEscherBase implements Element {
    * The BiGG id of the metabolite.
    */
   private String biggId;
-
   /**
    * The stoichiometric coefficient of this metabolite.
    */
   private Double coefficient;
-
   /**
    * A reference to the node that represents this metabolite in the map.
    */
   private String nodeRefId;
 
+
   /**
-   * 
+   *
    */
   public Metabolite() {
     coefficient = null;
     biggId = null;
   }
 
+
   /**
-   * 
    * @param metabolite
    */
   public Metabolite(Metabolite metabolite) {
@@ -62,6 +60,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
     }
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
@@ -69,6 +68,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   public Metabolite clone() {
     return new Metabolite(this);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -109,12 +109,14 @@ public class Metabolite extends AbstractEscherBase implements Element {
     return true;
   }
 
+
   /**
    * @return the coefficient
    */
   public Double getCoefficient() {
     return coefficient;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#getId()
@@ -124,12 +126,14 @@ public class Metabolite extends AbstractEscherBase implements Element {
     return biggId;
   }
 
+
   /**
    * @return the nodeRefId
    */
   public String getNodeRefId() {
     return nodeRefId;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -139,18 +143,20 @@ public class Metabolite extends AbstractEscherBase implements Element {
     final int prime = 31;
     int result = super.hashCode();
     result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
-    result = prime * result + ((coefficient == null) ? 0 : coefficient.hashCode());
+    result =
+        prime * result + ((coefficient == null) ? 0 : coefficient.hashCode());
     result = prime * result + ((nodeRefId == null) ? 0 : nodeRefId.hashCode());
     return result;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetCoefficient() {
     return coefficient != null;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
@@ -160,13 +166,14 @@ public class Metabolite extends AbstractEscherBase implements Element {
     return biggId != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetNodeRefId() {
     return nodeRefId != null;
   }
+
 
   /**
    * @param coefficient the coefficient to set
@@ -174,6 +181,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   public void setCoefficient(Double coefficient) {
     this.coefficient = coefficient;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
@@ -183,12 +191,14 @@ public class Metabolite extends AbstractEscherBase implements Element {
     biggId = id;
   }
 
+
   /**
    * @param nodeRefId the nodeRefId to set
    */
   public void setNodeRefId(String nodeRefId) {
     this.nodeRefId = nodeRefId;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -206,5 +216,4 @@ public class Metabolite extends AbstractEscherBase implements Element {
     builder.append("]");
     return builder.toString();
   }
-
 }

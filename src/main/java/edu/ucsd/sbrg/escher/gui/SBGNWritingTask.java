@@ -16,31 +16,28 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
-import java.io.File;
-
-import javax.swing.SwingWorker;
-
+import de.zbit.io.OpenedFile;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
 
-import de.zbit.io.OpenedFile;
-
+import javax.swing.*;
+import java.io.File;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class SBGNWritingTask extends SwingWorker<File, Void> {
 
   private OpenedFile<Sbgn> openedFile;
 
+
   /**
-   * 
    * @param openedFile
    */
   public SBGNWritingTask(OpenedFile<Sbgn> openedFile) {
     this.openedFile = openedFile;
   }
+
 
   /* (non-Javadoc)
    * @see javax.swing.SwingWorker#doInBackground()

@@ -18,29 +18,29 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class TextLabel extends AbstractBox implements Element {
 
   /**
-   * 
+   *
    */
   private String id;
   /**
-   * 
+   *
    */
   private String text;
 
+
   /**
-   * 
+   *
    */
   public TextLabel() {
     id = text = null;
     x = y = null;
   }
 
+
   /**
-   * 
    * @param textLabel
    */
   public TextLabel(TextLabel textLabel) {
@@ -53,6 +53,7 @@ public class TextLabel extends AbstractBox implements Element {
     }
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
@@ -60,6 +61,7 @@ public class TextLabel extends AbstractBox implements Element {
   public TextLabel clone() {
     return new TextLabel(this);
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#getId()
@@ -69,12 +71,14 @@ public class TextLabel extends AbstractBox implements Element {
     return id;
   }
 
+
   /**
    * @return the text
    */
   public String getText() {
     return text;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
@@ -84,13 +88,14 @@ public class TextLabel extends AbstractBox implements Element {
     return id != null;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetText() {
     return text != null;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
@@ -100,12 +105,14 @@ public class TextLabel extends AbstractBox implements Element {
     this.id = id;
   }
 
+
   /**
    * @param text the text to set
    */
   public void setText(String text) {
     this.text = text;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -125,5 +132,4 @@ public class TextLabel extends AbstractBox implements Element {
     builder.append("]");
     return builder.toString();
   }
-
 }

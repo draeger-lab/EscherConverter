@@ -17,32 +17,31 @@
 package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
-public abstract class AbstractPosition extends AbstractEscherBase implements Position {
+public abstract class AbstractPosition extends AbstractEscherBase
+    implements Position {
 
   /**
-   * 
+   *
    */
   protected Double x;
-
   /**
-   * 
+   *
    */
   protected Double y;
 
+
   /**
-   * 
+   *
    */
   public AbstractPosition() {
     super();
     x = y = null;
   }
 
+
   /**
-   * 
    * @param position
    */
   public AbstractPosition(AbstractPosition position) {
@@ -55,8 +54,8 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     }
   }
 
+
   /**
-   * 
    * @param x
    * @param y
    */
@@ -65,6 +64,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     setX(x);
     setY(y);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -98,6 +98,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     return true;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#getX()
    */
@@ -106,6 +107,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     return x;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#getY()
    */
@@ -113,6 +115,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   public Double getY() {
     return y;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -126,6 +129,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     return result;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#isSetX()
    */
@@ -133,6 +137,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   public boolean isSetX() {
     return x != null;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#isSetY()
@@ -142,6 +147,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     return y != null;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#setX(java.lang.Double)
    */
@@ -150,6 +156,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     this.x = x;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Position#setY(java.lang.Double)
    */
@@ -157,6 +164,7 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   public void setY(Double y) {
     this.y = y;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -172,5 +180,4 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
     builder.append("]");
     return builder.toString();
   }
-
 }

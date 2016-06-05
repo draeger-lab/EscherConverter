@@ -16,10 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
-
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class Gene extends AbstractEscherBase implements Element {
 
@@ -27,20 +25,20 @@ public class Gene extends AbstractEscherBase implements Element {
    * The BiGG id of the gene.
    */
   private String biggId;
-
   /**
    * The name of the gene
    */
   private String name;
 
+
   /**
-   * 
+   *
    */
   public Gene() {
   }
 
+
   /**
-   * 
    * @param gene
    */
   public Gene(Gene gene) {
@@ -53,11 +51,13 @@ public class Gene extends AbstractEscherBase implements Element {
     }
   }
 
+
   public Gene(String biggId, String name) {
     this();
     setId(biggId);
     setName(name);
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
@@ -66,6 +66,7 @@ public class Gene extends AbstractEscherBase implements Element {
   public Gene clone() {
     return new Gene(this);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -99,6 +100,7 @@ public class Gene extends AbstractEscherBase implements Element {
     return true;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
@@ -107,12 +109,14 @@ public class Gene extends AbstractEscherBase implements Element {
     return biggId;
   }
 
+
   /**
    * @return the name
    */
   public String getName() {
     return name;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -126,6 +130,7 @@ public class Gene extends AbstractEscherBase implements Element {
     return result;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
@@ -134,13 +139,14 @@ public class Gene extends AbstractEscherBase implements Element {
     return biggId != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetName() {
     return name != null;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
@@ -150,12 +156,14 @@ public class Gene extends AbstractEscherBase implements Element {
     biggId = id;
   }
 
+
   /**
    * @param name the name to set
    */
   public void setName(String name) {
     this.name = name;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -171,5 +179,4 @@ public class Gene extends AbstractEscherBase implements Element {
     builder.append("]");
     return builder.toString();
   }
-
 }

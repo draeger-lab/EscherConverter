@@ -16,105 +16,114 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import org.sbml.jsbml.util.ResourceManager;
+
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import org.sbml.jsbml.util.ResourceManager;
-
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class EscherCompartment extends AbstractBox implements Element {
 
-	/**
-	 * Localization support.
-	 */
-	private static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
+  /**
+   * Localization support.
+   */
+  private static final           ResourceBundle
+                                        bundle          =
+      ResourceManager.getBundle("Messages");
+  /**
+   * The mapping between compartment codes and human-readable names.
+   */
+  private static final           ResourceBundle
+                                        compartmentCode =
+      ResourceManager.getBundle(
+          EscherCompartment.class.getPackage().getName() + ".CompartmentCode");
+  /**
+   * A {@link Logger} for this class.
+   */
+  private static final transient Logger
+                                        logger          =
+      Logger.getLogger(EscherCompartment.class.getName());
+  /**
+   *
+   */
+  private String id;
 
-	/**
-	 * The mapping between compartment codes and human-readable names.
-	 */
-	private static final ResourceBundle compartmentCode = ResourceManager.getBundle(EscherCompartment.class.getPackage().getName() + ".CompartmentCode");
 
-	/**
-	 * A {@link Logger} for this class.
-	 */
-	private static final transient Logger logger = Logger.getLogger(EscherCompartment.class.getName());
+  /**
+   *
+   */
+  public EscherCompartment() {
+    id = null;
+  }
 
-	/**
-	 * 
-	 */
-	private String id;
 
-	/**
-	 * 
-	 */
-	public EscherCompartment() {
-		id = null;
-	}
+  /**
+   *
+   */
+  public EscherCompartment(EscherCompartment compartment) {
+    this();
+    setId(compartment.getId());
+  }
 
-	/**
-	 *
-	 */
-	public EscherCompartment(EscherCompartment compartment) {
-		this();
-		setId(compartment.getId());
-	}
 
-	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
-	 */
-	@Override
-	public EscherCompartment clone() {
-		return new EscherCompartment(this);
-	}
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   */
+  @Override
+  public EscherCompartment clone() {
+    return new EscherCompartment(this);
+  }
 
-	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.models.Element#getId()
-	 */
-	@Override
-	public String getId() {
-		return id;
-	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public String getName() {
-		if (isSetId() && compartmentCode.containsKey(getId())) {
-			return compartmentCode.getString(getId());
-		}
-		return null;
-	}
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
+   */
+  @Override
+  public String getId() {
+    return id;
+  }
 
-	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
-	 */
-	@Override
-	public boolean isSetId() {
-		return id != null;
-	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isSetName() {
-		return getName() != null;
-	}
+  /**
+   * @return
+   */
+  public String getName() {
+    if (isSetId() && compartmentCode.containsKey(getId())) {
+      return compartmentCode.getString(getId());
+    }
+    return null;
+  }
 
-	/* (non-Javadoc)
-	 * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
-	 */
-	@Override
-	public void setId(String id) {
-		if (!compartmentCode.containsKey(id)) {
-			logger.warning(MessageFormat.format(bundle.getString("EscherCompartment.invalidId"), id));
-		}
-		this.id = id;
-	}
 
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
+   */
+  @Override
+  public boolean isSetId() {
+    return id != null;
+  }
+
+
+  /**
+   * @return
+   */
+  public boolean isSetName() {
+    return getName() != null;
+  }
+
+
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
+   */
+  @Override
+  public void setId(String id) {
+    if (!compartmentCode.containsKey(id)) {
+      logger.warning(MessageFormat
+          .format(bundle.getString("EscherCompartment.invalidId"), id));
+    }
+    this.id = id;
+  }
 }

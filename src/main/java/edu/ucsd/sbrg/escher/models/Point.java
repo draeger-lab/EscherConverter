@@ -17,21 +17,19 @@
 package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
 public class Point extends AbstractPosition {
 
   /**
-   * 
+   *
    */
   public Point() {
     super();
   }
 
+
   /**
-   * 
    * @param x
    * @param y
    */
@@ -39,8 +37,8 @@ public class Point extends AbstractPosition {
     super(x, y);
   }
 
+
   /**
-   * 
    * @param point
    */
   public Point(Point point) {
@@ -49,8 +47,8 @@ public class Point extends AbstractPosition {
     setY(point.getY());
   }
 
+
   /**
-   * 
    * @param p
    */
   public Point add(Point p) {
@@ -58,6 +56,7 @@ public class Point extends AbstractPosition {
     setY(getY() + p.getY());
     return this;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
@@ -67,8 +66,8 @@ public class Point extends AbstractPosition {
     return new Point(this);
   }
 
+
   /**
-   * 
    * @param scale
    */
   public Point scale(double scale) {
@@ -76,5 +75,4 @@ public class Point extends AbstractPosition {
     setY(scale * getY());
     return this;
   }
-
 }

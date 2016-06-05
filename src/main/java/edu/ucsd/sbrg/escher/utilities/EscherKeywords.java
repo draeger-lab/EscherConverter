@@ -17,134 +17,131 @@
 package edu.ucsd.sbrg.escher.utilities;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
 public enum EscherKeywords {
-
   /**
-   * 
+   *
    */
   b1,
   /**
-   * 
+   *
    */
   b2,
   /**
-   * 
+   *
    */
   bigg_id,
   /**
-   * 
+   *
    */
   canvas,
   /**
-   * 
+   *
    */
   coefficient,
   /**
-   * 
+   *
    */
   connected_segments,
   /**
-   * 
+   *
    */
   from_node_id,
   /**
-   * 
+   *
    */
   gene_reaction_rule,
   /**
-   * 
+   *
    */
   genes,
   /**
-   * 
+   *
    */
   height,
   /**
-   * 
+   *
    */
   homepage,
   /**
-   * 
+   *
    */
   label_x,
   /**
-   * 
+   *
    */
   label_y,
   /**
-   * 
+   *
    */
   map_description,
   /**
-   * 
+   *
    */
   map_id,
   /**
-   * 
+   *
    */
   map_name,
   /**
-   * 
+   *
    */
   metabolites,
   /**
-   * 
+   *
    */
   name,
   /**
-   * 
+   *
    */
   node_is_primary,
   /**
-   * 
+   *
    */
   node_type,
   /**
-   * 
+   *
    */
   nodes,
   /**
-   * 
+   *
    */
   reaction_id,
   /**
-   * 
+   *
    */
   reactions,
   /**
-   * 
+   *
    */
   reversibility,
   /**
-   * 
+   *
    */
   schema,
   /**
-   * 
+   *
    */
   segment_id,
   /**
-   * 
+   *
    */
   segments,
   /**
-   * 
+   *
    */
   text,
   /**
-   * 
+   *
    */
   text_labels,
   /**
-   * 
+   *
    */
   to_node_id,
   /**
-   * 
+   *
    */
   width,
   /**
@@ -154,5 +151,5 @@ public enum EscherKeywords {
   /**
    * y coordinate
    */
-  y;
+  y
 }

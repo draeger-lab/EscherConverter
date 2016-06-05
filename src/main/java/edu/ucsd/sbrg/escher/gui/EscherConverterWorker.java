@@ -16,50 +16,52 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
-import java.text.MessageFormat;
-import java.util.ResourceBundle;
-
-import javax.swing.SwingWorker;
-
+import de.zbit.util.prefs.SBProperties;
+import edu.ucsd.sbrg.escher.EscherConverter;
+import edu.ucsd.sbrg.escher.models.EscherMap;
 import org.sbgn.bindings.Sbgn;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.util.ResourceManager;
 
-import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.EscherConverter;
-import edu.ucsd.sbrg.escher.models.EscherMap;
+import javax.swing.*;
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
 
 /**
- * 
- * @author Andreas Dr&auml;ger
- *
  * @param <T> can either be {@link SBMLDocument} or {@link Sbgn}.
+ * @author Andreas Dr&auml;ger
  */
 public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
 
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
-
-  private EscherMap map;
+  public static final ResourceBundle
+      bundle =
+      ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  private EscherMap          map;
   private Class<? extends T> format;
-  private SBProperties properties;
+  private SBProperties       properties;
+
 
   /**
-   * 
    * @param map
    * @param format
    * @param properties
    */
-  public EscherConverterWorker(EscherMap map, Class<? extends T> format, SBProperties properties) {
-    if (!format.isAssignableFrom(SBMLDocument.class) && !format.isAssignableFrom(Sbgn.class)) {
-      throw new IllegalArgumentException(MessageFormat.format(bundle.getString("EscherConverterWorker.unknownFormat"), format.getName()));
+  public EscherConverterWorker(EscherMap map, Class<? extends T> format,
+      SBProperties properties) {
+    if (!format.isAssignableFrom(SBMLDocument.class) && !format
+        .isAssignableFrom(Sbgn.class)) {
+      throw new IllegalArgumentException(MessageFormat
+          .format(bundle.getString("EscherConverterWorker.unknownFormat"),
+              format.getName()));
     }
     this.map = map;
     this.format = format;
     this.properties = properties;
   }
+
 
   /* (non-Javadoc)
    * @see javax.swing.SwingWorker#doInBackground()
@@ -68,5 +70,4 @@ public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
   protected T doInBackground() throws Exception {
     return EscherConverter.convert(map, format, properties);
   }
-
 }
