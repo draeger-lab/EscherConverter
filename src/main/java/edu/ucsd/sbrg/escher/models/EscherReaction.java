@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import edu.ucsd.sbrg.escher.models.*;
 import org.sbml.jsbml.util.ResourceManager;
 
 /**
@@ -609,7 +608,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param midmarker the midmarker to set
    */
-  void setMidmarker(Node midmarker) {
+  public void setMidmarker(Node midmarker) {
     this.midmarker = midmarker;
   }
 

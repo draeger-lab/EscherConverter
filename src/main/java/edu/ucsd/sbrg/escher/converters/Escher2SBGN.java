@@ -28,8 +28,8 @@ import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import edu.ucsd.sbrg.escher.EscherReaction;
-import edu.ucsd.sbrg.escher.Metabolite;
+import edu.ucsd.sbrg.escher.models.EscherReaction;
+import edu.ucsd.sbrg.escher.models.Metabolite;
 import edu.ucsd.sbrg.escher.models.*;
 import org.sbgn.bindings.Arc;
 import org.sbgn.bindings.Arc.End;

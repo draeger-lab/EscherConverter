@@ -16,8 +16,6 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
-import edu.ucsd.sbrg.escher.EscherReaction;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
