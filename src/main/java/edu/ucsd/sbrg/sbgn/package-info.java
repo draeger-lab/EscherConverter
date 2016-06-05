@@ -1,5 +1,5 @@
 /**
- * 
+ * @author Andreas Dr&auml;ger
  */
 /**
  * @author Andreas Dr&auml;ger

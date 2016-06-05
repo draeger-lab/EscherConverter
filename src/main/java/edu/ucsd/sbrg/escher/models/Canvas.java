@@ -14,44 +14,34 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
-public interface Position extends EscherBase {
+public class Canvas extends AbstractBox {
 
-	/**
-	 * @return the x
-	 */
-	public Double getX();
+  /**
+   *
+   */
+  public Canvas() {
+    super();
+  }
 
-	/**
-	 * @return the y
-	 */
-	public Double getY();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public boolean isSetX();
+  /**
+   * @param canvas
+   */
+  public Canvas(Canvas canvas) {
+    super(canvas);
+  }
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public boolean isSetY();
 
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(Double x);
-
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(Double y);
-
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   */
+  @Override
+  public Canvas clone() {
+    return new Canvas(this);
+  }
 }

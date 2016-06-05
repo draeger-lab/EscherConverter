@@ -14,45 +14,45 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class Segment extends AbstractEscherBase implements Element {
 
   /**
-   * 
+   *
    */
-  private Point b1;
+  private Point  b1;
   /**
-   * 
+   *
    */
-  private Point b2;
+  private Point  b2;
   /**
-   * 
+   *
    */
   private String fromNodeId;
   /**
-   * 
+   *
    */
   private String id;
   /**
-   * 
+   *
    */
   private String toNodeId;
 
+
   /**
-   * 
+   *
    */
   public Segment() {
     id = fromNodeId = toNodeId = null;
     b1 = b2 = null;
   }
 
+
   /**
-   * 
    * @param segment
    */
   public Segment(Segment segment) {
@@ -74,13 +74,15 @@ public class Segment extends AbstractEscherBase implements Element {
     }
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public Segment clone() {
     return new Segment(this);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -135,12 +137,14 @@ public class Segment extends AbstractEscherBase implements Element {
     return true;
   }
 
+
   /**
    * @return the b1
    */
   public Point getBasePoint1() {
     return b1;
   }
+
 
   /**
    * @return the b2
@@ -149,6 +153,7 @@ public class Segment extends AbstractEscherBase implements Element {
     return b2;
   }
 
+
   /**
    * @return the fromNodeId
    */
@@ -156,13 +161,15 @@ public class Segment extends AbstractEscherBase implements Element {
     return fromNodeId;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
   public String getId() {
     return id;
   }
+
 
   /**
    * @return the toNodeId
@@ -170,6 +177,7 @@ public class Segment extends AbstractEscherBase implements Element {
   public String getToNodeId() {
     return toNodeId;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -180,54 +188,56 @@ public class Segment extends AbstractEscherBase implements Element {
     int result = super.hashCode();
     result = prime * result + ((b1 == null) ? 0 : b1.hashCode());
     result = prime * result + ((b2 == null) ? 0 : b2.hashCode());
-    result = prime * result + ((fromNodeId == null) ? 0 : fromNodeId.hashCode());
+    result =
+        prime * result + ((fromNodeId == null) ? 0 : fromNodeId.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((toNodeId == null) ? 0 : toNodeId.hashCode());
     return result;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetBasePoint1() {
     return b1 != null;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetBasePoint2() {
     return b2 != null;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetFromNodeId() {
     return fromNodeId != null;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
     return id != null;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetToNodeId() {
     return toNodeId != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public Point removeBasePoint1() {
@@ -236,8 +246,8 @@ public class Segment extends AbstractEscherBase implements Element {
     return point;
   }
 
+
   /**
-   * 
    * @return
    */
   public Point removeBasePoint2() {
@@ -246,12 +256,14 @@ public class Segment extends AbstractEscherBase implements Element {
     return point;
   }
 
+
   /**
    * @param b1 the b1 to set
    */
   public void setBasePoint1(Point b1) {
     this.b1 = b1;
   }
+
 
   /**
    * @param b2 the b2 to set
@@ -260,6 +272,7 @@ public class Segment extends AbstractEscherBase implements Element {
     this.b2 = b2;
   }
 
+
   /**
    * @param fromNodeId the fromNodeId to set
    */
@@ -267,13 +280,15 @@ public class Segment extends AbstractEscherBase implements Element {
     this.fromNodeId = fromNodeId;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {
     this.id = id;
   }
+
 
   /**
    * @param toNodeId the toNodeId to set
@@ -281,6 +296,7 @@ public class Segment extends AbstractEscherBase implements Element {
   public void setToNodeId(String toNodeId) {
     this.toNodeId = toNodeId;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -303,8 +319,8 @@ public class Segment extends AbstractEscherBase implements Element {
     return builder.toString();
   }
 
+
   /**
-   * 
    * @return
    */
   public String unsetFromNodeId() {
@@ -313,8 +329,8 @@ public class Segment extends AbstractEscherBase implements Element {
     return fromString;
   }
 
+
   /**
-   * 
    * @return
    */
   public String unsetToNodeId() {
@@ -322,5 +338,4 @@ public class Segment extends AbstractEscherBase implements Element {
     setToNodeId(null);
     return toString;
   }
-
 }

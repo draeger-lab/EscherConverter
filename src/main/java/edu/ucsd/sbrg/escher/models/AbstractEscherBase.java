@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,36 +22,38 @@ import java.util.Set;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public abstract class AbstractEscherBase implements EscherBase {
 
   /**
-   * 
+   *
    */
   private Map<String, Object> userObjects;
 
+
   /**
-   * 
+   *
    */
   public AbstractEscherBase() {
     super();
     userObjects = new HashMap<String, Object>();
   }
 
+
   /**
-   * 
    * @param base
    */
   public AbstractEscherBase(AbstractEscherBase base) {
     this();
   }
 
+
   /* (non-Javadoc)
    * @see java.lang.Object#clone()
    */
   @Override
   public abstract AbstractEscherBase clone();
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -78,13 +80,15 @@ public abstract class AbstractEscherBase implements EscherBase {
     return true;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#getUserObject(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#getUserObject(java.lang.String)
    */
   @Override
   public Object getUserObject(String key) {
     return userObjects.get(key);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -93,32 +97,35 @@ public abstract class AbstractEscherBase implements EscherBase {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result = prime * result + ((userObjects == null) ? 0 : userObjects.hashCode());
+    result =
+        prime * result + ((userObjects == null) ? 0 : userObjects.hashCode());
     return result;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#putUserObject(java.lang.String, T)
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#putUserObject(java.lang.String, T)
    */
   @Override
   public <T> Object putUserObject(String key, T value) {
     return userObjects.put(key, value);
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#userObjectEntrySet()
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectEntrySet()
    */
   @Override
   public Set<Map.Entry<String, Object>> userObjectEntrySet() {
     return userObjects.entrySet();
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.EscherBase#userObjectKeys()
+   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectKeys()
    */
   @Override
   public Set<String> userObjectKeys() {
     return userObjects.keySet();
   }
-
 }

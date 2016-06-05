@@ -14,67 +14,40 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
-public class Point extends AbstractPosition {
+public interface Box extends EscherBase, Position {
 
   /**
-   * 
+   * @param height the height to set
    */
-  public Point() {
-    super();
-  }
+  void setHeight(Double height);
 
   /**
-   * 
-   * @param x
-   * @param y
+   * @return the height
    */
-  public Point(Double x, Double y) {
-    super(x, y);
-  }
+  Double getHeight();
 
   /**
-   * 
-   * @param point
+   * @param width the width to set
    */
-  public Point(Point point) {
-    this();
-    setX(point.getX());
-    setY(point.getY());
-  }
+  void setWidth(Double width);
 
   /**
-   * 
-   * @param p
+   * @return the width
    */
-  public Point add(Point p) {
-    setX(getX() + p.getX());
-    setY(getY() + p.getY());
-    return this;
-  }
-
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
-   */
-  @Override
-  public Point clone() {
-    return new Point(this);
-  }
+  Double getWidth();
 
   /**
-   * 
-   * @param scale
+   * @return {@code true} if the requested property is not {@code null}.
    */
-  public Point scale(double scale) {
-    setX(scale * getX());
-    setY(scale * getY());
-    return this;
-  }
+  boolean isSetHeight();
 
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetWidth();
 }

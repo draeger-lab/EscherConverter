@@ -14,33 +14,33 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class TextLabel extends AbstractBox implements Element {
 
   /**
-   * 
+   *
    */
   private String id;
   /**
-   * 
+   *
    */
   private String text;
 
+
   /**
-   * 
+   *
    */
   public TextLabel() {
     id = text = null;
     x = y = null;
   }
 
+
   /**
-   * 
    * @param textLabel
    */
   public TextLabel(TextLabel textLabel) {
@@ -53,21 +53,24 @@ public class TextLabel extends AbstractBox implements Element {
     }
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public TextLabel clone() {
     return new TextLabel(this);
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.Element#getId()
    */
   @Override
   public String getId() {
     return id;
   }
+
 
   /**
    * @return the text
@@ -76,29 +79,32 @@ public class TextLabel extends AbstractBox implements Element {
     return text;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
     return id != null;
   }
 
+
   /**
-   * 
    * @return {@code true} if the requested property is not {@code null}.
    */
   public boolean isSetText() {
     return text != null;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {
     this.id = id;
   }
+
 
   /**
    * @param text the text to set
@@ -106,6 +112,7 @@ public class TextLabel extends AbstractBox implements Element {
   public void setText(String text) {
     this.text = text;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -125,5 +132,4 @@ public class TextLabel extends AbstractBox implements Element {
     builder.append("]");
     return builder.toString();
   }
-
 }

@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,25 +24,25 @@ import java.util.Set;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class EscherMap extends AbstractEscherBase {
 
-  private Map<String, Set<String>> bigg2nodes;
-  private Map<String, Set<String>> bigg2reactions;
-  private Canvas canvas;
+  private Map<String, Set<String>>       bigg2nodes;
+  private Map<String, Set<String>>       bigg2reactions;
+  private Canvas                         canvas;
   private Map<String, EscherCompartment> compartments;
-  private String description;
-  private String id;
-  private String name;
-  private Map<String, Node> nodes;
-  private Map<String, EscherReaction> reactions;
-  private String schema;
-  private Map<String, TextLabel> textLabels;
-  private String url;
+  private String                         description;
+  private String                         id;
+  private String                         name;
+  private Map<String, Node>              nodes;
+  private Map<String, EscherReaction>    reactions;
+  private String                         schema;
+  private Map<String, TextLabel>         textLabels;
+  private String                         url;
+
 
   /**
-   * 
+   *
    */
   public EscherMap() {
     canvas = null;
@@ -54,8 +54,8 @@ public class EscherMap extends AbstractEscherBase {
     compartments = new HashMap<String, EscherCompartment>();
   }
 
+
   /**
-   * 
    * @param escherMap
    */
   public EscherMap(EscherMap escherMap) {
@@ -95,16 +95,16 @@ public class EscherMap extends AbstractEscherBase {
     }
   }
 
+
   /**
-   * 
    * @param compartment
    */
   public void addCompartment(EscherCompartment compartment) {
     compartments.put(compartment.getId(), compartment);
   }
 
+
   /**
-   * 
    * @param node
    */
   public void addNode(Node node) {
@@ -120,8 +120,8 @@ public class EscherMap extends AbstractEscherBase {
     }
   }
 
+
   /**
-   * 
    * @param reaction
    */
   public void addReaction(EscherReaction reaction) {
@@ -137,21 +137,23 @@ public class EscherMap extends AbstractEscherBase {
     }
   }
 
+
   /**
-   * 
    * @param textLabel
    */
   public void addTextLabel(TextLabel textLabel) {
     textLabels.put(textLabel.getId(), textLabel);
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
    */
   @Override
   public EscherMap clone() {
     return new EscherMap(this);
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -219,40 +221,49 @@ public class EscherMap extends AbstractEscherBase {
     }
     return true;
   }
+
+
   /**
-   * 
    * @return
    */
   public Canvas getCanvas() {
     return canvas;
   }
+
+
   /**
-   * 
    * @param id
    * @return
    */
   public EscherCompartment getCompartment(String id) {
     return compartments.get(id);
   }
+
+
   /**
-   * 
    * @return
    */
   public int getCompartmentCount() {
     return compartments.size();
   }
+
+
   /**
    * @return the description
    */
   public String getDescription() {
     return description;
   }
+
+
   /**
    * @return the id
    */
   public String getId() {
     return id;
   }
+
+
   /**
    * @return the name
    */
@@ -260,8 +271,8 @@ public class EscherMap extends AbstractEscherBase {
     return name;
   }
 
+
   /**
-   * 
    * @param id
    * @return
    */
@@ -269,8 +280,8 @@ public class EscherMap extends AbstractEscherBase {
     return nodes.get(id);
   }
 
+
   /**
-   * 
    * @param biggId
    * @return
    */
@@ -285,16 +296,16 @@ public class EscherMap extends AbstractEscherBase {
     return set;
   }
 
+
   /**
-   * 
    * @return
    */
   public int getNodesCount() {
     return nodes.size();
   }
 
+
   /**
-   * 
    * @param id
    * @return
    */
@@ -302,16 +313,16 @@ public class EscherMap extends AbstractEscherBase {
     return reactions.get(id);
   }
 
+
   /**
-   * 
    * @return
    */
   public int getReactionCount() {
     return reactions.size();
   }
 
+
   /**
-   * 
    * @param biggId
    * @return
    */
@@ -326,6 +337,7 @@ public class EscherMap extends AbstractEscherBase {
     return set;
   }
 
+
   /**
    * @return the schema
    */
@@ -333,8 +345,8 @@ public class EscherMap extends AbstractEscherBase {
     return schema;
   }
 
+
   /**
-   * 
    * @param id
    * @return
    */
@@ -342,13 +354,14 @@ public class EscherMap extends AbstractEscherBase {
     return textLabels.get(id);
   }
 
+
   /**
-   * 
    * @return
    */
   public int getTextLabelCount() {
     return textLabels.size();
   }
+
 
   /**
    * @return the url
@@ -357,6 +370,7 @@ public class EscherMap extends AbstractEscherBase {
     return url;
   }
 
+
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
    */
@@ -364,87 +378,92 @@ public class EscherMap extends AbstractEscherBase {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result = prime * result + ((bigg2nodes == null) ? 0 : bigg2nodes.hashCode());
-    result = prime * result + ((bigg2reactions == null) ? 0 : bigg2reactions.hashCode());
+    result =
+        prime * result + ((bigg2nodes == null) ? 0 : bigg2nodes.hashCode());
+    result =
+        prime * result + ((bigg2reactions == null) ? 0 :
+            bigg2reactions.hashCode());
     result = prime * result + ((canvas == null) ? 0 : canvas.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
     result = prime * result + ((reactions == null) ? 0 : reactions.hashCode());
-    result = prime * result + ((textLabels == null) ? 0 : textLabels.hashCode());
+    result =
+        prime * result + ((textLabels == null) ? 0 : textLabels.hashCode());
     return result;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetCanvas() {
     return canvas != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetDescription() {
     return (description != null) && (description.length() > 0);
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetId() {
     return (id != null) && (id.length() > 0);
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetName() {
     return name != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetSchema() {
     return schema != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public boolean isSetURL() {
     return url != null;
   }
 
+
   /**
-   * 
    * @return
    */
   public Set<Entry<String, Node>> nodes() {
     return nodes.entrySet();
   }
 
+
   /**
-   * 
    * @return
    */
   public Set<Entry<String, EscherReaction>> reactions() {
     return reactions.entrySet();
   }
 
+
   /**
-   * 
    * @param canvas
    */
   public void setCanvas(Canvas canvas) {
     this.canvas = canvas;
   }
+
 
   /**
    * @param description the description to set
@@ -453,12 +472,14 @@ public class EscherMap extends AbstractEscherBase {
     this.description = description;
   }
 
+
   /**
    * @param id the id to set
    */
   public void setId(String id) {
     this.id = id;
   }
+
 
   /**
    * @param name the name to set
@@ -467,12 +488,14 @@ public class EscherMap extends AbstractEscherBase {
     this.name = name;
   }
 
+
   /**
    * @param schema the schema to set
    */
   public void setSchema(String schema) {
     this.schema = schema;
   }
+
 
   /**
    * @param url the url to set
@@ -481,13 +504,14 @@ public class EscherMap extends AbstractEscherBase {
     this.url = url;
   }
 
+
   /**
-   * 
    * @return
    */
   public Set<Entry<String, TextLabel>> textLabels() {
     return textLabels.entrySet();
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -524,12 +548,11 @@ public class EscherMap extends AbstractEscherBase {
     return builder.toString();
   }
 
+
   /**
-   * 
    * @return
    */
   public Set<Entry<String, EscherCompartment>> compartments() {
     return compartments.entrySet();
   }
-
 }

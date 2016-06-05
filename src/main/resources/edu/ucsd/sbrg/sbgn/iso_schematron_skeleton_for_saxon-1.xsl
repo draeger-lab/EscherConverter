@@ -47,7 +47,7 @@
    
    If you create your own meta-stylesheet to override this one, it is a
    good idea to have both in the same directory and to run the stylesheet
-   from that directory, as many XSLT implementations have ideosyncratic
+   from that directory, as many XSLT implementations have idiosyncratic
    handling of URLs: keep it simple.
 -->
  
@@ -76,7 +76,7 @@
     archiveDirParameter string	  In case of ZIP files	 
     
  Experimental: USE AT YOUR OWN RISK   
-    visit-text "true" "false"   Also visist text nodes for context. WARNING: NON_STARDARD.
+    visit-text "true" "false"   Also visit text nodes for context. WARNING: NON_STANDARD.
     select-contents '' | 'key' | '//'   Select different implementation strategies
  
  Conventions: Meta-stylesheets that override this may use the following parameters

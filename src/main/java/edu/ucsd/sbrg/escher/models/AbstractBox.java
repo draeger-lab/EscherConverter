@@ -14,34 +14,33 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher;
+package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
 public abstract class AbstractBox extends AbstractPosition implements Box {
 
   /**
-   * 
+   *
    */
   protected Double height;
   /**
-   * 
+   *
    */
   protected Double width;
 
+
   /**
-   * 
+   *
    */
   public AbstractBox() {
     super();
     x = y = width = height = null;
   }
 
+
   /**
-   * 
    * @param box
    */
   public AbstractBox(AbstractBox box) {
@@ -53,6 +52,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
       setWidth(box.getWidth().doubleValue());
     }
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -86,21 +86,24 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return true;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#getHeight()
+   * @see edu.ucsd.sbrg.escher.models.Box#getHeight()
    */
   @Override
   public Double getHeight() {
     return height;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#getWidth()
+   * @see edu.ucsd.sbrg.escher.models.Box#getWidth()
    */
   @Override
   public Double getWidth() {
     return width;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -114,37 +117,42 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return result;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#isSetHeight()
+   * @see edu.ucsd.sbrg.escher.models.Box#isSetHeight()
    */
   @Override
   public boolean isSetHeight() {
     return height != null;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#isSetWidth()
+   * @see edu.ucsd.sbrg.escher.models.Box#isSetWidth()
    */
   @Override
   public boolean isSetWidth() {
     return width != null;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#setHeight(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.Box#setHeight(java.lang.Double)
    */
   @Override
   public void setHeight(Double height) {
     this.height = height;
   }
 
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.Box#setWidth(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.Box#setWidth(java.lang.Double)
    */
   @Override
   public void setWidth(Double width) {
     this.width = width;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -164,5 +172,4 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     builder.append("]");
     return builder.toString();
   }
-
 }
