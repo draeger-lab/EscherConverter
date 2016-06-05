@@ -14,7 +14,6 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-
 /**
  * @author Andreas Dr&auml;ger
  * @version $Rev$

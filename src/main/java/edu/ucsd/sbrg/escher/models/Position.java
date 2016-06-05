@@ -18,40 +18,36 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public interface Position extends EscherBase {
 
-	/**
-	 * @return the x
-	 */
-	public Double getX();
+  /**
+   * @return the x
+   */
+  Double getX();
 
-	/**
-	 * @return the y
-	 */
-	public Double getY();
+  /**
+   * @return the y
+   */
+  Double getY();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public boolean isSetX();
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetX();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public boolean isSetY();
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetY();
 
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(Double x);
+  /**
+   * @param x the x to set
+   */
+  void setX(Double x);
 
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(Double y);
-
+  /**
+   * @param y the y to set
+   */
+  void setY(Double y);
 }

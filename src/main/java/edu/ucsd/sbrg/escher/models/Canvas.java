@@ -18,24 +18,24 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public class Canvas extends AbstractBox {
 
   /**
-   * 
+   *
    */
   public Canvas() {
     super();
   }
 
+
   /**
-   * 
    * @param canvas
    */
   public Canvas(Canvas canvas) {
     super(canvas);
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
@@ -44,5 +44,4 @@ public class Canvas extends AbstractBox {
   public Canvas clone() {
     return new Canvas(this);
   }
-
 }

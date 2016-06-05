@@ -17,31 +17,30 @@
 package edu.ucsd.sbrg.escher.models;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
 public abstract class AbstractBox extends AbstractPosition implements Box {
 
   /**
-   * 
+   *
    */
   protected Double height;
   /**
-   * 
+   *
    */
   protected Double width;
 
+
   /**
-   * 
+   *
    */
   public AbstractBox() {
     super();
     x = y = width = height = null;
   }
 
+
   /**
-   * 
    * @param box
    */
   public AbstractBox(AbstractBox box) {
@@ -53,6 +52,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
       setWidth(box.getWidth().doubleValue());
     }
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
@@ -86,6 +86,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return true;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#getHeight()
    */
@@ -94,6 +95,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return height;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#getWidth()
    */
@@ -101,6 +103,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public Double getWidth() {
     return width;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#hashCode()
@@ -114,6 +117,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return result;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#isSetHeight()
    */
@@ -121,6 +125,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public boolean isSetHeight() {
     return height != null;
   }
+
 
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#isSetWidth()
@@ -130,6 +135,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     return width != null;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#setHeight(java.lang.Double)
    */
@@ -138,6 +144,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     this.height = height;
   }
 
+
   /* (non-Javadoc)
    * @see edu.ucsd.sbrg.escher.models.Box#setWidth(java.lang.Double)
    */
@@ -145,6 +152,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public void setWidth(Double width) {
     this.width = width;
   }
+
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -164,5 +172,4 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
     builder.append("]");
     return builder.toString();
   }
-
 }

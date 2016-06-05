@@ -20,37 +20,30 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 
  * @author Andreas Dr&auml;ger
- *
  */
 public interface EscherBase extends Cloneable {
 
   /**
-   * 
    * @param key
    * @param value
    * @return
    */
-  public abstract <T> Object putUserObject(String key, T value);
+  <T> Object putUserObject(String key, T value);
 
   /**
-   * 
    * @param key
    * @return
    */
-  public abstract Object getUserObject(String key);
+  Object getUserObject(String key);
 
   /**
-   * 
    * @return
    */
-  public abstract Set<String> userObjectKeys();
+  Set<String> userObjectKeys();
 
   /**
-   * 
    * @return
    */
-  public abstract Set<Map.Entry<String, Object>> userObjectEntrySet();
-
+  Set<Map.Entry<String, Object>> userObjectEntrySet();
 }

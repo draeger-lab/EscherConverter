@@ -18,24 +18,21 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public interface Element extends EscherBase {
 
-	/**
-	 * @return the id
-	 */
-	public String getId();
+  /**
+   * @return the id
+   */
+  String getId();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public boolean isSetId();
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetId();
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id);
-
+  /**
+   * @param id the id to set
+   */
+  void setId(String id);
 }

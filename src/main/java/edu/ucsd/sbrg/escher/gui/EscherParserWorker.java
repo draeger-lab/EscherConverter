@@ -16,7 +16,13 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
-import java.awt.Component;
+import de.zbit.io.OpenedFile;
+import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.utilities.EscherParser;
+import org.sbml.jsbml.util.ResourceManager;
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.text.MessageFormat;
@@ -25,40 +31,35 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import javax.swing.ProgressMonitorInputStream;
-import javax.swing.SwingWorker;
-
-import org.sbml.jsbml.util.ResourceManager;
-
-import de.zbit.io.OpenedFile;
-import edu.ucsd.sbrg.escher.models.EscherMap;
-import edu.ucsd.sbrg.escher.utilities.EscherParser;
-
-
 /**
  * @author Andreas Dr&auml;ger
  */
-public class EscherParserWorker extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
+public class EscherParserWorker
+    extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
 
   /**
-   * 
+   *
    */
-  public static final String INTERMERIM_RESULTS = "INTERMERIM_RESULTS";
+  public static final            String
+                                                INTERMERIM_RESULTS =
+      "INTERMERIM_RESULTS";
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger logger = Logger.getLogger(EscherParserWorker.class.getName());
-
+  private static final transient Logger
+                                                logger             =
+      Logger.getLogger(EscherParserWorker.class.getName());
   /**
    * Localization support.
    */
-  public static final transient ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
-
-  private File input[];
+  public static final transient  ResourceBundle
+                                                bundle             =
+      ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  private File      input[];
   private Component parentComponent;
 
+
   /**
-   * 
    * @param input
    */
   public EscherParserWorker(Component parentComponent, File... input) {
@@ -67,28 +68,37 @@ public class EscherParserWorker extends SwingWorker<List<OpenedFile<EscherMap>>,
     this.input = input;
   }
 
+
   /* (non-Javadoc)
    * @see javax.swing.SwingWorker#doInBackground()
    */
   @Override
   protected List<OpenedFile<EscherMap>> doInBackground() throws Exception {
-    List<OpenedFile<EscherMap>> listOfFiles = new ArrayList<OpenedFile<EscherMap>>();
+    List<OpenedFile<EscherMap>>
+        listOfFiles =
+        new ArrayList<OpenedFile<EscherMap>>();
     EscherParser parser = new EscherParser();
     for (File jsonFile : input) {
-      logger.info(MessageFormat.format(bundle.getString("EscherConverter.readingFile"), jsonFile));
-      EscherMap map = parser.parse(new ProgressMonitorInputStream(
-        parentComponent,
-        MessageFormat.format(
-          bundle.getString("EscherParserWorker.progressMessage"),
-          jsonFile.getName()), new FileInputStream(jsonFile)),
-          EscherParser.createMapId(jsonFile));
-      OpenedFile<EscherMap> openedFile = new OpenedFile<EscherMap>(jsonFile, map);
-      logger.info(MessageFormat.format(bundle.getString("EscherConverter.readingDone"), jsonFile));
+      logger.info(MessageFormat
+          .format(bundle.getString("EscherConverter.readingFile"), jsonFile));
+      EscherMap
+          map =
+          parser.parse(new ProgressMonitorInputStream(parentComponent,
+                  MessageFormat.format(
+                      bundle.getString("EscherParserWorker.progressMessage"),
+                      jsonFile.getName()), new FileInputStream(jsonFile)),
+              EscherParser.createMapId(jsonFile));
+      OpenedFile<EscherMap>
+          openedFile =
+          new OpenedFile<EscherMap>(jsonFile, map);
+      logger.info(MessageFormat
+          .format(bundle.getString("EscherConverter.readingDone"), jsonFile));
       publish(openedFile);
       listOfFiles.add(openedFile);
     }
     return listOfFiles;
   }
+
 
   /* (non-Javadoc)
    * @see javax.swing.SwingWorker#process(java.util.List)
@@ -97,5 +107,4 @@ public class EscherParserWorker extends SwingWorker<List<OpenedFile<EscherMap>>,
   protected void process(List<OpenedFile<EscherMap>> chunks) {
     firePropertyChange(INTERMERIM_RESULTS, null, chunks);
   }
-
 }

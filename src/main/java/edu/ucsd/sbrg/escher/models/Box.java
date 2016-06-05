@@ -18,40 +18,36 @@ package edu.ucsd.sbrg.escher.models;
 
 /**
  * @author Andreas Dr&auml;ger
- *
  */
 public interface Box extends EscherBase, Position {
 
-	/**
-	 * @param height the height to set
-	 */
-	public abstract void setHeight(Double height);
+  /**
+   * @param height the height to set
+   */
+  void setHeight(Double height);
 
-	/**
-	 * @return the height
-	 */
-	public abstract Double getHeight();
+  /**
+   * @return the height
+   */
+  Double getHeight();
 
-	/**
-	 * @param width the width to set
-	 */
-	public abstract void setWidth(Double width);
+  /**
+   * @param width the width to set
+   */
+  void setWidth(Double width);
 
-	/**
-	 * @return the width
-	 */
-	public abstract Double getWidth();
+  /**
+   * @return the width
+   */
+  Double getWidth();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public abstract boolean isSetHeight();
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetHeight();
 
-	/**
-	 * 
-	 * @return {@code true} if the requested property is not {@code null}.
-	 */
-	public abstract boolean isSetWidth();
-
+  /**
+   * @return {@code true} if the requested property is not {@code null}.
+   */
+  boolean isSetWidth();
 }
