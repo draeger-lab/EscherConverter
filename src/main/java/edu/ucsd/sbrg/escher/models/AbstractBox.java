@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import edu.ucsd.sbrg.escher.models.interfaces.Box;
+
 /**
  * @author Andreas Dr&auml;ger
  */
@@ -88,7 +90,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#getHeight()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#getHeight()
    */
   @Override
   public Double getHeight() {
@@ -97,7 +99,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#getWidth()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#getWidth()
    */
   @Override
   public Double getWidth() {
@@ -119,7 +121,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#isSetHeight()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#isSetHeight()
    */
   @Override
   public boolean isSetHeight() {
@@ -128,7 +130,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#isSetWidth()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#isSetWidth()
    */
   @Override
   public boolean isSetWidth() {
@@ -137,7 +139,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#setHeight(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setHeight(java.lang.Double)
    */
   @Override
   public void setHeight(Double height) {
@@ -146,7 +148,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Box#setWidth(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setWidth(java.lang.Double)
    */
   @Override
   public void setWidth(Double width) {

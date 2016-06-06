@@ -14,40 +14,40 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.models.interfaces;
 
 /**
  * @author Andreas Dr&auml;ger
  */
-public interface Position extends EscherBase {
+public interface Box extends EscherBase, Position {
 
   /**
-   * @return the x
+   * @param height the height to set
    */
-  Double getX();
+  void setHeight(Double height);
 
   /**
-   * @return the y
+   * @return the height
    */
-  Double getY();
+  Double getHeight();
+
+  /**
+   * @param width the width to set
+   */
+  void setWidth(Double width);
+
+  /**
+   * @return the width
+   */
+  Double getWidth();
 
   /**
    * @return {@code true} if the requested property is not {@code null}.
    */
-  boolean isSetX();
+  boolean isSetHeight();
 
   /**
    * @return {@code true} if the requested property is not {@code null}.
    */
-  boolean isSetY();
-
-  /**
-   * @param x the x to set
-   */
-  void setX(Double x);
-
-  /**
-   * @param y the y to set
-   */
-  void setY(Double y);
+  boolean isSetWidth();
 }
