@@ -5,6 +5,8 @@
 /.project
 /jsbml.log
 *.log
+*.jnilib
+*.dylib
 
 ## Java Specific
 
