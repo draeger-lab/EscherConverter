@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import edu.ucsd.sbrg.escher.models.interfaces.Element;
 import org.sbml.jsbml.util.ResourceManager;
 
 import java.text.MessageFormat;
@@ -557,7 +558,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {

@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import edu.ucsd.sbrg.escher.models.interfaces.EscherBase;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -82,7 +84,7 @@ public abstract class AbstractEscherBase implements EscherBase {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.EscherBase#getUserObject(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.EscherBase#getUserObject(java.lang.String)
    */
   @Override
   public Object getUserObject(String key) {
@@ -104,7 +106,7 @@ public abstract class AbstractEscherBase implements EscherBase {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.EscherBase#putUserObject(java.lang.String, T)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.EscherBase#putUserObject(java.lang.String, T)
    */
   @Override
   public <T> Object putUserObject(String key, T value) {
@@ -113,7 +115,7 @@ public abstract class AbstractEscherBase implements EscherBase {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectEntrySet()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.EscherBase#userObjectEntrySet()
    */
   @Override
   public Set<Map.Entry<String, Object>> userObjectEntrySet() {
@@ -122,7 +124,7 @@ public abstract class AbstractEscherBase implements EscherBase {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.EscherBase#userObjectKeys()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.EscherBase#userObjectKeys()
    */
   @Override
   public Set<String> userObjectKeys() {

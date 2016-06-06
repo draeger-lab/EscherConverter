@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import edu.ucsd.sbrg.escher.models.interfaces.Position;
+
 /**
  * @author Andreas Dr&auml;ger
  */
@@ -100,7 +102,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#getX()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#getX()
    */
   @Override
   public Double getX() {
@@ -109,7 +111,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#getY()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#getY()
    */
   @Override
   public Double getY() {
@@ -131,7 +133,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#isSetX()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#isSetX()
    */
   @Override
   public boolean isSetX() {
@@ -140,7 +142,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#isSetY()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#isSetY()
    */
   @Override
   public boolean isSetY() {
@@ -149,7 +151,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#setX(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#setX(java.lang.Double)
    */
   @Override
   public void setX(Double x) {
@@ -158,7 +160,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Position#setY(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Position#setY(java.lang.Double)
    */
   @Override
   public void setY(Double y) {

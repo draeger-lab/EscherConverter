@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import edu.ucsd.sbrg.escher.models.interfaces.Element;
+
 /**
  * @author Andreas Dr&auml;ger
  */
@@ -64,7 +66,7 @@ public class TextLabel extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Element#getId()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#getId()
    */
   @Override
   public String getId() {
@@ -81,7 +83,7 @@ public class TextLabel extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -98,7 +100,7 @@ public class TextLabel extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {
