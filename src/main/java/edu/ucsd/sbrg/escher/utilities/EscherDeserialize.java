@@ -1,10 +1,7 @@
 package edu.ucsd.sbrg.escher.utilities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.*;
 import de.zbit.util.ResourceManager;
 import edu.ucsd.sbrg.escher.EscherConverter;
 import edu.ucsd.sbrg.escher.jc_models.EscherMap;
@@ -46,6 +43,10 @@ public class EscherDeserialize {
     jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     jsonMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
     jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    jsonMapper.disable(MapperFeature.AUTO_DETECT_SETTERS);
+    jsonMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
+    jsonMapper.disable(MapperFeature.AUTO_DETECT_CREATORS,
+        MapperFeature.AUTO_DETECT_IS_GETTERS);
 
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingFile"), file));

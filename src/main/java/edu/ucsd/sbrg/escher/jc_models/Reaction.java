@@ -2,9 +2,6 @@ package edu.ucsd.sbrg.escher.jc_models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.ucsd.sbrg.escher.models.Gene;
-import edu.ucsd.sbrg.escher.models.Metabolite;
-import edu.ucsd.sbrg.escher.models.Segment;
 
 import java.util.LinkedHashMap;
 import java.util.List;

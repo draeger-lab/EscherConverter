@@ -3,10 +3,6 @@ package edu.ucsd.sbrg.escher.jc_models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.AbstractEscherBase;
-import edu.ucsd.sbrg.escher.jc_models.TextLabel;
-import edu.ucsd.sbrg.escher.models.Canvas;
-import edu.ucsd.sbrg.escher.models.EscherReaction;
-import edu.ucsd.sbrg.escher.models.Node;
 
 import java.util.LinkedHashMap;
 
