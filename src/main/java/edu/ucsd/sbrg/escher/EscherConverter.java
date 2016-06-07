@@ -166,15 +166,20 @@ public class EscherConverter extends Launcher {
   public static <T> T convert(File input, Class<? extends T> format,
       SBProperties properties)
       throws IOException, ParseException {
+
+    return convert(parseEscherJson(input), format, properties);
+  }
+
+  public static EscherMap parseEscherJson(File input) throws IOException, ParseException {
     EscherParser parser = new EscherParser();
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingFile"), input));
     EscherMap map = parser.parse(input);
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingDone"), input));
-    return convert(map, format, properties);
-  }
 
+    return map;
+  }
 
   /**
    * Starts the program.
