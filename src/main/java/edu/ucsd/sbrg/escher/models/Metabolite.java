@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
@@ -26,6 +27,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   /**
    * The BiGG id of the metabolite.
    */
+  @JsonProperty("bigg_id")
   private String biggId;
   /**
    * The stoichiometric coefficient of this metabolite.

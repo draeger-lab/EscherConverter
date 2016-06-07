@@ -16,24 +16,30 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
  * @author Andreas Dr&auml;ger
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Segment extends AbstractEscherBase implements Element {
 
   /**
    *
    */
+  @JsonProperty("b1")
   private Point  b1;
   /**
    *
    */
+  @JsonProperty("b2")
   private Point  b2;
   /**
    *
    */
+  @JsonProperty("from_node_id")
   private String fromNodeId;
   /**
    *
@@ -42,6 +48,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    *
    */
+  @JsonProperty("to_node_id")
   private String toNodeId;
 
 
