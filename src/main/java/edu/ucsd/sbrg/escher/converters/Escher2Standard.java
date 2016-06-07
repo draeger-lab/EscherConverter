@@ -72,8 +72,7 @@ public abstract class Escher2Standard<T> {
    */
   public static final  ResourceBundle
                               compCode         =
-      ResourceManager.getBundle(
-          Escher2Standard.class.getPackage().getName() + ".CompartmentCode");
+      ResourceManager.getBundle("CompartmentCode");
   /**
    * Used as a key for a mapping between data structures.
    */

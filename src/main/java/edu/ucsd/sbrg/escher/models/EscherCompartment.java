@@ -39,8 +39,7 @@ public class EscherCompartment extends AbstractBox implements Element {
    */
   private static final           ResourceBundle
                                         compartmentCode =
-      ResourceManager.getBundle(
-          EscherCompartment.class.getPackage().getName() + ".CompartmentCode");
+      ResourceManager.getBundle("CompartmentCode");
   /**
    * A {@link Logger} for this class.
    */
