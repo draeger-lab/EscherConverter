@@ -1,7 +1,6 @@
 package edu.ucsd.sbrg.escher;
 
-import edu.ucsd.sbrg.escher.models.EscherMap;
-import edu.ucsd.sbrg.escher.models.Node;
+import edu.ucsd.sbrg.escher.models.*;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
@@ -18,13 +17,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Enclosed.class)
 public class EscherConverterTest {
 
-  public static class ParsingTests {
+  public static class DeserializationTests {
 
     File      file;
     EscherMap escherMap;
 
 
-    public ParsingTests() throws IOException, ParseException {
+    public DeserializationTests() throws IOException, ParseException {
       file = new File("data/e_coli_core_metabolism.json");
       escherMap = EscherConverter.parseEscherJson(file);
     }
@@ -33,7 +32,16 @@ public class EscherConverterTest {
     @Test(expected = IOException.class)
     public void failsOnNonExistantFileTest() throws IOException, ParseException {
       File file = new File("data/file_which_does_not_exists");
-      EscherMap escherMap = EscherConverter.parseEscherJson(file);
+      EscherConverter.parseEscherJson(file);
+    }
+
+    @Test(expected = ParseException.class)
+    public void failsOnInvalidJsonFile() throws IOException, ParseException {
+
+      // This just checks that a ParseException is thrown on invalid file.
+
+      File file = new File("data/e_coli_core_metabolism.sbml");
+      EscherConverter.parseEscherJson(file);
     }
 
 
@@ -96,7 +104,54 @@ public class EscherConverterTest {
     public void canParseReactions() {
       assertEquals("failure - un-equal reactions count", 95, escherMap.getReactionCount());
 
+      EscherReaction reaction = escherMap.getReaction("1576721");
 
+      assertEquals("failure - reaction name mismatch", "Phosphofructokinase", reaction.getName());
+      assertEquals("failure - reaction reversiblity mismatch", false, reaction.getReversibility());
+      assertEquals("failure - reaction gene-reaction-rule mismatch", "b3916 or b1723", reaction.getGeneReactionRule());
+      assertEquals("failure - reaction laebl y mismatch", (double)1725, (double)reaction.getLabelY
+          (), 1.0);
+    }
+
+    @Test
+    public void canParseSegments() {
+      assertEquals("failure - un-equal genes count", 4, escherMap.getReaction("1576697")
+                                                                 .getSegmentCount());
+
+      Segment segment = new Segment();
+      segment.setId("315");
+      segment.setBasePoint1(new Point(2674.55, 3093.4));
+      segment.setBasePoint2(new Point(2652.5, (double) 3134));
+      segment.setFromNodeId("1576845");
+      segment.setToNodeId("1576504");
+
+      assertEquals("failure - segment 315 not found", segment, escherMap.getReaction("1576697")
+                                                                        .getSegment("315"));
+    }
+
+    @Test
+    public void canParseMetabolites() {
+      assertEquals("failure - un-equal metabolite count", 6, escherMap.getReaction("1576700").getMetaboliteCount());
+
+      Metabolite metabolite = new Metabolite();
+      metabolite.setId("h_c");
+      metabolite.setCoefficient((double) 1);
+      metabolite.setNodeRefId("1576519");
+
+      assertEquals("failure - metabolite h_c in reaction 1576700 not found", metabolite,
+          escherMap.getReaction("1576700").getMetabolites().get("h_c"));
+    }
+
+    @Test
+    public void canParseGenes() {
+      assertEquals("failure - un-equal genes count", 2, escherMap.getReaction("1576703").getGeneCount());
+
+      Gene gene = new Gene();
+      gene.setId("b0451");
+      gene.setName("amtB");
+
+      assertEquals("failure - gene bo451 not found", gene, escherMap.getReaction("1576703")
+                                                                    .getGenes().get("b0451"));
     }
   }
 }
