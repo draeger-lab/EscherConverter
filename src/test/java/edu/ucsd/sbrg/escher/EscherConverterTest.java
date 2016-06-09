@@ -8,8 +8,11 @@ import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Devesh Khandelwal on 07-06-2016.
@@ -89,7 +92,21 @@ public class EscherConverterTest {
       node.setName("ATP");
       node.setPrimary(false);
 
-      assertEquals("failure - node 1576485 not found", node, escherMap.getNode("1576485"));
+      Node parsedNode = escherMap.getNode("1576485");
+
+      assertEquals("failure - node 1576485 not found", node, parsedNode);
+      assertTrue("failure - not set", parsedNode.isSetBiggId());
+      assertTrue("failure - not set", parsedNode.isSetCompartment());
+      assertFalse("failure - not set", parsedNode.isSetConnectedSegments());
+      assertTrue("failure - not set", parsedNode.isSetId());
+      assertTrue("failure - not set", parsedNode.isSetIsPrimary());
+      assertTrue("failure - not set", parsedNode.isSetLabelX());
+      assertTrue("failure - not set", parsedNode.isSetLabelY());
+      assertTrue("failure - not set", parsedNode.isSetName());
+      assertTrue("failure - not set", parsedNode.isSetPrimary());
+      assertTrue("failure - not set", parsedNode.isSetType());
+      assertTrue("failure - not set", parsedNode.isSetX());
+      assertTrue("failure - not set", parsedNode.isSetY());
 
       node = new Node();
       node.setId("1576929");
@@ -97,7 +114,35 @@ public class EscherConverterTest {
       node.setY((double) 1900);
       node.setType(Node.Type.multimarker);
 
+      parsedNode = escherMap.getNode("1576929");
+
       assertEquals("failure - node 1576929 not found", node, escherMap.getNode("1576929"));
+      assertFalse("failure - not set", parsedNode.isSetBiggId());
+      assertFalse("failure - not set", parsedNode.isSetCompartment());
+      assertFalse("failure - not set", parsedNode.isSetConnectedSegments());
+      assertTrue("failure - not set", parsedNode.isSetId());
+      assertFalse("failure - not set", parsedNode.isSetIsPrimary());
+      assertFalse("failure - not set", parsedNode.isSetLabelX());
+      assertFalse("failure - not set", parsedNode.isSetLabelY());
+      assertFalse("failure - not set", parsedNode.isSetName());
+      assertFalse("failure - not set", parsedNode.isSetPrimary());
+      assertTrue("failure - not set", parsedNode.isSetType());
+      assertTrue("failure - not set", parsedNode.isSetX());
+      assertTrue("failure - not set", parsedNode.isSetY());
+
+      // The following code checks if there are any connected segments
+      // in any of the nodes. So far, I've not found one.
+      for (Map.Entry<String, Node> entry : escherMap.nodes()) {
+        try {
+          if (entry.getValue().isSetConnectedSegments())
+          {
+            throw new Exception();
+          }
+        }
+        catch (Exception ex) {
+          entry.getValue().getConnectedSegments();
+        }
+      }
     }
 
     @Test
@@ -111,6 +156,14 @@ public class EscherConverterTest {
       assertEquals("failure - reaction gene-reaction-rule mismatch", "b3916 or b1723", reaction.getGeneReactionRule());
       assertEquals("failure - reaction laebl y mismatch", (double)1725, (double)reaction.getLabelY
           (), 1.0);
+
+      assertTrue("failure - not set", reaction.isSetName());
+      assertTrue("failure - not set", reaction.isSetId());
+      assertTrue("failure - not set", reaction.isSetBiggId());
+      assertTrue("failure - not set", reaction.isSetGeneReactionRule());
+      assertTrue("failure - not set", reaction.isSetLabelX());
+      assertTrue("failure - not set", reaction.isSetLabelY());
+      assertTrue("failure - not set", reaction.isSetReversibility());
     }
 
     @Test
@@ -127,6 +180,22 @@ public class EscherConverterTest {
 
       assertEquals("failure - segment 315 not found", segment, escherMap.getReaction("1576697")
                                                                         .getSegment("315"));
+
+      segment = escherMap.getReaction("1576697").getSegment("315");
+
+      assertTrue("failure - not set", segment.isSetBasePoint1());
+      assertTrue("failure - not set", segment.isSetBasePoint2());
+      assertTrue("failure - not set", segment.isSetFromNodeId());
+      assertTrue("failure - not set", segment.isSetToNodeId());
+      assertTrue("failure - not set", segment.isSetId());
+
+      segment = escherMap.getReaction("1576697").getSegment("314");
+
+      assertFalse("failure - not set", segment.isSetBasePoint1());
+      assertFalse("failure - not set", segment.isSetBasePoint2());
+      assertTrue("failure - not set", segment.isSetFromNodeId());
+      assertTrue("failure - not set", segment.isSetToNodeId());
+      assertTrue("failure - not set", segment.isSetId());
     }
 
     @Test
@@ -140,6 +209,9 @@ public class EscherConverterTest {
 
       assertEquals("failure - metabolite h_c in reaction 1576700 not found", metabolite,
           escherMap.getReaction("1576700").getMetabolites().get("h_c"));
+      assertTrue("failure - not set", metabolite.isSetId());
+      assertTrue("failure - not set", metabolite.isSetCoefficient());
+      assertTrue("failure - not set", metabolite.isSetNodeRefId());
     }
 
     @Test
@@ -152,6 +224,8 @@ public class EscherConverterTest {
 
       assertEquals("failure - gene bo451 not found", gene, escherMap.getReaction("1576703")
                                                                     .getGenes().get("b0451"));
+      assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetId());
+      assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetName());
     }
   }
 }
