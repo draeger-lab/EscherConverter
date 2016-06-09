@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 import org.sbml.jsbml.util.ResourceManager;
 
@@ -27,6 +29,7 @@ import java.util.logging.Logger;
 /**
  * @author Andreas Dr&auml;ger
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Node extends AbstractBox implements Element {
 
   /**
@@ -96,9 +99,7 @@ public class Node extends AbstractBox implements Element {
    * A human-readable name for this node.
    */
   private String name;
-  /**
-   * The kind of nodes
-   */
+  @JsonProperty("node_type")
   private Type   nodeType;
 
 

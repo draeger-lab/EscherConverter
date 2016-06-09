@@ -16,11 +16,13 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
  * @author Andreas Dr&auml;ger
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TextLabel extends AbstractBox implements Element {
 
   /**
