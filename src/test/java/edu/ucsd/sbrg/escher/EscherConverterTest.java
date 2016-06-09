@@ -1,5 +1,6 @@
 package edu.ucsd.sbrg.escher;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import edu.ucsd.sbrg.escher.models.*;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
@@ -10,9 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Devesh Khandelwal on 07-06-2016.
@@ -25,21 +24,19 @@ public class EscherConverterTest {
     File      file;
     EscherMap escherMap;
 
-
     public DeserializationTests() throws IOException, ParseException {
       file = new File("data/e_coli_core_metabolism.json");
       escherMap = EscherConverter.parseEscherJson(file);
     }
 
-
     @Test(expected = IOException.class)
-    public void failsOnNonExistantFileTest() throws IOException, ParseException {
+    public void failsOnNonExistantFileTest() throws IOException {
       File file = new File("data/file_which_does_not_exists");
       EscherConverter.parseEscherJson(file);
     }
 
-    @Test(expected = ParseException.class)
-    public void failsOnInvalidJsonFile() throws IOException, ParseException {
+    @Test(expected = JsonParseException.class)
+    public void failsOnInvalidJsonFile() throws IOException {
 
       // This just checks that a ParseException is thrown on invalid file.
 
