@@ -3,7 +3,6 @@ package edu.ucsd.sbrg.escher;
 import com.fasterxml.jackson.core.JsonParseException;
 import edu.ucsd.sbrg.escher.models.*;
 import org.json.simple.parser.ParseException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -244,10 +242,5 @@ public class EscherConverterTest {
       assertNotEquals("failure - bigg2reactions count mismatch", 0, escherMap.getBigg2reactions().size());
     }
 
-    @Test
-    public void canProcessConnectedSegments() {
-      assertNotEquals("failure - connectedSegments count mismatch", 0, escherMap.getNode
-          ("1576534").getConnectedSegments().size());
-    }
   }
 }
