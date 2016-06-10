@@ -583,4 +583,38 @@ public class EscherMap extends AbstractEscherBase {
   public Set<Entry<String, EscherCompartment>> compartments() {
     return compartments.entrySet();
   }
+
+
+  public void processMap() {
+    try {
+      // Set midmarker for every reaction by going through its nodes and checking which
+      // one is a midmarker.
+      reactions.forEach((k, r) -> {
+        r.getNodes().forEach((s) -> {
+          if (nodes.get(s).getType() == Node.Type.midmarker) {
+            r.setMidmarker(nodes.get(s));
+          }
+        });
+      });
+
+      reactions.forEach((k, r) -> {
+        r.getMetabolites().forEach((mk, mv) -> {
+          r.getNodes().forEach((s) -> {
+            try {
+              if (nodes.get(s).getBiggId().equals(mv.getId())) {
+                mv.setNodeRefId(nodes.get(s).getId());
+              }
+            }
+            catch (NullPointerException ex) {
+              ex.getMessage();
+            }
+
+          });
+        });
+      });
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
 }

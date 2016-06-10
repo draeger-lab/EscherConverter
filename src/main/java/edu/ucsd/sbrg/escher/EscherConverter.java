@@ -201,6 +201,8 @@ public class EscherConverter extends Launcher {
     map.setSchema(meta.getSchema());
     map.setURL(meta.getURL());
 
+    map.processMap();
+
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingDone"), input));
 

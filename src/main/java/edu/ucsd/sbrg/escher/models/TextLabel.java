@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
@@ -111,6 +112,7 @@ public class TextLabel extends AbstractBox implements Element {
   /**
    * @param text the text to set
    */
+  @JsonProperty("text")
   public void setText(String text) {
     this.text = text;
   }

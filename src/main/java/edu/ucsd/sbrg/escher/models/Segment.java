@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
@@ -262,6 +263,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @param b1 the b1 to set
    */
+  @JsonProperty("b1")
   public void setBasePoint1(Point b1) {
     this.b1 = b1;
   }
@@ -270,6 +272,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @param b2 the b2 to set
    */
+  @JsonProperty("b2")
   public void setBasePoint2(Point b2) {
     this.b2 = b2;
   }
@@ -278,6 +281,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @param fromNodeId the fromNodeId to set
    */
+  @JsonProperty("from_node_id")
   public void setFromNodeId(String fromNodeId) {
     this.fromNodeId = fromNodeId;
   }
@@ -295,6 +299,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @param toNodeId the toNodeId to set
    */
+  @JsonProperty("to_node_id")
   public void setToNodeId(String toNodeId) {
     this.toNodeId = toNodeId;
   }

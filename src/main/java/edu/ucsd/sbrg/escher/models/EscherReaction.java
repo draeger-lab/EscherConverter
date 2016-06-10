@@ -465,9 +465,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
 
+  public Set<String> getNodes() {
+    return nodes;
+  }
+
+
   /* (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
+     * @see java.lang.Object#hashCode()
+     */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -674,6 +679,20 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       metabolites = new HashMap<>();
     }
     metaboliteList.forEach((m) -> metabolites.put(m.getId(), m));
+  }
+
+
+  @JsonProperty("segments")
+  public void setSegments(Map<String, Segment> segments) {
+    this.segments = segments;
+    if (nodes == null) {
+      nodes = new HashSet<>();
+    }
+    segments.forEach((k, v) -> {
+      v.setId(k);
+      nodes.add(v.getFromNodeId());
+      nodes.add(v.getToNodeId());
+    });
   }
 
 
