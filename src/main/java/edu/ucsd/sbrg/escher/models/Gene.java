@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
@@ -154,6 +155,7 @@ public class Gene extends AbstractEscherBase implements Element {
    * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
    */
   @Override
+  @JsonProperty("bigg_id")
   public void setId(String id) {
     biggId = id;
   }
@@ -162,6 +164,7 @@ public class Gene extends AbstractEscherBase implements Element {
   /**
    * @param name the name to set
    */
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
