@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Box;
 
 /**
@@ -142,6 +143,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
    * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setHeight(java.lang.Double)
    */
   @Override
+  @JsonProperty("height")
   public void setHeight(Double height) {
     this.height = height;
   }
@@ -151,6 +153,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
    * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setWidth(java.lang.Double)
    */
   @Override
+  @JsonProperty("width")
   public void setWidth(Double width) {
     this.width = width;
   }

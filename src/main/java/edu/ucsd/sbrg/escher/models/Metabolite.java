@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
@@ -180,6 +181,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   /**
    * @param coefficient the coefficient to set
    */
+  @JsonProperty("coefficient")
   public void setCoefficient(Double coefficient) {
     this.coefficient = coefficient;
   }
@@ -189,6 +191,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
    * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
    */
   @Override
+  @JsonProperty("bigg_id")
   public void setId(String id) {
     biggId = id;
   }

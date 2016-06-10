@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -460,6 +462,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param canvas
    */
+  @JsonProperty("canvas")
   public void setCanvas(Canvas canvas) {
     this.canvas = canvas;
   }
@@ -468,6 +471,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param description the description to set
    */
+  @JsonProperty("map_description")
   public void setDescription(String description) {
     this.description = description;
   }
@@ -476,6 +480,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param id the id to set
    */
+  @JsonProperty("map_id")
   public void setId(String id) {
     this.id = id;
   }
@@ -484,6 +489,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param name the name to set
    */
+  @JsonProperty("map_name")
   public void setName(String name) {
     this.name = name;
   }
@@ -492,6 +498,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param schema the schema to set
    */
+  @JsonProperty("schema")
   public void setSchema(String schema) {
     this.schema = schema;
   }
@@ -500,8 +507,29 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param url the url to set
    */
+  @JsonProperty("homepage")
   public void setURL(String url) {
     this.url = url;
+  }
+
+
+  @JsonProperty("nodes")
+  public void setNodes(Map<String, Node> nodes) {
+    nodes.forEach((k, v) -> v.setId(k));
+    this.nodes = nodes;
+  }
+
+
+  @JsonProperty("reactions")
+  public void setReactions(Map<String, EscherReaction> reactions) {
+    reactions.forEach((k, v) -> v.setId(k));
+    this.reactions = reactions;
+  }
+
+
+  @JsonProperty("text_labels")
+  public void setTextLabels(Map<String, TextLabel> textLabels) {
+    this.textLabels = textLabels;
   }
 
 

@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Position;
 
 /**
@@ -154,6 +155,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
    * @see edu.ucsd.sbrg.escher.models.interfaces.Position#setX(java.lang.Double)
    */
   @Override
+  @JsonProperty("x")
   public void setX(Double x) {
     this.x = x;
   }
@@ -163,6 +165,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
    * @see edu.ucsd.sbrg.escher.models.interfaces.Position#setY(java.lang.Double)
    */
   @Override
+  @JsonProperty("y")
   public void setY(Double y) {
     this.y = y;
   }

@@ -204,11 +204,13 @@ public class EscherConverterTest {
       metabolite.setCoefficient((double) 1);
       metabolite.setNodeRefId("1576519");
 
-      assertEquals("failure - metabolite h_c in reaction 1576700 not found", metabolite,
-          escherMap.getReaction("1576700").getMetabolites().get("h_c"));
-      assertTrue("failure - not set", metabolite.isSetId());
-      assertTrue("failure - not set", metabolite.isSetCoefficient());
-      assertTrue("failure - not set", metabolite.isSetNodeRefId());
+      Metabolite parsedMetabolite = escherMap.getReaction("1576700").getMetabolites().get("h_c");
+
+      assertEquals("failure - metabolite h_c in reaction 1576700 not found", metabolite, parsedMetabolite);
+
+      assertTrue("failure - not set", parsedMetabolite.isSetId());
+      assertTrue("failure - not set", parsedMetabolite.isSetCoefficient());
+      assertTrue("failure - not set", parsedMetabolite.isSetNodeRefId());
     }
 
     @Test
