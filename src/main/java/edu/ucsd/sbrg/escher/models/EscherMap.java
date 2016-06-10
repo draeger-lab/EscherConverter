@@ -624,6 +624,15 @@ public class EscherMap extends AbstractEscherBase {
         });
       });
 
+      // Bigg2Reactions.
+      reactions.forEach((k, v) -> {
+        if (!bigg2reactions.containsKey(v.getBiggId())) {
+          Set<String> reactionSet = new HashSet<>();
+          reactionSet.add(v.getId());
+          bigg2reactions.put(v.getBiggId(), reactionSet);
+        }
+      });
+
       // Store compartments.
       nodes.forEach((k, v) -> {
         EscherCompartment compartment = new EscherCompartment();
@@ -634,12 +643,10 @@ public class EscherMap extends AbstractEscherBase {
         }
       });
 
-      // Bigg2Reactions.
-      reactions.forEach((k, v) -> {
-        if (!bigg2reactions.containsKey(v.getBiggId())) {
-          Set<String> reactionSet = new HashSet<>();
-          reactionSet.add(v.getId());
-          bigg2reactions.put(v.getBiggId(), reactionSet);
+      // Bigg2Nodes.
+      nodes.forEach((k, v) -> {
+        if (!bigg2nodes.containsKey(v.getBiggId())) {
+          Set<String> nodeSet = new HashSet<>();
         }
       });
     }
