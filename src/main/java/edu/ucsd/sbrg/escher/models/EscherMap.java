@@ -612,8 +612,12 @@ public class EscherMap extends AbstractEscherBase {
         r.getMetabolites().forEach((mk, mv) -> {
           r.getNodes().forEach((s) -> {
             try {
-              if (nodes.get(s).getBiggId().equals(mv.getId())) {
-                mv.setNodeRefId(nodes.get(s).getId());
+              Node node = nodes.get(s);
+              if (node.getBiggId() == null) {
+                return;
+              }
+              if (node.getBiggId().equals(mv.getId())) {
+                mv.setNodeRefId(node.getId());
               }
             }
             catch (NullPointerException ex) {
@@ -633,9 +637,28 @@ public class EscherMap extends AbstractEscherBase {
         }
       });
 
+      // Bigg2Nodes.
+      nodes.forEach((k, v) -> {
+        if (v.getBiggId() == null) {
+          return;
+        }
+        if (!bigg2nodes.containsKey(v.getBiggId())) {
+          Set<String> nodeSet = new HashSet<>();
+          nodeSet.add(v.getId());
+          bigg2nodes.put(v.getBiggId(), nodeSet);
+        }
+        else {
+          bigg2nodes.get(v.getBiggId()).add(v.getId());
+        }
+      });
+
       // Store compartments.
       nodes.forEach((k, v) -> {
         EscherCompartment compartment = new EscherCompartment();
+
+        if (v.getCompartment() == null) {
+          return;
+        }
         compartment.setId(v.getCompartment());
 
         if (!compartments.containsKey(compartment.getId())) {
@@ -643,12 +666,6 @@ public class EscherMap extends AbstractEscherBase {
         }
       });
 
-      // Bigg2Nodes.
-      nodes.forEach((k, v) -> {
-        if (!bigg2nodes.containsKey(v.getBiggId())) {
-          Set<String> nodeSet = new HashSet<>();
-        }
-      });
     }
     catch (Exception ex) {
       ex.printStackTrace();
