@@ -3,6 +3,7 @@ package edu.ucsd.sbrg.escher;
 import com.fasterxml.jackson.core.JsonParseException;
 import edu.ucsd.sbrg.escher.models.*;
 import org.json.simple.parser.ParseException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -225,6 +227,27 @@ public class EscherConverterTest {
                                                                     .getGenes().get("b0451"));
       assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetId());
       assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetName());
+    }
+
+    @Test
+    public void canProcessCompartments() {
+      assertEquals("failure - compartments count mismatch", 2, escherMap.getCompartmentCount());
+    }
+
+    @Test
+    public void canProcessBigg2Nodes() {
+      assertNotEquals("failure - bigg2nodes count mismatch", 0, escherMap.getBigg2nodes().size());
+    }
+
+    @Test
+    public void canProcessBigg2Reactions() {
+      assertNotEquals("failure - bigg2reactions count mismatch", 0, escherMap.getBigg2reactions().size());
+    }
+
+    @Test
+    public void canProcessConnectedSegments() {
+      assertNotEquals("failure - connectedSegments count mismatch", 0, escherMap.getNode
+          ("1576534").getConnectedSegments().size());
     }
   }
 }

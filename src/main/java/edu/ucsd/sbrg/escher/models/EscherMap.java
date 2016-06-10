@@ -373,9 +373,19 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  public Map<String, Set<String>> getBigg2nodes() {
+    return bigg2nodes;
+  }
+
+
+  public Map<String, Set<String>> getBigg2reactions() {
+    return bigg2reactions;
+  }
+
+
   /* (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
+     * @see java.lang.Object#hashCode()
+     */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -597,6 +607,7 @@ public class EscherMap extends AbstractEscherBase {
         });
       });
 
+      // Set nodeRefIds for metabolites.
       reactions.forEach((k, r) -> {
         r.getMetabolites().forEach((mk, mv) -> {
           r.getNodes().forEach((s) -> {
@@ -611,6 +622,25 @@ public class EscherMap extends AbstractEscherBase {
 
           });
         });
+      });
+
+      // Store compartments.
+      nodes.forEach((k, v) -> {
+        EscherCompartment compartment = new EscherCompartment();
+        compartment.setId(v.getCompartment());
+
+        if (!compartments.containsKey(compartment.getId())) {
+          compartments.put(compartment.getId(), compartment);
+        }
+      });
+
+      // Bigg2Reactions.
+      reactions.forEach((k, v) -> {
+        if (!bigg2reactions.containsKey(v.getBiggId())) {
+          Set<String> reactionSet = new HashSet<>();
+          reactionSet.add(v.getId());
+          bigg2reactions.put(v.getBiggId(), reactionSet);
+        }
       });
     }
     catch (Exception ex) {
