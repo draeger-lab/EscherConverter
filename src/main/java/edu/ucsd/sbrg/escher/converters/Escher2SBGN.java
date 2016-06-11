@@ -20,8 +20,8 @@ import de.zbit.graph.io.def.SBGNProperties;
 import de.zbit.graph.io.def.SBGNProperties.ArcType;
 import de.zbit.graph.io.def.SBGNProperties.GlyphType;
 import de.zbit.sbml.util.SBMLtools;
-import edu.ucsd.sbrg.escher.models.*;
-import edu.ucsd.sbrg.escher.models.Point;
+import edu.ucsd.sbrg.escher.model.*;
+import edu.ucsd.sbrg.escher.model.Point;
 import edu.ucsd.sbrg.sbgn.SBGNbuilder;
 import org.sbgn.bindings.*;
 import org.sbgn.bindings.Arc.End;
@@ -73,7 +73,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
+   * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.model.EscherMap)
    */
   @Override
   public Sbgn convert(EscherMap escherMap) {

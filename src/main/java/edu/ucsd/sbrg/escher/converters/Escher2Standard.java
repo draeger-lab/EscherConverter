@@ -16,7 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.converters;
 
-import edu.ucsd.sbrg.escher.models.*;
+import edu.ucsd.sbrg.escher.model.*;
 import org.sbml.jsbml.util.ResourceManager;
 
 import java.text.MessageFormat;

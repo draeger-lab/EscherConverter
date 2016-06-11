@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -149,7 +149,7 @@ public class EscherMap extends AbstractEscherBase {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.model.AbstractEscherBase#clone()
    */
   @Override
   public EscherMap clone() {

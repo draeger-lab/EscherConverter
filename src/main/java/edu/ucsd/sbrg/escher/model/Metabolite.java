@@ -14,10 +14,9 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -65,7 +64,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.model.AbstractEscherBase#clone()
    */
   @Override
   public Metabolite clone() {
@@ -122,7 +121,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#getId()
+   * @see edu.ucsd.sbrg.escher.model.Element#getId()
    */
   @Override
   public String getId() {
@@ -162,7 +161,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.model.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -188,7 +187,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.model.Element#setId(java.lang.String)
    */
   @Override
   @JsonProperty("bigg_id")

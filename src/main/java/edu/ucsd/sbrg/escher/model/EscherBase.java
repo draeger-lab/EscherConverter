@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models.interfaces;
+package edu.ucsd.sbrg.escher.model;
 
 import java.util.Map;
 import java.util.Set;

@@ -17,8 +17,8 @@
 package edu.ucsd.sbrg.escher.converters;
 
 import de.zbit.sbml.util.SBMLtools;
-import edu.ucsd.sbrg.escher.models.*;
-import edu.ucsd.sbrg.escher.models.Point;
+import edu.ucsd.sbrg.escher.model.*;
+import edu.ucsd.sbrg.escher.model.Point;
 import org.sbml.jsbml.*;
 import org.sbml.jsbml.ext.layout.*;
 import org.sbml.jsbml.util.ResourceManager;
@@ -58,7 +58,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.models.EscherMap)
+   * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.model.EscherMap)
    */
   @Override
   public SBMLDocument convert(EscherMap map) {

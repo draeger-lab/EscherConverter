@@ -14,25 +14,34 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models.interfaces;
+package edu.ucsd.sbrg.escher.model;
 
 /**
  * @author Andreas Dr&auml;ger
  */
-public interface Element extends EscherBase {
+public class Canvas extends AbstractBox {
 
   /**
-   * @return the id
+   *
    */
-  String getId();
+  public Canvas() {
+    super();
+  }
+
 
   /**
-   * @return {@code true} if the requested property is not {@code null}.
+   * @param canvas
    */
-  boolean isSetId();
+  public Canvas(Canvas canvas) {
+    super(canvas);
+  }
 
-  /**
-   * @param id the id to set
+
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.model.AbstractEscherBase#clone()
    */
-  void setId(String id);
+  @Override
+  public Canvas clone() {
+    return new Canvas(this);
+  }
 }

@@ -35,7 +35,7 @@ import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
 import edu.ucsd.sbrg.escher.converters.Escher2SBML;
 import edu.ucsd.sbrg.escher.converters.Escher2Standard;
 import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
-import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
