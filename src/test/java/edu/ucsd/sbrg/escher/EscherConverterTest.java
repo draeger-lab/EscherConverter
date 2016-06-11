@@ -25,7 +25,7 @@ public class EscherConverterTest {
     EscherMap escherMap;
 
     public DeserializationTests() throws IOException, ParseException {
-      file = new File("data/e_coli_core_metabolism.json");
+      file = new File("data/e_coli_core_metabolism.escher.json");
       escherMap = EscherConverter.parseEscherJson(file);
     }
 
@@ -40,7 +40,7 @@ public class EscherConverterTest {
 
       // This just checks that a ParseException is thrown on invalid file.
 
-      File file = new File("data/e_coli_core_metabolism.sbml");
+      File file = new File("data/e_coli_core_metabolism.sbml.xml");
       EscherConverter.parseEscherJson(file);
     }
 
@@ -151,7 +151,7 @@ public class EscherConverterTest {
       assertEquals("failure - reaction name mismatch", "Phosphofructokinase", reaction.getName());
       assertEquals("failure - reaction reversiblity mismatch", false, reaction.getReversibility());
       assertEquals("failure - reaction gene-reaction-rule mismatch", "b3916 or b1723", reaction.getGeneReactionRule());
-      assertEquals("failure - reaction laebl y mismatch", (double)1725, (double)reaction.getLabelY
+      assertEquals("failure - reaction laebl y mismatch", (double)1725, reaction.getLabelY
           (), 1.0);
 
       assertTrue("failure - not set", reaction.isSetName());
