@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 import org.sbml.jsbml.util.ResourceManager;
 
@@ -51,6 +52,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    */
   private String            geneReactionRule;
   /**
+   *
+   */
+  private List<Gene>        geneList;
+  /**
    * Gene BiGG id to gene.
    */
   private Map<String, Gene> genes;
@@ -62,6 +67,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    * The x and y coordinates for the label of this reaction (the bottom left corner of the label).
    */
   private Double            labelX, labelY;
+  /**
+   *
+   */
+  private List<Metabolite>        metaboliteList;
   /**
    * BiGG id to metabolites.
    */
@@ -456,9 +465,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
 
+  public Set<String> getNodes() {
+    return nodes;
+  }
+
+
   /* (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
+     * @see java.lang.Object#hashCode()
+     */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -580,6 +594,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param biggId the biggId to set
    */
+  @JsonProperty("bigg_id")
   public void setBiggId(String biggId) {
     this.biggId = biggId;
   }
@@ -588,6 +603,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param geneReactionRule the geneReactionRule to set
    */
+  @JsonProperty("gene_reaction_rule")
   public void setGeneReactionRule(String geneReactionRule) {
     this.geneReactionRule = geneReactionRule;
   }
@@ -605,6 +621,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param labelX the labelX to set
    */
+  @JsonProperty("label_x")
   public void setLabelX(Double labelX) {
     this.labelX = labelX;
   }
@@ -613,6 +630,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param labelY the labelY to set
    */
+  @JsonProperty("label_y")
   public void setLabelY(Double labelY) {
     this.labelY = labelY;
   }
@@ -629,6 +647,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param name the name to set
    */
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -637,14 +656,49 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @param reversibility the reversibility to set
    */
+  @JsonProperty("reversibility")
   public void setReversibility(Boolean reversibility) {
     this.reversibility = reversibility;
   }
 
 
+  @JsonProperty("genes")
+  public void setGeneList(List<Gene> geneList) {
+    this.geneList = geneList;
+    if (genes == null) {
+      genes = new HashMap<>();
+    }
+    geneList.forEach((g) -> genes.put(g.getId(), g));
+  }
+
+
+  @JsonProperty("metabolites")
+  public void setMetaboliteList(List<Metabolite> metaboliteList) {
+    this.metaboliteList = metaboliteList;
+    if (metabolites == null) {
+      metabolites = new HashMap<>();
+    }
+    metaboliteList.forEach((m) -> metabolites.put(m.getId(), m));
+  }
+
+
+  @JsonProperty("segments")
+  public void setSegments(Map<String, Segment> segments) {
+    this.segments = segments;
+    if (nodes == null) {
+      nodes = new HashSet<>();
+    }
+    segments.forEach((k, v) -> {
+      v.setId(k);
+      nodes.add(v.getFromNodeId());
+      nodes.add(v.getToNodeId());
+    });
+  }
+
+
   /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */
+       * @see java.lang.Object#toString()
+       */
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();

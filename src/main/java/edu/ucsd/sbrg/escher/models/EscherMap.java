@@ -16,6 +16,8 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -371,9 +373,19 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  public Map<String, Set<String>> getBigg2nodes() {
+    return bigg2nodes;
+  }
+
+
+  public Map<String, Set<String>> getBigg2reactions() {
+    return bigg2reactions;
+  }
+
+
   /* (non-Javadoc)
-   * @see java.lang.Object#hashCode()
-   */
+     * @see java.lang.Object#hashCode()
+     */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -460,6 +472,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param canvas
    */
+  @JsonProperty("canvas")
   public void setCanvas(Canvas canvas) {
     this.canvas = canvas;
   }
@@ -468,6 +481,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param description the description to set
    */
+  @JsonProperty("map_description")
   public void setDescription(String description) {
     this.description = description;
   }
@@ -476,6 +490,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param id the id to set
    */
+  @JsonProperty("map_id")
   public void setId(String id) {
     this.id = id;
   }
@@ -484,6 +499,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param name the name to set
    */
+  @JsonProperty("map_name")
   public void setName(String name) {
     this.name = name;
   }
@@ -492,6 +508,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param schema the schema to set
    */
+  @JsonProperty("schema")
   public void setSchema(String schema) {
     this.schema = schema;
   }
@@ -500,8 +517,29 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @param url the url to set
    */
+  @JsonProperty("homepage")
   public void setURL(String url) {
     this.url = url;
+  }
+
+
+  @JsonProperty("nodes")
+  public void setNodes(Map<String, Node> nodes) {
+    nodes.forEach((k, v) -> v.setId(k));
+    this.nodes = nodes;
+  }
+
+
+  @JsonProperty("reactions")
+  public void setReactions(Map<String, EscherReaction> reactions) {
+    reactions.forEach((k, v) -> v.setId(k));
+    this.reactions = reactions;
+  }
+
+
+  @JsonProperty("text_labels")
+  public void setTextLabels(Map<String, TextLabel> textLabels) {
+    this.textLabels = textLabels;
   }
 
 
@@ -554,5 +592,83 @@ public class EscherMap extends AbstractEscherBase {
    */
   public Set<Entry<String, EscherCompartment>> compartments() {
     return compartments.entrySet();
+  }
+
+
+  public void processMap() {
+    try {
+      // Set midmarker for every reaction by going through its nodes and checking which
+      // one is a midmarker.
+      reactions.forEach((k, r) -> {
+        r.getNodes().forEach((s) -> {
+          if (nodes.get(s).getType() == Node.Type.midmarker) {
+            r.setMidmarker(nodes.get(s));
+          }
+        });
+      });
+
+      // Set nodeRefIds for metabolites.
+      reactions.forEach((k, r) -> {
+        r.getMetabolites().forEach((mk, mv) -> {
+          r.getNodes().forEach((s) -> {
+            try {
+              Node node = nodes.get(s);
+              if (node.getBiggId() == null) {
+                return;
+              }
+              if (node.getBiggId().equals(mv.getId())) {
+                mv.setNodeRefId(node.getId());
+              }
+            }
+            catch (NullPointerException ex) {
+              ex.getMessage();
+            }
+
+          });
+        });
+      });
+
+      // Bigg2Reactions.
+      reactions.forEach((k, v) -> {
+        if (!bigg2reactions.containsKey(v.getBiggId())) {
+          Set<String> reactionSet = new HashSet<>();
+          reactionSet.add(v.getId());
+          bigg2reactions.put(v.getBiggId(), reactionSet);
+        }
+      });
+
+      // Bigg2Nodes.
+      nodes.forEach((k, v) -> {
+        if (v.getBiggId() == null) {
+          return;
+        }
+        if (!bigg2nodes.containsKey(v.getBiggId())) {
+          Set<String> nodeSet = new HashSet<>();
+          nodeSet.add(v.getId());
+          bigg2nodes.put(v.getBiggId(), nodeSet);
+        }
+        else {
+          bigg2nodes.get(v.getBiggId()).add(v.getId());
+        }
+      });
+
+      // Store compartments.
+      nodes.forEach((k, v) -> {
+        EscherCompartment compartment = new EscherCompartment();
+
+        if (v.getCompartment() == null) {
+          return;
+        }
+        compartment.setId(v.getCompartment());
+
+        if (!compartments.containsKey(compartment.getId())) {
+          compartments.put(compartment.getId(), compartment);
+        }
+      });
+
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
   }
 }
