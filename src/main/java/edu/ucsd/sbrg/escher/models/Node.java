@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.ucsd.sbrg.escher.models.interfaces.Element;
 import org.sbml.jsbml.util.ResourceManager;
 
@@ -35,21 +36,29 @@ public class Node extends AbstractBox implements Element {
    * @author Andreas Dr&auml;ger
    */
   public enum Type {
+
     /**
      *
      */
+    @JsonProperty("exchange")
     exchange,
+
     /**
      *
      */
+    @JsonProperty("metabolite")
     metabolite,
+
     /**
      *
      */
+    @JsonProperty("midmarker")
     midmarker,
+
     /**
      *
      */
+    @JsonProperty("multimarker")
     multimarker
   }
 
@@ -519,6 +528,7 @@ public class Node extends AbstractBox implements Element {
    *               If the parameter is not {@code null}, this method will attempt to
    *               extract the compartment code from the given BiGG id.
    */
+  @JsonProperty("bigg_id")
   public void setBiggId(String biggId) {
     this.biggId = biggId;
     if (biggId != null) {
@@ -569,6 +579,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param labelX the labelX to set
    */
+  @JsonProperty("label_x")
   public void setLabelX(Double labelX) {
     this.labelX = labelX;
   }
@@ -577,6 +588,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param labelY the labelY to set
    */
+  @JsonProperty("label_y")
   public void setLabelY(Double labelY) {
     this.labelY = labelY;
   }
@@ -585,6 +597,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param name the name to set
    */
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
@@ -593,6 +606,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param isPrimary the node_is_primary to set
    */
+  @JsonProperty("node_is_primary")
   public void setPrimary(Boolean isPrimary) {
     this.isPrimary = isPrimary;
   }
@@ -601,6 +615,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param nodeType the nodeType to set
    */
+  @JsonProperty("node_type")
   public void setType(Type nodeType) {
     this.nodeType = nodeType;
   }

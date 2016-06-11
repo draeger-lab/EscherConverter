@@ -16,6 +16,12 @@
  */
 package edu.ucsd.sbrg.escher;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.zbit.AppConf;
 import de.zbit.Launcher;
 import de.zbit.gui.GUIOptions;
@@ -33,7 +39,6 @@ import edu.ucsd.sbrg.escher.models.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
-import edu.ucsd.sbrg.escher.utilities.EscherParser;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -170,11 +175,34 @@ public class EscherConverter extends Launcher {
     return convert(parseEscherJson(input), format, properties);
   }
 
-  public static EscherMap parseEscherJson(File input) throws IOException, ParseException {
-    EscherParser parser = new EscherParser();
+  public static EscherMap parseEscherJson(File input) throws IOException{
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_SETTERS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_CREATORS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_FIELDS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_GETTERS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
+    objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NONE);
+
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingFile"), input));
-    EscherMap map = parser.parse(input);
+
+    JsonNode escherJson = objectMapper.readTree(input);
+    EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
+    EscherMap map = objectMapper.treeToValue(escherJson.get(1), EscherMap.class);
+
+    map.setId(meta.getId());
+    map.setName(meta.getName());
+    map.setDescription(meta.getDescription());
+    map.setSchema(meta.getSchema());
+    map.setURL(meta.getURL());
+
+    map.processMap();
+
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingDone"), input));
 
