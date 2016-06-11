@@ -17,7 +17,7 @@
 package edu.ucsd.sbrg.escher.gui;
 
 import de.zbit.io.OpenedFile;
-import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherParser;
 import org.sbml.jsbml.util.ResourceManager;
 

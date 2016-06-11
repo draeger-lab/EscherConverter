@@ -27,7 +27,7 @@ import de.zbit.io.filefilter.SBFileFilter;
 import de.zbit.sbml.gui.SBMLWritingTask;
 import de.zbit.util.prefs.SBPreferences;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import org.sbgn.bindings.Sbgn;

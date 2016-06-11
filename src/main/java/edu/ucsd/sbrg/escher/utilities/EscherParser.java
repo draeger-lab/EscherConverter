@@ -18,7 +18,7 @@ package edu.ucsd.sbrg.escher.utilities;
 
 import de.zbit.sbml.util.SBMLtools;
 import de.zbit.util.Utils;
-import edu.ucsd.sbrg.escher.models.*;
+import edu.ucsd.sbrg.escher.model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

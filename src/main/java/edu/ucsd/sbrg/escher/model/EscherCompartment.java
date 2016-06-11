@@ -14,9 +14,8 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
-import edu.ucsd.sbrg.escher.models.interfaces.Element;
 import org.sbml.jsbml.util.ResourceManager;
 
 import java.text.MessageFormat;
@@ -70,7 +69,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
+   * @see edu.ucsd.sbrg.escher.model.AbstractEscherBase#clone()
    */
   @Override
   public EscherCompartment clone() {
@@ -79,7 +78,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#getId()
+   * @see edu.ucsd.sbrg.escher.model.Element#getId()
    */
   @Override
   public String getId() {
@@ -99,7 +98,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.model.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -116,7 +115,7 @@ public class EscherCompartment extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.model.Element#setId(java.lang.String)
    */
   @Override
   public void setId(String id) {

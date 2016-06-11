@@ -1,7 +1,7 @@
 package edu.ucsd.sbrg.escher;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import edu.ucsd.sbrg.escher.models.*;
+import edu.ucsd.sbrg.escher.model.*;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;

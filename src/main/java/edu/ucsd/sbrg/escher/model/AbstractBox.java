@@ -14,10 +14,9 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.ucsd.sbrg.escher.models.interfaces.Box;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -91,7 +90,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#getHeight()
+   * @see edu.ucsd.sbrg.escher.model.Box#getHeight()
    */
   @Override
   public Double getHeight() {
@@ -100,7 +99,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#getWidth()
+   * @see edu.ucsd.sbrg.escher.model.Box#getWidth()
    */
   @Override
   public Double getWidth() {
@@ -122,7 +121,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#isSetHeight()
+   * @see edu.ucsd.sbrg.escher.model.Box#isSetHeight()
    */
   @Override
   public boolean isSetHeight() {
@@ -131,7 +130,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#isSetWidth()
+   * @see edu.ucsd.sbrg.escher.model.Box#isSetWidth()
    */
   @Override
   public boolean isSetWidth() {
@@ -140,7 +139,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setHeight(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.model.Box#setHeight(java.lang.Double)
    */
   @Override
   @JsonProperty("height")
@@ -150,7 +149,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Box#setWidth(java.lang.Double)
+   * @see edu.ucsd.sbrg.escher.model.Box#setWidth(java.lang.Double)
    */
   @Override
   @JsonProperty("width")

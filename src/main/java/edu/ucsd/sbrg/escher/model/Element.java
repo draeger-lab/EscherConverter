@@ -14,65 +14,25 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
 /**
  * @author Andreas Dr&auml;ger
  */
-public class Point extends AbstractPosition {
+public interface Element extends EscherBase {
 
   /**
-   *
+   * @return the id
    */
-  public Point() {
-    super();
-  }
-
+  String getId();
 
   /**
-   * @param x
-   * @param y
+   * @return {@code true} if the requested property is not {@code null}.
    */
-  public Point(Double x, Double y) {
-    super(x, y);
-  }
-
+  boolean isSetId();
 
   /**
-   * @param point
+   * @param id the id to set
    */
-  public Point(Point point) {
-    this();
-    setX(point.getX());
-    setY(point.getY());
-  }
-
-
-  /**
-   * @param p
-   */
-  public Point add(Point p) {
-    setX(getX() + p.getX());
-    setY(getY() + p.getY());
-    return this;
-  }
-
-
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
-   */
-  @Override
-  public Point clone() {
-    return new Point(this);
-  }
-
-
-  /**
-   * @param scale
-   */
-  public Point scale(double scale) {
-    setX(scale * getX());
-    setY(scale * getY());
-    return this;
-  }
+  void setId(String id);
 }

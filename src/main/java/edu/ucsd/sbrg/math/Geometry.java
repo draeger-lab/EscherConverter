@@ -3,7 +3,7 @@
  */
 package edu.ucsd.sbrg.math;
 
-import edu.ucsd.sbrg.escher.models.Point;
+import edu.ucsd.sbrg.escher.model.Point;
 
 import javax.swing.*;
 import java.awt.*;

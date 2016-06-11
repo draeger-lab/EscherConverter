@@ -20,7 +20,7 @@ import de.zbit.gui.GUITools;
 import de.zbit.gui.layout.LayoutHelper;
 import de.zbit.io.OpenedFile;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.models.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherMap;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.ext.layout.LayoutConstants;
 import org.sbml.jsbml.ext.layout.LayoutModelPlugin;

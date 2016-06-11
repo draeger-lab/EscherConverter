@@ -14,60 +14,57 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.models;
+package edu.ucsd.sbrg.escher.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.ucsd.sbrg.escher.models.interfaces.Element;
 
 /**
  * @author Andreas Dr&auml;ger
  */
-public class Gene extends AbstractEscherBase implements Element {
+public abstract class AbstractPosition extends AbstractEscherBase
+    implements Position {
 
   /**
-   * The BiGG id of the gene.
+   *
    */
-  private String biggId;
+  protected Double x;
   /**
-   * The name of the gene
+   *
    */
-  private String name;
+  protected Double y;
 
 
   /**
    *
    */
-  public Gene() {
+  public AbstractPosition() {
+    super();
+    x = y = null;
   }
 
 
   /**
-   * @param gene
+   * @param position
    */
-  public Gene(Gene gene) {
-    super(gene);
-    if (gene.isSetId()) {
-      setId(gene.getId());
+  public AbstractPosition(AbstractPosition position) {
+    super(position);
+    if (position.isSetX()) {
+      setX(position.getX().doubleValue());
     }
-    if (gene.isSetName()) {
-      setName(gene.getName());
+    if (position.isSetY()) {
+      setY(position.getY().doubleValue());
     }
   }
 
 
-  public Gene(String biggId, String name) {
+  /**
+   * @param x
+   * @param y
+   */
+  public AbstractPosition(Double x, Double y) {
     this();
-    setId(biggId);
-    setName(name);
-  }
-
-
-  /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.AbstractEscherBase#clone()
-   */
-  @Override
-  public Gene clone() {
-    return new Gene(this);
+    setX(x);
+    setY(y);
   }
 
 
@@ -85,19 +82,19 @@ public class Gene extends AbstractEscherBase implements Element {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    Gene other = (Gene) obj;
-    if (biggId == null) {
-      if (other.biggId != null) {
+    AbstractPosition other = (AbstractPosition) obj;
+    if (x == null) {
+      if (other.x != null) {
         return false;
       }
-    } else if (!biggId.equals(other.biggId)) {
+    } else if (!x.equals(other.x)) {
       return false;
     }
-    if (name == null) {
-      if (other.name != null) {
+    if (y == null) {
+      if (other.y != null) {
         return false;
       }
-    } else if (!name.equals(other.name)) {
+    } else if (!y.equals(other.y)) {
       return false;
     }
     return true;
@@ -105,19 +102,20 @@ public class Gene extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#getId()
+   * @see edu.ucsd.sbrg.escher.model.Position#getX()
    */
   @Override
-  public String getId() {
-    return biggId;
+  public Double getX() {
+    return x;
   }
 
 
-  /**
-   * @return the name
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.model.Position#getY()
    */
-  public String getName() {
-    return name;
+  @Override
+  public Double getY() {
+    return y;
   }
 
 
@@ -128,45 +126,47 @@ public class Gene extends AbstractEscherBase implements Element {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
+    result = prime * result + ((x == null) ? 0 : x.hashCode());
+    result = prime * result + ((y == null) ? 0 : y.hashCode());
     return result;
   }
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#isSetId()
+   * @see edu.ucsd.sbrg.escher.model.Position#isSetX()
    */
   @Override
-  public boolean isSetId() {
-    return biggId != null;
-  }
-
-
-  /**
-   * @return
-   */
-  public boolean isSetName() {
-    return name != null;
+  public boolean isSetX() {
+    return x != null;
   }
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.models.interfaces.Element#setId(java.lang.String)
+   * @see edu.ucsd.sbrg.escher.model.Position#isSetY()
    */
   @Override
-  @JsonProperty("bigg_id")
-  public void setId(String id) {
-    biggId = id;
+  public boolean isSetY() {
+    return y != null;
   }
 
 
-  /**
-   * @param name the name to set
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.model.Position#setX(java.lang.Double)
    */
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
+  @Override
+  @JsonProperty("x")
+  public void setX(Double x) {
+    this.x = x;
+  }
+
+
+  /* (non-Javadoc)
+   * @see edu.ucsd.sbrg.escher.model.Position#setY(java.lang.Double)
+   */
+  @Override
+  @JsonProperty("y")
+  public void setY(Double y) {
+    this.y = y;
   }
 
 
@@ -177,10 +177,10 @@ public class Gene extends AbstractEscherBase implements Element {
   public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append(getClass().getSimpleName());
-    builder.append(" [biggId=");
-    builder.append(biggId);
-    builder.append(", name=");
-    builder.append(name);
+    builder.append(" [x=");
+    builder.append(x);
+    builder.append(", y=");
+    builder.append(y);
     builder.append("]");
     return builder.toString();
   }
