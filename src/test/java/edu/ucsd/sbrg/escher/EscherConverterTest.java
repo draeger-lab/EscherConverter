@@ -3,6 +3,7 @@ package edu.ucsd.sbrg.escher;
 import com.fasterxml.jackson.core.JsonParseException;
 import edu.ucsd.sbrg.escher.model.*;
 import org.json.simple.parser.ParseException;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -21,10 +22,11 @@ public class EscherConverterTest {
 
   public static class DeserializationTests {
 
-    File      file;
-    EscherMap escherMap;
+    static File      file;
+    static EscherMap escherMap;
 
-    public DeserializationTests() throws IOException, ParseException {
+    @BeforeClass
+    public static void createTheWorld() throws IOException, ParseException {
       file = new File("data/e_coli_core_metabolism.escher.json");
       escherMap = EscherConverter.parseEscherJson(file);
     }
