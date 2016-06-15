@@ -56,12 +56,31 @@ public abstract class Standard2Escher<T> {
 
 
   protected void addMetaInfo() {
+    escherMap.setSchema(bundle.getString("escher_schema"));
+    
+    // TODO: Meta info is note directly available, needs to be determined carefully.
     throw new UnsupportedOperationException("Not yet implemented.");
   }
 
 
   protected Node createNode(Glyph glyph) {
-    throw new UnsupportedOperationException("Not yet implemented.");
+    Node node = new Node();
+
+    node.setId("" + glyph.getId().hashCode());
+    node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
+    node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+
+    // TODO: The following won't work, type will be determined a different and more involved way.
+    node.setType(Node.Type.valueOf(glyph.getClazz()));
+
+    if (node.getType() == Node.Type.metabolite) {
+      node.setName(glyph.getLabel().getText());
+      node.setLabelX((double) glyph.getBbox().getX());
+      node.setLabelY((double) glyph.getBbox().getY());
+      node.setBiggId(glyph.getId());
+    }
+
+    return node;
   }
 
 
