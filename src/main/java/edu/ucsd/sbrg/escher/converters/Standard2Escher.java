@@ -1,9 +1,6 @@
 package edu.ucsd.sbrg.escher.converters;
 
-import edu.ucsd.sbrg.escher.model.Canvas;
-import edu.ucsd.sbrg.escher.model.EscherMap;
-import edu.ucsd.sbrg.escher.model.Node;
-import edu.ucsd.sbrg.escher.model.TextLabel;
+import edu.ucsd.sbrg.escher.model.*;
 import org.sbgn.bindings.Bbox;
 import org.sbgn.bindings.Glyph;
 import org.sbgn.bindings.Sbgn;
@@ -84,7 +81,7 @@ public abstract class Standard2Escher<T> {
   }
 
 
-  protected Reaction createReaction(Glyph glyph) {
+  protected EscherReaction createReaction(Glyph glyph) {
     throw new UnsupportedOperationException("Not yet implemented.");
   }
 
