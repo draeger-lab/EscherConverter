@@ -18,10 +18,7 @@ package edu.ucsd.sbrg.escher;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 import de.zbit.AppConf;
 import de.zbit.Launcher;
 import de.zbit.gui.GUIOptions;
@@ -34,6 +31,7 @@ import de.zbit.util.prefs.SBProperties;
 import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
 import edu.ucsd.sbrg.escher.converters.Escher2SBML;
 import edu.ucsd.sbrg.escher.converters.Escher2Standard;
+import edu.ucsd.sbrg.escher.converters.SBGN2Escher;
 import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
@@ -296,6 +294,9 @@ public class EscherConverter extends Launcher {
         logger.info(MessageFormat
             .format("Output successfully written to file {0}.", output));
       }
+      else {
+        convert(input, output, properties);
+      }
     } else {
       if (!output.isDirectory()) {
         throw new IOException(MessageFormat
@@ -395,9 +396,40 @@ public class EscherConverter extends Launcher {
         }
       }
       break;
+
+    case Escher:
+      SBGN2Escher converter = new SBGN2Escher();
+      EscherMap map = converter.convert(SbgnUtil.readFromFile(input));
+      writeEscherJson(map, output);
+      break;
+
     default:
       break;
     }
+  }
+
+
+  private void writeEscherJson(EscherMap map, File output) throws IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+    objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+    objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_SETTERS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_CREATORS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_FIELDS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_GETTERS);
+    objectMapper.disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
+    objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NONE);
+
+    List<EscherMap> mapList = new ArrayList<>(2);
+
+    mapList.add(map);
+    mapList.add(map);
+
+    objectMapper.writeValue(output, mapList);
+
   }
 
 
