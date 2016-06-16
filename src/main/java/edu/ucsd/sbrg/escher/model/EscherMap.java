@@ -389,9 +389,27 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  @JsonProperty("nodes")
+  public Map<String, Node> getNodes() {
+    return nodes;
+  }
+
+
+  @JsonProperty("reactions")
+  public Map<String, EscherReaction> getReactions() {
+    return reactions;
+  }
+
+
+  @JsonProperty("text_labels")
+  public Map<String, TextLabel> getTextLabels() {
+    return textLabels;
+  }
+
+
   /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
+       * @see java.lang.Object#hashCode()
+       */
   @Override
   public int hashCode() {
     final int prime = 31;

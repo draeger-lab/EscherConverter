@@ -1,25 +1,309 @@
 [ {
-  "canvas" : {
-    "x" : null,
-    "y" : null,
-    "height" : null,
-    "width" : null
+  "canvas" : { },
+  "nodes" : {
+    "130731090" : {
+      "x" : 430.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph17",
+      "label_x" : 400.0,
+      "label_y" : 750.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731091" : {
+      "x" : 590.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph18",
+      "label_x" : 560.0,
+      "label_y" : 750.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731083" : {
+      "x" : 470.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph10",
+      "label_x" : 440.0,
+      "label_y" : 500.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731084" : {
+      "x" : 550.0,
+      "y" : 410.0,
+      "type" : "midmarker"
+    },
+    "130731086" : {
+      "x" : 510.0,
+      "y" : 660.0,
+      "type" : "midmarker"
+    },
+    "-1242708855" : {
+      "x" : 460.0,
+      "y" : 290.0,
+      "bigg_id" : "glyph5",
+      "label_x" : 430.0,
+      "label_y" : 260.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731087" : {
+      "x" : 230.0,
+      "y" : 660.0,
+      "type" : "midmarker"
+    },
+    "-1242708854" : {
+      "x" : 310.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph6",
+      "label_x" : 280.0,
+      "label_y" : 500.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731088" : {
+      "x" : 150.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph15",
+      "label_x" : 120.0,
+      "label_y" : 750.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731089" : {
+      "x" : 310.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph16",
+      "label_x" : 280.0,
+      "label_y" : 750.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "-1242708857" : {
+      "x" : 380.0,
+      "y" : 170.0,
+      "type" : "midmarker"
+    },
+    "-1242708856" : {
+      "x" : 300.0,
+      "y" : 290.0,
+      "bigg_id" : "glyph4",
+      "label_x" : 270.0,
+      "label_y" : 260.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "-1242708851" : {
+      "x" : 630.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph9",
+      "label_x" : 600.0,
+      "label_y" : 500.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "-1242708853" : {
+      "x" : 150.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph7",
+      "label_x" : 120.0,
+      "label_y" : 500.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "-1242708852" : {
+      "x" : 230.0,
+      "y" : 410.0,
+      "type" : "midmarker"
+    }
   },
-  "map_description" : null,
-  "map_id" : null,
-  "map_name" : null,
+  "reactions" : {
+    "130731084" : {
+      "label_x" : 540.0,
+      "label_y" : 400.0
+    },
+    "130731086" : {
+      "label_x" : 500.0,
+      "label_y" : 650.0
+    },
+    "130731087" : {
+      "label_x" : 220.0,
+      "label_y" : 650.0
+    },
+    "-1242708857" : {
+      "label_x" : 370.0,
+      "label_y" : 160.0
+    },
+    "-1242708852" : {
+      "label_x" : 220.0,
+      "label_y" : 400.0
+    }
+  },
   "schema" : "https://escher.github.io/escher/jsonschema/1-0-0",
-  "homepage" : null
+  "text_labels" : {
+    "-1242708860" : {
+      "x" : 210.0,
+      "y" : 60.0,
+      "text" : "RAS"
+    },
+    "130731114" : {
+      "x" : 810.0,
+      "y" : 660.0,
+      "text" : "ERK"
+    }
+  }
 }, {
-  "canvas" : {
-    "x" : null,
-    "y" : null,
-    "height" : null,
-    "width" : null
+  "canvas" : { },
+  "nodes" : {
+    "130731090" : {
+      "x" : 430.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph17",
+      "label_x" : 400.0,
+      "label_y" : 750.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731091" : {
+      "x" : 590.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph18",
+      "label_x" : 560.0,
+      "label_y" : 750.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731083" : {
+      "x" : 470.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph10",
+      "label_x" : 440.0,
+      "label_y" : 500.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731084" : {
+      "x" : 550.0,
+      "y" : 410.0,
+      "type" : "midmarker"
+    },
+    "130731086" : {
+      "x" : 510.0,
+      "y" : 660.0,
+      "type" : "midmarker"
+    },
+    "-1242708855" : {
+      "x" : 460.0,
+      "y" : 290.0,
+      "bigg_id" : "glyph5",
+      "label_x" : 430.0,
+      "label_y" : 260.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731087" : {
+      "x" : 230.0,
+      "y" : 660.0,
+      "type" : "midmarker"
+    },
+    "-1242708854" : {
+      "x" : 310.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph6",
+      "label_x" : 280.0,
+      "label_y" : 500.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "130731088" : {
+      "x" : 150.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph15",
+      "label_x" : 120.0,
+      "label_y" : 750.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "130731089" : {
+      "x" : 310.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph16",
+      "label_x" : 280.0,
+      "label_y" : 750.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "-1242708857" : {
+      "x" : 380.0,
+      "y" : 170.0,
+      "type" : "midmarker"
+    },
+    "-1242708856" : {
+      "x" : 300.0,
+      "y" : 290.0,
+      "bigg_id" : "glyph4",
+      "label_x" : 270.0,
+      "label_y" : 260.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "-1242708851" : {
+      "x" : 630.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph9",
+      "label_x" : 600.0,
+      "label_y" : 500.0,
+      "name" : "ADP",
+      "type" : "metabolite"
+    },
+    "-1242708853" : {
+      "x" : 150.0,
+      "y" : 530.0,
+      "bigg_id" : "glyph7",
+      "label_x" : 120.0,
+      "label_y" : 500.0,
+      "name" : "ATP",
+      "type" : "metabolite"
+    },
+    "-1242708852" : {
+      "x" : 230.0,
+      "y" : 410.0,
+      "type" : "midmarker"
+    }
   },
-  "map_description" : null,
-  "map_id" : null,
-  "map_name" : null,
+  "reactions" : {
+    "130731084" : {
+      "label_x" : 540.0,
+      "label_y" : 400.0
+    },
+    "130731086" : {
+      "label_x" : 500.0,
+      "label_y" : 650.0
+    },
+    "130731087" : {
+      "label_x" : 220.0,
+      "label_y" : 650.0
+    },
+    "-1242708857" : {
+      "label_x" : 370.0,
+      "label_y" : 160.0
+    },
+    "-1242708852" : {
+      "label_x" : 220.0,
+      "label_y" : 400.0
+    }
+  },
   "schema" : "https://escher.github.io/escher/jsonschema/1-0-0",
-  "homepage" : null
+  "text_labels" : {
+    "-1242708860" : {
+      "x" : 210.0,
+      "y" : 60.0,
+      "text" : "RAS"
+    },
+    "130731114" : {
+      "x" : 810.0,
+      "y" : 660.0,
+      "text" : "ERK"
+    }
+  }
 } ]
