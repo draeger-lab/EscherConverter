@@ -7,6 +7,7 @@ import org.sbgn.bindings.Sbgn;
 import org.sbml.jsbml.Reaction;
 import org.sbml.jsbml.util.ResourceManager;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -50,6 +51,10 @@ public abstract class Standard2Escher<T> {
     }
     else {
       // TODO: Set default canvas values.
+      canvas.setX(Double.valueOf(bundle.getString("default_canvas_x")));
+      canvas.setY(Double.valueOf(bundle.getString("default_canvas_y")));
+      canvas.setHeight(Double.valueOf(bundle.getString("default_canvas_height")));
+      canvas.setWidth(Double.valueOf(bundle.getString("default_canvas_width")));
     }
 
     escherMap.setCanvas(canvas);
@@ -58,7 +63,9 @@ public abstract class Standard2Escher<T> {
 
   protected void addMetaInfo() {
     escherMap.setSchema(bundle.getString("escher_schema"));
-    
+    escherMap.setDescription(bundle.getString("default_description"));
+    escherMap.setId(bundle.getString("default_id"));
+
     // TODO: Meta info is not directly available, needs to be determined carefully.
   }
 

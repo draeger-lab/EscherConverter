@@ -1,5 +1,12 @@
 [ {
-  "canvas" : { },
+  "canvas" : {
+    "x" : 0.0,
+    "y" : 0.0,
+    "height" : 1000.0,
+    "width" : 1000.0
+  },
+  "map_description" : "No description provided with the document.",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D61704064653061303166",
   "nodes" : {
     "130731090" : {
       "x" : 430.0,
@@ -153,7 +160,14 @@
     }
   }
 }, {
-  "canvas" : { },
+  "canvas" : {
+    "x" : 0.0,
+    "y" : 0.0,
+    "height" : 1000.0,
+    "width" : 1000.0
+  },
+  "map_description" : "No description provided with the document.",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D61704064653061303166",
   "nodes" : {
     "130731090" : {
       "x" : 430.0,
