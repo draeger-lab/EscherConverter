@@ -1,1 +1,25 @@
-[ { }, { } ]
+[ {
+  "canvas" : {
+    "x" : null,
+    "y" : null,
+    "height" : null,
+    "width" : null
+  },
+  "map_description" : null,
+  "map_id" : null,
+  "map_name" : null,
+  "schema" : "https://escher.github.io/escher/jsonschema/1-0-0",
+  "homepage" : null
+}, {
+  "canvas" : {
+    "x" : null,
+    "y" : null,
+    "height" : null,
+    "width" : null
+  },
+  "map_description" : null,
+  "map_id" : null,
+  "map_name" : null,
+  "schema" : "https://escher.github.io/escher/jsonschema/1-0-0",
+  "homepage" : null
+} ]

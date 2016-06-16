@@ -228,6 +228,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return
    */
+  @JsonProperty("canvas")
   public Canvas getCanvas() {
     return canvas;
   }
@@ -253,6 +254,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return the description
    */
+  @JsonProperty("map_description")
   public String getDescription() {
     return description;
   }
@@ -261,6 +263,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return the id
    */
+  @JsonProperty("map_id")
   public String getId() {
     return id;
   }
@@ -269,6 +272,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return the name
    */
+  @JsonProperty("map_name")
   public String getName() {
     return name;
   }
@@ -343,6 +347,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return the schema
    */
+  @JsonProperty("schema")
   public String getSchema() {
     return schema;
   }
@@ -368,6 +373,7 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * @return the url
    */
+  @JsonProperty("homepage")
   public String getURL() {
     return url;
   }

@@ -93,6 +93,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
    * @see edu.ucsd.sbrg.escher.model.Box#getHeight()
    */
   @Override
+  @JsonProperty("height")
   public Double getHeight() {
     return height;
   }
@@ -102,6 +103,7 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
    * @see edu.ucsd.sbrg.escher.model.Box#getWidth()
    */
   @Override
+  @JsonProperty("width")
   public Double getWidth() {
     return width;
   }

@@ -77,6 +77,7 @@ public class TextLabel extends AbstractBox implements Element {
   /**
    * @return the text
    */
+  @JsonProperty("text")
   public String getText() {
     return text;
   }
