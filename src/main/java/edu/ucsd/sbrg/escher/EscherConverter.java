@@ -17,6 +17,7 @@
 package edu.ucsd.sbrg.escher;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.*;
 import de.zbit.AppConf;
@@ -422,6 +423,7 @@ public class EscherConverter extends Launcher {
     objectMapper.disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
     objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
     objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NONE);
+    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     List<EscherMap> mapList = new ArrayList<>(2);
 
