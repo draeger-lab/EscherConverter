@@ -25,6 +25,10 @@ public abstract class Standard2Escher<T> {
   public static final  ResourceBundle bundle = ResourceManager.getBundle("Messages");
   protected EscherMap escherMap;
   protected T         document;
+  protected long escherId;
+  protected long segmentId;
+  protected long reactionId = 0;
+
 
 
   public Standard2Escher() {
@@ -68,7 +72,15 @@ public abstract class Standard2Escher<T> {
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
 
     // TODO: The following won't work, type will be determined a different and more involved way.
-    node.setType(Node.Type.valueOf(glyph.getClazz()));
+    switch (glyph.getClazz()) {
+    case "simple chemical":
+    case "perturbing agent":
+    case "macromolecule":
+      node.setType(Node.Type.metabolite);
+      break;
+    default:
+      node.setType(Node.Type.midmarker);
+    }
 
     if (node.getType() == Node.Type.metabolite) {
       node.setName(glyph.getLabel().getText());
@@ -82,11 +94,32 @@ public abstract class Standard2Escher<T> {
 
 
   protected EscherReaction createReaction(Glyph glyph) {
-    throw new UnsupportedOperationException("Not yet implemented.");
+    EscherReaction reaction = new EscherReaction();
+
+    reaction.setId(glyph.getId().hashCode() + "");
+    if (glyph.getLabel() == null) {
+      reaction.setName("R" + reactionId++);
+    }
+    else {
+      reaction.setName(glyph.getLabel().getText());
+    }
+    reaction.setLabelX(((double) glyph.getBbox().getX()));
+    reaction.setLabelY(((double) glyph.getBbox().getY()));
+    reaction.setMidmarker(createNode(glyph));
+
+    return reaction;
   }
 
 
   protected TextLabel createTextLabel(Glyph glyph) {
-    throw new UnsupportedOperationException("Not yet implemented.");
+    TextLabel textLabel = new TextLabel();
+
+    textLabel.setId(glyph.getId().hashCode() + "");
+    textLabel.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
+    textLabel.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+    textLabel.setText(glyph.getLabel().getText());
+
+    return textLabel;
   }
+
 }
