@@ -72,7 +72,9 @@ public class SBGN2Escher extends Standard2Escher<Sbgn> {
 
       default:
         // TODO: Log a message saying unsupported class.
-        logger.warning(String.format("Glyph %s has unsupported class \"%s\"", g.getId(), g.getClazz()));
+        logger.warning(String.format("Unsupported class: glyph = %s, class =  %s", g.getId(), g
+            .getClazz
+            ()));
         break;
 
       }
