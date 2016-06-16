@@ -1,9 +1,13 @@
 package edu.ucsd.sbrg.escher.converters;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import org.sbgn.bindings.Map;
 import org.sbgn.bindings.Sbgn;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 /**
@@ -15,6 +19,19 @@ public class SBGN2Escher extends Standard2Escher<Sbgn> {
    * A {@link java.util.logging.Logger} for this class.
    */
   private static final Logger logger = Logger.getLogger(Standard2Escher.class.getName());
+
+
+  @Override
+  protected void addMetaInfo() {
+    super.addMetaInfo();
+
+    escherMap.setId(HexBin.encode(document.getMap().toString().getBytes()));
+
+    if (document.getMap().getNotes()!=null) {
+      escherMap.setDescription(document.getMap().getNotes().toString());
+    }
+  }
+
 
   private String determineComponent(String classs) {
     // TODO: Determine class according to the SBGN PD Level 1 spec draft.
