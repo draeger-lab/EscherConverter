@@ -47,6 +47,8 @@ public class SBGN2Escher extends Standard2Escher<Sbgn> {
     this.document = document;
     Map map = document.getMap();
 
+    addCanvasInfo(map.getBbox());
+
     // For every glyph, determine its class and call the appropriate method accordingly.
     map.getGlyph().forEach((g) -> {
       String component = determineComponent(g.getClazz());
@@ -75,6 +77,7 @@ public class SBGN2Escher extends Standard2Escher<Sbgn> {
 
       }
     });
-    throw new UnsupportedOperationException("Work in progress!");
+
+    return escherMap;
   }
 }
