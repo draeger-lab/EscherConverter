@@ -427,7 +427,19 @@ public class EscherConverter extends Launcher {
 
     List<EscherMap> mapList = new ArrayList<>(2);
 
-    mapList.add(map);
+    mapList.add(new EscherMap());
+    mapList.get(0).setId(map.getId());
+    mapList.get(0).setDescription(map.getDescription());
+    mapList.get(0).setName(output.getName());
+    mapList.get(0).setSchema(map.getSchema());
+    mapList.get(0).setURL(map.getURL());
+
+    map.setId(null);
+    map.setName(null);
+    map.setDescription(null);
+    map.setSchema(null);
+    map.setURL(null);
+
     mapList.add(map);
 
     objectMapper.writeValue(output, mapList);
