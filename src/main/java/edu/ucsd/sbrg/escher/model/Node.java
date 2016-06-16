@@ -338,7 +338,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the nodeType
    */
-  @JsonProperty("type")
+  @JsonProperty("node_type")
   public Type getType() {
     return nodeType;
   }
