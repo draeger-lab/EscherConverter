@@ -48,6 +48,7 @@ public class SBGN2Escher extends Standard2Escher<Sbgn> {
     Map map = document.getMap();
 
     addCanvasInfo(map.getBbox());
+    addMetaInfo();
 
     // For every glyph, determine its class and call the appropriate method accordingly.
     map.getGlyph().forEach((g) -> {

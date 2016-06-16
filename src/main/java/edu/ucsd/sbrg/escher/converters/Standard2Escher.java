@@ -22,7 +22,7 @@ public abstract class Standard2Escher<T> {
   /**
    * Localization support.
    */
-  public static final  ResourceBundle bundle = ResourceManager.getBundle("Messages");
+  public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
   protected EscherMap escherMap;
   protected T         document;
   protected long escherId;
@@ -59,8 +59,7 @@ public abstract class Standard2Escher<T> {
   protected void addMetaInfo() {
     escherMap.setSchema(bundle.getString("escher_schema"));
     
-    // TODO: Meta info is note directly available, needs to be determined carefully.
-    throw new UnsupportedOperationException("Not yet implemented.");
+    // TODO: Meta info is not directly available, needs to be determined carefully.
   }
 
 
