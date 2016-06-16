@@ -341,6 +341,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the biggId
    */
+  @JsonProperty("bigg_id")
   public String getBiggId() {
     return biggId;
   }
@@ -357,6 +358,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the geneReactionRule
    */
+  @JsonProperty("gene_reaction_rule")
   public String getGeneReactionRule() {
     return geneReactionRule;
   }
@@ -382,6 +384,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the labelX
    */
+  @JsonProperty("label_x")
   public Double getLabelX() {
     return labelX;
   }
@@ -390,6 +393,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the labelY
    */
+  @JsonProperty("label_y")
   public Double getLabelY() {
     return labelY;
   }
@@ -442,6 +446,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the reversibility
    */
+  @JsonProperty("reversibility")
   public Boolean getReversibility() {
     return reversibility;
   }

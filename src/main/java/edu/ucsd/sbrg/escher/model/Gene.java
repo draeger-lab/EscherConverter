@@ -107,6 +107,7 @@ public class Gene extends AbstractEscherBase implements Element {
    * @see edu.ucsd.sbrg.escher.model.Element#getId()
    */
   @Override
+  @JsonProperty("bigg_id")
   public String getId() {
     return biggId;
   }
@@ -115,6 +116,7 @@ public class Gene extends AbstractEscherBase implements Element {
   /**
    * @return the name
    */
+  @JsonProperty("name")
   public String getName() {
     return name;
   }

@@ -105,6 +105,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
    * @see edu.ucsd.sbrg.escher.model.Position#getX()
    */
   @Override
+  @JsonProperty("x")
   public Double getX() {
     return x;
   }
@@ -114,6 +115,7 @@ public abstract class AbstractPosition extends AbstractEscherBase
    * @see edu.ucsd.sbrg.escher.model.Position#getY()
    */
   @Override
+  @JsonProperty("y")
   public Double getY() {
     return y;
   }
