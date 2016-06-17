@@ -438,6 +438,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * @return the name
    */
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
