@@ -11,6 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * Created by deveshkhandelwal on 13/06/16.
@@ -117,6 +118,39 @@ public class SBGN2Escher {
     reaction.setLabelY(((double) glyph.getBbox().getY()));
     reaction.setMidmarker(createNode(glyph));
 
+    document.getMap().getArc().forEach((a) -> {
+      /*if ((a.getSource().hashCode() & 0xfffffff) == (glyph.getId().hashCode() & 0xfffffff) ||
+          (a.getTarget().hashCode() & 0xfffffff) == (glyph.getId().hashCode() & 0xfffffff) ||
+          ((a.getSource() == glyph)) ||
+          ((a.getTarget() == glyph))) {
+        reaction.addSegment(createSegment(a));
+      }*/
+
+      if (a.getSource().getClass() == Glyph.class) {
+        if (((Glyph) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
+          reaction.addSegment(createSegment(a));
+        }
+      }
+      else if (a.getSource().getClass() == Port.class) {
+        if (((Port) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
+          reaction.addSegment(createSegment(a));
+        }
+      }
+
+      if (a.getTarget().getClass() == Glyph.class) {
+        if (((Glyph) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
+          reaction.addSegment(createSegment(a));
+        }
+      }
+      else if (a.getTarget().getClass() == Port.class) {
+        if (((Port) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
+          reaction.addSegment(createSegment(a));
+        }
+      }
+
+
+    });
+
     return reaction;
   }
 
@@ -142,8 +176,33 @@ public class SBGN2Escher {
       segment.setId(arc.getId());
     }
 
-    segment.setFromNodeId((arc.getSource().hashCode() & 0xfffffff) + "");
-    segment.setToNodeId((arc.getTarget().hashCode() & 0xfffffff) + "");
+    try {
+        segment.setFromNodeId((((Glyph)arc.getSource()).getId().split(Pattern.quote("."))[0]
+            .hashCode
+            () &
+            0xfffffff)
+          + "");
+    }
+    catch (ClassCastException ex) {
+      segment.setFromNodeId((((Port)arc.getSource()).getId().split(Pattern.quote("."))[0]
+          .hashCode() &
+          0xfffffff) +
+          "");
+    }
+
+    try {
+      segment.setToNodeId((((Glyph)arc.getTarget()).getId().split(Pattern.quote("."))[0].hashCode
+          () &
+          0xfffffff) +
+          "");
+    }
+    catch (ClassCastException ex) {
+      segment.setToNodeId((((Port)arc.getTarget()).getId().split(Pattern.quote("."))[0].hashCode
+          () &
+          0xfffffff) +
+          "");
+    }
+
     segment.setBasePoint1(new Point((double)arc.getStart().getX(), (double)arc.getStart().getY()));
     segment.setBasePoint2(new Point((double)arc.getEnd().getX(), (double)arc.getEnd().getY()));
 
@@ -155,6 +214,7 @@ public class SBGN2Escher {
     // TODO: Determine class according to the SBGN PD Level 1 spec draft.
     switch (classs) {
 
+    case "macromolecule":
     case "simple chemical":
     case "perturbing agent":
     case "unspecified entity":
@@ -216,11 +276,6 @@ public class SBGN2Escher {
       }
     });
 
-    map.getArc().forEach((a) -> {
-      Segment segment = createSegment(a);
-
-//      escherMap.getNodes().get();
-    });
     return escherMap;
   }
 }
