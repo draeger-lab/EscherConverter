@@ -182,6 +182,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
         metabolites = new HashMap<String, Metabolite>();
       }
       metabolites.put(metabolite.getId(), metabolite);
+      metaboliteList.add(metabolite);
     } else {
       logger.warning(MessageFormat
           .format(bundle.getString("EscherReaction.skippingNullElement"),
