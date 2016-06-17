@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D61704064653061303166",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403261633166646334",
   "map_name" : "mapk_cascade.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -132,24 +132,34 @@
   },
   "reactions" : {
     "99468428" : {
+      "bigg_id" : "R2",
       "label_x" : 220.0,
-      "label_y" : 400.0
+      "label_y" : 400.0,
+      "name" : "R2"
     },
     "130731084" : {
+      "bigg_id" : "R0",
       "label_x" : 540.0,
-      "label_y" : 400.0
+      "label_y" : 400.0,
+      "name" : "R0"
     },
     "130731086" : {
+      "bigg_id" : "R3",
       "label_x" : 500.0,
-      "label_y" : 650.0
+      "label_y" : 650.0,
+      "name" : "R3"
     },
     "130731087" : {
+      "bigg_id" : "R4",
       "label_x" : 220.0,
-      "label_y" : 650.0
+      "label_y" : 650.0,
+      "name" : "R4"
     },
     "99468423" : {
+      "bigg_id" : "R1",
       "label_x" : 370.0,
-      "label_y" : 160.0
+      "label_y" : 160.0,
+      "name" : "R1"
     }
   },
   "text_labels" : {
