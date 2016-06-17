@@ -119,16 +119,16 @@ public class SBGN2Escher {
     reaction.setMidmarker(createNode(glyph));
 
     document.getMap().getArc().forEach((a) -> {
-      /*if ((a.getSource().hashCode() & 0xfffffff) == (glyph.getId().hashCode() & 0xfffffff) ||
-          (a.getTarget().hashCode() & 0xfffffff) == (glyph.getId().hashCode() & 0xfffffff) ||
-          ((a.getSource() == glyph)) ||
-          ((a.getTarget() == glyph))) {
-        reaction.addSegment(createSegment(a));
-      }*/
 
       if (a.getSource().getClass() == Glyph.class) {
         if (((Glyph) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
           reaction.addSegment(createSegment(a));
+
+          // Metabolite for reaction. Coefficient is negative as its source.
+          Metabolite metabolite = new Metabolite();
+          metabolite.setId(((Glyph) a.getSource()).getId());
+          metabolite.setCoefficient(-1.0);
+          reaction.addMetabolite(metabolite);
         }
       }
       else if (a.getSource().getClass() == Port.class) {
@@ -140,6 +140,12 @@ public class SBGN2Escher {
       if (a.getTarget().getClass() == Glyph.class) {
         if (((Glyph) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
           reaction.addSegment(createSegment(a));
+
+          // Metabolite for reaction. Coefficient is positive as its target.
+          Metabolite metabolite = new Metabolite();
+          metabolite.setId(((Glyph) a.getTarget()).getId());
+          metabolite.setCoefficient(1.0);
+          reaction.addMetabolite(metabolite);
         }
       }
       else if (a.getTarget().getClass() == Port.class) {
