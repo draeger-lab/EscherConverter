@@ -1,6 +1,7 @@
 package edu.ucsd.sbrg.escher.converters;
 
 import edu.ucsd.sbrg.escher.model.*;
+import org.sbgn.bindings.Arc;
 import org.sbgn.bindings.Bbox;
 import org.sbgn.bindings.Glyph;
 import org.sbgn.bindings.Sbgn;
@@ -27,7 +28,7 @@ public abstract class Standard2Escher<T> {
   protected EscherMap escherMap;
   protected T         document;
   protected long escherId;
-  protected long segmentId;
+  protected long segmentId = 0;
   protected long reactionId = 0;
 
 
@@ -73,7 +74,7 @@ public abstract class Standard2Escher<T> {
   protected Node createNode(Glyph glyph) {
     Node node = new Node();
 
-    node.setId("" + glyph.getId().hashCode());
+    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
     node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
 
@@ -102,7 +103,7 @@ public abstract class Standard2Escher<T> {
   protected EscherReaction createReaction(Glyph glyph) {
     EscherReaction reaction = new EscherReaction();
 
-    reaction.setId(glyph.getId().hashCode() + "");
+    reaction.setId((glyph.getId().hashCode() & 0xfffffff) + "");
     if (glyph.getLabel() == null) {
       reaction.setName("R" + reactionId++);
     }
@@ -120,12 +121,30 @@ public abstract class Standard2Escher<T> {
   protected TextLabel createTextLabel(Glyph glyph) {
     TextLabel textLabel = new TextLabel();
 
-    textLabel.setId(glyph.getId().hashCode() + "");
+    textLabel.setId((glyph.getId().hashCode() & 0xfffffff) + "");
     textLabel.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     textLabel.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
     textLabel.setText(glyph.getLabel().getText());
 
     return textLabel;
+  }
+
+  protected Segment createSegment(Arc arc) {
+    Segment segment = new Segment();
+
+    if (arc.getId() == null) {
+      segment.setId("S" + segmentId++);
+    }
+    else {
+      segment.setId(arc.getId());
+    }
+
+    segment.setFromNodeId((arc.getSource().hashCode() & 0xfffffff) + "");
+    segment.setToNodeId((arc.getTarget().hashCode() & 0xfffffff) + "");
+    segment.setBasePoint1(new Point((double)arc.getStart().getX(), (double)arc.getStart().getY()));
+    segment.setBasePoint2(new Point((double)arc.getEnd().getX(), (double)arc.getEnd().getY()));
+
+    return segment;
   }
 
 }

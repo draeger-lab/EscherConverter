@@ -53,6 +53,11 @@ public class SBGN2EscherTest {
   public void canGetCanvasInfo() {
     Canvas canvas = new Canvas();
 
+    canvas.setHeight(1000.0);
+    canvas.setWidth(1000.0);
+    canvas.setY(0.0);
+    canvas.setX(0.0);
+
     assertEquals("failure - canvas info not matching", canvas, map.getCanvas());
   }
 
