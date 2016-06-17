@@ -108,6 +108,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     segments = new HashMap<String, Segment>();
     metabolites = new HashMap<String, Metabolite>();
     nodes = new HashSet<String>();
+    metaboliteList = new ArrayList<>();
+    geneList = new ArrayList<>();
   }
 
 
@@ -372,9 +374,15 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
 
+  @JsonProperty("genes")
+  public List<Gene> getGeneList() {
+    return geneList;
+  }
+
+
   /* (non-Javadoc)
-   * @see edu.ucsd.sbrg.escher.model.Element#getId()
-   */
+     * @see edu.ucsd.sbrg.escher.model.Element#getId()
+     */
   @Override
   public String getId() {
     return id;
@@ -427,6 +435,12 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   }
 
 
+  @JsonProperty("metabolites")
+  public List<Metabolite> getMetaboliteList() {
+    return metaboliteList;
+  }
+
+
   /**
    * @return the midmarker
    */
@@ -450,6 +464,12 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   @JsonProperty("reversibility")
   public Boolean getReversibility() {
     return reversibility;
+  }
+
+
+  @JsonProperty("segments")
+  public Map<String, Segment> getSegments() {
+    return segments;
   }
 
 
