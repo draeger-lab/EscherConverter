@@ -58,7 +58,11 @@ public interface EscherOptions extends KeyProvider {
     /**
      * Systems Biology Markup Language with layout extension.
      */
-    SBML
+    SBML,
+    /**
+     * Escher JSON format.
+     */
+    Escher
   }
 
 
