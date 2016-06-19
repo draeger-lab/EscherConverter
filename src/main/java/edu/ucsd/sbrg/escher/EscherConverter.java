@@ -216,19 +216,6 @@ public class EscherConverter extends Launcher {
    */
   public static void main(String args[]) {
     // Export validation reports to file for debugging
-    //    try {
-    //      SchematronValidator.setSvrlDump(true);
-    //
-    //      // validation will result in a list of issues
-    //      List<Issue> issues = SchematronValidator.validate(new File(System.clearProperty("user.home") + "/test.sbgn"));
-    //      // print each issue individually.
-    //      System.out.println ("There are " + issues.size() + " validation problems");
-    //      for (Issue issue : issues) {
-    //        System.out.println (issue);
-    //      }
-    //    } catch (Throwable exc) {
-    //      exc.printStackTrace();
-    //    }
     new EscherConverter(args);
   }
 
