@@ -1,13 +1,11 @@
 package edu.ucsd.sbrg.escher;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import edu.ucsd.sbrg.escher.converters.SBGN2Escher;
 import edu.ucsd.sbrg.escher.model.Canvas;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sbgn.SbgnUtil;
-import org.sbgn.bindings.Map;
 import org.sbgn.bindings.Sbgn;
 
 import javax.xml.bind.JAXBException;
@@ -21,10 +19,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class SBGN2EscherTest {
 
-  static File file;
-  static Sbgn sbgn;
-  static SBGN2Escher converter;
-  static EscherMap map;
+  private static File        file;
+  private static Sbgn        sbgn;
+  private static SBGN2Escher converter;
+  private static EscherMap   map;
 
   @BeforeClass
   public static void createTheWorld() throws JAXBException {
@@ -59,26 +57,6 @@ public class SBGN2EscherTest {
     canvas.setX(0.0);
 
     assertEquals("failure - canvas info not matching", canvas, map.getCanvas());
-  }
-
-  @Test
-  public void canGetMetaInfo() {
-
-  }
-
-  @Test
-  public void canCreateNodes() {
-
-  }
-
-  @Test
-  public void canCreateReactions() {
-
-  }
-
-  @Test
-  public void canCreateTextLabels() {
-
   }
 
 }
