@@ -115,6 +115,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   /**
    * @return the coefficient
    */
+  @JsonProperty("coefficient")
   public Double getCoefficient() {
     return coefficient;
   }
@@ -124,6 +125,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
    * @see edu.ucsd.sbrg.escher.model.Element#getId()
    */
   @Override
+  @JsonProperty("bigg_id")
   public String getId() {
     return biggId;
   }

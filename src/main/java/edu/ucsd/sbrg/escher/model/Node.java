@@ -267,6 +267,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the biggId
    */
+  @JsonProperty("bigg_id")
   public String getBiggId() {
     return biggId;
   }
@@ -310,6 +311,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the labelX
    */
+  @JsonProperty("label_x")
   public Double getLabelX() {
     return labelX;
   }
@@ -318,6 +320,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the labelY
    */
+  @JsonProperty("label_y")
   public Double getLabelY() {
     return labelY;
   }
@@ -326,6 +329,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the name
    */
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
@@ -334,6 +338,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the nodeType
    */
+  @JsonProperty("node_type")
   public Type getType() {
     return nodeType;
   }
@@ -418,6 +423,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @return the node_is_primary
    */
+  @JsonProperty("node_is_primary")
   public Boolean isPrimary() {
     return isPrimary;
   }

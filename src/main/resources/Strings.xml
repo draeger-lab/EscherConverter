@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!--
+ * Author: Devesh Khandelwal
+-->
+<properties>
+    <comment>
+        This file contains some strings used inside the source code. This is not for
+        internationalization/localization.
+    </comment>
+
+    <entry key="escher_schema">https://escher.github.io/escher/jsonschema/1-0-0</entry>
+    <entry key="default_description">No description provided with the document.</entry>
+    <entry key="default_id">PLACEHOLDER_ID</entry>
+    <entry key="default_canvas_x">0</entry>
+    <entry key="default_canvas_y">0</entry>
+    <entry key="default_canvas_height">1000</entry>
+    <entry key="default_canvas_width">1000</entry>
+</properties>

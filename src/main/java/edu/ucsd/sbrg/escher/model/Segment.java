@@ -143,6 +143,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @return the b1
    */
+  @JsonProperty("b1")
   public Point getBasePoint1() {
     return b1;
   }
@@ -151,6 +152,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @return the b2
    */
+  @JsonProperty("b2")
   public Point getBasePoint2() {
     return b2;
   }
@@ -159,6 +161,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @return the fromNodeId
    */
+  @JsonProperty("from_node_id")
   public String getFromNodeId() {
     return fromNodeId;
   }
@@ -176,6 +179,7 @@ public class Segment extends AbstractEscherBase implements Element {
   /**
    * @return the toNodeId
    */
+  @JsonProperty("to_node_id")
   public String getToNodeId() {
     return toNodeId;
   }
