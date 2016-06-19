@@ -6,9 +6,6 @@ import edu.ucsd.sbrg.escher.model.Point;
 import org.sbgn.bindings.*;
 import org.sbml.jsbml.util.ResourceManager;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
