@@ -33,6 +33,7 @@ public class SBML2EscherTest {
   }
 
   @Test(expected = IOException.class)
+  @Ignore
   public void failsOnNonExistentFileTest() throws IOException {
     // TODO
 
