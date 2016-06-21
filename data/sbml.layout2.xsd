@@ -1,0 +1,323 @@
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetnamespace="http://projects.eml.org/bcb/sbml/level2" xmlns:sl2="http://projects.eml.org/bcb/sbml/level2" elementformdefault="qualified">
+
+<xsd:simpletype name="SId">
+ <xsd:annotation>
+  <xsd:documentation>The type SId is used throughout SBML as the type of the 'id' attributes on model elements.</xsd:documentation>
+ </xsd:annotation>
+ <xsd:restriction base="xsd:string">
+  <xsd:pattern value="(_|[a-z]|[A-Z])(_|[a-z]|[A-Z]|[0-9])*"/>
+ </xsd:restriction>
+</xsd:simpletype>
+
+<xsd:simpletype name="posDouble">
+  <xsd:restriction base="xsd:double">
+    <xsd:mininclusive value="0.0"/>
+  </xsd:restriction>
+</xsd:simpletype>  
+
+<xsd:complextype abstract="true" name="SBase">
+ <xsd:annotation>
+  <xsd:documentation>The SBase type is the base type of all main components in SBML.  It supports attaching metadata, notes and annotations to components.</xsd:documentation>
+ </xsd:annotation>
+ <xsd:sequence>
+  <xsd:element name="notes" minoccurs="0">
+   <xsd:complextype>
+    <xsd:sequence>
+     <xsd:any maxoccurs="unbounded" namespace="http://www.w3.org/1999/xhtml" processcontents="skip"/>
+    </xsd:sequence>
+   </xsd:complextype>
+  </xsd:element>
+  <xsd:element name="annotation" minoccurs="0">
+   <xsd:complextype>
+    <xsd:sequence>
+     <xsd:any maxoccurs="unbounded" processcontents="skip"/>
+    </xsd:sequence>
+   </xsd:complextype>
+  </xsd:element>
+ </xsd:sequence>
+ <xsd:attribute use="optional" type="xsd:ID" name="metaid"/>
+</xsd:complextype>
+
+<xsd:complextype name="Point">
+ <xsd:complexcontent>
+  <xsd:extension base="SBase">
+   <xsd:attribute use="optional" type="SId" name="id"/>
+   <xsd:attribute type="xsd:double" name="x"/>
+   <xsd:attribute type="xsd:double" name="y"/>
+   <xsd:attribute default="0.0" use="optional" type="xsd:double" name="z"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="Dimensions">
+ <xsd:complexcontent>
+  <xsd:extension base="SBase">
+   <xsd:attribute use="optional" type="SId" name="id"/>
+   <xsd:attribute type="posDouble" name="width"/>
+   <xsd:attribute type="posDouble" name="height"/>
+   <xsd:attribute default="0.0" use="optional" type="posDouble" name="depth"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="BoundingBox">
+ <xsd:complexcontent>
+  <xsd:extension base="SBase">
+   <xsd:sequence>
+     <xsd:element type="Point" name="position"/>
+     <xsd:element type="Dimensions" name="dimensions"/>
+   </xsd:sequence>
+   <xsd:attribute use="optional" type="SId" name="id"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="GraphicalObject">
+ <xsd:complexcontent>
+  <xsd:extension base="SBase">
+   <xsd:sequence>
+     <xsd:element type="BoundingBox" name="boundingBox"/>
+   </xsd:sequence>
+   <xsd:attribute type="SId" name="id"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:complextype name="CompartmentGlyph">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:GraphicalObject">
+   <xsd:attribute use="optional" type="sl2:SId" name="compartment"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:complextype name="SpeciesGlyph">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:GraphicalObject">
+   <xsd:attribute use="optional" type="sl2:SId" name="species"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+    
+<xsd:complextype name="LineSegment">
+  <xsd:complexcontent>
+    <xsd:extension base="SBase">
+    <xsd:sequence>
+        <xsd:element type="Point" name="start"/>
+        <xsd:element type="Point" name="end"/>
+    </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="CubicBezier">
+  <xsd:complexcontent>
+    <xsd:extension base="LineSegment">
+        <xsd:element type="Point" name="basePoint1" minoccurs="0"/>
+        <xsd:element type="Point" name="basePoint2" minoccurs="0"/>
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:complextype name="ListOfCurveSegments">
+    <xsd:sequence>
+      <xsd:element maxoccurs="unbounded" type="sl2:LineSegment" name="curveSegment" minoccurs="1"/>
+    </xsd:sequence>
+</xsd:complextype>
+
+<xsd:complextype name="Curve">
+  <xsd:complexcontent>
+    <xsd:extension base="sl2:SBase">
+      <xsd:sequence>
+        <xsd:element type="sl2:ListOfCurveSegments" name="listOfCurceSegments"/>
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:simpletype name="RoleString">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="undefined"/>
+    <xsd:enumeration value="substrate"/>
+    <xsd:enumeration value="product"/>
+    <xsd:enumeration value="sidesubstrate"/>
+    <xsd:enumeration value="sideproduct"/>
+    <xsd:enumeration value="modifier"/>
+    <xsd:enumeration value="activator"/>
+    <xsd:enumeration value="inhibitor"/>
+  </xsd:restriction>
+</xsd:simpletype>
+
+<xsd:complextype name="SpeciesReferenceGlyph">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:GraphicalObject">
+   <xsd:sequence>
+     <xsd:element maxoccurs="1" type="sl2:Curve" name="curve" minoccurs="0"/>
+   </xsd:sequence>
+   <xsd:attribute use="optional" type="sl2:SId" name="speciesGlyph"/>
+   <xsd:attribute use="optional" type="sl2:SId" name="speciesReference"/>
+   <xsd:attribute default="undefined" use="optional" type="sl2:RoleString" name="role"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfSpeciesReferenceGlyphs">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">  
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="sl2:SpeciesReferenceGlyph" name="speciesReferenceGlyph" minoccurs="1"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ReactionGlyph">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:GraphicalObject">
+   <xsd:sequence>
+     <xsd:element maxoccurs="1" type="sl2:Curve" name="curve" minoccurs="0"/>
+   </xsd:sequence>
+   <xsd:sequence>
+    <xsd:element maxoccurs="1" type="sl2:ListOfSpeciesReferenceGlyphs" name="listOfSpeciesReferenceGlyphs" minoccurs="1"/>
+   </xsd:sequence>
+   <xsd:attribute use="optional" type="sl2:SId" name="reaction"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="TextGlyph">
+ <xsd:complexcontent>
+  <xsd:extension base="GraphicalObject">
+   <xsd:attribute use="optional" type="SId" name="graphicalObject"/>
+   <xsd:attribute use="optional" type="xsd:string" name="text"/>
+   <xsd:attribute use="optional" type="SId" name="originOfText"/>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfCompartmentGlyphs">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="sl2:CompartmentGlyph" name="compartmentGlyph"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfSpeciesGlyphs">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="sl2:SpeciesGlyph" name="speciesGlyph"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfReactionGlyphs">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="sl2:ReactionGlyph" name="reactionGlyph"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfTextGlyphs">
+ <xsd:complexcontent>
+  <xsd:extension base="SBase">
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="TextGlyph" name="textGlyph"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:complextype name="ListOfAdditionalGraphicalObjects">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">
+   <xsd:sequence>
+    <xsd:any maxoccurs="unbounded" namespace="##other" minoccurs="0" processcontents="skip"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent>
+</xsd:complextype>
+
+
+<xsd:complextype name="Layout">
+  <xsd:sequence>
+    <xsd:element type="Dimensions" name="dimensions"/>
+    <xsd:element type="sl2:ListOfCompartmentGlyphs" name="listOfCompartmentGlyphs" minoccurs="0"/>
+    <xsd:element type="sl2:ListOfSpeciesGlyphs" name="listOfSpeciesGlyphs" minoccurs="0"/>
+    <xsd:element type="sl2:ListOfReactionGlyphs" name="listOfReactionGlyphs" minoccurs="0"/>
+    <xsd:element type="sl2:ListOfTextGlyphs" name="listOfTextGlyphs" minoccurs="0"/>
+    <xsd:element type="sl2:ListOfAdditionalGraphicalObjects" name="listOfAdditionalGraphicalObjects" minoccurs="0"/>
+   </xsd:sequence>
+   <xsd:attribute type="sl2:SId" name="id"/>
+</xsd:complextype>
+
+<xsd:complextype name="ListOfLayouts">
+ <xsd:complexcontent>
+  <xsd:extension base="sl2:SBase">
+   <xsd:sequence>
+    <xsd:element maxoccurs="unbounded" type="sl2:Layout" name="layout"/>
+   </xsd:sequence>
+  </xsd:extension>
+ </xsd:complexcontent> 
+</xsd:complextype>
+
+<xsd:element type="sl2:ListOfLayouts" name="listOfLayouts"/>
+
+<xsd:complextype name="Transformation">
+  <xsd:complexcontent>
+    <xsd:extension base="sl2:SBase">
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="SimpleTransformation">
+  <xsd:complexcontent>
+    <xsd:extension base="sl2:Transformation">
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="tx"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="ty"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="tz"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="rx"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="ry"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="rz"/>
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="sx"/>
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="sy"/>
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="sz"/>
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+<xsd:complextype name="AffineTransformation">
+  <xsd:complexcontent>
+    <xsd:extension base="sl2:Transformation">
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="a0"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="a1"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="a2"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="a3"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="b0"/>
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="b1"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="b2"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="b3"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="c0"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="c1"/>
+      <xsd:attribute default="1.0" use="optional" type="xsd:double" name="c2"/>
+      <xsd:attribute default="0.0" use="optional" type="xsd:double" name="c3"/>
+    </xsd:extension>
+  </xsd:complexcontent>
+</xsd:complextype>
+
+
+</xsd:schema>
+
