@@ -7,6 +7,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.SBMLReader;
+import org.sbml.jsbml.ext.layout.LayoutConstants;
+import org.sbml.jsbml.ext.layout.LayoutModelPlugin;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.stream.XMLStreamException;
@@ -25,15 +27,15 @@ public class SBML2EscherTest {
 
   @BeforeClass
   public static void createTheWorld() throws JAXBException, IOException, XMLStreamException {
-    file = new File("data/example6.sbml.xml");
+    file = new File("data/example2.sbml.xml");
     sbml = SBMLReader.read(file);
     converter = new SBML2Escher();
     map = converter.convert(sbml);
-    ;
+    LayoutModelPlugin layoutPlugin = (LayoutModelPlugin) sbml.getModel().getPlugin(LayoutConstants.shortLabel);
+    return;
   }
 
   @Test(expected = IOException.class)
-  @Ignore
   public void failsOnNonExistentFileTest() throws IOException {
     // TODO
 
