@@ -1,9 +1,12 @@
 package edu.ucsd.sbrg.escher.converters;
 
-import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.model.*;
 import org.sbml.jsbml.SBMLDocument;
+import org.sbml.jsbml.ext.layout.*;
 import org.sbml.jsbml.util.ResourceManager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -20,17 +23,72 @@ public class SBML2Escher {
    * Localization support.
    */
   public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
-  protected EscherMap escherMap;
-  protected SBMLDocument document;
-
+  protected List<EscherMap> escherMaps;
+  protected SBMLDocument    document;
+  protected List<Layout>    layouts;
 
   public SBML2Escher() {
-    escherMap = new EscherMap();
+    escherMaps = new ArrayList<>();
   }
 
 
   public EscherMap convert(SBMLDocument document) {
-    return null;
+    return escherMaps.get(0);
+  }
+
+
+  protected Canvas addCanvasInfo(Layout layout) {
+    Canvas canvas = new Canvas();
+
+    canvas.setX(Double.valueOf(bundle.getString("default_canvas_x")));
+    canvas.setY(Double.valueOf(bundle.getString("default_canvas_y")));
+
+    if (layout.getDimensions() == null) {
+      canvas.setHeight(Double.valueOf(bundle.getString("default_canvas_height")));
+      canvas.setWidth(Double.valueOf(bundle.getString("default_canvas_width")));
+    }
+    else {
+      canvas.setHeight(layout.getDimensions().getHeight());
+      canvas.setWidth(layout.getDimensions().getWidth());
+    }
+
+    return canvas;
+  }
+
+
+  protected TextLabel createTextLabel(TextGlyph textGlyph) {
+    TextLabel textLabel = new TextLabel();
+
+    if (textGlyph.getId() == null || textGlyph.getId().isEmpty()) {
+      // TODO: Log about generating an Id.
+      textLabel.setId("" + (textGlyph.hashCode() & 0xfffffff));
+    }
+    else {
+      textLabel.setId(textGlyph.getId());
+    }
+
+    if (textGlyph.getText() == null || textGlyph.getText().isEmpty()) {
+      // TODO: Log about no text, so ignoring text label.
+      return null;
+    }
+    else {
+      textLabel.setText(textGlyph.getText());
+    }
+
+    textLabel.setX(textGlyph.getBoundingBox().getPosition().getX());
+    textLabel.setY(textGlyph.getBoundingBox().getPosition().getY());
+
+    return textLabel;
+  }
+
+
+  protected Node createNode(SpeciesGlyph speciesGlyph) {
+    throw new UnsupportedOperationException("Not yet implemented!");
+  }
+
+
+  protected EscherReaction createReaction(ReactionGlyph reactionGlyph) {
+    throw new UnsupportedOperationException("Not yet implemented!");
   }
 
 }
