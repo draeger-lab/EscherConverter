@@ -83,7 +83,18 @@ public class SBML2Escher {
 
 
   protected Node createNode(SpeciesGlyph speciesGlyph) {
-    throw new UnsupportedOperationException("Not yet implemented!");
+    Node node = new Node();
+
+    node.setType(Node.Type.metabolite);
+    node.setId("" + (speciesGlyph.getId().hashCode() & 0xfffffff));
+    node.setBiggId(speciesGlyph.getSpecies());
+    node.setName(speciesGlyph.getSpeciesInstance().getName());
+    node.setX(speciesGlyph.getBoundingBox().getPosition().x());
+    node.setY(speciesGlyph.getBoundingBox().getPosition().y());
+    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x());
+    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().y());
+
+    return node;
   }
 
 
