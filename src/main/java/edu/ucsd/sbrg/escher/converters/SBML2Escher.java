@@ -2,7 +2,9 @@ package edu.ucsd.sbrg.escher.converters;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import edu.ucsd.sbrg.escher.model.*;
+import org.sbml.jsbml.Reaction;
 import org.sbml.jsbml.SBMLDocument;
+import org.sbml.jsbml.SpeciesReference;
 import org.sbml.jsbml.ext.layout.*;
 import org.sbml.jsbml.util.ResourceManager;
 
@@ -44,6 +46,9 @@ public class SBML2Escher {
     escherMaps.get(0).setId(HexBin.encode(layouts.get(0).toString().getBytes()));
     layouts.get(0).getListOfSpeciesGlyphs().forEach((sG) -> {
       escherMaps.get(0).addNode(createNode(sG));
+    });
+    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
+      escherMaps.get(0).addReaction(createReaction(rG));
     });
     return escherMaps.get(0);
   }
@@ -132,7 +137,31 @@ public class SBML2Escher {
     reaction.setLabelX(reactionGlyph.getBoundingBox().getPosition().getX());
     reaction.setLabelY(reactionGlyph.getBoundingBox().getPosition().getY());
 
-    throw new UnsupportedOperationException("Not yet implemented!");
+    // Add metabolites.
+    ((Reaction) reactionGlyph.getReactionInstance()).getListOfProducts().forEach((p) -> {
+      reaction.addMetabolite(createMetabolite(p));
+    });
+
+    ((Reaction) reactionGlyph.getReactionInstance()).getListOfReactants().forEach((r) -> {
+      r.setStoichiometry(-1 * r.getStoichiometry());
+      reaction.addMetabolite(createMetabolite(r));
+    });
+
+    // TODO: Think of what to do about genes.
+
+    // TODO: Add segments.
+
+    return reaction;
+  }
+
+
+  protected Metabolite createMetabolite(SpeciesReference speciesReference) {
+    Metabolite metabolite = new Metabolite();
+
+    metabolite.setId(speciesReference.getSpecies());
+    metabolite.setCoefficient(speciesReference.getCalculatedStoichiometry());
+
+    return metabolite;
   }
 
 }
