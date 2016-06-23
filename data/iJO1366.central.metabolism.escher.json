@@ -1,10 +1,7 @@
 [ {
   "map_description" : "No description provided with the document.",
   "map_id" : "6C61796F7574",
-  "map_name" : "iJO1366.central.metabolism.escher.json",
-  "nodes" : { },
-  "reactions" : { },
-  "text_labels" : { }
+  "map_name" : "iJO1366.central.metabolism.escher.json"
 }, {
   "canvas" : {
     "x" : 0.0,
@@ -4901,6 +4898,4468 @@
       "node_type" : "metabolite"
     }
   },
-  "reactions" : { },
+  "reactions" : {
+    "_2076030" : {
+      "bigg_id" : "GND",
+      "genes" : [ ],
+      "label_x" : 2943.180464421875,
+      "label_y" : 1549.20143384375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ru5p__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_6pgc_c"
+      } ],
+      "name" : "phosphogluconate dehydrogenase",
+      "segments" : { }
+    },
+    "_2076031" : {
+      "bigg_id" : "HEX1",
+      "genes" : [ ],
+      "label_x" : 1724.7499444999999,
+      "label_y" : 1291.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "hexokinase (D-glucose:ATP)",
+      "segments" : { }
+    },
+    "_2076032" : {
+      "bigg_id" : "DMSOR1",
+      "genes" : [ ],
+      "label_x" : 7552.9121538750005,
+      "label_y" : 3267.92994946875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dms_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Dimethyl sulfoxide reductase (Menaquinol 8)",
+      "segments" : { }
+    },
+    "_2076033" : {
+      "bigg_id" : "FUMt2_3pp",
+      "genes" : [ ],
+      "label_x" : 4910.7500445000005,
+      "label_y" : 2902.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_p"
+      } ],
+      "name" : "Fumarate transport via proton symport (3 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2076035" : {
+      "bigg_id" : "TMAOR1",
+      "genes" : [ ],
+      "label_x" : 7735.7241655937505,
+      "label_y" : 3231.80494946875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tma_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tmao_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Trimethylamine N-oxide reductase (menaquinol 8)",
+      "segments" : { }
+    },
+    "_2076036" : {
+      "bigg_id" : "FBA",
+      "genes" : [ ],
+      "label_x" : 1895.7499444999999,
+      "label_y" : 2329.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fdp_c"
+      } ],
+      "name" : "fructose-bisphosphate aldolase",
+      "segments" : { }
+    },
+    "_2076037" : {
+      "bigg_id" : "G6PP",
+      "genes" : [ ],
+      "label_x" : 1683.7499444999999,
+      "label_y" : 1307.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "glucose-6-phosphate phosphatase",
+      "segments" : { }
+    },
+    "_2076038" : {
+      "bigg_id" : "RIBtex",
+      "genes" : [ ],
+      "label_x" : 5262.7168413750005,
+      "label_y" : 1868.905779546875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "rib__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "rib__D_e"
+      } ],
+      "name" : "ribose transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076039" : {
+      "bigg_id" : "FRUpts2pp",
+      "genes" : [ ],
+      "label_x" : 832.197942546875,
+      "label_y" : 1841.337908453125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fru_p"
+      } ],
+      "name" : "Fructose transport via PEP:Pyr PTS (f6p generating) (periplasm)",
+      "segments" : { }
+    },
+    "_2075859" : {
+      "bigg_id" : "GLCP",
+      "genes" : [ ],
+      "label_x" : 1365.7499444999999,
+      "label_y" : 1438.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glycogen_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "glycogen phosphorylase",
+      "segments" : { }
+    },
+    "_2075979" : {
+      "bigg_id" : "ATPM",
+      "genes" : [ ],
+      "label_x" : 5396.7500445000005,
+      "label_y" : 2298.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "ATP maintenance requirement",
+      "segments" : { }
+    },
+    "_2075858" : {
+      "bigg_id" : "FUMt2_2pp",
+      "genes" : [ ],
+      "label_x" : 4910.7500445000005,
+      "label_y" : 2870.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_p"
+      } ],
+      "name" : "Fumarate transport via proton symport (2 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2075989" : {
+      "bigg_id" : "MDH2",
+      "genes" : [ ],
+      "label_x" : 3240.3857866875,
+      "label_y" : 3773.565203375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "Malate dehydrogenase (ubiquinone 8 as acceptor)",
+      "segments" : { }
+    },
+    "_2075868" : {
+      "bigg_id" : "PGI",
+      "genes" : [ ],
+      "label_x" : 1893.7499444999999,
+      "label_y" : 1690.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      } ],
+      "name" : "glucose-6-phosphate isomerase",
+      "segments" : { }
+    },
+    "_2075988" : {
+      "bigg_id" : "F6PA",
+      "genes" : [ ],
+      "label_x" : 1707.6900079765624,
+      "label_y" : 1943.7035090390625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dha_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      } ],
+      "name" : "fructose 6-phosphate aldolase",
+      "segments" : { }
+    },
+    "_2075867" : {
+      "bigg_id" : "GLYCTO4",
+      "genes" : [ ],
+      "label_x" : 7038.9951616875005,
+      "label_y" : 5263.2632455625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glx_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyclt_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      } ],
+      "name" : "Glycolate oxidase",
+      "segments" : { }
+    },
+    "_2075987" : {
+      "bigg_id" : "CITt7pp",
+      "genes" : [ ],
+      "label_x" : 4958.8999468437505,
+      "label_y" : 4533.89947603125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_p"
+      } ],
+      "name" : "Citrate transport via succinate antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2075866" : {
+      "bigg_id" : "GLYCtpp",
+      "genes" : [ ],
+      "label_x" : 842.7499445,
+      "label_y" : 2196.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_c"
+      } ],
+      "name" : "glycerol transport via channel (periplasm)",
+      "segments" : { }
+    },
+    "_2075865" : {
+      "bigg_id" : "GLGC",
+      "genes" : [ ],
+      "label_x" : 1281.7499444999999,
+      "label_y" : 1552.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adpglc_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "glucose-1-phosphate adenylyltransferase",
+      "segments" : { }
+    },
+    "_2075864" : {
+      "bigg_id" : "CS",
+      "genes" : [ ],
+      "label_x" : 3462.7500445,
+      "label_y" : 4202.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      } ],
+      "name" : "citrate synthase",
+      "segments" : { }
+    },
+    "_2075984" : {
+      "bigg_id" : "NTRIR2x",
+      "genes" : [ ],
+      "label_x" : 5419.0669390312505,
+      "label_y" : 5600.3530893125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nh4_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_c"
+      }, {
+        "coefficient" : 5.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "nitrite Reductase (NADH)",
+      "segments" : { }
+    },
+    "_2075863" : {
+      "bigg_id" : "TMAOR2pp",
+      "genes" : [ ],
+      "label_x" : 8455.14408746875,
+      "label_y" : 5165.88287446875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tma_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tmao_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      } ],
+      "name" : "Trimethylamine N-oxide reductase (demethylmenaquinol 8) (periplasm)",
+      "segments" : { }
+    },
+    "_2075983" : {
+      "bigg_id" : "F6Pt6_2pp",
+      "genes" : [ ],
+      "label_x" : 835.5259454765625,
+      "label_y" : 1690.562029546875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "pi_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "Fructose-6-phosphate transport via phosphate antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2075862" : {
+      "bigg_id" : "DSBAO1",
+      "genes" : [ ],
+      "label_x" : 5916.8584429375005,
+      "label_y" : 1751.4945856992188,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dsbaox_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dsbard_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "DsbA protein reoxidation reaction (aerobic)",
+      "segments" : { }
+    },
+    "_2075861" : {
+      "bigg_id" : "NADH18pp",
+      "genes" : [ ],
+      "label_x" : 6609.9951616875005,
+      "label_y" : 5665.2632455625,
+      "metabolites" : [ {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADH dehydrogenase (demethylmenaquinone-8 & 3 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075982" : {
+      "bigg_id" : "NADH9",
+      "genes" : [ ],
+      "label_x" : 7494.4272905937505,
+      "label_y" : 5321.8159799375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADH dehydrogenase (demethylmenaquinone-8 & 0 protons)",
+      "segments" : { }
+    },
+    "_2075860" : {
+      "bigg_id" : "NO3R2bpp",
+      "genes" : [ ],
+      "label_x" : 8710.877058153861,
+      "label_y" : 2832.06462302633,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no3_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Nitrate reductase (Menaquinol-8) (periplasm)",
+      "segments" : { }
+    },
+    "_2075981" : {
+      "bigg_id" : "MGSA",
+      "genes" : [ ],
+      "label_x" : 1557.7499444999999,
+      "label_y" : 2664.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mthgxl_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      } ],
+      "name" : "methylglyoxal synthase",
+      "segments" : { }
+    },
+    "_2075980" : {
+      "bigg_id" : "PFK_3",
+      "genes" : [ ],
+      "label_x" : 2947.847200380557,
+      "label_y" : 2674.368604951842,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "s17bp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "s7p_c"
+      } ],
+      "name" : "phosphofructokinase (s7p)",
+      "segments" : { }
+    },
+    "_2076040" : {
+      "bigg_id" : "ACALD",
+      "genes" : [ ],
+      "label_x" : 3351.7500445,
+      "label_y" : 4741.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_c"
+      } ],
+      "name" : "acetaldehyde dehydrogenase (acetylating)",
+      "segments" : { }
+    },
+    "_2076041" : {
+      "bigg_id" : "HCO3E",
+      "genes" : [ ],
+      "label_x" : 5304.7500445000005,
+      "label_y" : 618.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "hco3_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      } ],
+      "name" : "HCO3 equilibration reaction",
+      "segments" : { }
+    },
+    "_2076042" : {
+      "bigg_id" : "FHL",
+      "genes" : [ ],
+      "label_x" : 1851.7499444999999,
+      "label_y" : 4881.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "Formate-hydrogen lyase",
+      "segments" : { }
+    },
+    "_2076043" : {
+      "bigg_id" : "GLCS1",
+      "genes" : [ ],
+      "label_x" : 1115.7499444999999,
+      "label_y" : 1488.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glycogen_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adpglc_c"
+      } ],
+      "name" : "glycogen synthase (ADPGlc)",
+      "segments" : { }
+    },
+    "_2076044" : {
+      "bigg_id" : "G6Ptex",
+      "genes" : [ ],
+      "label_x" : 2150.7499445,
+      "label_y" : 381.44996899999995,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_e"
+      } ],
+      "name" : "glucose 6-phosphate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076045" : {
+      "bigg_id" : "OAADC",
+      "genes" : [ ],
+      "label_x" : 2811.7500445,
+      "label_y" : 4018.4497689999994,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "oxaloacetate decarboxylase",
+      "segments" : { }
+    },
+    "_2076046" : {
+      "bigg_id" : "DMSOR2pp",
+      "genes" : [ ],
+      "label_x" : 8462.85209528125,
+      "label_y" : 5710.43170259375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dms_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_p"
+      } ],
+      "name" : "Dimethyl sulfoxide reductase (Demethylmenaquinol 8) (periplasm)",
+      "segments" : { }
+    },
+    "_2076047" : {
+      "bigg_id" : "LDH_D2",
+      "genes" : [ ],
+      "label_x" : 6989.0029741875005,
+      "label_y" : 1192.5948054257813,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "D-lactate dehydrogenase",
+      "segments" : { }
+    },
+    "_2076048" : {
+      "bigg_id" : "LDH_D2",
+      "genes" : [ ],
+      "label_x" : 1606.6700438027624,
+      "label_y" : 4368.462010624932,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "D-lactate dehydrogenase",
+      "segments" : { }
+    },
+    "_2076049" : {
+      "bigg_id" : "L__LACD2",
+      "genes" : [ ],
+      "label_x" : 7810.898861047709,
+      "label_y" : 1178.3191706359803,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "L-Lactate dehydrogenase (ubiquinone)",
+      "segments" : { }
+    },
+    "_2075869" : {
+      "bigg_id" : "GLYCtex",
+      "genes" : [ ],
+      "label_x" : 506.74995450000006,
+      "label_y" : 2196.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_e"
+      } ],
+      "name" : "glycerol transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075879" : {
+      "bigg_id" : "G3PD5",
+      "genes" : [ ],
+      "label_x" : 7418.6958452812505,
+      "label_y" : 1222.6502253476563,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "glycerol-3-phosphate dehydrogenase (ubiquinone-8)",
+      "segments" : { }
+    },
+    "_2075999" : {
+      "bigg_id" : "DMSOR2",
+      "genes" : [ ],
+      "label_x" : 7831.4707476250005,
+      "label_y" : 5693.41900728125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dms_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      } ],
+      "name" : "Dimethyl sulfoxide reductase (Demethylmenaquinol 8)",
+      "segments" : { }
+    },
+    "_2075878" : {
+      "bigg_id" : "SPODMpp",
+      "genes" : [ ],
+      "label_x" : 5735.6074663750005,
+      "label_y" : 5119.83599946875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "o2_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2s_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "superoxide dismutase",
+      "segments" : { }
+    },
+    "_2075998" : {
+      "bigg_id" : "SUCCtex",
+      "genes" : [ ],
+      "label_x" : 5317.7500445000005,
+      "label_y" : 3161.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_e"
+      } ],
+      "name" : "succinate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075877" : {
+      "bigg_id" : "H2tpp",
+      "genes" : [ ],
+      "label_x" : 1851.7499444999999,
+      "label_y" : 5331.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_p"
+      } ],
+      "name" : "hydrogen transport diffusion (periplasm)",
+      "segments" : { }
+    },
+    "_2075997" : {
+      "bigg_id" : "ALCD2x",
+      "genes" : [ ],
+      "label_x" : 3761.7500445,
+      "label_y" : 5031.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "etoh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "alcohol dehydrogenase (ethanol)",
+      "segments" : { }
+    },
+    "_2075996" : {
+      "bigg_id" : "PPKr",
+      "genes" : [ ],
+      "label_x" : 5887.7500445000005,
+      "label_y" : 6067.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "polyphosphate kinase",
+      "segments" : { }
+    },
+    "_2075875" : {
+      "bigg_id" : "ETOHtex",
+      "genes" : [ ],
+      "label_x" : 4001.7500445,
+      "label_y" : 5711.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "etoh_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "etoh_e"
+      } ],
+      "name" : "ethanol transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075995" : {
+      "bigg_id" : "SUCCt3pp",
+      "genes" : [ ],
+      "label_x" : 4929.4043413750005,
+      "label_y" : 3293.6247736875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      } ],
+      "name" : "succinate transport out via proton antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2075874" : {
+      "bigg_id" : "CAT",
+      "genes" : [ ],
+      "label_x" : 5182.3686968437505,
+      "label_y" : 5036.92486665625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h2o2_c"
+      } ],
+      "name" : "catalase",
+      "segments" : { }
+    },
+    "_2075994" : {
+      "bigg_id" : "THD2pp",
+      "genes" : [ ],
+      "label_x" : 3562.7500445,
+      "label_y" : 740.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      } ],
+      "name" : "NAD(P) transhydrogenase (periplasm)",
+      "segments" : { }
+    },
+    "_2075873" : {
+      "bigg_id" : "FUMtex",
+      "genes" : [ ],
+      "label_x" : 5295.7500445000005,
+      "label_y" : 2886.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_e"
+      } ],
+      "name" : "Fumarate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075993" : {
+      "bigg_id" : "TKT1",
+      "genes" : [ ],
+      "label_x" : 3173.521773015625,
+      "label_y" : 2009.127459234375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "s7p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "r5p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xu5p__D_c"
+      } ],
+      "name" : "transketolase",
+      "segments" : { }
+    },
+    "_2075872" : {
+      "bigg_id" : "PGK",
+      "genes" : [ ],
+      "label_x" : 1897.7499444999999,
+      "label_y" : 3020.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_13dpg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_3pg_c"
+      } ],
+      "name" : "phosphoglycerate kinase",
+      "segments" : { }
+    },
+    "_2075992" : {
+      "bigg_id" : "GLYCTO2",
+      "genes" : [ ],
+      "label_x" : 7602.9087359062505,
+      "label_y" : 1390.9445368710938,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glx_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyclt_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "Glycolate oxidase",
+      "segments" : { }
+    },
+    "_2075871" : {
+      "bigg_id" : "GLYOX",
+      "genes" : [ ],
+      "label_x" : 1408.7499444999999,
+      "label_y" : 3675.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "gthrd_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lgt__S_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "hydroxyacylglutathione hydrolase",
+      "segments" : { }
+    },
+    "_2075991" : {
+      "bigg_id" : "PYRt2rpp",
+      "genes" : [ ],
+      "label_x" : 1525.7499444999999,
+      "label_y" : 5325.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_p"
+      } ],
+      "name" : "pyruvate reversible transport via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075870" : {
+      "bigg_id" : "QMO3",
+      "genes" : [ ],
+      "label_x" : 7467.1562945000005,
+      "label_y" : 3154.057146734375,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2s_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "quinol monooxygenase (menaquinol 8)",
+      "segments" : { }
+    },
+    "_2075990" : {
+      "bigg_id" : "GLYC3Pt6pp",
+      "genes" : [ ],
+      "label_x" : 916.7499445,
+      "label_y" : 3054.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_p"
+      } ],
+      "name" : "Glycerol-3-phosphate : phosphate antiporter (periplasm)",
+      "segments" : { }
+    },
+    "_2076051" : {
+      "bigg_id" : "L__LACD3",
+      "genes" : [ ],
+      "label_x" : 1500.8206232109374,
+      "label_y" : 4533.213440875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "L-Lactate dehydrogenase (menaquinone)",
+      "segments" : { }
+    },
+    "_2075889" : {
+      "bigg_id" : "ATPS4rpp",
+      "genes" : [ ],
+      "label_x" : 4330.7500445000005,
+      "label_y" : 699.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "ATP synthase (four protons for one ATP) (periplasm)",
+      "segments" : { }
+    },
+    "_2075888" : {
+      "bigg_id" : "DMSOtpp",
+      "genes" : [ ],
+      "label_x" : 8253.7432085625,
+      "label_y" : 5566.65533540625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_p"
+      } ],
+      "name" : "Dimethyl sulfoxide transport via diffusion (periplasm)",
+      "segments" : { }
+    },
+    "_2075887" : {
+      "bigg_id" : "_12PPDRtpp",
+      "genes" : [ ],
+      "label_x" : 836.7499445,
+      "label_y" : 3684.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_12ppd__R_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_12ppd__R_p"
+      } ],
+      "name" : "(R)-Propane-1,2-diol facilitated transport (periplasm)",
+      "segments" : { }
+    },
+    "_2075886" : {
+      "bigg_id" : "PGL",
+      "genes" : [ ],
+      "label_x" : 2513.69975153125,
+      "label_y" : 1549.20143384375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_6pgc_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_6pgl_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "6-phosphogluconolactonase",
+      "segments" : { }
+    },
+    "_2075885" : {
+      "bigg_id" : "MALt2_2pp",
+      "genes" : [ ],
+      "label_x" : 4921.7500445000005,
+      "label_y" : 2657.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_p"
+      } ],
+      "name" : "Malate transport via proton symport (2 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2075884" : {
+      "bigg_id" : "AKGt2rpp",
+      "genes" : [ ],
+      "label_x" : 4931.7500445000005,
+      "label_y" : 3928.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "2-oxoglutarate reversible transport via symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075883" : {
+      "bigg_id" : "GLYK",
+      "genes" : [ ],
+      "label_x" : 1260.7499444999999,
+      "label_y" : 2346.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_c"
+      } ],
+      "name" : "glycerol kinase",
+      "segments" : { }
+    },
+    "_2075882" : {
+      "bigg_id" : "ACS",
+      "genes" : [ ],
+      "label_x" : 2651.7500445,
+      "label_y" : 4643.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "amp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      } ],
+      "name" : "acetyl-CoA synthetase",
+      "segments" : { }
+    },
+    "_2075881" : {
+      "bigg_id" : "G6PDH2r",
+      "genes" : [ ],
+      "label_x" : 2141.727727703125,
+      "label_y" : 1552.4500910703125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_6pgl_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      } ],
+      "name" : "glucose 6-phosphate dehydrogenase",
+      "segments" : { }
+    },
+    "_2075880" : {
+      "bigg_id" : "PGMT",
+      "genes" : [ ],
+      "label_x" : 1687.7499444999999,
+      "label_y" : 1552.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_c"
+      } ],
+      "name" : "phosphoglucomutase",
+      "segments" : { }
+    },
+    "_2076050" : {
+      "bigg_id" : "GLCptspp",
+      "genes" : [ ],
+      "label_x" : 1686.3060968437499,
+      "label_y" : 3956.92701978125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      } ],
+      "name" : "D-glucose transport via PEP:Pyr PTS (periplasm)",
+      "segments" : { }
+    },
+    "_2075899" : {
+      "bigg_id" : "FRUptspp",
+      "genes" : [ ],
+      "label_x" : 832.2059381523437,
+      "label_y" : 2003.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f1p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fru_p"
+      } ],
+      "name" : "D-fructose transport via PEP:Pyr PTS (periplasm)",
+      "segments" : { }
+    },
+    "_2075898" : {
+      "bigg_id" : "DMSOR1pp",
+      "genes" : [ ],
+      "label_x" : 8716.71828278125,
+      "label_y" : 3213.777849859375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dms_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dmso_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Dimethyl sulfoxide reductase (Menaquinol 8) (periplasm)",
+      "segments" : { }
+    },
+    "_2075897" : {
+      "bigg_id" : "CYTBO3_4pp",
+      "genes" : [ ],
+      "label_x" : 8285.09525934375,
+      "label_y" : 797.4783503476563,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 0.5,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "cytochrome oxidase bo3 (ubiquinol-8: 4 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075896" : {
+      "bigg_id" : "MALtex",
+      "genes" : [ ],
+      "label_x" : 5292.7500445000005,
+      "label_y" : 2677.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_e"
+      } ],
+      "name" : "Malate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075895" : {
+      "bigg_id" : "G1Ptex",
+      "genes" : [ ],
+      "label_x" : 1156.7499444999999,
+      "label_y" : 404.44996899999995,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_e"
+      } ],
+      "name" : "D-glucose 1-phosphate transport via diffusion",
+      "segments" : { }
+    },
+    "_2075894" : {
+      "bigg_id" : "XYLt2pp",
+      "genes" : [ ],
+      "label_x" : 4925.7500445000005,
+      "label_y" : 1365.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_p"
+      } ],
+      "name" : "D-xylose transport in via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075893" : {
+      "bigg_id" : "RPI",
+      "genes" : [ ],
+      "label_x" : 3271.180464421875,
+      "label_y" : 1727.20143384375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ru5p__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "r5p_c"
+      } ],
+      "name" : "ribose-5-phosphate isomerase",
+      "segments" : { }
+    },
+    "_2075892" : {
+      "bigg_id" : "GLDBRAN2",
+      "genes" : [ ],
+      "label_x" : 1065.7499444999999,
+      "label_y" : 1158.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glycogen_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "bglycogen_c"
+      } ],
+      "name" : "glycogen debranching enzyme (bglycogen -> glycogen)",
+      "segments" : { }
+    },
+    "_2075891" : {
+      "bigg_id" : "ACKr",
+      "genes" : [ ],
+      "label_x" : 2741.7500445,
+      "label_y" : 4793.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "actp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "acetate kinase",
+      "segments" : { }
+    },
+    "_2075890" : {
+      "bigg_id" : "NADH16pp",
+      "genes" : [ ],
+      "label_x" : 6324.0874468437505,
+      "label_y" : 749.1234919492188,
+      "metabolites" : [ {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "NADH dehydrogenase (ubiquinone-8 & 3 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075939" : {
+      "bigg_id" : "LCARR",
+      "genes" : [ ],
+      "label_x" : 1136.7499444999999,
+      "label_y" : 3564.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_12ppd__R_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lald__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "lacaldehyde reductase (R-propane-1,2-diol forming)",
+      "segments" : { }
+    },
+    "_2075938" : {
+      "bigg_id" : "LDH_D",
+      "genes" : [ ],
+      "label_x" : 1597.7499444999999,
+      "label_y" : 4239.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "D-lactate dehydrogenase",
+      "segments" : { }
+    },
+    "_2075937" : {
+      "bigg_id" : "NADH5",
+      "genes" : [ ],
+      "label_x" : 6803.7129351250005,
+      "label_y" : 1194.3905817929688,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "NADH dehydrogenase (ubiquinone-8 )",
+      "segments" : { }
+    },
+    "_2075936" : {
+      "bigg_id" : "TMAOR1pp",
+      "genes" : [ ],
+      "label_x" : 8715.32472809375,
+      "label_y" : 3532.053484625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tma_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tmao_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Trimethylamine N-oxide reductase (menaquinol 8) (periplasm)",
+      "segments" : { }
+    },
+    "_2075935" : {
+      "bigg_id" : "GLCP2",
+      "genes" : [ ],
+      "label_x" : 1396.7499444999999,
+      "label_y" : 1048.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "bglycogen_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "glycogen phosphorylase",
+      "segments" : { }
+    },
+    "_2075945" : {
+      "bigg_id" : "PPS",
+      "genes" : [ ],
+      "label_x" : 1880.1996515312499,
+      "label_y" : 3954.4109065,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "amp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      } ],
+      "name" : "phosphoenolpyruvate synthase",
+      "segments" : { }
+    },
+    "_2075944" : {
+      "bigg_id" : "GLYC3Ptex",
+      "genes" : [ ],
+      "label_x" : 511.0727694414063,
+      "label_y" : 2996.0642268125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_e"
+      } ],
+      "name" : "Glycerol-3-phosphate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075943" : {
+      "bigg_id" : "NADPHQR3",
+      "genes" : [ ],
+      "label_x" : 7935.6333452812505,
+      "label_y" : 3444.228045171875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADPH Quinone Reductase (Menaquinone-8)",
+      "segments" : { }
+    },
+    "_2075942" : {
+      "bigg_id" : "FRD2",
+      "genes" : [ ],
+      "label_x" : 3851.7500445,
+      "label_y" : 3173.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "fumarate reductase",
+      "segments" : { }
+    },
+    "_2075941" : {
+      "bigg_id" : "RPE",
+      "genes" : [ ],
+      "label_x" : 3092.180464421875,
+      "label_y" : 1695.20143384375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "xu5p__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ru5p__D_c"
+      } ],
+      "name" : "ribulose 5-phosphate 3-epimerase",
+      "segments" : { }
+    },
+    "_2075940" : {
+      "bigg_id" : "PGM",
+      "genes" : [ ],
+      "label_x" : 1897.7499444999999,
+      "label_y" : 3290.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_3pg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2pg_c"
+      } ],
+      "name" : "phosphoglycerate mutase",
+      "segments" : { }
+    },
+    "_2076000" : {
+      "bigg_id" : "ALDD2x",
+      "genes" : [ ],
+      "label_x" : 3081.7500445,
+      "label_y" : 4970.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_c"
+      } ],
+      "name" : "aldehyde dehydrogenase (acetaldehyde, NAD)",
+      "segments" : { }
+    },
+    "_2076001" : {
+      "bigg_id" : "G3PD2",
+      "genes" : [ ],
+      "label_x" : 1479.7499444999999,
+      "label_y" : 2568.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      } ],
+      "name" : "glycerol-3-phosphate dehydrogenase (NADP)",
+      "segments" : { }
+    },
+    "_2076002" : {
+      "bigg_id" : "XYLI1",
+      "genes" : [ ],
+      "label_x" : 4353.7500445000005,
+      "label_y" : 1508.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "xylu__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_c"
+      } ],
+      "name" : "xylose isomerase",
+      "segments" : { }
+    },
+    "_2076003" : {
+      "bigg_id" : "NTRIR4pp",
+      "genes" : [ ],
+      "label_x" : 8278.733352797155,
+      "label_y" : 2558.851125983305,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nh4_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "nitrite Reductase (Menaquinole-8, periplasm)",
+      "segments" : { }
+    },
+    "_2076004" : {
+      "bigg_id" : "CITL",
+      "genes" : [ ],
+      "label_x" : 3506.7500445,
+      "label_y" : 4171.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_c"
+      } ],
+      "name" : "Citrate lyase",
+      "segments" : { }
+    },
+    "_2076005" : {
+      "bigg_id" : "FORt2pp",
+      "genes" : [ ],
+      "label_x" : 2341.7500445,
+      "label_y" : 5321.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_p"
+      } ],
+      "name" : "formate transport via proton symport (uptake only, periplasm)",
+      "segments" : { }
+    },
+    "_2076006" : {
+      "bigg_id" : "GLCtex",
+      "genes" : [ ],
+      "label_x" : 1889.7499444999999,
+      "label_y" : 391.44996899999995,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_e"
+      } ],
+      "name" : "glucose transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076007" : {
+      "bigg_id" : "PYRtex",
+      "genes" : [ ],
+      "label_x" : 1524.7499444999999,
+      "label_y" : 5702.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_e"
+      } ],
+      "name" : "pyruvate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076008" : {
+      "bigg_id" : "SUCDi",
+      "genes" : [ ],
+      "label_x" : 3821.7500445,
+      "label_y" : 3248.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "succinate dehydrogenase (irreversible)",
+      "segments" : { }
+    },
+    "_2075949" : {
+      "bigg_id" : "TMAOR2",
+      "genes" : [ ],
+      "label_x" : 8048.5630327812505,
+      "label_y" : 5251.88678071875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tma_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "tmao_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "Trimethylamine N-oxide reductase (demethylmenaquinol 8)",
+      "segments" : { }
+    },
+    "_2076009" : {
+      "bigg_id" : "FORtppi",
+      "genes" : [ ],
+      "label_x" : 2251.7499445,
+      "label_y" : 5321.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_c"
+      } ],
+      "name" : "formate transport via diffusion (cytoplasm to periplasm)",
+      "segments" : { }
+    },
+    "_2075948" : {
+      "bigg_id" : "GLCptspp",
+      "genes" : [ ],
+      "label_x" : 1892.7499444999999,
+      "label_y" : 705.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      } ],
+      "name" : "D-glucose transport via PEP:Pyr PTS (periplasm)",
+      "segments" : { }
+    },
+    "_2075947" : {
+      "bigg_id" : "G3PD7",
+      "genes" : [ ],
+      "label_x" : 7256.2432085625005,
+      "label_y" : 5568.994690875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      } ],
+      "name" : "glycerol-3-phosphate dehydrogenase (demethylmenaquinone-8)",
+      "segments" : { }
+    },
+    "_2075946" : {
+      "bigg_id" : "GLBRAN2",
+      "genes" : [ ],
+      "label_x" : 1155.7499444999999,
+      "label_y" : 1158.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "bglycogen_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glycogen_c"
+      } ],
+      "name" : "1,4-alpha-glucan branching enzyme (glycogen -> bglycogen)",
+      "segments" : { }
+    },
+    "_2075956" : {
+      "bigg_id" : "HYD1pp",
+      "genes" : [ ],
+      "label_x" : 6346.2661577812505,
+      "label_y" : 1651.6501032773438,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "hydrogenase (ubiquinone-8: 2 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075955" : {
+      "bigg_id" : "FBP",
+      "genes" : [ ],
+      "label_x" : 1848.7499444999999,
+      "label_y" : 2018.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fdp_c"
+      } ],
+      "name" : "fructose-bisphosphatase",
+      "segments" : { }
+    },
+    "_2075954" : {
+      "bigg_id" : "SUCCt2_3pp",
+      "genes" : [ ],
+      "label_x" : 4918.4228960625005,
+      "label_y" : 3089.9294611875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_p"
+      } ],
+      "name" : "Succintate transport via proton symport (3 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2075953" : {
+      "bigg_id" : "SUCCt2_2pp",
+      "genes" : [ ],
+      "label_x" : 4921.7500445000005,
+      "label_y" : 3166.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_p"
+      } ],
+      "name" : "succinate transport via proton symport (2 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2075952" : {
+      "bigg_id" : "SPODM",
+      "genes" : [ ],
+      "label_x" : 5729.1299273125005,
+      "label_y" : 4975.05865571875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2s_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "superoxide dismutase",
+      "segments" : { }
+    },
+    "_2075950" : {
+      "bigg_id" : "FDH5pp",
+      "genes" : [ ],
+      "label_x" : 6038.794966375006,
+      "label_y" : 3773.2463557187507,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "Formate Dehydrogenase (menaquinone-8) (periplasm)",
+      "segments" : { }
+    },
+    "_2076010" : {
+      "bigg_id" : "TALA",
+      "genes" : [ ],
+      "label_x" : 2946.2660267491933,
+      "label_y" : 2167.768464273483,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "e4p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "s7p_c"
+      } ],
+      "name" : "transaldolase",
+      "segments" : { }
+    },
+    "_2076011" : {
+      "bigg_id" : "TKT2",
+      "genes" : [ ],
+      "label_x" : 2529.830122625,
+      "label_y" : 1802.99244946875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "e4p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xu5p__D_c"
+      } ],
+      "name" : "transketolase",
+      "segments" : { }
+    },
+    "_2076012" : {
+      "bigg_id" : "XYLtex",
+      "genes" : [ ],
+      "label_x" : 5234.7500445000005,
+      "label_y" : 1511.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_e"
+      } ],
+      "name" : "D-xylose transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076013" : {
+      "bigg_id" : "AKGDH",
+      "genes" : [ ],
+      "label_x" : 4454.4228960625005,
+      "label_y" : 3702.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      } ],
+      "name" : "2-Oxogluterate dehydrogenase",
+      "segments" : { }
+    },
+    "_2076014" : {
+      "bigg_id" : "AKGtex",
+      "genes" : [ ],
+      "label_x" : 5204.7500445000005,
+      "label_y" : 3928.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_e"
+      } ],
+      "name" : "alpha-ketoglutarate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2076016" : {
+      "bigg_id" : "NO3R2pp",
+      "genes" : [ ],
+      "label_x" : 8266.039826273884,
+      "label_y" : 4030.4041105252095,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no3_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "Nitrate reductase (Menaquinol-8) (periplasm)",
+      "segments" : { }
+    },
+    "_2076017" : {
+      "bigg_id" : "LGTHL",
+      "genes" : [ ],
+      "label_x" : 1408.7499444999999,
+      "label_y" : 3302.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lgt__S_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mthgxl_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "gthrd_c"
+      } ],
+      "name" : "lactoylglutathione lyase",
+      "segments" : { }
+    },
+    "_2076018" : {
+      "bigg_id" : "ALDD2y",
+      "genes" : [ ],
+      "label_x" : 3081.7500445,
+      "label_y" : 5075.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_c"
+      } ],
+      "name" : "aldehyde dehydrogenase (acetaldehyde, NADP)",
+      "segments" : { }
+    },
+    "_2076019" : {
+      "bigg_id" : "EDD",
+      "genes" : [ ],
+      "label_x" : 2729.54936090625,
+      "label_y" : 1949.334490484375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2ddg6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_6pgc_c"
+      } ],
+      "name" : "6-phosphogluconate dehydratase",
+      "segments" : { }
+    },
+    "_2075839" : {
+      "bigg_id" : "MDH",
+      "genes" : [ ],
+      "label_x" : 3275.05863825,
+      "label_y" : 3760.4314143125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "malate dehydrogenase",
+      "segments" : { }
+    },
+    "_2075959" : {
+      "bigg_id" : "ICL",
+      "genes" : [ ],
+      "label_x" : 4091.7500445000005,
+      "label_y" : 4158.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glx_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "icit_c"
+      } ],
+      "name" : "Isocitrate lyase",
+      "segments" : { }
+    },
+    "_2075958" : {
+      "bigg_id" : "_12PPDRtex",
+      "genes" : [ ],
+      "label_x" : 506.74995450000006,
+      "label_y" : 3684.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_12ppd__R_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_12ppd__R_e"
+      } ],
+      "name" : "(R)-Propane-1,2-diol transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075957" : {
+      "bigg_id" : "TPI",
+      "genes" : [ ],
+      "label_x" : 1771.7499444999999,
+      "label_y" : 2568.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      } ],
+      "name" : "triose-phosphate isomerase",
+      "segments" : { }
+    },
+    "_2075967" : {
+      "bigg_id" : "GLCDpp",
+      "genes" : [ ],
+      "label_x" : 5907.6963335625005,
+      "label_y" : 1182.1535212460938,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glcn_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "Glucose dehydrogenase (ubiquinone-8 as acceptor) (periplasm)",
+      "segments" : { }
+    },
+    "_2075846" : {
+      "bigg_id" : "ACONMT",
+      "genes" : [ ],
+      "label_x" : 3888.7500445,
+      "label_y" : 4776.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ahcys_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "aconm_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acon__T_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "amet_c"
+      } ],
+      "name" : "Trans-aconitate methyltransferase",
+      "segments" : { }
+    },
+    "_2075966" : {
+      "bigg_id" : "G3PT",
+      "genes" : [ ],
+      "label_x" : 1316.7499444999999,
+      "label_y" : 2347.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "glycerol-3-phosphatase",
+      "segments" : { }
+    },
+    "_2075845" : {
+      "bigg_id" : "G1PPpp",
+      "genes" : [ ],
+      "label_x" : 1366.7499444999999,
+      "label_y" : 484.44996899999995,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g1p_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      } ],
+      "name" : "Glucose-1-phosphatase",
+      "segments" : { }
+    },
+    "_2075965" : {
+      "bigg_id" : "L__LACD3",
+      "genes" : [ ],
+      "label_x" : 6765.8628374687505,
+      "label_y" : 3290.991717046875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "L-Lactate dehydrogenase (menaquinone)",
+      "segments" : { }
+    },
+    "_2075844" : {
+      "bigg_id" : "D__LACt2pp",
+      "genes" : [ ],
+      "label_x" : 838.7499445,
+      "label_y" : 4239.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "D-lactate transport via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075964" : {
+      "bigg_id" : "ENO",
+      "genes" : [ ],
+      "label_x" : 1897.7499444999999,
+      "label_y" : 3520.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2pg_c"
+      } ],
+      "name" : "enolase",
+      "segments" : { }
+    },
+    "_2075843" : {
+      "bigg_id" : "MALt3pp",
+      "genes" : [ ],
+      "label_x" : 4928.7500445000005,
+      "label_y" : 2506.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "L-malate transport out via proton antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2075963" : {
+      "bigg_id" : "FORtex",
+      "genes" : [ ],
+      "label_x" : 2302.7499445,
+      "label_y" : 5711.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_e"
+      } ],
+      "name" : "formate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075842" : {
+      "bigg_id" : "NADH17pp",
+      "genes" : [ ],
+      "label_x" : 6342.4018999687505,
+      "label_y" : 3119.1521174375,
+      "metabolites" : [ {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 4.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADH dehydrogenase (menaquinone-8 & 3 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075962" : {
+      "bigg_id" : "MDH3",
+      "genes" : [ ],
+      "label_x" : 3399.1924273125,
+      "label_y" : 3775.412859625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "Malate dehydrogenase (menaquinone 8 as acceptor)",
+      "segments" : { }
+    },
+    "_2075841" : {
+      "bigg_id" : "NADPHQR4",
+      "genes" : [ ],
+      "label_x" : 7631.4707476250005,
+      "label_y" : 5475.41900728125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADPH Quinone Reductase (2-Demethylmenaquinone-8)",
+      "segments" : { }
+    },
+    "_2075961" : {
+      "bigg_id" : "D__LACtex",
+      "genes" : [ ],
+      "label_x" : 503.7499545,
+      "label_y" : 4239.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__D_e"
+      } ],
+      "name" : "D-lactate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075840" : {
+      "bigg_id" : "NTRIR3pp",
+      "genes" : [ ],
+      "label_x" : 8251.17503062666,
+      "label_y" : 437.54231328053964,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nh4_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "q8h2_c"
+      } ],
+      "name" : "nitrite Reductase (Ubiquinole-8, periplasm)",
+      "segments" : { }
+    },
+    "_2075960" : {
+      "bigg_id" : "ICDHyr",
+      "genes" : [ ],
+      "label_x" : 4288.7500445000005,
+      "label_y" : 4151.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "akg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "icit_c"
+      } ],
+      "name" : "isocitrate dehydrogenase (NADP)",
+      "segments" : { }
+    },
+    "_2076020" : {
+      "bigg_id" : "FRUK",
+      "genes" : [ ],
+      "label_x" : 1368.7499444999999,
+      "label_y" : 2005.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fdp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "f1p_c"
+      } ],
+      "name" : "fructose-1-phosphate kinase",
+      "segments" : { }
+    },
+    "_2076021" : {
+      "bigg_id" : "FDH4pp",
+      "genes" : [ ],
+      "label_x" : 6332.1211382500005,
+      "label_y" : 1073.4140192929688,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "formate dehydrogenase (quinone-8) (periplasm)",
+      "segments" : { }
+    },
+    "_2076023" : {
+      "bigg_id" : "MOX",
+      "genes" : [ ],
+      "label_x" : 3128.6533648125,
+      "label_y" : 3776.5466486875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      } ],
+      "name" : "malate oxidase",
+      "segments" : { }
+    },
+    "_2076024" : {
+      "bigg_id" : "CO2tpp",
+      "genes" : [ ],
+      "label_x" : 4516.7500445000005,
+      "label_y" : 5344.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_p"
+      } ],
+      "name" : "CO2 transporter via diffusion (periplasm)",
+      "segments" : { }
+    },
+    "_2076025" : {
+      "bigg_id" : "ME1",
+      "genes" : [ ],
+      "label_x" : 2903.2100054375,
+      "label_y" : 3540.762469,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "malic enzyme (NAD)",
+      "segments" : { }
+    },
+    "_2076026" : {
+      "bigg_id" : "XYLK",
+      "genes" : [ ],
+      "label_x" : 3909.7500445,
+      "label_y" : 1509.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xu5p__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xylu__D_c"
+      } ],
+      "name" : "xylulokinase",
+      "segments" : { }
+    },
+    "_2076027" : {
+      "bigg_id" : "G6Pt6_2pp",
+      "genes" : [ ],
+      "label_x" : 2150.7499445,
+      "label_y" : 721.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "pi_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g6p_p"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "Glucose-6-phosphate transport via phosphate antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2076028" : {
+      "bigg_id" : "NADTRHD",
+      "genes" : [ ],
+      "label_x" : 3563.7500445,
+      "label_y" : 1137.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "NAD transhydrogenase",
+      "segments" : { }
+    },
+    "_2076029" : {
+      "bigg_id" : "G3PD6",
+      "genes" : [ ],
+      "label_x" : 7118.6938921562505,
+      "label_y" : 3333.685564703125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "glycerol-3-phosphate dehydrogenase (menaquinone-8)",
+      "segments" : { }
+    },
+    "_2075849" : {
+      "bigg_id" : "ACONIs",
+      "genes" : [ ],
+      "label_x" : 3886.7500445,
+      "label_y" : 4544.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "acon__C_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acon__T_c"
+      } ],
+      "name" : "aconitate isomerase (spontaneous)",
+      "segments" : { }
+    },
+    "_2075969" : {
+      "bigg_id" : "RBK",
+      "genes" : [ ],
+      "label_x" : 3901.7500445,
+      "label_y" : 1857.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "r5p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "rib__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "ribokinase",
+      "segments" : { }
+    },
+    "_2075848" : {
+      "bigg_id" : "GLYCTO3",
+      "genes" : [ ],
+      "label_x" : 6955.8291460625005,
+      "label_y" : 3144.0271174375,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glx_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyclt_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "Glycolate oxidase",
+      "segments" : { }
+    },
+    "_2075968" : {
+      "bigg_id" : "GLCt2pp",
+      "genes" : [ ],
+      "label_x" : 1624.7499444999999,
+      "label_y" : 691.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glc__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "D-glucose transport in via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075847" : {
+      "bigg_id" : "ACALDtex",
+      "genes" : [ ],
+      "label_x" : 3351.7500445,
+      "label_y" : 5711.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_e"
+      } ],
+      "name" : "acetaldehyde transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075978" : {
+      "bigg_id" : "ACtex",
+      "genes" : [ ],
+      "label_x" : 2701.7500445,
+      "label_y" : 5711.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_e"
+      } ],
+      "name" : "Acetate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075857" : {
+      "bigg_id" : "CYTBDpp",
+      "genes" : [ ],
+      "label_x" : 8294.40971246875,
+      "label_y" : 1148.8919245664063,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 0.5,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "cytochrome oxidase bd (ubiquinol-8: 2 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075977" : {
+      "bigg_id" : "LALDO2x",
+      "genes" : [ ],
+      "label_x" : 1136.7499444999999,
+      "label_y" : 3314.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lald__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mthgxl_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "D-Lactaldehyde:NAD+ 1-oxidoreductase",
+      "segments" : { }
+    },
+    "_2075856" : {
+      "bigg_id" : "ETOHtrpp",
+      "genes" : [ ],
+      "label_x" : 3998.7500445,
+      "label_y" : 5324.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "etoh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "etoh_p"
+      } ],
+      "name" : "ethanol reversible transport via diffusion (periplasm)",
+      "segments" : { }
+    },
+    "_2075976" : {
+      "bigg_id" : "PFK",
+      "genes" : [ ],
+      "label_x" : 1942.7499444999999,
+      "label_y" : 2018.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fdp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "phosphofructokinase",
+      "segments" : { }
+    },
+    "_2075855" : {
+      "bigg_id" : "FBA3",
+      "genes" : [ ],
+      "label_x" : 2802.5148700516415,
+      "label_y" : 2892.446408069147,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "e4p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "s17bp_c"
+      } ],
+      "name" : "Sedoheptulose 1,7-bisphosphate D-glyceraldehyde-3-phosphate-lyase",
+      "segments" : { }
+    },
+    "_2075975" : {
+      "bigg_id" : "ACONTa",
+      "genes" : [ ],
+      "label_x" : 3747.51957575,
+      "label_y" : 4348.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "acon__C_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_c"
+      } ],
+      "name" : "aconitase (half-reaction A, Citrate hydro-lyase)",
+      "segments" : { }
+    },
+    "_2075854" : {
+      "bigg_id" : "HYD3pp",
+      "genes" : [ ],
+      "label_x" : 6616.0718218437505,
+      "label_y" : 5263.2632455625,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_c"
+      } ],
+      "name" : "Hydrogenase (Demethylmenaquinone-8: 2 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075974" : {
+      "bigg_id" : "H2tex",
+      "genes" : [ ],
+      "label_x" : 1851.7499444999999,
+      "label_y" : 5711.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_e"
+      } ],
+      "name" : "hydrogen transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075853" : {
+      "bigg_id" : "MALS",
+      "genes" : [ ],
+      "label_x" : 3609.943403875,
+      "label_y" : 3613.8884455625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glx_c"
+      } ],
+      "name" : "malate synthase",
+      "segments" : { }
+    },
+    "_2075973" : {
+      "bigg_id" : "SUCOAS",
+      "genes" : [ ],
+      "label_x" : 4316.7500445000005,
+      "label_y" : 3336.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      } ],
+      "name" : "succinyl-CoA synthetase (ADP-forming)",
+      "segments" : { }
+    },
+    "_2075852" : {
+      "bigg_id" : "F6Ptex",
+      "genes" : [ ],
+      "label_x" : 506.74995450000006,
+      "label_y" : 1691.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "f6p_e"
+      } ],
+      "name" : "fructose 6-phosphate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075972" : {
+      "bigg_id" : "CITt3pp",
+      "genes" : [ ],
+      "label_x" : 4957.8999468437505,
+      "label_y" : 4693.89947603125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      } ],
+      "name" : "citrate transport out via proton antiport (periplasm)",
+      "segments" : { }
+    },
+    "_2075851" : {
+      "bigg_id" : "PPC",
+      "genes" : [ ],
+      "label_x" : 2303.162298015625,
+      "label_y" : 3681.975359625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      } ],
+      "name" : "phosphoenolpyruvate carboxylase",
+      "segments" : { }
+    },
+    "_2075971" : {
+      "bigg_id" : "GAPD",
+      "genes" : [ ],
+      "label_x" : 1896.7499444999999,
+      "label_y" : 2700.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_13dpg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "glyceraldehyde-3-phosphate dehydrogenase",
+      "segments" : { }
+    },
+    "_2075850" : {
+      "bigg_id" : "CYTBD2pp",
+      "genes" : [ ],
+      "label_x" : 8538.478075613302,
+      "label_y" : 4033.7089203317587,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 0.5,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      } ],
+      "name" : "cytochrome oxidase bd (menaquinol-8: 2 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075970" : {
+      "bigg_id" : "PTAr",
+      "genes" : [ ],
+      "label_x" : 2741.7500445,
+      "label_y" : 4443.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "actp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      } ],
+      "name" : "phosphotransacetylase",
+      "segments" : { }
+    },
+    "_2075901" : {
+      "bigg_id" : "L__LACD2",
+      "genes" : [ ],
+      "label_x" : 1504.3640802421874,
+      "label_y" : 4618.0640268125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "L-Lactate dehydrogenase (ubiquinone)",
+      "segments" : { }
+    },
+    "_2075900" : {
+      "bigg_id" : "PPK2r",
+      "genes" : [ ],
+      "label_x" : 5438.7500445000005,
+      "label_y" : 6072.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "polyphosphate kinase",
+      "segments" : { }
+    },
+    "_2075909" : {
+      "bigg_id" : "DHAPT",
+      "genes" : [ ],
+      "label_x" : 1666.7499444999999,
+      "label_y" : 2364.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dhap_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dha_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      } ],
+      "name" : "Dihydroxyacetone phosphotransferase",
+      "segments" : { }
+    },
+    "_2075908" : {
+      "bigg_id" : "MALt2_3pp",
+      "genes" : [ ],
+      "label_x" : 4918.7500445000005,
+      "label_y" : 2700.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 3.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_p"
+      } ],
+      "name" : "Malate transport via proton symport (3 H) (periplasm)",
+      "segments" : { }
+    },
+    "_2075907" : {
+      "bigg_id" : "GLYCDx",
+      "genes" : [ ],
+      "label_x" : 1444.7499444999999,
+      "label_y" : 2196.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dha_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc_c"
+      } ],
+      "name" : "Glycerol dehydrogenase",
+      "segments" : { }
+    },
+    "_2075906" : {
+      "bigg_id" : "NADH10",
+      "genes" : [ ],
+      "label_x" : 7294.3965288750005,
+      "label_y" : 3146.944109625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "NADH dehydrogenase (menaquinone-8 & 0 protons)",
+      "segments" : { }
+    },
+    "_2075905" : {
+      "bigg_id" : "L__LACt2rpp",
+      "genes" : [ ],
+      "label_x" : 842.7499445,
+      "label_y" : 4527.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_p"
+      } ],
+      "name" : "L-lactate reversible transport via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075904" : {
+      "bigg_id" : "QMO2",
+      "genes" : [ ],
+      "label_x" : 8127.9927202812505,
+      "label_y" : 1408.3802058164063,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2s_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "o2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      } ],
+      "name" : "quinol monooxygenase (Ubiquinol-8)",
+      "segments" : { }
+    },
+    "_2075902" : {
+      "bigg_id" : "PYK",
+      "genes" : [ ],
+      "label_x" : 1948.6887872734374,
+      "label_y" : 3954.3169564999994,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "pyruvate kinase",
+      "segments" : { }
+    },
+    "_2075912" : {
+      "bigg_id" : "DSBAO2",
+      "genes" : [ ],
+      "label_x" : 5987.6338335625005,
+      "label_y" : 3284.545672125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "dsbaox_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "dsbard_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      } ],
+      "name" : "DsbA protein reoxidation reaction (anaerobic)",
+      "segments" : { }
+    },
+    "_2075911" : {
+      "bigg_id" : "NO3R1bpp",
+      "genes" : [ ],
+      "label_x" : 8572.21437653125,
+      "label_y" : 1495.7221247617188,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no3_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      } ],
+      "name" : "Nitrate reductase (Ubiquinol-8)",
+      "segments" : { }
+    },
+    "_2075910" : {
+      "bigg_id" : "CO2tex",
+      "genes" : [ ],
+      "label_x" : 4516.7500445000005,
+      "label_y" : 5714.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_e"
+      } ],
+      "name" : "CO2 transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075919" : {
+      "bigg_id" : "FRUtex",
+      "genes" : [ ],
+      "label_x" : 506.74995450000006,
+      "label_y" : 1918.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "fru_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fru_e"
+      } ],
+      "name" : "D-fructose transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075918" : {
+      "bigg_id" : "ACALDtpp",
+      "genes" : [ ],
+      "label_x" : 3351.7500445,
+      "label_y" : 5323.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acald_p"
+      } ],
+      "name" : "acetaldehyde reversible transport (periplasm)",
+      "segments" : { }
+    },
+    "_2075917" : {
+      "bigg_id" : "ME2",
+      "genes" : [ ],
+      "label_x" : 2913.2100054375,
+      "label_y" : 3570.762469,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      } ],
+      "name" : "malic enzyme (NADP)",
+      "segments" : { }
+    },
+    "_2075916" : {
+      "bigg_id" : "PDH",
+      "genes" : [ ],
+      "label_x" : 2337.7500445,
+      "label_y" : 4239.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadh_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nad_c"
+      } ],
+      "name" : "pyruvate dehydrogenase",
+      "segments" : { }
+    },
+    "_2075915" : {
+      "bigg_id" : "L__LACtex",
+      "genes" : [ ],
+      "label_x" : 506.74995450000006,
+      "label_y" : 4527.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "lac__L_e"
+      } ],
+      "name" : "L-lactate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075914" : {
+      "bigg_id" : "PPCK",
+      "genes" : [ ],
+      "label_x" : 2293.162298015625,
+      "label_y" : 3721.975359625,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "pep_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "oaa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "phosphoenolpyruvate carboxykinase",
+      "segments" : { }
+    },
+    "_2075913" : {
+      "bigg_id" : "GLYC3Pabcpp",
+      "genes" : [ ],
+      "label_x" : 916.7499445,
+      "label_y" : 2874.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyc3p_p"
+      } ],
+      "name" : "sn-Glycerol 3-phosphate transport via ABC system (periplasm)",
+      "segments" : { }
+    },
+    "_2075923" : {
+      "bigg_id" : "ACt2rpp",
+      "genes" : [ ],
+      "label_x" : 2701.7500445,
+      "label_y" : 5323.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_p"
+      } ],
+      "name" : "acetate reversible transport via proton symport (periplasm)",
+      "segments" : { }
+    },
+    "_2075922" : {
+      "bigg_id" : "PPA2",
+      "genes" : [ ],
+      "label_x" : 5435.7500445000005,
+      "label_y" : 6223.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "inorganic triphosphatase",
+      "segments" : { }
+    },
+    "_2075921" : {
+      "bigg_id" : "FRD3",
+      "genes" : [ ],
+      "label_x" : 3841.7500445,
+      "label_y" : 3068.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmq8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "succ_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2dmmql8_c"
+      } ],
+      "name" : "fumarate reductase",
+      "segments" : { }
+    },
+    "_2075920" : {
+      "bigg_id" : "XYLabcpp",
+      "genes" : [ ],
+      "label_x" : 4832.7500445000005,
+      "label_y" : 1509.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "xyl__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "D-xylose transport via ABC system (periplasm)",
+      "segments" : { }
+    },
+    "_2075929" : {
+      "bigg_id" : "RIBabcpp",
+      "genes" : [ ],
+      "label_x" : 4831.7500445000005,
+      "label_y" : 1889.099138921875,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "rib__D_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "rib__D_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "D-ribose transport via ABC system (periplasm)",
+      "segments" : { }
+    },
+    "_2075928" : {
+      "bigg_id" : "CITtex",
+      "genes" : [ ],
+      "label_x" : 5227.8999468437505,
+      "label_y" : 4610.89947603125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "cit_e"
+      } ],
+      "name" : "citrate transport via diffusion (extracellular to periplasm)",
+      "segments" : { }
+    },
+    "_2075927" : {
+      "bigg_id" : "ACONTb",
+      "genes" : [ ],
+      "label_x" : 4031.7500445,
+      "label_y" : 4318.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "icit_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "acon__C_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "aconitase (half-reaction B, Isocitrate hydro-lyase)",
+      "segments" : { }
+    },
+    "_2075926" : {
+      "bigg_id" : "NADPHQR2",
+      "genes" : [ ],
+      "label_x" : 6708.3105913750005,
+      "label_y" : 1156.2752253476563,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadp_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "nadph_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "NADPH Quinone Reductase (Ubiquinone-8)",
+      "segments" : { }
+    },
+    "_2075925" : {
+      "bigg_id" : "POX",
+      "genes" : [ ],
+      "label_x" : 7228.7300249687505,
+      "label_y" : 1320.3297907773438,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "ac_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "co2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      } ],
+      "name" : "pyruvate oxidase",
+      "segments" : { }
+    },
+    "_2075924" : {
+      "bigg_id" : "HYD2pp",
+      "genes" : [ ],
+      "label_x" : 6552.281391966073,
+      "label_y" : 2934.9346293803096,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mql8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "mqn8_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2_c"
+      } ],
+      "name" : "Hydrogenase (menaquinone8: 2 protons) (periplasm)",
+      "segments" : { }
+    },
+    "_2075934" : {
+      "bigg_id" : "NO3R1pp",
+      "genes" : [ ],
+      "label_x" : 8303.72904840625,
+      "label_y" : 1561.4783503476563,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "no2_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_p"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "no3_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "q8h2_c"
+      }, {
+        "coefficient" : 2.0,
+        "bigg_id" : "h_c"
+      } ],
+      "name" : "Nitrate reductase (Ubiquinol-8) (periplasm)",
+      "segments" : { }
+    },
+    "_2075933" : {
+      "bigg_id" : "PPA",
+      "genes" : [ ],
+      "label_x" : 5893.7500445000005,
+      "label_y" : 6223.449769,
+      "metabolites" : [ {
+        "coefficient" : 2.0,
+        "bigg_id" : "pi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "ppi_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "inorganic diphosphatase",
+      "segments" : { }
+    },
+    "_2075932" : {
+      "bigg_id" : "PFL",
+      "genes" : [ ],
+      "label_x" : 2161.7499445,
+      "label_y" : 4291.449769,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "accoa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "for_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "coa_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      } ],
+      "name" : "pyruvate formate lyase",
+      "segments" : { }
+    },
+    "_2075931" : {
+      "bigg_id" : "EDA",
+      "genes" : [ ],
+      "label_x" : 2434.1818071953126,
+      "label_y" : 2143.6892268125,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "g3p_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "pyr_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_2ddg6p_c"
+      } ],
+      "name" : "2-dehydro-3-deoxy-phosphogluconate aldolase",
+      "segments" : { }
+    },
+    "_2075930" : {
+      "bigg_id" : "FUM",
+      "genes" : [ ],
+      "label_x" : 3352.7500445,
+      "label_y" : 3370.449969,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "mal__L_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "fum_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "h2o_c"
+      } ],
+      "name" : "fumarase",
+      "segments" : { }
+    }
+  },
   "text_labels" : { }
 } ]
