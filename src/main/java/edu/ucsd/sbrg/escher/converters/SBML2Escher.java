@@ -1,5 +1,6 @@
 package edu.ucsd.sbrg.escher.converters;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import edu.ucsd.sbrg.escher.model.*;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.ext.layout.*;
@@ -33,6 +34,17 @@ public class SBML2Escher {
 
 
   public EscherMap convert(SBMLDocument document) {
+    this.document = document;
+
+    layouts = ((LayoutModelPlugin)document.getModel().getPlugin(LayoutConstants.shortLabel)).getListOfLayouts();
+    escherMaps.add(new EscherMap());
+
+    escherMaps.get(0).setCanvas(addCanvasInfo(layouts.get(0)));
+    escherMaps.get(0).setDescription(bundle.getString("default_description"));
+    escherMaps.get(0).setId(HexBin.encode(layouts.get(0).toString().getBytes()));
+    layouts.get(0).getListOfSpeciesGlyphs().forEach((sG) -> {
+      escherMaps.get(0).addNode(createNode(sG));
+    });
     return escherMaps.get(0);
   }
 
@@ -92,13 +104,34 @@ public class SBML2Escher {
     node.setX(speciesGlyph.getBoundingBox().getPosition().x());
     node.setY(speciesGlyph.getBoundingBox().getPosition().y());
     node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x());
-    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().y());
+    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y());
+
+    return node;
+  }
+
+
+  protected Node createMidmarker(ReactionGlyph reactionGlyph) {
+    Node node = new Node();
+
+    node.setType(Node.Type.midmarker);
+    node.setX(reactionGlyph.getBoundingBox().getPosition().getX() +
+        (reactionGlyph.getBoundingBox().getDimensions().getWidth() * 0.5));
+    node.setY(reactionGlyph.getBoundingBox().getPosition().getY() +
+        (reactionGlyph.getBoundingBox().getDimensions().getHeight() * 0.5));
 
     return node;
   }
 
 
   protected EscherReaction createReaction(ReactionGlyph reactionGlyph) {
+    EscherReaction reaction = new EscherReaction();
+
+    reaction.setName(reactionGlyph.getReactionInstance().getName());
+    reaction.setId(reactionGlyph.getId());
+    reaction.setBiggId(reactionGlyph.getReactionInstance().getId());
+    reaction.setLabelX(reactionGlyph.getBoundingBox().getPosition().getX());
+    reaction.setLabelY(reactionGlyph.getBoundingBox().getPosition().getY());
+
     throw new UnsupportedOperationException("Not yet implemented!");
   }
 

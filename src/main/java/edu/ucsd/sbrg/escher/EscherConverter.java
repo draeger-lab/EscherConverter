@@ -29,10 +29,7 @@ import de.zbit.util.ResourceManager;
 import de.zbit.util.Utils;
 import de.zbit.util.prefs.KeyProvider;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
-import edu.ucsd.sbrg.escher.converters.Escher2SBML;
-import edu.ucsd.sbrg.escher.converters.Escher2Standard;
-import edu.ucsd.sbrg.escher.converters.SBGN2Escher;
+import edu.ucsd.sbrg.escher.converters.*;
 import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
@@ -45,6 +42,7 @@ import org.sbgn.schematron.Issue;
 import org.sbgn.schematron.SchematronValidator;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.SBMLException;
+import org.sbml.jsbml.SBMLReader;
 import org.sbml.jsbml.SBMLWriter;
 import org.xml.sax.SAXException;
 
@@ -386,8 +384,8 @@ public class EscherConverter extends Launcher {
       break;
 
     case Escher:
-      SBGN2Escher converter = new SBGN2Escher();
-      EscherMap map = converter.convert(SbgnUtil.readFromFile(input));
+      SBML2Escher converter = new SBML2Escher();
+      EscherMap map = converter.convert(SBMLReader.read(input));
       writeEscherJson(map, output);
       break;
 
