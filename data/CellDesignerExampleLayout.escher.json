@@ -1,7 +1,10 @@
 [ {
   "map_description" : "No description provided with the document.",
   "map_id" : "6C61796F7574",
-  "map_name" : "CellDesignerExampleLayout.escher.json"
+  "map_name" : "CellDesignerExampleLayout.escher.json",
+  "nodes" : { },
+  "reactions" : { },
+  "text_labels" : { }
 }, {
   "canvas" : {
     "x" : 0.0,
@@ -10,117 +13,154 @@
     "width" : 680.0
   },
   "nodes" : {
-    "80660192" : {
-      "x" : 418.0,
-      "y" : 108.0,
-      "bigg_id" : "s19",
-      "label_x" : 418.0,
-      "label_y" : 108.0,
-      "name" : "s3",
-      "node_type" : "metabolite"
-    },
-    "80660193" : {
-      "x" : 258.0,
-      "y" : 68.0,
-      "bigg_id" : "s4",
-      "label_x" : 258.0,
-      "label_y" : 68.0,
-      "name" : "ATP",
-      "node_type" : "metabolite"
-    },
-    "80660190" : {
-      "x" : 528.0,
-      "y" : 188.5,
-      "bigg_id" : "s2",
-      "label_x" : 528.0,
-      "label_y" : 188.5,
-      "name" : "s2",
-      "node_type" : "metabolite"
-    },
-    "80660191" : {
-      "x" : 208.0,
-      "y" : 108.0,
-      "bigg_id" : "s19",
-      "label_x" : 208.0,
-      "label_y" : 108.0,
-      "name" : "s3",
-      "node_type" : "metabolite"
-    },
-    "80660194" : {
-      "x" : 388.0,
-      "y" : 68.0,
-      "bigg_id" : "s5",
-      "label_x" : 388.0,
-      "label_y" : 68.0,
-      "name" : "ADP",
-      "node_type" : "metabolite"
-    },
-    "80660195" : {
-      "x" : 552.0,
-      "y" : 384.0,
-      "bigg_id" : "s7",
-      "label_x" : 552.0,
-      "label_y" : 384.0,
-      "name" : "s7",
-      "node_type" : "metabolite"
-    },
-    "80660189" : {
-      "x" : 318.0,
-      "y" : 187.5,
-      "bigg_id" : "s1",
-      "label_x" : 318.0,
-      "label_y" : 187.5,
-      "name" : "s1",
-      "node_type" : "metabolite"
-    },
-    "84546807" : {
-      "x" : 218.0,
-      "y" : 226.0,
-      "bigg_id" : "s13",
-      "label_x" : 218.0,
-      "label_y" : 226.0,
-      "name" : "s13",
-      "node_type" : "metabolite"
-    },
-    "84546808" : {
-      "x" : 218.0,
-      "y" : 276.0,
-      "bigg_id" : "s14",
-      "label_x" : 218.0,
-      "label_y" : 276.0,
-      "name" : "s14",
-      "node_type" : "metabolite"
-    },
-    "84088935" : {
+    "sGlyph_csa2" : {
       "x" : 208.0,
       "y" : 216.0,
       "bigg_id" : "s15",
       "label_x" : 208.0,
       "label_y" : 216.0,
       "name" : "s15",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
-    "84546805" : {
-      "x" : 38.0,
-      "y" : 226.0,
-      "bigg_id" : "s16",
-      "label_x" : 38.0,
-      "label_y" : 226.0,
-      "name" : "s13",
-      "node_type" : "metabolite"
+    "sGlyph_sa6" : {
+      "x" : 388.0,
+      "y" : 68.0,
+      "bigg_id" : "s5",
+      "label_x" : 388.0,
+      "label_y" : 68.0,
+      "name" : "ADP",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
-    "84546806" : {
+    "sGlyph_sa7" : {
+      "x" : 552.0,
+      "y" : 384.0,
+      "bigg_id" : "s7",
+      "label_x" : 552.0,
+      "label_y" : 384.0,
+      "name" : "s7",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa4" : {
+      "x" : 418.0,
+      "y" : 108.0,
+      "bigg_id" : "s19",
+      "label_x" : 418.0,
+      "label_y" : 108.0,
+      "name" : "s3",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa5" : {
+      "x" : 258.0,
+      "y" : 68.0,
+      "bigg_id" : "s4",
+      "label_x" : 258.0,
+      "label_y" : 68.0,
+      "name" : "ATP",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa2" : {
+      "x" : 528.0,
+      "y" : 188.5,
+      "bigg_id" : "s2",
+      "label_x" : 528.0,
+      "label_y" : 188.5,
+      "name" : "s2",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa3" : {
+      "x" : 208.0,
+      "y" : 108.0,
+      "bigg_id" : "s19",
+      "label_x" : 208.0,
+      "label_y" : 108.0,
+      "name" : "s3",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa15" : {
+      "x" : 218.0,
+      "y" : 276.0,
+      "bigg_id" : "s14",
+      "label_x" : 218.0,
+      "label_y" : 276.0,
+      "name" : "s14",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "sGlyph_sa1" : {
+      "x" : 318.0,
+      "y" : 187.5,
+      "bigg_id" : "s1",
+      "label_x" : 318.0,
+      "label_y" : 187.5,
+      "name" : "s1",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "rGlyph_re4" : {
+      "x" : 179.0,
+      "y" : 275.0,
+      "node_type" : "midmarker"
+    },
+    "198186627" : {
+      "x" : 321.3333333333333,
+      "y" : 128.00000000000048,
+      "node_type" : "multimarker"
+    },
+    "sGlyph_sa13" : {
       "x" : 38.0,
       "y" : 286.0,
       "bigg_id" : "s17",
       "label_x" : 38.0,
       "label_y" : 286.0,
       "name" : "s14",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "rGlyph_re1" : {
+      "x" : 457.0,
+      "y" : 199.5,
+      "node_type" : "midmarker"
+    },
+    "sGlyph_sa14" : {
+      "x" : 218.0,
+      "y" : 226.0,
+      "bigg_id" : "s13",
+      "label_x" : 218.0,
+      "label_y" : 226.0,
+      "name" : "s13",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "rGlyph_re3" : {
+      "x" : 562.0865828381745,
+      "y" : 300.6306023374436,
+      "node_type" : "midmarker"
+    },
+    "sGlyph_sa12" : {
+      "x" : 38.0,
+      "y" : 226.0,
+      "bigg_id" : "s16",
+      "label_x" : 38.0,
+      "label_y" : 226.0,
+      "name" : "s13",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "rGlyph_re2" : {
+      "x" : 352.00000000000045,
+      "y" : 127.00000000000048,
+      "node_type" : "midmarker"
     }
   },
   "reactions" : {
-    "rGlyph_re4" : {
+    "8737404" : {
       "bigg_id" : "re4",
       "genes" : [ ],
       "label_x" : 179.0,
@@ -136,24 +176,22 @@
         "bigg_id" : "s17"
       } ],
       "name" : "",
-      "segments" : { }
+      "segments" : {
+        "214493592" : {
+          "from_node_id" : "sGlyph_sa13",
+          "to_node_id" : "rGlyph_re4"
+        },
+        "191097240" : {
+          "from_node_id" : "rGlyph_re4",
+          "to_node_id" : "sGlyph_csa2"
+        },
+        "207350168" : {
+          "from_node_id" : "sGlyph_sa12",
+          "to_node_id" : "rGlyph_re4"
+        }
+      }
     },
-    "rGlyph_re1" : {
-      "bigg_id" : "re1",
-      "genes" : [ ],
-      "label_x" : 457.0,
-      "label_y" : 199.5,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "s2"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "s1"
-      } ],
-      "name" : "",
-      "segments" : { }
-    },
-    "rGlyph_re3" : {
+    "8737403" : {
       "bigg_id" : "re3",
       "genes" : [ ],
       "label_x" : 562.0865828381745,
@@ -166,9 +204,18 @@
         "bigg_id" : "s2"
       } ],
       "name" : "",
-      "segments" : { }
+      "segments" : {
+        "143356440" : {
+          "from_node_id" : "sGlyph_sa2",
+          "to_node_id" : "rGlyph_re3"
+        },
+        "232862608" : {
+          "from_node_id" : "rGlyph_re3",
+          "to_node_id" : "sGlyph_sa7"
+        }
+      }
     },
-    "rGlyph_re2" : {
+    "8737402" : {
       "bigg_id" : "re2",
       "genes" : [ ],
       "label_x" : 352.00000000000045,
@@ -187,7 +234,70 @@
         "bigg_id" : "s4"
       } ],
       "name" : "",
-      "segments" : { }
+      "segments" : {
+        "136671632" : {
+          "from_node_id" : "sGlyph_sa3",
+          "to_node_id" : "rGlyph_re2"
+        },
+        "46540860" : {
+          "from_node_id" : "rGlyph_re2",
+          "to_node_id" : "sGlyph_sa6",
+          "b1" : {
+            "x" : 376.7500000000008,
+            "y" : 128.00000000000048
+          },
+          "b2" : {
+            "x" : 397.4444444444451,
+            "y" : 93.0
+          }
+        },
+        "250397848" : { },
+        "100773236" : {
+          "from_node_id" : "sGlyph_sa5",
+          "to_node_id" : "rGlyph_re2",
+          "b1" : {
+            "x" : 311.88888888888886,
+            "y" : 116.33333333333366
+          },
+          "b2" : {
+            "x" : 329.2500000000001,
+            "y" : 151.33333333333414
+          }
+        },
+        "174979976" : {
+          "from_node_id" : "rGlyph_re2",
+          "to_node_id" : "sGlyph_sa3"
+        },
+        "208274048" : {
+          "from_node_id" : "208274048",
+          "to_node_id" : "rGlyph_re2"
+        }
+      }
+    },
+    "8737401" : {
+      "bigg_id" : "re1",
+      "genes" : [ ],
+      "label_x" : 457.0,
+      "label_y" : 199.5,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "s2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "s1"
+      } ],
+      "name" : "",
+      "segments" : {
+        "79522200" : {
+          "from_node_id" : "rGlyph_re1",
+          "to_node_id" : "sGlyph_sa2"
+        },
+        "190867864" : {
+          "from_node_id" : "sGlyph_sa1",
+          "to_node_id" : "rGlyph_re1"
+        },
+        "180286384" : { }
+      }
     }
   },
   "text_labels" : { }
