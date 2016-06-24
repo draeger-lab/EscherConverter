@@ -16,6 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -144,6 +145,7 @@ public class Segment extends AbstractEscherBase implements Element {
    * @return the b1
    */
   @JsonProperty("b1")
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   public Point getBasePoint1() {
     return b1;
   }
@@ -153,6 +155,7 @@ public class Segment extends AbstractEscherBase implements Element {
    * @return the b2
    */
   @JsonProperty("b2")
+  @JsonInclude(JsonInclude.Include.ALWAYS)
   public Point getBasePoint2() {
     return b2;
   }
