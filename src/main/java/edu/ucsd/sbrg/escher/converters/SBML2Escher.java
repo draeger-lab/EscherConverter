@@ -2,6 +2,7 @@ package edu.ucsd.sbrg.escher.converters;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import edu.ucsd.sbrg.escher.model.*;
+import edu.ucsd.sbrg.escher.model.Point;
 import org.sbml.jsbml.Reaction;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.SpeciesReference;
@@ -134,8 +135,21 @@ public class SBML2Escher {
     reaction.setName(reactionGlyph.getReactionInstance().getName());
     reaction.setId(reactionGlyph.getId());
     reaction.setBiggId(reactionGlyph.getReactionInstance().getId());
-    reaction.setLabelX(reactionGlyph.getBoundingBox().getPosition().getX());
-    reaction.setLabelY(reactionGlyph.getBoundingBox().getPosition().getY());
+
+    Point point = new Point();
+    if (reactionGlyph.getBoundingBox() != null) {
+      point.setX(reactionGlyph.getBoundingBox().getPosition().getX());
+      point.setY(reactionGlyph.getBoundingBox().getPosition().getY());
+    }
+    else {
+      point.setX(reactionGlyph.getCurve().getCurveSegment(0).getStart().x());
+      point.setY(reactionGlyph.getCurve()
+                              .getCurveSegment(reactionGlyph.getCurve()
+                                                            .getCurveSegmentCount()-1)
+                                                            .getStart().y());
+    }
+    reaction.setLabelX(point.getX());
+    reaction.setLabelY(point.getY());
 
     // Add metabolites.
     ((Reaction) reactionGlyph.getReactionInstance()).getListOfProducts().forEach((p) -> {

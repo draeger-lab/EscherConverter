@@ -1,7 +1,10 @@
 [ {
   "map_description" : "No description provided with the document.",
   "map_id" : "6C61796F7574",
-  "map_name" : "iJO1366.central.metabolism.escher.json"
+  "map_name" : "iJO1366.central.metabolism.escher.json",
+  "nodes" : { },
+  "reactions" : { },
+  "text_labels" : { }
 }, {
   "canvas" : {
     "x" : 0.0,
@@ -4914,10 +4917,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_6pgc_c"
       } ],
       "name" : "phosphogluconate dehydrogenase",
@@ -4938,10 +4941,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "hexokinase (D-glucose:ATP)",
@@ -4962,10 +4965,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "dms_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dmso_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Dimethyl sulfoxide reductase (Menaquinol 8)",
@@ -4983,10 +4986,10 @@
         "coefficient" : 3.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_p"
       } ],
       "name" : "Fumarate transport via proton symport (3 H) (periplasm)",
@@ -5007,13 +5010,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "tma_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "tmao_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Trimethylamine N-oxide reductase (menaquinol 8)",
@@ -5031,7 +5034,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "dhap_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fdp_c"
       } ],
       "name" : "fructose-bisphosphate aldolase",
@@ -5049,10 +5052,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "glc__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g6p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "glucose-6-phosphate phosphatase",
@@ -5067,7 +5070,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "rib__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "rib__D_e"
       } ],
       "name" : "ribose transport via diffusion (extracellular to periplasm)",
@@ -5085,10 +5088,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fru_p"
       } ],
       "name" : "Fructose transport via PEP:Pyr PTS (f6p generating) (periplasm)",
@@ -5103,10 +5106,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "g1p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glycogen_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "glycogen phosphorylase",
@@ -5127,10 +5130,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "ATP maintenance requirement",
@@ -5148,10 +5151,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_p"
       } ],
       "name" : "Fumarate transport via proton symport (2 H) (periplasm)",
@@ -5169,10 +5172,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "Malate dehydrogenase (ubiquinone 8 as acceptor)",
@@ -5187,7 +5190,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "f6p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g6p_c"
       } ],
       "name" : "glucose-6-phosphate isomerase",
@@ -5205,7 +5208,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "g3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "f6p_c"
       } ],
       "name" : "fructose 6-phosphate aldolase",
@@ -5223,10 +5226,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "_2dmmql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyclt_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       } ],
       "name" : "Glycolate oxidase",
@@ -5244,10 +5247,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "cit_p"
       } ],
       "name" : "Citrate transport via succinate antiport (periplasm)",
@@ -5262,7 +5265,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "glyc_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc_c"
       } ],
       "name" : "glycerol transport via channel (periplasm)",
@@ -5280,13 +5283,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "adpglc_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g1p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "glucose-1-phosphate adenylyltransferase",
@@ -5307,13 +5310,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "accoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "oaa_c"
       } ],
       "name" : "citrate synthase",
@@ -5334,13 +5337,13 @@
         "coefficient" : 3.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no2_c"
       }, {
-        "coefficient" : 5.0,
+        "coefficient" : -5.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "nitrite Reductase (NADH)",
@@ -5361,13 +5364,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "tma_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "tmao_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmql8_c"
       } ],
       "name" : "Trimethylamine N-oxide reductase (demethylmenaquinol 8) (periplasm)",
@@ -5385,10 +5388,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "pi_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "f6p_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "Fructose-6-phosphate transport via phosphate antiport (periplasm)",
@@ -5406,10 +5409,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dsbard_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "DsbA protein reoxidation reaction (aerobic)",
@@ -5430,13 +5433,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       }, {
-        "coefficient" : 4.0,
+        "coefficient" : -4.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADH dehydrogenase (demethylmenaquinone-8 & 3 protons) (periplasm)",
@@ -5454,13 +5457,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADH dehydrogenase (demethylmenaquinone-8 & 0 protons)",
@@ -5481,10 +5484,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no3_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Nitrate reductase (Menaquinol-8) (periplasm)",
@@ -5502,7 +5505,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "pi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dhap_c"
       } ],
       "name" : "methylglyoxal synthase",
@@ -5523,10 +5526,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "s7p_c"
       } ],
       "name" : "phosphofructokinase (s7p)",
@@ -5547,13 +5550,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acald_c"
       } ],
       "name" : "acetaldehyde dehydrogenase (acetylating)",
@@ -5571,10 +5574,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "co2_c"
       } ],
       "name" : "HCO3 equilibration reaction",
@@ -5592,10 +5595,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "Formate-hydrogen lyase",
@@ -5616,7 +5619,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "adpglc_c"
       } ],
       "name" : "glycogen synthase (ADPGlc)",
@@ -5631,7 +5634,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "g6p_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g6p_e"
       } ],
       "name" : "glucose 6-phosphate transport via diffusion (extracellular to periplasm)",
@@ -5649,10 +5652,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "oaa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "oxaloacetate decarboxylase",
@@ -5673,10 +5676,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "dms_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dmso_p"
       } ],
       "name" : "Dimethyl sulfoxide reductase (Demethylmenaquinol 8) (periplasm)",
@@ -5700,16 +5703,16 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "D-lactate dehydrogenase",
@@ -5790,7 +5793,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "glyc_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc_e"
       } ],
       "name" : "glycerol transport via diffusion (extracellular to periplasm)",
@@ -5808,10 +5811,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "glycerol-3-phosphate dehydrogenase (ubiquinone-8)",
@@ -5832,10 +5835,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "dms_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dmso_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmql8_c"
       } ],
       "name" : "Dimethyl sulfoxide reductase (Demethylmenaquinol 8)",
@@ -5853,10 +5856,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "o2_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "o2s_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "superoxide dismutase",
@@ -5871,7 +5874,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_e"
       } ],
       "name" : "succinate transport via diffusion (extracellular to periplasm)",
@@ -5886,7 +5889,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2_p"
       } ],
       "name" : "hydrogen transport diffusion (periplasm)",
@@ -5907,10 +5910,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "acald_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "etoh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "alcohol dehydrogenase (ethanol)",
@@ -5928,10 +5931,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "adp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "polyphosphate kinase",
@@ -5946,7 +5949,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "etoh_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "etoh_e"
       } ],
       "name" : "ethanol transport via diffusion (extracellular to periplasm)",
@@ -5964,10 +5967,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_c"
       } ],
       "name" : "succinate transport out via proton antiport (periplasm)",
@@ -5985,7 +5988,7 @@
         "coefficient" : 2.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h2o2_c"
       } ],
       "name" : "catalase",
@@ -6006,13 +6009,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       } ],
       "name" : "NAD(P) transhydrogenase (periplasm)",
@@ -6027,7 +6030,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "fum_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_e"
       } ],
       "name" : "Fumarate transport via diffusion (extracellular to periplasm)",
@@ -6045,10 +6048,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "s7p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "r5p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xu5p__D_c"
       } ],
       "name" : "transketolase",
@@ -6066,10 +6069,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "adp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_3pg_c"
       } ],
       "name" : "phosphoglycerate kinase",
@@ -6087,10 +6090,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyclt_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "Glycolate oxidase",
@@ -6111,10 +6114,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lgt__S_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "hydroxyacylglutathione hydrolase",
@@ -6132,10 +6135,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_p"
       } ],
       "name" : "pyruvate reversible transport via proton symport (periplasm)",
@@ -6156,10 +6159,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "quinol monooxygenase (menaquinol 8)",
@@ -6177,10 +6180,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pi_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_p"
       } ],
       "name" : "Glycerol-3-phosphate : phosphate antiporter (periplasm)",
@@ -6234,13 +6237,13 @@
         "coefficient" : 3.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "adp_c"
       }, {
-        "coefficient" : 4.0,
+        "coefficient" : -4.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "ATP synthase (four protons for one ATP) (periplasm)",
@@ -6255,7 +6258,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "dmso_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dmso_p"
       } ],
       "name" : "Dimethyl sulfoxide transport via diffusion (periplasm)",
@@ -6270,7 +6273,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "_12ppd__R_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_12ppd__R_p"
       } ],
       "name" : "(R)-Propane-1,2-diol facilitated transport (periplasm)",
@@ -6288,10 +6291,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_6pgl_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "6-phosphogluconolactonase",
@@ -6309,10 +6312,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_p"
       } ],
       "name" : "Malate transport via proton symport (2 H) (periplasm)",
@@ -6330,10 +6333,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "akg_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "2-oxoglutarate reversible transport via symport (periplasm)",
@@ -6354,10 +6357,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc_c"
       } ],
       "name" : "glycerol kinase",
@@ -6378,13 +6381,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "accoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ac_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       } ],
       "name" : "acetyl-CoA synthetase",
@@ -6405,10 +6408,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g6p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       } ],
       "name" : "glucose 6-phosphate dehydrogenase",
@@ -6423,7 +6426,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "g6p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g1p_c"
       } ],
       "name" : "phosphoglucomutase",
@@ -6474,10 +6477,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fru_p"
       } ],
       "name" : "D-fructose transport via PEP:Pyr PTS (periplasm)",
@@ -6498,10 +6501,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "dms_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dmso_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Dimethyl sulfoxide reductase (Menaquinol 8) (periplasm)",
@@ -6522,13 +6525,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 0.5,
+        "coefficient" : -0.5,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 4.0,
+        "coefficient" : -4.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "cytochrome oxidase bo3 (ubiquinol-8: 4 protons) (periplasm)",
@@ -6543,7 +6546,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "mal__L_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_e"
       } ],
       "name" : "Malate transport via diffusion (extracellular to periplasm)",
@@ -6558,7 +6561,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "g1p_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g1p_e"
       } ],
       "name" : "D-glucose 1-phosphate transport via diffusion",
@@ -6576,10 +6579,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xyl__D_p"
       } ],
       "name" : "D-xylose transport in via proton symport (periplasm)",
@@ -6594,7 +6597,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "ru5p__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "r5p_c"
       } ],
       "name" : "ribose-5-phosphate isomerase",
@@ -6609,7 +6612,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "glycogen_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "bglycogen_c"
       } ],
       "name" : "glycogen debranching enzyme (bglycogen -> glycogen)",
@@ -6627,10 +6630,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "actp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ac_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "acetate kinase",
@@ -6651,13 +6654,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 4.0,
+        "coefficient" : -4.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "NADH dehydrogenase (ubiquinone-8 & 3 protons) (periplasm)",
@@ -6675,13 +6678,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lald__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "lacaldehyde reductase (R-propane-1,2-diol forming)",
@@ -6702,10 +6705,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "D-lactate dehydrogenase",
@@ -6723,13 +6726,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "NADH dehydrogenase (ubiquinone-8 )",
@@ -6750,13 +6753,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "tma_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "tmao_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Trimethylamine N-oxide reductase (menaquinol 8) (periplasm)",
@@ -6771,10 +6774,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "g1p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "bglycogen_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "glycogen phosphorylase",
@@ -6798,13 +6801,13 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_c"
       } ],
       "name" : "phosphoenolpyruvate synthase",
@@ -6819,7 +6822,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "glyc3p_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_e"
       } ],
       "name" : "Glycerol-3-phosphate transport via diffusion (extracellular to periplasm)",
@@ -6837,13 +6840,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadph_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADPH Quinone Reductase (Menaquinone-8)",
@@ -6861,10 +6864,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "fumarate reductase",
@@ -6879,7 +6882,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "xu5p__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ru5p__D_c"
       } ],
       "name" : "ribulose 5-phosphate 3-epimerase",
@@ -6894,7 +6897,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "_3pg_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2pg_c"
       } ],
       "name" : "phosphoglycerate mutase",
@@ -6915,13 +6918,13 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acald_c"
       } ],
       "name" : "aldehyde dehydrogenase (acetaldehyde, NAD)",
@@ -6942,10 +6945,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       } ],
       "name" : "glycerol-3-phosphate dehydrogenase (NADP)",
@@ -6960,7 +6963,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "xylu__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xyl__D_c"
       } ],
       "name" : "xylose isomerase",
@@ -6981,13 +6984,13 @@
         "coefficient" : 3.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no2_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "nitrite Reductase (Menaquinole-8, periplasm)",
@@ -7005,7 +7008,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "ac_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "cit_c"
       } ],
       "name" : "Citrate lyase",
@@ -7023,10 +7026,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_p"
       } ],
       "name" : "formate transport via proton symport (uptake only, periplasm)",
@@ -7041,7 +7044,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "glc__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_e"
       } ],
       "name" : "glucose transport via diffusion (extracellular to periplasm)",
@@ -7056,7 +7059,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_e"
       } ],
       "name" : "pyruvate transport via diffusion (extracellular to periplasm)",
@@ -7074,10 +7077,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "succinate dehydrogenase (irreversible)",
@@ -7098,13 +7101,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "tma_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "tmao_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "Trimethylamine N-oxide reductase (demethylmenaquinol 8)",
@@ -7119,7 +7122,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "for_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_c"
       } ],
       "name" : "formate transport via diffusion (cytoplasm to periplasm)",
@@ -7143,16 +7146,16 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_p"
       } ],
       "name" : "D-glucose transport via PEP:Pyr PTS (periplasm)",
@@ -7170,10 +7173,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "dhap_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       } ],
       "name" : "glycerol-3-phosphate dehydrogenase (demethylmenaquinone-8)",
@@ -7188,7 +7191,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "bglycogen_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glycogen_c"
       } ],
       "name" : "1,4-alpha-glucan branching enzyme (glycogen -> bglycogen)",
@@ -7206,13 +7209,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "hydrogenase (ubiquinone-8: 2 protons) (periplasm)",
@@ -7230,10 +7233,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fdp_c"
       } ],
       "name" : "fructose-bisphosphatase",
@@ -7251,10 +7254,10 @@
         "coefficient" : 3.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_p"
       } ],
       "name" : "Succintate transport via proton symport (3 H) (periplasm)",
@@ -7272,10 +7275,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_p"
       } ],
       "name" : "succinate transport via proton symport (2 H) (periplasm)",
@@ -7293,10 +7296,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2o2_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "o2s_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "superoxide dismutase",
@@ -7317,13 +7320,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "Formate Dehydrogenase (menaquinone-8) (periplasm)",
@@ -7341,10 +7344,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "e4p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "s7p_c"
       } ],
       "name" : "transaldolase",
@@ -7362,10 +7365,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "g3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "e4p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xu5p__D_c"
       } ],
       "name" : "transketolase",
@@ -7380,7 +7383,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "xyl__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xyl__D_e"
       } ],
       "name" : "D-xylose transport via diffusion (extracellular to periplasm)",
@@ -7401,13 +7404,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "succoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "akg_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       } ],
       "name" : "2-Oxogluterate dehydrogenase",
@@ -7422,7 +7425,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "akg_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "akg_e"
       } ],
       "name" : "alpha-ketoglutarate transport via diffusion (extracellular to periplasm)",
@@ -7446,13 +7449,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no3_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "Nitrate reductase (Menaquinol-8) (periplasm)",
@@ -7467,10 +7470,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "lgt__S_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mthgxl_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "gthrd_c"
       } ],
       "name" : "lactoylglutathione lyase",
@@ -7491,13 +7494,13 @@
         "coefficient" : 2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acald_c"
       } ],
       "name" : "aldehyde dehydrogenase (acetaldehyde, NADP)",
@@ -7515,7 +7518,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_6pgc_c"
       } ],
       "name" : "6-phosphogluconate dehydratase",
@@ -7536,10 +7539,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "malate dehydrogenase",
@@ -7557,7 +7560,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "icit_c"
       } ],
       "name" : "Isocitrate lyase",
@@ -7572,7 +7575,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "_12ppd__R_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_12ppd__R_e"
       } ],
       "name" : "(R)-Propane-1,2-diol transport via diffusion (extracellular to periplasm)",
@@ -7587,7 +7590,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "g3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dhap_c"
       } ],
       "name" : "triose-phosphate isomerase",
@@ -7608,13 +7611,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "Glucose dehydrogenase (ubiquinone-8 as acceptor) (periplasm)",
@@ -7632,10 +7635,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "aconm_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acon__T_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "amet_c"
       } ],
       "name" : "Trans-aconitate methyltransferase",
@@ -7653,10 +7656,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "glyc_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "glycerol-3-phosphatase",
@@ -7674,10 +7677,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pi_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g1p_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_p"
       } ],
       "name" : "Glucose-1-phosphatase",
@@ -7701,16 +7704,16 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       } ],
       "name" : "L-Lactate dehydrogenase (menaquinone)",
@@ -7728,10 +7731,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "D-lactate transport via proton symport (periplasm)",
@@ -7749,7 +7752,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2pg_c"
       } ],
       "name" : "enolase",
@@ -7767,10 +7770,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "L-malate transport out via proton antiport (periplasm)",
@@ -7785,7 +7788,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "for_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_e"
       } ],
       "name" : "formate transport via diffusion (extracellular to periplasm)",
@@ -7806,13 +7809,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 4.0,
+        "coefficient" : -4.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADH dehydrogenase (menaquinone-8 & 3 protons) (periplasm)",
@@ -7830,10 +7833,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       } ],
       "name" : "Malate dehydrogenase (menaquinone 8 as acceptor)",
@@ -7851,13 +7854,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "_2dmmql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadph_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADPH Quinone Reductase (2-Demethylmenaquinone-8)",
@@ -7872,7 +7875,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "lac__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__D_e"
       } ],
       "name" : "D-lactate transport via diffusion (extracellular to periplasm)",
@@ -7893,13 +7896,13 @@
         "coefficient" : 3.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no2_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "q8h2_c"
       } ],
       "name" : "nitrite Reductase (Ubiquinole-8, periplasm)",
@@ -7920,10 +7923,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "icit_c"
       } ],
       "name" : "isocitrate dehydrogenase (NADP)",
@@ -7944,10 +7947,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "f1p_c"
       } ],
       "name" : "fructose-1-phosphate kinase",
@@ -7968,13 +7971,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "for_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "formate dehydrogenase (quinone-8) (periplasm)",
@@ -7992,10 +7995,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "oaa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       } ],
       "name" : "malate oxidase",
@@ -8010,7 +8013,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "co2_p"
       } ],
       "name" : "CO2 transporter via diffusion (periplasm)",
@@ -8031,10 +8034,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "malic enzyme (NAD)",
@@ -8055,10 +8058,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "xu5p__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xylu__D_c"
       } ],
       "name" : "xylulokinase",
@@ -8076,10 +8079,10 @@
         "coefficient" : 2.0,
         "bigg_id" : "pi_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g6p_p"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "Glucose-6-phosphate transport via phosphate antiport (periplasm)",
@@ -8097,10 +8100,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "nadp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadph_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "NAD transhydrogenase",
@@ -8118,10 +8121,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       } ],
       "name" : "glycerol-3-phosphate dehydrogenase (menaquinone-8)",
@@ -8136,7 +8139,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "acon__C_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acon__T_c"
       } ],
       "name" : "aconitate isomerase (spontaneous)",
@@ -8157,10 +8160,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "rib__D_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "ribokinase",
@@ -8178,10 +8181,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyclt_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       } ],
       "name" : "Glycolate oxidase",
@@ -8199,10 +8202,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glc__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "D-glucose transport in via proton symport (periplasm)",
@@ -8217,7 +8220,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "acald_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acald_e"
       } ],
       "name" : "acetaldehyde transport via diffusion (extracellular to periplasm)",
@@ -8232,7 +8235,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "ac_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ac_e"
       } ],
       "name" : "Acetate transport via diffusion (extracellular to periplasm)",
@@ -8253,13 +8256,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 0.5,
+        "coefficient" : -0.5,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "cytochrome oxidase bd (ubiquinol-8: 2 protons) (periplasm)",
@@ -8277,13 +8280,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mthgxl_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "D-Lactaldehyde:NAD+ 1-oxidoreductase",
@@ -8298,7 +8301,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "etoh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "etoh_p"
       } ],
       "name" : "ethanol reversible transport via diffusion (periplasm)",
@@ -8319,10 +8322,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "f6p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "phosphofructokinase",
@@ -8340,7 +8343,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "e4p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "s17bp_c"
       } ],
       "name" : "Sedoheptulose 1,7-bisphosphate D-glyceraldehyde-3-phosphate-lyase",
@@ -8358,7 +8361,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "cit_c"
       } ],
       "name" : "aconitase (half-reaction A, Citrate hydro-lyase)",
@@ -8376,13 +8379,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "_2dmmql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmq8_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2_c"
       } ],
       "name" : "Hydrogenase (Demethylmenaquinone-8: 2 protons) (periplasm)",
@@ -8397,7 +8400,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "h2_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2_e"
       } ],
       "name" : "hydrogen transport via diffusion (extracellular to periplasm)",
@@ -8418,13 +8421,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "accoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glx_c"
       } ],
       "name" : "malate synthase",
@@ -8445,13 +8448,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "succoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       } ],
       "name" : "succinyl-CoA synthetase (ADP-forming)",
@@ -8466,7 +8469,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "f6p_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "f6p_e"
       } ],
       "name" : "fructose 6-phosphate transport via diffusion (extracellular to periplasm)",
@@ -8484,10 +8487,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "cit_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       } ],
       "name" : "citrate transport out via proton antiport (periplasm)",
@@ -8508,13 +8511,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "co2_c"
       } ],
       "name" : "phosphoenolpyruvate carboxylase",
@@ -8535,13 +8538,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "g3p_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "glyceraldehyde-3-phosphate dehydrogenase",
@@ -8562,13 +8565,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 0.5,
+        "coefficient" : -0.5,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mql8_c"
       } ],
       "name" : "cytochrome oxidase bd (menaquinol-8: 2 protons) (periplasm)",
@@ -8586,10 +8589,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "accoa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pi_c"
       } ],
       "name" : "phosphotransacetylase",
@@ -8613,16 +8616,16 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "L-Lactate dehydrogenase (ubiquinone)",
@@ -8640,10 +8643,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "adp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ppi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "polyphosphate kinase",
@@ -8661,10 +8664,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dha_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       } ],
       "name" : "Dihydroxyacetone phosphotransferase",
@@ -8682,10 +8685,10 @@
         "coefficient" : 3.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 3.0,
+        "coefficient" : -3.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_p"
       } ],
       "name" : "Malate transport via proton symport (3 H) (periplasm)",
@@ -8706,10 +8709,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc_c"
       } ],
       "name" : "Glycerol dehydrogenase",
@@ -8727,13 +8730,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadh_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "NADH dehydrogenase (menaquinone-8 & 0 protons)",
@@ -8751,10 +8754,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_p"
       } ],
       "name" : "L-lactate reversible transport via proton symport (periplasm)",
@@ -8775,10 +8778,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "o2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8h2_c"
       } ],
       "name" : "quinol monooxygenase (Ubiquinol-8)",
@@ -8796,13 +8799,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pep_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "adp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "pyruvate kinase",
@@ -8820,10 +8823,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "dsbard_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       } ],
       "name" : "DsbA protein reoxidation reaction (anaerobic)",
@@ -8844,10 +8847,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no3_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8h2_c"
       } ],
       "name" : "Nitrate reductase (Ubiquinol-8)",
@@ -8862,7 +8865,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "co2_e"
       } ],
       "name" : "CO2 transport via diffusion (extracellular to periplasm)",
@@ -8877,7 +8880,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "fru_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fru_e"
       } ],
       "name" : "D-fructose transport via diffusion (extracellular to periplasm)",
@@ -8892,7 +8895,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "acald_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acald_p"
       } ],
       "name" : "acetaldehyde reversible transport (periplasm)",
@@ -8913,10 +8916,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadp_c"
       } ],
       "name" : "malic enzyme (NADP)",
@@ -8937,13 +8940,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nad_c"
       } ],
       "name" : "pyruvate dehydrogenase",
@@ -8958,7 +8961,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "lac__L_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "lac__L_e"
       } ],
       "name" : "L-lactate transport via diffusion (extracellular to periplasm)",
@@ -8979,10 +8982,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "co2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "oaa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "phosphoenolpyruvate carboxykinase",
@@ -9006,13 +9009,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "glyc3p_p"
       } ],
       "name" : "sn-Glycerol 3-phosphate transport via ABC system (periplasm)",
@@ -9030,10 +9033,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ac_p"
       } ],
       "name" : "acetate reversible transport via proton symport (periplasm)",
@@ -9054,10 +9057,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pppi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "inorganic triphosphatase",
@@ -9075,10 +9078,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "succ_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2dmmql8_c"
       } ],
       "name" : "fumarate reductase",
@@ -9102,13 +9105,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "xyl__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "D-xylose transport via ABC system (periplasm)",
@@ -9132,13 +9135,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "rib__D_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "atp_c"
       } ],
       "name" : "D-ribose transport via ABC system (periplasm)",
@@ -9153,7 +9156,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "cit_p"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "cit_e"
       } ],
       "name" : "citrate transport via diffusion (extracellular to periplasm)",
@@ -9168,10 +9171,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "icit_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "acon__C_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "aconitase (half-reaction B, Isocitrate hydro-lyase)",
@@ -9189,13 +9192,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "nadph_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "NADPH Quinone Reductase (Ubiquinone-8)",
@@ -9216,13 +9219,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8_c"
       } ],
       "name" : "pyruvate oxidase",
@@ -9240,13 +9243,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "mql8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "mqn8_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2_c"
       } ],
       "name" : "Hydrogenase (menaquinone8: 2 protons) (periplasm)",
@@ -9270,13 +9273,13 @@
         "coefficient" : 1.0,
         "bigg_id" : "q8_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "no3_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "q8h2_c"
       }, {
-        "coefficient" : 2.0,
+        "coefficient" : -2.0,
         "bigg_id" : "h_c"
       } ],
       "name" : "Nitrate reductase (Ubiquinol-8) (periplasm)",
@@ -9294,10 +9297,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "h_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "ppi_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "inorganic diphosphatase",
@@ -9315,10 +9318,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "for_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "coa_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "pyr_c"
       } ],
       "name" : "pyruvate formate lyase",
@@ -9336,7 +9339,7 @@
         "coefficient" : 1.0,
         "bigg_id" : "pyr_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "_2ddg6p_c"
       } ],
       "name" : "2-dehydro-3-deoxy-phosphogluconate aldolase",
@@ -9351,10 +9354,10 @@
         "coefficient" : 1.0,
         "bigg_id" : "mal__L_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "fum_c"
       }, {
-        "coefficient" : 1.0,
+        "coefficient" : -1.0,
         "bigg_id" : "h2o_c"
       } ],
       "name" : "fumarase",
