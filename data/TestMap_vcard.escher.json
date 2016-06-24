@@ -1,0 +1,77 @@
+[ {
+  "map_description" : "No description provided with the document.",
+  "map_id" : "6C61796F7574",
+  "map_name" : "TestMap_vcard.escher.json",
+  "nodes" : { },
+  "reactions" : { },
+  "text_labels" : { }
+}, {
+  "canvas" : {
+    "x" : 0.0,
+    "y" : 0.0,
+    "height" : 600.0,
+    "width" : 800.0
+  },
+  "nodes" : {
+    "92865" : {
+      "x" : 234.48577863711716,
+      "y" : 186.35754120723527,
+      "bigg_id" : "atp_c",
+      "label_x" : 234.48577863711716,
+      "label_y" : 186.35754120723527,
+      "name" : "ATP",
+      "node_type" : "metabolite"
+    },
+    "92863" : {
+      "x" : 489.71704014995987,
+      "y" : 219.82428699414163,
+      "bigg_id" : "_13dpg_c",
+      "label_x" : 489.71704014995987,
+      "label_y" : 219.82428699414163,
+      "name" : "3-Phospho-D-glyceroyl phosphate",
+      "node_type" : "metabolite"
+    },
+    "92864" : {
+      "x" : 454.4819566928885,
+      "y" : 185.0607602491143,
+      "bigg_id" : "adp_c",
+      "label_x" : 454.4819566928885,
+      "label_y" : 185.0607602491143,
+      "name" : "ADP",
+      "node_type" : "metabolite"
+    },
+    "3000" : {
+      "x" : 189.72225189208984,
+      "y" : 221.59262466430664,
+      "bigg_id" : "_3pg_c",
+      "label_x" : 189.72225189208984,
+      "label_y" : 221.59262466430664,
+      "name" : "3-Phospho-D-glycerate",
+      "node_type" : "metabolite"
+    }
+  },
+  "reactions" : {
+    "_1" : {
+      "bigg_id" : "PGK",
+      "genes" : [ ],
+      "label_x" : 354.7196460210248,
+      "label_y" : 235.70845582922414,
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "_13dpg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "atp_c"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "_3pg_c"
+      } ],
+      "name" : "Phosphoglycerate kinase",
+      "segments" : { }
+    }
+  },
+  "text_labels" : { }
+} ]

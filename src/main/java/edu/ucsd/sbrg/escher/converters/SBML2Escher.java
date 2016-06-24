@@ -48,8 +48,25 @@ public class SBML2Escher {
     layouts.get(0).getListOfSpeciesGlyphs().forEach((sG) -> {
       escherMaps.get(0).addNode(createNode(sG));
     });
+    layouts.get(0).getListOfReactionGlyphs().forEach((rG -> {
+      escherMaps.get(0).addNode(createMidmarker(rG));
+    }));
+    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
+      rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
+        for (int i = 1; i < sRG.getCurve().getCurveSegmentCount(); i++) {
+          escherMaps.get(0).addNode(createMultimarker(sRG.getCurve().getCurveSegment(i).getStart()));
+        }
+      });
+    });
     layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
       escherMaps.get(0).addReaction(createReaction(rG));
+    });
+    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
+      rG.getListOfSpeciesReferenceGlyphs().forEach((sRG -> {
+        sRG.getCurve().getListOfCurveSegments().forEach((cS) -> {
+          escherMaps.get(0).getReaction(rG.getId()).addSegment(createSegment(cS, sRG));
+        });
+      }));
     });
     return escherMaps.get(0);
   }
@@ -104,7 +121,7 @@ public class SBML2Escher {
     Node node = new Node();
 
     node.setType(Node.Type.metabolite);
-    node.setId("" + (speciesGlyph.getId().hashCode() & 0xfffffff));
+    node.setId(speciesGlyph.getId());
     node.setBiggId(speciesGlyph.getSpecies());
     node.setName(speciesGlyph.getSpeciesInstance().getName());
     node.setX(speciesGlyph.getBoundingBox().getPosition().x());
@@ -119,11 +136,24 @@ public class SBML2Escher {
   protected Node createMidmarker(ReactionGlyph reactionGlyph) {
     Node node = new Node();
 
+    node.setId("" + (reactionGlyph.getId().hashCode() & 0xfffffff));
     node.setType(Node.Type.midmarker);
     node.setX(reactionGlyph.getBoundingBox().getPosition().getX() +
         (reactionGlyph.getBoundingBox().getDimensions().getWidth() * 0.5));
     node.setY(reactionGlyph.getBoundingBox().getPosition().getY() +
         (reactionGlyph.getBoundingBox().getDimensions().getHeight() * 0.5));
+
+    return node;
+  }
+
+
+  protected Node createMultimarker(org.sbml.jsbml.ext.layout.Point point) {
+    Node node = new Node();
+
+    node.setId("" + (("" + (point.x() + point.y())).hashCode() & 0xfffffff));
+    node.setType(Node.Type.multimarker);
+    node.setX(point.x());
+    node.setY(point.y());
 
     return node;
   }
@@ -138,15 +168,26 @@ public class SBML2Escher {
 
     Point point = new Point();
     if (reactionGlyph.getBoundingBox() != null) {
-      point.setX(reactionGlyph.getBoundingBox().getPosition().getX());
-      point.setY(reactionGlyph.getBoundingBox().getPosition().getY());
+      point.setX(reactionGlyph.getBoundingBox().getPosition().getX() + (0.5 * reactionGlyph
+          .getBoundingBox().getDimensions().getWidth()));
+      point.setY(reactionGlyph.getBoundingBox().getPosition().getY() + (0.5 * reactionGlyph
+          .getBoundingBox().getDimensions().getHeight()));
     }
     else {
-      point.setX(reactionGlyph.getCurve().getCurveSegment(0).getStart().x());
-      point.setY(reactionGlyph.getCurve()
-                              .getCurveSegment(reactionGlyph.getCurve()
-                                                            .getCurveSegmentCount()-1)
-                                                            .getStart().y());
+      point.setX(0.5 * (reactionGlyph.getCurve()
+                              .getCurveSegment(0)
+                              .getStart()
+                              .x() + reactionGlyph.getCurve()
+                                                  .getCurveSegment(reactionGlyph.getCurve()
+                                                                                .getCurveSegmentCount()-1)
+                                                  .getStart().x()));
+      point.setY(0.5 * (reactionGlyph.getCurve()
+                                     .getCurveSegment(0)
+                                     .getStart()
+                                     .y() + reactionGlyph.getCurve()
+                                                         .getCurveSegment(reactionGlyph.getCurve()
+                                                                                       .getCurveSegmentCount()-1)
+                                                         .getStart().y()));
     }
     reaction.setLabelX(point.getX());
     reaction.setLabelY(point.getY());
@@ -166,6 +207,14 @@ public class SBML2Escher {
     // TODO: Add segments.
 
     return reaction;
+  }
+
+
+  protected Segment createSegment(CurveSegment cS, SpeciesReferenceGlyph sRG) {
+    Segment segment = new Segment();
+
+    segment.setId();
+    throw new UnsupportedOperationException("Not yet!");
   }
 
 
