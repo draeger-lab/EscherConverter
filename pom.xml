@@ -31,6 +31,7 @@
     <jsbml.version>2492</jsbml.version>  <!-- SVN revision -->
     <sbgn.version>0.2</sbgn.version>
     <sysbio.version>1390</sysbio.version> <!-- SVN revision -->
+    <jackson.version>2.7.4</jackson.version>
   </properties>
   
   <organization>
@@ -114,21 +115,28 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.7.4</version>
+      <version>${jackson.version}</version>
     </dependency>
 
     <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.7.4</version>
+      <version>${jackson.version}</version>
     </dependency>
 
     <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.7.4</version>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-jsonSchema -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-jsonSchema</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
 
   </dependencies>
