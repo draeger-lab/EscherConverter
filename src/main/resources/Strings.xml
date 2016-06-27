@@ -16,4 +16,6 @@
     <entry key="default_canvas_y">0</entry>
     <entry key="default_canvas_height">1000</entry>
     <entry key="default_canvas_width">1000</entry>
+    <entry key="meta_schema">/schemas/meta_schema.json</entry>
+    <entry key="default_escher_schema_file">/schemas/escher_json_schema.json</entry>
 </properties>
