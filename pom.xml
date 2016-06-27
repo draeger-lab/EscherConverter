@@ -132,11 +132,11 @@
       <version>${jackson.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-jsonSchema -->
+    <!-- https://mvnrepository.com/artifact/com.github.fge/json-schema-validator -->
     <dependency>
-      <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-module-jsonSchema</artifactId>
-      <version>${jackson.version}</version>
+      <groupId>com.github.fge</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>2.2.6</version>
     </dependency>
 
   </dependencies>
