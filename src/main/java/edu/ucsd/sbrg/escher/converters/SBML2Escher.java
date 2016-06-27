@@ -278,6 +278,10 @@ public class SBML2Escher {
         segment.setFromNodeId("" + (cS.hashCode() & 0xfffffff));
       }
     }
+    else {
+      segment.setToNodeId("" + (cS.hashCode() & 0xfffffff));
+      segment.setFromNodeId("" + (cS.hashCode() & 0xfffffff));
+    }
 
     if (cS.getType() == CurveSegment.Type.CUBIC_BEZIER) {
       segment.setBasePoint1(new Point(((CubicBezier)cS).getBasePoint1().x(), ((CubicBezier)cS)
