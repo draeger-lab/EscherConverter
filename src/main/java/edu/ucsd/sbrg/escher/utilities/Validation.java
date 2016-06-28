@@ -11,12 +11,14 @@ import com.github.fge.jsonschema.main.JsonValidator;
 import de.zbit.util.ResourceManager;
 import edu.ucsd.sbrg.escher.EscherConverter;
 import edu.ucsd.sbrg.escher.model.EscherMap;
+import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
 import org.sbgn.schematron.Issue;
 import org.sbgn.schematron.SchematronValidator;
 import org.sbml.jsbml.SBMLDocument;
 import org.xml.sax.SAXException;
 
+import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
@@ -82,6 +84,18 @@ public class Validation {
 
 
   public boolean validateSbgnml(File file) throws IOException {
+    try {
+      Sbgn document = SbgnUtil.readFromFile(file);
+
+      if (document.getMap().getLanguage() == null || document.getMap().getLanguage().isEmpty()) {
+        // TODO: Log
+        throw new IllegalArgumentException("No language specified on SBGN file!");
+      }
+    } catch (JAXBException e) {
+      // TODO: Log
+      e.printStackTrace();
+      throw new IllegalArgumentException("Invalid SBGN-ML file!");
+    }
     try {
       SchematronValidator.setSvrlDump(true);
       List<Issue> issues = SchematronValidator.validate(file);
