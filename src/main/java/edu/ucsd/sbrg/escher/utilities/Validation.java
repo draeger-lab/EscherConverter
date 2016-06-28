@@ -87,7 +87,8 @@ public class Validation {
     try {
       Sbgn document = SbgnUtil.readFromFile(file);
 
-      if (document.getMap().getLanguage() == null || document.getMap().getLanguage().isEmpty()) {
+      if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals
+          ("process description")) {
         // TODO: Log
         throw new IllegalArgumentException("No language specified on SBGN file!");
       }
