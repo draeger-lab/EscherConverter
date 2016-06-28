@@ -31,14 +31,14 @@ public class Utils {
       Logger.getLogger(Utils.class.getName());
 
   public static JsonSchema jsonSchemaSchema() throws IOException, ProcessingException {
-    JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("meta_schema"));
+    JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("meta_schema_file"));
 
     return JsonSchemaFactory.byDefault().getJsonSchema(jsonNode);
   }
 
 
   public static JsonNode defaultEscherSchema() throws IOException, ProcessingException {
-    JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("default_escher_schema"));
+    JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("default_escher_schema_file"));
 
     return jsonNode;
   }
