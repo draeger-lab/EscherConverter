@@ -563,11 +563,8 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public boolean showsGUI() {
-    AppConf config = getAppConf();
-    if (config != null) {
-      SBProperties args = config.getCmdArgs();
-      return (args == null) || (args.size() < 1) || args
-          .getBoolean(GUIOptions.GUI);
+    if (getAppConf().getCmdArgs().containsKey(GUIOptions.GUI)) {
+      return getAppConf().getCmdArgs().getBoolean(GUIOptions.GUI);
     }
     return false;
   }
