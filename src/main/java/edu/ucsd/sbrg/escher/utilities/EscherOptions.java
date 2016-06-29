@@ -67,6 +67,27 @@ public interface EscherOptions extends KeyProvider {
 
 
   /**
+   * Enumeration of allowable input file formats.
+   *
+   * @author Devesh Khandelwak
+   */
+  enum InputFormat {
+    /**
+     * Systems Biology Graphical Notation Markup Language (SBGN-ML).
+     */
+    SBGN,
+    /**
+     * Systems Biology Markup Language with layout extension.
+     */
+    SBML,
+    /**
+     * Escher JSON format.
+     */
+    Escher
+  }
+
+
+  /**
    * This converter can infer where the boundaries of compartments could be
    * drawn. To this end, it uses each node's BiGG ids to identify the
    * compartment of all metabolites. Assuming that compartments have rectangular

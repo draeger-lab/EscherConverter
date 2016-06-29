@@ -72,7 +72,7 @@
           "annotation": {"type": "object"}
         },
         "required": ["id", "name", "compartment"],
-        "additionalProperties": false,
+        "additionalProperties": false
       }
 
     },
