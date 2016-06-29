@@ -496,6 +496,14 @@ public class EscherConverter extends Launcher {
     case "sbml":
       return InputFormat.SBML;
 
+    case "xml":
+      if (file.getName().endsWith("sbgn.xml")) {
+        return InputFormat.SBGN;
+      }
+      if (file.getName().endsWith("sbml.xml")) {
+        return InputFormat.SBML;
+      }
+
     }
     return null;
   }
