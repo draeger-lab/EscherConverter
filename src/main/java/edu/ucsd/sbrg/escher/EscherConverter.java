@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.*;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import de.zbit.AppConf;
 import de.zbit.Launcher;
 import de.zbit.gui.GUIOptions;
@@ -35,6 +36,8 @@ import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
+import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
+import edu.ucsd.sbrg.escher.utilities.Validation;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -62,6 +65,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -155,6 +159,19 @@ public class EscherConverter extends Launcher {
     return null;
   }
 
+
+  public static <T> EscherMap convert(Class<? extends T> format, T document, SBProperties
+      properties) {
+    if (format.isAssignableFrom(Sbgn.class)) {
+      // TODO: Convert SBGN to Escher.
+    }
+
+    if (format.isAssignableFrom(SBMLDocument.class)) {
+      // TODO: Convert SBML's all layouts, write each one to a different Escher file.
+    }
+
+    throw new UnsupportedOperationException("Not done yet!");
+  }
 
   /**
    * @param input
@@ -261,11 +278,16 @@ public class EscherConverter extends Launcher {
       throws IOException, SBMLException, ParseException, XMLStreamException,
       JAXBException, SAXException, ParserConfigurationException,
       TransformerException {
+    // TODO: Warn before overwriting.
+
+    // Checks if output/input is directory, if it doesn't, create one.
     if (!output.exists() && !output.isFile() && !(input.isFile() && input
         .getName().equals(output.getName()))) {
       logger.info(MessageFormat
           .format(bundle.getString("EscherConverter.cratingDir"),
               output.getAbsolutePath()));
+
+      // TODO: A directory shouldn't be directly created, instead a file should be created.
       output.mkdir();
     }
     if (input.isFile()) {
@@ -280,9 +302,29 @@ public class EscherConverter extends Launcher {
         logger.info(MessageFormat
             .format("Output successfully written to file {0}.", output));
       }
-      else {
+
+      if (SBFileFilter.isSBMLFile(input)) {
+        // TODO: Check if SBML or SBGN and process accordingly.
+        if (output.isDirectory()) {
+          String fName = input.getName();
+          fName = FileTools.removeFileExtension(fName) + ".json";
+          output =
+              new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
+        }
         convert(input, output, properties);
       }
+
+      if (SBFileFilter.isSBGNFile(input)) {
+        // TODO: Check if SBML or SBGN and process accordingly.
+        if (output.isDirectory()) {
+          String fName = input.getName();
+          fName = FileTools.removeFileExtension(fName) + ".json";
+          output =
+              new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
+        }
+        convert(input, output, properties);
+      }
+
     } else {
       if (!output.isDirectory()) {
         throw new IOException(MessageFormat
@@ -308,6 +350,7 @@ public class EscherConverter extends Launcher {
     SBProperties properties = appConf.getCmdArgs();
     if (properties.containsKey(EscherIOOptions.INPUT) && properties
         .containsKey(EscherIOOptions.OUTPUT)) {
+      // TODO: Allow output to be empty, create file/directory if doesn't exists.
       try {
         File
             input =
@@ -361,6 +404,19 @@ public class EscherConverter extends Launcher {
                   fileName.length() - FileTools.getExtension(fileName).length())
               + extension);
     }
+
+    // TODO: Check input format, then call proper validation method.
+    InputFormat inputFormat = determineInputFormat(input);
+    if (inputFormat == null) {
+      // TODO: Log that file format cannot be determined.
+      return;
+    }
+    if (!validateInput(input, inputFormat)) {
+      // TODO: Log that validation was unsuccessful.
+      // TODO: Add option to continue even on validation failure.
+      return;
+    }
+
     switch (format) {
     case SBML:
       SBMLDocument doc = convert(input, SBMLDocument.class, properties);
@@ -370,28 +426,78 @@ public class EscherConverter extends Launcher {
     case SBGN:
       Sbgn sbgn = convert(input, Sbgn.class, properties);
       SbgnUtil.writeToFile(sbgn, output);
-      // TODO: Validate file.
-      List<Issue> issues = SchematronValidator.validate(output);
-      if (issues.size() > 0) {
-        // print each issue individually.
-        logger.warning(MessageFormat
-            .format(bundle.getString("EscherConverter.validationErrors"),
-                issues.size()));
-        for (Issue issue : issues) {
-          logger.warning(issue.toString());
-        }
-      }
       break;
 
     case Escher:
-      SBML2Escher converter = new SBML2Escher();
-      EscherMap map = converter.convert(SBMLReader.read(input));
+
+      EscherMap map = null;
+      switch (inputFormat) {
+
+      case SBGN:
+        map = convert(Sbgn.class, input, properties);
+        writeEscherJson(map, output);
+        break;
+
+      case SBML:
+        map = convert(SBMLDocument.class, input, properties);
+        writeEscherJson(map, output);
+        break;
+
+      case Escher:
+        // TODO: Log that input and output format are same.
+        break;
+      }
       writeEscherJson(map, output);
       break;
 
     default:
+      // TODO: Log about unsupported output format.
       break;
     }
+  }
+
+
+  private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
+    Validation validation;
+    try {
+      // TODO: Add support for custom schema file.
+      validation = new Validation();
+    } catch (ProcessingException e) {
+      // TODO: Log that validation was unsuccessful.
+      e.printStackTrace();
+      return false;
+    }
+    switch (inputFormat) {
+    case SBGN:
+      return validation.validateSbgnml(input);
+
+    case SBML:
+      return validation.validateSbmlLE(input);
+
+    case Escher:
+      return validation.validateEscher(input);
+
+    }
+    return false;
+  }
+
+
+  private InputFormat determineInputFormat(File file) {
+    switch (file.getName()
+                .split(Pattern.quote("."))[file.getName()
+                                               .split(Pattern.quote(".")).length-1]) {
+    case "escher":
+    case "json":
+      return InputFormat.Escher;
+
+    case "sbgn":
+      return InputFormat.SBGN;
+
+    case "sbml":
+      return InputFormat.SBML;
+
+    }
+    return null;
   }
 
 
