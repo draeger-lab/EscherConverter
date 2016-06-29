@@ -190,17 +190,7 @@ public class EscherConverter extends Launcher {
   }
 
   public static EscherMap parseEscherJson(File input) throws IOException{
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_SETTERS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_CREATORS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_FIELDS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_GETTERS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
-    objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
-    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NONE);
+    ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
 
     logger.info(MessageFormat
         .format(bundle.getString("EscherConverter.readingFile"), input));
@@ -510,19 +500,6 @@ public class EscherConverter extends Launcher {
 
 
   private void writeEscherJson(EscherMap map, File output) throws IOException {
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-    objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-    objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_SETTERS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_CREATORS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_FIELDS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_GETTERS);
-    objectMapper.disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
-    objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
-    objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NONE);
-    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     List<EscherMap> mapList = new ArrayList<>(2);
 
@@ -541,7 +518,7 @@ public class EscherConverter extends Launcher {
 
     mapList.add(map);
 
-    objectMapper.writeValue(output, mapList);
+    edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper().writeValue(output, mapList);
 
   }
 
