@@ -160,17 +160,20 @@ public class EscherConverter extends Launcher {
   }
 
 
-  public static <T> EscherMap convert(Class<? extends T> format, T document, SBProperties
+  public static EscherMap convert(Sbgn document, SBProperties
       properties) {
-    if (format.isAssignableFrom(Sbgn.class)) {
-      // TODO: Convert SBGN to Escher.
-    }
+    // TODO: Convert SBGN to Escher.
+    SBGN2Escher converter = new SBGN2Escher();
 
-    if (format.isAssignableFrom(SBMLDocument.class)) {
-      // TODO: Convert SBML's all layouts, write each one to a different Escher file.
-    }
+    return converter.convert(document);
+  }
 
-    throw new UnsupportedOperationException("Not done yet!");
+
+  public static List<EscherMap> convert(SBMLDocument document, SBProperties properties) {
+    // TODO: Convert SBML's all layouts, write each one to a different Escher file.
+    SBML2Escher converter = new SBML2Escher();
+
+    return converter.convert(document);
   }
 
   /**
@@ -420,24 +423,22 @@ public class EscherConverter extends Launcher {
 
     case Escher:
 
-      EscherMap map = null;
       switch (inputFormat) {
 
       case SBGN:
-        map = convert(Sbgn.class, input, properties);
+        EscherMap map = convert(SbgnUtil.readFromFile(input), properties);
         writeEscherJson(map, output);
         break;
 
       case SBML:
-        map = convert(SBMLDocument.class, input, properties);
-        writeEscherJson(map, output);
+        List<EscherMap> maps = convert(SBMLReader.read(input), properties);
+        writeEscherJson(maps, output);
         break;
 
       case Escher:
         // TODO: Log that input and output format are same.
         break;
       }
-      writeEscherJson(map, output);
       break;
 
     default:
@@ -520,6 +521,20 @@ public class EscherConverter extends Launcher {
 
     edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper().writeValue(output, mapList);
 
+  }
+
+
+  private void writeEscherJson(List<EscherMap> mapList, File outDir) {
+    mapList.forEach(map -> {
+      File file = new File(outDir.getAbsolutePath() + map.getId() + ".json");
+      try {
+        // TODO: Check if file exists.
+        writeEscherJson(map, file);
+      } catch (IOException e) {
+        // TODO: Log that file can't be read/written.
+        e.printStackTrace();
+      }
+    });
   }
 
 
