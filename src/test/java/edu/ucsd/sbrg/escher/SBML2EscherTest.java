@@ -7,32 +7,29 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.SBMLReader;
-import org.sbml.jsbml.ext.layout.LayoutConstants;
-import org.sbml.jsbml.ext.layout.LayoutModelPlugin;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by deveshkhandelwal on 20/06/16.
  */
 public class SBML2EscherTest {
 
-  private static File         file;
-  private static SBMLDocument sbml;
-  private static SBML2Escher  converter;
-  private static EscherMap    map;
+  private static File            file;
+  private static SBMLDocument    sbml;
+  private static SBML2Escher     converter;
+  private static List<EscherMap> maps;
 
   @BeforeClass
   public static void createTheWorld() throws JAXBException, IOException, XMLStreamException {
     file = new File("data/example2.sbml.xml");
     sbml = SBMLReader.read(file);
     converter = new SBML2Escher();
-    map = converter.convert(sbml);
-    LayoutModelPlugin layoutPlugin = (LayoutModelPlugin) sbml.getModel().getPlugin(LayoutConstants.shortLabel);
-    return;
+    maps = converter.convert(sbml);
   }
 
   @Test(expected = IOException.class)
