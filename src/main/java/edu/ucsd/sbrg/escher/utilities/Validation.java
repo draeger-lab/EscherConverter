@@ -117,7 +117,9 @@ public class Validation {
 
 
   public boolean validateSbmlLE(File file) {
-    throw new UnsupportedOperationException("Not yet implemented!");
+    // TODO: SBML oofline/online validation.
+    return true;
+//    throw new UnsupportedOperationException("Not yet implemented!");
   }
 
 
