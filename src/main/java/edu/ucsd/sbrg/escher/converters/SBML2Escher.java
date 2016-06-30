@@ -36,41 +36,47 @@ public class SBML2Escher {
   }
 
 
-  public EscherMap convert(SBMLDocument document) {
+  public List<EscherMap> convert(SBMLDocument document) {
     this.document = document;
 
     layouts = ((LayoutModelPlugin)document.getModel().getPlugin(LayoutConstants.shortLabel)).getListOfLayouts();
-    escherMaps.add(new EscherMap());
 
-    escherMaps.get(0).setCanvas(addCanvasInfo(layouts.get(0)));
-    escherMaps.get(0).setDescription(bundle.getString("default_description"));
-    escherMaps.get(0).setId(HexBin.encode(layouts.get(0).toString().getBytes()));
-    layouts.get(0).getListOfSpeciesGlyphs().forEach((sG) -> {
-      escherMaps.get(0).addNode(createNode(sG));
-    });
-    layouts.get(0).getListOfReactionGlyphs().forEach((rG -> {
-      escherMaps.get(0).addNode(createMidmarker(rG));
-    }));
-    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
-      rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
-        for (int i = 1; i < sRG.getCurve().getCurveSegmentCount(); i++) {
-          escherMaps.get(0).addNode(createMultimarker(sRG.getCurve().getCurveSegment(i).getStart()));
-        }
+    layouts.forEach((layout) -> {
+
+      EscherMap map = new EscherMap();
+
+      map.setCanvas(addCanvasInfo(layouts.get(0)));
+      map.setDescription(bundle.getString("default_description"));
+      map.setId(HexBin.encode(layouts.get(0).toString().getBytes()));
+      layout.getListOfSpeciesGlyphs().forEach((sG) -> {
+        map.addNode(createNode(sG));
       });
-    });
-    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
-      escherMaps.get(0).addReaction(createReaction(rG));
-    });
-    layouts.get(0).getListOfReactionGlyphs().forEach((rG) -> {
-      rG.getListOfSpeciesReferenceGlyphs().forEach((sRG -> {
-        for (int i = 0; i < sRG.getCurve().getCurveSegmentCount(); i++) {
-          escherMaps.get(0)
-                    .getReaction("" + (rG.getId().hashCode() & 0xfffffff))
-                    .addSegment(createSegment(sRG.getCurve().getCurveSegment(i), sRG, rG, i));
-        }
+      layout.getListOfReactionGlyphs().forEach((rG -> {
+        map.addNode(createMidmarker(rG));
       }));
+      layout.getListOfReactionGlyphs().forEach((rG) -> {
+        rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
+          for (int i = 1; i < sRG.getCurve().getCurveSegmentCount(); i++) {
+            map.addNode(createMultimarker(sRG.getCurve().getCurveSegment(i).getStart()));
+          }
+        });
+      });
+      layout.getListOfReactionGlyphs().forEach((rG) -> {
+        map.addReaction(createReaction(rG));
+      });
+      layout.getListOfReactionGlyphs().forEach((rG) -> {
+        rG.getListOfSpeciesReferenceGlyphs().forEach((sRG -> {
+          for (int i = 0; i < sRG.getCurve().getCurveSegmentCount(); i++) {
+            map.getReaction("" + (rG.getId().hashCode() & 0xfffffff))
+               .addSegment(createSegment(sRG.getCurve().getCurveSegment(i), sRG, rG, i));
+          }
+        }));
+      });
+
+      escherMaps.add(map);
     });
-    return escherMaps.get(0);
+
+    return escherMaps;
   }
 
 
