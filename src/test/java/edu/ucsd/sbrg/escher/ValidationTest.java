@@ -4,20 +4,26 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import edu.ucsd.sbrg.escher.utilities.Validation;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.File;
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Devesh Khandelwal on 27-06-2016.
  */
+@RunWith(JUnitParamsRunner.class)
 public class ValidationTest {
 
   public Validation validation;
@@ -48,31 +54,35 @@ public class ValidationTest {
 
 
   @Test
-  public void failsOnInvalidJsonEscherFile() throws IOException, ProcessingException {
+  @Parameters({
+      "data/mapk_cascade.escher.json|false",
+      "data/e_coli_core_metabolism.escher.json|true",
+      "data/TestMap_vcard.escher.json|false"
+  })
+  public void escherValidationTest(String filePath, boolean isValid) throws IOException,
+      ProcessingException {
     validation = new Validation();
+    file = new File(filePath);
 
-    file = new File("data/TestMap_vcard.escher.json");
-
-    assertFalse("failure - validation passes on invalid JSON", validation.validateEscher(file));
+    assertEquals("failure - validation failing on valid JSON", isValid, validation.validateEscher
+        (file));
   }
 
 
+  // TODO: Add more SBGN files to test validation.
   @Test
-  public void validatesEscherJson() throws IOException, ProcessingException {
-    validation = new Validation();
-    file = new File("data/e_coli_core_metabolism.escher.json");
-
-    assertTrue("failure - validation failing on valid JSON", validation.validateEscher(file));
-  }
-
-
   @Ignore
-  @Test
-  public void validatesSbgnDocument() throws IOException, ProcessingException {
+  @Parameters({
+      "data/mapk_cascade.sbgn.xml|false",
+      "data/central_plant_metabolism.sbgn.xml|true"
+  })
+  public void sbgnValidationTest(String filePath, boolean isValid) throws IOException,
+      ProcessingException {
     validation = new Validation();
-    file = new File("data/central_plant_metabolism.sbgn.xml");
+    file = new File(filePath);
 
-    assertTrue("failure - validation failing on valid SBGN", validation.validateSbgnml(file));
+    assertEquals("failure - validation failing on valid SBGN", isValid, validation.validateSbgnml
+        (file));
   }
 
 
