@@ -71,9 +71,8 @@ public class ValidationTest {
 
   // TODO: Add more SBGN files to test validation.
   @Test
-  @Ignore
   @Parameters({
-      "data/mapk_cascade.sbgn.xml|false",
+      "data/mapk_cascade.sbgn.xml|true",
       "data/central_plant_metabolism.sbgn.xml|true"
   })
   public void sbgnValidationTest(String filePath, boolean isValid) throws IOException,
