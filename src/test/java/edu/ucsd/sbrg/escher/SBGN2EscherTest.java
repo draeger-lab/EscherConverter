@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.sbgn.SbgnUtil;
+import org.sbgn.bindings.Bbox;
 import org.sbgn.bindings.Sbgn;
 
 import javax.xml.bind.JAXBException;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.times;
 import static org.powermock.api.mockito.PowerMockito.spy;
 
@@ -112,6 +114,17 @@ public class SBGN2EscherTest {
     SbgnEscherTestTuple tuple = list.get(index);
 
     Mockito.verify(tuple.converter, times(tuple.numberOfReactions)).createReaction(any());
+  }
+
+
+  @Test
+  @Parameters({
+      "0", "1"
+  })
+  public void addCanvasCalled(int index) {
+    SbgnEscherTestTuple tuple = list.get(index);
+
+    Mockito.verify(tuple.converter).addCanvasInfo((Bbox)notNull());
   }
 
 }
