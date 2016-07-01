@@ -35,7 +35,7 @@ public class SBGN2Escher {
   }
 
 
-  protected void addCanvasInfo(Bbox bbox) {
+  public void addCanvasInfo(Bbox bbox) {
     Canvas canvas = new Canvas();
 
     if (bbox != null) {
@@ -56,7 +56,7 @@ public class SBGN2Escher {
   }
 
 
-  protected void addMetaInfo() {
+  public void addMetaInfo() {
     escherMap.setSchema(bundle.getString("escher_schema"));
     escherMap.setDescription(bundle.getString("default_description"));
     escherMap.setId(bundle.getString("default_id"));
@@ -71,7 +71,7 @@ public class SBGN2Escher {
   }
 
 
-  protected Node createNode(Glyph glyph) {
+  public Node createNode(Glyph glyph) {
     Node node = new Node();
 
     node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
@@ -100,7 +100,7 @@ public class SBGN2Escher {
   }
 
 
-  protected EscherReaction createReaction(Glyph glyph) {
+  public EscherReaction createReaction(Glyph glyph) {
     EscherReaction reaction = new EscherReaction();
 
     reaction.setId((glyph.getId().hashCode() & 0xfffffff) + "");
@@ -158,7 +158,7 @@ public class SBGN2Escher {
   }
 
 
-  protected TextLabel createTextLabel(Glyph glyph) {
+  public TextLabel createTextLabel(Glyph glyph) {
     TextLabel textLabel = new TextLabel();
 
     textLabel.setId((glyph.getId().hashCode() & 0xfffffff) + "");
@@ -169,7 +169,7 @@ public class SBGN2Escher {
     return textLabel;
   }
 
-  protected Segment createSegment(Arc arc) {
+  public Segment createSegment(Arc arc) {
     Segment segment = new Segment();
 
     if (arc.getId() == null) {
