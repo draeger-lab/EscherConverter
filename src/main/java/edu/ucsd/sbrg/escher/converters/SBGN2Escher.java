@@ -77,24 +77,36 @@ public class SBGN2Escher {
     node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
     node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+    node.setType(Node.Type.metabolite);
 
-    // TODO: The following won't work, type will be determined a different and more involved way.
-    switch (glyph.getClazz()) {
-    case "simple chemical":
-    case "perturbing agent":
-    case "macromolecule":
-      node.setType(Node.Type.metabolite);
-      break;
-    default:
-      node.setType(Node.Type.midmarker);
-    }
+    node.setName(glyph.getLabel().getText());
+    node.setLabelX((double) glyph.getBbox().getX());
+    node.setLabelY((double) glyph.getBbox().getY());
+    node.setBiggId(glyph.getId());
 
-    if (node.getType() == Node.Type.metabolite) {
-      node.setName(glyph.getLabel().getText());
-      node.setLabelX((double) glyph.getBbox().getX());
-      node.setLabelY((double) glyph.getBbox().getY());
-      node.setBiggId(glyph.getId());
-    }
+    return node;
+  }
+
+
+  public Node createMidMarker(Glyph glyph) {
+    Node node = new Node();
+
+    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
+    node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
+    node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+    node.setType(Node.Type.midmarker);
+
+    return node;
+  }
+
+
+  public Node createMultiMarker(Glyph glyph) {
+    Node node = new Node();
+
+    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
+    node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
+    node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+    node.setType(Node.Type.multimarker);
 
     return node;
   }
@@ -113,7 +125,7 @@ public class SBGN2Escher {
     reaction.setBiggId(reaction.getName());
     reaction.setLabelX(((double) glyph.getBbox().getX()));
     reaction.setLabelY(((double) glyph.getBbox().getY()));
-    reaction.setMidmarker(createNode(glyph));
+    reaction.setMidmarker(createMidMarker(glyph));
 
     document.getMap().getArc().forEach((a) -> {
 
@@ -260,7 +272,7 @@ public class SBGN2Escher {
 
       case "reaction":
         // TODO: Call createReaction and add to EscherMap properly.
-        escherMap.addNode(createNode(g));
+        escherMap.addNode(createMidMarker(g));
         escherMap.addReaction(createReaction(g));
         break;
 
