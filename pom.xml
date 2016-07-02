@@ -33,10 +33,11 @@
     <sysbio.version>1390</sysbio.version> <!-- SVN revision -->
     <jackson.version>2.7.4</jackson.version>
     <powermock.version>1.6.5</powermock.version>
+    <organization.name>University of California, San Diego</organization.name>
   </properties>
   
   <organization>
-    <name>University of California, San Diego</name>
+    <name>${organization.name}</name>
     <url>http://sbrg.ucsd.edu</url>
   </organization>
   
