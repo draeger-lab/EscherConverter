@@ -100,12 +100,12 @@ public class SBGN2Escher {
   }
 
 
-  public Node createMultiMarker(Glyph glyph) {
+  public Node createMultiMarker(Arc.Next next) {
     Node node = new Node();
 
-    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
-    node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
-    node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
+    node.setId("" + (next.hashCode() & 0xfffffff));
+    node.setX((double) next.getX());
+    node.setY((double) next.getY());
     node.setType(Node.Type.multimarker);
 
     return node;
@@ -289,6 +289,12 @@ public class SBGN2Escher {
         break;
 
       }
+    });
+
+    map.getArc().forEach(a -> {
+      a.getNext().forEach(next -> {
+        escherMap.addNode(createMultiMarker(next));
+      });
     });
 
     return escherMap;
