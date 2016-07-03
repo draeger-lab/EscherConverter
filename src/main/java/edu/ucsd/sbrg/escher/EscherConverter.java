@@ -345,8 +345,8 @@ public class EscherConverter extends Launcher {
     if (props.containsKey(EscherIOOptions.INPUT) && props.containsKey(EscherIOOptions.OUTPUT)) {
       // TODO: Allow output to be empty, create file/directory if doesn't exists.
       try {
-        File input = new File(props.getProperty(EscherIOOptions.INPUT.toString()));
-        File output = new File(props.getProperty(EscherIOOptions.OUTPUT.toString()));
+        File input = replaceUnixPathAbbreviations(props.getProperty(EscherIOOptions.INPUT.toString()));
+        File output = replaceUnixPathAbbreviations(props.getProperty(EscherIOOptions.OUTPUT.toString()));
         if (input.isDirectory()) {
           logger.info(MessageFormat.format(
             bundle.getString("EscherConverter.launchingBatchProcessing"),
@@ -360,6 +360,22 @@ public class EscherConverter extends Launcher {
     } else {
       logger.warning(bundle.getString("EscherConverter.incompleteCMDArgs"));
     }
+  }
+
+
+  /**
+   * Does some very basic file path interpretation.
+   * 
+   * @param path an input path (can be relative or start with tilde)
+   * @return a {@link File} representing the absolute path.
+   */
+  private File replaceUnixPathAbbreviations(String path) {
+    if (path.startsWith("~")) {
+      path = System.getProperty("user.home") + path.substring(1);
+    } else if (path.startsWith(".")) {
+      path = System.getProperty("user.dir") + path.substring(1);
+    }
+    return new File(path);
   }
 
 
