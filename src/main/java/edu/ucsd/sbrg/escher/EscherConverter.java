@@ -28,7 +28,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -41,7 +40,7 @@ import org.sbgn.bindings.Sbgn;
 import org.sbml.jsbml.SBMLDocument;
 import org.sbml.jsbml.SBMLException;
 import org.sbml.jsbml.SBMLReader;
-import org.sbml.jsbml.SBMLWriter;
+import org.sbml.jsbml.TidySBMLWriter;
 import org.xml.sax.SAXException;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -277,11 +276,11 @@ public class EscherConverter extends Launcher {
     // TODO: Warn before overwriting.
 
     // Checks if output/input is directory, if it doesn't, create one.
-    if (!output.exists() && !output.isFile() && !(input.isFile() && input
-        .getName().equals(output.getName()))) {
-      logger.info(MessageFormat
-        .format(bundle.getString("EscherConverter.cratingDir"),
-          output.getAbsolutePath()));
+    if (!output.exists() && (output.getName().lastIndexOf('.') < 0) &&
+        !(input.isFile() && input.getName().equals(output.getName()))) {
+      logger.info(MessageFormat.format(
+        bundle.getString("EscherConverter.cratingDir"),
+        output.getAbsolutePath()));
 
       // TODO: A directory shouldn't be directly created, instead a file should be created.
       output.mkdir();
@@ -294,9 +293,8 @@ public class EscherConverter extends Launcher {
           output =
               new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
         }
+        properties.put(InputFormat.class.getSimpleName(), InputFormat.Escher);
         convert(input, output, properties);
-        logger.info(MessageFormat
-          .format("Output successfully written to file {0}.", output));
       }
 
       if (SBFileFilter.isSBMLFile(input)) {
@@ -307,6 +305,7 @@ public class EscherConverter extends Launcher {
           output =
               new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
         }
+        properties.put(InputFormat.class.getSimpleName(), InputFormat.SBML);
         convert(input, output, properties);
       }
 
@@ -315,9 +314,9 @@ public class EscherConverter extends Launcher {
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".json";
-          output =
-              new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
+          output = new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
         }
+        properties.put(InputFormat.class.getSimpleName(), InputFormat.SBGN);
         convert(input, output, properties);
       }
 
@@ -343,24 +342,18 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public void commandLineMode(AppConf appConf) {
-    SBProperties properties = appConf.getCmdArgs();
-    if (properties.containsKey(EscherIOOptions.INPUT) && properties
-        .containsKey(EscherIOOptions.OUTPUT)) {
+    if (props.containsKey(EscherIOOptions.INPUT) && props.containsKey(EscherIOOptions.OUTPUT)) {
       // TODO: Allow output to be empty, create file/directory if doesn't exists.
       try {
-        File
-        input =
-        new File(properties.getProperty(EscherIOOptions.INPUT.toString()));
-        File
-        output =
-        new File(properties.getProperty(EscherIOOptions.OUTPUT.toString()));
+        File input = new File(props.getProperty(EscherIOOptions.INPUT.toString()));
+        File output = new File(props.getProperty(EscherIOOptions.OUTPUT.toString()));
         if (input.isDirectory()) {
           logger.info(MessageFormat.format(
             bundle.getString("EscherConverter.launchingBatchProcessing"),
             input.getAbsolutePath()));
         }
         // Can also be used if only a single file is to be converted:
-        batchProcess(input, output, properties);
+        batchProcess(input, output, props);
       } catch (SBMLException | XMLStreamException | IOException | ParseException | JAXBException | SAXException | ParserConfigurationException | TransformerException exc) {
         exc.printStackTrace();
       }
@@ -388,21 +381,16 @@ public class EscherConverter extends Launcher {
       throws IOException, ParseException,
       XMLStreamException, SBMLException, JAXBException, SAXException,
       ParserConfigurationException, TransformerException {
-    OutputFormat
-    format =
-    OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
+    OutputFormat format = OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
     if (output.isDirectory()) {
       String fileName = input.getName();
       String extension = format.toString().toLowerCase();
-      output =
-          new File(Utils.ensureSlash(output.getAbsolutePath()) + fileName
-            .substring(0,
-              fileName.length() - FileTools.getExtension(fileName).length())
-          + extension);
+      output = new File(Utils.ensureSlash(output.getAbsolutePath()) +
+        fileName.substring(0, fileName.length() - FileTools.getExtension(fileName).length()) + extension);
     }
 
     // TODO: Check input format, then call proper validation method.
-    InputFormat inputFormat = determineInputFormat(input);
+    InputFormat inputFormat = InputFormat.valueOf(properties.get(InputFormat.class.getSimpleName()));
     if (inputFormat == null) {
       // TODO: Log that file format cannot be determined.
       return;
@@ -413,15 +401,19 @@ public class EscherConverter extends Launcher {
       return;
     }
 
+    boolean success = false;
+
     switch (format) {
     case SBML:
       SBMLDocument doc = convert(input, SBMLDocument.class, properties);
-      SBMLWriter.write(doc, output, System.getProperty("app.name"),
+      TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
         getVersionNumber(), ' ', (short) 2);
+      success = true;
       break;
     case SBGN:
       Sbgn sbgn = convert(input, Sbgn.class, properties);
       SbgnUtil.writeToFile(sbgn, output);
+      success = true;
       break;
 
     case Escher:
@@ -431,11 +423,13 @@ public class EscherConverter extends Launcher {
       case SBGN:
         EscherMap map = convert(SbgnUtil.readFromFile(input), properties);
         writeEscherJson(map, output);
+        success = true;
         break;
 
       case SBML:
         List<EscherMap> maps = convert(SBMLReader.read(input), properties);
         writeEscherJson(maps, output);
+        success = true;
         break;
 
       case Escher:
@@ -447,6 +441,11 @@ public class EscherConverter extends Launcher {
     default:
       // TODO: Log about unsupported output format.
       break;
+    }
+
+    if (success) {
+      logger.info(MessageFormat.format(
+        "Output successfully written to file {0}.", output));
     }
   }
 
@@ -473,33 +472,6 @@ public class EscherConverter extends Launcher {
 
     }
     return false;
-  }
-
-
-  private InputFormat determineInputFormat(File file) {
-    switch (file.getName()
-        .split(Pattern.quote("."))[file.getName()
-                                   .split(Pattern.quote(".")).length-1]) {
-                                   case "escher":
-                                   case "json":
-                                     return InputFormat.Escher;
-
-                                   case "sbgn":
-                                     return InputFormat.SBGN;
-
-                                   case "sbml":
-                                     return InputFormat.SBML;
-
-                                   case "xml":
-                                     if (file.getName().endsWith("sbgn.xml")) {
-                                       return InputFormat.SBGN;
-                                     }
-                                     if (file.getName().endsWith("sbml.xml")) {
-                                       return InputFormat.SBML;
-                                     }
-
-    }
-    return null;
   }
 
 
@@ -546,9 +518,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public List<Class<? extends KeyProvider>> getCmdLineOptions() {
-    List<Class<? extends KeyProvider>>
-    list =
-    new ArrayList<Class<? extends KeyProvider>>(3);
+    List<Class<? extends KeyProvider>> list = new ArrayList<Class<? extends KeyProvider>>(3);
     list.add(EscherIOOptions.class);
     list.add(EscherOptions.class);
     list.add(GUIOptions.class);
@@ -570,9 +540,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public List<Class<? extends KeyProvider>> getInteractiveOptions() {
-    List<Class<? extends KeyProvider>>
-    list =
-    new ArrayList<Class<? extends KeyProvider>>(1);
+    List<Class<? extends KeyProvider>> list = new ArrayList<Class<? extends KeyProvider>>(1);
     list.add(EscherOptions.class);
     return list;
   }
@@ -680,8 +648,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public boolean showsGUI() {
-    SBProperties args = getAppConf().getCmdArgs();
-    return args.containsKey(GUIOptions.GUI) && args.getBoolean(GUIOptions.GUI);
+    return props.containsKey(GUIOptions.GUI) && props.getBooleanProperty(GUIOptions.GUI);
   }
 
 }
