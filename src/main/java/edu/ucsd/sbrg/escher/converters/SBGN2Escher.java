@@ -249,7 +249,7 @@ public class SBGN2Escher {
       segment = new Segment();
 
       segment.setId(arc.getId() + ".S" + (i+1));
-      segment.setFromNodeId("" + (next.hashCode() & 0xffffff));
+      segment.setFromNodeId("" + (next.hashCode() & 0xfffffff));
     }
 
     segment.setToNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getTarget())));
