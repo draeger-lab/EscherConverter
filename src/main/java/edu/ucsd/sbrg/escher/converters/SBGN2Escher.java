@@ -198,29 +198,6 @@ public class SBGN2Escher {
   public List<Segment> createSegments(Arc arc) {
     List<Segment> segments = new ArrayList<>();
 
-    if (arc.getNext().isEmpty()) {
-      Segment segment = new Segment();
-
-      segment.setId(arc.getId());
-      segment.setFromNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getSource())));
-      segment.setToNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getTarget())));
-
-      if (!arc.getEnd().getPoint().isEmpty()) {
-        Point point = new Point();
-
-        point.setX((double) arc.getEnd().getPoint().get(0).getX());
-        point.setY((double) arc.getEnd().getPoint().get(0).getY());
-        segment.setBasePoint1(point);
-
-        point.setX((double) arc.getEnd().getPoint().get(1).getX());
-        point.setY((double) arc.getEnd().getPoint().get(1).getY());
-        segment.setBasePoint2(point);
-      }
-
-      segments.add(segment);
-      return segments;
-    }
-
     Segment segment = new Segment();
 
     segment.setId(arc.getId() + ".S" + 0);
