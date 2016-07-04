@@ -4,9 +4,10 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import edu.ucsd.sbrg.escher.model.*;
 import edu.ucsd.sbrg.escher.model.Point;
 import org.sbgn.bindings.*;
+import org.sbgn.bindings.Map;
 import org.sbml.jsbml.util.ResourceManager;
 
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -29,9 +30,14 @@ public class SBGN2Escher {
   protected long segmentId = 0;
   protected long reactionId = 0;
 
+  protected Set<String>             glyphIds;
+  protected HashMap<String, String> port2GlyphMap;
+
 
   public SBGN2Escher() {
     escherMap = new EscherMap();
+    port2GlyphMap = new HashMap<>();
+    glyphIds = new HashSet<>();
   }
 
 
@@ -181,6 +187,105 @@ public class SBGN2Escher {
     return textLabel;
   }
 
+
+  public List<Segment> createSegments(Arc arc) {
+    List<Segment> segments = new ArrayList<>();
+
+    if (arc.getNext().isEmpty()) {
+      Segment segment = new Segment();
+
+      segment.setId(arc.getId());
+      segment.setFromNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getSource())));
+      segment.setToNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getTarget())));
+
+      if (!arc.getEnd().getPoint().isEmpty()) {
+        Point point = new Point();
+
+        point.setX((double) arc.getEnd().getPoint().get(0).getX());
+        point.setY((double) arc.getEnd().getPoint().get(0).getY());
+        segment.setBasePoint1(point);
+
+        point.setX((double) arc.getEnd().getPoint().get(1).getX());
+        point.setY((double) arc.getEnd().getPoint().get(1).getY());
+        segment.setBasePoint2(point);
+      }
+
+      segments.add(segment);
+      return segments;
+    }
+
+    Segment segment = new Segment();
+
+    segment.setId(arc.getId() + ".S" + 1);
+    segment.setFromNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getSource())));
+
+    for (int i = 0; i < arc.getNext().size(); i++) {
+
+      Arc.Next next = arc.getNext().get(i);
+
+      segment.setToNodeId("" + (next.hashCode() & 0xfffffff));
+
+      if (!next.getPoint().isEmpty()) {
+        Point point = new Point();
+
+        point.setX((double) next.getPoint().get(0).getX());
+        point.setY((double) next.getPoint().get(0).getY());
+        segment.setBasePoint1(point);
+
+        point.setX((double) next.getPoint().get(1).getX());
+        point.setY((double) next.getPoint().get(1).getY());
+        segment.setBasePoint2(point);
+      }
+
+      segments.add(segment);
+
+      segment = new Segment();
+
+      segment.setId(arc.getId() + ".S" + i+1);
+      segment.setFromNodeId("" + (next.hashCode() & 0xffffff));
+    }
+
+    segment.setToNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getTarget())));
+
+    if (!arc.getEnd().getPoint().isEmpty()) {
+      Point point = new Point();
+
+      point.setX((double) arc.getEnd().getPoint().get(0).getX());
+      point.setY((double) arc.getEnd().getPoint().get(0).getY());
+      segment.setBasePoint1(point);
+
+      point.setX((double) arc.getEnd().getPoint().get(1).getX());
+      point.setY((double) arc.getEnd().getPoint().get(1).getY());
+      segment.setBasePoint2(point);
+    }
+
+    segments.add(segment);
+
+    return segments;
+  }
+
+
+  public String getIdFromSourceOrTarget(Object sOrT) {
+    if (sOrT.getClass().isAssignableFrom(Glyph.class)) {
+      return ((Glyph)sOrT).getId();
+    }
+    else if (sOrT.getClass().isAssignableFrom(Port.class)) {
+      return ((Port)sOrT).getId();
+    }
+    return null;
+  }
+
+
+  public String getGlyphIdFromPortId(String id) {
+    if (glyphIds.contains(id)) {
+      return id;
+    }
+    else {
+      return port2GlyphMap.get(id);
+    }
+  }
+
+
   public Segment createSegment(Arc arc) {
     Segment segment = new Segment();
 
@@ -189,6 +294,10 @@ public class SBGN2Escher {
     }
     else {
       segment.setId(arc.getId());
+    }
+
+    if (arc.getSource().getClass().isAssignableFrom(Glyph.class)) {
+
     }
 
     try {
@@ -260,6 +369,8 @@ public class SBGN2Escher {
     addCanvasInfo(map.getBbox());
     addMetaInfo();
 
+    preProcessSbgn();
+
     // For every glyph, determine its class and call the appropriate method accordingly.
     map.getGlyph().forEach((g) -> {
       String component = determineComponent(g.getClazz());
@@ -298,5 +409,18 @@ public class SBGN2Escher {
     });
 
     return escherMap;
+  }
+
+
+  protected void preProcessSbgn() {
+    document.getMap().getGlyph().forEach(g -> {
+      // Store all glyph Ids for future retrieval.
+      glyphIds.add(g.getId());
+
+      // Store all ports with their respective glyph.
+      g.getPort().forEach(p -> {
+        port2GlyphMap.put(p.getId(), g.getId());
+      });
+    });
   }
 }
