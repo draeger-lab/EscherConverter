@@ -10,6 +10,7 @@ import org.sbml.jsbml.util.ResourceManager;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by deveshkhandelwal on 13/06/16.
@@ -34,6 +35,7 @@ public class SBGN2Escher {
   protected HashMap<String, String> port2GlyphMap;
   protected HashMap<String, String> arc2GlyphMap;
   protected Set<String>             processIds;
+  protected Set<String>             metaboliteIds;
 
 
   public SBGN2Escher() {
@@ -42,6 +44,7 @@ public class SBGN2Escher {
     glyphIds = new HashSet<>();
     arc2GlyphMap = new HashMap<>();
     processIds = new HashSet<>();
+    metaboliteIds = new HashSet<>();
   }
 
 
@@ -138,48 +141,47 @@ public class SBGN2Escher {
     reaction.setMidmarker(createMidMarker(glyph));
 
     document.getMap().getArc().forEach((a) -> {
-
       if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         createSegments(a).forEach(reaction::addSegment);
       }
-      /*if (a.getSource().getClass() == Glyph.class) {
-        if (((Glyph) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
-          reaction.addSegment(createSegment(a));
 
-          // Metabolite for reaction. Coefficient is negative as its source.
-          Metabolite metabolite = new Metabolite();
-          metabolite.setId(((Glyph) a.getSource()).getId());
-          metabolite.setCoefficient(-1.0);
-          reaction.addMetabolite(metabolite);
-        }
-      }
-      else if (a.getSource().getClass() == Port.class) {
-        if (((Port) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
-          reaction.addSegment(createSegment(a));
-        }
+      Metabolite metabolite = new Metabolite();
+      if (a.getClazz().equals("consumption")) {
+        metabolite.setCoefficient(-1.0);
+        metabolite.setId(getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getSource())));
       }
 
-      if (a.getTarget().getClass() == Glyph.class) {
-        if (((Glyph) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
-          reaction.addSegment(createSegment(a));
-
-          // Metabolite for reaction. Coefficient is positive as its target.
-          Metabolite metabolite = new Metabolite();
-          metabolite.setId(((Glyph) a.getTarget()).getId());
-          metabolite.setCoefficient(1.0);
-          reaction.addMetabolite(metabolite);
-        }
+      if (a.getClazz().equals("production")) {
+        metabolite.setCoefficient(1.0);
+        metabolite.setId(getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getTarget())));
       }
-      else if (a.getTarget().getClass() == Port.class) {
-        if (((Port) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
-          reaction.addSegment(createSegment(a));
-        }
-      }*/
 
-
+      reaction.addMetabolite(metabolite);
     });
 
     return reaction;
+  }
+
+
+  public double extractCoefficient(Object object) {
+    String id = getGlyphIdFromPortId(getIdFromSourceOrTarget(object));
+
+    Glyph glyph = document.getMap()
+                          .getGlyph()
+                          .stream()
+                          .filter(g -> g.getId()
+                                        .equals(id))
+                          .collect(Collectors.toList()).get(0);
+
+    if (glyph.getGlyph() == null) {
+      return 1.0;
+    }
+    else if (glyph.getGlyph().get(0).getClazz().equals("state variable")) {
+      return Double.parseDouble(glyph.getGlyph().get(0).getState().getValue().replace('P', ' '));
+    }
+    else {
+      return 1.0;
+    }
   }
 
 
@@ -270,54 +272,6 @@ public class SBGN2Escher {
   }
 
 
-  public Segment createSegment(Arc arc) {
-    Segment segment = new Segment();
-
-    if (arc.getId() == null) {
-      segment.setId("S" + segmentId++);
-    }
-    else {
-      segment.setId(arc.getId());
-    }
-
-    if (arc.getSource().getClass().isAssignableFrom(Glyph.class)) {
-
-    }
-
-    try {
-        segment.setFromNodeId((((Glyph)arc.getSource()).getId().split(Pattern.quote("."))[0]
-            .hashCode
-            () &
-            0xfffffff)
-          + "");
-    }
-    catch (ClassCastException ex) {
-      segment.setFromNodeId((((Port)arc.getSource()).getId().split(Pattern.quote("."))[0]
-          .hashCode() &
-          0xfffffff) +
-          "");
-    }
-
-    try {
-      segment.setToNodeId((((Glyph)arc.getTarget()).getId().split(Pattern.quote("."))[0].hashCode
-          () &
-          0xfffffff) +
-          "");
-    }
-    catch (ClassCastException ex) {
-      segment.setToNodeId((((Port)arc.getTarget()).getId().split(Pattern.quote("."))[0].hashCode
-          () &
-          0xfffffff) +
-          "");
-    }
-
-    segment.setBasePoint1(new Point((double)arc.getStart().getX(), (double)arc.getStart().getY()));
-    segment.setBasePoint2(new Point((double)arc.getEnd().getX(), (double)arc.getEnd().getY()));
-
-    return segment;
-  }
-
-
   private String determineComponent(String classs) {
     // TODO: Determine class according to the SBGN PD Level 1 spec draft.
     switch (classs) {
@@ -400,6 +354,11 @@ public class SBGN2Escher {
     document.getMap().getGlyph().forEach(g -> {
       // Store all glyph Ids for future retrieval.
       glyphIds.add(g.getId());
+
+      // Store all metabolite Ids for future retrieval.
+      if (determineComponent(g.getClazz()).equals("node")) {
+        metaboliteIds.add(g.getId());
+      }
 
       // Store all process Ids for future retrieval.
       if (determineComponent(g.getClazz()).equals("reaction")) {

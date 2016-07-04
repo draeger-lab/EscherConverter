@@ -247,7 +247,67 @@
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 400.0,
-      "metabolites" : [ ],
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
+      } ],
       "name" : "R2",
       "segments" : {
         "arc000005.S0" : {
@@ -299,7 +359,67 @@
       "genes" : [ ],
       "label_x" : 540.0,
       "label_y" : 400.0,
-      "metabolites" : [ ],
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
+      } ],
       "name" : "R0",
       "segments" : {
         "arc000008.S0" : {
@@ -339,7 +459,67 @@
       "genes" : [ ],
       "label_x" : 500.0,
       "label_y" : 650.0,
-      "metabolites" : [ ],
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
+      } ],
       "name" : "R3",
       "segments" : {
         "arc00000f.S0" : {
@@ -391,7 +571,67 @@
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 650.0,
-      "metabolites" : [ ],
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
+      } ],
       "name" : "R4",
       "segments" : {
         "arc000011.S0" : {
@@ -443,7 +683,67 @@
       "genes" : [ ],
       "label_x" : 370.0,
       "label_y" : 160.0,
-      "metabolites" : [ ],
+      "metabolites" : [ {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
+      } ],
       "name" : "R1",
       "segments" : {
         "arc000000.S0" : {
