@@ -32,12 +32,16 @@ public class SBGN2Escher {
 
   protected Set<String>             glyphIds;
   protected HashMap<String, String> port2GlyphMap;
+  protected HashMap<String, String> arc2GlyphMap;
+  protected Set<String>             processIds;
 
 
   public SBGN2Escher() {
     escherMap = new EscherMap();
     port2GlyphMap = new HashMap<>();
     glyphIds = new HashSet<>();
+    arc2GlyphMap = new HashMap<>();
+    processIds = new HashSet<>();
   }
 
 
@@ -80,7 +84,7 @@ public class SBGN2Escher {
   public Node createNode(Glyph glyph) {
     Node node = new Node();
 
-    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
+    node.setId(glyph.getId());
     node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
     node.setType(Node.Type.metabolite);
@@ -97,7 +101,7 @@ public class SBGN2Escher {
   public Node createMidMarker(Glyph glyph) {
     Node node = new Node();
 
-    node.setId("" + (glyph.getId().hashCode() & 0xfffffff));
+    node.setId(glyph.getId());
     node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
     node.setType(Node.Type.midmarker);
@@ -135,7 +139,10 @@ public class SBGN2Escher {
 
     document.getMap().getArc().forEach((a) -> {
 
-      if (a.getSource().getClass() == Glyph.class) {
+      if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
+        createSegments(a).forEach(reaction::addSegment);
+      }
+      /*if (a.getSource().getClass() == Glyph.class) {
         if (((Glyph) a.getSource()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
           reaction.addSegment(createSegment(a));
 
@@ -167,7 +174,7 @@ public class SBGN2Escher {
         if (((Port) a.getTarget()).getId().split(Pattern.quote("."))[0].equals(glyph.getId())) {
           reaction.addSegment(createSegment(a));
         }
-      }
+      }*/
 
 
     });
@@ -216,7 +223,7 @@ public class SBGN2Escher {
 
     Segment segment = new Segment();
 
-    segment.setId(arc.getId() + ".S" + 1);
+    segment.setId(arc.getId() + ".S" + 0);
     segment.setFromNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getSource())));
 
     for (int i = 0; i < arc.getNext().size(); i++) {
@@ -241,7 +248,7 @@ public class SBGN2Escher {
 
       segment = new Segment();
 
-      segment.setId(arc.getId() + ".S" + i+1);
+      segment.setId(arc.getId() + ".S" + (i+1));
       segment.setFromNodeId("" + (next.hashCode() & 0xffffff));
     }
 
@@ -417,10 +424,30 @@ public class SBGN2Escher {
       // Store all glyph Ids for future retrieval.
       glyphIds.add(g.getId());
 
+      // Store all process Ids for future retrieval.
+      if (determineComponent(g.getClazz()).equals("reaction")) {
+        processIds.add(g.getId());
+      }
+
       // Store all ports with their respective glyph.
       g.getPort().forEach(p -> {
         port2GlyphMap.put(p.getId(), g.getId());
       });
+    });
+
+    document.getMap().getArc().forEach(a -> {
+      // Store all arcs with their respective process nodes.
+      String id;
+
+      id = getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getSource()));
+      if (processIds.contains(id)) {
+        arc2GlyphMap.put(a.getId(), id);
+      }
+
+      id = getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getTarget()));
+      if (processIds.contains(id)) {
+        arc2GlyphMap.put(a.getId(), id);
+      }
     });
   }
 }
