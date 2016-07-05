@@ -49,14 +49,14 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * A {@link java.util.logging.Logger} for this class.
    */
   private static final Logger
-                                      logger =
-      Logger.getLogger(Escher2SBGN.class.getName());
+  logger =
+  Logger.getLogger(Escher2SBGN.class.getName());
   /**
    * Localization support.
    */
   public static final  ResourceBundle
-                                      bundle =
-      ResourceManager.getBundle("Messages");
+  bundle =
+  ResourceManager.getBundle("Messages");
   /**
    * The SBGN map builder.
    */
@@ -83,12 +83,12 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
     double yOffset = canvas.isSetY() ? canvas.getY().doubleValue() : 0d;
     Sbgn sbgn = builder.createSbgn();
     org.sbgn.bindings.Map
-        map =
-        builder.createMap(SBGNbuilder.Language.process_description, 0d, 0d,
-            canvas.isSetHeight() ? canvas.getHeight().doubleValue() :
-                getCanvasDefaultHeight(),
-            canvas.isSetWidth() ? canvas.getWidth().doubleValue() :
-                getCanvasDefaultWidth());
+    map =
+    builder.createMap(SBGNbuilder.Language.process_description, 0d, 0d,
+      canvas.isSetHeight() ? canvas.getHeight().doubleValue() :
+        getCanvasDefaultHeight(),
+        canvas.isSetWidth() ? canvas.getWidth().doubleValue() :
+          getCanvasDefaultWidth());
     sbgn.setMap(map);
     if (escherMap.isSetDescription()) {
       try {
@@ -109,11 +109,11 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         if (!(id.equalsIgnoreCase("n") || id.equalsIgnoreCase("e"))) {
           EscherCompartment compartment = entry.getValue();
           Glyph
-              compGlyph =
-              builder.createGlyph(id, compartment.getName(),
-                  SBGNProperties.GlyphType.compartment,
-                  compartment.getX() - xOffset, compartment.getY() - yOffset,
-                  compartment.getWidth(), compartment.getHeight());
+          compGlyph =
+          builder.createGlyph(id, compartment.getName(),
+            SBGNProperties.GlyphType.compartment,
+            compartment.getX() - xOffset, compartment.getY() - yOffset,
+            compartment.getWidth(), compartment.getHeight());
           node2glyph.put(compGlyph.getId(), compGlyph);
           map.getGlyph().add(compGlyph);
           // TODO: arrange compartments according to their size.
@@ -123,11 +123,11 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
     }
     for (Map.Entry<String, Node> entry : escherMap.nodes()) {
       convertNode(entry.getValue(), escherMap, node2glyph, multimarkers, map,
-          xOffset, yOffset);
+        xOffset, yOffset);
     }
     for (Map.Entry<String, EscherReaction> entry : escherMap.reactions()) {
       convertProcess(entry.getValue(), escherMap, map, node2glyph, xOffset,
-          yOffset);
+        yOffset);
     }
     for (Map.Entry<String, TextLabel> entry : escherMap.textLabels()) {
       createTextLabel(entry.getValue(), map, xOffset, yOffset);
@@ -145,14 +145,14 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param yOffset
    */
   private void convertNode(Node node, EscherMap escherMap,
-      Map<String, SBGNBase> node2glyph, Map<String, Node> multimarkers,
-      org.sbgn.bindings.Map map, double xOffset, double yOffset) {
+    Map<String, SBGNBase> node2glyph, Map<String, Node> multimarkers,
+    org.sbgn.bindings.Map map, double xOffset, double yOffset) {
     Glyph glyph = null;
     if (node.isSetType()) {
       switch (node.getType()) {
       case metabolite:
         glyph =
-            convertMetabolite(node, escherMap, multimarkers, xOffset, yOffset);
+        convertMetabolite(node, escherMap, multimarkers, xOffset, yOffset);
         node2glyph.put(node.getId(), glyph);
         map.getGlyph().add(glyph);
         break;
@@ -191,11 +191,11 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param yOffset
    */
   private Glyph convertExchange(Node node, Map<String, SBGNBase> node2glyph,
-      org.sbgn.bindings.Map map, double xOffset, double yOffset) {
+    org.sbgn.bindings.Map map, double xOffset, double yOffset) {
     // TODO: implement support for exchange reactions!
     logger.warning(MessageFormat
-        .format(bundle.getString("Escher2SBGN.cannotConvertExchange"),
-            node.getId()));
+      .format(bundle.getString("Escher2SBGN.cannotConvertExchange"),
+        node.getId()));
     return null;
   }
 
@@ -209,25 +209,25 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @return
    */
   private Glyph convertMidmarker(Node midmarker,
-      Map<String, SBGNBase> node2glyph, org.sbgn.bindings.Map map,
-      double xOffset, double yOffset) {
+    Map<String, SBGNBase> node2glyph, org.sbgn.bindings.Map map,
+    double xOffset, double yOffset) {
     String
-        rId =
-        midmarker
-            .getId(); //extractReactionId(midmarker.getConnectedSegments());
+    rId =
+    midmarker
+    .getId(); //extractReactionId(midmarker.getConnectedSegments());
     if (rId != null) {
       if (!node2glyph.containsValue(rId)) {
         double width = getPrimaryNodeWidth() * getReactionNodeRatio();
         double height = getPrimaryNodeHeight() * getReactionNodeRatio();
         // Also shift node because again the center of the node would be used as coordinate instead of upper-left corner
         Glyph
-            rGlyph =
-            builder.createGlyph(SBMLtools.toSId(rId),
-                midmarker.isSetName() ? midmarker.getName() :
-                    midmarker.getBiggId(), GlyphType.process,
-                convertCoordinate(midmarker.getX(), xOffset) - width / 2d,
-                convertCoordinate(midmarker.getY(), yOffset) - height / 2d,
-                width, height);
+        rGlyph =
+        builder.createGlyph(SBMLtools.toSId(rId),
+          midmarker.isSetName() ? midmarker.getName() :
+            midmarker.getBiggId(), GlyphType.process,
+            convertCoordinate(midmarker.getX(), xOffset) - width / 2d,
+            convertCoordinate(midmarker.getY(), yOffset) - height / 2d,
+            width, height);
         //Do that later... createTextGlyph(midmarker, layout, xOffset, yOffset, rGlyph); (when the actual reaction is treated)
         map.getGlyph().add(rGlyph);
         node2glyph.put(rId, rGlyph);
@@ -245,11 +245,15 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param yOffset
    */
   private void createTextLabel(TextLabel textLabel, org.sbgn.bindings.Map map,
-      double xOffset, double yOffset) {
+    double xOffset, double yOffset) {
     try {
       // This is important in order to skip cardinality labels. These are treated directly in the reaction conversion.
       Double.parseDouble(textLabel.getText());
     } catch (NumberFormatException exc) {
+      if (!textLabel.isSetId()) {
+        // Actually, the id should always be defined!
+        textLabel.setId("" + textLabel.hashCode());
+      }
       String id = SBMLtools.toSId(textLabel.getId());
       if (builder.getSBGNBase(id) != null) {
         int i = 0;
@@ -259,20 +263,20 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         id += "_" + i;
       }
       Glyph
-          glyph =
-          builder.createGlyph(id, textLabel.getText(), GlyphType.annotation,
-              convertCoordinate(textLabel.getX(), xOffset),
-              convertCoordinate(textLabel.getY(), yOffset),
-              textLabel.isSetWidth() ?
-                  SBGNbuilder.toDouble(textLabel.getWidth()) : getLabelWidth(),
-              textLabel.isSetHeight() ?
-                  SBGNbuilder.toDouble(textLabel.getHeight()) :
-                  getLabelHeight());
+      glyph =
+      builder.createGlyph(id, textLabel.getText(), GlyphType.annotation,
+        convertCoordinate(textLabel.getX(), xOffset),
+        convertCoordinate(textLabel.getY(), yOffset),
+        textLabel.isSetWidth() ?
+          SBGNbuilder.toDouble(textLabel.getWidth()) : getLabelWidth(),
+          textLabel.isSetHeight() ?
+            SBGNbuilder.toDouble(textLabel.getHeight()) :
+              getLabelHeight());
       Callout
-          callout =
-          builder
-              .createGlyphCallout(convertCoordinate(textLabel.getX(), xOffset),
-                  convertCoordinate(textLabel.getY(), yOffset));
+      callout =
+      builder
+      .createGlyphCallout(convertCoordinate(textLabel.getX(), xOffset),
+        convertCoordinate(textLabel.getY(), yOffset));
       glyph.setCallout(callout);
       map.getGlyph().add(glyph);
     }
@@ -288,12 +292,12 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @param yOffset
    */
   private void convertProcess(EscherReaction reaction, EscherMap escherMap,
-      org.sbgn.bindings.Map map, Map<String, SBGNBase> node2glyph,
-      double xOffset, double yOffset) {
+    org.sbgn.bindings.Map map, Map<String, SBGNBase> node2glyph,
+    double xOffset, double yOffset) {
     Node midmarker = reaction.getMidmarker();
     if (midmarker == null) {
       logger.warning(MessageFormat
-          .format(bundle.getString("Escher2SBGN.midmarkerMissing"), reaction));
+        .format(bundle.getString("Escher2SBGN.midmarkerMissing"), reaction));
       return;
     }
     Glyph processGlyph = (Glyph) node2glyph.get(midmarker.getId());
@@ -307,37 +311,37 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       for (String segmentId : list) {
         Segment segment = reaction.getSegment(segmentId);
         Node
-            node =
-            escherMap.getNode(
-                segment.getFromNodeId().equals(midmarker.getId()) ?
-                    segment.getToNodeId() : segment.getFromNodeId());
+        node =
+        escherMap.getNode(
+          segment.getFromNodeId().equals(midmarker.getId()) ?
+            segment.getToNodeId() : segment.getFromNodeId());
         if (node.isMultimarker()) {
           Port port = createPort(node, processGlyph, xOffset, yOffset);
           node2glyph.put(port.getId(), port);
           processGlyph.getPort().add(port);
         } else {
           logger.info(MessageFormat.format(
-              bundle.getString("Escher2SBGN.midmarkerWithoutMultimarker"),
-              midmarker.getId(),
-              reaction.isSetBiggId() ? reaction.getBiggId() : reaction.getId(),
+            bundle.getString("Escher2SBGN.midmarkerWithoutMultimarker"),
+            midmarker.getId(),
+            reaction.isSetBiggId() ? reaction.getBiggId() : reaction.getId(),
               node.getType(),
               node.isSetBiggId() ? node.getBiggId() : node.getId()));
         }
       }
     } else {
       logger.warning(MessageFormat
-          .format(bundle.getString("Escher2SBGN.reactionNodeWithoutSegments"),
-              reaction.getId()));
+        .format(bundle.getString("Escher2SBGN.reactionNodeWithoutSegments"),
+          reaction.getId()));
     }
     for (Entry<String, Metabolite> entry : reaction.getMetabolites()
-                                                   .entrySet()) {
+        .entrySet()) {
       Metabolite metabolite = entry.getValue();
       Node srGlyph = escherMap.getNode(metabolite.getNodeRefId());
       if (srGlyph != null) {
         // TODO: First do primary nodes..
         map.getArc().add(
-            convertSegments(metabolite, reaction, escherMap, map, node2glyph,
-                xOffset, yOffset));
+          convertSegments(metabolite, reaction, escherMap, map, node2glyph,
+            xOffset, yOffset));
       }
     }
   }
@@ -351,10 +355,10 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @return
    */
   private Port createPort(Node node, Glyph reaction, double xOffset,
-      double yOffset) {
+    double yOffset) {
     return builder.createPort(createPortId(reaction, node.getId()),
-        convertCoordinate(node.getX(), xOffset),
-        convertCoordinate(node.getY(), yOffset));
+      convertCoordinate(node.getX(), xOffset),
+      convertCoordinate(node.getY(), yOffset));
   }
 
 
@@ -366,17 +370,17 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @return
    */
   private Arc convertSegments(Metabolite metabolite, EscherReaction reaction,
-      EscherMap escherMap, org.sbgn.bindings.Map map,
-      Map<String, SBGNBase> node2glyph, double xOffset, double yOffset) {
+    EscherMap escherMap, org.sbgn.bindings.Map map,
+    Map<String, SBGNBase> node2glyph, double xOffset, double yOffset) {
     double coeff = SBGNbuilder.toDouble(metabolite.getCoefficient());
     Node metaboliteNode = escherMap.getNode(metabolite.getNodeRefId());
     boolean isProduct = coeff > 0d;
     Glyph
-        processGlyph =
-        (Glyph) node2glyph.get(reaction.getMidmarker().getId());
+    processGlyph =
+    (Glyph) node2glyph.get(reaction.getMidmarker().getId());
     List<String>
-        connectedSegments =
-        metaboliteNode.getConnectedSegments(reaction.getId());
+    connectedSegments =
+    metaboliteNode.getConnectedSegments(reaction.getId());
     Segment segment = reaction.getSegment(connectedSegments.get(0));
     Node source, target;
     SBGNBase sourceBase, targetBase;
@@ -413,9 +417,9 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
     } else {
       source = escherMap.getNode(segment.getFromNodeId()); // metabolite
       Segment
-          lastSegment =
-          reaction
-              .getSegment(connectedSegments.get(connectedSegments.size() - 1));
+      lastSegment =
+      reaction
+      .getSegment(connectedSegments.get(connectedSegments.size() - 1));
       if (connectedSegments.size() > 1) {
         target = escherMap.getNode(lastSegment.getFromNodeId());
         targetBase = node2glyph.get(createPortId(processGlyph, target.getId()));
@@ -442,22 +446,22 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       y2 = target.getY();
     }
     Arc
-        arc =
-        builder.createArc(SBMLtools
-                .toSId("r" + reaction.getId() + "_n" + metabolite.getNodeRefId()),
-            sourceBase, targetBase,
-            isProduct ? ArcType.production : ArcType.consumption);
+    arc =
+    builder.createArc(SBMLtools
+      .toSId("r" + reaction.getId() + "_n" + metabolite.getNodeRefId()),
+      sourceBase, targetBase,
+      isProduct ? ArcType.production : ArcType.consumption);
     arc.setStart(builder.createArcStart(convertCoordinate(x1, xOffset),
-        convertCoordinate(y1, yOffset)));
+      convertCoordinate(y1, yOffset)));
     coeff = Math.abs(coeff);
     if (coeff != 1d) {
       // Create cardinality labels for the edges if necessary.
       Glyph
-          cardinalityGlyph =
-          builder.createGlyph(
-              SBMLtools.toSId("cardinality_" + metabolite.getNodeRefId()),
-              StringTools.toString(Locale.ENGLISH, coeff),
-              GlyphType.cardinality);
+      cardinalityGlyph =
+      builder.createGlyph(
+        SBMLtools.toSId("cardinality_" + metabolite.getNodeRefId()),
+        StringTools.toString(Locale.ENGLISH, coeff),
+        GlyphType.cardinality);
       double width = getPrimaryNodeWidth() * getReactionNodeRatio();
       double height = getPrimaryNodeHeight() * getReactionNodeRatio();
       Segment targetSegment;
@@ -465,29 +469,29 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       if (isProduct) {
         targetSegment =
             reaction.getSegment(
-                connectedSegments.get(connectedSegments.size() - 1));
+              connectedSegments.get(connectedSegments.size() - 1));
         Node end = escherMap.getNode(targetSegment.getToNodeId());
         ratio =
             end.isMetabolite() && end.isPrimary() ? 1d :
-                getSecondaryNodeRatio();
+              getSecondaryNodeRatio();
         x =
             convertCoordinate(end.getX(), xOffset)
-                - getPrimaryNodeWidth() * ratio;
+            - getPrimaryNodeWidth() * ratio;
         y =
             convertCoordinate(end.getY(), yOffset)
-                - getPrimaryNodeHeight() * ratio;
+            - getPrimaryNodeHeight() * ratio;
       } else {
         targetSegment = reaction.getSegment(connectedSegments.get(0));
         Node start = escherMap.getNode(targetSegment.getFromNodeId());
         ratio =
             start.isMetabolite() && start.isPrimary() ? 1d :
-                getSecondaryNodeRatio();
+              getSecondaryNodeRatio();
         x =
             convertCoordinate(start.getX(), xOffset)
-                - getPrimaryNodeWidth() * ratio;
+            - getPrimaryNodeWidth() * ratio;
         y =
             convertCoordinate(start.getY(), yOffset)
-                - getPrimaryNodeHeight() * ratio;
+            - getPrimaryNodeHeight() * ratio;
       }
       cardinalityGlyph.setBbox(builder.createBbox(x, y, width, height));
       arc.getGlyph().add(cardinalityGlyph);
@@ -498,37 +502,37 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       Node nextNode = escherMap.getNode(nextSeg.getToNodeId());
       if (nextNode != target) {
         Next
-            next =
-            builder.createArcNext(convertCoordinate(nextNode.getX(), xOffset),
-                convertCoordinate(nextNode.getY(), yOffset));
+        next =
+        builder.createArcNext(convertCoordinate(nextNode.getX(), xOffset),
+          convertCoordinate(nextNode.getY(), yOffset));
         if (segment.isSetBasePoint1()) {
           next.getPoint()
-              .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
+          .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
         }
         if (segment.isSetBasePoint2()) {
           next.getPoint()
-              .add(convertPoint(segment.getBasePoint2(), xOffset, yOffset));
+          .add(convertPoint(segment.getBasePoint2(), xOffset, yOffset));
         }
         arc.getNext().add(next);
       }
       segment = nextSeg;
     }
     End
-        end =
-        builder.createArcEnd(convertCoordinate(x2, xOffset),
-            convertCoordinate(y2, yOffset));
+    end =
+    builder.createArcEnd(convertCoordinate(x2, xOffset),
+      convertCoordinate(y2, yOffset));
     if (connectedSegments.size() < 2) {
       segment =
           reaction
-              .getSegment(connectedSegments.get(connectedSegments.size() - 1));
+          .getSegment(connectedSegments.get(connectedSegments.size() - 1));
     }
     if (segment.isSetBasePoint1()) {
       end.getPoint()
-         .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
+      .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
     }
     if (segment.isSetBasePoint2()) {
       end.getPoint()
-         .add(convertPoint(segment.getBasePoint2(), xOffset, yOffset));
+      .add(convertPoint(segment.getBasePoint2(), xOffset, yOffset));
     }
     arc.setEnd(end);
     return arc;
@@ -552,9 +556,9 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @return
    */
   private org.sbgn.bindings.Point convertPoint(Point p, double xOffset,
-      double yOffset) {
+    double yOffset) {
     return builder.createPoint(convertCoordinate(p.getX(), xOffset),
-        convertCoordinate(p.getY(), yOffset));
+      convertCoordinate(p.getY(), yOffset));
   }
 
 
@@ -577,21 +581,21 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    * @return
    */
   private Glyph convertMetabolite(Node node, EscherMap escherMap,
-      Map<String, Node> multimarkers, double xOffset, double yOffset) {
+    Map<String, Node> multimarkers, double xOffset, double yOffset) {
     double width = 0d, height = 0d;
     if (node.isSetHeight()) {
       height = node.getHeight().doubleValue();
     } else if (node.isSetPrimary()) {
       height =
           (node.isPrimary() ? getPrimaryNodeHeight() :
-              getPrimaryNodeHeight() * getSecondaryNodeRatio());
+            getPrimaryNodeHeight() * getSecondaryNodeRatio());
     }
     if (node.isSetWidth()) {
       width = node.getWidth().doubleValue();
     } else if (node.isSetPrimary()) {
       width =
           (node.isPrimary() ? getPrimaryNodeWidth() :
-              getPrimaryNodeWidth() * getSecondaryNodeRatio());
+            getPrimaryNodeWidth() * getSecondaryNodeRatio());
     }
     // TODO: Node size should be set elsewhere.
     if (!node.isSetWidth()) {
@@ -601,27 +605,27 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       node.setHeight(height);
     }
     double
-        x =
-        node.isSetX() ? convertCoordinate(node.getX(), xOffset) - width / 2d :
-            0d;
+    x =
+    node.isSetX() ? convertCoordinate(node.getX(), xOffset) - width / 2d :
+      0d;
     double
-        y =
-        node.isSetY() ? convertCoordinate(node.getY(), yOffset) - height / 2d :
-            0d;
+    y =
+    node.isSetY() ? convertCoordinate(node.getY(), yOffset) - height / 2d :
+      0d;
     // name the glyph and add the id globally
     Glyph
-        glyph =
-        builder.createGlyph(SBMLtools.toSId(node.getId()),
-            GlyphType.simple_chemical, x, y, height, width,
-            node.isSetBiggId() && (escherMap.getNodes(node.getBiggId()).size()
-                > 1));
+    glyph =
+    builder.createGlyph(SBMLtools.toSId(node.getId()),
+      GlyphType.simple_chemical, x, y, height, width,
+      node.isSetBiggId() && (escherMap.getNodes(node.getBiggId()).size()
+          > 1));
     if (node.isSetLabelX() && node.isSetLabelY()) {
       glyph.setLabel(builder
-          .createLabel(node.isSetName() ? node.getName() : node.getBiggId(),
-              convertCoordinate(node.getLabelX(), xOffset),
-              convertCoordinate(node.getLabelY(), yOffset),
-              Double.valueOf(getLabelWidth()),
-              Double.valueOf(getLabelHeight())));
+        .createLabel(node.isSetName() ? node.getName() : node.getBiggId(),
+          convertCoordinate(node.getLabelX(), xOffset),
+          convertCoordinate(node.getLabelY(), yOffset),
+          Double.valueOf(getLabelWidth()),
+          Double.valueOf(getLabelHeight())));
     }
     return glyph;
   }

@@ -145,10 +145,14 @@
   <entry key="EscherReaction.skippingNullElement">Skipping {0} because it is null in reaction {1}.</entry>
   
   <entry key="Node.invalidCompartmentId">Could not find a compartment identifier in BiGG id ''{0}''.</entry>
+  
+  <entry key="EscherConverter.licenseURL">${project.license.url}</entry>
+  <entry key="EscherConverter.version">${project.version}</entry>
   <entry key="PROVIDER">{0}
     {1}</entry>
-  <entry key="ORGANIZATION">University of California, San Diego</entry>
+  <entry key="ORGANIZATION">${organization.name}</entry>
   <entry key="INSTITUTE">Systems Biology Research Group</entry>
-  <entry key="EscherConverter.licenseURL">https://github.com/zakandrewking/escher/blob/master/LICENSE</entry>
+  <entry key="INCEPTION_YEAR">${project.inceptionYear}</entry>
+  <entry key="YEAR">${year}</entry>
 
 </properties>
