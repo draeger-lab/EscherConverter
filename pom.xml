@@ -30,13 +30,14 @@
     <junit.version>4.12</junit.version>
     <jsbml.version>2492</jsbml.version>  <!-- SVN revision -->
     <sbgn.version>0.2</sbgn.version>
-    <sysbio.version>1390</sysbio.version> <!-- SVN revision -->
+    <sysbio.version>1393</sysbio.version> <!-- SVN revision -->
     <jackson.version>2.7.4</jackson.version>
     <powermock.version>1.6.5</powermock.version>
+    <organization.name>University of California, San Diego</organization.name>
   </properties>
   
   <organization>
-    <name>University of California, San Diego</name>
+    <name>${organization.name}</name>
     <url>http://sbrg.ucsd.edu</url>
   </organization>
   
@@ -60,7 +61,41 @@
       <url>https://github.com/draeger/</url>
       <id>draeger</id>
     </developer>
+    <developer>
+      <email>devesh.khandelwal@outlook.com</email>
+      <name>Devesh Khandelwal</name>
+      <url>https://github.com/devkhan</url>
+      <id>devkhan</id>
+    </developer>
   </developers>
+  
+  
+  <!-- =================================================================== -->
+  <!-- Repositories -->
+  <!-- =================================================================== -->
+
+  <repositories>
+    <repository>
+      <id>ebi-repo</id>
+      <name>The EBI repository</name>
+      <url>http://www.ebi.ac.uk/~maven/m2repo</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>JSBML</id>
+      <name>The JSBML repository</name>
+      <url>http://jsbml.sourceforge.net/m2repo_snapshots/</url>
+    </repository>
+    <!-- Local libraries are an in-project repository -->
+    <!-- Add the dependencies and put them in -->
+    <!-- ${project.basedir}/lib/groupId/artifactId/version/ -->
+    <repository>
+      <id>libs</id>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
   
   <!-- =================================================================== -->
   <!-- Dependencies                                                        -->
@@ -83,19 +118,15 @@
     </dependency>
     
     <dependency>
-      <groupId>org.sbml</groupId>
-      <artifactId>JSBML</artifactId>
-      <systemPath>${project.basedir}/lib/JSBML-${jsbml.version}.jar</systemPath>
-      <version>${jsbml.version}</version>
-      <scope>system</scope>
+      <groupId>org.sbml.jsbml</groupId>
+      <artifactId>jsbml</artifactId>
+      <version>1.2-SNAPSHOT</version>
     </dependency>
     
     <dependency>
       <groupId>org</groupId>
       <artifactId>sbgn</artifactId>
-      <systemPath>${project.basedir}/lib/sbgn-${sbgn.version}.jar</systemPath>
       <version>${sbgn.version}</version>
-      <scope>system</scope>
     </dependency>
     
     <dependency>
@@ -107,9 +138,7 @@
     <dependency>
       <groupId>de.zbit</groupId>
       <artifactId>SysBio</artifactId>
-      <systemPath>${project.basedir}/lib/SysBio-${sysbio.version}.jar</systemPath>
       <version>${sysbio.version}</version>
-      <scope>system</scope>
     </dependency>
 
     <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
