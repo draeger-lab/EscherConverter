@@ -157,8 +157,10 @@ public class SBML2Escher {
     node.setName(speciesGlyph.getSpeciesInstance().getName());
     node.setX(speciesGlyph.getBoundingBox().getPosition().x());
     node.setY(speciesGlyph.getBoundingBox().getPosition().y());
-    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x());
-    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y());
+    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x() +
+                    speciesGlyph.getBoundingBox().getDimensions().getWidth());
+    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y() +
+                    speciesGlyph.getBoundingBox().getDimensions().getHeight());
 
     // TODO: Find out if node is primary by either role or SBO term.
     node.setPrimary(true);
