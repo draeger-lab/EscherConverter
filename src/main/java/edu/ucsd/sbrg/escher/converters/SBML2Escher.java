@@ -48,12 +48,19 @@ public class SBML2Escher {
       map.setCanvas(addCanvasInfo(layouts.get(0)));
       map.setDescription(bundle.getString("default_description"));
       map.setId(HexBin.encode(layouts.get(0).toString().getBytes()));
+
+      layout.getListOfTextGlyphs().forEach(tG -> {
+        map.addTextLabel(createTextLabel(tG));
+      });
+
       layout.getListOfSpeciesGlyphs().forEach((sG) -> {
         map.addNode(createNode(sG));
       });
+
       layout.getListOfReactionGlyphs().forEach((rG -> {
         map.addNode(createMidmarker(rG));
       }));
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
           for (int i = 1; i < sRG.getCurve().getCurveSegmentCount(); i++) {
@@ -61,9 +68,11 @@ public class SBML2Escher {
           }
         });
       });
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         map.addReaction(createReaction(rG));
       });
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach((sRG -> {
           for (int i = 0; i < sRG.getCurve().getCurveSegmentCount(); i++) {
@@ -71,6 +80,20 @@ public class SBML2Escher {
                .addSegment(createSegment(sRG.getCurve().getCurveSegment(i), sRG, rG, i));
           }
         }));
+      });
+
+      // Setting node_is_primary of nodes.
+      layout.getListOfReactionGlyphs().forEach(rG -> {
+        rG.getListOfSpeciesReferenceGlyphs().forEach(sRG -> {
+          if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
+              sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE) {
+            map.getNode(sRG.getSpeciesGlyph()).setPrimary(true);
+          }
+          else if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDEPRODUCT ||
+              sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDESUBSTRATE) {
+            map.getNode(sRG.getSpeciesGlyph()).setPrimary(false);
+          }
+        });
       });
 
       escherMaps.add(map);
@@ -112,7 +135,7 @@ public class SBML2Escher {
 
     if (textGlyph.getText() == null || textGlyph.getText().isEmpty()) {
       // TODO: Log about no text, so ignoring text label.
-      return null;
+      ;
     }
     else {
       textLabel.setText(textGlyph.getText());
