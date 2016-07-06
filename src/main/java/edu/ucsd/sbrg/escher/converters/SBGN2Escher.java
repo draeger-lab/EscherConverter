@@ -36,6 +36,7 @@ public class SBGN2Escher {
   protected HashMap<String, String> arc2GlyphMap;
   protected Set<String>             processIds;
   protected Set<String>             metaboliteIds;
+  protected HashMap<String, String> glyphId2LabelMap;
 
 
   public SBGN2Escher() {
@@ -45,6 +46,7 @@ public class SBGN2Escher {
     arc2GlyphMap = new HashMap<>();
     processIds = new HashSet<>();
     metaboliteIds = new HashSet<>();
+    glyphId2LabelMap = new HashMap<>();
   }
 
 
@@ -93,9 +95,9 @@ public class SBGN2Escher {
     node.setType(Node.Type.metabolite);
 
     node.setName(glyph.getLabel().getText());
-    node.setLabelX((double) glyph.getBbox().getX());
-    node.setLabelY((double) glyph.getBbox().getY());
-    node.setBiggId(glyph.getId());
+    node.setLabelX((double) glyph.getLabel().getBbox().getX());
+    node.setLabelY((double) glyph.getLabel().getBbox().getY());
+    node.setBiggId(glyph.getLabel().getText());
 
     return node;
   }
@@ -148,12 +150,14 @@ public class SBGN2Escher {
       Metabolite metabolite = new Metabolite();
       if (a.getClazz().equals("consumption")) {
         metabolite.setCoefficient(-1.0);
-        metabolite.setId(getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getSource())));
+        metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
+            .getSource()))));
       }
 
       if (a.getClazz().equals("production")) {
         metabolite.setCoefficient(1.0);
-        metabolite.setId(getGlyphIdFromPortId(getIdFromSourceOrTarget(a.getTarget())));
+        metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
+            .getTarget()))));
       }
 
       reaction.addMetabolite(metabolite);
@@ -369,6 +373,11 @@ public class SBGN2Escher {
       g.getPort().forEach(p -> {
         port2GlyphMap.put(p.getId(), g.getId());
       });
+
+      // Store all labels with their respective labels.
+      if (g.getLabel() != null) {
+        glyphId2LabelMap.put(g.getId(), g.getLabel().getText());
+      }
     });
 
     document.getMap().getArc().forEach(a -> {
