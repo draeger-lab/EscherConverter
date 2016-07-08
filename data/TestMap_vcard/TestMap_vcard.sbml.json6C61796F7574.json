@@ -48,14 +48,9 @@
       "node_type" : "metabolite",
       "node_is_primary" : true
     },
-    "22432418" : {
-      "x" : 374.71929857154953,
-      "y" : 235.59056665121318,
-      "node_type" : "multimarker"
-    },
-    "255347278" : {
-      "x" : 334.7199934705002,
-      "y" : 235.8263450072352,
+    "PGK_product_2.M1" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
       "node_type" : "multimarker"
     },
     "_11" : {
@@ -67,6 +62,26 @@
       "name" : "3-Phospho-D-glyceroyl phosphate",
       "node_type" : "metabolite",
       "node_is_primary" : true
+    },
+    "PGK_product_1.M1" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
+      "node_type" : "multimarker"
+    },
+    "PGK_reactant_1.M1" : {
+      "x" : 334.7199934705002,
+      "y" : 235.8263450072352,
+      "node_type" : "multimarker"
+    },
+    "PGK_product_1.M2" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
+      "node_type" : "multimarker"
+    },
+    "PGK_reactant_2.M1" : {
+      "x" : 334.7199934705002,
+      "y" : 235.8263450072352,
+      "node_type" : "multimarker"
     }
   },
   "reactions" : {
@@ -90,9 +105,39 @@
       } ],
       "name" : "Phosphoglycerate kinase",
       "segments" : {
-        "229275014" : {
-          "from_node_id" : "_7",
+        "PGK_srg_3pg_c.S1" : {
+          "from_node_id" : "PGK_reactant_2.M1",
           "to_node_id" : "_1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_adp_c.S0" : {
+          "from_node_id" : "_12",
+          "to_node_id" : "PGK_product_2.M1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_adp_c.S1" : {
+          "from_node_id" : "PGK_product_2.M1",
+          "to_node_id" : "_1",
+          "b1" : {
+            "x" : 410.71867316249393,
+            "y" : 235.37836613079332
+          },
+          "b2" : {
+            "x" : 429.59455944858087,
+            "y" : 214.26673623363195
+          }
+        },
+        "PGK_srg_atp_c.S1" : {
+          "from_node_id" : "PGK_reactant_1.M1",
+          "to_node_id" : "_1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_atp_c.S0" : {
+          "from_node_id" : "_7",
+          "to_node_id" : "PGK_reactant_1.M1",
           "b1" : {
             "x" : 257.2213398372171,
             "y" : 236.28316557202777
@@ -102,9 +147,21 @@
             "y" : 236.01496769205278
           }
         },
-        "73049710" : {
-          "from_node_id" : "_1",
-          "to_node_id" : "_11",
+        "PGK_srg_13dpg_c.S1" : {
+          "from_node_id" : "PGK_product_1.M1",
+          "to_node_id" : "PGK_product_1.M2",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_13dpg_c.S0" : {
+          "from_node_id" : "_11",
+          "to_node_id" : "PGK_product_1.M1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_13dpg_c.S2" : {
+          "from_node_id" : "PGK_product_1.M2",
+          "to_node_id" : "_1",
           "b1" : {
             "x" : 406.718742652389,
             "y" : 235.4019439663955
@@ -114,21 +171,9 @@
             "y" : 235.1337460864205
           }
         },
-        "16277921" : {
-          "from_node_id" : "16277921",
-          "to_node_id" : "_1",
-          "b1" : null,
-          "b2" : null
-        },
-        "172835849" : {
-          "from_node_id" : "_1",
-          "to_node_id" : "172835849",
-          "b1" : null,
-          "b2" : null
-        },
-        "108448846" : {
+        "PGK_srg_3pg_c.S0" : {
           "from_node_id" : "_13",
-          "to_node_id" : "_1",
+          "to_node_id" : "PGK_reactant_2.M1",
           "b1" : {
             "x" : 279.5971653196458,
             "y" : 215.15090506871456
@@ -137,42 +182,9 @@
             "x" : 298.7206188795558,
             "y" : 236.03854552765495
           }
-        },
-        "97729462" : {
-          "from_node_id" : "_1",
-          "to_node_id" : "_12",
-          "b1" : {
-            "x" : 410.71867316249393,
-            "y" : 235.37836613079332
-          },
-          "b2" : {
-            "x" : 429.59455944858087,
-            "y" : 214.26673623363195
-          }
         }
       }
     }
   },
-  "text_labels" : {
-    "tg_2" : {
-      "x" : 445.5930406772635,
-      "y" : 152.83853124520806
-    },
-    "tg_3" : {
-      "x" : 190.0413511468828,
-      "y" : 150.579762581747
-    },
-    "tg_1" : {
-      "x" : 467.16149815777237,
-      "y" : 260.1576190559092
-    },
-    "tg_4" : {
-      "x" : 178.72225189208984,
-      "y" : 262.1481809616089
-    },
-    "tg_5" : {
-      "x" : 300.0,
-      "y" : 200.0
-    }
-  }
+  "text_labels" : { }
 } ]
