@@ -123,6 +123,14 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  public Node removeNode(String id) {
+    if (nodes != null && nodes.containsKey(id)) {
+      return nodes.remove(id);
+    }
+    return null;
+  }
+
+
   /**
    * @param reaction
    */
