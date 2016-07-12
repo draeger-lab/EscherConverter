@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403462313439313861",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403735303232393165",
   "map_name" : "mapk_cascade.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -17,11 +17,16 @@
     "glyph10" : {
       "x" : 470.0,
       "y" : 530.0,
-      "bigg_id" : "glyph10",
+      "bigg_id" : "ATP",
       "label_x" : 440.0,
       "label_y" : 500.0,
       "name" : "ATP",
       "node_type" : "metabolite"
+    },
+    "234234477" : {
+      "x" : 720.0,
+      "y" : 610.0,
+      "node_type" : "multimarker"
     },
     "glyph13" : {
       "x" : 510.0,
@@ -41,26 +46,16 @@
     "glyph12" : {
       "x" : 700.0,
       "y" : 410.0,
-      "bigg_id" : "glyph12",
+      "bigg_id" : "MEK",
       "label_x" : 650.0,
       "label_y" : 380.0,
       "name" : "MEK",
       "node_type" : "metabolite"
     },
-    "77452139" : {
-      "x" : 510.0,
-      "y" : 610.0,
-      "node_type" : "multimarker"
-    },
-    "142808856" : {
-      "x" : 680.0,
-      "y" : 590.0,
-      "node_type" : "multimarker"
-    },
     "glyph17" : {
       "x" : 430.0,
       "y" : 780.0,
-      "bigg_id" : "glyph17",
+      "bigg_id" : "ATP",
       "label_x" : 400.0,
       "label_y" : 750.0,
       "name" : "ATP",
@@ -69,7 +64,7 @@
     "glyph18" : {
       "x" : 590.0,
       "y" : 780.0,
-      "bigg_id" : "glyph18",
+      "bigg_id" : "ADP",
       "label_x" : 560.0,
       "label_y" : 750.0,
       "name" : "ADP",
@@ -78,7 +73,7 @@
     "glyph15" : {
       "x" : 150.0,
       "y" : 780.0,
-      "bigg_id" : "glyph15",
+      "bigg_id" : "ATP",
       "label_x" : 120.0,
       "label_y" : 750.0,
       "name" : "ATP",
@@ -87,30 +82,30 @@
     "glyph16" : {
       "x" : 310.0,
       "y" : 780.0,
-      "bigg_id" : "glyph16",
+      "bigg_id" : "ADP",
       "label_x" : 280.0,
       "label_y" : 750.0,
       "name" : "ADP",
       "node_type" : "metabolite"
     },
-    "169001988" : {
-      "x" : 510.0,
-      "y" : 360.0,
-      "node_type" : "multimarker"
-    },
     "glyph19" : {
       "x" : 640.0,
       "y" : 660.0,
-      "bigg_id" : "glyph19",
+      "bigg_id" : "ERK",
       "label_x" : 590.0,
       "label_y" : 630.0,
       "name" : "ERK",
       "node_type" : "metabolite"
     },
+    "164338869" : {
+      "x" : 230.0,
+      "y" : 590.0,
+      "node_type" : "multimarker"
+    },
     "glyph9" : {
       "x" : 630.0,
       "y" : 530.0,
-      "bigg_id" : "glyph9",
+      "bigg_id" : "ADP",
       "label_x" : 600.0,
       "label_y" : 500.0,
       "name" : "ADP",
@@ -124,26 +119,16 @@
     "glyph21" : {
       "x" : 360.0,
       "y" : 660.0,
-      "bigg_id" : "glyph21",
+      "bigg_id" : "ERK",
       "label_x" : 310.0,
       "label_y" : 630.0,
       "name" : "ERK",
       "node_type" : "metabolite"
     },
-    "202462887" : {
-      "x" : 230.0,
-      "y" : 590.0,
-      "node_type" : "multimarker"
-    },
-    "155298047" : {
-      "x" : 230.0,
-      "y" : 360.0,
-      "node_type" : "multimarker"
-    },
     "glyph5" : {
       "x" : 460.0,
       "y" : 290.0,
-      "bigg_id" : "glyph5",
+      "bigg_id" : "ADP",
       "label_x" : 430.0,
       "label_y" : 260.0,
       "name" : "ADP",
@@ -152,7 +137,7 @@
     "glyph24" : {
       "x" : 360.0,
       "y" : 410.0,
-      "bigg_id" : "glyph24",
+      "bigg_id" : "MEK",
       "label_x" : 310.0,
       "label_y" : 380.0,
       "name" : "MEK",
@@ -161,7 +146,7 @@
     "glyph4" : {
       "x" : 300.0,
       "y" : 290.0,
-      "bigg_id" : "glyph4",
+      "bigg_id" : "ATP",
       "label_x" : 270.0,
       "label_y" : 260.0,
       "name" : "ATP",
@@ -170,7 +155,7 @@
     "glyph25" : {
       "x" : 230.0,
       "y" : 170.0,
-      "bigg_id" : "glyph25",
+      "bigg_id" : "RAF",
       "label_x" : 180.0,
       "label_y" : 140.0,
       "name" : "RAF",
@@ -179,7 +164,7 @@
     "glyph7" : {
       "x" : 150.0,
       "y" : 530.0,
-      "bigg_id" : "glyph7",
+      "bigg_id" : "ATP",
       "label_x" : 120.0,
       "label_y" : 500.0,
       "name" : "ATP",
@@ -188,7 +173,7 @@
     "glyph22" : {
       "x" : 80.0,
       "y" : 660.0,
-      "bigg_id" : "glyph22",
+      "bigg_id" : "ERK",
       "label_x" : 30.0,
       "label_y" : 630.0,
       "name" : "ERK",
@@ -197,7 +182,7 @@
     "glyph6" : {
       "x" : 310.0,
       "y" : 530.0,
-      "bigg_id" : "glyph6",
+      "bigg_id" : "ADP",
       "label_x" : 280.0,
       "label_y" : 500.0,
       "name" : "ADP",
@@ -206,7 +191,7 @@
     "glyph23" : {
       "x" : 80.0,
       "y" : 410.0,
-      "bigg_id" : "glyph23",
+      "bigg_id" : "MEK",
       "label_x" : 30.0,
       "label_y" : 380.0,
       "name" : "MEK",
@@ -215,7 +200,7 @@
     "glyph1" : {
       "x" : 380.0,
       "y" : 60.0,
-      "bigg_id" : "glyph1",
+      "bigg_id" : "RAS",
       "label_x" : 330.0,
       "label_y" : 30.0,
       "name" : "RAS",
@@ -226,17 +211,32 @@
       "y" : 170.0,
       "node_type" : "midmarker"
     },
+    "267662719" : {
+      "x" : 680.0,
+      "y" : 590.0,
+      "node_type" : "multimarker"
+    },
     "glyph2" : {
       "x" : 530.0,
       "y" : 170.0,
-      "bigg_id" : "glyph2",
+      "bigg_id" : "RAF",
       "label_x" : 480.0,
       "label_y" : 140.0,
       "name" : "RAF",
       "node_type" : "metabolite"
     },
-    "47691000" : {
-      "x" : 720.0,
+    "79117946" : {
+      "x" : 510.0,
+      "y" : 360.0,
+      "node_type" : "multimarker"
+    },
+    "87060781" : {
+      "x" : 230.0,
+      "y" : 360.0,
+      "node_type" : "multimarker"
+    },
+    "49126838" : {
+      "x" : 510.0,
       "y" : 610.0,
       "node_type" : "multimarker"
     }
@@ -247,66 +247,21 @@
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 400.0,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph2"
+      "metabolites" : [ { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "MEK"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph4"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph5"
-      }, { }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph7"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph6"
+        "bigg_id" : "RAF"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph10"
+        "bigg_id" : "ATP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph12"
+        "bigg_id" : "ADP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph9"
-      }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph19"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph18"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph16"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph15"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph17"
-      }, { }, { }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph25"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph23"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph22"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph21"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph21"
+        "bigg_id" : "ERK"
       } ],
       "name" : "R2",
       "segments" : {
@@ -318,7 +273,7 @@
         },
         "arc00000a.S0" : {
           "from_node_id" : "glyph2",
-          "to_node_id" : "169001988",
+          "to_node_id" : "79117946",
           "b1" : null,
           "b2" : null
         },
@@ -329,13 +284,13 @@
           "b2" : null
         },
         "arc00000a.S1" : {
-          "from_node_id" : "169001988",
-          "to_node_id" : "155298047",
+          "from_node_id" : "79117946",
+          "to_node_id" : "87060781",
           "b1" : null,
           "b2" : null
         },
         "arc00000a.S2" : {
-          "from_node_id" : "155298047",
+          "from_node_id" : "87060781",
           "to_node_id" : "glyph8",
           "b1" : null,
           "b2" : null
@@ -359,66 +314,21 @@
       "genes" : [ ],
       "label_x" : 540.0,
       "label_y" : 400.0,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph2"
+      "metabolites" : [ { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "MEK"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph4"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph5"
-      }, { }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph7"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph6"
+        "bigg_id" : "RAF"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph10"
+        "bigg_id" : "ATP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph12"
+        "bigg_id" : "ADP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph9"
-      }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph19"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph18"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph16"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph15"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph17"
-      }, { }, { }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph25"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph23"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph22"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph21"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph21"
+        "bigg_id" : "ERK"
       } ],
       "name" : "R0",
       "segments" : {
@@ -459,66 +369,21 @@
       "genes" : [ ],
       "label_x" : 500.0,
       "label_y" : 650.0,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph2"
+      "metabolites" : [ { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "MEK"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph4"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph5"
-      }, { }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph7"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph6"
+        "bigg_id" : "RAF"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph10"
+        "bigg_id" : "ATP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph12"
+        "bigg_id" : "ADP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph9"
-      }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph19"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph18"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph16"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph15"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph17"
-      }, { }, { }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph25"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph23"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph22"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph21"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph21"
+        "bigg_id" : "ERK"
       } ],
       "name" : "R3",
       "segments" : {
@@ -541,20 +406,20 @@
           "b2" : null
         },
         "arc000010.S2" : {
-          "from_node_id" : "77452139",
+          "from_node_id" : "49126838",
           "to_node_id" : "glyph13",
           "b1" : null,
           "b2" : null
         },
         "arc000010.S1" : {
-          "from_node_id" : "47691000",
-          "to_node_id" : "77452139",
+          "from_node_id" : "234234477",
+          "to_node_id" : "49126838",
           "b1" : null,
           "b2" : null
         },
         "arc000010.S0" : {
           "from_node_id" : "glyph12",
-          "to_node_id" : "47691000",
+          "to_node_id" : "234234477",
           "b1" : null,
           "b2" : null
         },
@@ -571,83 +436,38 @@
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 650.0,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph2"
+      "metabolites" : [ { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "MEK"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph4"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph5"
-      }, { }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph7"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph6"
+        "bigg_id" : "RAF"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph10"
+        "bigg_id" : "ATP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph12"
+        "bigg_id" : "ADP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph9"
-      }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph19"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph18"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph16"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph15"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph17"
-      }, { }, { }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph25"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph23"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph22"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph21"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph21"
+        "bigg_id" : "ERK"
       } ],
       "name" : "R4",
       "segments" : {
         "arc000011.S0" : {
           "from_node_id" : "glyph12",
-          "to_node_id" : "142808856",
+          "to_node_id" : "267662719",
           "b1" : null,
           "b2" : null
         },
         "arc000011.S1" : {
-          "from_node_id" : "142808856",
-          "to_node_id" : "202462887",
+          "from_node_id" : "267662719",
+          "to_node_id" : "164338869",
           "b1" : null,
           "b2" : null
         },
         "arc000011.S2" : {
-          "from_node_id" : "202462887",
+          "from_node_id" : "164338869",
           "to_node_id" : "glyph14",
           "b1" : null,
           "b2" : null
@@ -683,66 +503,21 @@
       "genes" : [ ],
       "label_x" : 370.0,
       "label_y" : 160.0,
-      "metabolites" : [ {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph2"
+      "metabolites" : [ { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "MEK"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph4"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph5"
-      }, { }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph7"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph6"
+        "bigg_id" : "RAF"
       }, {
         "coefficient" : -1.0,
-        "bigg_id" : "glyph10"
+        "bigg_id" : "ATP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph12"
+        "bigg_id" : "ADP"
       }, {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph9"
-      }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph19"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph18"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph16"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph15"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph17"
-      }, { }, { }, { }, { }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph24"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph25"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph23"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph22"
-      }, {
-        "coefficient" : -1.0,
-        "bigg_id" : "glyph21"
-      }, {
-        "coefficient" : 1.0,
-        "bigg_id" : "glyph21"
+        "bigg_id" : "ERK"
       } ],
       "name" : "R1",
       "segments" : {
