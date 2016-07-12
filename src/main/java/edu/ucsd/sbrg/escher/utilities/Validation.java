@@ -11,6 +11,8 @@ import com.github.fge.jsonschema.main.JsonValidator;
 import de.zbit.util.ResourceManager;
 import edu.ucsd.sbrg.escher.EscherConverter;
 import edu.ucsd.sbrg.escher.model.EscherMap;
+import org.jdom.JDOMException;
+import org.sbgn.ConvertMilestone1to2;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
 import org.sbgn.schematron.Issue;
@@ -19,6 +21,7 @@ import org.sbml.jsbml.SBMLDocument;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.UnmarshalException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
@@ -91,6 +94,12 @@ public class Validation {
           ("process description")) {
         // TODO: Log
         throw new IllegalArgumentException("No language specified on SBGN file!");
+      }
+    } catch (UnmarshalException e) {
+      try {
+        ConvertMilestone1to2.main(new String[] {file.getAbsolutePath(), file.getAbsolutePath()});
+      } catch (JDOMException e1) {
+        e1.printStackTrace();
       }
     } catch (JAXBException e) {
       // TODO: Log

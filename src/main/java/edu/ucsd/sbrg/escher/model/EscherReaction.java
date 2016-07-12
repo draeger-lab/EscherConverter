@@ -438,7 +438,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
 
   @JsonProperty("metabolites")
   public List<Metabolite> getMetaboliteList() {
-    return metaboliteList;
+    return new ArrayList<>(metabolites.values());
   }
 
 

@@ -1,0 +1,190 @@
+[ {
+  "map_description" : "No description provided with the document.",
+  "map_id" : "6C61796F7574",
+  "map_name" : "TestMap_vcard.sbml.json6C61796F7574.json",
+  "nodes" : { },
+  "reactions" : { },
+  "text_labels" : { }
+}, {
+  "canvas" : {
+    "x" : 0.0,
+    "y" : 0.0,
+    "height" : 600.0,
+    "width" : 800.0
+  },
+  "nodes" : {
+    "_13" : {
+      "x" : 234.48577863711716,
+      "y" : 186.35754120723527,
+      "bigg_id" : "atp_c",
+      "label_x" : 254.48577863711716,
+      "label_y" : 206.35754120723527,
+      "name" : "ATP",
+      "node_type" : "metabolite",
+      "node_is_primary" : false
+    },
+    "_12" : {
+      "x" : 454.4819566928885,
+      "y" : 185.0607602491143,
+      "bigg_id" : "adp_c",
+      "label_x" : 474.4819566928885,
+      "label_y" : 205.0607602491143,
+      "name" : "ADP",
+      "node_type" : "metabolite",
+      "node_is_primary" : false
+    },
+    "_1" : {
+      "x" : 354.7196460210248,
+      "y" : 235.70845582922414,
+      "node_type" : "midmarker"
+    },
+    "_7" : {
+      "x" : 189.72225189208984,
+      "y" : 221.59262466430664,
+      "bigg_id" : "_3pg_c",
+      "label_x" : 219.72225189208984,
+      "label_y" : 251.59262466430664,
+      "name" : "3-Phospho-D-glycerate",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "PGK_product_2.M1" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
+      "node_type" : "multimarker"
+    },
+    "_11" : {
+      "x" : 489.71704014995987,
+      "y" : 219.82428699414163,
+      "bigg_id" : "_13dpg_c",
+      "label_x" : 519.7170401499599,
+      "label_y" : 249.82428699414163,
+      "name" : "3-Phospho-D-glyceroyl phosphate",
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "PGK_product_1.M1" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
+      "node_type" : "multimarker"
+    },
+    "PGK_reactant_1.M1" : {
+      "x" : 334.7199934705002,
+      "y" : 235.8263450072352,
+      "node_type" : "multimarker"
+    },
+    "PGK_product_1.M2" : {
+      "x" : 364.71947229628717,
+      "y" : 235.64951124021866,
+      "node_type" : "multimarker"
+    },
+    "PGK_reactant_2.M1" : {
+      "x" : 334.7199934705002,
+      "y" : 235.8263450072352,
+      "node_type" : "multimarker"
+    }
+  },
+  "reactions" : {
+    "2994" : {
+      "bigg_id" : "PGK",
+      "genes" : [ ],
+      "label_x" : 354.7196460210248,
+      "label_y" : 235.70845582922414,
+      "metabolites" : [ {
+        "coefficient" : -1.0,
+        "bigg_id" : "_3pg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "_13dpg_c"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "adp_c"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "atp_c"
+      } ],
+      "name" : "Phosphoglycerate kinase",
+      "segments" : {
+        "PGK_srg_3pg_c.S1" : {
+          "from_node_id" : "PGK_reactant_2.M1",
+          "to_node_id" : "_1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_adp_c.S0" : {
+          "from_node_id" : "_12",
+          "to_node_id" : "PGK_product_2.M1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_adp_c.S1" : {
+          "from_node_id" : "PGK_product_2.M1",
+          "to_node_id" : "_1",
+          "b1" : {
+            "x" : 410.71867316249393,
+            "y" : 235.37836613079332
+          },
+          "b2" : {
+            "x" : 429.59455944858087,
+            "y" : 214.26673623363195
+          }
+        },
+        "PGK_srg_atp_c.S1" : {
+          "from_node_id" : "PGK_reactant_1.M1",
+          "to_node_id" : "_1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_atp_c.S0" : {
+          "from_node_id" : "_7",
+          "to_node_id" : "PGK_reactant_1.M1",
+          "b1" : {
+            "x" : 257.2213398372171,
+            "y" : 236.28316557202777
+          },
+          "b2" : {
+            "x" : 302.72054938966073,
+            "y" : 236.01496769205278
+          }
+        },
+        "PGK_srg_13dpg_c.S1" : {
+          "from_node_id" : "PGK_product_1.M1",
+          "to_node_id" : "PGK_product_1.M2",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_13dpg_c.S0" : {
+          "from_node_id" : "_11",
+          "to_node_id" : "PGK_product_1.M1",
+          "b1" : null,
+          "b2" : null
+        },
+        "PGK_srg_13dpg_c.S2" : {
+          "from_node_id" : "PGK_product_1.M2",
+          "to_node_id" : "_1",
+          "b1" : {
+            "x" : 406.718742652389,
+            "y" : 235.4019439663955
+          },
+          "b2" : {
+            "x" : 452.2179522048326,
+            "y" : 235.1337460864205
+          }
+        },
+        "PGK_srg_3pg_c.S0" : {
+          "from_node_id" : "_13",
+          "to_node_id" : "PGK_reactant_2.M1",
+          "b1" : {
+            "x" : 279.5971653196458,
+            "y" : 215.15090506871456
+          },
+          "b2" : {
+            "x" : 298.7206188795558,
+            "y" : 236.03854552765495
+          }
+        }
+      }
+    }
+  },
+  "text_labels" : { }
+} ]
