@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="escher-svg"
+    xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+    <defs>
+        <style type="text/css">svg.escher-svg .gene-label,svg.escher-svg .label{text-rendering:optimizelegibility;cursor:default}svg.escher-svg #mouse-node{fill:none}svg.escher-svg #canvas{stroke:#ccc;stroke-width:7px;fill:#fff}svg.escher-svg .resize-rect{fill:#000;opacity:0;stroke:none}svg.escher-svg .label{font-family:sans-serif;font-style:italic;font-weight:700;font-size:8px;fill:#000;stroke:none}svg.escher-svg .reaction-label{font-size:30px;fill:#202078;text-rendering:optimizelegibility}svg.escher-svg .node-label{font-size:20px}svg.escher-svg .gene-label{font-size:18px;fill:#202078}svg.escher-svg .text-label .label,svg.escher-svg .text-label-input{font-size:50px}svg.escher-svg .node-circle{stroke-width:2px}svg.escher-svg .midmarker-circle,svg.escher-svg .multimarker-circle{fill:#fff;fill-opacity:.2;stroke:#323232}svg.escher-svg g.selected .node-circle{stroke-width:6px;stroke:#1471c7}svg.escher-svg g.selected .label{fill:#1471c7}svg.escher-svg .metabolite-circle{stroke:#a24510;fill:#e0865b}svg.escher-svg g.selected .metabolite-circle{stroke:#050200}svg.escher-svg .segment{stroke:#334E75;stroke-width:10px;fill:none}svg.escher-svg .arrowhead{fill:#334E75}svg.escher-svg .stoichiometry-label-rect{fill:#fff;opacity:.5}svg.escher-svg .stoichiometry-label{fill:#334E75;font-size:17px}svg.escher-svg .membrane{fill:none;stroke:#fb0}svg.escher-svg .brush .extent{fill-opacity:.1;fill:#000;stroke:#fff;shape-rendering:crispEdges}svg.escher-svg #brush-container .background{fill:none}svg.escher-svg .bezier-circle{fill:#fff}svg.escher-svg .bezier-circle.b1{stroke:red}svg.escher-svg .bezier-circle.b2{stroke:#00f}svg.escher-svg .connect-line{stroke:#c8c8c8}svg.escher-svg .direction-arrow{stroke:#000;stroke-width:1px;fill:#fff;opacity:.3}svg.escher-svg .start-reaction-cursor{cursor:pointer}svg.escher-svg .start-reaction-target{stroke:#646464;fill:none;opacity:.5}svg.escher-svg .rotation-center-line{stroke:red;stroke-width:5px}svg.escher-svg .highlight{fill:#D97000;text-decoration:underline}svg.escher-svg .cursor-grab{cursor:grab;cursor:-webkit-grab}svg.escher-svg .cursor-grabbing{cursor:grabbing;cursor:-webkit-grabbing}svg.escher-svg .edit-text-cursor{cursor:text}</style>
+    </defs>
+    <g class="zoom-g cursor-grab" transform="translate(0,0) scale(1)">
+        <g class="canvas-group">
+            <rect id="mouse-node" width="0px" height="0px" pointer-events="all"/>
+            <rect id="canvas" width="800" height="600" transform="translate(0,0)" style="visibility: hidden;"/>
+            <rect class="drag-rect resize-rect" transform="translate(-50,50)" height="500" id="dragleft" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(750,50)" id="dragright" height="500" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,-50)" height="100" id="dragtop" width="700" cursor="ns-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,550)" id="dragbottom" height="100" width="700" cursor="ns-resize" style="pointer-events: auto;"/>
+        </g>
+        <g id="brush-container"/>
+        <g id="reactions">
+            <g id="r2994" class="reaction">
+                <g class="reaction-label-group" transform="translate(354.7196460210248,235.70845582922414)">
+                    <title>Phosphoglycerate kinase</title>
+                    <text class="reaction-label label" visibility="visible">PGK</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sPGK_srg_3pg_c.S1">
+                    <path class="segment" d="M334.7199934705002,235.8263450072352 354.7196460210248,235.70845582922414"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_adp_c.S0">
+                    <path class="segment" d="M425.73329687231694,201.26306127461854 C409.6007144945878,210.35513574466648 409.6007144945878,210.35513574466648 364.71947229628717,235.64951124021866"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(425.73329687231694,201.26306127461854)rotate(240.5950631733534)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_adp_c.S1">
+                    <path class="segment" d="M364.71947229628717,235.64951124021866 C410.71867316249393,235.37836613079332 429.59455944858087,214.26673623363195 354.7196460210248,235.70845582922414"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_atp_c.S1">
+                    <path class="segment" d="M334.7199934705002,235.8263450072352 354.7196460210248,235.70845582922414"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_atp_c.S0">
+                    <path class="segment" d="M219.03602511652494,227.97249138285113 C257.2213398372171,236.28316557202777 302.72054938966073,236.01496769205278 334.7199934705002,235.8263450072352"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_13dpg_c.S1">
+                    <path class="segment" d="M364.71947229628717,235.64951124021866 364.71947229628717,235.64951124021866"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_13dpg_c.S0">
+                    <path class="segment" d="M447.0575676469945,225.2251578284372 C427.2182562231235,227.73689911718014 427.2182562231235,227.73689911718014 364.71947229628717,235.64951124021866"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(447.0575676469945,225.2251578284372)rotate(262.78449852851315)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_13dpg_c.S2">
+                    <path class="segment" d="M364.71947229628717,235.64951124021866 C406.718742652389,235.4019439663955 452.2179522048326,235.1337460864205 354.7196460210248,235.70845582922414"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sPGK_srg_3pg_c.S0">
+                    <path class="segment" d="M251.34441574823308,197.117948019048 C279.5971653196458,215.15090506871456 298.7206188795558,236.03854552765495 334.7199934705002,235.8263450072352"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+        </g>
+        <g id="nodes">
+            <g class="node" id="n_13">
+                <circle class="node-circle metabolite-circle" transform="translate(234.48577863711716,186.35754120723527)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(254.48577863711716,206.35754120723527)">atp_c</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="n_12">
+                <circle class="node-circle metabolite-circle" transform="translate(454.4819566928885,185.0607602491143)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(474.4819566928885,205.0607602491143)">adp_c</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="n_1">
+                <circle class="node-circle midmarker-circle" transform="translate(354.7196460210248,235.70845582922414)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n_7">
+                <circle class="node-circle metabolite-circle" transform="translate(189.72225189208984,221.59262466430664)" r="20"/>
+                <text class="node-label label" visibility="visible" transform="translate(219.72225189208984,251.59262466430664)">_3pg_c</text>
+                <title>3-Phospho-D-glycerate</title>
+            </g>
+            <g class="node" id="nPGK_product_2.M1">
+                <circle class="node-circle multimarker-circle" transform="translate(364.71947229628717,235.64951124021866)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n_11">
+                <circle class="node-circle metabolite-circle" transform="translate(489.71704014995987,219.82428699414163)" r="20"/>
+                <text class="node-label label" visibility="visible" transform="translate(519.7170401499599,249.82428699414163)">_13dpg_c</text>
+                <title>3-Phospho-D-glyceroyl phosphate</title>
+            </g>
+            <g class="node" id="nPGK_product_1.M1">
+                <circle class="node-circle multimarker-circle" transform="translate(364.71947229628717,235.64951124021866)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nPGK_reactant_1.M1">
+                <circle class="node-circle multimarker-circle" transform="translate(334.7199934705002,235.8263450072352)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nPGK_product_1.M2">
+                <circle class="node-circle multimarker-circle" transform="translate(364.71947229628717,235.64951124021866)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nPGK_reactant_2.M1">
+                <circle class="node-circle multimarker-circle" transform="translate(334.7199934705002,235.8263450072352)" r="5" style="visibility: hidden;"/>
+            </g>
+        </g>
+        <g id="beziers"/>
+        <g id="text-labels"/>
+        <g id="direction-arrow-container" transform="translate(0,0)rotate(90)">
+            <path class="direction-arrow" d="M0 -5 L0 5 L20 5 L20 10 L30 0 L20 -10 L20 -5 Z" transform="translate(30,0)scale(2.5)" style="visibility: hidden;"/>
+        </g>
+    </g>
+</svg>
