@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="escher-svg"
+    xmlns="http://www.w3.org/2000/svg" width="1000" height="1000">
+    <defs>
+        <style type="text/css">svg.escher-svg .gene-label,svg.escher-svg .label{text-rendering:optimizelegibility;cursor:default}svg.escher-svg #mouse-node{fill:none}svg.escher-svg #canvas{stroke:#ccc;stroke-width:7px;fill:#fff}svg.escher-svg .resize-rect{fill:#000;opacity:0;stroke:none}svg.escher-svg .label{font-family:sans-serif;font-style:italic;font-weight:700;font-size:8px;fill:#000;stroke:none}svg.escher-svg .reaction-label{font-size:30px;fill:#202078;text-rendering:optimizelegibility}svg.escher-svg .node-label{font-size:20px}svg.escher-svg .gene-label{font-size:18px;fill:#202078}svg.escher-svg .text-label .label,svg.escher-svg .text-label-input{font-size:50px}svg.escher-svg .node-circle{stroke-width:2px}svg.escher-svg .midmarker-circle,svg.escher-svg .multimarker-circle{fill:#fff;fill-opacity:.2;stroke:#323232}svg.escher-svg g.selected .node-circle{stroke-width:6px;stroke:#1471c7}svg.escher-svg g.selected .label{fill:#1471c7}svg.escher-svg .metabolite-circle{stroke:#a24510;fill:#e0865b}svg.escher-svg g.selected .metabolite-circle{stroke:#050200}svg.escher-svg .segment{stroke:#334E75;stroke-width:10px;fill:none}svg.escher-svg .arrowhead{fill:#334E75}svg.escher-svg .stoichiometry-label-rect{fill:#fff;opacity:.5}svg.escher-svg .stoichiometry-label{fill:#334E75;font-size:17px}svg.escher-svg .membrane{fill:none;stroke:#fb0}svg.escher-svg .brush .extent{fill-opacity:.1;fill:#000;stroke:#fff;shape-rendering:crispEdges}svg.escher-svg #brush-container .background{fill:none}svg.escher-svg .bezier-circle{fill:#fff}svg.escher-svg .bezier-circle.b1{stroke:red}svg.escher-svg .bezier-circle.b2{stroke:#00f}svg.escher-svg .connect-line{stroke:#c8c8c8}svg.escher-svg .direction-arrow{stroke:#000;stroke-width:1px;fill:#fff;opacity:.3}svg.escher-svg .start-reaction-cursor{cursor:pointer}svg.escher-svg .start-reaction-target{stroke:#646464;fill:none;opacity:.5}svg.escher-svg .rotation-center-line{stroke:red;stroke-width:5px}svg.escher-svg .highlight{fill:#D97000;text-decoration:underline}svg.escher-svg .cursor-grab{cursor:grab;cursor:-webkit-grab}svg.escher-svg .cursor-grabbing{cursor:grabbing;cursor:-webkit-grabbing}svg.escher-svg .edit-text-cursor{cursor:text}</style>
+    </defs>
+    <g class="zoom-g cursor-grab" transform="translate(0,0) scale(1)">
+        <g class="canvas-group">
+            <rect id="mouse-node" width="0px" height="0px" pointer-events="all"/>
+            <rect id="canvas" width="1000" height="1000" transform="translate(0,0)" style="visibility: hidden;"/>
+            <rect class="drag-rect resize-rect" transform="translate(-50,50)" height="900" id="dragleft" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(950,50)" id="dragright" height="900" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,-50)" height="100" id="dragtop" width="900" cursor="ns-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,950)" id="dragbottom" height="100" width="900" cursor="ns-resize" style="pointer-events: auto;"/>
+        </g>
+        <g id="brush-container"/>
+        <g id="reactions">
+            <g id="r99468423" class="reaction">
+                <g class="reaction-label-group" transform="translate(370,160)">
+                    <title>R1</title>
+                    <text class="reaction-label label" visibility="visible">R1</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sarc000000.S0">
+                    <path class="segment" d="M380,170 C455,170 455,170 510,170"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000001.S0">
+                    <path class="segment" d="M311.0940039245046,273.3589941132431 C340,230 340,230 380,170"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000002.S0">
+                    <path class="segment" d="M380,170 C420,230 420,230 441.6948935245674,262.5423402868512"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(441.6948935245674,262.5423402868512)rotate(326.30993247402023)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000003.S0">
+                    <path class="segment" d="M380,80 C380,115 380,115 380,170"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels">
+                        <text class="stoichiometry-label" text-anchor="middle" transform="translate(365.6172338418739,93.32747685671117)">NaN</text>
+                    </g>
+                </g>
+                <g class="segment-group" id="sarc000016.S0">
+                    <path class="segment" d="M250,170 C305,170 305,170 380,170"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+            <g id="r99468428" class="reaction">
+                <g class="reaction-label-group" transform="translate(220,400)">
+                    <title>R2</title>
+                    <text class="reaction-label label" visibility="visible">R2</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sarc000005.S0">
+                    <path class="segment" d="M230,410 C270,470 270,470 291.6948935245674,502.5423402868512"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(291.6948935245674,502.5423402868512)rotate(326.30993247402023)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000a.S0">
+                    <path class="segment" d="M527.9063043096392,189.89010905842812 C520,265 520,265 510,360"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000017.S0">
+                    <path class="segment" d="M100,410 C155,410 155,410 230,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000a.S1">
+                    <path class="segment" d="M510,360 230,360"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000a.S2">
+                    <path class="segment" d="M230,360 230,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000004.S0">
+                    <path class="segment" d="M161.0940039245046,513.3589941132432 C190,470 190,470 230,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000014.S0">
+                    <path class="segment" d="M230,410 C295,410 295,410 340,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+            <g id="r130731084" class="reaction">
+                <g class="reaction-label-group" transform="translate(540,400)">
+                    <title>R0</title>
+                    <text class="reaction-label label" visibility="visible">R0</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sarc000008.S0">
+                    <path class="segment" d="M550,410 C590,470 590,470 611.6948935245674,502.5423402868512"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(611.6948935245674,502.5423402868512)rotate(326.30993247402023)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000009.S0">
+                    <path class="segment" d="M531.6609095970748,189.93091516489758 C540,290 540,290 550,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000006.S0">
+                    <path class="segment" d="M481.0940039245046,513.3589941132432 C510,470 510,470 550,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000007.S0">
+                    <path class="segment" d="M550,410 C625,410 625,410 680,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000015.S0">
+                    <path class="segment" d="M380,410 C455,410 455,410 550,410"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+            <g id="r130731086" class="reaction">
+                <g class="reaction-label-group" transform="translate(500,650)">
+                    <title>R3</title>
+                    <text class="reaction-label label" visibility="visible">R3</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sarc00000f.S0">
+                    <path class="segment" d="M441.0940039245046,763.3589941132432 C470,720 470,720 510,660"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000b.S0">
+                    <path class="segment" d="M510,660 C575,660 575,660 607,660"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(607,660)rotate(270)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000c.S0">
+                    <path class="segment" d="M510,660 C550,720 550,720 571.6948935245674,752.5423402868512"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(571.6948935245674,752.5423402868512)rotate(326.30993247402023)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000010.S2">
+                    <path class="segment" d="M510,610 510,660"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000010.S1">
+                    <path class="segment" d="M720,610 510,610"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000010.S0">
+                    <path class="segment" d="M701.99007438042,429.9007438041998 C710,510 710,510 720,610"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000019.S0">
+                    <path class="segment" d="M393,660 C435,660 435,660 510,660"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(393,660)rotate(90)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+            <g id="r130731087" class="reaction">
+                <g class="reaction-label-group" transform="translate(220,650)">
+                    <title>R4</title>
+                    <text class="reaction-label label" visibility="visible">R4</text>
+                    <g class="all-genes-label-group"/></g>
+                <g class="segment-group" id="sarc000011.S0">
+                    <path class="segment" d="M697.791369478503,429.8776746934724 C690,500 690,500 680,590"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000011.S1">
+                    <path class="segment" d="M680,590 230,590"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000011.S2">
+                    <path class="segment" d="M230,590 230,660"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000d.S0">
+                    <path class="segment" d="M230,660 C270,720 270,720 291.6948935245674,752.5423402868512"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(291.6948935245674,752.5423402868512)rotate(326.30993247402023)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00000e.S0">
+                    <path class="segment" d="M161.0940039245046,763.3589941132432 C190,720 190,720 230,660"/>
+                    <g class="arrowheads"/>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc00001a.S0">
+                    <path class="segment" d="M230,660 C295,660 295,660 327,660"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(327,660)rotate(270)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+                <g class="segment-group" id="sarc000018.S0">
+                    <path class="segment" d="M113,660 C155,660 155,660 230,660"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(113,660)rotate(90)"/>
+                    </g>
+                    <g class="stoichiometry-labels"/></g>
+            </g>
+        </g>
+        <g id="nodes">
+            <g class="node" id="n49126838">
+                <circle class="node-circle multimarker-circle" transform="translate(510,610)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n79117946">
+                <circle class="node-circle multimarker-circle" transform="translate(510,360)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n87060781">
+                <circle class="node-circle multimarker-circle" transform="translate(230,360)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n164338869">
+                <circle class="node-circle multimarker-circle" transform="translate(230,590)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n234234477">
+                <circle class="node-circle multimarker-circle" transform="translate(720,610)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="n267662719">
+                <circle class="node-circle multimarker-circle" transform="translate(680,590)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph10">
+                <circle class="node-circle metabolite-circle" transform="translate(470,530)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(440,500)">ATP</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="nglyph13">
+                <circle class="node-circle midmarker-circle" transform="translate(510,660)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph14">
+                <circle class="node-circle midmarker-circle" transform="translate(230,660)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph11">
+                <circle class="node-circle midmarker-circle" transform="translate(550,410)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph12">
+                <circle class="node-circle metabolite-circle" transform="translate(700,410)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(650,380)">MEK</text>
+                <title>MEK</title>
+            </g>
+            <g class="node" id="nglyph17">
+                <circle class="node-circle metabolite-circle" transform="translate(430,780)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(400,750)">ATP</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="nglyph18">
+                <circle class="node-circle metabolite-circle" transform="translate(590,780)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(560,750)">ADP</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="nglyph15">
+                <circle class="node-circle metabolite-circle" transform="translate(150,780)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(120,750)">ATP</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="nglyph16">
+                <circle class="node-circle metabolite-circle" transform="translate(310,780)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(280,750)">ADP</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="nglyph19">
+                <circle class="node-circle metabolite-circle" transform="translate(640,660)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(590,630)">ERK</text>
+                <title>ERK</title>
+            </g>
+            <g class="node" id="nglyph9">
+                <circle class="node-circle metabolite-circle" transform="translate(630,530)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(600,500)">ADP</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="nglyph8">
+                <circle class="node-circle midmarker-circle" transform="translate(230,410)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph21">
+                <circle class="node-circle metabolite-circle" transform="translate(360,660)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(310,630)">ERK</text>
+                <title>ERK</title>
+            </g>
+            <g class="node" id="nglyph5">
+                <circle class="node-circle metabolite-circle" transform="translate(460,290)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(430,260)">ADP</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="nglyph24">
+                <circle class="node-circle metabolite-circle" transform="translate(360,410)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(310,380)">MEK</text>
+                <title>MEK</title>
+            </g>
+            <g class="node" id="nglyph4">
+                <circle class="node-circle metabolite-circle" transform="translate(300,290)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(270,260)">ATP</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="nglyph25">
+                <circle class="node-circle metabolite-circle" transform="translate(230,170)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(180,140)">RAF</text>
+                <title>RAF</title>
+            </g>
+            <g class="node" id="nglyph7">
+                <circle class="node-circle metabolite-circle" transform="translate(150,530)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(120,500)">ATP</text>
+                <title>ATP</title>
+            </g>
+            <g class="node" id="nglyph22">
+                <circle class="node-circle metabolite-circle" transform="translate(80,660)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(30,630)">ERK</text>
+                <title>ERK</title>
+            </g>
+            <g class="node" id="nglyph6">
+                <circle class="node-circle metabolite-circle" transform="translate(310,530)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(280,500)">ADP</text>
+                <title>ADP</title>
+            </g>
+            <g class="node" id="nglyph23">
+                <circle class="node-circle metabolite-circle" transform="translate(80,410)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(30,380)">MEK</text>
+                <title>MEK</title>
+            </g>
+            <g class="node" id="nglyph1">
+                <circle class="node-circle metabolite-circle" transform="translate(380,60)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(330,30)">RAS</text>
+                <title>RAS</title>
+            </g>
+            <g class="node" id="nglyph3">
+                <circle class="node-circle midmarker-circle" transform="translate(380,170)" r="5" style="visibility: hidden;"/>
+            </g>
+            <g class="node" id="nglyph2">
+                <circle class="node-circle metabolite-circle" transform="translate(530,170)" r="10"/>
+                <text class="node-label label" visibility="visible" transform="translate(480,140)">RAF</text>
+                <title>RAF</title>
+            </g>
+        </g>
+        <g id="beziers"/>
+        <g id="text-labels">
+            <g id="l99468420" class="text-label">
+                <text class="label" transform="translate(210,60)">RAS</text>
+            </g>
+            <g id="l130731114" class="text-label">
+                <text class="label" transform="translate(810,660)">ERK</text>
+            </g>
+        </g>
+        <g id="direction-arrow-container" transform="translate(0,0)rotate(90)">
+            <path class="direction-arrow" d="M0 -5 L0 5 L20 5 L20 10 L30 0 L20 -10 L20 -5 Z" transform="translate(30,0)scale(2.5)" style="visibility: hidden;"/>
+        </g>
+    </g>
+</svg>
