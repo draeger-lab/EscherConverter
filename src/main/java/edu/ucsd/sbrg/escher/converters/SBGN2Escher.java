@@ -93,12 +93,17 @@ public class SBGN2Escher {
     node.setX(glyph.getBbox().getX() + glyph.getBbox().getW() * 0.5);
     node.setY(glyph.getBbox().getY() + glyph.getBbox().getH() * 0.5);
     node.setType(Node.Type.metabolite);
-
     node.setName(glyph.getLabel().getText());
-    node.setLabelX((double) glyph.getLabel().getBbox().getX());
-    node.setLabelY((double) glyph.getLabel().getBbox().getY());
     node.setBiggId(glyph.getLabel().getText());
 
+    if (glyph.getLabel() != null && glyph.getLabel().getBbox() != null) {
+      node.setLabelX((double) glyph.getLabel().getBbox().getX());
+      node.setLabelY((double) glyph.getLabel().getBbox().getY());
+    }
+    else {
+      node.setLabelX((double) glyph.getBbox().getX());
+      node.setLabelY((double) glyph.getBbox().getY());
+    }
     return node;
   }
 
