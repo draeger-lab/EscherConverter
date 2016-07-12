@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D61704064653061303166",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403462313439313861",
   "map_name" : "mapk_cascade.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -14,34 +14,7 @@
     "width" : 1000.0
   },
   "nodes" : {
-    "130731090" : {
-      "x" : 430.0,
-      "y" : 780.0,
-      "bigg_id" : "glyph17",
-      "label_x" : 400.0,
-      "label_y" : 750.0,
-      "name" : "ATP",
-      "node_type" : "metabolite"
-    },
-    "130731091" : {
-      "x" : 590.0,
-      "y" : 780.0,
-      "bigg_id" : "glyph18",
-      "label_x" : 560.0,
-      "label_y" : 750.0,
-      "name" : "ADP",
-      "node_type" : "metabolite"
-    },
-    "130731092" : {
-      "x" : 640.0,
-      "y" : 660.0,
-      "bigg_id" : "glyph19",
-      "label_x" : 590.0,
-      "label_y" : 630.0,
-      "name" : "ERK",
-      "node_type" : "metabolite"
-    },
-    "130731083" : {
+    "glyph10" : {
       "x" : 470.0,
       "y" : 530.0,
       "bigg_id" : "glyph10",
@@ -50,12 +23,22 @@
       "name" : "ATP",
       "node_type" : "metabolite"
     },
-    "130731084" : {
+    "glyph13" : {
+      "x" : 510.0,
+      "y" : 660.0,
+      "node_type" : "midmarker"
+    },
+    "glyph14" : {
+      "x" : 230.0,
+      "y" : 660.0,
+      "node_type" : "midmarker"
+    },
+    "glyph11" : {
       "x" : 550.0,
       "y" : 410.0,
       "node_type" : "midmarker"
     },
-    "130731085" : {
+    "glyph12" : {
       "x" : 700.0,
       "y" : 410.0,
       "bigg_id" : "glyph12",
@@ -64,26 +47,35 @@
       "name" : "MEK",
       "node_type" : "metabolite"
     },
-    "130731086" : {
+    "77452139" : {
       "x" : 510.0,
-      "y" : 660.0,
-      "node_type" : "midmarker"
+      "y" : 610.0,
+      "node_type" : "multimarker"
     },
-    "99468421" : {
-      "x" : 380.0,
-      "y" : 60.0,
-      "bigg_id" : "glyph1",
-      "label_x" : 330.0,
-      "label_y" : 30.0,
-      "name" : "RAS",
+    "142808856" : {
+      "x" : 680.0,
+      "y" : 590.0,
+      "node_type" : "multimarker"
+    },
+    "glyph17" : {
+      "x" : 430.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph17",
+      "label_x" : 400.0,
+      "label_y" : 750.0,
+      "name" : "ATP",
       "node_type" : "metabolite"
     },
-    "130731087" : {
-      "x" : 230.0,
-      "y" : 660.0,
-      "node_type" : "midmarker"
+    "glyph18" : {
+      "x" : 590.0,
+      "y" : 780.0,
+      "bigg_id" : "glyph18",
+      "label_x" : 560.0,
+      "label_y" : 750.0,
+      "name" : "ADP",
+      "node_type" : "metabolite"
     },
-    "130731088" : {
+    "glyph15" : {
       "x" : 150.0,
       "y" : 780.0,
       "bigg_id" : "glyph15",
@@ -92,7 +84,7 @@
       "name" : "ATP",
       "node_type" : "metabolite"
     },
-    "130731089" : {
+    "glyph16" : {
       "x" : 310.0,
       "y" : 780.0,
       "bigg_id" : "glyph16",
@@ -101,39 +93,21 @@
       "name" : "ADP",
       "node_type" : "metabolite"
     },
-    "99468423" : {
-      "x" : 380.0,
-      "y" : 170.0,
-      "node_type" : "midmarker"
+    "169001988" : {
+      "x" : 510.0,
+      "y" : 360.0,
+      "node_type" : "multimarker"
     },
-    "99468422" : {
-      "x" : 530.0,
-      "y" : 170.0,
-      "bigg_id" : "glyph2",
-      "label_x" : 480.0,
-      "label_y" : 140.0,
-      "name" : "RAF",
-      "node_type" : "metabolite"
-    },
-    "130731115" : {
-      "x" : 360.0,
+    "glyph19" : {
+      "x" : 640.0,
       "y" : 660.0,
-      "bigg_id" : "glyph21",
-      "label_x" : 310.0,
+      "bigg_id" : "glyph19",
+      "label_x" : 590.0,
       "label_y" : 630.0,
       "name" : "ERK",
       "node_type" : "metabolite"
     },
-    "130731116" : {
-      "x" : 80.0,
-      "y" : 660.0,
-      "bigg_id" : "glyph22",
-      "label_x" : 30.0,
-      "label_y" : 630.0,
-      "name" : "ERK",
-      "node_type" : "metabolite"
-    },
-    "99468429" : {
+    "glyph9" : {
       "x" : 630.0,
       "y" : 530.0,
       "bigg_id" : "glyph9",
@@ -142,39 +116,31 @@
       "name" : "ADP",
       "node_type" : "metabolite"
     },
-    "130731117" : {
-      "x" : 80.0,
-      "y" : 410.0,
-      "bigg_id" : "glyph23",
-      "label_x" : 30.0,
-      "label_y" : 380.0,
-      "name" : "MEK",
-      "node_type" : "metabolite"
-    },
-    "130731118" : {
-      "x" : 360.0,
-      "y" : 410.0,
-      "bigg_id" : "glyph24",
-      "label_x" : 310.0,
-      "label_y" : 380.0,
-      "name" : "MEK",
-      "node_type" : "metabolite"
-    },
-    "99468428" : {
+    "glyph8" : {
       "x" : 230.0,
       "y" : 410.0,
       "node_type" : "midmarker"
     },
-    "130731119" : {
-      "x" : 230.0,
-      "y" : 170.0,
-      "bigg_id" : "glyph25",
-      "label_x" : 180.0,
-      "label_y" : 140.0,
-      "name" : "RAF",
+    "glyph21" : {
+      "x" : 360.0,
+      "y" : 660.0,
+      "bigg_id" : "glyph21",
+      "label_x" : 310.0,
+      "label_y" : 630.0,
+      "name" : "ERK",
       "node_type" : "metabolite"
     },
-    "99468425" : {
+    "202462887" : {
+      "x" : 230.0,
+      "y" : 590.0,
+      "node_type" : "multimarker"
+    },
+    "155298047" : {
+      "x" : 230.0,
+      "y" : 360.0,
+      "node_type" : "multimarker"
+    },
+    "glyph5" : {
       "x" : 460.0,
       "y" : 290.0,
       "bigg_id" : "glyph5",
@@ -183,7 +149,16 @@
       "name" : "ADP",
       "node_type" : "metabolite"
     },
-    "99468424" : {
+    "glyph24" : {
+      "x" : 360.0,
+      "y" : 410.0,
+      "bigg_id" : "glyph24",
+      "label_x" : 310.0,
+      "label_y" : 380.0,
+      "name" : "MEK",
+      "node_type" : "metabolite"
+    },
+    "glyph4" : {
       "x" : 300.0,
       "y" : 290.0,
       "bigg_id" : "glyph4",
@@ -192,7 +167,16 @@
       "name" : "ATP",
       "node_type" : "metabolite"
     },
-    "99468427" : {
+    "glyph25" : {
+      "x" : 230.0,
+      "y" : 170.0,
+      "bigg_id" : "glyph25",
+      "label_x" : 180.0,
+      "label_y" : 140.0,
+      "name" : "RAF",
+      "node_type" : "metabolite"
+    },
+    "glyph7" : {
       "x" : 150.0,
       "y" : 530.0,
       "bigg_id" : "glyph7",
@@ -201,7 +185,16 @@
       "name" : "ATP",
       "node_type" : "metabolite"
     },
-    "99468426" : {
+    "glyph22" : {
+      "x" : 80.0,
+      "y" : 660.0,
+      "bigg_id" : "glyph22",
+      "label_x" : 30.0,
+      "label_y" : 630.0,
+      "name" : "ERK",
+      "node_type" : "metabolite"
+    },
+    "glyph6" : {
       "x" : 310.0,
       "y" : 530.0,
       "bigg_id" : "glyph6",
@@ -209,6 +202,43 @@
       "label_y" : 500.0,
       "name" : "ADP",
       "node_type" : "metabolite"
+    },
+    "glyph23" : {
+      "x" : 80.0,
+      "y" : 410.0,
+      "bigg_id" : "glyph23",
+      "label_x" : 30.0,
+      "label_y" : 380.0,
+      "name" : "MEK",
+      "node_type" : "metabolite"
+    },
+    "glyph1" : {
+      "x" : 380.0,
+      "y" : 60.0,
+      "bigg_id" : "glyph1",
+      "label_x" : 330.0,
+      "label_y" : 30.0,
+      "name" : "RAS",
+      "node_type" : "metabolite"
+    },
+    "glyph3" : {
+      "x" : 380.0,
+      "y" : 170.0,
+      "node_type" : "midmarker"
+    },
+    "glyph2" : {
+      "x" : 530.0,
+      "y" : 170.0,
+      "bigg_id" : "glyph2",
+      "label_x" : 480.0,
+      "label_y" : 140.0,
+      "name" : "RAF",
+      "node_type" : "metabolite"
+    },
+    "47691000" : {
+      "x" : 720.0,
+      "y" : 610.0,
+      "node_type" : "multimarker"
     }
   },
   "reactions" : {
@@ -219,69 +249,108 @@
       "label_y" : 400.0,
       "metabolites" : [ {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph8"
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
       } ],
       "name" : "R2",
       "segments" : {
-        "S11" : {
-          "from_node_id" : "99468428",
-          "to_node_id" : "99468426",
-          "b2" : {
-            "x" : 293.3590087890625,
-            "y" : 505.0384826660156
-          },
-          "b1" : {
-            "x" : 250.0,
-            "y" : 410.0
-          }
+        "arc000005.S0" : {
+          "from_node_id" : "glyph8",
+          "to_node_id" : "glyph6",
+          "b1" : null,
+          "b2" : null
         },
-        "S10" : {
-          "from_node_id" : "99468427",
-          "to_node_id" : "99468428",
-          "b2" : {
-            "x" : 210.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 163.41641235351562,
-            "y" : 503.16717529296875
-          }
+        "arc00000a.S0" : {
+          "from_node_id" : "glyph2",
+          "to_node_id" : "169001988",
+          "b1" : null,
+          "b2" : null
         },
-        "S13" : {
-          "from_node_id" : "99468428",
-          "to_node_id" : "130731118",
-          "b2" : {
-            "x" : 310.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 250.0,
-            "y" : 410.0
-          }
+        "arc000017.S0" : {
+          "from_node_id" : "glyph23",
+          "to_node_id" : "glyph8",
+          "b1" : null,
+          "b2" : null
         },
-        "S12" : {
-          "from_node_id" : "99468422",
-          "to_node_id" : "99468428",
-          "b2" : {
-            "x" : 230.0,
-            "y" : 400.0
-          },
-          "b1" : {
-            "x" : 510.0,
-            "y" : 200.0
-          }
+        "arc00000a.S1" : {
+          "from_node_id" : "169001988",
+          "to_node_id" : "155298047",
+          "b1" : null,
+          "b2" : null
         },
-        "S14" : {
-          "from_node_id" : "130731117",
-          "to_node_id" : "99468428",
-          "b2" : {
-            "x" : 210.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 130.0,
-            "y" : 410.0
-          }
+        "arc00000a.S2" : {
+          "from_node_id" : "155298047",
+          "to_node_id" : "glyph8",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000004.S0" : {
+          "from_node_id" : "glyph7",
+          "to_node_id" : "glyph8",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000014.S0" : {
+          "from_node_id" : "glyph8",
+          "to_node_id" : "glyph24",
+          "b1" : null,
+          "b2" : null
         }
       }
     },
@@ -292,69 +361,96 @@
       "label_y" : 400.0,
       "metabolites" : [ {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph11"
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
       } ],
       "name" : "R0",
       "segments" : {
-        "S3" : {
-          "from_node_id" : "99468422",
-          "to_node_id" : "130731084",
-          "b2" : {
-            "x" : 549.1666870117188,
-            "y" : 400.0
-          },
-          "b1" : {
-            "x" : 550.0,
-            "y" : 200.0
-          }
+        "arc000008.S0" : {
+          "from_node_id" : "glyph11",
+          "to_node_id" : "glyph9",
+          "b1" : null,
+          "b2" : null
         },
-        "S4" : {
-          "from_node_id" : "130731118",
-          "to_node_id" : "130731084",
-          "b2" : {
-            "x" : 530.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 410.0,
-            "y" : 410.0
-          }
+        "arc000009.S0" : {
+          "from_node_id" : "glyph2",
+          "to_node_id" : "glyph11",
+          "b1" : null,
+          "b2" : null
         },
-        "S0" : {
-          "from_node_id" : "130731083",
-          "to_node_id" : "130731084",
-          "b2" : {
-            "x" : 530.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 483.4164123535156,
-            "y" : 503.16717529296875
-          }
+        "arc000006.S0" : {
+          "from_node_id" : "glyph10",
+          "to_node_id" : "glyph11",
+          "b1" : null,
+          "b2" : null
         },
-        "S1" : {
-          "from_node_id" : "130731084",
-          "to_node_id" : "130731085",
-          "b2" : {
-            "x" : 650.0,
-            "y" : 410.0
-          },
-          "b1" : {
-            "x" : 570.0,
-            "y" : 410.0
-          }
+        "arc000007.S0" : {
+          "from_node_id" : "glyph11",
+          "to_node_id" : "glyph12",
+          "b1" : null,
+          "b2" : null
         },
-        "S2" : {
-          "from_node_id" : "130731084",
-          "to_node_id" : "99468429",
-          "b2" : {
-            "x" : 613.3590087890625,
-            "y" : 505.0384826660156
-          },
-          "b1" : {
-            "x" : 570.0,
-            "y" : 410.0
-          }
+        "arc000015.S0" : {
+          "from_node_id" : "glyph24",
+          "to_node_id" : "glyph11",
+          "b1" : null,
+          "b2" : null
         }
       }
     },
@@ -365,69 +461,108 @@
       "label_y" : 650.0,
       "metabolites" : [ {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph13"
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
       } ],
       "name" : "R3",
       "segments" : {
-        "S15" : {
-          "from_node_id" : "130731086",
-          "to_node_id" : "130731092",
-          "b2" : {
-            "x" : 590.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 530.0,
-            "y" : 660.0
-          }
+        "arc00000f.S0" : {
+          "from_node_id" : "glyph17",
+          "to_node_id" : "glyph13",
+          "b1" : null,
+          "b2" : null
         },
-        "S17" : {
-          "from_node_id" : "130731090",
-          "to_node_id" : "130731086",
-          "b2" : {
-            "x" : 490.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 443.4164123535156,
-            "y" : 753.1671752929688
-          }
+        "arc00000b.S0" : {
+          "from_node_id" : "glyph13",
+          "to_node_id" : "glyph19",
+          "b1" : null,
+          "b2" : null
         },
-        "S16" : {
-          "from_node_id" : "130731086",
-          "to_node_id" : "130731091",
-          "b2" : {
-            "x" : 573.3590087890625,
-            "y" : 755.0385131835938
-          },
-          "b1" : {
-            "x" : 530.0,
-            "y" : 660.0
-          }
+        "arc00000c.S0" : {
+          "from_node_id" : "glyph13",
+          "to_node_id" : "glyph18",
+          "b1" : null,
+          "b2" : null
         },
-        "S19" : {
-          "from_node_id" : "130731115",
-          "to_node_id" : "130731086",
-          "b2" : {
-            "x" : 490.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 410.0,
-            "y" : 660.0
-          }
+        "arc000010.S2" : {
+          "from_node_id" : "77452139",
+          "to_node_id" : "glyph13",
+          "b1" : null,
+          "b2" : null
         },
-        "S18" : {
-          "from_node_id" : "130731085",
-          "to_node_id" : "130731086",
-          "b2" : {
-            "x" : 510.0,
-            "y" : 650.0
-          },
-          "b1" : {
-            "x" : 720.0,
-            "y" : 440.0
-          }
+        "arc000010.S1" : {
+          "from_node_id" : "47691000",
+          "to_node_id" : "77452139",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000010.S0" : {
+          "from_node_id" : "glyph12",
+          "to_node_id" : "47691000",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000019.S0" : {
+          "from_node_id" : "glyph21",
+          "to_node_id" : "glyph13",
+          "b1" : null,
+          "b2" : null
         }
       }
     },
@@ -438,69 +573,108 @@
       "label_y" : 650.0,
       "metabolites" : [ {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph14"
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
       } ],
       "name" : "R4",
       "segments" : {
-        "S20" : {
-          "from_node_id" : "130731087",
-          "to_node_id" : "130731089",
-          "b2" : {
-            "x" : 293.3590087890625,
-            "y" : 755.0385131835938
-          },
-          "b1" : {
-            "x" : 250.0,
-            "y" : 660.0
-          }
+        "arc000011.S0" : {
+          "from_node_id" : "glyph12",
+          "to_node_id" : "142808856",
+          "b1" : null,
+          "b2" : null
         },
-        "S22" : {
-          "from_node_id" : "130731085",
-          "to_node_id" : "130731087",
-          "b2" : {
-            "x" : 230.0,
-            "y" : 650.0
-          },
-          "b1" : {
-            "x" : 680.0,
-            "y" : 440.0
-          }
+        "arc000011.S1" : {
+          "from_node_id" : "142808856",
+          "to_node_id" : "202462887",
+          "b1" : null,
+          "b2" : null
         },
-        "S21" : {
-          "from_node_id" : "130731088",
-          "to_node_id" : "130731087",
-          "b2" : {
-            "x" : 210.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 163.41641235351562,
-            "y" : 753.1671752929688
-          }
+        "arc000011.S2" : {
+          "from_node_id" : "202462887",
+          "to_node_id" : "glyph14",
+          "b1" : null,
+          "b2" : null
         },
-        "S24" : {
-          "from_node_id" : "130731087",
-          "to_node_id" : "130731115",
-          "b2" : {
-            "x" : 310.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 250.0,
-            "y" : 660.0
-          }
+        "arc00000d.S0" : {
+          "from_node_id" : "glyph14",
+          "to_node_id" : "glyph16",
+          "b1" : null,
+          "b2" : null
         },
-        "S23" : {
-          "from_node_id" : "130731116",
-          "to_node_id" : "130731087",
-          "b2" : {
-            "x" : 210.0,
-            "y" : 660.0
-          },
-          "b1" : {
-            "x" : 130.0,
-            "y" : 660.0
-          }
+        "arc00000e.S0" : {
+          "from_node_id" : "glyph15",
+          "to_node_id" : "glyph14",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc00001a.S0" : {
+          "from_node_id" : "glyph14",
+          "to_node_id" : "glyph21",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000018.S0" : {
+          "from_node_id" : "glyph22",
+          "to_node_id" : "glyph14",
+          "b1" : null,
+          "b2" : null
         }
       }
     },
@@ -511,69 +685,96 @@
       "label_y" : 160.0,
       "metabolites" : [ {
         "coefficient" : 1.0,
-        "bigg_id" : "glyph3"
+        "bigg_id" : "glyph2"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph4"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph5"
+      }, { }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph7"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph6"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph10"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph12"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph9"
+      }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph19"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph18"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph16"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph15"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph17"
+      }, { }, { }, { }, { }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph24"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph25"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph23"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph22"
+      }, {
+        "coefficient" : -1.0,
+        "bigg_id" : "glyph21"
+      }, {
+        "coefficient" : 1.0,
+        "bigg_id" : "glyph21"
       } ],
       "name" : "R1",
       "segments" : {
-        "S5" : {
-          "from_node_id" : "99468423",
-          "to_node_id" : "99468422",
-          "b2" : {
-            "x" : 480.0,
-            "y" : 170.0
-          },
-          "b1" : {
-            "x" : 400.0,
-            "y" : 170.0
-          }
+        "arc000000.S0" : {
+          "from_node_id" : "glyph3",
+          "to_node_id" : "glyph2",
+          "b1" : null,
+          "b2" : null
         },
-        "S6" : {
-          "from_node_id" : "99468424",
-          "to_node_id" : "99468423",
-          "b2" : {
-            "x" : 360.0,
-            "y" : 170.0
-          },
-          "b1" : {
-            "x" : 313.4164123535156,
-            "y" : 263.16717529296875
-          }
+        "arc000001.S0" : {
+          "from_node_id" : "glyph4",
+          "to_node_id" : "glyph3",
+          "b1" : null,
+          "b2" : null
         },
-        "S7" : {
-          "from_node_id" : "99468423",
-          "to_node_id" : "99468425",
-          "b2" : {
-            "x" : 443.3590087890625,
-            "y" : 265.0384826660156
-          },
-          "b1" : {
-            "x" : 400.0,
-            "y" : 170.0
-          }
+        "arc000002.S0" : {
+          "from_node_id" : "glyph3",
+          "to_node_id" : "glyph5",
+          "b1" : null,
+          "b2" : null
         },
-        "S8" : {
-          "from_node_id" : "99468421",
-          "to_node_id" : "99468423",
-          "b2" : {
-            "x" : 380.0,
-            "y" : 160.0
-          },
-          "b1" : {
-            "x" : 380.0,
-            "y" : 102.0
-          }
+        "arc000003.S0" : {
+          "from_node_id" : "glyph1",
+          "to_node_id" : "glyph3",
+          "b1" : null,
+          "b2" : null
         },
-        "S9" : {
-          "from_node_id" : "130731119",
-          "to_node_id" : "99468423",
-          "b2" : {
-            "x" : 360.0,
-            "y" : 170.0
-          },
-          "b1" : {
-            "x" : 280.0,
-            "y" : 170.0
-          }
+        "arc000016.S0" : {
+          "from_node_id" : "glyph25",
+          "to_node_id" : "glyph3",
+          "b1" : null,
+          "b2" : null
         }
       }
     }

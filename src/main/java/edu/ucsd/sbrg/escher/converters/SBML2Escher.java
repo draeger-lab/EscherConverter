@@ -48,29 +48,48 @@ public class SBML2Escher {
       map.setCanvas(addCanvasInfo(layouts.get(0)));
       map.setDescription(bundle.getString("default_description"));
       map.setId(HexBin.encode(layouts.get(0).toString().getBytes()));
+
+      layout.getListOfTextGlyphs().forEach(tG -> {
+//        map.addTextLabel(createTextLabel(tG));
+      });
+
       layout.getListOfSpeciesGlyphs().forEach((sG) -> {
         map.addNode(createNode(sG));
       });
+
       layout.getListOfReactionGlyphs().forEach((rG -> {
         map.addNode(createMidmarker(rG));
       }));
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
-          for (int i = 1; i < sRG.getCurve().getCurveSegmentCount(); i++) {
-            map.addNode(createMultimarker(sRG.getCurve().getCurveSegment(i).getStart()));
-          }
+          createMultiMarkers(sRG).forEach(m -> map.addNode(m));
         });
       });
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         map.addReaction(createReaction(rG));
       });
+
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach((sRG -> {
-          for (int i = 0; i < sRG.getCurve().getCurveSegmentCount(); i++) {
-            map.getReaction("" + (rG.getId().hashCode() & 0xfffffff))
-               .addSegment(createSegment(sRG.getCurve().getCurveSegment(i), sRG, rG, i));
-          }
+          createSegments(sRG, rG).forEach(s -> map.getReaction("" + (rG.getId().hashCode() &
+              0xfffffff)).addSegment(s));
         }));
+      });
+
+      // Setting node_is_primary of nodes.
+      layout.getListOfReactionGlyphs().forEach(rG -> {
+        rG.getListOfSpeciesReferenceGlyphs().forEach(sRG -> {
+          if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
+              sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE) {
+            map.getNode(sRG.getSpeciesGlyph()).setPrimary(true);
+          }
+          else if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDEPRODUCT ||
+              sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDESUBSTRATE) {
+            map.getNode(sRG.getSpeciesGlyph()).setPrimary(false);
+          }
+        });
       });
 
       escherMaps.add(map);
@@ -112,7 +131,7 @@ public class SBML2Escher {
 
     if (textGlyph.getText() == null || textGlyph.getText().isEmpty()) {
       // TODO: Log about no text, so ignoring text label.
-      return null;
+      ;
     }
     else {
       textLabel.setText(textGlyph.getText());
@@ -134,8 +153,10 @@ public class SBML2Escher {
     node.setName(speciesGlyph.getSpeciesInstance().getName());
     node.setX(speciesGlyph.getBoundingBox().getPosition().x());
     node.setY(speciesGlyph.getBoundingBox().getPosition().y());
-    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x());
-    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y());
+    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x() +
+                    speciesGlyph.getBoundingBox().getDimensions().getWidth());
+    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y() +
+                    speciesGlyph.getBoundingBox().getDimensions().getHeight());
 
     // TODO: Find out if node is primary by either role or SBO term.
     node.setPrimary(true);
@@ -181,15 +202,24 @@ public class SBML2Escher {
   }
 
 
-  protected Node createMultimarker(org.sbml.jsbml.ext.layout.Point point) {
-    Node node = new Node();
+  protected List<Node> createMultiMarkers(SpeciesReferenceGlyph sRG) {
+    List<Node> multiMarkers = new ArrayList<>();
 
-    node.setId("" + (("" + (point.x() + point.y())).hashCode() & 0xfffffff));
-    node.setType(Node.Type.multimarker);
-    node.setX(point.x());
-    node.setY(point.y());
+    Node node;
+    List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
+    for (int i = 0; i < (cSs.size()-1); i++) {
+      node = new Node();
 
-    return node;
+      node.setId(sRG.getSpeciesReference() + ".M" + (i+1));
+      node.setType(Node.Type.multimarker);
+
+      node.setX(midPoint(cSs.get(i).getEnd().getX(), cSs.get(i+1).getStart().getX()));
+      node.setY(midPoint(cSs.get(i).getEnd().getY(), cSs.get(i+1).getStart().getY()));
+
+      multiMarkers.add(node);
+    }
+
+    return multiMarkers;
   }
 
 
@@ -244,59 +274,50 @@ public class SBML2Escher {
   }
 
 
-  protected Segment createSegment(CurveSegment cS, SpeciesReferenceGlyph sRG, ReactionGlyph rG, int i) {
+  protected List<Segment> createSegments(SpeciesReferenceGlyph sRG, ReactionGlyph rG) {
+    List<Segment> segments = new ArrayList<>();
     Segment segment = new Segment();
+    List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
 
-    segment.setId("" + (cS.hashCode() & 0xfffffff));
-    if (i == 0 && i == (sRG.getCurve().getCurveSegmentCount() - 1)) {
-      if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDEPRODUCT) {
-        segment.setFromNodeId(rG.getId());
-        segment.setToNodeId(sRG.getSpeciesGlyph());
+    segment.setId(sRG.getId() + ".S" + 0);
+    segment.setFromNodeId(sRG.getSpeciesGlyph());
+    for (int i = 0; i < (cSs.size()-1); i++) {
+      segment.setToNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
+
+      if (cSs.get(i).isCubicBezier()) {
+        CubicBezier cB = (CubicBezier) cSs.get(i);
+
+        org.sbml.jsbml.ext.layout.Point point;
+
+        point = cB.getBasePoint1();
+        segment.setBasePoint1(new Point(point.x(), point.y()));
+        point = cB.getBasePoint2();
+        segment.setBasePoint2(new Point(point.x(), point.y()));
       }
-      else if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDESUBSTRATE) {
-        segment.setToNodeId(rG.getId());
-        segment.setFromNodeId(sRG.getSpeciesGlyph());
-      }
-    }
-    else if (i == 0) {
-      if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDEPRODUCT) {
-        segment.setFromNodeId(rG.getId());
-        segment.setToNodeId("" + (cS.hashCode() & 0xfffffff));
-      }
-      else if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDESUBSTRATE) {
-        segment.setToNodeId(rG.getId());
-        segment.setFromNodeId(sRG.getSpeciesGlyph());
-      }
-    }
-    else if (i == (sRG.getCurve().getCurveSegmentCount() - 1)) {
-      if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDEPRODUCT) {
-        segment.setFromNodeId(rG.getId());
-        segment.setToNodeId(sRG.getSpeciesGlyph());
-      }
-      else if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE ||
-          sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SIDESUBSTRATE) {
-        segment.setToNodeId(rG.getId());
-        segment.setFromNodeId("" + (cS.hashCode() & 0xfffffff));
-      }
-    }
-    else {
-      segment.setToNodeId("" + (cS.hashCode() & 0xfffffff));
-      segment.setFromNodeId("" + (cS.hashCode() & 0xfffffff));
+      segments.add(segment);
+
+      segment = new Segment();
+
+      segment.setId(sRG.getId() + ".S" + (i+1));
+      segment.setFromNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
     }
 
-    if (cS.getType() == CurveSegment.Type.CUBIC_BEZIER) {
-      segment.setBasePoint1(new Point(((CubicBezier)cS).getBasePoint1().x(), ((CubicBezier)cS)
-          .getBasePoint1().y()));
-      segment.setBasePoint2(new Point(((CubicBezier)cS).getBasePoint2().x(), ((CubicBezier)cS)
-          .getBasePoint2().y()));
+    segment.setToNodeId(rG.getId());
+
+    if (cSs.get(cSs.size()-1).isCubicBezier()) {
+      CubicBezier cB = (CubicBezier) cSs.get(cSs.size()-1);
+
+      org.sbml.jsbml.ext.layout.Point point;
+
+      point = cB.getBasePoint1();
+      segment.setBasePoint1(new Point(point.x(), point.y()));
+      point = cB.getBasePoint2();
+      segment.setBasePoint2(new Point(point.x(), point.y()));
     }
 
-    return segment;
+    segments.add(segment);
+    
+    return segments;
   }
 
 
@@ -307,6 +328,16 @@ public class SBML2Escher {
     metabolite.setCoefficient(speciesReference.getCalculatedStoichiometry());
 
     return metabolite;
+  }
+
+
+  protected double midPoint(double d1, double d2) {
+    return (d1 + d2)/2;
+  }
+
+
+  protected void postProcessMap(EscherMap map) {
+
   }
 
 }

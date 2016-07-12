@@ -414,7 +414,7 @@ public class EscherConverter extends Launcher {
     if (!validateInput(input, inputFormat)) {
       // TODO: Log that validation was unsuccessful.
       // TODO: Add option to continue even on validation failure.
-      return;
+      logger.warning("Validation failed. Moving forward.");
     }
 
     boolean success = false;
