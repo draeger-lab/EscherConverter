@@ -9,15 +9,12 @@ import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.fge.jsonschema.main.JsonValidator;
 import de.zbit.util.ResourceManager;
-import edu.ucsd.sbrg.escher.EscherConverter;
-import edu.ucsd.sbrg.escher.model.EscherMap;
 import org.jdom.JDOMException;
 import org.sbgn.ConvertMilestone1to2;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
 import org.sbgn.schematron.Issue;
 import org.sbgn.schematron.SchematronValidator;
-import org.sbml.jsbml.SBMLDocument;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -33,7 +30,7 @@ import java.util.logging.Logger;
 /**
  * Created by deveshkhandelwal on 27/06/16.
  */
-public class Validation {
+public class Validator {
 
   /**
    * Localization support.
@@ -46,28 +43,28 @@ public class Validation {
    */
   private static final           Logger
       logger           =
-      Logger.getLogger(Validation.class.getName());
+      Logger.getLogger(Validator.class.getName());
 
   private static final           JsonValidator JSON_VALIDATOR = JsonSchemaFactory.byDefault().getValidator();
   private JsonSchema          escherSchema;
   private SchematronValidator schematronValidator;
   private File logFile;
 
-  public Validation() throws IOException, ProcessingException {
+  public Validator() throws IOException, ProcessingException {
     this(Utils.defaultEscherSchema());
   }
 
 
-  public Validation(JsonNode jsonNode) throws IOException, ProcessingException {
+  public Validator(JsonNode jsonNode) throws IOException, ProcessingException {
     // TODO: Check if schema is valid.
     ProcessingReport report = Utils.jsonSchemaSchema().validate(jsonNode);
 
     if (report.isSuccess()) {
-      // TODO: Log that schema is valid.
+      logger.fine(bundle.getString("JSONSchemaValid"));
       escherSchema = JsonSchemaFactory.byDefault().getJsonSchema(jsonNode);
     }
     else {
-      // TODO: Log about invalid schema file.
+      logger.fine(bundle.getString("JSONSchemaInvalid"));
       throw new IllegalArgumentException("Invalid JSON Schema file!");
     }
   }
@@ -79,8 +76,7 @@ public class Validation {
       ProcessingReport report = escherSchema.validate(node);
       return report.isSuccess();
     } catch (ProcessingException e) {
-      // TODO: Log.
-      e.printStackTrace();
+      logger.warning(bundle.getString("EscherValidationFail"));
     }
     return false;
   }
@@ -92,19 +88,21 @@ public class Validation {
 
       if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals
           ("process description")) {
-        // TODO: Log
-        throw new IllegalArgumentException("No language specified on SBGN file!");
+        logger.warning(bundle.getString("SBGNLanguageUnspecified"));
+        return false;
       }
     } catch (UnmarshalException e) {
       try {
+        logger.warning(bundle.getString("ConvertM1toM2"));
         ConvertMilestone1to2.main(new String[] {file.getAbsolutePath(), file.getAbsolutePath()});
       } catch (JDOMException e1) {
+        logger.severe(bundle.getString("ConvertM1toM2Fail"));
         e1.printStackTrace();
       }
     } catch (JAXBException e) {
-      // TODO: Log
+      logger.warning(bundle.getString("SBGNReadFail"));
       e.printStackTrace();
-      throw new IllegalArgumentException("Invalid SBGN-ML file!");
+      return false;
     }
     try {
       SchematronValidator.setSvrlDump(true);
@@ -113,14 +111,10 @@ public class Validation {
       if (issues == null || issues.isEmpty()) {
         return true;
       }
-    } catch (TransformerException e) {
-      e.printStackTrace();
-    } catch (SAXException e) {
-      e.printStackTrace();
-    } catch (ParserConfigurationException e) {
+    } catch (TransformerException | SAXException | ParserConfigurationException e) {
+      logger.warning(bundle.getString("SBGNValidationFail"));
       e.printStackTrace();
     }
-
     return false;
   }
 
