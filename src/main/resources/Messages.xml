@@ -167,5 +167,14 @@
   <entry key="InputOutputFormatIdentical">Input and output formats identical. Skipping file</entry>
   <entry key="UnsupportedFormat">Unknown or unsupported format. Skipping file</entry>
   <entry key="FileIOError">Fatal: Unable to read or write file {0}. Skipping file</entry>
+  <entry key="JSONSchemaValid">JSON Schema validator successful</entry>
+  <entry key="JSONSchemaInvalid">JSON Schema validator unsuccessful</entry>
+  <entry key="EscherValidationFail">Not a valid Escher file</entry>
+  <entry key="SBGNLanguageUnspecified">No language specified on SBGN file. Can't validate</entry>
+  <entry key="ConvertM1toM2">Milestone 1 file found, converting to Milestone 2</entry>
+  <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please
+    try to convert it manually</entry>
+  <entry key="SBGNReadFail">Failure reading/parsing SBGN file</entry>
+  <entry key="SBGNValidationFail">Not a valid SBGN-ML file</entry>
 
 </properties>

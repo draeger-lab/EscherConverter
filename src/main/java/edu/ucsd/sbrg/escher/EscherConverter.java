@@ -27,7 +27,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.bind.JAXBException;
@@ -35,6 +34,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import edu.ucsd.sbrg.escher.utilities.Validator;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -68,7 +68,6 @@ import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
-import edu.ucsd.sbrg.escher.utilities.Validation;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -469,10 +468,10 @@ public class EscherConverter extends Launcher {
 
 
   private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
-    Validation validation;
+    Validator validator;
     try {
       // TODO: Add support for custom schema file.
-      validation = new Validation();
+      validator = new Validator();
     } catch (ProcessingException e) {
       return false;
     }
@@ -480,15 +479,15 @@ public class EscherConverter extends Launcher {
     switch (inputFormat) {
     case SBGN:
       logger.info(bundle.getString("ValidatingSBGN"));
-      return validation.validateSbgnml(input);
+      return validator.validateSbgnml(input);
 
     case SBML:
       logger.info(bundle.getString("ValidatingSBML"));
-      return validation.validateSbmlLE(input);
+      return validator.validateSbmlLE(input);
 
     case Escher:
       logger.info(bundle.getString("ValidatingEscher"));
-      return validation.validateEscher(input);
+      return validator.validateEscher(input);
 
     }
     return false;

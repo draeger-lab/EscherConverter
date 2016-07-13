@@ -3,15 +3,13 @@ package edu.ucsd.sbrg.escher;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
-import edu.ucsd.sbrg.escher.utilities.Validation;
+import edu.ucsd.sbrg.escher.utilities.Validator;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,12 +24,12 @@ import static org.junit.Assert.assertTrue;
 @RunWith(JUnitParamsRunner.class)
 public class ValidationTest {
 
-  public Validation validation;
-  public File file;
+  public Validator validator;
+  public File      file;
 
   @Before
   public void setUp() {
-    validation = null;
+    validator = null;
   }
 
 
@@ -41,7 +39,7 @@ public class ValidationTest {
   public void failsOnInvalidJsonSchemaFile() throws IOException, ProcessingException {
     JsonNode jsonFile = JsonLoader.fromPath("data/e_coli_core.escher.json");
 
-    validation = new Validation(jsonFile);
+    validator = new Validator(jsonFile);
   }
 
 
@@ -49,7 +47,7 @@ public class ValidationTest {
   public void canValidateJsonSchemaFile() throws IOException, ProcessingException {
     JsonNode jsonFile = JsonLoader.fromPath("data/cobra_json_schema.json");
 
-    validation = new Validation(jsonFile);
+    validator = new Validator(jsonFile);
   }
 
 
@@ -61,15 +59,15 @@ public class ValidationTest {
   })
   public void escherValidationTest(String filePath, boolean isValid) throws IOException,
       ProcessingException {
-    validation = new Validation();
+    validator = new Validator();
     file = new File(filePath);
 
-    assertEquals("failure - validation failing on valid JSON", isValid, validation.validateEscher
+    assertEquals("failure - validator failing on valid JSON", isValid, validator.validateEscher
         (file));
   }
 
 
-  // TODO: Add more SBGN files to test validation.
+  // TODO: Add more SBGN files to test validator.
   @Test
   @Parameters({
       "data/mapk_cascade.sbgn.xml|true",
@@ -77,29 +75,29 @@ public class ValidationTest {
   })
   public void sbgnValidationTest(String filePath, boolean isValid) throws IOException,
       ProcessingException {
-    validation = new Validation();
+    validator = new Validator();
     file = new File(filePath);
 
-    assertEquals("failure - validation failing on valid SBGN", isValid, validation.validateSbgnml
+    assertEquals("failure - validator failing on valid SBGN", isValid, validator.validateSbgnml
         (file));
   }
 
 
   @Test(expected = IllegalArgumentException.class)
   public void failsOnInvalidSbgnDocument() throws IOException, ProcessingException {
-    validation = new Validation();
+    validator = new Validator();
     file = new File("data/mapk_cascade.sbgn.xml");
 
-    assertFalse("failure - validation passing on invalid SBGN", validation.validateSbgnml(file));
+    assertFalse("failure - validator passing on invalid SBGN", validator.validateSbgnml(file));
   }
 
 
   @Test(expected = IllegalArgumentException.class)
   public void failsWhenLanguageNotPresentOnSbgn() throws IOException, ProcessingException {
-    validation = new Validation();
+    validator = new Validator();
     file = new File("data/mapk_cascade.sbgn.xml");
 
-    assertFalse("failure - validation passing w/o lang on SBGN", validation.validateSbgnml(file));
+    assertFalse("failure - validator passing w/o lang on SBGN", validator.validateSbgnml(file));
   }
 
 
