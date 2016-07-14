@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403735303232393165",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403137616164353131",
   "map_name" : "mapk_cascade.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -24,8 +24,8 @@
       "node_type" : "metabolite"
     },
     "234234477" : {
-      "x" : 720.0,
-      "y" : 610.0,
+      "x" : 230.0,
+      "y" : 360.0,
       "node_type" : "multimarker"
     },
     "glyph13" : {
@@ -98,7 +98,7 @@
       "node_type" : "metabolite"
     },
     "164338869" : {
-      "x" : 230.0,
+      "x" : 680.0,
       "y" : 590.0,
       "node_type" : "multimarker"
     },
@@ -212,8 +212,8 @@
       "node_type" : "midmarker"
     },
     "267662719" : {
-      "x" : 680.0,
-      "y" : 590.0,
+      "x" : 510.0,
+      "y" : 610.0,
       "node_type" : "multimarker"
     },
     "glyph2" : {
@@ -225,18 +225,18 @@
       "name" : "RAF",
       "node_type" : "metabolite"
     },
-    "79117946" : {
+    "87060781" : {
       "x" : 510.0,
       "y" : 360.0,
       "node_type" : "multimarker"
     },
-    "87060781" : {
+    "87173803" : {
       "x" : 230.0,
-      "y" : 360.0,
+      "y" : 590.0,
       "node_type" : "multimarker"
     },
     "49126838" : {
-      "x" : 510.0,
+      "x" : 720.0,
       "y" : 610.0,
       "node_type" : "multimarker"
     }
@@ -273,7 +273,7 @@
         },
         "arc00000a.S0" : {
           "from_node_id" : "glyph2",
-          "to_node_id" : "79117946",
+          "to_node_id" : "87060781",
           "b1" : null,
           "b2" : null
         },
@@ -284,13 +284,13 @@
           "b2" : null
         },
         "arc00000a.S1" : {
-          "from_node_id" : "79117946",
-          "to_node_id" : "87060781",
+          "from_node_id" : "87060781",
+          "to_node_id" : "234234477",
           "b1" : null,
           "b2" : null
         },
         "arc00000a.S2" : {
-          "from_node_id" : "87060781",
+          "from_node_id" : "234234477",
           "to_node_id" : "glyph8",
           "b1" : null,
           "b2" : null
@@ -406,20 +406,20 @@
           "b2" : null
         },
         "arc000010.S2" : {
-          "from_node_id" : "49126838",
+          "from_node_id" : "267662719",
           "to_node_id" : "glyph13",
           "b1" : null,
           "b2" : null
         },
         "arc000010.S1" : {
-          "from_node_id" : "234234477",
-          "to_node_id" : "49126838",
+          "from_node_id" : "49126838",
+          "to_node_id" : "267662719",
           "b1" : null,
           "b2" : null
         },
         "arc000010.S0" : {
           "from_node_id" : "glyph12",
-          "to_node_id" : "234234477",
+          "to_node_id" : "49126838",
           "b1" : null,
           "b2" : null
         },
@@ -456,18 +456,18 @@
       "segments" : {
         "arc000011.S0" : {
           "from_node_id" : "glyph12",
-          "to_node_id" : "267662719",
-          "b1" : null,
-          "b2" : null
-        },
-        "arc000011.S1" : {
-          "from_node_id" : "267662719",
           "to_node_id" : "164338869",
           "b1" : null,
           "b2" : null
         },
-        "arc000011.S2" : {
+        "arc000011.S1" : {
           "from_node_id" : "164338869",
+          "to_node_id" : "87173803",
+          "b1" : null,
+          "b2" : null
+        },
+        "arc000011.S2" : {
+          "from_node_id" : "87173803",
           "to_node_id" : "glyph14",
           "b1" : null,
           "b2" : null

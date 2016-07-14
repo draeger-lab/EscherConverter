@@ -119,7 +119,7 @@
   <entry key="EscherConverter.incompleteCMDArgs">Incomplete command-line argument list. Please make sure to provide at least an input and an output file. Nothing to do.</entry>
   <entry key="EscherConverter.readingFile">Reading input file {0}.</entry>
   <entry key="EscherConverter.validationErrors">There are {0,number,integer} validation problems.</entry>
-  <entry key="EscherConverter.cratingDir">Creating directory {0}.</entry>
+  <entry key="EscherConverter.creatingDir">Creating directory {0}.</entry>
   <entry key="EscherConverter.cannotWriteToFile">"Batch processing requires an output directory to be given. Cannot write to file {0}.</entry>
   <entry key="EscherConverter.licenseURL">https://raw.githubusercontent.com/zakandrewking/escher/master/LICENSE</entry>
   <entry key="EscherConverter.readingDone">Finished reading.</entry>
@@ -154,5 +154,90 @@
   <entry key="INSTITUTE">Systems Biology Research Group</entry>
   <entry key="INCEPTION_YEAR">${project.inceptionYear}</entry>
   <entry key="YEAR">${year}</entry>
+  
+  <entry key="AutoDetectJSON">AutoDetect: Escher JSON file found</entry>
+  <entry key="AutoDetectSBML">AutoDetect: SBML XML file found</entry>
+  <entry key="AutoDetectSBGN">AutoDetect: SBGN XML file found</entry>
+  <entry key="ValidatingJSON">Validation: Escher JSON Schema version 1.0.0</entry>
+  <entry key="ValidatingSBML">Validation: SBML Layout Extension Level 3 Version 1</entry>
+  <entry key="ValidatingSBGN">Validation: SBGN-ML Milestone 2</entry>
+  <entry key="AutoDetectFail">AutoDetect: Cannot determine file type. Skipping</entry>
+  <entry key="ValidationStart">Validating document</entry>
+  <entry key="ValidationFailed">Validation failed</entry>
+  <entry key="ValidationSkip">Ignoring unsuccessful validation and moving forward</entry>
+  <entry key="InputOutputFormatIdentical">Input and output formats identical. Skipping file</entry>
+  <entry key="UnsupportedFormat">Unknown or unsupported format. Skipping file</entry>
+  <entry key="FileIOError">Fatal: Unable to read or write file {0}. Skipping file</entry>
+  <entry key="JSONSchemaValid">JSON Schema validator successful</entry>
+  <entry key="JSONSchemaInvalid">JSON Schema validator unsuccessful</entry>
+  <entry key="EscherValidationFail">Not a valid Escher file</entry>
+  <entry key="SBGNLanguageUnspecified">No language specified on SBGN file. Can't validate</entry>
+  <entry key="ConvertM1toM2">Milestone 1 file found, converting to Milestone 2</entry>
+  <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please
+    try to convert it manually</entry>
+  <entry key="SBGNReadFail">Failure reading/parsing SBGN file</entry>
+  <entry key="SBGNValidationFail">Not a valid SBGN-ML file</entry>
+  <entry key="SBGNImportInit">Starting SBGN-ML to Escher conversion</entry>
+  <entry key="RootBBoxFound">bbox found on root map, using it</entry>
+  <entry key="RootBBoxNotFound">bbox not found on root map, falling back to default values</entry>
+  <entry key="EscherCanvasAddSuccess">canvas info added successfully to escher map</entry>
+  <entry key="EscherIdAddSuccess">calculating escher map_id from hex encoding</entry>
+  <entry key="SBGNNotesFound">notes found on SBGN map, using as description</entry>
+  <entry key="SBGNNotesNotFound">notes not found on SBGN map, using default description</entry>
+  <entry key="GlyphNode">glyph with id "{0}" has class "{1}", converting to node</entry>
+  <entry key="GlyphReaction">glyph with id "{0}" has class "{1}", converting to reaction +
+    mid-marker</entry>
+  <entry key="GlyphTextLabel">glyph with id "{0}" has class "{1}", converting to text label</entry>
+  <entry key="GlyphUnsupportedClass">glyph with id "{0}" has unsupported class "{1}",
+    ignoring</entry>
+  <entry key="ArcMultiMarkerCount">arc with id {0} has {1} "next" (multi-markers) elements</entry>
+  <entry key="GlyphLabelBBoxUnavailable">glyph with id {0} does not have bbox on its label,
+    using parent bbox</entry>
+  <entry key="GlyphToReactionId">glyph({0}) -> reaction({1})</entry>
+  <entry key="GlyphReactionNoLabel">glyph with id "{0}" has no label, reaction name set to
+    {1}</entry>
+  <entry key="GlyphReactionLabel">glyph with id "{0}" has label "{1}", using as reaction name</entry>
+  <entry key="ReactionIdenticalNameAndBigg">reaction "{0}" has identical name and bigg_id:
+    {1}</entry>
+  <entry key="ReactionSegmentAddInit">adding segments(arcs) to reaction {0}</entry>
+  <entry key="ReactionSegmentAddFinish">added segments(arcs) to reaction {0}</entry>
+  <entry key="ReactionArcsAdd">arc({0}) belongs to reaction({1}), adding segments</entry>
+  <entry key="ConsumptionArcNegativeCoeff">arc({0}) is consumption arc, setting coefficient
+    negative</entry>
+  <entry key="ProductionArcNegativeCoeff">arc({0}) is production arc, setting coefficient
+    positive</entry>
+  <entry key="ArcSegmentCount">arc({0}) has {1} "next" elements, so {1}+1 segments</entry>
+  <entry key="SegmentAdd">segment({0}) added from {1} to {2}</entry>
+  <entry key="SBMLImportInit">starting SBML to Escher conversion</entry>
+  <entry key="SBMLLayoutCount">sbml layout extension: {0} layouts found</entry>
+  <entry key="SBMLLayoutConversionInit">layout id: {0}</entry>
+  <entry key="RootDimensionsFound">dimensions found on layout, using as canvas values</entry>
+  <entry key="RootDimensionsNotFound">dimensions not found on layout, using default canvas
+    values</entry>
+  <entry key="TextGlyphCount">text glyphs found: {0}</entry>
+  <entry key="SpeciesGlyphCount">species glyphs (metabolites) found: {0}</entry>
+  <entry key="ReactionGlyphCount">reaction glyphs found: {0}</entry>
+  <entry key="TextGlyphNoText">text label ({0}) has no text</entry>
+  <entry key="SpeciesGlyphToNode">creating node(metabolite) from species glyph ({0})</entry>
+  <entry key="ReactionToMidMarker">creation mid-marker from reaction({0})</entry>
+  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating
+    coordinates</entry>
+  <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
+  <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
+  <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
+  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label
+    coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating label
+  coordinates from curve</entry>
+  <entry key="ReactionGlyphProductCount">reaction glyph ({0}) has {1} products</entry>
+  <entry key="ReactionGlyphSubstrateCount">reaction glyph ({0}) has {1} substrates
+    (reactants)</entry>
+  <entry key="MetaboliteCoefficient">metabolite(species): {0}, coefficient: {1}</entry>
+  <entry key="SRGToSegments">adding segments: rg: {0}, srg: {1}, reaction: {2}</entry>
+  <entry key="CurveSegmentCount">srg({0}) has {1} curve segments in its curve</entry>
+  <entry key="CurveSegmentAdd">segment "{0}" created from "{1}" to "{2}"</entry>
+  <entry key="PrimaryNode">srg({0}) set to primary node</entry>
+  <entry key="SecondaryNode">srg({0}) set to secondary node</entry>
 
 </properties>

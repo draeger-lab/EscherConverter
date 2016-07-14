@@ -34,6 +34,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import edu.ucsd.sbrg.escher.utilities.Validator;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -67,7 +68,6 @@ import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
-import edu.ucsd.sbrg.escher.utilities.Validation;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -183,7 +183,6 @@ public class EscherConverter extends Launcher {
    * @param format
    * @param properties
    * @return
-   * @throws FileNotFoundException
    * @throws IOException
    * @throws ParseException
    */
@@ -279,7 +278,7 @@ public class EscherConverter extends Launcher {
     if (!output.exists() && (output.getName().lastIndexOf('.') < 0) &&
         !(input.isFile() && input.getName().equals(output.getName()))) {
       logger.info(MessageFormat.format(
-        bundle.getString("EscherConverter.cratingDir"),
+        bundle.getString("EscherConverter.creatingDir"),
         output.getAbsolutePath()));
 
       // TODO: A directory shouldn't be directly created, instead a file should be created.
@@ -287,6 +286,7 @@ public class EscherConverter extends Launcher {
     }
     if (input.isFile()) {
       if (SBFileFilter.isJSONFile(input)) {
+        logger.info(bundle.getString("AutoDetectJSON"));
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".xml";
@@ -296,9 +296,8 @@ public class EscherConverter extends Launcher {
         properties.put(InputFormat.class.getSimpleName(), InputFormat.Escher);
         convert(input, output, properties);
       }
-
-      if (SBFileFilter.isSBMLFile(input)) {
-        // TODO: Check if SBML or SBGN and process accordingly.
+      else if (SBFileFilter.isSBMLFile(input)) {
+        logger.info(bundle.getString("AutoDetectSBML"));
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".json";
@@ -308,9 +307,8 @@ public class EscherConverter extends Launcher {
         properties.put(InputFormat.class.getSimpleName(), InputFormat.SBML);
         convert(input, output, properties);
       }
-
-      if (SBFileFilter.isSBGNFile(input)) {
-        // TODO: Check if SBML or SBGN and process accordingly.
+      else if (SBFileFilter.isSBGNFile(input)) {
+        logger.info(bundle.getString("AutoDetectSBGN"));
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".json";
@@ -318,6 +316,9 @@ public class EscherConverter extends Launcher {
         }
         properties.put(InputFormat.class.getSimpleName(), InputFormat.SBGN);
         convert(input, output, properties);
+      }
+      else {
+        logger.severe(bundle.getString("AutoDetectFail"));
       }
 
     } else {
@@ -383,7 +384,6 @@ public class EscherConverter extends Launcher {
    * @param input
    * @param output
    * @param properties
-   * @throws FileNotFoundException
    * @throws IOException
    * @throws ParseException
    * @throws XMLStreamException
@@ -407,14 +407,15 @@ public class EscherConverter extends Launcher {
 
     // TODO: Check input format, then call proper validation method.
     InputFormat inputFormat = InputFormat.valueOf(properties.get(InputFormat.class.getSimpleName()));
-    if (inputFormat == null) {
-      // TODO: Log that file format cannot be determined.
-      return;
-    }
+
+    logger.warning(bundle.getString("ValidationStart"));
     if (!validateInput(input, inputFormat)) {
-      // TODO: Log that validation was unsuccessful.
-      // TODO: Add option to continue even on validation failure.
-      logger.warning("Validation failed. Moving forward.");
+      logger.warning(bundle.getString("ValidationFailed"));
+
+      // TODO: Replace condition variable to a --ignore-validation variable.
+      if (true) {
+        logger.warning(bundle.getString("ValidationSkip"));
+      }
     }
 
     boolean success = false;
@@ -449,13 +450,13 @@ public class EscherConverter extends Launcher {
         break;
 
       case Escher:
-        // TODO: Log that input and output format are same.
+        logger.info(bundle.getString("InputOutputFormatIdentical"));
         break;
       }
       break;
 
     default:
-      // TODO: Log about unsupported output format.
+      logger.severe(bundle.getString("UnsupportedFormat"));
       break;
     }
 
@@ -467,24 +468,26 @@ public class EscherConverter extends Launcher {
 
 
   private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
-    Validation validation;
+    Validator validator;
     try {
       // TODO: Add support for custom schema file.
-      validation = new Validation();
+      validator = new Validator();
     } catch (ProcessingException e) {
-      // TODO: Log that validation was unsuccessful.
-      e.printStackTrace();
       return false;
     }
+
     switch (inputFormat) {
     case SBGN:
-      return validation.validateSbgnml(input);
+      logger.info(bundle.getString("ValidatingSBGN"));
+      return validator.validateSbgnml(input);
 
     case SBML:
-      return validation.validateSbmlLE(input);
+      logger.info(bundle.getString("ValidatingSBML"));
+      return validator.validateSbmlLE(input);
 
     case Escher:
-      return validation.validateEscher(input);
+      logger.info(bundle.getString("ValidatingEscher"));
+      return validator.validateEscher(input);
 
     }
     return false;
@@ -517,12 +520,12 @@ public class EscherConverter extends Launcher {
 
   private void writeEscherJson(List<EscherMap> mapList, File outDir) {
     mapList.forEach(map -> {
-      File file = new File(outDir.getAbsolutePath() + map.getId() + ".json");
+      File file = new File(outDir.getPath() + map.getId() + ".json");
       try {
         // TODO: Check if file exists.
         writeEscherJson(map, file);
       } catch (IOException e) {
-        // TODO: Log that file can't be read/written.
+        logger.severe(bundle.getString("FileIOError"));
         e.printStackTrace();
       }
     });
