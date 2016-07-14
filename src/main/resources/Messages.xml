@@ -208,6 +208,36 @@
     positive</entry>
   <entry key="ArcSegmentCount">arc({0}) has {1} "next" elements, so {1}+1 segments</entry>
   <entry key="SegmentAdd">segment({0}) added from {1} to {2}</entry>
-
+  <entry key="SBMLImportInit">starting SBML to Escher conversion</entry>
+  <entry key="SBMLLayoutCount">sbml layout extension: {0} layouts found</entry>
+  <entry key="SBMLLayoutConversionInit">layout id: {0}</entry>
+  <entry key="RootDimensionsFound">dimensions found on layout, using as canvas values</entry>
+  <entry key="RootDimensionsNotFound">dimensions not found on layout, using default canvas
+    values</entry>
+  <entry key="TextGlyphCount">text glyphs found: {0}</entry>
+  <entry key="SpeciesGlyphCount">species glyphs (metabolites) found: {0}</entry>
+  <entry key="ReactionGlyphCount">reaction glyphs found: {0}</entry>
+  <entry key="TextGlyphNoText">text label ({0}) has no text</entry>
+  <entry key="SpeciesGlyphToNode">creating node(metabolite) from species glyph ({0})</entry>
+  <entry key="ReactionToMidMarker">creation mid-marker from reaction({0})</entry>
+  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating
+    coordinates</entry>
+  <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
+  <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
+  <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
+  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label
+    coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating label
+  coordinates from curve</entry>
+  <entry key="ReactionGlyphProductCount">reaction glyph ({0}) has {1} products</entry>
+  <entry key="ReactionGlyphSubstrateCount">reaction glyph ({0}) has {1} substrates
+    (reactants)</entry>
+  <entry key="MetaboliteCoefficient">metabolite(species): {0}, coefficient: {1}</entry>
+  <entry key="SRGToSegments">adding segments: rg: {0}, srg: {1}, reaction: {2}</entry>
+  <entry key="CurveSegmentCount">srg({0}) has {1} curve segments in its curve</entry>
+  <entry key="CurveSegmentAdd">segment "{0}" created from "{1}" to "{2}"</entry>
+  <entry key="PrimaryNode">srg({0}) set to primary node</entry>
+  <entry key="SecondaryNode">srg({0}) set to secondary node</entry>
 
 </properties>
