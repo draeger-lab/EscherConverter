@@ -7,10 +7,13 @@ import org.sbgn.bindings.*;
 import org.sbgn.bindings.Map;
 import org.sbml.jsbml.util.ResourceManager;
 
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import static java.text.MessageFormat.format;
 
 /**
  * Created by deveshkhandelwal on 13/06/16.
@@ -25,6 +28,7 @@ public class SBGN2Escher {
    * Localization support.
    */
   public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
+  public static final  ResourceBundle messages = ResourceManager.getBundle("Messages");
   protected EscherMap escherMap;
   protected Sbgn document;
   protected long escherId;
@@ -54,13 +58,14 @@ public class SBGN2Escher {
     Canvas canvas = new Canvas();
 
     if (bbox != null) {
+      logger.fine(messages.getString("RootBBoxFound"));
       canvas.setX((double) bbox.getX());
       canvas.setY((double) bbox.getY());
       canvas.setHeight((double) bbox.getH());
       canvas.setWidth((double) bbox.getW());
     }
     else {
-      // TODO: Set default canvas values.
+      logger.info(messages.getString("RootBBoxNotFound"));
       canvas.setX(Double.valueOf(bundle.getString("default_canvas_x")));
       canvas.setY(Double.valueOf(bundle.getString("default_canvas_y")));
       canvas.setHeight(Double.valueOf(bundle.getString("default_canvas_height")));
@@ -68,20 +73,22 @@ public class SBGN2Escher {
     }
 
     escherMap.setCanvas(canvas);
+    logger.info(messages.getString("EscherCanvasAddSuccess"));
   }
 
 
   public void addMetaInfo() {
     escherMap.setSchema(bundle.getString("escher_schema"));
     escherMap.setDescription(bundle.getString("default_description"));
-    escherMap.setId(bundle.getString("default_id"));
-
-    // TODO: Meta info is not directly available, needs to be determined carefully.
-
     escherMap.setId(HexBin.encode(document.getMap().toString().getBytes()));
+    logger.fine(messages.getString("EscherIdAddSuccess"));
 
     if (document.getMap().getNotes()!=null) {
+      logger.fine(messages.getString("SBGNNotesFound"));
       escherMap.setDescription(document.getMap().getNotes().toString());
+    }
+    else {
+      logger.info(messages.getString("SBGNNotesNotFound"));
     }
   }
 
@@ -101,6 +108,7 @@ public class SBGN2Escher {
       node.setLabelY((double) glyph.getLabel().getBbox().getY());
     }
     else {
+      logger.warning(format(messages.getString("GlyphLabelBBoxUnavailable")));
       node.setLabelX((double) glyph.getBbox().getX());
       node.setLabelY((double) glyph.getBbox().getY());
     }
@@ -136,30 +144,42 @@ public class SBGN2Escher {
     EscherReaction reaction = new EscherReaction();
 
     reaction.setId((glyph.getId().hashCode() & 0xfffffff) + "");
+    logger.info(format(messages.getString("GlyphToReactionId"), glyph.getId(), reaction.getId()));
     if (glyph.getLabel() == null) {
       reaction.setName("R" + reactionId++);
+      logger.info(format(messages.getString("GlyphReactionNoLabel"), glyph.getId(), reaction
+          .getName()));
     }
     else {
+      logger.fine(format(messages.getString("GlyphReactionLabel"), glyph.getId(), glyph.getLabel
+          ().getText()));
       reaction.setName(glyph.getLabel().getText());
     }
     reaction.setBiggId(reaction.getName());
+    logger.fine(format(messages.getString("ReactionIdenticalNameAndBigg"), reaction.getId(),
+        reaction.getName()));
     reaction.setLabelX(((double) glyph.getBbox().getX()));
     reaction.setLabelY(((double) glyph.getBbox().getY()));
     reaction.setMidmarker(createMidMarker(glyph));
 
+    logger.fine(format(messages.getString("ReactionSegmentAddInit"), reaction.getId()));
     document.getMap().getArc().forEach((a) -> {
+
       if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
+        logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
         createSegments(a).forEach(reaction::addSegment);
       }
 
       Metabolite metabolite = new Metabolite();
       if (a.getClazz().equals("consumption")) {
+        logger.info(format(messages.getString("ConsumptionArcNegativeCoeff"), a.getId()));
         metabolite.setCoefficient(-1.0);
         metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
             .getSource()))));
       }
 
       if (a.getClazz().equals("production")) {
+        logger.info(format(messages.getString("ProductionArcNegativeCoeff"), a.getId()));
         metabolite.setCoefficient(1.0);
         metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
             .getTarget()))));
@@ -167,6 +187,7 @@ public class SBGN2Escher {
 
       reaction.addMetabolite(metabolite);
     });
+    logger.fine(format(messages.getString("ReactionSegmentAddFinish"), reaction.getId()));
 
     return reaction;
   }
@@ -209,6 +230,7 @@ public class SBGN2Escher {
   public List<Segment> createSegments(Arc arc) {
     List<Segment> segments = new ArrayList<>();
 
+    logger.info(format(messages.getString("ArcSegmentCount"), arc.getId(), arc.getNext().size()));
     Segment segment = new Segment();
 
     segment.setId(arc.getId() + ".S" + 0);
@@ -233,6 +255,8 @@ public class SBGN2Escher {
       }
 
       segments.add(segment);
+      logger.fine(format(messages.getString("SegmentAdd"), segment.getId(), segment.getFromNodeId
+          (), segment.getToNodeId()));
 
       segment = new Segment();
 
@@ -255,6 +279,8 @@ public class SBGN2Escher {
     }
 
     segments.add(segment);
+    logger.fine(format(messages.getString("SegmentAdd"), segment.getId(), segment.getFromNodeId
+        (), segment.getToNodeId()));
 
     return segments;
   }
@@ -310,6 +336,8 @@ public class SBGN2Escher {
 
 
   public EscherMap convert(Sbgn document) {
+    logger.info(messages.getString("SBGNImportInit"));
+
     this.document = document;
     Map map = document.getMap();
 
@@ -325,31 +353,33 @@ public class SBGN2Escher {
 
       case "node":
         // TODO: Call createNode and add to EscherMap properly.
+        logger.info(format(messages.getString("GlyphNode"), g.getId(), g.getClazz()));
         escherMap.addNode(createNode(g));
         break;
 
       case "reaction":
         // TODO: Call createReaction and add to EscherMap properly.
+        logger.info(format(messages.getString("GlyphReaction"), g.getId(), g.getClazz()));
         escherMap.addNode(createMidMarker(g));
         escherMap.addReaction(createReaction(g));
         break;
 
       case "text_label":
         // TODO: Call createTextLabel and add to EscherMap properly.
+        logger.info(format(messages.getString("GlyphTextLabel"), g.getId(), g.getClazz()));
         escherMap.addTextLabel(createTextLabel(g));
         break;
 
       default:
         // TODO: Log a message saying unsupported class.
-        logger.warning(String.format("Unsupported class: glyph = %s, class =  %s", g.getId(), g
-            .getClazz
-            ()));
+        logger.warning(format(messages.getString("GlyphUnsupportedClass"), g.getId(), g.getClazz()));
         break;
 
       }
     });
 
     map.getArc().forEach(a -> {
+      logger.info(format(messages.getString("ArcMultiMarkerCount"), a.getId(), a.getNext().size()));
       a.getNext().forEach(next -> {
         escherMap.addNode(createMultiMarker(next));
       });

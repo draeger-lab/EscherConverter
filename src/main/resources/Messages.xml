@@ -163,6 +163,7 @@
   <entry key="ValidatingSBGN">Validation: SBGN-ML Milestone 2</entry>
   <entry key="AutoDetectFail">AutoDetect: Cannot determine file type. Skipping</entry>
   <entry key="ValidationStart">Validating document</entry>
+  <entry key="ValidationFailed">Validation failed</entry>
   <entry key="ValidationSkip">Ignoring unsuccessful validation and moving forward</entry>
   <entry key="InputOutputFormatIdentical">Input and output formats identical. Skipping file</entry>
   <entry key="UnsupportedFormat">Unknown or unsupported format. Skipping file</entry>
@@ -176,5 +177,37 @@
     try to convert it manually</entry>
   <entry key="SBGNReadFail">Failure reading/parsing SBGN file</entry>
   <entry key="SBGNValidationFail">Not a valid SBGN-ML file</entry>
+  <entry key="SBGNImportInit">Starting SBGN-ML to Escher conversion</entry>
+  <entry key="RootBBoxFound">bbox found on root map, using it</entry>
+  <entry key="RootBBoxNotFound">bbox not found on root map, falling back to default values</entry>
+  <entry key="EscherCanvasAddSuccess">canvas info added successfully to escher map</entry>
+  <entry key="EscherIdAddSuccess">calculating escher map_id from hex encoding</entry>
+  <entry key="SBGNNotesFound">notes found on SBGN map, using as description</entry>
+  <entry key="SBGNNotesNotFound">notes not found on SBGN map, using default description</entry>
+  <entry key="GlyphNode">glyph with id "{0}" has class "{1}", converting to node</entry>
+  <entry key="GlyphReaction">glyph with id "{0}" has class "{1}", converting to reaction +
+    mid-marker</entry>
+  <entry key="GlyphTextLabel">glyph with id "{0}" has class "{1}", converting to text label</entry>
+  <entry key="GlyphUnsupportedClass">glyph with id "{0}" has unsupported class "{1}",
+    ignoring</entry>
+  <entry key="ArcMultiMarkerCount">arc with id {0} has {1} "next" (multi-markers) elements</entry>
+  <entry key="GlyphLabelBBoxUnavailable">glyph with id {0} does not have bbox on its label,
+    using parent bbox</entry>
+  <entry key="GlyphToReactionId">glyph({0}) -> reaction({1})</entry>
+  <entry key="GlyphReactionNoLabel">glyph with id "{0}" has no label, reaction name set to
+    {1}</entry>
+  <entry key="GlyphReactionLabel">glyph with id "{0}" has label "{1}", using as reaction name</entry>
+  <entry key="ReactionIdenticalNameAndBigg">reaction "{0}" has identical name and bigg_id:
+    {1}</entry>
+  <entry key="ReactionSegmentAddInit">adding segments(arcs) to reaction {0}</entry>
+  <entry key="ReactionSegmentAddFinish">added segments(arcs) to reaction {0}</entry>
+  <entry key="ReactionArcsAdd">arc({0}) belongs to reaction({1}), adding segments</entry>
+  <entry key="ConsumptionArcNegativeCoeff">arc({0}) is consumption arc, setting coefficient
+    negative</entry>
+  <entry key="ProductionArcNegativeCoeff">arc({0}) is production arc, setting coefficient
+    positive</entry>
+  <entry key="ArcSegmentCount">arc({0}) has {1} "next" elements, so {1}+1 segments</entry>
+  <entry key="SegmentAdd">segment({0}) added from {1} to {2}</entry>
+
 
 </properties>
