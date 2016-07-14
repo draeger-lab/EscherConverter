@@ -39,6 +39,12 @@ public class Validator {
       bundle           =
       ResourceManager.getBundle("Strings");
   /**
+   * Localization support.
+   */
+  private static final transient ResourceBundle
+      messages           =
+      ResourceManager.getBundle("Messages");
+  /**
    * A {@link Logger} for this class.
    */
   private static final           Logger
@@ -60,11 +66,11 @@ public class Validator {
     ProcessingReport report = Utils.jsonSchemaSchema().validate(jsonNode);
 
     if (report.isSuccess()) {
-      logger.fine(bundle.getString("JSONSchemaValid"));
+      logger.fine(messages.getString("JSONSchemaValid"));
       escherSchema = JsonSchemaFactory.byDefault().getJsonSchema(jsonNode);
     }
     else {
-      logger.fine(bundle.getString("JSONSchemaInvalid"));
+      logger.fine(messages.getString("JSONSchemaInvalid"));
       throw new IllegalArgumentException("Invalid JSON Schema file!");
     }
   }
@@ -76,7 +82,7 @@ public class Validator {
       ProcessingReport report = escherSchema.validate(node);
       return report.isSuccess();
     } catch (ProcessingException e) {
-      logger.warning(bundle.getString("EscherValidationFail"));
+      logger.warning(messages.getString("EscherValidationFail"));
     }
     return false;
   }
@@ -88,19 +94,19 @@ public class Validator {
 
       if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals
           ("process description")) {
-        logger.warning(bundle.getString("SBGNLanguageUnspecified"));
+        logger.warning(messages.getString("SBGNLanguageUnspecified"));
         return false;
       }
     } catch (UnmarshalException e) {
       try {
-        logger.warning(bundle.getString("ConvertM1toM2"));
+        logger.warning(messages.getString("ConvertM1toM2"));
         ConvertMilestone1to2.main(new String[] {file.getAbsolutePath(), file.getAbsolutePath()});
       } catch (JDOMException e1) {
-        logger.severe(bundle.getString("ConvertM1toM2Fail"));
+        logger.severe(messages.getString("ConvertM1toM2Fail"));
         e1.printStackTrace();
       }
     } catch (JAXBException e) {
-      logger.warning(bundle.getString("SBGNReadFail"));
+      logger.warning(messages.getString("SBGNReadFail"));
       e.printStackTrace();
       return false;
     }
@@ -112,7 +118,7 @@ public class Validator {
         return true;
       }
     } catch (TransformerException | SAXException | ParserConfigurationException e) {
-      logger.warning(bundle.getString("SBGNValidationFail"));
+      logger.warning(messages.getString("SBGNValidationFail"));
       e.printStackTrace();
     }
     return false;
