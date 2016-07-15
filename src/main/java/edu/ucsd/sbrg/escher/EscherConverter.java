@@ -164,7 +164,6 @@ public class EscherConverter extends Launcher {
 
   public static EscherMap convert(Sbgn document, SBProperties
     properties) {
-    // TODO: Convert SBGN to Escher.
     SBGN2Escher converter = new SBGN2Escher();
 
     return converter.convert(document);
@@ -172,7 +171,6 @@ public class EscherConverter extends Launcher {
 
 
   public static List<EscherMap> convert(SBMLDocument document, SBProperties properties) {
-    // TODO: Convert SBML's all layouts, write each one to a different Escher file.
     SBML2Escher converter = new SBML2Escher();
 
     return converter.convert(document);
@@ -349,6 +347,10 @@ public class EscherConverter extends Launcher {
         File input = replaceUnixPathAbbreviations(props.getProperty(EscherIOOptions.INPUT.toString()));
         File output = replaceUnixPathAbbreviations(props.getProperty(EscherIOOptions.OUTPUT.toString()));
         if (input.isDirectory()) {
+          if (output.isFile()) {
+            logger.severe(bundle.getString("BatchModeOutputNotDirectory"));
+            return;
+          }
           logger.info(MessageFormat.format(
             bundle.getString("EscherConverter.launchingBatchProcessing"),
             input.getAbsolutePath()));

@@ -240,4 +240,8 @@
   <entry key="PrimaryNode">srg({0}) set to primary node</entry>
   <entry key="SecondaryNode">srg({0}) set to secondary node</entry>
 
+  <entry key="BatchModeOutputNotDirectory">output must be a directory in batch mode. exiting
+    .</entry>
+
+
 </properties>
