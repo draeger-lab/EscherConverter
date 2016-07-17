@@ -1,5 +1,9 @@
 language: java
 sudo: false
+
+before_script:
+  - 'export MAVEN_OPTS="-Djava.util.logging.config.file=logging.properties"
+
 script: mvn compile assembly:single && mvn clean test
 
 jdk:
