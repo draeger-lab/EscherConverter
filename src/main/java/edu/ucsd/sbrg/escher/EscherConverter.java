@@ -34,6 +34,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import com.sun.tools.corba.se.idl.Util;
 import edu.ucsd.sbrg.escher.utilities.Validator;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
@@ -68,6 +69,8 @@ import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
+
+import static java.text.MessageFormat.format;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -194,8 +197,7 @@ public class EscherConverter extends Launcher {
   public static EscherMap parseEscherJson(File input) throws IOException{
     ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
 
-    logger.info(MessageFormat
-      .format(bundle.getString("EscherConverter.readingFile"), input));
+    logger.info(format(bundle.getString("EscherConverter.readingFile"), input));
 
     JsonNode escherJson = objectMapper.readTree(input);
     EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
@@ -209,8 +211,7 @@ public class EscherConverter extends Launcher {
 
     map.processMap();
 
-    logger.info(MessageFormat
-      .format(bundle.getString("EscherConverter.readingDone"), input));
+    logger.info(format(bundle.getString("EscherConverter.readingDone"), input));
 
     return map;
   }
@@ -275,7 +276,7 @@ public class EscherConverter extends Launcher {
     // Checks if output/input is directory, if it doesn't, create one.
     if (!output.exists() && (output.getName().lastIndexOf('.') < 0) &&
         !(input.isFile() && input.getName().equals(output.getName()))) {
-      logger.info(MessageFormat.format(
+      logger.info(format(
         bundle.getString("EscherConverter.creatingDir"),
         output.getAbsolutePath()));
 
@@ -296,12 +297,6 @@ public class EscherConverter extends Launcher {
       }
       else if (SBFileFilter.isSBMLFile(input)) {
         logger.info(bundle.getString("AutoDetectSBML"));
-        if (output.isDirectory()) {
-          String fName = input.getName();
-          fName = FileTools.removeFileExtension(fName) + ".json";
-          output =
-              new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
-        }
         properties.put(InputFormat.class.getSimpleName(), InputFormat.SBML);
         convert(input, output, properties);
       }
@@ -321,8 +316,7 @@ public class EscherConverter extends Launcher {
 
     } else {
       if (!output.isDirectory()) {
-        throw new IOException(MessageFormat
-          .format(bundle.getString("EscherConverter.cannotWriteToFile"),
+        throw new IOException(format(bundle.getString("EscherConverter.cannotWriteToFile"),
             output.getAbsolutePath()));
       }
       for (File file : input.listFiles()) {
@@ -351,7 +345,7 @@ public class EscherConverter extends Launcher {
             logger.severe(bundle.getString("BatchModeOutputNotDirectory"));
             return;
           }
-          logger.info(MessageFormat.format(
+          logger.info(format(
             bundle.getString("EscherConverter.launchingBatchProcessing"),
             input.getAbsolutePath()));
         }
@@ -400,14 +394,6 @@ public class EscherConverter extends Launcher {
       XMLStreamException, SBMLException, JAXBException, SAXException,
       ParserConfigurationException, TransformerException {
     OutputFormat format = OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
-    if (output.isDirectory()) {
-      String fileName = input.getName();
-      String extension = format.toString().toLowerCase();
-      output = new File(Utils.ensureSlash(output.getAbsolutePath()) +
-        fileName.substring(0, fileName.length() - FileTools.getExtension(fileName).length()) + extension);
-    }
-
-    // TODO: Check input format, then call proper validation method.
     InputFormat inputFormat = InputFormat.valueOf(properties.get(InputFormat.class.getSimpleName()));
 
     logger.warning(bundle.getString("ValidationStart"));
@@ -463,7 +449,7 @@ public class EscherConverter extends Launcher {
     }
 
     if (success) {
-      logger.info(MessageFormat.format(
+      logger.info(format(
         "Output successfully written to file {0}.", output));
     }
   }
@@ -520,17 +506,38 @@ public class EscherConverter extends Launcher {
   }
 
 
-  private void writeEscherJson(List<EscherMap> mapList, File outDir) {
-    mapList.forEach(map -> {
-      File file = new File(outDir.getPath() + map.getId() + ".json");
-      try {
-        // TODO: Check if file exists.
-        writeEscherJson(map, file);
-      } catch (IOException e) {
-        logger.severe(bundle.getString("FileIOError"));
-        e.printStackTrace();
+  private void writeEscherJson(List<EscherMap> mapList, File output) {
+    try {
+      if (mapList.size() == 0) {
+        logger.warning(bundle.getString("SBMLNoLayout"));
+        return;
       }
-    });
+      if (output.exists() && output.isFile()) {
+        if (mapList.size() == 1) {
+          writeEscherJson(mapList.get(0), output);
+        }
+        else {
+          logger.severe(bundle.getString("SingleFileMultipleLayout"));
+        }
+      }
+      else {
+        mapList.forEach(map -> {
+          File file = new File(Utils.ensureSlash(output.getPath()) + map.getId() + ".json");
+          try {
+            if (!file.exists()) {
+              file.getParentFile().mkdirs();
+              file.createNewFile();
+            }
+            writeEscherJson(map, file);
+          } catch (IOException e) {
+            logger.severe(format(bundle.getString("FileIOError"), file.getAbsolutePath()));
+          }
+        });
+      }
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 

@@ -239,9 +239,11 @@
   <entry key="CurveSegmentAdd">segment "{0}" created from "{1}" to "{2}"</entry>
   <entry key="PrimaryNode">srg({0}) set to primary node</entry>
   <entry key="SecondaryNode">srg({0}) set to secondary node</entry>
+  <entry key="SBMLNoLayout">sbml file has no layout(s), nothing to write</entry>
+  <entry key="SingleFileMultipleLayout">sbml file has multiple layout, but the output is a
+    directory, writing nothing</entry>
+  <entry key="BatchModeOutputNotDirectory">output must be a directory in batch mode. exiting.</entry>
 
-  <entry key="BatchModeOutputNotDirectory">output must be a directory in batch mode. exiting
-    .</entry>
 
 
 </properties>
