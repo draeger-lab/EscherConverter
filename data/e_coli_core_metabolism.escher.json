@@ -1,6 +1,6 @@
 [ {
-  "map_description" : "org.sbgn.bindings.SBGNBase$Notes@2dc995f4",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D61704065386466393961",
+  "map_description" : "org.sbgn.bindings.SBGNBase$Notes@e54303",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403433663832653738",
   "map_name" : "e_coli_core_metabolism.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -21,7 +21,8 @@
       "label_x" : 3515.03515625,
       "label_y" : 784.6382446289062,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577105" : {
       "x" : 3305.03857421875,
@@ -35,7 +36,8 @@
       "label_x" : 3442.142822265625,
       "label_y" : 835.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577102" : {
       "x" : 3180.260009765625,
@@ -44,7 +46,8 @@
       "label_x" : 3181.322509765625,
       "label_y" : 3616.343505859375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576498" : {
       "x" : 3502.142822265625,
@@ -53,7 +56,8 @@
       "label_x" : 3521.48095703125,
       "label_y" : 325.3001403808594,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577103" : {
       "x" : 3189.607177734375,
@@ -62,7 +66,8 @@
       "label_x" : 3148.298583984375,
       "label_y" : 3783.6572265625,
       "name" : "Cis-Aconitate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "159824815" : {
       "x" : 3502.142822265625,
@@ -76,7 +81,8 @@
       "label_x" : 1999.1429443359375,
       "label_y" : 830.6310424804688,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576492" : {
       "x" : 2049.142822265625,
@@ -85,7 +91,8 @@
       "label_x" : 2072.142822265625,
       "label_y" : 825.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576490" : {
       "x" : 1819.1429443359375,
@@ -94,7 +101,8 @@
       "label_x" : 1792.16796875,
       "label_y" : 920.6310424804688,
       "name" : "6-Phospho-D-gluconate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576495" : {
       "x" : 4322.14306640625,
@@ -103,7 +111,8 @@
       "label_x" : 4251.236328125,
       "label_y" : 1363.0699462890625,
       "name" : "O2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577100" : {
       "x" : 3066.418701171875,
@@ -117,7 +126,8 @@
       "label_x" : 3322.142822265625,
       "label_y" : 995.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576493" : {
       "x" : 2147.142822265625,
@@ -126,7 +136,8 @@
       "label_x" : 2147.142822265625,
       "label_y" : 920.6310424804688,
       "name" : "D-Ribulose 5-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576494" : {
       "x" : 4842.14306640625,
@@ -135,7 +146,8 @@
       "label_x" : 4832.47412109375,
       "label_y" : 1388.523193359375,
       "name" : "O2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576488" : {
       "x" : 1137.1429443359375,
@@ -144,7 +156,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 2320.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576489" : {
       "x" : 1899.1429443359375,
@@ -153,7 +166,8 @@
       "label_x" : 1899.1429443359375,
       "label_y" : 830.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576486" : {
       "x" : 1047.1429443359375,
@@ -162,7 +176,8 @@
       "label_x" : 1077.1429443359375,
       "label_y" : 2560.631103515625,
       "name" : "3-Phospho-D-glycerate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576487" : {
       "x" : 1047.1429443359375,
@@ -171,21 +186,22 @@
       "label_x" : 1077.1429443359375,
       "label_y" : 2250.631103515625,
       "name" : "3-Phospho-D-glyceroyl phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "157629974" : {
-      "x" : 1707.1429443359375,
-      "y" : 4270.630859375,
+      "x" : 1048.7294921875,
+      "y" : 694.4985961914062,
       "node_type" : "multimarker"
     },
     "165234033" : {
-      "x" : 4356.14306640625,
-      "y" : 3554.631103515625,
+      "x" : 3512.142822265625,
+      "y" : 955.6310424804688,
       "node_type" : "multimarker"
     },
     "21885092" : {
-      "x" : 2492.142822265625,
-      "y" : 4235.630859375,
+      "x" : 1707.1429443359375,
+      "y" : 3960.631103515625,
       "node_type" : "multimarker"
     },
     "_1576485" : {
@@ -195,11 +211,12 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 2490.631103515625,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "118035218" : {
-      "x" : 1047.1429443359375,
-      "y" : 2080.631103515625,
+      "x" : 4658.14306640625,
+      "y" : 2712.631103515625,
       "node_type" : "multimarker"
     },
     "_1577003" : {
@@ -223,18 +240,18 @@
       "node_type" : "multimarker"
     },
     "228955987" : {
-      "x" : 3598.142822265625,
-      "y" : 3531.631103515625,
+      "x" : 1487.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "24765477" : {
-      "x" : 1707.1429443359375,
-      "y" : 3770.631103515625,
+      "x" : 4427.14306640625,
+      "y" : 3843.631103515625,
       "node_type" : "multimarker"
     },
     "266456709" : {
-      "x" : 1629.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 1047.1429443359375,
+      "y" : 2080.631103515625,
       "node_type" : "multimarker"
     },
     "_1577000" : {
@@ -243,18 +260,18 @@
       "node_type" : "midmarker"
     },
     "46941357" : {
-      "x" : 4662.14306640625,
-      "y" : 2255.631103515625,
+      "x" : 3121.142822265625,
+      "y" : 2504.631103515625,
       "node_type" : "multimarker"
     },
     "58488213" : {
-      "x" : 827.1429443359375,
-      "y" : 3330.631103515625,
+      "x" : 2492.142822265625,
+      "y" : 4235.630859375,
       "node_type" : "multimarker"
     },
     "157264991" : {
-      "x" : 1517.1429443359375,
-      "y" : 1420.631103515625,
+      "x" : 4356.14306640625,
+      "y" : 3554.631103515625,
       "node_type" : "multimarker"
     },
     "228610695" : {
@@ -263,13 +280,13 @@
       "node_type" : "multimarker"
     },
     "60380446" : {
-      "x" : 4239.14306640625,
-      "y" : 3542.631103515625,
+      "x" : 4207.14306640625,
+      "y" : 945.6310424804688,
       "node_type" : "multimarker"
     },
     "164020815" : {
-      "x" : 2242.142822265625,
-      "y" : 3045.631103515625,
+      "x" : 1299.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "_1577025" : {
@@ -283,18 +300,18 @@
       "node_type" : "midmarker"
     },
     "84547943" : {
-      "x" : 4658.14306640625,
-      "y" : 2712.631103515625,
+      "x" : 4090.142822265625,
+      "y" : 3317.631103515625,
       "node_type" : "multimarker"
     },
     "80191394" : {
-      "x" : 1047.1429443359375,
-      "y" : 3860.631103515625,
+      "x" : 2569.142822265625,
+      "y" : 3089.631103515625,
       "node_type" : "multimarker"
     },
     "221177464" : {
-      "x" : 1707.1429443359375,
-      "y" : 3770.631103515625,
+      "x" : 4427.14306640625,
+      "y" : 3843.631103515625,
       "node_type" : "multimarker"
     },
     "80604578" : {
@@ -303,8 +320,8 @@
       "node_type" : "multimarker"
     },
     "139416806" : {
-      "x" : 4090.142822265625,
-      "y" : 3317.631103515625,
+      "x" : 4657.14306640625,
+      "y" : 835.6310424804688,
       "node_type" : "multimarker"
     },
     "_1577022" : {
@@ -313,8 +330,8 @@
       "node_type" : "midmarker"
     },
     "41055129" : {
-      "x" : 1406.1429443359375,
-      "y" : 3171.631103515625,
+      "x" : 827.1429443359375,
+      "y" : 1400.631103515625,
       "node_type" : "multimarker"
     },
     "_1577015" : {
@@ -323,8 +340,8 @@
       "node_type" : "midmarker"
     },
     "266450171" : {
-      "x" : 2242.142822265625,
-      "y" : 3045.631103515625,
+      "x" : 1299.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "_1577019" : {
@@ -343,8 +360,8 @@
       "node_type" : "midmarker"
     },
     "164874275" : {
-      "x" : 4659.14306640625,
-      "y" : 2531.631103515625,
+      "x" : 1629.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "_1577047" : {
@@ -353,8 +370,8 @@
       "node_type" : "midmarker"
     },
     "100738963" : {
-      "x" : 1517.1429443359375,
-      "y" : 1420.631103515625,
+      "x" : 4356.14306640625,
+      "y" : 3554.631103515625,
       "node_type" : "multimarker"
     },
     "224715558" : {
@@ -363,8 +380,8 @@
       "node_type" : "multimarker"
     },
     "103826135" : {
-      "x" : 632.1429443359375,
-      "y" : 1047.2177734375,
+      "x" : 2602.142822265625,
+      "y" : 441.6310729980469,
       "node_type" : "multimarker"
     },
     "_1577042" : {
@@ -373,8 +390,8 @@
       "node_type" : "midmarker"
     },
     "37619855" : {
-      "x" : 4652.14306640625,
-      "y" : 1585.631103515625,
+      "x" : 2903.142822265625,
+      "y" : 3073.631103515625,
       "node_type" : "multimarker"
     },
     "_1577045" : {
@@ -393,18 +410,18 @@
       "node_type" : "multimarker"
     },
     "11638040" : {
-      "x" : 3102.142822265625,
-      "y" : 2285.631103515625,
+      "x" : 632.1429443359375,
+      "y" : 1047.2177734375,
       "node_type" : "multimarker"
     },
     "139633663" : {
-      "x" : 1327.1429443359375,
-      "y" : 3680.631103515625,
+      "x" : 1396.1429443359375,
+      "y" : 3211.631103515625,
       "node_type" : "multimarker"
     },
     "149689966" : {
-      "x" : 2676.142822265625,
-      "y" : 2761.631103515625,
+      "x" : 3598.142822265625,
+      "y" : 3531.631103515625,
       "node_type" : "multimarker"
     },
     "_1577030" : {
@@ -413,13 +430,13 @@
       "node_type" : "midmarker"
     },
     "154476353" : {
-      "x" : 1299.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 4239.14306640625,
+      "y" : 3542.631103515625,
       "node_type" : "multimarker"
     },
     "40191541" : {
-      "x" : 4137.14306640625,
-      "y" : 945.6310424804688,
+      "x" : 2170.142822265625,
+      "y" : 1680.631103515625,
       "node_type" : "multimarker"
     },
     "_1577034" : {
@@ -438,13 +455,13 @@
       "node_type" : "midmarker"
     },
     "82546847" : {
-      "x" : 2676.142822265625,
-      "y" : 2761.631103515625,
+      "x" : 3598.142822265625,
+      "y" : 3531.631103515625,
       "node_type" : "multimarker"
     },
     "96455421" : {
-      "x" : 1396.1429443359375,
-      "y" : 3211.631103515625,
+      "x" : 2872.142822265625,
+      "y" : 4265.630859375,
       "node_type" : "multimarker"
     },
     "167558902" : {
@@ -473,8 +490,8 @@
       "node_type" : "multimarker"
     },
     "61486650" : {
-      "x" : 2790.142822265625,
-      "y" : 3571.631103515625,
+      "x" : 497.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "_1577059" : {
@@ -492,11 +509,6 @@
       "y" : 1047.2177734375,
       "node_type" : "midmarker"
     },
-    "190946580" : {
-      "x" : 3305.03857421875,
-      "y" : 3713.527099609375,
-      "node_type" : "multimarker"
-    },
     "_1577057" : {
       "x" : 2602.142822265625,
       "y" : 441.6310729980469,
@@ -513,13 +525,13 @@
       "node_type" : "midmarker"
     },
     "250490985" : {
-      "x" : 3598.142822265625,
-      "y" : 3531.631103515625,
+      "x" : 1487.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "62754762" : {
-      "x" : 2569.142822265625,
-      "y" : 3089.631103515625,
+      "x" : 2167.142822265625,
+      "y" : 1380.631103515625,
       "node_type" : "multimarker"
     },
     "_1577081" : {
@@ -529,7 +541,8 @@
       "label_x" : 5196.70947265625,
       "label_y" : 4711.0986328125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577082" : {
       "x" : 5395.16162109375,
@@ -538,7 +551,8 @@
       "label_x" : 5382.91162109375,
       "label_y" : 4077.378173828125,
       "name" : "Alpha-D-Ribose 5-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577080" : {
       "x" : 5429.68994140625,
@@ -547,7 +561,8 @@
       "label_x" : 5434.33984375,
       "label_y" : 4136.6162109375,
       "name" : "D-Erythrose 4-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "48368246" : {
       "x" : 4662.14306640625,
@@ -561,7 +576,8 @@
       "label_x" : 4954.2197265625,
       "label_y" : 4174.1806640625,
       "name" : "Pyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577086" : {
       "x" : 4885.4140625,
@@ -570,11 +586,12 @@
       "label_x" : 4853.0947265625,
       "label_y" : 4186.85595703125,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "175539212" : {
-      "x" : 4654.14306640625,
-      "y" : 2913.631103515625,
+      "x" : 4652.14306640625,
+      "y" : 1585.631103515625,
       "node_type" : "multimarker"
     },
     "_1577083" : {
@@ -584,11 +601,12 @@
       "label_x" : 5144.85205078125,
       "label_y" : 4146.71826171875,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "116444293" : {
-      "x" : 2602.142822265625,
-      "y" : 441.6310729980469,
+      "x" : 4662.14306640625,
+      "y" : 2255.631103515625,
       "node_type" : "multimarker"
     },
     "_1577084" : {
@@ -598,7 +616,8 @@
       "label_x" : 5044.78271484375,
       "label_y" : 4163.6181640625,
       "name" : "D-Fructose 6-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577089" : {
       "x" : 4692.67041015625,
@@ -607,7 +626,8 @@
       "label_x" : 4671.97021484375,
       "label_y" : 4222.7685546875,
       "name" : "D-Glucose 6-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "99774066" : {
       "x" : 4427.14306640625,
@@ -621,7 +641,8 @@
       "label_x" : 5167.63134765625,
       "label_y" : 4660.9638671875,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577088" : {
       "x" : 4775.8388671875,
@@ -630,11 +651,12 @@
       "label_x" : 4762.5322265625,
       "label_y" : 4207.98046875,
       "name" : "Oxaloacetate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "241397411" : {
-      "x" : 1047.1429443359375,
-      "y" : 3390.631103515625,
+      "x" : 4637.14306640625,
+      "y" : 3320.631103515625,
       "node_type" : "multimarker"
     },
     "61007142" : {
@@ -649,7 +671,8 @@
       "label_x" : 1117.1429443359375,
       "label_y" : 4446.61279296875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577075" : {
       "x" : 5326.19482421875,
@@ -663,7 +686,8 @@
       "label_x" : 1115.55615234375,
       "label_y" : 4112.3662109375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577073" : {
       "x" : 5519.60107421875,
@@ -672,7 +696,8 @@
       "label_x" : 5531.64453125,
       "label_y" : 4248.53076171875,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577078" : {
       "x" : 5526.66455078125,
@@ -681,7 +706,8 @@
       "label_x" : 5547.15869140625,
       "label_y" : 4330.65283203125,
       "name" : "L-Glutamate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577079" : {
       "x" : 5504.408203125,
@@ -690,7 +716,8 @@
       "label_x" : 5527.01416015625,
       "label_y" : 4194.20263671875,
       "name" : "Glyceraldehyde 3-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577077" : {
       "x" : 5495.478515625,
@@ -699,11 +726,12 @@
       "label_x" : 5521.25341796875,
       "label_y" : 4616.96875,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "46637083" : {
-      "x" : 1487.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 1406.1429443359375,
+      "y" : 3171.631103515625,
       "node_type" : "multimarker"
     },
     "188867805" : {
@@ -712,43 +740,43 @@
       "node_type" : "multimarker"
     },
     "103190280" : {
-      "x" : 2872.142822265625,
-      "y" : 4265.630859375,
+      "x" : 4654.14306640625,
+      "y" : 2913.631103515625,
       "node_type" : "multimarker"
     },
     "215078753" : {
-      "x" : 4108.14306640625,
-      "y" : 3553.631103515625,
+      "x" : 2832.142822265625,
+      "y" : 525.6310424804688,
       "node_type" : "multimarker"
     },
     "186061555" : {
-      "x" : 1949.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 3502.142822265625,
+      "y" : 505.6310729980469,
       "node_type" : "multimarker"
     },
     "154988899" : {
-      "x" : 1327.1429443359375,
-      "y" : 3680.631103515625,
+      "x" : 1396.1429443359375,
+      "y" : 3211.631103515625,
       "node_type" : "multimarker"
     },
     "235901027" : {
-      "x" : 1047.1429443359375,
-      "y" : 3860.631103515625,
+      "x" : 2569.142822265625,
+      "y" : 3089.631103515625,
       "node_type" : "multimarker"
     },
     "123240973" : {
-      "x" : 3502.142822265625,
-      "y" : 505.6310729980469,
+      "x" : 2676.142822265625,
+      "y" : 2761.631103515625,
       "node_type" : "multimarker"
     },
     "142204845" : {
-      "x" : 3502.142822265625,
-      "y" : 505.6310729980469,
+      "x" : 2676.142822265625,
+      "y" : 2761.631103515625,
       "node_type" : "multimarker"
     },
     "51235410" : {
-      "x" : 827.1429443359375,
-      "y" : 1400.631103515625,
+      "x" : 4137.14306640625,
+      "y" : 945.6310424804688,
       "node_type" : "multimarker"
     },
     "_1577092" : {
@@ -758,7 +786,8 @@
       "label_x" : 4548.6630859375,
       "label_y" : 4235.44384765625,
       "name" : "Acetyl-CoA",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577093" : {
       "x" : 4500.982421875,
@@ -767,7 +796,8 @@
       "label_x" : 4451.76318359375,
       "label_y" : 4261.85009765625,
       "name" : "3-Phospho-D-glycerate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577090" : {
       "x" : 5126.19482421875,
@@ -776,7 +806,8 @@
       "label_x" : 5071.029296875,
       "label_y" : 4621.953125,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577091" : {
       "x" : 5473.18994140625,
@@ -785,7 +816,8 @@
       "label_x" : 5489.458984375,
       "label_y" : 4689.9287109375,
       "name" : "2-Oxoglutarate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577096" : {
       "x" : 5020.857421875,
@@ -794,7 +826,8 @@
       "label_x" : 4960.2275390625,
       "label_y" : 4587.99267578125,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577097" : {
       "x" : 4259.92578125,
@@ -803,7 +836,8 @@
       "label_x" : 4195.91845703125,
       "label_y" : 4350.57568359375,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577094" : {
       "x" : 4406.19482421875,
@@ -812,7 +846,8 @@
       "label_x" : 4371.76318359375,
       "label_y" : 4293.53759765625,
       "name" : "Phosphoenolpyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577095" : {
       "x" : 4325.13818359375,
@@ -821,7 +856,8 @@
       "label_x" : 4245.28759765625,
       "label_y" : 4313.60693359375,
       "name" : "L-Glutamine",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1577098" : {
       "x" : 4925.578125,
@@ -830,16 +866,17 @@
       "label_x" : 4877.00146484375,
       "label_y" : 4544.7451171875,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "142537440" : {
-      "x" : 2170.142822265625,
-      "y" : 1680.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 3390.631103515625,
       "node_type" : "multimarker"
     },
     "193828569" : {
-      "x" : 1707.1429443359375,
-      "y" : 4270.630859375,
+      "x" : 1048.7294921875,
+      "y" : 694.4985961914062,
       "node_type" : "multimarker"
     },
     "_1576911" : {
@@ -848,8 +885,8 @@
       "node_type" : "midmarker"
     },
     "107660443" : {
-      "x" : 632.1429443359375,
-      "y" : 1047.2177734375,
+      "x" : 2602.142822265625,
+      "y" : 441.6310729980469,
       "node_type" : "multimarker"
     },
     "_1576914" : {
@@ -858,8 +895,8 @@
       "node_type" : "midmarker"
     },
     "20804602" : {
-      "x" : 4239.14306640625,
-      "y" : 3542.631103515625,
+      "x" : 4207.14306640625,
+      "y" : 945.6310424804688,
       "node_type" : "multimarker"
     },
     "227258281" : {
@@ -878,8 +915,8 @@
       "node_type" : "midmarker"
     },
     "106320161" : {
-      "x" : 2903.142822265625,
-      "y" : 3073.631103515625,
+      "x" : 1707.1429443359375,
+      "y" : 3770.631103515625,
       "node_type" : "multimarker"
     },
     "129058596" : {
@@ -888,23 +925,23 @@
       "node_type" : "multimarker"
     },
     "238402621" : {
-      "x" : 2252.142822265625,
-      "y" : 3075.631103515625,
+      "x" : 2002.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "100225812" : {
-      "x" : 3623.142822265625,
-      "y" : 2705.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 1420.631103515625,
       "node_type" : "multimarker"
     },
     "231345508" : {
-      "x" : 4657.14306640625,
-      "y" : 835.6310424804688,
+      "x" : 2790.142822265625,
+      "y" : 3571.631103515625,
       "node_type" : "multimarker"
     },
     "224879794" : {
-      "x" : 4427.14306640625,
-      "y" : 3843.631103515625,
+      "x" : 2242.142822265625,
+      "y" : 3045.631103515625,
       "node_type" : "multimarker"
     },
     "_1576900" : {
@@ -913,8 +950,8 @@
       "node_type" : "midmarker"
     },
     "78864491" : {
-      "x" : 4662.14306640625,
-      "y" : 2255.631103515625,
+      "x" : 3121.142822265625,
+      "y" : 2504.631103515625,
       "node_type" : "multimarker"
     },
     "_1576907" : {
@@ -923,8 +960,8 @@
       "node_type" : "midmarker"
     },
     "192134815" : {
-      "x" : 1352.1429443359375,
-      "y" : 4285.630859375,
+      "x" : 3102.142822265625,
+      "y" : 2285.631103515625,
       "node_type" : "multimarker"
     },
     "55931559" : {
@@ -933,13 +970,13 @@
       "node_type" : "multimarker"
     },
     "70695990" : {
-      "x" : 1629.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 1047.1429443359375,
+      "y" : 2080.631103515625,
       "node_type" : "multimarker"
     },
     "98368231" : {
-      "x" : 2170.142822265625,
-      "y" : 1680.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 3390.631103515625,
       "node_type" : "multimarker"
     },
     "_1576811" : {
@@ -949,7 +986,8 @@
       "label_x" : 1237.3826904296875,
       "label_y" : 4109.76318359375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576812" : {
       "x" : 1882.1429443359375,
@@ -958,7 +996,8 @@
       "label_x" : 1861.0355224609375,
       "label_y" : 3526.44140625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576810" : {
       "x" : 2502.142822265625,
@@ -967,7 +1006,8 @@
       "label_x" : 2465.647216796875,
       "label_y" : 728.8045043945312,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576931" : {
       "x" : 2297.142822265625,
@@ -981,7 +1021,8 @@
       "label_x" : 2232.142822265625,
       "label_y" : 4523.28369140625,
       "name" : "Acetaldehyde",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576816" : {
       "x" : 2602.142822265625,
@@ -990,7 +1031,8 @@
       "label_x" : 2632.142822265625,
       "label_y" : 315.6310729980469,
       "name" : "L-Malate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576937" : {
       "x" : 1707.1429443359375,
@@ -1004,7 +1046,8 @@
       "label_x" : 2398.142822265625,
       "label_y" : 3650.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576934" : {
       "x" : 2903.142822265625,
@@ -1018,7 +1061,8 @@
       "label_x" : 3220.22509765625,
       "label_y" : 2421.978271484375,
       "name" : "Ubiquinone-8",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576819" : {
       "x" : 557.74755859375,
@@ -1027,7 +1071,8 @@
       "label_x" : 546.6402587890625,
       "label_y" : 1165.1517333984375,
       "name" : "Phosphoenolpyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576817" : {
       "x" : 2202.142822265625,
@@ -1036,7 +1081,8 @@
       "label_x" : 2202.142822265625,
       "label_y" : 3590.631103515625,
       "name" : "Acetaldehyde",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576939" : {
       "x" : 4427.14306640625,
@@ -1054,8 +1100,8 @@
       "node_type" : "multimarker"
     },
     "251047430" : {
-      "x" : 497.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 2252.142822265625,
+      "y" : 3075.631103515625,
       "node_type" : "multimarker"
     },
     "97353795" : {
@@ -1064,8 +1110,8 @@
       "node_type" : "multimarker"
     },
     "35208170" : {
-      "x" : 2832.142822265625,
-      "y" : 525.6310424804688,
+      "x" : 1707.1429443359375,
+      "y" : 4270.630859375,
       "node_type" : "multimarker"
     },
     "_1576920" : {
@@ -1073,9 +1119,14 @@
       "y" : 4265.630859375,
       "node_type" : "midmarker"
     },
+    "176785537" : {
+      "x" : 1047.1429443359375,
+      "y" : 2410.631103515625,
+      "node_type" : "multimarker"
+    },
     "247113419" : {
-      "x" : 1048.7294921875,
-      "y" : 694.4985961914062,
+      "x" : 4659.14306640625,
+      "y" : 2531.631103515625,
       "node_type" : "multimarker"
     },
     "_1576926" : {
@@ -1095,11 +1146,12 @@
       "label_x" : 4866.31591796875,
       "label_y" : 2286.91162109375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "222057045" : {
-      "x" : 1949.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 3502.142822265625,
+      "y" : 505.6310729980469,
       "node_type" : "multimarker"
     },
     "_1576809" : {
@@ -1109,7 +1161,8 @@
       "label_x" : 4348.8671875,
       "label_y" : 2332.589599609375,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576927" : {
       "x" : 947.1429443359375,
@@ -1127,18 +1180,18 @@
       "node_type" : "multimarker"
     },
     "215764007" : {
-      "x" : 2252.142822265625,
-      "y" : 3075.631103515625,
+      "x" : 2002.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "204617837" : {
-      "x" : 1299.1429443359375,
-      "y" : 950.6310424804688,
+      "x" : 4239.14306640625,
+      "y" : 3542.631103515625,
       "node_type" : "multimarker"
     },
     "238052458" : {
-      "x" : 2167.142822265625,
-      "y" : 1380.631103515625,
+      "x" : 827.1429443359375,
+      "y" : 3330.631103515625,
       "node_type" : "multimarker"
     },
     "_1576830" : {
@@ -1148,7 +1201,8 @@
       "label_x" : 3033.729736328125,
       "label_y" : 2425.631103515625,
       "name" : "Ubiquinol-8",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576951" : {
       "x" : 4239.14306640625,
@@ -1156,13 +1210,13 @@
       "node_type" : "midmarker"
     },
     "104075742" : {
-      "x" : 3121.142822265625,
-      "y" : 2504.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 4269.4892578125,
       "node_type" : "multimarker"
     },
     "228293258" : {
-      "x" : 2002.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 2348.142822265625,
+      "y" : 3771.631103515625,
       "node_type" : "multimarker"
     },
     "_1576833" : {
@@ -1172,7 +1226,8 @@
       "label_x" : 1221.03564453125,
       "label_y" : 4436.58935546875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576831" : {
       "x" : 2502.142822265625,
@@ -1181,7 +1236,8 @@
       "label_x" : 2452.325439453125,
       "label_y" : 408.1766662597656,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576832" : {
       "x" : 1942.1429443359375,
@@ -1190,7 +1246,8 @@
       "label_x" : 1942.1429443359375,
       "label_y" : 3525.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576953" : {
       "x" : 4207.14306640625,
@@ -1229,7 +1286,8 @@
       "label_x" : 2488.142822265625,
       "label_y" : 3736.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576820" : {
       "x" : 4302.14306640625,
@@ -1238,7 +1296,8 @@
       "label_x" : 4265.68994140625,
       "label_y" : 2290.300048828125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576821" : {
       "x" : 706.9031982421875,
@@ -1247,7 +1306,8 @@
       "label_x" : 684.6885375976562,
       "label_y" : 893.4164428710938,
       "name" : "Pyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576942" : {
       "x" : 2242.142822265625,
@@ -1255,8 +1315,8 @@
       "node_type" : "midmarker"
     },
     "42748608" : {
-      "x" : 1352.1429443359375,
-      "y" : 4285.630859375,
+      "x" : 3102.142822265625,
+      "y" : 2285.631103515625,
       "node_type" : "multimarker"
     },
     "_1576826" : {
@@ -1266,7 +1326,8 @@
       "label_x" : 276.2752990722656,
       "label_y" : 1091.4986572265625,
       "name" : "D-Fructose",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576947" : {
       "x" : 1707.1429443359375,
@@ -1280,7 +1341,8 @@
       "label_x" : 4314.22900390625,
       "label_y" : 2148.429443359375,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576824" : {
       "x" : 2325.142822265625,
@@ -1289,7 +1351,8 @@
       "label_x" : 2339.142822265625,
       "label_y" : 3606.631103515625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576945" : {
       "x" : 1299.1429443359375,
@@ -1303,7 +1366,8 @@
       "label_x" : 2132.142822265625,
       "label_y" : 3525.631103515625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576828" : {
       "x" : 2062.142822265625,
@@ -1312,7 +1376,8 @@
       "label_x" : 2062.142822265625,
       "label_y" : 3525.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576829" : {
       "x" : 2493.142822265625,
@@ -1321,12 +1386,8 @@
       "label_x" : 2514.142822265625,
       "label_y" : 3891.631103515625,
       "name" : "Ethanol",
-      "node_type" : "metabolite"
-    },
-    "258776280" : {
-      "x" : 3305.03857421875,
-      "y" : 3713.527099609375,
-      "node_type" : "multimarker"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576972" : {
       "x" : 827.1429443359375,
@@ -1339,8 +1400,8 @@
       "node_type" : "midmarker"
     },
     "18179709" : {
-      "x" : 1047.1429443359375,
-      "y" : 3390.631103515625,
+      "x" : 4637.14306640625,
+      "y" : 3320.631103515625,
       "node_type" : "multimarker"
     },
     "_1576850" : {
@@ -1355,7 +1416,8 @@
       "label_x" : 1737.1429443359375,
       "label_y" : 3860.631103515625,
       "name" : "Acetyl phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576976" : {
       "x" : 2492.142822265625,
@@ -1369,7 +1431,8 @@
       "label_x" : 1827.1429443359375,
       "label_y" : 3820.631103515625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576856" : {
       "x" : 1047.1429443359375,
@@ -1388,7 +1451,8 @@
       "label_x" : 1827.1429443359375,
       "label_y" : 3720.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576617" : {
       "x" : 4277.14306640625,
@@ -1397,7 +1461,8 @@
       "label_x" : 4261.02783203125,
       "label_y" : 3973.300048828125,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576859" : {
       "x" : 827.1429443359375,
@@ -1411,7 +1476,8 @@
       "label_x" : 4373.919921875,
       "label_y" : 3976.523193359375,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576615" : {
       "x" : 4527.14306640625,
@@ -1420,7 +1486,8 @@
       "label_x" : 4544.86962890625,
       "label_y" : 3955.573974609375,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576857" : {
       "x" : 1047.1429443359375,
@@ -1433,8 +1500,8 @@
       "node_type" : "midmarker"
     },
     "181771666" : {
-      "x" : 2602.142822265625,
-      "y" : 441.6310729980469,
+      "x" : 4662.14306640625,
+      "y" : 2255.631103515625,
       "node_type" : "multimarker"
     },
     "_1576616" : {
@@ -1444,7 +1511,8 @@
       "label_x" : 4473.919921875,
       "label_y" : 3973.300048828125,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576858" : {
       "x" : 3981.142822265625,
@@ -1458,36 +1526,37 @@
       "label_x" : 4323.92041015625,
       "label_y" : 3971.688720703125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "8669867" : {
-      "x" : 3066.418701171875,
-      "y" : 3716.49560546875,
+      "x" : 3305.03857421875,
+      "y" : 3713.527099609375,
       "node_type" : "multimarker"
     },
     "191271104" : {
-      "x" : 2872.142822265625,
-      "y" : 4265.630859375,
+      "x" : 4654.14306640625,
+      "y" : 2913.631103515625,
       "node_type" : "multimarker"
     },
     "151442075" : {
-      "x" : 4659.14306640625,
-      "y" : 2531.631103515625,
+      "x" : 1629.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "124740598" : {
-      "x" : 4657.14306640625,
-      "y" : 835.6310424804688,
+      "x" : 2790.142822265625,
+      "y" : 3571.631103515625,
       "node_type" : "multimarker"
     },
     "57454458" : {
-      "x" : 4637.14306640625,
-      "y" : 3320.631103515625,
+      "x" : 3623.142822265625,
+      "y" : 2705.631103515625,
       "node_type" : "multimarker"
     },
     "74909852" : {
-      "x" : 3121.142822265625,
-      "y" : 2504.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 4269.4892578125,
       "node_type" : "multimarker"
     },
     "_1576840" : {
@@ -1511,7 +1580,7 @@
       "node_type" : "midmarker"
     },
     "101874302" : {
-      "x" : 1047.1429443359375,
+      "x" : 1517.1429443359375,
       "y" : 1420.631103515625,
       "node_type" : "multimarker"
     },
@@ -1522,7 +1591,8 @@
       "label_x" : 4226.1572265625,
       "label_y" : 1589.5159912109375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576965" : {
       "x" : 2167.142822265625,
@@ -1536,7 +1606,8 @@
       "label_x" : 4850.53125,
       "label_y" : 1636.2498779296875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576845" : {
       "x" : 2676.142822265625,
@@ -1544,8 +1615,8 @@
       "node_type" : "midmarker"
     },
     "267814113" : {
-      "x" : 2790.142822265625,
-      "y" : 3571.631103515625,
+      "x" : 497.1429443359375,
+      "y" : 3630.631103515625,
       "node_type" : "multimarker"
     },
     "_1576600" : {
@@ -1555,7 +1626,8 @@
       "label_x" : 4482.48095703125,
       "label_y" : 3027.9619140625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "158631603" : {
       "x" : 3623.142822265625,
@@ -1569,7 +1641,8 @@
       "label_x" : 731.457763671875,
       "label_y" : 1864.763671875,
       "name" : "Dihydroxyacetone phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576606" : {
       "x" : 3097.142822265625,
@@ -1578,7 +1651,8 @@
       "label_x" : 3117.142822265625,
       "label_y" : 3087.631103515625,
       "name" : "Acetyl-CoA",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576969" : {
       "x" : 5024.14306640625,
@@ -1592,7 +1666,8 @@
       "label_x" : 3182.142822265625,
       "label_y" : 3165.631103515625,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576604" : {
       "x" : 4431.23681640625,
@@ -1601,7 +1676,8 @@
       "label_x" : 4444.9130859375,
       "label_y" : 1422.407958984375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576846" : {
       "x" : 3598.142822265625,
@@ -1620,7 +1696,8 @@
       "label_x" : 2410.55615234375,
       "label_y" : 1286.7384033203125,
       "name" : "Alpha-D-Ribose 5-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576608" : {
       "x" : 2863.142822265625,
@@ -1629,7 +1706,8 @@
       "label_x" : 2883.142822265625,
       "label_y" : 2905.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576609" : {
       "x" : 2772.142822265625,
@@ -1638,7 +1716,8 @@
       "label_x" : 2792.142822265625,
       "label_y" : 2853.631103515625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "90346768" : {
       "x" : 1487.1429443359375,
@@ -1646,8 +1725,8 @@
       "node_type" : "multimarker"
     },
     "23880693" : {
-      "x" : 1047.1429443359375,
-      "y" : 2410.631103515625,
+      "x" : 1949.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "64598559" : {
@@ -1662,7 +1741,8 @@
       "label_x" : 1386.3326416015625,
       "label_y" : 3537.45751953125,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576631" : {
       "x" : 4277.14306640625,
@@ -1671,7 +1751,8 @@
       "label_x" : 4297.14306640625,
       "label_y" : 1135.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576511" : {
       "x" : 1047.1429443359375,
@@ -1680,7 +1761,8 @@
       "label_x" : 1017.1429443359375,
       "label_y" : 3650.631103515625,
       "name" : "Pyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576632" : {
       "x" : 4277.14306640625,
@@ -1689,7 +1771,8 @@
       "label_x" : 4297.14306640625,
       "label_y" : 1065.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576995" : {
       "x" : 1707.1429443359375,
@@ -1708,7 +1791,8 @@
       "label_x" : 4287.14306640625,
       "label_y" : 825.6310424804688,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576872" : {
       "x" : 2170.142822265625,
@@ -1727,7 +1811,8 @@
       "label_x" : 1687.1429443359375,
       "label_y" : 3650.631103515625,
       "name" : "Acetyl-CoA",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576635" : {
       "x" : 947.1429443359375,
@@ -1736,7 +1821,8 @@
       "label_x" : 927.1429443359375,
       "label_y" : 3780.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576515" : {
       "x" : 1647.1429443359375,
@@ -1745,7 +1831,8 @@
       "label_x" : 1639.6885986328125,
       "label_y" : 3541.110595703125,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576636" : {
       "x" : 2662.142822265625,
@@ -1754,7 +1841,8 @@
       "label_x" : 2682.142822265625,
       "label_y" : 3005.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576878" : {
       "x" : 4637.14306640625,
@@ -1768,7 +1856,8 @@
       "label_x" : 1279.2091064453125,
       "label_y" : 3573.1767578125,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576633" : {
       "x" : 947.1429443359375,
@@ -1777,7 +1866,8 @@
       "label_x" : 927.1429443359375,
       "label_y" : 3940.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576513" : {
       "x" : 1597.1429443359375,
@@ -1786,7 +1876,8 @@
       "label_x" : 1587.1429443359375,
       "label_y" : 3520.631103515625,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576634" : {
       "x" : 947.1429443359375,
@@ -1795,7 +1886,8 @@
       "label_x" : 927.1429443359375,
       "label_y" : 3730.631103515625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576876" : {
       "x" : 1047.1429443359375,
@@ -1814,7 +1906,8 @@
       "label_x" : 1207.1429443359375,
       "label_y" : 3010.631103515625,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576639" : {
       "x" : 3249.142822265625,
@@ -1823,11 +1916,12 @@
       "label_x" : 3279.142822265625,
       "label_y" : 4439.630859375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "86155141" : {
-      "x" : 1047.1429443359375,
-      "y" : 2410.631103515625,
+      "x" : 1949.1429443359375,
+      "y" : 950.6310424804688,
       "node_type" : "multimarker"
     },
     "_1576519" : {
@@ -1837,7 +1931,8 @@
       "label_x" : 1627.1429443359375,
       "label_y" : 3160.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576516" : {
       "x" : 1287.1429443359375,
@@ -1846,7 +1941,8 @@
       "label_x" : 1307.1429443359375,
       "label_y" : 3060.631103515625,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576637" : {
       "x" : 2672.142822265625,
@@ -1855,11 +1951,12 @@
       "label_x" : 2702.142822265625,
       "label_y" : 3275.631103515625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "36616362" : {
-      "x" : 3775.142822265625,
-      "y" : 3087.631103515625,
+      "x" : 1327.1429443359375,
+      "y" : 3680.631103515625,
       "node_type" : "multimarker"
     },
     "_1576517" : {
@@ -1869,7 +1966,8 @@
       "label_x" : 1077.1429443359375,
       "label_y" : 3040.631103515625,
       "name" : "Phosphoenolpyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576638" : {
       "x" : 2652.142822265625,
@@ -1878,21 +1976,22 @@
       "label_x" : 2684.142822265625,
       "label_y" : 3195.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "215902023" : {
-      "x" : 2167.142822265625,
-      "y" : 1380.631103515625,
+      "x" : 827.1429443359375,
+      "y" : 3330.631103515625,
       "node_type" : "multimarker"
     },
     "128691559" : {
-      "x" : 4658.14306640625,
-      "y" : 2712.631103515625,
+      "x" : 4090.142822265625,
+      "y" : 3317.631103515625,
       "node_type" : "multimarker"
     },
     "224334002" : {
-      "x" : 4207.14306640625,
-      "y" : 945.6310424804688,
+      "x" : 1047.1429443359375,
+      "y" : 3860.631103515625,
       "node_type" : "multimarker"
     },
     "_1576620" : {
@@ -1902,7 +2001,8 @@
       "label_x" : 2372.142822265625,
       "label_y" : 2905.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576500" : {
       "x" : 3732.142822265625,
@@ -1911,7 +2011,8 @@
       "label_x" : 3732.142822265625,
       "label_y" : 995.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576621" : {
       "x" : 2052.142822265625,
@@ -1920,7 +2021,8 @@
       "label_x" : 1971.8460693359375,
       "label_y" : 3100.870849609375,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576863" : {
       "x" : 5017.14306640625,
@@ -1928,8 +2030,8 @@
       "node_type" : "midmarker"
     },
     "2341771" : {
-      "x" : 4207.14306640625,
-      "y" : 945.6310424804688,
+      "x" : 1047.1429443359375,
+      "y" : 3860.631103515625,
       "node_type" : "multimarker"
     },
     "_1576982" : {
@@ -1944,7 +2046,8 @@
       "label_x" : 2859.332275390625,
       "label_y" : 2625.23388671875,
       "name" : "Fumarate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576624" : {
       "x" : 1399.1429443359375,
@@ -1953,7 +2056,8 @@
       "label_x" : 1422.1429443359375,
       "label_y" : 825.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576866" : {
       "x" : 4137.14306640625,
@@ -1967,7 +2071,8 @@
       "label_x" : 2498.978271484375,
       "label_y" : 2860.45751953125,
       "name" : "L-Malate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576625" : {
       "x" : 1349.1429443359375,
@@ -1976,7 +2081,8 @@
       "label_x" : 1349.1429443359375,
       "label_y" : 825.6310424804688,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576988" : {
       "x" : 4108.14306640625,
@@ -1990,7 +2096,8 @@
       "label_x" : 3548.962890625,
       "label_y" : 872.6959838867188,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576622" : {
       "x" : 2072.142822265625,
@@ -1999,7 +2106,8 @@
       "label_x" : 1987.085693359375,
       "label_y" : 3036.58984375,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576985" : {
       "x" : 3983.142822265625,
@@ -2013,7 +2121,8 @@
       "label_x" : 2685.555908203125,
       "label_y" : 2582.350341796875,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576623" : {
       "x" : 1249.1429443359375,
@@ -2022,7 +2131,8 @@
       "label_x" : 1249.1429443359375,
       "label_y" : 825.6310424804688,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576865" : {
       "x" : 3409.142822265625,
@@ -2036,7 +2146,8 @@
       "label_x" : 3549.790283203125,
       "label_y" : 3341.01953125,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576628" : {
       "x" : 4193.14306640625,
@@ -2045,7 +2156,8 @@
       "label_x" : 4167.970703125,
       "label_y" : 3658.523193359375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576508" : {
       "x" : 3612.142822265625,
@@ -2054,7 +2166,8 @@
       "label_x" : 3531.962890625,
       "label_y" : 3397.24267578125,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576629" : {
       "x" : 4185.14306640625,
@@ -2063,11 +2176,12 @@
       "label_x" : 4153.1357421875,
       "label_y" : 3478.854248046875,
       "name" : "Ammonium",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "217490937" : {
-      "x" : 4652.14306640625,
-      "y" : 1585.631103515625,
+      "x" : 2903.142822265625,
+      "y" : 3073.631103515625,
       "node_type" : "multimarker"
     },
     "_1576505" : {
@@ -2077,7 +2191,8 @@
       "label_x" : 3336.466552734375,
       "label_y" : 3634.85400390625,
       "name" : "Isocitrate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576626" : {
       "x" : 1499.1429443359375,
@@ -2086,7 +2201,8 @@
       "label_x" : 1499.1429443359375,
       "label_y" : 920.6310424804688,
       "name" : "6-phospho-D-glucono-1,5-lactone",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576868" : {
       "x" : 5012.14306640625,
@@ -2105,7 +2221,8 @@
       "label_x" : 3487.142822265625,
       "label_y" : 3783.631103515625,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576627" : {
       "x" : 1707.1429443359375,
@@ -2114,7 +2231,8 @@
       "label_x" : 1751.241455078125,
       "label_y" : 4533.8046875,
       "name" : "Acetate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576509" : {
       "x" : 3738.142822265625,
@@ -2123,11 +2241,12 @@
       "label_x" : 3661.85498046875,
       "label_y" : 3297.57373046875,
       "name" : "2-Oxoglutarate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "244113744" : {
-      "x" : 2002.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 2348.142822265625,
+      "y" : 3771.631103515625,
       "node_type" : "multimarker"
     },
     "248439596" : {
@@ -2141,8 +2260,8 @@
       "node_type" : "multimarker"
     },
     "105045903" : {
-      "x" : 2569.142822265625,
-      "y" : 3089.631103515625,
+      "x" : 2167.142822265625,
+      "y" : 1380.631103515625,
       "node_type" : "multimarker"
     },
     "_1576980" : {
@@ -2157,7 +2276,8 @@
       "label_x" : 3203.469970703125,
       "label_y" : 3228.898681640625,
       "name" : "Glyoxylate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576653" : {
       "x" : 1807.1429443359375,
@@ -2166,7 +2286,8 @@
       "label_x" : 1827.1429443359375,
       "label_y" : 3910.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576895" : {
       "x" : 5007.14306640625,
@@ -2180,7 +2301,8 @@
       "label_x" : 3431.158935546875,
       "label_y" : 2524.44140625,
       "name" : "Succinate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576654" : {
       "x" : 4021.142822265625,
@@ -2189,7 +2311,8 @@
       "label_x" : 3986.085205078125,
       "label_y" : 3594.681396484375,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576896" : {
       "x" : 1517.1429443359375,
@@ -2203,7 +2326,8 @@
       "label_x" : 678.8870849609375,
       "label_y" : 1249.0443115234375,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576651" : {
       "x" : 1807.1429443359375,
@@ -2212,7 +2336,8 @@
       "label_x" : 1827.1429443359375,
       "label_y" : 4020.631103515625,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576531" : {
       "x" : 4924.14306640625,
@@ -2221,7 +2346,8 @@
       "label_x" : 4942.58935546875,
       "label_y" : 2600.91162109375,
       "name" : "Succinate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576652" : {
       "x" : 1707.1429443359375,
@@ -2230,7 +2356,8 @@
       "label_x" : 1737.1429443359375,
       "label_y" : 4070.631103515625,
       "name" : "Acetate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576536" : {
       "x" : 4207.14306640625,
@@ -2239,7 +2366,8 @@
       "label_x" : 4188.75439453125,
       "label_y" : 1241.7462158203125,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576657" : {
       "x" : 2832.142822265625,
@@ -2248,7 +2376,8 @@
       "label_x" : 2871.96044921875,
       "label_y" : 320.7222595214844,
       "name" : "Fumarate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576537" : {
       "x" : 4874.14306640625,
@@ -2257,7 +2386,8 @@
       "label_x" : 4843.5244140625,
       "label_y" : 3884.911376953125,
       "name" : "L-Glutamine",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576658" : {
       "x" : 2932.142822265625,
@@ -2266,7 +2396,8 @@
       "label_x" : 2954.357421875,
       "label_y" : 404.0442810058594,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576534" : {
       "x" : 4207.14306640625,
@@ -2275,7 +2406,8 @@
       "label_x" : 4207.14306640625,
       "label_y" : 695.6310424804688,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576655" : {
       "x" : 4021.142822265625,
@@ -2284,7 +2416,8 @@
       "label_x" : 3994.142822265625,
       "label_y" : 3671.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576535" : {
       "x" : 4057.142822265625,
@@ -2293,7 +2426,8 @@
       "label_x" : 4025.53125,
       "label_y" : 716.2929077148438,
       "name" : "AMP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576656" : {
       "x" : 4035.142822265625,
@@ -2302,7 +2436,8 @@
       "label_x" : 3950.12841796875,
       "label_y" : 3421.8466796875,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576659" : {
       "x" : 2932.142822265625,
@@ -2311,7 +2446,8 @@
       "label_x" : 2946.423583984375,
       "label_y" : 724.0442504882812,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576539" : {
       "x" : 4750.8193359375,
@@ -2320,7 +2456,8 @@
       "label_x" : 4678.7548828125,
       "label_y" : 1878.106201171875,
       "name" : "Ubiquinone-8",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576891" : {
       "x" : 1047.1429443359375,
@@ -2334,7 +2471,8 @@
       "label_x" : 2612.142822265625,
       "label_y" : 4085.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576521" : {
       "x" : 2651.142822265625,
@@ -2343,7 +2481,8 @@
       "label_x" : 2684.142822265625,
       "label_y" : 3409.631103515625,
       "name" : "Oxaloacetate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576642" : {
       "x" : 727.1429443359375,
@@ -2352,7 +2491,8 @@
       "label_x" : 662.7135620117188,
       "label_y" : 3526.350341796875,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576884" : {
       "x" : 147.1429443359375,
@@ -2366,7 +2506,8 @@
       "label_x" : 1085.1429443359375,
       "label_y" : 2810.631103515625,
       "name" : "D-Glycerate 2-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576643" : {
       "x" : 727.1429443359375,
@@ -2375,7 +2516,8 @@
       "label_x" : 673.8209228515625,
       "label_y" : 3473.1767578125,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576885" : {
       "x" : 2037.1429443359375,
@@ -2389,7 +2531,8 @@
       "label_x" : 3279.142822265625,
       "label_y" : 4119.630859375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576520" : {
       "x" : 1657.1429443359375,
@@ -2398,7 +2541,8 @@
       "label_x" : 1677.1429443359375,
       "label_y" : 3200.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576641" : {
       "x" : 3613.142822265625,
@@ -2407,7 +2551,8 @@
       "label_x" : 3643.142822265625,
       "label_y" : 4119.630859375,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576525" : {
       "x" : 1047.1429443359375,
@@ -2416,7 +2561,8 @@
       "label_x" : 1067.1429443359375,
       "label_y" : 1210.631103515625,
       "name" : "D-Fructose 6-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576646" : {
       "x" : 727.1429443359375,
@@ -2425,7 +2571,8 @@
       "label_x" : 676.9944458007812,
       "label_y" : 3094.763427734375,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576888" : {
       "x" : 3623.142822265625,
@@ -2439,7 +2586,8 @@
       "label_x" : 4011.142822265625,
       "label_y" : 4442.630859375,
       "name" : "Ammonium",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576647" : {
       "x" : 1047.2091064453125,
@@ -2448,7 +2596,8 @@
       "label_x" : 1077.2091064453125,
       "label_y" : 390.6310729980469,
       "name" : "D-Glucose",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576523" : {
       "x" : 957.1429443359375,
@@ -2457,7 +2606,8 @@
       "label_x" : 878.4327392578125,
       "label_y" : 2993.58984375,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576644" : {
       "x" : 727.1429443359375,
@@ -2466,7 +2616,8 @@
       "label_x" : 664.3003540039062,
       "label_y" : 3163.8046875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576524" : {
       "x" : 1047.1429443359375,
@@ -2475,7 +2626,8 @@
       "label_x" : 1067.1429443359375,
       "label_y" : 930.6310424804688,
       "name" : "D-Glucose 6-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576645" : {
       "x" : 727.1429443359375,
@@ -2484,7 +2636,8 @@
       "label_x" : 632.5651245117188,
       "label_y" : 3231.259033203125,
       "name" : "AMP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576887" : {
       "x" : 4978.14306640625,
@@ -2498,7 +2651,8 @@
       "label_x" : 1088.5472412109375,
       "label_y" : 1613.8046875,
       "name" : "D-Fructose 1,6-bisphosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576527" : {
       "x" : 3981.142822265625,
@@ -2507,7 +2661,8 @@
       "label_x" : 4011.142822265625,
       "label_y" : 4126.630859375,
       "name" : "Ammonium",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576648" : {
       "x" : 2592.142822265625,
@@ -2516,11 +2671,12 @@
       "label_x" : 2612.142822265625,
       "label_y" : 4445.630859375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "42102625" : {
-      "x" : 1406.1429443359375,
-      "y" : 3171.631103515625,
+      "x" : 827.1429443359375,
+      "y" : 1400.631103515625,
       "node_type" : "multimarker"
     },
     "_1576528" : {
@@ -2530,7 +2686,8 @@
       "label_x" : 665.085693359375,
       "label_y" : 1546.9781494140625,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576649" : {
       "x" : 2492.142822265625,
@@ -2539,7 +2696,8 @@
       "label_x" : 2522.142822265625,
       "label_y" : 4515.630859375,
       "name" : "Ethanol",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "186657338" : {
       "x" : 5326.19482421875,
@@ -2552,13 +2710,13 @@
       "node_type" : "midmarker"
     },
     "216530938" : {
-      "x" : 4637.14306640625,
-      "y" : 3320.631103515625,
+      "x" : 3623.142822265625,
+      "y" : 2705.631103515625,
       "node_type" : "multimarker"
     },
     "221956248" : {
-      "x" : 2348.142822265625,
-      "y" : 3771.631103515625,
+      "x" : 1352.1429443359375,
+      "y" : 4285.630859375,
       "node_type" : "multimarker"
     },
     "_1576554" : {
@@ -2568,7 +2726,8 @@
       "label_x" : 4213.35888671875,
       "label_y" : 3286.631103515625,
       "name" : "L-Glutamate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576675" : {
       "x" : 4184.14306640625,
@@ -2577,7 +2736,8 @@
       "label_x" : 4202.14306640625,
       "label_y" : 3215.631103515625,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576555" : {
       "x" : 4470.14306640625,
@@ -2586,7 +2746,8 @@
       "label_x" : 4495.32275390625,
       "label_y" : 3382.4658203125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576676" : {
       "x" : 4134.14306640625,
@@ -2595,7 +2756,8 @@
       "label_x" : 4134.14306640625,
       "label_y" : 3213.631103515625,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576552" : {
       "x" : 4875.14306640625,
@@ -2604,7 +2766,8 @@
       "label_x" : 4875.14306640625,
       "label_y" : 3289.631103515625,
       "name" : "L-Glutamate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576673" : {
       "x" : 4828.14306640625,
@@ -2613,7 +2776,8 @@
       "label_x" : 4828.14306640625,
       "label_y" : 2800.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576553" : {
       "x" : 4817.14306640625,
@@ -2622,7 +2786,8 @@
       "label_x" : 4849.37353515625,
       "label_y" : 3408.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576674" : {
       "x" : 4448.14306640625,
@@ -2631,7 +2796,8 @@
       "label_x" : 4448.14306640625,
       "label_y" : 2794.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576558" : {
       "x" : 1937.1429443359375,
@@ -2640,7 +2806,8 @@
       "label_x" : 1936.9031982421875,
       "label_y" : 1285.151611328125,
       "name" : "D-Xylulose 5-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576679" : {
       "x" : 4034.142822265625,
@@ -2649,7 +2816,8 @@
       "label_x" : 4042.142822265625,
       "label_y" : 3215.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576559" : {
       "x" : 4842.14306640625,
@@ -2658,7 +2826,8 @@
       "label_x" : 4859.86962890625,
       "label_y" : 1959.134765625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576556" : {
       "x" : 1047.1429443359375,
@@ -2667,7 +2836,8 @@
       "label_x" : 1080.6134033203125,
       "label_y" : 4542.845703125,
       "name" : "D-Lactate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576677" : {
       "x" : 3984.142822265625,
@@ -2676,7 +2846,8 @@
       "label_x" : 3927.574462890625,
       "label_y" : 3217.854248046875,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576557" : {
       "x" : 267.1429443359375,
@@ -2685,7 +2856,8 @@
       "label_x" : 241.7547607421875,
       "label_y" : 3679.672119140625,
       "name" : "Pyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576678" : {
       "x" : 3934.142822265625,
@@ -2694,7 +2866,8 @@
       "label_x" : 3848.962890625,
       "label_y" : 3258.85400390625,
       "name" : "Ammonium",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "249177573" : {
       "x" : 4652.14306640625,
@@ -2707,8 +2880,8 @@
       "node_type" : "multimarker"
     },
     "26869350" : {
-      "x" : 2492.142822265625,
-      "y" : 4235.630859375,
+      "x" : 1707.1429443359375,
+      "y" : 3960.631103515625,
       "node_type" : "multimarker"
     },
     "_1576550" : {
@@ -2718,7 +2891,8 @@
       "label_x" : 895.8870849609375,
       "label_y" : 3213.656005859375,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576671" : {
       "x" : 1137.1429443359375,
@@ -2727,11 +2901,12 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 2200.631103515625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "21318557" : {
-      "x" : 4654.14306640625,
-      "y" : 2913.631103515625,
+      "x" : 4652.14306640625,
+      "y" : 1585.631103515625,
       "node_type" : "multimarker"
     },
     "_1576551" : {
@@ -2741,7 +2916,8 @@
       "label_x" : 921.2753295898438,
       "label_y" : 3480.00341796875,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576672" : {
       "x" : 1137.1429443359375,
@@ -2750,11 +2926,12 @@
       "label_x" : 1161.1429443359375,
       "label_y" : 2150.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "169489528" : {
-      "x" : 3512.142822265625,
-      "y" : 955.6310424804688,
+      "x" : 3775.142822265625,
+      "y" : 3087.631103515625,
       "node_type" : "multimarker"
     },
     "_1576670" : {
@@ -2764,7 +2941,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 2000.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576664" : {
       "x" : 4783.86279296875,
@@ -2773,11 +2951,12 @@
       "label_x" : 4810.86279296875,
       "label_y" : 2607.5732421875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "164773901" : {
-      "x" : 1047.1429443359375,
-      "y" : 4269.4892578125,
+      "x" : 5326.19482421875,
+      "y" : 4423.11279296875,
       "node_type" : "multimarker"
     },
     "_1576544" : {
@@ -2787,7 +2966,8 @@
       "label_x" : 3643.142822265625,
       "label_y" : 4439.630859375,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576665" : {
       "x" : 4453.52392578125,
@@ -2796,7 +2976,8 @@
       "label_x" : 4381.56689453125,
       "label_y" : 2449.573486328125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576662" : {
       "x" : 949.8370361328125,
@@ -2805,11 +2986,12 @@
       "label_x" : 870.0194702148438,
       "label_y" : 662.582763671875,
       "name" : "Phosphoenolpyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "98561003" : {
-      "x" : 497.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 2252.142822265625,
+      "y" : 3075.631103515625,
       "node_type" : "multimarker"
     },
     "_1576542" : {
@@ -2819,7 +3001,8 @@
       "label_x" : 4403.1435546875,
       "label_y" : 1903.02685546875,
       "name" : "Ubiquinol-8",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576663" : {
       "x" : 1153.489990234375,
@@ -2828,11 +3011,12 @@
       "label_x" : 1185.2252197265625,
       "label_y" : 672.1032104492188,
       "name" : "Pyruvate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "33419717" : {
-      "x" : 1707.1429443359375,
-      "y" : 3960.631103515625,
+      "x" : 4108.14306640625,
+      "y" : 3553.631103515625,
       "node_type" : "multimarker"
     },
     "_1576547" : {
@@ -2842,7 +3026,8 @@
       "label_x" : 1914.92822265625,
       "label_y" : 1927.845703125,
       "name" : "D-Erythrose 4-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576668" : {
       "x" : 1679.1429443359375,
@@ -2851,7 +3036,8 @@
       "label_x" : 1679.1429443359375,
       "label_y" : 825.6310424804688,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576548" : {
       "x" : 2354.77978515625,
@@ -2860,7 +3046,8 @@
       "label_x" : 2359.77978515625,
       "label_y" : 1902.45751953125,
       "name" : "D-Fructose 6-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576669" : {
       "x" : 1137.1429443359375,
@@ -2869,7 +3056,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 1950.631103515625,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576545" : {
       "x" : 2351.126953125,
@@ -2878,7 +3066,8 @@
       "label_x" : 2367.234375,
       "label_y" : 1584.0443115234375,
       "name" : "Glyceraldehyde 3-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576666" : {
       "x" : 1452.1429443359375,
@@ -2887,7 +3076,8 @@
       "label_x" : 1492.1429443359375,
       "label_y" : 4528.953125,
       "name" : "Formate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576546" : {
       "x" : 1975.2252197265625,
@@ -2896,7 +3086,8 @@
       "label_x" : 1948.010498046875,
       "label_y" : 1499.94580078125,
       "name" : "Sedoheptulose 7-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576667" : {
       "x" : 1579.1429443359375,
@@ -2905,7 +3096,8 @@
       "label_x" : 1579.1429443359375,
       "label_y" : 825.6310424804688,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576549" : {
       "x" : 957.1429443359375,
@@ -2914,26 +3106,27 @@
       "label_x" : 903.8209228515625,
       "label_y" : 3297.93701171875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "228245684" : {
-      "x" : 827.1429443359375,
-      "y" : 1400.631103515625,
+      "x" : 4137.14306640625,
+      "y" : 945.6310424804688,
       "node_type" : "multimarker"
     },
     "231744321" : {
-      "x" : 4356.14306640625,
-      "y" : 3554.631103515625,
+      "x" : 3512.142822265625,
+      "y" : 955.6310424804688,
       "node_type" : "multimarker"
     },
     "66672278" : {
-      "x" : 4108.14306640625,
-      "y" : 3553.631103515625,
+      "x" : 2832.142822265625,
+      "y" : 525.6310424804688,
       "node_type" : "multimarker"
     },
     "104716441" : {
-      "x" : 1047.1429443359375,
-      "y" : 4269.4892578125,
+      "x" : 5326.19482421875,
+      "y" : 4423.11279296875,
       "node_type" : "multimarker"
     },
     "_1576660" : {
@@ -2943,7 +3136,8 @@
       "label_x" : 1827.1429443359375,
       "label_y" : 4460.630859375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576661" : {
       "x" : 1811.9031982421875,
@@ -2952,11 +3146,12 @@
       "label_x" : 1831.9031982421875,
       "label_y" : 4138.08544921875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "234208436" : {
-      "x" : 1487.1429443359375,
-      "y" : 3630.631103515625,
+      "x" : 1406.1429443359375,
+      "y" : 3171.631103515625,
       "node_type" : "multimarker"
     },
     "_1576576" : {
@@ -2966,7 +3161,8 @@
       "label_x" : 4466.14306640625,
       "label_y" : 3438.631103515625,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576577" : {
       "x" : 4432.14306640625,
@@ -2975,7 +3171,8 @@
       "label_x" : 4469.14306640625,
       "label_y" : 3496.631103515625,
       "name" : "Ammonium",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576574" : {
       "x" : 1137.1429443359375,
@@ -2984,7 +3181,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 1540.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576575" : {
       "x" : 1047.1429443359375,
@@ -2993,16 +3191,17 @@
       "label_x" : 1077.1429443359375,
       "label_y" : 1880.631103515625,
       "name" : "Glyceraldehyde 3-phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "66594670" : {
-      "x" : 3623.142822265625,
-      "y" : 2705.631103515625,
+      "x" : 1047.1429443359375,
+      "y" : 1420.631103515625,
       "node_type" : "multimarker"
     },
     "42277700" : {
-      "x" : 4090.142822265625,
-      "y" : 3317.631103515625,
+      "x" : 4657.14306640625,
+      "y" : 835.6310424804688,
       "node_type" : "multimarker"
     },
     "_1576578" : {
@@ -3012,7 +3211,8 @@
       "label_x" : 4237.14306640625,
       "label_y" : 3815.631103515625,
       "name" : "L-Glutamine",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576579" : {
       "x" : 4426.14306640625,
@@ -3021,26 +3221,27 @@
       "label_x" : 4446.14306640625,
       "label_y" : 3639.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "90045638" : {
-      "x" : 3775.142822265625,
-      "y" : 3087.631103515625,
+      "x" : 1327.1429443359375,
+      "y" : 3680.631103515625,
       "node_type" : "multimarker"
     },
     "92734970" : {
-      "x" : 1048.7294921875,
-      "y" : 694.4985961914062,
+      "x" : 4659.14306640625,
+      "y" : 2531.631103515625,
       "node_type" : "multimarker"
     },
     "264698239" : {
-      "x" : 2903.142822265625,
-      "y" : 3073.631103515625,
+      "x" : 1707.1429443359375,
+      "y" : 3770.631103515625,
       "node_type" : "multimarker"
     },
     "107994825" : {
-      "x" : 1047.1429443359375,
-      "y" : 2080.631103515625,
+      "x" : 4658.14306640625,
+      "y" : 2712.631103515625,
       "node_type" : "multimarker"
     },
     "_1576690" : {
@@ -3050,7 +3251,8 @@
       "label_x" : 2442.142822265625,
       "label_y" : 3055.631103515625,
       "name" : "Nicotinamide adenine dinucleotide phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "57850294" : {
       "x" : 5326.19482421875,
@@ -3058,8 +3260,8 @@
       "node_type" : "multimarker"
     },
     "146704392" : {
-      "x" : 2832.142822265625,
-      "y" : 525.6310424804688,
+      "x" : 1707.1429443359375,
+      "y" : 4270.630859375,
       "node_type" : "multimarker"
     },
     "_1576572" : {
@@ -3069,7 +3271,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 1330.631103515625,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576573" : {
       "x" : 1137.1429443359375,
@@ -3078,7 +3281,8 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 1490.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576570" : {
       "x" : 3731.142822265625,
@@ -3087,7 +3291,8 @@
       "label_x" : 3764.37353515625,
       "label_y" : 2879.1103515625,
       "name" : "Succinyl-CoA",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576691" : {
       "x" : 2252.142822265625,
@@ -3096,7 +3301,8 @@
       "label_x" : 2272.142822265625,
       "label_y" : 3195.631103515625,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576571" : {
       "x" : 3760.142822265625,
@@ -3105,7 +3311,8 @@
       "label_x" : 3780.142822265625,
       "label_y" : 2811.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576692" : {
       "x" : 2192.142822265625,
@@ -3114,7 +3321,8 @@
       "label_x" : 2212.142822265625,
       "label_y" : 3235.631103515625,
       "name" : "Nicotinamide adenine dinucleotide phosphate - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576686" : {
       "x" : 2798.142822265625,
@@ -3123,7 +3331,8 @@
       "label_x" : 2778.96923828125,
       "label_y" : 3817.845947265625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576687" : {
       "x" : 2889.142822265625,
@@ -3132,7 +3341,8 @@
       "label_x" : 2891.183837890625,
       "label_y" : 3841.498291015625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576684" : {
       "x" : 2602.142822265625,
@@ -3141,7 +3351,8 @@
       "label_x" : 2591.66357421875,
       "label_y" : 3575.779541015625,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576685" : {
       "x" : 2963.142822265625,
@@ -3150,7 +3361,8 @@
       "label_x" : 2964.7958984375,
       "label_y" : 3628.813720703125,
       "name" : "Citrate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576569" : {
       "x" : 3786.142822265625,
@@ -3159,7 +3371,8 @@
       "label_x" : 3806.142822265625,
       "label_y" : 2736.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576567" : {
       "x" : 3452.142822265625,
@@ -3168,7 +3381,8 @@
       "label_x" : 3441.035400390625,
       "label_y" : 2676.738525390625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576688" : {
       "x" : 337.1429443359375,
@@ -3177,7 +3391,8 @@
       "label_x" : 343.4900207519531,
       "label_y" : 3758.56494140625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576568" : {
       "x" : 3492.142822265625,
@@ -3186,7 +3401,8 @@
       "label_x" : 3488.96923828125,
       "label_y" : 2748.3251953125,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576689" : {
       "x" : 667.1429443359375,
@@ -3195,21 +3411,22 @@
       "label_x" : 667.1429443359375,
       "label_y" : 3763.3251953125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "120605248" : {
-      "x" : 4427.14306640625,
-      "y" : 3843.631103515625,
+      "x" : 2242.142822265625,
+      "y" : 3045.631103515625,
       "node_type" : "multimarker"
     },
     "76942330" : {
-      "x" : 5326.19482421875,
-      "y" : 4423.11279296875,
+      "x" : 3066.418701171875,
+      "y" : 3716.49560546875,
       "node_type" : "multimarker"
     },
     "69673470" : {
-      "x" : 5326.19482421875,
-      "y" : 4423.11279296875,
+      "x" : 3305.03857421875,
+      "y" : 3713.527099609375,
       "node_type" : "multimarker"
     },
     "_1576682" : {
@@ -3219,7 +3436,8 @@
       "label_x" : 4391.02783203125,
       "label_y" : 873.3577270507812,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576683" : {
       "x" : 4474.86962890625,
@@ -3228,7 +3446,8 @@
       "label_x" : 4474.86962890625,
       "label_y" : 695.6310424804688,
       "name" : "H2O",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576680" : {
       "x" : 4857.14306640625,
@@ -3237,7 +3456,8 @@
       "label_x" : 4857.14306640625,
       "label_y" : 865.6310424804688,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576681" : {
       "x" : 4487.14306640625,
@@ -3246,7 +3466,8 @@
       "label_x" : 4451.68994140625,
       "label_y" : 979.2280883789062,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576598" : {
       "x" : 4914.14306640625,
@@ -3255,7 +3476,8 @@
       "label_x" : 4914.14306640625,
       "label_y" : 2953.631103515625,
       "name" : "2-Oxoglutarate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576599" : {
       "x" : 4826.14306640625,
@@ -3264,7 +3486,8 @@
       "label_x" : 4853.5390625,
       "label_y" : 3020.18505859375,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576596" : {
       "x" : 2785.142822265625,
@@ -3273,7 +3496,8 @@
       "label_x" : 2746.275146484375,
       "label_y" : 4112.24267578125,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576597" : {
       "x" : 2872.142822265625,
@@ -3282,16 +3506,22 @@
       "label_x" : 2913.142822265625,
       "label_y" : 4113.630859375,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
+    },
+    "40453625" : {
+      "x" : 1047.1429443359375,
+      "y" : 2410.631103515625,
+      "node_type" : "multimarker"
     },
     "227955772" : {
-      "x" : 1707.1429443359375,
-      "y" : 3960.631103515625,
+      "x" : 4108.14306640625,
+      "y" : 3553.631103515625,
       "node_type" : "multimarker"
     },
     "248660644" : {
-      "x" : 827.1429443359375,
-      "y" : 3330.631103515625,
+      "x" : 2492.142822265625,
+      "y" : 4235.630859375,
       "node_type" : "multimarker"
     },
     "_1576590" : {
@@ -3301,7 +3531,8 @@
       "label_x" : 1487.3736572265625,
       "label_y" : 3769.590087890625,
       "name" : "Formate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576591" : {
       "x" : 1497.1429443359375,
@@ -3310,7 +3541,8 @@
       "label_x" : 1517.1429443359375,
       "label_y" : 3310.631103515625,
       "name" : "ATP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576594" : {
       "x" : 2872.142822265625,
@@ -3319,7 +3551,8 @@
       "label_x" : 2902.142822265625,
       "label_y" : 4524.630859375,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576595" : {
       "x" : 2785.142822265625,
@@ -3328,7 +3561,8 @@
       "label_x" : 2725.978271484375,
       "label_y" : 4449.482421875,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576592" : {
       "x" : 1277.1429443359375,
@@ -3337,7 +3571,8 @@
       "label_x" : 1277.1429443359375,
       "label_y" : 3260.631103515625,
       "name" : "ADP",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576593" : {
       "x" : 1207.1429443359375,
@@ -3346,7 +3581,8 @@
       "label_x" : 1207.1429443359375,
       "label_y" : 3220.631103515625,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576587" : {
       "x" : 3864.142822265625,
@@ -3355,7 +3591,8 @@
       "label_x" : 3890.142822265625,
       "label_y" : 2970.631103515625,
       "name" : "CO2",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576588" : {
       "x" : 3812.142822265625,
@@ -3364,7 +3601,8 @@
       "label_x" : 3838.142822265625,
       "label_y" : 2918.631103515625,
       "name" : "Nicotinamide adenine dinucleotide - reduced",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576585" : {
       "x" : 3676.142822265625,
@@ -3373,11 +3611,12 @@
       "label_x" : 3621.135498046875,
       "label_y" : 3168.681396484375,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "5188562" : {
-      "x" : 2348.142822265625,
-      "y" : 3771.631103515625,
+      "x" : 1352.1429443359375,
+      "y" : 4285.630859375,
       "node_type" : "multimarker"
     },
     "_1576586" : {
@@ -3387,7 +3626,8 @@
       "label_x" : 3598.3515625,
       "label_y" : 3225.51611328125,
       "name" : "Nicotinamide adenine dinucleotide",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576589" : {
       "x" : 1157.1429443359375,
@@ -3396,20 +3636,21 @@
       "label_x" : 1157.1429443359375,
       "label_y" : 3750.631103515625,
       "name" : "Coenzyme A",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "193264888" : {
-      "x" : 3102.142822265625,
-      "y" : 2285.631103515625,
+      "x" : 632.1429443359375,
+      "y" : 1047.2177734375,
       "node_type" : "multimarker"
     },
     "58331995" : {
-      "x" : 4137.14306640625,
-      "y" : 945.6310424804688,
+      "x" : 2170.142822265625,
+      "y" : 1680.631103515625,
       "node_type" : "multimarker"
     },
     "197010705" : {
-      "x" : 1047.1429443359375,
+      "x" : 1517.1429443359375,
       "y" : 1420.631103515625,
       "node_type" : "multimarker"
     },
@@ -3420,16 +3661,17 @@
       "label_x" : 4446.14306640625,
       "label_y" : 3689.631103515625,
       "name" : "H+",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "34777303" : {
-      "x" : 3512.142822265625,
-      "y" : 955.6310424804688,
+      "x" : 3775.142822265625,
+      "y" : 3087.631103515625,
       "node_type" : "multimarker"
     },
     "33802239" : {
-      "x" : 1396.1429443359375,
-      "y" : 3211.631103515625,
+      "x" : 2872.142822265625,
+      "y" : 4265.630859375,
       "node_type" : "multimarker"
     },
     "_1576584" : {
@@ -3439,7 +3681,8 @@
       "label_x" : 1081.1429443359375,
       "label_y" : 4034.631103515625,
       "name" : "D-Lactate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "_1576581" : {
       "x" : 4426.14306640625,
@@ -3448,7 +3691,8 @@
       "label_x" : 4446.14306640625,
       "label_y" : 3739.631103515625,
       "name" : "Phosphate",
-      "node_type" : "metabolite"
+      "node_type" : "metabolite",
+      "node_is_primary" : true
     },
     "156959879" : {
       "x" : 3775.142822265625,
@@ -3824,14 +4068,14 @@
       "name" : "R75",
       "segments" : {
         "r1576775_n1576557.S1" : {
-          "from_node_id" : "251047430",
+          "from_node_id" : "267814113",
           "to_node_id" : "_1577025",
           "b1" : null,
           "b2" : null
         },
         "r1576775_n1576557.S0" : {
           "from_node_id" : "_1576557",
-          "to_node_id" : "251047430",
+          "to_node_id" : "267814113",
           "b1" : {
             "x" : 352.1429443359375,
             "y" : 3630.631103515625
@@ -3855,7 +4099,7 @@
         },
         "r1576775_n1576688.S0" : {
           "from_node_id" : "_1576688",
-          "to_node_id" : "98561003",
+          "to_node_id" : "61486650",
           "b1" : {
             "x" : 351.48248291015625,
             "y" : 3630.631103515625
@@ -3866,7 +4110,7 @@
           }
         },
         "r1576775_n1576688.S1" : {
-          "from_node_id" : "98561003",
+          "from_node_id" : "61486650",
           "to_node_id" : "_1577025",
           "b1" : null,
           "b2" : null
@@ -4252,14 +4496,14 @@
           }
         },
         "r1576735_n1576542.S1" : {
-          "from_node_id" : "217490937",
+          "from_node_id" : "21318557",
           "to_node_id" : "_1576928",
           "b1" : null,
           "b2" : null
         },
         "r1576735_n1576542.S0" : {
           "from_node_id" : "_1576542",
-          "to_node_id" : "217490937",
+          "to_node_id" : "21318557",
           "b1" : {
             "x" : 4574.04931640625,
             "y" : 1585.631103515625
@@ -4282,14 +4526,14 @@
           }
         },
         "r1576735_n1576602.S1" : {
-          "from_node_id" : "37619855",
+          "from_node_id" : "249177573",
           "to_node_id" : "_1576928",
           "b1" : null,
           "b2" : null
         },
         "r1576735_n1576495.S0" : {
           "from_node_id" : "_1576495",
-          "to_node_id" : "249177573",
+          "to_node_id" : "175539212",
           "b1" : {
             "x" : 4564.5146484375,
             "y" : 1585.631103515625
@@ -4300,7 +4544,7 @@
           }
         },
         "r1576735_n1576495.S1" : {
-          "from_node_id" : "249177573",
+          "from_node_id" : "175539212",
           "to_node_id" : "_1576928",
           "b1" : null,
           "b2" : null
@@ -4319,7 +4563,7 @@
         },
         "r1576735_n1576602.S0" : {
           "from_node_id" : "_1576602",
-          "to_node_id" : "37619855",
+          "to_node_id" : "249177573",
           "b1" : {
             "x" : 4587.64306640625,
             "y" : 1585.631103515625
@@ -4502,14 +4746,14 @@
       "name" : "R52",
       "segments" : {
         "r1576751_n1576605.S1" : {
-          "from_node_id" : "238052458",
+          "from_node_id" : "62754762",
           "to_node_id" : "_1576965",
           "b1" : null,
           "b2" : null
         },
         "r1576751_n1576605.S0" : {
           "from_node_id" : "_1576605",
-          "to_node_id" : "238052458",
+          "to_node_id" : "62754762",
           "b1" : {
             "x" : 2167.142822265625,
             "y" : 1291.6207275390625
@@ -4521,7 +4765,7 @@
         },
         "r1576751_n1576558.S0" : {
           "from_node_id" : "_1576558",
-          "to_node_id" : "215902023",
+          "to_node_id" : "105045903",
           "b1" : {
             "x" : 2167.142822265625,
             "y" : 1293.583740234375
@@ -4532,7 +4776,7 @@
           }
         },
         "r1576751_n1576558.S1" : {
-          "from_node_id" : "215902023",
+          "from_node_id" : "105045903",
           "to_node_id" : "_1576965",
           "b1" : null,
           "b2" : null
@@ -5139,7 +5383,7 @@
       "segments" : {
         "r1576774_n1576514.S0" : {
           "from_node_id" : "_1576514",
-          "to_node_id" : "260084831",
+          "to_node_id" : "124740598",
           "b1" : {
             "x" : 2619.62255859375,
             "y" : 3431.03369140625
@@ -5150,7 +5394,7 @@
           }
         },
         "r1576774_n1576514.S1" : {
-          "from_node_id" : "260084831",
+          "from_node_id" : "124740598",
           "to_node_id" : "_1577022",
           "b1" : null,
           "b2" : null
@@ -5181,7 +5425,7 @@
         },
         "r1576774_n1576684.S0" : {
           "from_node_id" : "_1576684",
-          "to_node_id" : "267814113",
+          "to_node_id" : "231345508",
           "b1" : {
             "x" : 2721.0400390625,
             "y" : 3508.926513671875
@@ -5192,20 +5436,20 @@
           }
         },
         "r1576774_n1576684.S1" : {
-          "from_node_id" : "267814113",
+          "from_node_id" : "231345508",
           "to_node_id" : "_1577022",
           "b1" : null,
           "b2" : null
         },
         "r1576774_n1576521.S1" : {
-          "from_node_id" : "61486650",
+          "from_node_id" : "260084831",
           "to_node_id" : "_1577022",
           "b1" : null,
           "b2" : null
         },
         "r1576774_n1576521.S0" : {
           "from_node_id" : "_1576521",
-          "to_node_id" : "61486650",
+          "to_node_id" : "260084831",
           "b1" : {
             "x" : 2720.435546875,
             "y" : 3508.378173828125
@@ -5584,20 +5828,20 @@
       "name" : "R35",
       "segments" : {
         "r1576732_n1576599.S1" : {
-          "from_node_id" : "21318557",
+          "from_node_id" : "103190280",
           "to_node_id" : "_1576924",
           "b1" : null,
           "b2" : null
         },
         "r1576732_n1576598.S1" : {
-          "from_node_id" : "175539212",
+          "from_node_id" : "191271104",
           "to_node_id" : "_1576924",
           "b1" : null,
           "b2" : null
         },
         "r1576732_n1576598.S0" : {
           "from_node_id" : "_1576598",
-          "to_node_id" : "175539212",
+          "to_node_id" : "191271104",
           "b1" : {
             "x" : 4803.64306640625,
             "y" : 2913.631103515625
@@ -5609,7 +5853,7 @@
         },
         "r1576732_n1576599.S0" : {
           "from_node_id" : "_1576599",
-          "to_node_id" : "21318557",
+          "to_node_id" : "103190280",
           "b1" : {
             "x" : 4799.44970703125,
             "y" : 2913.631103515625
@@ -6012,20 +6256,20 @@
       "name" : "R24",
       "segments" : {
         "r1576720_n1576567.S1" : {
-          "from_node_id" : "100225812",
+          "from_node_id" : "158631603",
           "to_node_id" : "_1576888",
           "b1" : null,
           "b2" : null
         },
         "r1576720_n1576533.S1" : {
-          "from_node_id" : "158631603",
+          "from_node_id" : "57454458",
           "to_node_id" : "_1576888",
           "b1" : null,
           "b2" : null
         },
         "r1576720_n1576533.S0" : {
           "from_node_id" : "_1576533",
-          "to_node_id" : "158631603",
+          "to_node_id" : "57454458",
           "b1" : {
             "x" : 3559.1474609375,
             "y" : 2640.147216796875
@@ -6072,14 +6316,14 @@
           }
         },
         "r1576720_n1576568.S1" : {
-          "from_node_id" : "66594670",
+          "from_node_id" : "216530938",
           "to_node_id" : "_1576888",
           "b1" : null,
           "b2" : null
         },
         "r1576720_n1576567.S0" : {
           "from_node_id" : "_1576567",
-          "to_node_id" : "100225812",
+          "to_node_id" : "158631603",
           "b1" : {
             "x" : 3566.618896484375,
             "y" : 2647.792724609375
@@ -6091,7 +6335,7 @@
         },
         "r1576720_n1576568.S0" : {
           "from_node_id" : "_1576568",
-          "to_node_id" : "66594670",
+          "to_node_id" : "216530938",
           "b1" : {
             "x" : 3569.318603515625,
             "y" : 2650.554931640625
@@ -6299,7 +6543,7 @@
         },
         "r1576776_n1576504.S0" : {
           "from_node_id" : "_1576504",
-          "to_node_id" : "238402621",
+          "to_node_id" : "251047430",
           "b1" : {
             "x" : 2347.6083984375,
             "y" : 3018.351806640625
@@ -6310,13 +6554,13 @@
           }
         },
         "r1576776_n1576504.S1" : {
-          "from_node_id" : "238402621",
+          "from_node_id" : "251047430",
           "to_node_id" : "_1577026",
           "b1" : null,
           "b2" : null
         },
         "r1576776_n1576690.S1" : {
-          "from_node_id" : "215764007",
+          "from_node_id" : "98561003",
           "to_node_id" : "_1577026",
           "b1" : null,
           "b2" : null
@@ -6335,7 +6579,7 @@
         },
         "r1576776_n1576690.S0" : {
           "from_node_id" : "_1576690",
-          "to_node_id" : "215764007",
+          "to_node_id" : "98561003",
           "b1" : {
             "x" : 2317.63134765625,
             "y" : 3036.338134765625
@@ -6518,14 +6762,14 @@
       "name" : "R19",
       "segments" : {
         "r1576713_n1576552.S1" : {
-          "from_node_id" : "57454458",
+          "from_node_id" : "241397411",
           "to_node_id" : "_1576878",
           "b1" : null,
           "b2" : null
         },
         "r1576713_n1576553.S0" : {
           "from_node_id" : "_1576553",
-          "to_node_id" : "216530938",
+          "to_node_id" : "18179709",
           "b1" : {
             "x" : 4783.45751953125,
             "y" : 3320.631103515625
@@ -6537,7 +6781,7 @@
         },
         "r1576713_n1576552.S0" : {
           "from_node_id" : "_1576552",
-          "to_node_id" : "57454458",
+          "to_node_id" : "241397411",
           "b1" : {
             "x" : 4786.74365234375,
             "y" : 3320.631103515625
@@ -6548,7 +6792,7 @@
           }
         },
         "r1576713_n1576553.S1" : {
-          "from_node_id" : "216530938",
+          "from_node_id" : "18179709",
           "to_node_id" : "_1576878",
           "b1" : null,
           "b2" : null
@@ -6763,7 +7007,7 @@
         },
         "r1576712_n1576550.S0" : {
           "from_node_id" : "_1576550",
-          "to_node_id" : "241397411",
+          "to_node_id" : "98368231",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 3320.45068359375
@@ -6774,14 +7018,14 @@
           }
         },
         "r1576712_n1576550.S1" : {
-          "from_node_id" : "241397411",
+          "from_node_id" : "98368231",
           "to_node_id" : "_1576876",
           "b1" : null,
           "b2" : null
         },
         "r1576712_n1576517.S0" : {
           "from_node_id" : "_1576517",
-          "to_node_id" : "228610695",
+          "to_node_id" : "142537440",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 3298.631103515625
@@ -6792,7 +7036,7 @@
           }
         },
         "r1576712_n1576517.S1" : {
-          "from_node_id" : "228610695",
+          "from_node_id" : "142537440",
           "to_node_id" : "_1576876",
           "b1" : null,
           "b2" : null
@@ -6811,7 +7055,7 @@
         },
         "r1576712_n1576549.S0" : {
           "from_node_id" : "_1576549",
-          "to_node_id" : "18179709",
+          "to_node_id" : "228610695",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 3326.40087890625
@@ -6822,7 +7066,7 @@
           }
         },
         "r1576712_n1576549.S1" : {
-          "from_node_id" : "18179709",
+          "from_node_id" : "228610695",
           "to_node_id" : "_1576876",
           "b1" : null,
           "b2" : null
@@ -7000,7 +7244,7 @@
       "name" : "R31",
       "segments" : {
         "r1576728_n1576589.S1" : {
-          "from_node_id" : "139633663",
+          "from_node_id" : "36616362",
           "to_node_id" : "_1576911",
           "b1" : null,
           "b2" : null
@@ -7031,7 +7275,7 @@
         },
         "r1576728_n1576511.S0" : {
           "from_node_id" : "_1576511",
-          "to_node_id" : "154988899",
+          "to_node_id" : "90045638",
           "b1" : {
             "x" : 1216.2196044921875,
             "y" : 3680.631103515625
@@ -7042,14 +7286,14 @@
           }
         },
         "r1576728_n1576511.S1" : {
-          "from_node_id" : "154988899",
+          "from_node_id" : "90045638",
           "to_node_id" : "_1576911",
           "b1" : null,
           "b2" : null
         },
         "r1576728_n1576589.S0" : {
           "from_node_id" : "_1576589",
-          "to_node_id" : "139633663",
+          "to_node_id" : "36616362",
           "b1" : {
             "x" : 1231.699462890625,
             "y" : 3680.631103515625
@@ -7233,7 +7477,7 @@
       "segments" : {
         "r1576694_n1576489.S0" : {
           "from_node_id" : "_1576489",
-          "to_node_id" : "222057045",
+          "to_node_id" : "23880693",
           "b1" : {
             "x" : 1913.482421875,
             "y" : 950.6310424804688
@@ -7245,7 +7489,7 @@
         },
         "r1576694_n1576490.S0" : {
           "from_node_id" : "_1576490",
-          "to_node_id" : "186061555",
+          "to_node_id" : "86155141",
           "b1" : {
             "x" : 1912.6429443359375,
             "y" : 950.6310424804688
@@ -7256,13 +7500,13 @@
           }
         },
         "r1576694_n1576489.S1" : {
-          "from_node_id" : "222057045",
+          "from_node_id" : "23880693",
           "to_node_id" : "_1576837",
           "b1" : null,
           "b2" : null
         },
         "r1576694_n1576490.S1" : {
-          "from_node_id" : "186061555",
+          "from_node_id" : "86155141",
           "to_node_id" : "_1576837",
           "b1" : null,
           "b2" : null
@@ -7477,7 +7721,7 @@
       "segments" : {
         "r1577540_n1576827.S0" : {
           "from_node_id" : "_1576827",
-          "to_node_id" : "48368246",
+          "to_node_id" : "181771666",
           "b1" : {
             "x" : 4587.8720703125,
             "y" : 2255.631103515625
@@ -7488,7 +7732,7 @@
           }
         },
         "r1577540_n1576827.S1" : {
-          "from_node_id" : "48368246",
+          "from_node_id" : "181771666",
           "to_node_id" : "_1577062",
           "b1" : null,
           "b2" : null
@@ -7507,7 +7751,7 @@
         },
         "r1577540_n1576539.S0" : {
           "from_node_id" : "_1576539",
-          "to_node_id" : "78864491",
+          "to_node_id" : "48368246",
           "b1" : {
             "x" : 4534.65673828125,
             "y" : 2255.631103515625
@@ -7531,7 +7775,7 @@
         },
         "r1577540_n1576820.S0" : {
           "from_node_id" : "_1576820",
-          "to_node_id" : "46941357",
+          "to_node_id" : "116444293",
           "b1" : {
             "x" : 4574.14306640625,
             "y" : 2255.631103515625
@@ -7542,13 +7786,13 @@
           }
         },
         "r1577540_n1576539.S1" : {
-          "from_node_id" : "78864491",
+          "from_node_id" : "48368246",
           "to_node_id" : "_1577062",
           "b1" : null,
           "b2" : null
         },
         "r1577540_n1576820.S1" : {
-          "from_node_id" : "46941357",
+          "from_node_id" : "116444293",
           "to_node_id" : "_1577062",
           "b1" : null,
           "b2" : null
@@ -7762,14 +8006,14 @@
           }
         },
         "r1576711_n1576545.S1" : {
-          "from_node_id" : "142537440",
+          "from_node_id" : "40191541",
           "to_node_id" : "_1576872",
           "b1" : null,
           "b2" : null
         },
         "r1576711_n1576545.S0" : {
           "from_node_id" : "_1576545",
-          "to_node_id" : "142537440",
+          "to_node_id" : "40191541",
           "b1" : {
             "x" : 2165.958740234375,
             "y" : 1541.8037109375
@@ -7780,14 +8024,14 @@
           }
         },
         "r1576711_n1576546.S1" : {
-          "from_node_id" : "98368231",
+          "from_node_id" : "58331995",
           "to_node_id" : "_1576872",
           "b1" : null,
           "b2" : null
         },
         "r1576711_n1576546.S0" : {
           "from_node_id" : "_1576546",
-          "to_node_id" : "98368231",
+          "to_node_id" : "58331995",
           "b1" : {
             "x" : 2167.54541015625,
             "y" : 1541.8038330078125
@@ -7995,7 +8239,7 @@
         },
         "r1576693_n1576486.S0" : {
           "from_node_id" : "_1576486",
-          "to_node_id" : "86155141",
+          "to_node_id" : "176785537",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 2475.631103515625
@@ -8006,20 +8250,20 @@
           }
         },
         "r1576693_n1576485.S1" : {
-          "from_node_id" : "23880693",
+          "from_node_id" : "40453625",
           "to_node_id" : "_1576836",
           "b1" : null,
           "b2" : null
         },
         "r1576693_n1576486.S1" : {
-          "from_node_id" : "86155141",
+          "from_node_id" : "176785537",
           "to_node_id" : "_1576836",
           "b1" : null,
           "b2" : null
         },
         "r1576693_n1576485.S0" : {
           "from_node_id" : "_1576485",
-          "to_node_id" : "23880693",
+          "to_node_id" : "40453625",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 2474.861328125
@@ -8399,7 +8643,7 @@
       "segments" : {
         "r1576771_n1576531.S0" : {
           "from_node_id" : "_1576531",
-          "to_node_id" : "128691559",
+          "to_node_id" : "118035218",
           "b1" : {
             "x" : 4818.18212890625,
             "y" : 2712.631103515625
@@ -8410,7 +8654,7 @@
           }
         },
         "r1576771_n1576531.S1" : {
-          "from_node_id" : "128691559",
+          "from_node_id" : "118035218",
           "to_node_id" : "_1577011",
           "b1" : null,
           "b2" : null
@@ -8441,7 +8685,7 @@
         },
         "r1576771_n1576673.S0" : {
           "from_node_id" : "_1576673",
-          "to_node_id" : "84547943",
+          "to_node_id" : "107994825",
           "b1" : {
             "x" : 4798.95947265625,
             "y" : 2712.631103515625
@@ -8452,7 +8696,7 @@
           }
         },
         "r1576771_n1576673.S1" : {
-          "from_node_id" : "84547943",
+          "from_node_id" : "107994825",
           "to_node_id" : "_1577011",
           "b1" : null,
           "b2" : null
@@ -8630,14 +8874,14 @@
       "name" : "R90",
       "segments" : {
         "r1577545_n1576814.S1" : {
-          "from_node_id" : "104075742",
+          "from_node_id" : "78864491",
           "to_node_id" : "_1577065",
           "b1" : null,
           "b2" : null
         },
         "r1577545_n1576814.S0" : {
           "from_node_id" : "_1576814",
-          "to_node_id" : "104075742",
+          "to_node_id" : "78864491",
           "b1" : {
             "x" : 3185.9365234375,
             "y" : 2502.090087890625
@@ -8660,14 +8904,14 @@
           }
         },
         "r1577545_n1576533.S1" : {
-          "from_node_id" : "74909852",
+          "from_node_id" : "46941357",
           "to_node_id" : "_1577065",
           "b1" : null,
           "b2" : null
         },
         "r1577545_n1576533.S0" : {
           "from_node_id" : "_1576533",
-          "to_node_id" : "74909852",
+          "to_node_id" : "46941357",
           "b1" : {
             "x" : 3208.8876953125,
             "y" : 2501.190185546875
@@ -9046,14 +9290,14 @@
       "name" : "R84",
       "segments" : {
         "r1577520_n1576830.S1" : {
-          "from_node_id" : "11638040",
+          "from_node_id" : "42748608",
           "to_node_id" : "_1577049",
           "b1" : null,
           "b2" : null
         },
         "r1577520_n1576503.S0" : {
           "from_node_id" : "_1576503",
-          "to_node_id" : "193264888",
+          "to_node_id" : "192134815",
           "b1" : {
             "x" : 3012.411865234375,
             "y" : 2285.631103515625
@@ -9065,7 +9309,7 @@
         },
         "r1577520_n1576830.S0" : {
           "from_node_id" : "_1576830",
-          "to_node_id" : "11638040",
+          "to_node_id" : "42748608",
           "b1" : {
             "x" : 3049.295654296875,
             "y" : 2285.631103515625
@@ -9088,7 +9332,7 @@
           }
         },
         "r1577520_n1576503.S1" : {
-          "from_node_id" : "193264888",
+          "from_node_id" : "192134815",
           "to_node_id" : "_1577049",
           "b1" : null,
           "b2" : null
@@ -9278,7 +9522,7 @@
       "name" : "R33",
       "segments" : {
         "r1576730_n1576591.S1" : {
-          "from_node_id" : "96455421",
+          "from_node_id" : "139633663",
           "to_node_id" : "_1576916",
           "b1" : null,
           "b2" : null
@@ -9297,7 +9541,7 @@
         },
         "r1576730_n1576521.S0" : {
           "from_node_id" : "_1576521",
-          "to_node_id" : "33802239",
+          "to_node_id" : "154988899",
           "b1" : {
             "x" : 1750.0416259765625,
             "y" : 3364.40869140625
@@ -9308,7 +9552,7 @@
           }
         },
         "r1576730_n1576521.S1" : {
-          "from_node_id" : "33802239",
+          "from_node_id" : "154988899",
           "to_node_id" : "_1576916",
           "b1" : null,
           "b2" : null
@@ -9339,7 +9583,7 @@
         },
         "r1576730_n1576591.S0" : {
           "from_node_id" : "_1576591",
-          "to_node_id" : "96455421",
+          "to_node_id" : "139633663",
           "b1" : {
             "x" : 1487.6002197265625,
             "y" : 3243.245849609375
@@ -9522,14 +9766,14 @@
       "name" : "R47",
       "segments" : {
         "r1576746_n1576534.S1" : {
-          "from_node_id" : "224334002",
+          "from_node_id" : "20804602",
           "to_node_id" : "_1576953",
           "b1" : null,
           "b2" : null
         },
         "r1576746_n1576534.S0" : {
           "from_node_id" : "_1576534",
-          "to_node_id" : "224334002",
+          "to_node_id" : "20804602",
           "b1" : {
             "x" : 4207.14306640625,
             "y" : 861.6310424804688
@@ -9577,7 +9821,7 @@
         },
         "r1576746_n1576630.S0" : {
           "from_node_id" : "_1576630",
-          "to_node_id" : "2341771",
+          "to_node_id" : "60380446",
           "b1" : {
             "x" : 4207.14306640625,
             "y" : 872.9031372070312
@@ -9588,7 +9832,7 @@
           }
         },
         "r1576746_n1576630.S1" : {
-          "from_node_id" : "2341771",
+          "from_node_id" : "60380446",
           "to_node_id" : "_1576953",
           "b1" : null,
           "b2" : null
@@ -9962,14 +10206,14 @@
           }
         },
         "r1576745_n1576628.S1" : {
-          "from_node_id" : "20804602",
+          "from_node_id" : "204617837",
           "to_node_id" : "_1576951",
           "b1" : null,
           "b2" : null
         },
         "r1576745_n1576628.S0" : {
           "from_node_id" : "_1576628",
-          "to_node_id" : "20804602",
+          "to_node_id" : "204617837",
           "b1" : {
             "x" : 4239.14306640625,
             "y" : 3574.33203125
@@ -9993,7 +10237,7 @@
         },
         "r1576745_n1576578.S0" : {
           "from_node_id" : "_1576578",
-          "to_node_id" : "60380446",
+          "to_node_id" : "154476353",
           "b1" : {
             "x" : 4239.14306640625,
             "y" : 3595.181396484375
@@ -10004,7 +10248,7 @@
           }
         },
         "r1576745_n1576578.S1" : {
-          "from_node_id" : "60380446",
+          "from_node_id" : "154476353",
           "to_node_id" : "_1576951",
           "b1" : null,
           "b2" : null
@@ -10391,7 +10635,7 @@
         },
         "r1576724_n1576554.S0" : {
           "from_node_id" : "_1576554",
-          "to_node_id" : "165234033",
+          "to_node_id" : "100738963",
           "b1" : {
             "x" : 4356.14306640625,
             "y" : 3497.72216796875
@@ -10402,20 +10646,20 @@
           }
         },
         "r1576724_n1576554.S1" : {
-          "from_node_id" : "165234033",
+          "from_node_id" : "100738963",
           "to_node_id" : "_1576900",
           "b1" : null,
           "b2" : null
         },
         "r1576724_n1576577.S1" : {
-          "from_node_id" : "55931559",
+          "from_node_id" : "157264991",
           "to_node_id" : "_1576900",
           "b1" : null,
           "b2" : null
         },
         "r1576724_n1576576.S0" : {
           "from_node_id" : "_1576576",
-          "to_node_id" : "231744321",
+          "to_node_id" : "55931559",
           "b1" : {
             "x" : 4356.14306640625,
             "y" : 3516.4990234375
@@ -10427,7 +10671,7 @@
         },
         "r1576724_n1576577.S0" : {
           "from_node_id" : "_1576577",
-          "to_node_id" : "55931559",
+          "to_node_id" : "157264991",
           "b1" : {
             "x" : 4356.14306640625,
             "y" : 3521.458251953125
@@ -10438,7 +10682,7 @@
           }
         },
         "r1576724_n1576576.S1" : {
-          "from_node_id" : "231744321",
+          "from_node_id" : "55931559",
           "to_node_id" : "_1576900",
           "b1" : null,
           "b2" : null
@@ -10653,7 +10897,7 @@
         },
         "r1576707_n1576535.S0" : {
           "from_node_id" : "_1576535",
-          "to_node_id" : "40191541",
+          "to_node_id" : "228245684",
           "b1" : {
             "x" : 4137.14306640625,
             "y" : 862.7345581054688
@@ -10664,20 +10908,20 @@
           }
         },
         "r1576707_n1576534.S1" : {
-          "from_node_id" : "58331995",
+          "from_node_id" : "51235410",
           "to_node_id" : "_1576866",
           "b1" : null,
           "b2" : null
         },
         "r1576707_n1576535.S1" : {
-          "from_node_id" : "40191541",
+          "from_node_id" : "228245684",
           "to_node_id" : "_1576866",
           "b1" : null,
           "b2" : null
         },
         "r1576707_n1576534.S0" : {
           "from_node_id" : "_1576534",
-          "to_node_id" : "58331995",
+          "to_node_id" : "51235410",
           "b1" : {
             "x" : 4137.14306640625,
             "y" : 859.4346923828125
@@ -11068,14 +11312,14 @@
           }
         },
         "r1577490_n1576817.S1" : {
-          "from_node_id" : "228293258",
+          "from_node_id" : "215764007",
           "to_node_id" : "_1577032",
           "b1" : null,
           "b2" : null
         },
         "r1577490_n1576828.S0" : {
           "from_node_id" : "_1576828",
-          "to_node_id" : "244113744",
+          "to_node_id" : "129058596",
           "b1" : {
             "x" : 2045.6636962890625,
             "y" : 3630.631103515625
@@ -11087,7 +11331,7 @@
         },
         "r1577490_n1576825.S0" : {
           "from_node_id" : "_1576825",
-          "to_node_id" : "129058596",
+          "to_node_id" : "238402621",
           "b1" : {
             "x" : 2050.712158203125,
             "y" : 3630.631103515625
@@ -11099,7 +11343,7 @@
         },
         "r1577490_n1576817.S0" : {
           "from_node_id" : "_1576817",
-          "to_node_id" : "228293258",
+          "to_node_id" : "215764007",
           "b1" : {
             "x" : 2057.642822265625,
             "y" : 3630.631103515625
@@ -11110,7 +11354,7 @@
           }
         },
         "r1577490_n1576828.S1" : {
-          "from_node_id" : "244113744",
+          "from_node_id" : "129058596",
           "to_node_id" : "_1577032",
           "b1" : null,
           "b2" : null
@@ -11128,7 +11372,7 @@
           }
         },
         "r1577490_n1576825.S1" : {
-          "from_node_id" : "129058596",
+          "from_node_id" : "238402621",
           "to_node_id" : "_1577032",
           "b1" : null,
           "b2" : null
@@ -11538,7 +11782,7 @@
           }
         },
         "r1576748_n1576504.S1" : {
-          "from_node_id" : "62754762",
+          "from_node_id" : "80191394",
           "to_node_id" : "_1576959",
           "b1" : null,
           "b2" : null
@@ -11556,14 +11800,14 @@
           }
         },
         "r1576748_n1576636.S1" : {
-          "from_node_id" : "105045903",
+          "from_node_id" : "235901027",
           "to_node_id" : "_1576959",
           "b1" : null,
           "b2" : null
         },
         "r1576748_n1576504.S0" : {
           "from_node_id" : "_1576504",
-          "to_node_id" : "62754762",
+          "to_node_id" : "80191394",
           "b1" : {
             "x" : 2575.970703125,
             "y" : 3003.6005859375
@@ -11575,7 +11819,7 @@
         },
         "r1576748_n1576636.S0" : {
           "from_node_id" : "_1576636",
-          "to_node_id" : "105045903",
+          "to_node_id" : "235901027",
           "b1" : {
             "x" : 2575.250244140625,
             "y" : 3012.679931640625
@@ -11806,14 +12050,14 @@
           }
         },
         "r1576699_n1576511.S1" : {
-          "from_node_id" : "234208436",
+          "from_node_id" : "228955987",
           "to_node_id" : "_1576850",
           "b1" : null,
           "b2" : null
         },
         "r1576699_n1576510.S0" : {
           "from_node_id" : "_1576510",
-          "to_node_id" : "46637083",
+          "to_node_id" : "90346768",
           "b1" : {
             "x" : 1405.490234375,
             "y" : 3630.631103515625
@@ -11824,14 +12068,14 @@
           }
         },
         "r1576699_n1576510.S1" : {
-          "from_node_id" : "46637083",
+          "from_node_id" : "90346768",
           "to_node_id" : "_1576850",
           "b1" : null,
           "b2" : null
         },
         "r1576699_n1576512.S0" : {
           "from_node_id" : "_1576512",
-          "to_node_id" : "90346768",
+          "to_node_id" : "250490985",
           "b1" : {
             "x" : 1403.8792724609375,
             "y" : 3630.631103515625
@@ -11842,14 +12086,14 @@
           }
         },
         "r1576699_n1576512.S1" : {
-          "from_node_id" : "90346768",
+          "from_node_id" : "250490985",
           "to_node_id" : "_1576850",
           "b1" : null,
           "b2" : null
         },
         "r1576699_n1576511.S0" : {
           "from_node_id" : "_1576511",
-          "to_node_id" : "234208436",
+          "to_node_id" : "228955987",
           "b1" : {
             "x" : 1365.8929443359375,
             "y" : 3630.631103515625
@@ -12032,14 +12276,14 @@
       "name" : "R65",
       "segments" : {
         "r1576764_n1576627.S1" : {
-          "from_node_id" : "193828569",
+          "from_node_id" : "146704392",
           "to_node_id" : "_1576995",
           "b1" : null,
           "b2" : null
         },
         "r1576764_n1576627.S0" : {
           "from_node_id" : "_1576627",
-          "to_node_id" : "193828569",
+          "to_node_id" : "146704392",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 4445.630859375
@@ -12075,7 +12319,7 @@
         },
         "r1576764_n1576660.S0" : {
           "from_node_id" : "_1576660",
-          "to_node_id" : "157629974",
+          "to_node_id" : "35208170",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 4446.29150390625
@@ -12086,7 +12330,7 @@
           }
         },
         "r1576764_n1576660.S1" : {
-          "from_node_id" : "157629974",
+          "from_node_id" : "35208170",
           "to_node_id" : "_1576995",
           "b1" : null,
           "b2" : null
@@ -12264,14 +12508,14 @@
       "name" : "R92",
       "segments" : {
         "r1577547_n1577088.S1" : {
-          "from_node_id" : "69673470",
+          "from_node_id" : "50309402",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577088.S0" : {
           "from_node_id" : "_1577088",
-          "to_node_id" : "69673470",
+          "to_node_id" : "50309402",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12283,7 +12527,7 @@
         },
         "r1577547_n1577086.S0" : {
           "from_node_id" : "_1577086",
-          "to_node_id" : "57850294",
+          "to_node_id" : "87406293",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12294,7 +12538,7 @@
           }
         },
         "r1577547_n1577086.S1" : {
-          "from_node_id" : "57850294",
+          "from_node_id" : "87406293",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
@@ -12312,20 +12556,20 @@
           }
         },
         "r1577547_n1577092.S1" : {
-          "from_node_id" : "186657338",
+          "from_node_id" : "97353795",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577094.S1" : {
-          "from_node_id" : "12180347",
+          "from_node_id" : "61982149",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577092.S0" : {
           "from_node_id" : "_1577092",
-          "to_node_id" : "186657338",
+          "to_node_id" : "97353795",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12337,7 +12581,7 @@
         },
         "r1577547_n1577094.S0" : {
           "from_node_id" : "_1577094",
-          "to_node_id" : "12180347",
+          "to_node_id" : "61982149",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12349,7 +12593,7 @@
         },
         "r1577547_n1577078.S0" : {
           "from_node_id" : "_1577078",
-          "to_node_id" : "166694583",
+          "to_node_id" : "186657338",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12384,14 +12628,14 @@
           }
         },
         "r1577547_n1577078.S1" : {
-          "from_node_id" : "166694583",
+          "from_node_id" : "186657338",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577080.S0" : {
           "from_node_id" : "_1577080",
-          "to_node_id" : "87406293",
+          "to_node_id" : "249979131",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12402,20 +12646,20 @@
           }
         },
         "r1577547_n1577080.S1" : {
-          "from_node_id" : "87406293",
+          "from_node_id" : "249979131",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577082.S1" : {
-          "from_node_id" : "53116275",
+          "from_node_id" : "248439596",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577082.S0" : {
           "from_node_id" : "_1577082",
-          "to_node_id" : "53116275",
+          "to_node_id" : "248439596",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12426,14 +12670,14 @@
           }
         },
         "r1577547_n1577084.S1" : {
-          "from_node_id" : "50309402",
+          "from_node_id" : "53116275",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577084.S0" : {
           "from_node_id" : "_1577084",
-          "to_node_id" : "50309402",
+          "to_node_id" : "53116275",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12456,14 +12700,14 @@
           }
         },
         "r1577547_n1577089.S1" : {
-          "from_node_id" : "97353795",
+          "from_node_id" : "104716441",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577085.S0" : {
           "from_node_id" : "_1577085",
-          "to_node_id" : "248439596",
+          "to_node_id" : "5901407",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12486,14 +12730,14 @@
           }
         },
         "r1577547_n1577085.S1" : {
-          "from_node_id" : "248439596",
+          "from_node_id" : "5901407",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577079.S0" : {
           "from_node_id" : "_1577079",
-          "to_node_id" : "80604578",
+          "to_node_id" : "12180347",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12504,14 +12748,14 @@
           }
         },
         "r1577547_n1577093.S1" : {
-          "from_node_id" : "5901407",
+          "from_node_id" : "80604578",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577095.S0" : {
           "from_node_id" : "_1577095",
-          "to_node_id" : "188867805",
+          "to_node_id" : "57850294",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12522,14 +12766,14 @@
           }
         },
         "r1577547_n1577079.S1" : {
-          "from_node_id" : "80604578",
+          "from_node_id" : "12180347",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577093.S0" : {
           "from_node_id" : "_1577093",
-          "to_node_id" : "5901407",
+          "to_node_id" : "80604578",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12540,20 +12784,20 @@
           }
         },
         "r1577547_n1577095.S1" : {
-          "from_node_id" : "188867805",
+          "from_node_id" : "57850294",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577097.S1" : {
-          "from_node_id" : "61982149",
+          "from_node_id" : "164773901",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577097.S0" : {
           "from_node_id" : "_1577097",
-          "to_node_id" : "61982149",
+          "to_node_id" : "164773901",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12576,14 +12820,14 @@
           }
         },
         "r1577547_n1577073.S1" : {
-          "from_node_id" : "76942330",
+          "from_node_id" : "188867805",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
         },
         "r1577547_n1577073.S0" : {
           "from_node_id" : "_1577073",
-          "to_node_id" : "76942330",
+          "to_node_id" : "188867805",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4371.11279296875
@@ -12594,7 +12838,7 @@
           }
         },
         "r1577547_n1577083.S1" : {
-          "from_node_id" : "249979131",
+          "from_node_id" : "166694583",
           "to_node_id" : "_1577075",
           "b1" : null,
           "b2" : null
@@ -12613,7 +12857,7 @@
         },
         "r1577547_n1577083.S0" : {
           "from_node_id" : "_1577083",
-          "to_node_id" : "249979131",
+          "to_node_id" : "166694583",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12625,7 +12869,7 @@
         },
         "r1577547_n1577089.S0" : {
           "from_node_id" : "_1577089",
-          "to_node_id" : "97353795",
+          "to_node_id" : "104716441",
           "b1" : {
             "x" : 5326.19482421875,
             "y" : 4367.11279296875
@@ -12992,14 +13236,14 @@
       "name" : "R48",
       "segments" : {
         "r1576747_n1576584.S1" : {
-          "from_node_id" : "80191394",
+          "from_node_id" : "2341771",
           "to_node_id" : "_1576957",
           "b1" : null,
           "b2" : null
         },
         "r1576747_n1576584.S0" : {
           "from_node_id" : "_1576584",
-          "to_node_id" : "80191394",
+          "to_node_id" : "2341771",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 3928.631103515625
@@ -13011,7 +13255,7 @@
         },
         "r1576747_n1576633.S0" : {
           "from_node_id" : "_1576633",
-          "to_node_id" : "235901027",
+          "to_node_id" : "224334002",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 3926.29150390625
@@ -13022,7 +13266,7 @@
           }
         },
         "r1576747_n1576633.S1" : {
-          "from_node_id" : "235901027",
+          "from_node_id" : "224334002",
           "to_node_id" : "_1576957",
           "b1" : null,
           "b2" : null
@@ -13261,7 +13505,7 @@
         },
         "r1576763_n1576658.S0" : {
           "from_node_id" : "_1576658",
-          "to_node_id" : "35208170",
+          "to_node_id" : "215078753",
           "b1" : {
             "x" : 2832.142822265625,
             "y" : 399.9706115722656
@@ -13273,7 +13517,7 @@
         },
         "r1576763_n1576657.S0" : {
           "from_node_id" : "_1576657",
-          "to_node_id" : "146704392",
+          "to_node_id" : "66672278",
           "b1" : {
             "x" : 2832.142822265625,
             "y" : 403.6310729980469
@@ -13284,13 +13528,13 @@
           }
         },
         "r1576763_n1576658.S1" : {
-          "from_node_id" : "35208170",
+          "from_node_id" : "215078753",
           "to_node_id" : "_1576993",
           "b1" : null,
           "b2" : null
         },
         "r1576763_n1576657.S1" : {
-          "from_node_id" : "146704392",
+          "from_node_id" : "66672278",
           "to_node_id" : "_1576993",
           "b1" : null,
           "b2" : null
@@ -13848,14 +14092,14 @@
           }
         },
         "r1577549_n1577103.S1" : {
-          "from_node_id" : "258776280",
+          "from_node_id" : "69673470",
           "to_node_id" : "_1577105",
           "b1" : null,
           "b2" : null
         },
         "r1577549_n1577102.S0" : {
           "from_node_id" : "_1577102",
-          "to_node_id" : "190946580",
+          "to_node_id" : "8669867",
           "b1" : {
             "x" : 3253.497314453125,
             "y" : 3729.991943359375
@@ -13867,7 +14111,7 @@
         },
         "r1577549_n1577103.S0" : {
           "from_node_id" : "_1577103",
-          "to_node_id" : "258776280",
+          "to_node_id" : "69673470",
           "b1" : {
             "x" : 3255.005859375,
             "y" : 3731.687255859375
@@ -13878,7 +14122,7 @@
           }
         },
         "r1577549_n1577102.S1" : {
-          "from_node_id" : "190946580",
+          "from_node_id" : "8669867",
           "to_node_id" : "_1577105",
           "b1" : null,
           "b2" : null
@@ -14080,20 +14324,20 @@
           }
         },
         "r1576726_n1576501.S1" : {
-          "from_node_id" : "169489528",
+          "from_node_id" : "231744321",
           "to_node_id" : "_1576907",
           "b1" : null,
           "b2" : null
         },
         "r1576726_n1576500.S1" : {
-          "from_node_id" : "34777303",
+          "from_node_id" : "165234033",
           "to_node_id" : "_1576907",
           "b1" : null,
           "b2" : null
         },
         "r1576726_n1576500.S0" : {
           "from_node_id" : "_1576500",
-          "to_node_id" : "34777303",
+          "to_node_id" : "165234033",
           "b1" : {
             "x" : 3587.642822265625,
             "y" : 955.6310424804688
@@ -14105,7 +14349,7 @@
         },
         "r1576726_n1576501.S0" : {
           "from_node_id" : "_1576501",
-          "to_node_id" : "169489528",
+          "to_node_id" : "231744321",
           "b1" : {
             "x" : 3585.088623046875,
             "y" : 955.6310424804688
@@ -14496,14 +14740,14 @@
           }
         },
         "r1576742_n1576504.S1" : {
-          "from_node_id" : "164020815",
+          "from_node_id" : "224879794",
           "to_node_id" : "_1576942",
           "b1" : null,
           "b2" : null
         },
         "r1576742_n1576504.S0" : {
           "from_node_id" : "_1576504",
-          "to_node_id" : "164020815",
+          "to_node_id" : "224879794",
           "b1" : {
             "x" : 2347.791259765625,
             "y" : 2992.806884765625
@@ -14526,7 +14770,7 @@
           }
         },
         "r1576742_n1576620.S1" : {
-          "from_node_id" : "266450171",
+          "from_node_id" : "120605248",
           "to_node_id" : "_1576942",
           "b1" : null,
           "b2" : null
@@ -14545,7 +14789,7 @@
         },
         "r1576742_n1576620.S0" : {
           "from_node_id" : "_1576620",
-          "to_node_id" : "266450171",
+          "to_node_id" : "120605248",
           "b1" : {
             "x" : 2318.35400390625,
             "y" : 3007.525390625
@@ -15500,14 +15744,14 @@
       "name" : "R81",
       "segments" : {
         "r1577507_n1576829.S1" : {
-          "from_node_id" : "5188562",
+          "from_node_id" : "228293258",
           "to_node_id" : "_1577042",
           "b1" : null,
           "b2" : null
         },
         "r1577507_n1576829.S0" : {
           "from_node_id" : "_1576829",
-          "to_node_id" : "5188562",
+          "to_node_id" : "228293258",
           "b1" : {
             "x" : 2383.14892578125,
             "y" : 3804.30322265625
@@ -15519,7 +15763,7 @@
         },
         "r1577507_n1576822.S0" : {
           "from_node_id" : "_1576822",
-          "to_node_id" : "221956248",
+          "to_node_id" : "244113744",
           "b1" : {
             "x" : 2375.90576171875,
             "y" : 3797.54296875
@@ -15566,7 +15810,7 @@
           }
         },
         "r1577507_n1576822.S1" : {
-          "from_node_id" : "221956248",
+          "from_node_id" : "244113744",
           "to_node_id" : "_1577042",
           "b1" : null,
           "b2" : null
@@ -15744,14 +15988,14 @@
       "name" : "R25",
       "segments" : {
         "r1576721_n1576525.S1" : {
-          "from_node_id" : "101874302",
+          "from_node_id" : "66594670",
           "to_node_id" : "_1576891",
           "b1" : null,
           "b2" : null
         },
         "r1576721_n1576525.S0" : {
           "from_node_id" : "_1576525",
-          "to_node_id" : "101874302",
+          "to_node_id" : "66594670",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 1353.881103515625
@@ -15775,7 +16019,7 @@
         },
         "r1576721_n1576572.S0" : {
           "from_node_id" : "_1576572",
-          "to_node_id" : "197010705",
+          "to_node_id" : "100225812",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 1360.53759765625
@@ -15786,7 +16030,7 @@
           }
         },
         "r1576721_n1576572.S1" : {
-          "from_node_id" : "197010705",
+          "from_node_id" : "100225812",
           "to_node_id" : "_1576891",
           "b1" : null,
           "b2" : null
@@ -16001,7 +16245,7 @@
         },
         "r1576765_n1576662.S0" : {
           "from_node_id" : "_1576662",
-          "to_node_id" : "92734970",
+          "to_node_id" : "193828569",
           "b1" : {
             "x" : 1048.4412841796875,
             "y" : 516.4917602539062
@@ -16012,20 +16256,20 @@
           }
         },
         "r1576765_n1576662.S1" : {
-          "from_node_id" : "92734970",
+          "from_node_id" : "193828569",
           "to_node_id" : "_1576997",
           "b1" : null,
           "b2" : null
         },
         "r1576765_n1576647.S1" : {
-          "from_node_id" : "247113419",
+          "from_node_id" : "157629974",
           "to_node_id" : "_1576997",
           "b1" : null,
           "b2" : null
         },
         "r1576765_n1576647.S0" : {
           "from_node_id" : "_1576647",
-          "to_node_id" : "247113419",
+          "to_node_id" : "157629974",
           "b1" : {
             "x" : 1046.7969970703125,
             "y" : 537.6956787109375
@@ -16221,7 +16465,7 @@
       "segments" : {
         "r1576768_n1576626.S0" : {
           "from_node_id" : "_1576626",
-          "to_node_id" : "70695990",
+          "to_node_id" : "151442075",
           "b1" : {
             "x" : 1592.6429443359375,
             "y" : 950.6310424804688
@@ -16232,14 +16476,14 @@
           }
         },
         "r1576768_n1576667.S1" : {
-          "from_node_id" : "266456709",
+          "from_node_id" : "164874275",
           "to_node_id" : "_1577003",
           "b1" : null,
           "b2" : null
         },
         "r1576768_n1576667.S0" : {
           "from_node_id" : "_1576667",
-          "to_node_id" : "266456709",
+          "to_node_id" : "164874275",
           "b1" : {
             "x" : 1592.7626953125,
             "y" : 950.6310424804688
@@ -16274,7 +16518,7 @@
           }
         },
         "r1576768_n1576626.S1" : {
-          "from_node_id" : "70695990",
+          "from_node_id" : "151442075",
           "to_node_id" : "_1577003",
           "b1" : null,
           "b2" : null
@@ -16477,7 +16721,7 @@
         },
         "r1576700_n1576518.S0" : {
           "from_node_id" : "_1576518",
-          "to_node_id" : "41055129",
+          "to_node_id" : "64598559",
           "b1" : {
             "x" : 1314.9754638671875,
             "y" : 3132.953857421875
@@ -16488,14 +16732,14 @@
           }
         },
         "r1576700_n1576517.S1" : {
-          "from_node_id" : "64598559",
+          "from_node_id" : "234208436",
           "to_node_id" : "_1576852",
           "b1" : null,
           "b2" : null
         },
         "r1576700_n1576517.S0" : {
           "from_node_id" : "_1576517",
-          "to_node_id" : "64598559",
+          "to_node_id" : "234208436",
           "b1" : {
             "x" : 1298.09130859375,
             "y" : 3125.791015625
@@ -16507,7 +16751,7 @@
         },
         "r1576700_n1576516.S0" : {
           "from_node_id" : "_1576516",
-          "to_node_id" : "42102625",
+          "to_node_id" : "46637083",
           "b1" : {
             "x" : 1326.5443115234375,
             "y" : 3137.862060546875
@@ -16518,13 +16762,13 @@
           }
         },
         "r1576700_n1576518.S1" : {
-          "from_node_id" : "41055129",
+          "from_node_id" : "64598559",
           "to_node_id" : "_1576852",
           "b1" : null,
           "b2" : null
         },
         "r1576700_n1576516.S1" : {
-          "from_node_id" : "42102625",
+          "from_node_id" : "46637083",
           "to_node_id" : "_1576852",
           "b1" : null,
           "b2" : null
@@ -16726,14 +16970,14 @@
           }
         },
         "r1576727_n1576585.S1" : {
-          "from_node_id" : "90045638",
+          "from_node_id" : "169489528",
           "to_node_id" : "_1576909",
           "b1" : null,
           "b2" : null
         },
         "r1576727_n1576585.S0" : {
           "from_node_id" : "_1576585",
-          "to_node_id" : "90045638",
+          "to_node_id" : "169489528",
           "b1" : {
             "x" : 3771.569580078125,
             "y" : 3180.538818359375
@@ -16745,7 +16989,7 @@
         },
         "r1576727_n1576509.S0" : {
           "from_node_id" : "_1576509",
-          "to_node_id" : "156959879",
+          "to_node_id" : "34777303",
           "b1" : {
             "x" : 3771.273193359375,
             "y" : 3188.246337890625
@@ -16756,7 +17000,7 @@
           }
         },
         "r1576727_n1576509.S1" : {
-          "from_node_id" : "156959879",
+          "from_node_id" : "34777303",
           "to_node_id" : "_1576909",
           "b1" : null,
           "b2" : null
@@ -16775,7 +17019,7 @@
         },
         "r1576727_n1576586.S0" : {
           "from_node_id" : "_1576586",
-          "to_node_id" : "36616362",
+          "to_node_id" : "156959879",
           "b1" : {
             "x" : 3771.429931640625,
             "y" : 3184.17138671875
@@ -16798,7 +17042,7 @@
           }
         },
         "r1576727_n1576586.S1" : {
-          "from_node_id" : "36616362",
+          "from_node_id" : "156959879",
           "to_node_id" : "_1576909",
           "b1" : null,
           "b2" : null
@@ -17161,7 +17405,7 @@
       "segments" : {
         "r1576769_n1576575.S0" : {
           "from_node_id" : "_1576575",
-          "to_node_id" : "118035218",
+          "to_node_id" : "266456709",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 2008.131103515625
@@ -17172,13 +17416,13 @@
           }
         },
         "r1576769_n1576670.S1" : {
-          "from_node_id" : "5004776",
+          "from_node_id" : "70695990",
           "to_node_id" : "_1577008",
           "b1" : null,
           "b2" : null
         },
         "r1576769_n1576669.S1" : {
-          "from_node_id" : "107994825",
+          "from_node_id" : "5004776",
           "to_node_id" : "_1577008",
           "b1" : null,
           "b2" : null
@@ -17196,14 +17440,14 @@
           }
         },
         "r1576769_n1576575.S1" : {
-          "from_node_id" : "118035218",
+          "from_node_id" : "266456709",
           "to_node_id" : "_1577008",
           "b1" : null,
           "b2" : null
         },
         "r1576769_n1576669.S0" : {
           "from_node_id" : "_1576669",
-          "to_node_id" : "107994825",
+          "to_node_id" : "5004776",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 2012.5687255859375
@@ -17215,7 +17459,7 @@
         },
         "r1576769_n1576670.S0" : {
           "from_node_id" : "_1576670",
-          "to_node_id" : "5004776",
+          "to_node_id" : "70695990",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 2016.4007568359375
@@ -17423,7 +17667,7 @@
       "segments" : {
         "r1577514_n1576666.S0" : {
           "from_node_id" : "_1576666",
-          "to_node_id" : "192134815",
+          "to_node_id" : "5188562",
           "b1" : {
             "x" : 1352.1429443359375,
             "y" : 4434.84033203125
@@ -17435,7 +17679,7 @@
         },
         "r1577514_n1576833.S0" : {
           "from_node_id" : "_1576833",
-          "to_node_id" : "42748608",
+          "to_node_id" : "221956248",
           "b1" : {
             "x" : 1352.1429443359375,
             "y" : 4430.404296875
@@ -17446,7 +17690,7 @@
           }
         },
         "r1577514_n1576666.S1" : {
-          "from_node_id" : "192134815",
+          "from_node_id" : "5188562",
           "to_node_id" : "_1577045",
           "b1" : null,
           "b2" : null
@@ -17476,7 +17720,7 @@
           }
         },
         "r1577514_n1576833.S1" : {
-          "from_node_id" : "42748608",
+          "from_node_id" : "221956248",
           "to_node_id" : "_1577045",
           "b1" : null,
           "b2" : null
@@ -18035,7 +18279,7 @@
       "segments" : {
         "r1576696_n1576498.S0" : {
           "from_node_id" : "_1576498",
-          "to_node_id" : "123240973",
+          "to_node_id" : "159824815",
           "b1" : {
             "x" : 3502.142822265625,
             "y" : 463.1310729980469
@@ -18047,7 +18291,7 @@
         },
         "r1576696_n1576497.S0" : {
           "from_node_id" : "_1576497",
-          "to_node_id" : "159824815",
+          "to_node_id" : "222057045",
           "b1" : {
             "x" : 3502.142822265625,
             "y" : 435.76873779296875
@@ -18058,13 +18302,13 @@
           }
         },
         "r1576696_n1576498.S1" : {
-          "from_node_id" : "123240973",
+          "from_node_id" : "159824815",
           "to_node_id" : "_1576841",
           "b1" : null,
           "b2" : null
         },
         "r1576696_n1576497.S1" : {
-          "from_node_id" : "159824815",
+          "from_node_id" : "222057045",
           "to_node_id" : "_1576841",
           "b1" : null,
           "b2" : null
@@ -18082,14 +18326,14 @@
           }
         },
         "r1576696_n1576496.S1" : {
-          "from_node_id" : "142204845",
+          "from_node_id" : "186061555",
           "to_node_id" : "_1576841",
           "b1" : null,
           "b2" : null
         },
         "r1576696_n1576496.S0" : {
           "from_node_id" : "_1576496",
-          "to_node_id" : "142204845",
+          "to_node_id" : "186061555",
           "b1" : {
             "x" : 3502.142822265625,
             "y" : 410.1376953125
@@ -18480,14 +18724,14 @@
       "name" : "R93",
       "segments" : {
         "r1577548_n1576685.S1" : {
-          "from_node_id" : "8669867",
+          "from_node_id" : "76942330",
           "to_node_id" : "_1577100",
           "b1" : null,
           "b2" : null
         },
         "r1577548_n1576685.S0" : {
           "from_node_id" : "_1576685",
-          "to_node_id" : "8669867",
+          "to_node_id" : "76942330",
           "b1" : {
             "x" : 3017.924072265625,
             "y" : 3697.726806640625
@@ -18695,7 +18939,7 @@
       "segments" : {
         "r1576743_n1576524.S0" : {
           "from_node_id" : "_1576524",
-          "to_node_id" : "154476353",
+          "to_node_id" : "164020815",
           "b1" : {
             "x" : 1244.3428955078125,
             "y" : 950.6310424804688
@@ -18706,7 +18950,7 @@
           }
         },
         "r1576743_n1576623.S1" : {
-          "from_node_id" : "204617837",
+          "from_node_id" : "266450171",
           "to_node_id" : "_1576945",
           "b1" : null,
           "b2" : null
@@ -18737,7 +18981,7 @@
         },
         "r1576743_n1576623.S0" : {
           "from_node_id" : "_1576623",
-          "to_node_id" : "204617837",
+          "to_node_id" : "266450171",
           "b1" : {
             "x" : 1262.7626953125,
             "y" : 950.6310424804688
@@ -18748,7 +18992,7 @@
           }
         },
         "r1576743_n1576524.S1" : {
-          "from_node_id" : "154476353",
+          "from_node_id" : "164020815",
           "to_node_id" : "_1576945",
           "b1" : null,
           "b2" : null
@@ -18938,14 +19182,14 @@
       "name" : "R60",
       "segments" : {
         "r1576759_n1576651.S1" : {
-          "from_node_id" : "227955772",
+          "from_node_id" : "21885092",
           "to_node_id" : "_1576982",
           "b1" : null,
           "b2" : null
         },
         "r1576759_n1576651.S0" : {
           "from_node_id" : "_1576651",
-          "to_node_id" : "227955772",
+          "to_node_id" : "21885092",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 4006.29150390625
@@ -18957,7 +19201,7 @@
         },
         "r1576759_n1576652.S0" : {
           "from_node_id" : "_1576652",
-          "to_node_id" : "33419717",
+          "to_node_id" : "26869350",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 4002.631103515625
@@ -18968,7 +19212,7 @@
           }
         },
         "r1576759_n1576652.S1" : {
-          "from_node_id" : "33419717",
+          "from_node_id" : "26869350",
           "to_node_id" : "_1576982",
           "b1" : null,
           "b2" : null
@@ -19171,7 +19415,7 @@
       "segments" : {
         "r1576704_n1576529.S0" : {
           "from_node_id" : "_1576529",
-          "to_node_id" : "51235410",
+          "to_node_id" : "41055129",
           "b1" : {
             "x" : 827.1429443359375,
             "y" : 1491.4354248046875
@@ -19194,14 +19438,14 @@
           }
         },
         "r1576704_n1576528.S1" : {
-          "from_node_id" : "228245684",
+          "from_node_id" : "42102625",
           "to_node_id" : "_1576859",
           "b1" : null,
           "b2" : null
         },
         "r1576704_n1576528.S0" : {
           "from_node_id" : "_1576528",
-          "to_node_id" : "228245684",
+          "to_node_id" : "42102625",
           "b1" : {
             "x" : 827.1429443359375,
             "y" : 1467.733642578125
@@ -19212,7 +19456,7 @@
           }
         },
         "r1576704_n1576529.S1" : {
-          "from_node_id" : "51235410",
+          "from_node_id" : "41055129",
           "to_node_id" : "_1576859",
           "b1" : null,
           "b2" : null
@@ -19403,7 +19647,7 @@
       "segments" : {
         "r1576723_n1576547.S0" : {
           "from_node_id" : "_1576547",
-          "to_node_id" : "100738963",
+          "to_node_id" : "197010705",
           "b1" : {
             "x" : 1765.0166015625,
             "y" : 1420.631103515625
@@ -19414,7 +19658,7 @@
           }
         },
         "r1576723_n1576547.S1" : {
-          "from_node_id" : "100738963",
+          "from_node_id" : "197010705",
           "to_node_id" : "_1576896",
           "b1" : null,
           "b2" : null
@@ -19445,7 +19689,7 @@
         },
         "r1576723_n1576558.S0" : {
           "from_node_id" : "_1576558",
-          "to_node_id" : "157264991",
+          "to_node_id" : "101874302",
           "b1" : {
             "x" : 1733.3516845703125,
             "y" : 1420.631103515625
@@ -19456,7 +19700,7 @@
           }
         },
         "r1576723_n1576558.S1" : {
-          "from_node_id" : "157264991",
+          "from_node_id" : "101874302",
           "to_node_id" : "_1576896",
           "b1" : null,
           "b2" : null
@@ -20210,20 +20454,20 @@
       "name" : "R4",
       "segments" : {
         "r1576697_n1576502.S1" : {
-          "from_node_id" : "149689966",
+          "from_node_id" : "123240973",
           "to_node_id" : "_1576845",
           "b1" : null,
           "b2" : null
         },
         "r1576697_n1576503.S1" : {
-          "from_node_id" : "82546847",
+          "from_node_id" : "142204845",
           "to_node_id" : "_1576845",
           "b1" : null,
           "b2" : null
         },
         "r1576697_n1576503.S0" : {
           "from_node_id" : "_1576503",
-          "to_node_id" : "82546847",
+          "to_node_id" : "142204845",
           "b1" : {
             "x" : 2733.576171875,
             "y" : 2689.505615234375
@@ -20235,7 +20479,7 @@
         },
         "r1576697_n1576502.S0" : {
           "from_node_id" : "_1576502",
-          "to_node_id" : "149689966",
+          "to_node_id" : "123240973",
           "b1" : {
             "x" : 2728.646728515625,
             "y" : 2695.696044921875
@@ -20430,14 +20674,14 @@
       "name" : "R5",
       "segments" : {
         "r1576698_n1576506.S1" : {
-          "from_node_id" : "250490985",
+          "from_node_id" : "82546847",
           "to_node_id" : "_1576846",
           "b1" : null,
           "b2" : null
         },
         "r1576698_n1576505.S0" : {
           "from_node_id" : "_1576505",
-          "to_node_id" : "228955987",
+          "to_node_id" : "149689966",
           "b1" : {
             "x" : 3491.112548828125,
             "y" : 3619.304931640625
@@ -20449,7 +20693,7 @@
         },
         "r1576698_n1576506.S0" : {
           "from_node_id" : "_1576506",
-          "to_node_id" : "250490985",
+          "to_node_id" : "82546847",
           "b1" : {
             "x" : 3487.5478515625,
             "y" : 3622.224853515625
@@ -20484,7 +20728,7 @@
           }
         },
         "r1576698_n1576505.S1" : {
-          "from_node_id" : "228955987",
+          "from_node_id" : "149689966",
           "to_node_id" : "_1576846",
           "b1" : null,
           "b2" : null
@@ -20858,20 +21102,20 @@
       "name" : "R42",
       "segments" : {
         "r1576741_n1576615.S1" : {
-          "from_node_id" : "224879794",
+          "from_node_id" : "24765477",
           "to_node_id" : "_1576939",
           "b1" : null,
           "b2" : null
         },
         "r1576741_n1576616.S1" : {
-          "from_node_id" : "99774066",
+          "from_node_id" : "221177464",
           "to_node_id" : "_1576939",
           "b1" : null,
           "b2" : null
         },
         "r1576741_n1576615.S0" : {
           "from_node_id" : "_1576615",
-          "to_node_id" : "224879794",
+          "to_node_id" : "24765477",
           "b1" : {
             "x" : 4466.3525390625,
             "y" : 3843.631103515625
@@ -20883,7 +21127,7 @@
         },
         "r1576741_n1576616.S0" : {
           "from_node_id" : "_1576616",
-          "to_node_id" : "99774066",
+          "to_node_id" : "221177464",
           "b1" : {
             "x" : 4462.80322265625,
             "y" : 3843.631103515625
@@ -20930,14 +21174,14 @@
           }
         },
         "r1576741_n1576537.S1" : {
-          "from_node_id" : "120605248",
+          "from_node_id" : "99774066",
           "to_node_id" : "_1576939",
           "b1" : null,
           "b2" : null
         },
         "r1576741_n1576537.S0" : {
           "from_node_id" : "_1576537",
-          "to_node_id" : "120605248",
+          "to_node_id" : "99774066",
           "b1" : {
             "x" : 4511.19287109375,
             "y" : 3843.631103515625
@@ -21145,7 +21389,7 @@
         },
         "r1576756_n1576649.S0" : {
           "from_node_id" : "_1576649",
-          "to_node_id" : "26869350",
+          "to_node_id" : "58488213",
           "b1" : {
             "x" : 2492.142822265625,
             "y" : 4430.630859375
@@ -21156,14 +21400,14 @@
           }
         },
         "r1576756_n1576649.S1" : {
-          "from_node_id" : "26869350",
+          "from_node_id" : "58488213",
           "to_node_id" : "_1576976",
           "b1" : null,
           "b2" : null
         },
         "r1576756_n1576648.S0" : {
           "from_node_id" : "_1576648",
-          "to_node_id" : "21885092",
+          "to_node_id" : "248660644",
           "b1" : {
             "x" : 2492.142822265625,
             "y" : 4431.29150390625
@@ -21174,7 +21418,7 @@
           }
         },
         "r1576756_n1576648.S1" : {
-          "from_node_id" : "21885092",
+          "from_node_id" : "248660644",
           "to_node_id" : "_1576976",
           "b1" : null,
           "b2" : null
@@ -21365,7 +21609,7 @@
       "segments" : {
         "r1576761_n1576578.S0" : {
           "from_node_id" : "_1576578",
-          "to_node_id" : "61007142",
+          "to_node_id" : "33419717",
           "b1" : {
             "x" : 4108.14306640625,
             "y" : 3610.16943359375
@@ -21388,7 +21632,7 @@
           }
         },
         "r1576761_n1576578.S1" : {
-          "from_node_id" : "61007142",
+          "from_node_id" : "33419717",
           "to_node_id" : "_1576988",
           "b1" : null,
           "b2" : null
@@ -21406,20 +21650,20 @@
           }
         },
         "r1576761_n1576654.S1" : {
-          "from_node_id" : "224715558",
+          "from_node_id" : "227955772",
           "to_node_id" : "_1576988",
           "b1" : null,
           "b2" : null
         },
         "r1576761_n1576509.S1" : {
-          "from_node_id" : "66672278",
+          "from_node_id" : "61007142",
           "to_node_id" : "_1576988",
           "b1" : null,
           "b2" : null
         },
         "r1576761_n1576509.S0" : {
           "from_node_id" : "_1576509",
-          "to_node_id" : "66672278",
+          "to_node_id" : "61007142",
           "b1" : {
             "x" : 4111.3662109375,
             "y" : 3841.37744140625
@@ -21430,14 +21674,14 @@
           }
         },
         "r1576761_n1576655.S1" : {
-          "from_node_id" : "215078753",
+          "from_node_id" : "224715558",
           "to_node_id" : "_1576988",
           "b1" : null,
           "b2" : null
         },
         "r1576761_n1576654.S0" : {
           "from_node_id" : "_1576654",
-          "to_node_id" : "224715558",
+          "to_node_id" : "227955772",
           "b1" : {
             "x" : 4108.14306640625,
             "y" : 3588.255126953125
@@ -21449,7 +21693,7 @@
         },
         "r1576761_n1576655.S0" : {
           "from_node_id" : "_1576655",
-          "to_node_id" : "215078753",
+          "to_node_id" : "224715558",
           "b1" : {
             "x" : 4108.14306640625,
             "y" : 3592.84326171875
@@ -21817,7 +22061,7 @@
       "segments" : {
         "r1576739_n1576514.S0" : {
           "from_node_id" : "_1576514",
-          "to_node_id" : "221177464",
+          "to_node_id" : "106320161",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 3732.631103515625
@@ -21828,7 +22072,7 @@
           }
         },
         "r1576739_n1576514.S1" : {
-          "from_node_id" : "221177464",
+          "from_node_id" : "106320161",
           "to_node_id" : "_1576937",
           "b1" : null,
           "b2" : null
@@ -21859,7 +22103,7 @@
         },
         "r1576739_n1576612.S0" : {
           "from_node_id" : "_1576612",
-          "to_node_id" : "24765477",
+          "to_node_id" : "264698239",
           "b1" : {
             "x" : 1707.1429443359375,
             "y" : 3734.970703125
@@ -21870,7 +22114,7 @@
           }
         },
         "r1576739_n1576612.S1" : {
-          "from_node_id" : "24765477",
+          "from_node_id" : "264698239",
           "to_node_id" : "_1576937",
           "b1" : null,
           "b2" : null
@@ -22440,20 +22684,20 @@
           }
         },
         "r1576754_n1576642.S1" : {
-          "from_node_id" : "58488213",
+          "from_node_id" : "215902023",
           "to_node_id" : "_1576972",
           "b1" : null,
           "b2" : null
         },
         "r1576754_n1576643.S1" : {
-          "from_node_id" : "60977353",
+          "from_node_id" : "238052458",
           "to_node_id" : "_1576972",
           "b1" : null,
           "b2" : null
         },
         "r1576754_n1576642.S0" : {
           "from_node_id" : "_1576642",
-          "to_node_id" : "58488213",
+          "to_node_id" : "215902023",
           "b1" : {
             "x" : 827.1429443359375,
             "y" : 3507.401611328125
@@ -22464,14 +22708,14 @@
           }
         },
         "r1576754_n1576511.S1" : {
-          "from_node_id" : "248660644",
+          "from_node_id" : "60977353",
           "to_node_id" : "_1576972",
           "b1" : null,
           "b2" : null
         },
         "r1576754_n1576643.S0" : {
           "from_node_id" : "_1576643",
-          "to_node_id" : "60977353",
+          "to_node_id" : "238052458",
           "b1" : {
             "x" : 827.1429443359375,
             "y" : 3505.631103515625
@@ -22483,7 +22727,7 @@
         },
         "r1576754_n1576511.S0" : {
           "from_node_id" : "_1576511",
-          "to_node_id" : "248660644",
+          "to_node_id" : "60977353",
           "b1" : {
             "x" : 827.1429443359375,
             "y" : 3529.746337890625
@@ -22691,7 +22935,7 @@
       "segments" : {
         "r1576772_n1576554.S0" : {
           "from_node_id" : "_1576554",
-          "to_node_id" : "174326103",
+          "to_node_id" : "128691559",
           "b1" : {
             "x" : 4129.64306640625,
             "y" : 3317.631103515625
@@ -22702,7 +22946,7 @@
           }
         },
         "r1576772_n1576554.S1" : {
-          "from_node_id" : "174326103",
+          "from_node_id" : "128691559",
           "to_node_id" : "_1577015",
           "b1" : null,
           "b2" : null
@@ -22745,7 +22989,7 @@
         },
         "r1576772_n1576676.S0" : {
           "from_node_id" : "_1576676",
-          "to_node_id" : "42277700",
+          "to_node_id" : "84547943",
           "b1" : {
             "x" : 4121.81201171875,
             "y" : 3317.631103515625
@@ -22756,7 +23000,7 @@
           }
         },
         "r1576772_n1576676.S1" : {
-          "from_node_id" : "42277700",
+          "from_node_id" : "84547943",
           "to_node_id" : "_1577015",
           "b1" : null,
           "b2" : null
@@ -22775,7 +23019,7 @@
         },
         "r1576772_n1576675.S0" : {
           "from_node_id" : "_1576675",
-          "to_node_id" : "139416806",
+          "to_node_id" : "174326103",
           "b1" : {
             "x" : 4125.8408203125,
             "y" : 3317.631103515625
@@ -22786,7 +23030,7 @@
           }
         },
         "r1576772_n1576675.S1" : {
-          "from_node_id" : "139416806",
+          "from_node_id" : "174326103",
           "to_node_id" : "_1577015",
           "b1" : null,
           "b2" : null
@@ -22976,14 +23220,14 @@
           }
         },
         "r1577524_n1576819.S1" : {
-          "from_node_id" : "103826135",
+          "from_node_id" : "193264888",
           "to_node_id" : "_1577052",
           "b1" : null,
           "b2" : null
         },
         "r1577524_n1576819.S0" : {
           "from_node_id" : "_1576819",
-          "to_node_id" : "103826135",
+          "to_node_id" : "193264888",
           "b1" : {
             "x" : 388.28082275390625,
             "y" : 1045.631103515625
@@ -22995,7 +23239,7 @@
         },
         "r1577524_n1576826.S0" : {
           "from_node_id" : "_1576826",
-          "to_node_id" : "107660443",
+          "to_node_id" : "11638040",
           "b1" : {
             "x" : 518.6929931640625,
             "y" : 1047.2178955078125
@@ -23006,7 +23250,7 @@
           }
         },
         "r1577524_n1576826.S1" : {
-          "from_node_id" : "107660443",
+          "from_node_id" : "11638040",
           "to_node_id" : "_1577052",
           "b1" : null,
           "b2" : null
@@ -23196,7 +23440,7 @@
       "name" : "R40",
       "segments" : {
         "r1576737_n1576532.S1" : {
-          "from_node_id" : "264698239",
+          "from_node_id" : "167558902",
           "to_node_id" : "_1576934",
           "b1" : null,
           "b2" : null
@@ -23214,14 +23458,14 @@
           }
         },
         "r1576737_n1576606.S1" : {
-          "from_node_id" : "167558902",
+          "from_node_id" : "217490937",
           "to_node_id" : "_1576934",
           "b1" : null,
           "b2" : null
         },
         "r1576737_n1576607.S0" : {
           "from_node_id" : "_1576607",
-          "to_node_id" : "106320161",
+          "to_node_id" : "37619855",
           "b1" : {
             "x" : 3008.33154296875,
             "y" : 3145.868896484375
@@ -23233,7 +23477,7 @@
         },
         "r1576737_n1576606.S0" : {
           "from_node_id" : "_1576606",
-          "to_node_id" : "167558902",
+          "to_node_id" : "217490937",
           "b1" : {
             "x" : 3000.86181640625,
             "y" : 3140.7392578125
@@ -23244,7 +23488,7 @@
           }
         },
         "r1576737_n1576607.S1" : {
-          "from_node_id" : "106320161",
+          "from_node_id" : "37619855",
           "to_node_id" : "_1576934",
           "b1" : null,
           "b2" : null
@@ -23275,7 +23519,7 @@
         },
         "r1576737_n1576532.S0" : {
           "from_node_id" : "_1576532",
-          "to_node_id" : "264698239",
+          "to_node_id" : "167558902",
           "b1" : {
             "x" : 3013.852783203125,
             "y" : 3149.660888671875
@@ -23482,20 +23726,20 @@
           }
         },
         "r1577532_n1576831.S1" : {
-          "from_node_id" : "116444293",
+          "from_node_id" : "107660443",
           "to_node_id" : "_1577057",
           "b1" : null,
           "b2" : null
         },
         "r1577532_n1576816.S1" : {
-          "from_node_id" : "181771666",
+          "from_node_id" : "103826135",
           "to_node_id" : "_1577057",
           "b1" : null,
           "b2" : null
         },
         "r1577532_n1576831.S0" : {
           "from_node_id" : "_1576831",
-          "to_node_id" : "116444293",
+          "to_node_id" : "107660443",
           "b1" : {
             "x" : 2602.142822265625,
             "y" : 405.68865966796875
@@ -23507,7 +23751,7 @@
         },
         "r1577532_n1576816.S0" : {
           "from_node_id" : "_1576816",
-          "to_node_id" : "181771666",
+          "to_node_id" : "103826135",
           "b1" : {
             "x" : 2602.142822265625,
             "y" : 408.7310485839844
@@ -23726,26 +23970,26 @@
           }
         },
         "r1576773_n1576680.S1" : {
-          "from_node_id" : "231345508",
-          "to_node_id" : "_1577019",
-          "b1" : null,
-          "b2" : null
-        },
-        "r1576773_n1576536.S1" : {
           "from_node_id" : "227258281",
           "to_node_id" : "_1577019",
           "b1" : null,
           "b2" : null
         },
+        "r1576773_n1576536.S1" : {
+          "from_node_id" : "42277700",
+          "to_node_id" : "_1577019",
+          "b1" : null,
+          "b2" : null
+        },
         "r1576773_n1576681.S1" : {
-          "from_node_id" : "124740598",
+          "from_node_id" : "139416806",
           "to_node_id" : "_1577019",
           "b1" : null,
           "b2" : null
         },
         "r1576773_n1576680.S0" : {
           "from_node_id" : "_1576680",
-          "to_node_id" : "231345508",
+          "to_node_id" : "227258281",
           "b1" : {
             "x" : 4721.14306640625,
             "y" : 835.6310424804688
@@ -23757,7 +24001,7 @@
         },
         "r1576773_n1576681.S0" : {
           "from_node_id" : "_1576681",
-          "to_node_id" : "124740598",
+          "to_node_id" : "139416806",
           "b1" : {
             "x" : 4738.630859375,
             "y" : 835.6310424804688
@@ -23769,7 +24013,7 @@
         },
         "r1576773_n1576536.S0" : {
           "from_node_id" : "_1576536",
-          "to_node_id" : "227258281",
+          "to_node_id" : "42277700",
           "b1" : {
             "x" : 4788.34716796875,
             "y" : 835.6310424804688
@@ -23965,7 +24209,7 @@
         },
         "r1577546_n1577071.S0" : {
           "from_node_id" : "_1577071",
-          "to_node_id" : "164773901",
+          "to_node_id" : "104075742",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 4382.61279296875
@@ -23988,20 +24232,20 @@
           }
         },
         "r1577546_n1577071.S1" : {
-          "from_node_id" : "164773901",
+          "from_node_id" : "104075742",
           "to_node_id" : "_1577068",
           "b1" : null,
           "b2" : null
         },
         "r1577546_n1576556.S1" : {
-          "from_node_id" : "104716441",
+          "from_node_id" : "74909852",
           "to_node_id" : "_1577068",
           "b1" : null,
           "b2" : null
         },
         "r1577546_n1576556.S0" : {
           "from_node_id" : "_1576556",
-          "to_node_id" : "104716441",
+          "to_node_id" : "74909852",
           "b1" : {
             "x" : 1047.1429443359375,
             "y" : 4378.61279296875
@@ -24553,7 +24797,7 @@
       "segments" : {
         "r1576731_n1576594.S0" : {
           "from_node_id" : "_1576594",
-          "to_node_id" : "191271104",
+          "to_node_id" : "33802239",
           "b1" : {
             "x" : 2872.142822265625,
             "y" : 4427.73095703125
@@ -24564,14 +24808,14 @@
           }
         },
         "r1576731_n1576595.S1" : {
-          "from_node_id" : "103190280",
+          "from_node_id" : "96455421",
           "to_node_id" : "_1576920",
           "b1" : null,
           "b2" : null
         },
         "r1576731_n1576595.S0" : {
           "from_node_id" : "_1576595",
-          "to_node_id" : "103190280",
+          "to_node_id" : "96455421",
           "b1" : {
             "x" : 2872.142822265625,
             "y" : 4425.912109375
@@ -24582,7 +24826,7 @@
           }
         },
         "r1576731_n1576594.S1" : {
-          "from_node_id" : "191271104",
+          "from_node_id" : "33802239",
           "to_node_id" : "_1576920",
           "b1" : null,
           "b2" : null
@@ -24785,7 +25029,7 @@
       "segments" : {
         "r1576766_n1576533.S0" : {
           "from_node_id" : "_1576533",
-          "to_node_id" : "151442075",
+          "to_node_id" : "92734970",
           "b1" : {
             "x" : 4381.11376953125,
             "y" : 2531.631103515625
@@ -24808,14 +25052,14 @@
           }
         },
         "r1576766_n1576533.S1" : {
-          "from_node_id" : "151442075",
+          "from_node_id" : "92734970",
           "to_node_id" : "_1577000",
           "b1" : null,
           "b2" : null
         },
         "r1576766_n1576664.S0" : {
           "from_node_id" : "_1576664",
-          "to_node_id" : "164874275",
+          "to_node_id" : "247113419",
           "b1" : {
             "x" : 4384.65576171875,
             "y" : 2530.01953125
@@ -24826,7 +25070,7 @@
           }
         },
         "r1576766_n1576664.S1" : {
-          "from_node_id" : "164874275",
+          "from_node_id" : "247113419",
           "to_node_id" : "_1577000",
           "b1" : null,
           "b2" : null

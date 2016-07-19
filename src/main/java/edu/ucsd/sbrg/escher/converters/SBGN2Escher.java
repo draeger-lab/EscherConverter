@@ -112,6 +112,8 @@ public class SBGN2Escher {
       node.setLabelX((double) glyph.getBbox().getX());
       node.setLabelY((double) glyph.getBbox().getY());
     }
+    node.setPrimary(true);
+    
     return node;
   }
 
