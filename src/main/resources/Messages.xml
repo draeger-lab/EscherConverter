@@ -158,7 +158,7 @@
   <entry key="AutoDetectJSON">AutoDetect: Escher JSON file found</entry>
   <entry key="AutoDetectSBML">AutoDetect: SBML XML file found</entry>
   <entry key="AutoDetectSBGN">AutoDetect: SBGN XML file found</entry>
-  <entry key="ValidatingJSON">Validation: Escher JSON Schema version 1.0.0</entry>
+  <entry key="ValidatingEscher">Validation: Escher JSON Schema version 1.0.0</entry>
   <entry key="ValidatingSBML">Validation: SBML Layout Extension Level 3 Version 1</entry>
   <entry key="ValidatingSBGN">Validation: SBGN-ML Milestone 2</entry>
   <entry key="AutoDetectFail">AutoDetect: Cannot determine file type. Skipping</entry>
