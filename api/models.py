@@ -6,7 +6,7 @@ OutputFormat = Enum('format', 'sbml sbgn escher')
 LogLevel = Enum('log_level', 'severe warning info fine finer finest')
 
 
-class ConvertRequest:
+class ConvertRequest(object):
 
     def __init__(self):
         self.output_format = OutputFormat()
