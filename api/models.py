@@ -9,9 +9,10 @@ LogLevel = Enum('log_level', 'severe warning info fine finer finest')
 class ConvertRequest(object):
 
     def __init__(self):
+        self.id = None
         self.output_format = OutputFormat()
         self.input_filename = None
-        self.compartment_options = ComponentOptions()
+        self.component_options = ComponentOptions()
         self.layout_options = LayoutOptions()
 
 
