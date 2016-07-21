@@ -6,5 +6,8 @@ config = {
     'SQLITE_FILE': os.getenv('ESCHER_CONVERTER_DB_FILE', '/temp/'),
     'JAR_PATH': os.getenv('ESCHER_CONVERTER_PATH', '/temp/EscherConverter.jar'),
     'FILE_STORE': os.getenv('ESCHER_CONVERTER_FILE_STORE', '/temp/escher_converter/files/'),
-    'DEBUG': True
+    'DEBUG': True,
+    'TEST_CONFIG': {
+        'SQLITE_FILE': '/temp/test/escher.db'
+    }
 }
