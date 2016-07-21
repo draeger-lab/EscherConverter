@@ -251,6 +251,19 @@
           </configuration>
         </plugin>
         
+        <!-- This lets us include a splash screen through Maven. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifestEntries>
+                <SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        
         <!-- Assemble executable JAR -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -259,10 +272,14 @@
           <configuration>
             <archive>
               <manifest>
+                <addClasspath>true</addClasspath>
                 <mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
               </manifest>
+              <manifestEntries>
+                <SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
+              </manifestEntries>
             </archive>
             <descriptorRefs>
               <descriptorRef>jar-with-dependencies</descriptorRef>

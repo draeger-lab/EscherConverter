@@ -50,13 +50,13 @@ public class EscherConverterTest {
     @Test
     public void canParseMetaInfoTest() {
       assertEquals("failure - didn't parsed map name", "e_coli_core.Core metabolism",
-          escherMap.getName());
+        escherMap.getName());
       assertEquals("failure - didn't parsed map id", "0df3827fde8464e80f455a773a52c274",
-          escherMap.getId());
+        escherMap.getId());
       assertEquals("failure - didn't parsed map homepage", "https://escher.github.io",
-          escherMap.getURL());
+        escherMap.getURL());
       assertEquals("failure - didn't parsed map schema",
-          "https://escher.github" + ".io/escher/jsonschema/1-0-0#", escherMap.getSchema());
+        "https://escher.github" + ".io/escher/jsonschema/1-0-0#", escherMap.getSchema());
     }
 
 
@@ -66,7 +66,7 @@ public class EscherConverterTest {
       assertEquals("failure - wrong canvas' y value", 314.0, escherMap.getCanvas().getY(), 1.0);
       assertEquals("failure - wrong canvas' width", 5894.0, escherMap.getCanvas().getWidth(), 1.0);
       assertEquals("failure - wrong canvas' height", 4860.0, escherMap.getCanvas().getHeight(),
-          1.0);
+        1.0);
     }
 
 
@@ -153,8 +153,8 @@ public class EscherConverterTest {
       assertEquals("failure - reaction name mismatch", "Phosphofructokinase", reaction.getName());
       assertEquals("failure - reaction reversiblity mismatch", false, reaction.getReversibility());
       assertEquals("failure - reaction gene-reaction-rule mismatch", "b3916 or b1723", reaction.getGeneReactionRule());
-      assertEquals("failure - reaction laebl y mismatch", (double)1725, reaction.getLabelY
-          (), 1.0);
+      assertEquals("failure - reaction laebl y mismatch", 1725, reaction.getLabelY
+        (), 1.0);
 
       assertTrue("failure - not set", reaction.isSetName());
       assertTrue("failure - not set", reaction.isSetId());
@@ -168,7 +168,7 @@ public class EscherConverterTest {
     @Test
     public void canParseSegments() {
       assertEquals("failure - un-equal genes count", 4, escherMap.getReaction("1576697")
-                                                                 .getSegmentCount());
+        .getSegmentCount());
 
       Segment segment = new Segment();
       segment.setId("315");
@@ -178,7 +178,7 @@ public class EscherConverterTest {
       segment.setToNodeId("1576504");
 
       assertEquals("failure - segment 315 not found", segment, escherMap.getReaction("1576697")
-                                                                        .getSegment("315"));
+        .getSegment("315"));
 
       segment = escherMap.getReaction("1576697").getSegment("315");
 
@@ -224,7 +224,7 @@ public class EscherConverterTest {
       gene.setName("amtB");
 
       assertEquals("failure - gene bo451 not found", gene, escherMap.getReaction("1576703")
-                                                                    .getGenes().get("b0451"));
+        .getGenes().get("b0451"));
       assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetId());
       assertTrue("failure - not set", escherMap.getReaction("1576703").getGenes().get("b0451").isSetName());
     }
