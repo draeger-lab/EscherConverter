@@ -42,14 +42,14 @@ public class EscherParser {
    * A {@link Logger} for this class.
    */
   private static final Logger
-                                      logger =
-      Logger.getLogger(EscherParser.class.getName());
+  logger =
+  Logger.getLogger(EscherParser.class.getName());
   /**
    * Localization support.
    */
   public static final  ResourceBundle
-                                      bundle =
-      ResourceManager.getBundle("Messages");
+  bundle =
+  ResourceManager.getBundle("Messages");
 
 
   /**
@@ -81,8 +81,8 @@ public class EscherParser {
     reader.close();
     if (!(obj instanceof JSONArray)) {
       logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.JSONObjectExpected"), obj,
-              obj.getClass().getName(), JSONArray.class.getName()));
+        .format(bundle.getString("EscherParser.JSONObjectExpected"), obj,
+          obj.getClass().getName(), JSONArray.class.getName()));
       return null;
     }
     JSONArray json = (JSONArray) obj;
@@ -96,13 +96,13 @@ public class EscherParser {
     escherMap.setId(id != null ? id.toString() : defaultMapId);
     escherMap.setName(map.get(EscherKeywords.map_name.name()).toString());
     escherMap.setDescription(
-        map.get(EscherKeywords.map_description.name()).toString());
+      map.get(EscherKeywords.map_description.name()).toString());
     escherMap.setSchema(map.get(EscherKeywords.schema.name()).toString());
     escherMap.setURL(map.get(EscherKeywords.homepage.name()).toString());
     JSONObject parts = (JSONObject) json.get(1);
     Canvas
-        canvas =
-        parseCanvas((JSONObject) parts.get(EscherKeywords.canvas.name()));
+    canvas =
+    parseCanvas((JSONObject) parts.get(EscherKeywords.canvas.name()));
     escherMap.setCanvas(canvas);
 
     /*
@@ -116,8 +116,8 @@ public class EscherParser {
         if (node.isSetCompartment()) {
           try {
             EscherCompartment
-                compartment =
-                escherMap.getCompartment(node.getCompartment());
+            compartment =
+            escherMap.getCompartment(node.getCompartment());
             double x = node.getX(); // - node.getWidth()/2d;
             double y = node.getY(); // - node.getHeight()/2d;
             if (compartment == null) {
@@ -153,12 +153,12 @@ public class EscherParser {
      * Reactions
      */
     JSONObject
-        mapReactions =
-        (JSONObject) parts.get(EscherKeywords.reactions.name());
+    mapReactions =
+    (JSONObject) parts.get(EscherKeywords.reactions.name());
     if (mapReactions != null) {
       for (Object object : mapReactions.keySet()) {
         for (EscherReaction reaction : parseReaction(object,
-            (JSONObject) mapReactions.get(object), escherMap)) {
+          (JSONObject) mapReactions.get(object), escherMap)) {
           escherMap.addReaction(reaction);
         }
       }
@@ -168,12 +168,12 @@ public class EscherParser {
      * Labels
      */
     JSONObject
-        mapText =
-        (JSONObject) parts.get(EscherKeywords.text_labels.name());
+    mapText =
+    (JSONObject) parts.get(EscherKeywords.text_labels.name());
     if (mapText != null) {
       for (Object object : mapText.keySet()) {
         escherMap.addTextLabel(
-            parseTextLabel(object, (JSONObject) mapText.get(object)));
+          parseTextLabel(object, (JSONObject) mapText.get(object)));
       }
     }
     return escherMap;
@@ -241,7 +241,7 @@ public class EscherParser {
     Metabolite metabolite = new Metabolite();
     metabolite.setId(parseString(id));
     metabolite.setCoefficient(
-        parseDouble(json.get(EscherKeywords.coefficient.name())));
+      parseDouble(json.get(EscherKeywords.coefficient.name())));
     return metabolite;
   }
 
@@ -259,8 +259,8 @@ public class EscherParser {
         g.setName(parseString(jsonGene.get(EscherKeywords.name.toString())));
       } else {
         logger.warning(MessageFormat
-            .format(bundle.getString("EscherParser.JSONObjectExpected"), gene,
-                gene.getClass().getName(), JSONObject.class.getName()));
+          .format(bundle.getString("EscherParser.JSONObjectExpected"), gene,
+            gene.getClass().getName(), JSONObject.class.getName()));
       }
     }
     return g;
@@ -276,8 +276,7 @@ public class EscherParser {
     Node node = new Node();
     node.setId(parseString(id));
     node.setName(parseString(json.get(EscherKeywords.name.name())));
-    node.setBiggId(
-        parseString(parseString(json.get(EscherKeywords.bigg_id.name()))));
+    node.setBiggId(parseString(parseString(json.get(EscherKeywords.bigg_id.name()))));
     //node.setCompartmentName(parseString(json.get("compartment_name")));
     /* This is based on an older version of the JSON format.
     JSONArray connectedSegments = (JSONArray) json.get(EscherKeywords.connected_segments.name());
@@ -288,9 +287,9 @@ public class EscherParser {
     }
      */
     node.setType(Node.Type
-        .valueOf(parseString(json.get(EscherKeywords.node_type.name()))));
+      .valueOf(parseString(json.get(EscherKeywords.node_type.name()))));
     node.setPrimary(
-        parseBoolean(json.get(EscherKeywords.node_is_primary.name())));
+      parseBoolean(json.get(EscherKeywords.node_is_primary.name())));
     node.setLabelX(parseDouble(json.get(EscherKeywords.label_x.name())));
     node.setLabelY(parseDouble(json.get(EscherKeywords.label_y.name())));
     node.setX(parseDouble(json.get(EscherKeywords.x.name())));
@@ -323,7 +322,7 @@ public class EscherParser {
    * @return
    */
   private EscherReaction[] parseReaction(Object id, JSONObject json,
-      EscherMap escherMap) {
+    EscherMap escherMap) {
     EscherReaction reaction = new EscherReaction();
     reaction.setId(parseString(id));
     reaction.setBiggId(parseString(json.get(EscherKeywords.bigg_id.name())));
@@ -331,10 +330,10 @@ public class EscherParser {
     reaction.setLabelY(parseDouble(json.get(EscherKeywords.label_y.name())));
     reaction.setName(parseString(json.get(EscherKeywords.name.name())));
     reaction.setReversibility(
-        parseBoolean(json.get(EscherKeywords.reversibility.name())));
+      parseBoolean(json.get(EscherKeywords.reversibility.name())));
     if (json.get(EscherKeywords.gene_reaction_rule.toString()) != null) {
       reaction.setGeneReactionRule(
-          json.get(EscherKeywords.gene_reaction_rule.toString()).toString());
+        json.get(EscherKeywords.gene_reaction_rule.toString()).toString());
     }
     Object object = json.get(EscherKeywords.genes.name());
     if ((object != null) && (object instanceof JSONArray)) {
@@ -344,20 +343,20 @@ public class EscherParser {
       }
     } else {
       logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.cannotParse"),
-              object.getClass().getName()));
+        .format(bundle.getString("EscherParser.cannotParse"),
+          object.getClass().getName()));
     }
     object = json.get(EscherKeywords.metabolites.toString());
     if ((object != null) && (object instanceof JSONArray)) {
       JSONArray metabolites = (JSONArray) object;
       for (int i = 0; i < metabolites.size(); i++) {
         reaction.addMetabolite(
-            parseMetabolite(reaction.getBiggId(), metabolites.get(i)));
+          parseMetabolite(reaction.getBiggId(), metabolites.get(i)));
       }
     } else {
       logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.cannotParse"),
-              object.getClass().getName()));
+        .format(bundle.getString("EscherParser.cannotParse"),
+          object.getClass().getName()));
     }
     object = json.get(EscherKeywords.segments.name());
     if ((object != null) && (object instanceof JSONObject)) {
@@ -389,8 +388,8 @@ public class EscherParser {
            * 
            */
           Map<Node, Pair<Set<Node>, Set<Segment>>>
-              midmarker2ReachableNodes =
-              new HashMap<>();
+          midmarker2ReachableNodes =
+          new HashMap<>();
           while (!listOfSegments.isEmpty()) {
             for (Node midmarker : setOfMidmarkers) {
               Set<Node> nodes;
@@ -402,8 +401,8 @@ public class EscherParser {
                 midmarker2ReachableNodes.put(midmarker, pairOf(nodes, s));
               } else {
                 Pair<Set<Node>, Set<Segment>>
-                    pair =
-                    midmarker2ReachableNodes.get(midmarker);
+                pair =
+                midmarker2ReachableNodes.get(midmarker);
                 nodes = pair.getKey();
                 s = pair.getValue();
               }
@@ -416,10 +415,10 @@ public class EscherParser {
            * curve segments.
            */
           EscherReaction
-              reactions
-              [
-              ] =
-              new EscherReaction[setOfMidmarkers.size()];
+          reactions
+          [
+           ] =
+           new EscherReaction[setOfMidmarkers.size()];
           Iterator<Node> iterator = setOfMidmarkers.iterator();
           for (int i = 0; i < reactions.length; i++) {
             Node midmarker = iterator.next();
@@ -427,7 +426,7 @@ public class EscherParser {
             reactions[i].setMidmarker(midmarker);
             reactions[i].setId(reaction.getId() + "_" + (i + 1));
             linkSegmentsToReaction(reactions[i],
-                midmarker2ReachableNodes.get(midmarker).getValue(), escherMap);
+              midmarker2ReachableNodes.get(midmarker).getValue(), escherMap);
           }
           return reactions;
         }
@@ -435,8 +434,8 @@ public class EscherParser {
       linkSegmentsToReaction(reaction, listOfSegments, escherMap);
     } else {
       logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.cannotParse"),
-              object.getClass().getName()));
+        .format(bundle.getString("EscherParser.cannotParse"),
+          object.getClass().getName()));
     }
     return new EscherReaction[] {reaction};
   }
@@ -448,14 +447,14 @@ public class EscherParser {
    * @param escherMap
    */
   private void linkSegmentsToReaction(EscherReaction reaction,
-      Collection<Segment> collectionOfSegments, EscherMap escherMap) {
+    Collection<Segment> collectionOfSegments, EscherMap escherMap) {
     // add all segments to the reaction and link nodes.
     Set<String> setOfBiggIds = new HashSet<String>();
     for (Segment segment : collectionOfSegments) {
       Node fromNode = escherMap.getNode(segment.getFromNodeId());
       Node toNode = escherMap.getNode(segment.getToNodeId());
       if (linkNode(fromNode, reaction, escherMap, setOfBiggIds) && linkNode(
-          toNode, reaction, escherMap, setOfBiggIds)) {
+        toNode, reaction, escherMap, setOfBiggIds)) {
         reaction.addSegment(segment);
       }
     }
@@ -469,7 +468,7 @@ public class EscherParser {
    * @param escherMap
    */
   private void separateSegments(Set<Node> nodes, Set<Segment> s,
-      List<Segment> listOfSegments, EscherMap escherMap) {
+    List<Segment> listOfSegments, EscherMap escherMap) {
     for (int i = listOfSegments.size() - 1; i >= 0; i--) {
       Segment segment = listOfSegments.get(i);
       Node fromNode = escherMap.getNode(segment.getFromNodeId());
@@ -498,18 +497,18 @@ public class EscherParser {
         metab = parseMetabolite(m.get(EscherKeywords.bigg_id.toString()), m);
         if (!metab.isSetCoefficient()) {
           logger.warning(MessageFormat
-              .format(bundle.getString("EscherParser.undefinedStoichiometry"),
-                  metab.getId(), reactionBiggId));
+            .format(bundle.getString("EscherParser.undefinedStoichiometry"),
+              metab.getId(), reactionBiggId));
         } else if (metab.getCoefficient().doubleValue() == 0d) {
           logger.warning(MessageFormat
-              .format(bundle.getString("EscherParser.zeroStoichiometry"),
-                  metab.getId(), reactionBiggId));
+            .format(bundle.getString("EscherParser.zeroStoichiometry"),
+              metab.getId(), reactionBiggId));
         }
       } else {
         logger.warning(MessageFormat
-            .format(bundle.getString("EscherParser.JSONObjectExpected"),
-                metabolite, metabolite.getClass().getName(),
-                JSONObject.class.getName()));
+          .format(bundle.getString("EscherParser.JSONObjectExpected"),
+            metabolite, metabolite.getClass().getName(),
+            JSONObject.class.getName()));
       }
     }
     return metab;
@@ -524,12 +523,12 @@ public class EscherParser {
    * @return {@code false} if the current node cannot be linked to the reaction.
    */
   private boolean linkNode(Node node, EscherReaction reaction,
-      EscherMap escherMap, Set<String> setOfBiggIds) {
+    EscherMap escherMap, Set<String> setOfBiggIds) {
     if (node.isMetabolite() && node.isSetBiggId()) {
       if (setOfBiggIds.contains(node.getBiggId())) {
         logger.warning(MessageFormat.format(bundle
-                .getString("EscherParser.multipleParticipantsWithIdenticalBiGGID"),
-            node.getBiggId(), reaction.getId()));
+          .getString("EscherParser.multipleParticipantsWithIdenticalBiGGID"),
+          node.getBiggId(), reaction.getId()));
       }
       setOfBiggIds.add(node.getBiggId());
       Metabolite metabolite = reaction.getMetabolite(node.getBiggId());
@@ -537,8 +536,8 @@ public class EscherParser {
         metabolite.setNodeRefId(node.getId());
       } else {
         logger.severe(MessageFormat.format(
-            bundle.getString("EscherParser.noMetaboliteWithGivenBiGGID"),
-            node.getBiggId(), reaction.getBiggId()));
+          bundle.getString("EscherParser.noMetaboliteWithGivenBiGGID"),
+          node.getBiggId(), reaction.getBiggId()));
       }
     } else if (node.isMidmarker() && !reaction.isSetMidmarker()) {
       reaction.setMidmarker(node);
@@ -556,13 +555,13 @@ public class EscherParser {
     Segment segment = new Segment();
     segment.setId(parseString(id));
     segment.setFromNodeId(
-        parseString(json.get(EscherKeywords.from_node_id.name())));
+      parseString(json.get(EscherKeywords.from_node_id.name())));
     segment.setBasePoint1(
-        parsePoint((JSONObject) json.get(EscherKeywords.b1.name())));
+      parsePoint((JSONObject) json.get(EscherKeywords.b1.name())));
     segment.setBasePoint2(
-        parsePoint((JSONObject) json.get(EscherKeywords.b2.name())));
+      parsePoint((JSONObject) json.get(EscherKeywords.b2.name())));
     segment
-        .setToNodeId(parseString(json.get(EscherKeywords.to_node_id.name())));
+    .setToNodeId(parseString(json.get(EscherKeywords.to_node_id.name())));
     return segment;
   }
 

@@ -16,13 +16,21 @@
  */
 package edu.ucsd.sbrg.escher.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.logging.Logger;
+
 import org.sbml.jsbml.util.ResourceManager;
 
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.logging.Logger;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import de.zbit.util.Utils;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -65,15 +73,11 @@ public class Node extends AbstractBox implements Element {
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle
-                                        bundle =
-      ResourceManager.getBundle("Messages");
+  private static final transient ResourceBundle bundle = ResourceManager.getBundle("Messages");
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger
-                                        logger =
-      Logger.getLogger(Node.class.getName());
+  private static final transient Logger logger = Logger.getLogger(Node.class.getName());
   /**
    * This node's BiGG id. Can be {@code null}.
    */
@@ -374,7 +378,7 @@ public class Node extends AbstractBox implements Element {
         prime * result + ((compartment == null) ? 0 : compartment.hashCode());
     result =
         prime * result + ((connectedSegments == null) ? 0 :
-            connectedSegments.hashCode());
+          connectedSegments.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((isPrimary == null) ? 0 : isPrimary.hashCode());
     result = prime * result + ((labelX == null) ? 0 : labelX.hashCode());
@@ -538,10 +542,10 @@ public class Node extends AbstractBox implements Element {
     this.biggId = biggId;
     if (biggId != null) {
       /* ID structure: [prefix]_[abbreviation]_[compartment code]_[tissue code]
-			 * prefix and tissue code can be absent; abbreviation and compartment code
-			 * are mandatory!
-			 * Prefix must be either R or M.
-			 */
+       * prefix and tissue code can be absent; abbreviation and compartment code
+       * are mandatory!
+       * Prefix must be either R or M.
+       */
       String id = biggId;
       if (id.matches("[RrMm]_.*")) {
         id = id.substring(2);
@@ -549,13 +553,18 @@ public class Node extends AbstractBox implements Element {
       String idParts[] = id.replace("__", "-").split("_");
       if (idParts.length > 1) {
         compartment = idParts[1];
-        if (((compartment.length() > 1) || Character
-            .isUpperCase(compartment.charAt(0))) && (idParts.length > 2)) {
-          compartment = idParts[2];
+        if ((idParts.length > 2) &&
+            ((compartment.length() > 1) || Utils.isNumber(compartment, true) ||
+                Character.isUpperCase(compartment.charAt(0)))) {
+          int i = 2;
+          while (Utils.isNumber(idParts[i], true)) {
+            i++;
+          }
+          compartment = idParts[i];
         }
       } else {
         logger.warning(MessageFormat
-            .format(bundle.getString("Node.invalidCompartmentId"), biggId));
+          .format(bundle.getString("Node.invalidCompartmentId"), biggId));
       }
     } else {
       compartment = null;
@@ -567,7 +576,7 @@ public class Node extends AbstractBox implements Element {
    * @param connectedSegments the connected segments to set
    */
   public void setConnectedSegments(
-      Map<String, List<String>> connectedSegments) {
+    Map<String, List<String>> connectedSegments) {
     this.connectedSegments = connectedSegments;
   }
 

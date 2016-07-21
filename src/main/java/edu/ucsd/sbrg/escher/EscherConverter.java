@@ -16,12 +16,13 @@
  */
 package edu.ucsd.sbrg.escher;
 
+import static java.text.MessageFormat.format;
+
 import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -34,8 +35,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
-import com.sun.tools.corba.se.idl.Util;
-import edu.ucsd.sbrg.escher.utilities.Validator;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
@@ -69,8 +68,7 @@ import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
-
-import static java.text.MessageFormat.format;
+import edu.ucsd.sbrg.escher.utilities.Validator;
 
 /**
  * @author Andreas Dr&auml;ger
@@ -110,20 +108,13 @@ public class EscherConverter extends Launcher {
    */
   public static <T> Escher2Standard<T> configure(Escher2Standard<T> converter,
     SBProperties properties) {
-    converter.setLabelHeight(
-      properties.getDoubleProperty(EscherOptions.LABEL_HEIGHT));
-    converter
-    .setLabelWidth(properties.getDoubleProperty(EscherOptions.LABEL_WIDTH));
-    converter.setPrimaryNodeHeight(
-      properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_HEIGHT));
-    converter.setPrimaryNodeWidth(
-      properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_WIDTH));
-    converter.setReactionNodeRatio(
-      properties.getDoubleProperty(EscherOptions.REACTION_NODE_RATIO));
-    converter.setSecondaryNodeRatio(
-      properties.getDoubleProperty(EscherOptions.SECONDARY_NODE_RATIO));
-    converter.setInferCompartmentBoundaries(
-      properties.getBooleanProperty(EscherOptions.INFER_COMPARTMENT_BOUNDS));
+    converter.setLabelHeight(properties.getDoubleProperty(EscherOptions.LABEL_HEIGHT));
+    converter.setLabelWidth(properties.getDoubleProperty(EscherOptions.LABEL_WIDTH));
+    converter.setPrimaryNodeHeight(properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_HEIGHT));
+    converter.setPrimaryNodeWidth(properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_WIDTH));
+    converter.setReactionNodeRatio(properties.getDoubleProperty(EscherOptions.REACTION_NODE_RATIO));
+    converter.setSecondaryNodeRatio(properties.getDoubleProperty(EscherOptions.SECONDARY_NODE_RATIO));
+    converter.setInferCompartmentBoundaries(properties.getBooleanProperty(EscherOptions.INFER_COMPARTMENT_BOUNDS));
     return converter;
   }
 
@@ -140,21 +131,14 @@ public class EscherConverter extends Launcher {
     if (format.isAssignableFrom(SBMLDocument.class)) {
       Escher2SBML converter = new Escher2SBML();
       configure(converter, properties);
-      converter.setCanvasDefaultHeight(
-        properties.getDoubleProperty(EscherOptions.CANVAS_DEFAULT_HEIGHT));
-      converter.setCanvasDefaultWidth(
-        properties.getDoubleProperty(EscherOptions.CANVAS_DEFAULT_WIDTH));
-      converter.setDefaultCompartmentId(
-        properties.getProperty(EscherOptions.COMPARTMENT_ID));
-      converter.setDefaultCompartmentName(
-        properties.getProperty(EscherOptions.COMPARTMENT_NAME));
+      converter.setCanvasDefaultHeight(properties.getDoubleProperty(EscherOptions.CANVAS_DEFAULT_HEIGHT));
+      converter.setCanvasDefaultWidth(properties.getDoubleProperty(EscherOptions.CANVAS_DEFAULT_WIDTH));
+      converter.setDefaultCompartmentId(properties.getProperty(EscherOptions.COMPARTMENT_ID));
+      converter.setDefaultCompartmentName(properties.getProperty(EscherOptions.COMPARTMENT_NAME));
       converter.setLayoutId(properties.getProperty(EscherOptions.LAYOUT_ID));
-      converter
-      .setLayoutName(properties.getProperty(EscherOptions.LAYOUT_NAME));
-      converter
-      .setNodeDepth(properties.getDoubleProperty(EscherOptions.NODE_DEPTH));
-      converter.setNodeLabelHeight(
-        properties.getDoubleProperty(EscherOptions.NODE_LABEL_HEIGHT));
+      converter.setLayoutName(properties.getProperty(EscherOptions.LAYOUT_NAME));
+      converter.setNodeDepth(properties.getDoubleProperty(EscherOptions.NODE_DEPTH));
+      converter.setNodeLabelHeight(properties.getDoubleProperty(EscherOptions.NODE_LABEL_HEIGHT));
       converter.setZ(properties.getDoubleProperty(EscherOptions.Z));
       return (T) converter.convert(map);
     } else if (format.isAssignableFrom(Sbgn.class)) {
@@ -188,12 +172,19 @@ public class EscherConverter extends Launcher {
    * @throws ParseException
    */
   public static <T> T convert(File input, Class<? extends T> format,
-    SBProperties properties)
-        throws IOException, ParseException {
-
+    SBProperties properties) throws IOException, ParseException {
     return convert(parseEscherJson(input), format, properties);
   }
 
+  /**
+   * Reads an Escher input file in JSON format and returns data structures for
+   * an in-memory representation of the information provided.
+   * 
+   * @param input
+   * @return An {@link EscherMap} object representing the information from the
+   *         parsed file in memory.
+   * @throws IOException
+   */
   public static EscherMap parseEscherJson(File input) throws IOException{
     ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
 
@@ -316,8 +307,9 @@ public class EscherConverter extends Launcher {
 
     } else {
       if (!output.isDirectory()) {
-        throw new IOException(format(bundle.getString("EscherConverter.cannotWriteToFile"),
-            output.getAbsolutePath()));
+        throw new IOException(format(
+          bundle.getString("EscherConverter.cannotWriteToFile"),
+          output.getAbsolutePath()));
       }
       for (File file : input.listFiles()) {
         File
@@ -464,20 +456,20 @@ public class EscherConverter extends Launcher {
       return false;
     }
 
-    switch (inputFormat) {
-    case SBGN:
-      logger.info(bundle.getString("ValidatingSBGN"));
-      return validator.validateSbgnml(input);
-
-    case SBML:
-      logger.info(bundle.getString("ValidatingSBML"));
-      return validator.validateSbmlLE(input);
-
-    case Escher:
-      logger.info(bundle.getString("ValidatingEscher"));
-      return validator.validateEscher(input);
-
-    }
+    //    switch (inputFormat) {
+    //    case SBGN:
+    //      logger.info(bundle.getString("ValidatingSBGN"));
+    //      return validator.validateSbgnml(input);
+    //
+    //    case SBML:
+    //      logger.info(bundle.getString("ValidatingSBML"));
+    //      return validator.validateSbmlLE(input);
+    //
+    //    case Escher:
+    //      logger.info(bundle.getString("ValidatingEscher"));
+    //      return validator.validateEscher(input);
+    //
+    //    }
     return false;
   }
 
