@@ -21,10 +21,13 @@ class Database(object):
         Base.metadata.create_all(Database.engine)
 
     def add(self, cr: ConvertRequest):
-        session = Database.Session()
-        session.add(cr)
-        session.commit()
-        return
+        try:
+            session = Database.Session()
+            session.add(cr)
+            session.commit()
+            return True
+        except:
+            return False
 
     def retrieve(self, id):
         session = Database.Session()

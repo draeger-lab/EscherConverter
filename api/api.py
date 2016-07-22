@@ -1,11 +1,15 @@
-import json
+from random import randint
 
 from flask import Blueprint, jsonify
 from flask import request
 
+from config import config
+from database import Database
 from models import ConvertRequest, OutputFormat
 
 api = Blueprint('api', __name__)
+
+db = Database(config['SQLITE_FILE'], config['DEBUG'])
 
 
 @api.route('/convert/<req_id>', methods=['GET'])
@@ -38,12 +42,21 @@ def conversion_request():
             'status': 'errored',
             'message': 'Invalid request JSON!!!'
         }), 400
-    # TODO: Add conversion request to database.
-    # TODO: return job id.
-    return jsonify({
-        'status': 'errored',
-        'message': 'not yet implemented'
-    }), 501
+    cr_object.output_format = OutputFormat.escher
+    cr_object.id = randint(0, 10000)
+    db_add_result = db.add(cr=cr_object)
+    if db_add_result:
+        cr_object = db.retrieve(cr_object.id)
+        return jsonify({
+            'id': cr_object.id,
+            'status': 'waiting',
+            'message': 'add files to start the conversion'
+        })
+    else:
+        return jsonify({
+            'status': 'errored',
+            'message': r'can"t submit new job'
+        }), 500
 
 
 @api.route('/convert', methods=['GET'])
