@@ -17,6 +17,15 @@ class OutputFormat(Enum):
     sbgn = 'sbgn'
     escher = 'escher'
 
+    @classmethod
+    def from_str(cls, s):
+        if s is 'sbml':
+            return cls.sbml
+        if s is 'sbgn':
+            return cls.sbgn
+        if s is 'escher':
+            return cls.escher
+
 
 LogLevel = Enum('log_level', 'severe warning info fine finer finest')
 
@@ -28,7 +37,7 @@ class ConvertRequest(Base):
     __tablename__ = 'conversions'
 
     id = Column(Integer, primary_key=True, autoincrement=False)
-    output_format = Column(EnumType(OutputFormat), nullable=False)
+    output_format = Column(EnumType(OutputFormat), nullable=True)
     input_filename = Column(String)
 
     def __init__(self, d):
