@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
-# Models for receiving a request and sending a respponse.
+# Models for receiving a request and sending a response. Database objects also.
 import ejson
 import jsonpickle
 
 from enum import Enum
+
+from sqlalchemy import Boolean
 from sqlalchemy import Column
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import types
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 from sqlalchemy_enum34 import EnumType
 
 
@@ -25,6 +30,32 @@ class OutputFormat(Enum):
             return cls.sbgn
         if s is 'escher':
             return cls.escher
+        return None
+
+
+class ConversionStatus(Enum):
+    started = 'started'
+    waiting = 'waiting'
+    running = 'running'
+    completed = 'completed'
+    failed = 'failed'
+    errored = 'errored'
+
+    @classmethod
+    def from_str(cls, s):
+        if s is 'started':
+            return cls.started
+        if s is 'waiting':
+            return cls.waiting
+        if s is 'running':
+            return cls.running
+        if s is 'completed':
+            return cls.completed
+        if s is 'failed':
+            return cls.failed
+        if s is 'errored':
+            return cls.errored
+        return None
 
 
 LogLevel = Enum('log_level', 'severe warning info fine finer finest')
@@ -39,12 +70,20 @@ class ConvertRequest(Base):
     id = Column(Integer, primary_key=True, autoincrement=False)
     output_format = Column(EnumType(OutputFormat), nullable=True)
     input_filename = Column(String)
+    status = Column(EnumType(ConversionStatus), nullable=True)
+    submission_date = Column(Integer, nullable=False)
+    completion_date = Column(Integer)
+    component_options = relationship("ComponentOptions", uselist=False,
+                                     back_populates="conversions")
+    layout_options = relationship("LayoutOptions", uselist=False, back_populates="conversions")
 
     def __init__(self, d):
         if d is not None and 'component_options' in d:
             self.component_options = ComponentOptions(d['component_options'])
+            self.component_options.id = self.id
         if d is not None and 'layout_options' in d:
             self.layout_options = LayoutOptions(d['layout_options'])
+            self.layout_options.id = self.id
         if d is not None:
             self.__dict__.update(d)
 
@@ -52,41 +91,68 @@ class ConvertRequest(Base):
         return self.__dict__ == other.__dict__
 
 
-class ComponentOptions(object):
+class ComponentOptions(Base):
 
-    layout_id = None
-    layout_name = None
-    compartment_id = None
-    compartment_name = None
-    infer_compartment_bounds = None
+    __tablename__ = 'component_options'
 
-    def __init__(self, d):
-        self.__dict__.update(d)
-
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
-
-
-class LayoutOptions(object):
-
-    canvas_default_height = None
-    canvas_default_width = None
-    label_height = None
-    label_width = None
-    node_depth = None
-    node_label_height = None
-    primary_node_height = None
-    primary_node_width = None
-    reaction_label_height = None
-    reaction_node_ratio = None
-    secondary_node_ratio = None
-    z = None
+    id = Column(Integer, ForeignKey('conversions.id'), primary_key=True, autoincrement=False)
+    layout_id = Column(String, nullable=True)
+    layout_name = Column(String, nullable=True)
+    compartment_id = Column(String, nullable=True)
+    compartment_name = Column(String, nullable=True)
+    infer_compartment_bounds = Column(Boolean, default=False)
+    conversions = relationship("ConvertRequest", uselist=False, back_populates="component_options")
 
     def __init__(self, d):
         self.__dict__.update(d)
 
     def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+        return (
+            self.layout_id == other.layout_id and
+            self.layout_name == other.layout_name and
+            self.compartment_id == other.compartment_id and
+            self.compartment_name == other.compartment_name and
+            self.infer_compartment_bounds == other.infer_compartment_bounds
+        )
+
+
+class LayoutOptions(Base):
+
+    __tablename__ = 'layout_options'
+
+    id = Column(Integer, ForeignKey('conversions.id'), primary_key=True, autoincrement=True)
+    canvas_default_height = Column(Float, nullable=True)
+    canvas_default_width = Column(Float, nullable=True)
+    label_height = Column(Float, nullable=True)
+    label_width = Column(Float, nullable=True)
+    node_depth = Column(Float, nullable=True)
+    node_label_height = Column(Float, nullable=True)
+    primary_node_height = Column(Float, nullable=True)
+    primary_node_width = Column(Float, nullable=True)
+    reaction_label_height = Column(Float, nullable=True)
+    reaction_node_ratio = Column(Float, nullable=True)
+    secondary_node_ratio = Column(Float, nullable=True)
+    z = Column(Float, nullable=True)
+    conversions = relationship("ConvertRequest", uselist=False, back_populates="layout_options")
+
+    def __init__(self, d):
+        self.__dict__.update(d)
+
+    def __eq__(self, other):
+        return (
+            self.canvas_default_height == other.canvas_default_height and
+            self.canvas_default_width == other.canvas_default_width and
+            self.label_height == other.label_height and
+            self.label_width == other.label_width and
+            self.node_depth == other.node_depth and
+            self.node_label_height == other.node_label_height and
+            self.primary_node_height == other.primary_node_height and
+            self.primary_node_width == other.primary_node_width and
+            self.reaction_label_height == other.reaction_label_height and
+            self.reaction_node_ratio == other.reaction_node_ratio and
+            self.secondary_node_ratio == other.secondary_node_ratio and
+            self.z == other.z
+        )
 
 
 @ejson.register_serializer(ConvertRequest)
