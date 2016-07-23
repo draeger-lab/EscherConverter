@@ -1,5 +1,6 @@
 import os
 
+import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -10,32 +11,39 @@ class Database(object):
 
     db_connection_string = None
     engine = None
-    Session = None
+    session_maker = None
+
 
     def __init__(self, path, echo):
         if not os.path.exists(os.path.dirname(path)):
             raise Exception("Path doesn't exists.")
         Database.db_connection_string = "sqlite:///" + path
         Database.engine = create_engine(Database.db_connection_string, echo=echo)
-        Database.Session = sessionmaker(bind=Database.engine)
+        Database.session_maker = sessionmaker(bind=Database.engine)
         Base.metadata.create_all(Database.engine)
+        self.session = None
 
     def add(self, cr: ConvertRequest):
         try:
-            session = Database.Session()
-            session.add(cr)
-            session.commit()
+            self.session.add(cr)
+            self.session.commit()
             return True
         except:
             return False
 
     def retrieve(self, id):
-        session = Database.Session()
-        return session.query(ConvertRequest).filter_by(id=id).first()
+        req = self.session.query(ConvertRequest).filter_by(id=id).first()
+        return req
 
     def update(self):
         # TODO: Update status and result of conversion jobs.
+        self.session.commit()
         pass
 
+    def renew(self):
+        self.session = Database.session_maker()
 
+    def finalize(self):
+        self.session.commit()
+        self.session.close()
 
