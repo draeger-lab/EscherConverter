@@ -32,11 +32,21 @@ def get_conversion_status(req_id):
     :param req_id: The request id issued before.
     :return: Info about the conversion.
     """
-    return jsonify({
-        # "status": "complete",
-        # "result": "failure",
-        "message": "not yet implemented!"
-    }), 501
+    cr = db.retrieve(req_id)
+    if cr is None:
+        return jsonify({
+            'status': 'errored',
+            'message': 'no job found matching request id: ' + req_id
+        }), 404
+    resp = {
+        'id': cr.id,
+        'status': cr.status.value,
+        'submission_date': datetime.fromtimestamp(cr.submission_date),
+    }
+    if cr.status == ConversionStatus.completed or cr.status == ConversionStatus.failed or \
+            cr.status == ConversionStatus.errored:
+        resp['completion_date'] = datetime.fromtimestamp(cr.completion_date)
+    return jsonify(resp), 200
 
 
 @api.route('/convert', methods=['POST'])
@@ -62,7 +72,6 @@ def conversion_request():
     db_add_result = db.add(cr=cr_object)
     if db_add_result:
         cr_object = db.retrieve(cr_object.id)
-
         resp = jsonify({
             'id': cr_object.id,
             'status': cr_object.status.value,
