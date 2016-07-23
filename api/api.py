@@ -1,15 +1,28 @@
-from random import randint
+import uuid
+from datetime import datetime
 
+import time
 from flask import Blueprint, jsonify
 from flask import request
 
 from config import config
 from database import Database
-from models import ConvertRequest, OutputFormat
+from models import ConvertRequest, OutputFormat, ConversionStatus
 
 api = Blueprint('api', __name__)
 
 db = Database(config['SQLITE_FILE'], config['DEBUG'])
+
+
+@api.before_request
+def before():
+    db.renew()
+
+
+@api.after_request
+def after(response):
+    db.finalize()
+    return response
 
 
 @api.route('/convert/<req_id>', methods=['GET'])
@@ -43,15 +56,22 @@ def conversion_request():
             'message': 'Invalid request JSON!!!'
         }), 400
     cr_object.output_format = OutputFormat.escher
-    cr_object.id = randint(0, 10000)
+    cr_object.id = uuid.uuid1().int >> 112
+    cr_object.submission_date = int(time.time())
+    cr_object.status = ConversionStatus.started
     db_add_result = db.add(cr=cr_object)
     if db_add_result:
         cr_object = db.retrieve(cr_object.id)
-        return jsonify({
+
+        resp = jsonify({
             'id': cr_object.id,
-            'status': 'waiting',
-            'message': 'add files to start the conversion'
+            'status': cr_object.status.value,
+            'submission_time': datetime.fromtimestamp(cr_object.submission_date),
+            'message': 'job submitted successfully, add files to start the conversion'
         })
+        cr_object.status = ConversionStatus.waiting
+        db.add(cr_object)
+        return resp, 200
     else:
         return jsonify({
             'status': 'errored',
