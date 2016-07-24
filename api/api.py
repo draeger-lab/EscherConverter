@@ -124,7 +124,13 @@ def add_file(req_id, file_number):
             'message': 'file successfully added, add all files to start the conversion.'
         }), 200
     # TODO: Check if all files have been uploaded, set status to running, then start the conversion.
-    # converter = EscherConverter()
+    converter = EscherConverter(cr)
+    converter.convert()
+    cr.status = ConversionStatus.running
+    return jsonify({
+        'status': cr.status.value,
+        'message': 'conversion started.'
+    }), 200
 
 
 @api.route('/convert', methods=['GET'])
