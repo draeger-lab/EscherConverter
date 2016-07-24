@@ -69,7 +69,8 @@ class ConvertRequest(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=False)
     output_format = Column(EnumType(OutputFormat), nullable=True)
-    input_filename = Column(String)
+    file_count = Column(Integer, nullable=False, default=1)
+    files_uploaded = Column(Integer, nullable=False, default=0)
     status = Column(EnumType(ConversionStatus), nullable=True)
     submission_date = Column(Integer, nullable=False)
     completion_date = Column(Integer)
