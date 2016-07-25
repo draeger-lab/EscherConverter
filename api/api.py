@@ -11,6 +11,7 @@ from config import config
 from database import Database
 from escherconverter import EscherConverter
 from models import ConvertRequest, OutputFormat, ConversionStatus
+from utils import extension_from_content_type
 
 api = Blueprint('api', __name__)
 
@@ -114,7 +115,9 @@ def add_file(req_id, file_number):
             'message': 'file number must be in (0, ' + str(cr.file_count - 1) + ').'
         }), 404
     os.makedirs(config['FILE_STORE'] + req_id + '/input/', exist_ok=True)
-    file = open(config['FILE_STORE'] + req_id + '/input/' + file_number, 'wb')
+    file_path = config['FILE_STORE'] + req_id + '/input/' + file_number
+    file_path += extension_from_content_type()[request.content_type]
+    file = open(file_path, 'wb')
     file.write(request.stream.read())
     cr.files_uploaded += 1
     db.update()
@@ -123,7 +126,6 @@ def add_file(req_id, file_number):
             'status': 'waiting',
             'message': 'file successfully added, add all files to start the conversion.'
         }), 200
-    # TODO: Check if all files have been uploaded, set status to running, then start the conversion.
     converter = EscherConverter(cr)
     converter.convert()
     cr.status = ConversionStatus.running
