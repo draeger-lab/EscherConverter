@@ -3,7 +3,10 @@ import uuid
 from datetime import datetime
 
 import time
+
+import flask
 from flask import Blueprint, jsonify
+from flask import Response
 from flask import request
 from flask import app
 
@@ -125,14 +128,45 @@ def add_file(req_id, file_number):
         return jsonify({
             'status': 'waiting',
             'message': 'file successfully added, add all files to start the conversion.'
-        }), 200
+        }), 202
     converter = EscherConverter(cr)
     converter.convert()
     cr.status = ConversionStatus.running
     return jsonify({
         'status': cr.status.value,
         'message': 'conversion started.'
-    }), 200
+    }), 201
+
+
+@api.route('/convert/<req_id>/log', methods=['GET'])
+def conversion_log(req_id):
+    cr = db.retrieve(req_id)
+    if cr is None:
+        return jsonify({
+            'status': 'errored',
+            'message': 'no job found matching request id: ' + req_id
+        }), 404
+    if cr.status in [ConversionStatus.started, ConversionStatus.waiting, ConversionStatus.running]:
+        return jsonify({
+            'status': 'running',
+            'message': 'conversion is still running, please try again later.'
+        }), 202
+    if cr.status is ConversionStatus.errored:
+        return jsonify({
+            'status': 'errored',
+            'message': 'there was a problem in the request, could not start conversion.'
+        }), 500
+
+    log_file = open(config['FILE_STORE'] + str(req_id) + '/conversion.log', 'r')
+
+    def generate(file):
+        while True:
+            l = file.readline()
+            if l:
+                yield l
+            else:
+                return
+    return Response(generate(log_file)), 200
 
 
 @api.route('/convert', methods=['GET'])

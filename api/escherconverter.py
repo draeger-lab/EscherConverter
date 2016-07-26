@@ -45,6 +45,7 @@ class EscherConverter(object):
         # else:
         input_file = "--input=" + EscherConverter.file_store + str(options.id) + "/input/"
         self.command.append(input_file)
+        os.makedirs(EscherConverter.file_store + str(options.id) + "/output/")
         self.command.append("--output=" + EscherConverter.file_store + str(options.id) + "/output/")
         self.command.append("--log-file=" + EscherConverter.file_store + str(options.id) +
                             "/conversion.log")
