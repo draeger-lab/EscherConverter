@@ -3,12 +3,11 @@ import uuid
 from datetime import datetime
 
 import time
+from glob import glob
 
-import flask
 from flask import Blueprint, jsonify
 from flask import Response
 from flask import request
-from flask import app
 
 from config import config
 from database import Database
@@ -96,7 +95,7 @@ def conversion_request():
         }), 500
 
 
-@api.route('/convert/<req_id>/input/<file_number>', methods=['PUT', 'POST'])
+@api.route('/convert/<req_id>/input/<file_number>', methods=['PUT'])
 def add_file(req_id, file_number):
     cr = db.retrieve(req_id)
     if cr is None:
@@ -104,13 +103,12 @@ def add_file(req_id, file_number):
             'status': 'errored',
             'message': 'no job found matching request id: ' + req_id
         }), 404
-    if request.content_type not in ['application/json', 'application/xml',
-                                    'text/xml', 'text/plain']:
+    if request.content_type not in ['application/json', 'application/xml', 'text/xml']:
         return jsonify({
             'status': 'errored',
             'message': 'Content-Type must be either of :' + "'application/xml', "
                                                             "'application/json', "
-                                                            "'text/xml', 'text/plain'"
+                                                            "'text/xml'"
         }), 415
     if int(file_number) not in range(cr.file_count):
         return jsonify({
@@ -141,6 +139,39 @@ def add_file(req_id, file_number):
         'status': cr.status.value,
         'message': 'conversion started.'
     }), 201
+
+
+@api.route('/convert/<req_id>/input/<file_number>', methods=['GET'])
+def get_input_file(req_id, file_number):
+    cr = db.retrieve(req_id)
+    if cr is None:
+        return jsonify({
+            'status': 'errored',
+            'message': 'no job found matching request id: ' + req_id
+        }), 404
+    if int(file_number) not in range(cr.file_count):
+        return jsonify({
+            'status': 'errored',
+            'message': 'file number must be in (0, ' + str(cr.file_count - 1) + ').'
+        }), 404
+    if len(glob(config['FILE_STORE'] + str(req_id) + '/input/' + str(file_number) + '.*')) is 0:
+        return jsonify({
+            'status': 'errored',
+            'message': 'file number ' + str(file_number) + ' has not been uploaded yet.'
+        }), 404
+
+    input_file = open(glob(config['FILE_STORE'] + str(req_id) + '/input/' + str(file_number) +
+                           '.*')[0], 'r')
+
+    def generate(file):
+        while True:
+            l = file.readline()
+            if l:
+                yield l
+            else:
+                return
+    return Response(generate(input_file), content_type='application/' + os.path.splitext(
+        input_file.name)[1].strip('.')), 200
 
 
 @api.route('/convert/<req_id>/log', methods=['GET'])
