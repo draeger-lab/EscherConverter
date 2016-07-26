@@ -1,6 +1,5 @@
 import os
 
-import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -12,7 +11,6 @@ class Database(object):
     db_connection_string = None
     engine = None
     session_maker = None
-
 
     def __init__(self, path, echo):
         if not os.path.exists(os.path.dirname(path)):
