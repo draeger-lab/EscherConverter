@@ -117,12 +117,17 @@ def add_file(req_id, file_number):
             'status': 'errored',
             'message': 'file number must be in (0, ' + str(cr.file_count - 1) + ').'
         }), 404
+    is_new_file = True
+    if os.path.exists(config['FILE_STORE'] + str(req_id) + '/input/' + str(file_number)):
+        is_new_file = False
     os.makedirs(config['FILE_STORE'] + req_id + '/input/', exist_ok=True)
+
     file_path = config['FILE_STORE'] + req_id + '/input/' + file_number
     file_path += extension_from_content_type()[request.content_type]
     file = open(file_path, 'wb')
     file.write(request.stream.read())
-    cr.files_uploaded += 1
+    if is_new_file:
+        cr.files_uploaded += 1
     db.update()
     if cr.files_uploaded != cr.file_count:
         return jsonify({
@@ -166,7 +171,7 @@ def conversion_log(req_id):
                 yield l
             else:
                 return
-    return Response(generate(log_file)), 200
+    return Response(generate(log_file), content_type='text/plain'), 200
 
 
 @api.route('/convert', methods=['GET'])
