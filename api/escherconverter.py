@@ -1,4 +1,6 @@
+import glob
 import os
+import shutil
 
 import subprocess
 from threading import Thread
@@ -78,6 +80,10 @@ class EscherConverter(object):
         db.renew()
         options = db.retrieve(id)
         status_code = subprocess.call(self.command)
+        req_id = options.id
+        for file in glob.glob(config['FILE_STORE'] + str(req_id) + '/output/input/*'):
+            shutil.move(file, config['FILE_STORE'] + str(req_id) + '/output/')
+        os.rmdir(config['FILE_STORE'] + str(req_id) + '/output/input/')
         if status_code == 0:
             options.status = ConversionStatus.completed
         else:
