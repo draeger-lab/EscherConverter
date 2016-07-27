@@ -174,6 +174,46 @@ def get_input_file(req_id, file_number):
         input_file.name)[1].strip('.')), 200
 
 
+@api.route('/convert/<req_id>/output/<file_number>', methods=['GET'])
+def get_output_files(req_id, file_number):
+    cr = db.retrieve(req_id)
+    if cr is None:
+        return jsonify({
+            'status': 'errored',
+            'message': 'no job found matching request id: ' + req_id
+        }), 404
+    if int(file_number) not in range(cr.file_count):
+        return jsonify({
+            'status': 'errored',
+            'message': 'file number must be in (0, ' + str(cr.file_count - 1) + ').'
+        }), 404
+    if cr.status in [ConversionStatus.waiting, ConversionStatus.running]:
+        return jsonify({
+            'status': 'not found',
+            'message': 'conversion is not complete yet, please try again later.'
+        }), 404
+    if len(glob(config['FILE_STORE'] + str(req_id) + '/output/' + str(file_number) + '.*')) \
+            is 0:
+        return jsonify({
+            'status': 'not found',
+            'message': 'file number ' + str(file_number) + ' not found, please check the log fo '
+                                                           'details.'
+        }), 404
+    else:
+        output_file = open(glob(config['FILE_STORE'] + str(req_id) + '/output/' + str(file_number) +
+                                '.*')[0], 'r')
+
+        def generate(file):
+            while True:
+                l = file.readline()
+                if l:
+                    yield l
+                else:
+                    return
+        return Response(generate(output_file), content_type='application/' + os.path.splitext(
+            output_file.name)[1].strip('.')), 200
+
+
 @api.route('/convert/<req_id>/log', methods=['GET'])
 def conversion_log(req_id):
     cr = db.retrieve(req_id)
