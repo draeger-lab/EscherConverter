@@ -54,6 +54,7 @@ hs_err_pid*
 # IntelliJ
 /out/
 EscherConverter.iml
+api/api.iml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -66,3 +67,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
+## Python Specific
+
+*.pyc
