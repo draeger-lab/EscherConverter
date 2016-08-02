@@ -1,0 +1,30 @@
+{
+  "name": "EscherConverter",
+  "version": "0.0.1",
+  "description": "Mr. Plumpy Senior",
+  "main": "EscherConverter/app.coffee",
+  "scripts": {
+    "start": "brunch w -s",
+    "build": "brunch b -p",
+    "deploy": "sh deploy.sh"
+  },
+  "author": "Devesh Khandelwal <devesh.khandelwal@outlook.com>",
+  "license": "MIT",
+  "repository": "devkhan/EscherConverter",
+  "dependencies": {
+    "auto-reload-brunch": "^2.2.0",
+    "autoprefixer": "^6.3.6",
+    "clean-css-brunch": "^2.0.0",
+    "css-brunch": "^2.6.1",
+    "javascript-brunch": "^2.0.0",
+    "jaded-brunch": "^2.3.0",
+    "lodash": "^4.11.1",
+    "normalize.css": "^4.1.1",
+    "postcss-brunch": "^0.5.0",
+    "stylus-brunch": "^2.6.0",
+    "uglify-js-brunch": "^2.0.1"
+  },
+  "devDependencies": {
+    "brunch": "^2.8.2"
+  }
+}
