@@ -1,4 +1,4 @@
-
+// Complete JS code.
 
 var App = {
   init: function () {

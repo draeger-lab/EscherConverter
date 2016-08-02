@@ -16,10 +16,11 @@
     "autoprefixer": "^6.3.6",
     "clean-css-brunch": "^2.0.0",
     "css-brunch": "^2.6.1",
-    "javascript-brunch": "^2.0.0",
     "jaded-brunch": "^2.3.0",
+    "javascript-brunch": "^2.0.0",
     "lodash": "^4.11.1",
     "normalize.css": "^4.1.1",
+    "picnic": "^6.1.2",
     "postcss-brunch": "^0.5.0",
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^2.0.1"

@@ -17,16 +17,13 @@ module.exports = config:
         require('autoprefixer')(['last 8 versions'])
       ]
     stylus:
-      plugins: [
-        'jeet'
-        'bootstrap-styl'
-      ]
+      plugins: [ ]
 
   npm:
     enabled: yes
     styles:
-      'normalize.css': [
-        'normalize.css'
+      'picnic': [
+        'releases/picnic.min.css'
       ]
 
   modules:
