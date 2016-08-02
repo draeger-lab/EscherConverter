@@ -1,0 +1,22 @@
+// EscherConverter
+
+doctype html
+html(lang='en')
+  head
+    title EscherConverter
+    include ./partials/head.jade
+
+    meta(property='og:title', content='EscherConverter')
+    meta(property='og:url', content='http://bigg.ucsd.edu/')
+    link(rel='canonical', href='http://bigg.ucsd.edu/')
+    link(rel='stylesheet', type='text/css', href='css/libraries.css')
+    link(rel='stylesheet', type='text/css', href='css/app.css')
+  body
+    h1 EscherConverter
+    p Mr. Plumpy Senior
+
+    script(type='text/javascript', src='js/libraries.js')
+    script(type='text/javascript', src='js/app.js')
+    script.
+      var app = require('app');
+      app.init();
