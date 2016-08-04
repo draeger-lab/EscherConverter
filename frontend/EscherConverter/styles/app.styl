@@ -21,45 +21,45 @@ div[id=input-container]
 button[id='conversion-number-new']
 button[id='conversion-status-refresh']
 button[id='conversion-number-button']
-  width 50px
+  width auto
   height auto
   float right
   margin-left 5px
   margin-right 5px
+  align-content center
+  align-items center
 
 input[id='conversion-number-input']
   height auto
 
 div#file-header
   > div
-    width 30px
-    height 30px
-    float left
     > button
       width 30px
       height 30px
+      display: inline-block
 
-h5.file-number
-  float left
-  width: 20px
-  height: auto
-  align-self center
-
-h5.file-name
-  float: left
-
-h5.file-number
-h5.file-format
-h5.file-status
-h5.file-download
-h5.file-name
-  margin-left 10px
-  margin-right: 10px
-
-h5.file-format
-h5.file-status
-h5.file-download
-  float: right
+//h5.file-number
+//  float left
+//  width: 20px
+//  height: auto
+//  align-self center
+//
+//h5.file-name
+//  float: left
+//
+//h5.file-number
+//h5.file-format
+//h5.file-status
+//h5.file-download
+//h5.file-name
+//  margin-left 10px
+//  margin-right: 10px
+//
+//h5.file-format
+//h5.file-status
+//h5.file-download
+//  float: right
 
 #file-header
   border-bottom 1px solid #888888
@@ -129,3 +129,6 @@ button#add-file-button
 
 input[type='checkbox']
   width: 20px
+
+h5
+  display: inline-block

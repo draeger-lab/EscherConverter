@@ -17,27 +17,33 @@ html(lang='en')
           .flex.three.input-container
             input(id='conversion-number-input', class='', name='conversion-number-input',
             type='number', pattern='\d*', placeholder='enter id...')
-            button(id='conversion-number-button', class='',
-            name='conversion-number-button') S
-            button(id='conversion-number-new', name='conversion-number-new') N
-            button(id='conversion-status-refresh', name='conversion-status-refresh') R
+            button.tooltip-top#conversion-number-button(name='conversion-number-button',
+            data-tooltip='Submit/Search Id')
+              span.icono-search
+            button.tooltip-top#conversion-number-new(name='conversion-number-new',
+            data-tooltip='Create new job')
+              span.icono-plus
+            button.tooltip-top#conversion-status-refresh(name='conversion-status-refresh',
+            data-tooltip='Refresh Status')
+              span.icono-sync
           span#conversion-status-span.label Status
       hr
       #content.flex.four
         #files.three-fourth.card
-          #file-header
-            div
-              button(type='button', id='file-select-all', name='file-select-all')
-            h5.file-number #
-            h5.file-name Filename
-            h5.file-format Format
-            h5.file-status Status
-            h5.file-download Download
+          #file-header.flex.twelve
+            .sixth.flex.one(style='display:inline-block')
+              div.half(style='display:inline')
+                button(type='button', id='file-select-all', name='file-select-all')
+              h5.half.file-number #
+            h5.fourth.file-name Filename
+            h5.sixth.file-format Format
+            h5.sixth.file-status Status
+            h5.sixth.file-download Download
         #options.card
           #settings.one-fourth
             h4 Settings
-            .flex.two
-              p.three-fourth Auto-update
+            #auto-upload-container.flex.two
+              p.three-fourth Auto-upload
               label.switch.one-fourth
                 input(type='checkbox')
                 .slider.round
