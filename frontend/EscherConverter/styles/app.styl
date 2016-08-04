@@ -60,3 +60,72 @@ h5.file-format
 h5.file-status
 h5.file-download
   float: right
+
+#file-header
+  border-bottom 1px solid #888888
+
+
+#files
+  border-right: 1px solid #888888
+
+.switch
+  position relative
+  display inline-block
+  width 30px
+  height 17px
+
+.switch
+  > input
+    display none
+
+.slider
+  position absolute
+  cursor pointer
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background-color #ccc
+  -webkit-transition .4s
+  transition .4s
+  &:before
+    position absolute
+    content ""
+    height 13px
+    width 13px
+    left 2px
+    bottom 2px
+    background-color white
+    -webkit-transition .4s
+    transition .4s
+  &.round
+    border-radius 17px
+    &:before
+      border-radius 50%
+
+.switch
+  > input
+    &:checked
+      & + .slider
+        background-color #2196F3
+        &:before
+          -webkit-transform translateX(13px)
+          -ms-transform translateX(13px)
+          transform translateX(13px)
+    &:focus
+      & + .slider
+        box-shadow 0 0 1px #2196F3
+
+button#add-file-button
+  float none
+
+#settings
+  margin: 10px
+
+#options
+  > button
+    margin-left 10px
+    margin-bottom 5px
+
+input[type='checkbox']
+  width: 20px
