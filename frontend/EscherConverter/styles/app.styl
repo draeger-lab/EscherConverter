@@ -1,9 +1,62 @@
 // EscherConverter
 @require './_mixins.styl'
 
+container-side-margin = 300px
+
 html, body
   margin: 0
 
 div[id='container']
-  margin-left 200px
-  margin-right 200px
+  margin-left: container-side-margin
+  margin-right container-side-margin
+
+div[id=request-no-container]
+  align-self right
+  float: right
+
+div[id=input-container]
+  width 100%
+  float: right
+
+button[id='conversion-number-new']
+button[id='conversion-status-refresh']
+button[id='conversion-number-button']
+  width 50px
+  height auto
+  float right
+  margin-left 5px
+  margin-right 5px
+
+input[id='conversion-number-input']
+  height auto
+
+div#file-header
+  > div
+    width 30px
+    height 30px
+    float left
+    > button
+      width 30px
+      height 30px
+
+h5.file-number
+  float left
+  width: 20px
+  height: auto
+  align-self center
+
+h5.file-name
+  float: left
+
+h5.file-number
+h5.file-format
+h5.file-status
+h5.file-download
+h5.file-name
+  margin-left 10px
+  margin-right: 10px
+
+h5.file-format
+h5.file-status
+h5.file-download
+  float: right

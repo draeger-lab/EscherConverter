@@ -6,17 +6,37 @@ html(lang='en')
     title EscherConverter
     include ./partials/head.jade
 
-    meta(property='og:title', content='EscherConverter')
-    meta(property='og:url', content='http://bigg.ucsd.edu/')
-    link(rel='canonical', href='http://bigg.ucsd.edu/')
-    link(rel='stylesheet', type='text/css', href='css/libraries.css')
-    link(rel='stylesheet', type='text/css', href='css/app.css')
   body
-    div(id='container')
-      button EscherConverter
+    #container
+      #header.flex.two
+        #logo-container
+          h3 EscherConverter
+        #request-no-container
+          h6 Conversion Number:
+          .flex.three.input-container
+            input(id='conversion-number-input', class='', name='conversion-number-input',
+            type='number', pattern='\d*', placeholder='enter id...')
+            button(id='conversion-number-button', class='',
+            name='conversion-number-button') S
+            button(id='conversion-number-new', name='conversion-number-new') N
+            button(id='conversion-status-refresh', name='conversion-status-refresh') R
+          span#conversion-status-span.label Status
+      #files
+        #file-header
+          div
+            button(type='button', id='file-select-all', name='file-select-all')
+          h5.file-number #
+          h5.file-name Filename
+          h5.file-format Format
+          h5.file-status Status
+          h5.file-download Download
+      #file-ops
+        
 
     script(type='text/javascript', src='js/libraries.js')
     script(type='text/javascript', src='js/app.js')
     script.
       var app = require('app');
       app.init();
+
+

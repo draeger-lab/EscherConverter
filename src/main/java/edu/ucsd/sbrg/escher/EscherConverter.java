@@ -447,6 +447,60 @@ public class EscherConverter extends Launcher {
   }
 
 
+<<<<<<< Updated upstream
+=======
+  public static boolean extractCobraModel(File file) throws IOException, XMLStreamException {
+    SBMLDocument doc = SBMLReader.read(file);
+    // FBCModelPlugin modelPlugin = (FBCModelPlugin) doc.getPlugin(FBCConstants.shortLabel);
+    if (false) {
+      logger.warning(format(bundle.getString("SBMLFBCNotAvailable"), file.getName()));
+      return false;
+    }
+    else {
+      logger.info(format(bundle.getString("SBMLFBCInit"), file.getName()));
+      // Execute: py3 -c "from cobra import io;
+      // io.save_json_model(model=io.read_sbml_model('FILENAME'), file_name='FILENAME')"
+
+      String[] command = {"python3", "-c", "\"from cobra import io;"
+          + "io.save_json_model(model=io.read_sbml_model('" + file
+          .getAbsolutePath() + "'), file_name='" + file
+          .getAbsolutePath() + ".json" + "')\""};
+      Process p;
+      try {
+        p = new ProcessBuilder(command).start();
+        p.waitFor();
+        if (p.exitValue() == 0) {
+          logger.info(format(bundle.getString("SBMLFBCExtractionSuccessful"), file
+              .getAbsolutePath(), file.getAbsolutePath()));
+          BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+          String cobrapy_output = "";
+          cobrapy_output = reader.readLine();
+          while (cobrapy_output != null) {
+            logger.warning(cobrapy_output);
+            cobrapy_output = reader.readLine();
+          }
+          return true;
+        }
+        else {
+          logger.info(format(bundle.getString("SBMLFBCExtractionFailed")));
+          BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+          String cobrapy_output = "";
+          cobrapy_output = reader.readLine();
+          while (cobrapy_output != null) {
+            logger.warning(cobrapy_output);
+            cobrapy_output = reader.readLine();
+          }
+          return false;
+        }
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+        return false;
+      }
+    }
+  }
+
+
+>>>>>>> Stashed changes
   private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
     Validator validator;
     try {

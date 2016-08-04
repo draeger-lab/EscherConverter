@@ -25,6 +25,9 @@ module.exports = config:
       'picnic': [
         'releases/picnic.min.css'
       ]
+      'icono': [
+        'dist/icono.min.css'
+      ]
 
   modules:
     nameCleaner: (path) ->
