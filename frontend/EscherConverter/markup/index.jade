@@ -9,7 +9,8 @@ html(lang='en')
   body
     #container
       #header.flex.two
-        #logo-container
+        #logo-container.flex
+          img(src='escher-logo_128.png')
           h3 EscherConverter
         #request-no-container
           h6 Conversion Number:
@@ -21,16 +22,33 @@ html(lang='en')
             button(id='conversion-number-new', name='conversion-number-new') N
             button(id='conversion-status-refresh', name='conversion-status-refresh') R
           span#conversion-status-span.label Status
-      #files
-        #file-header
-          div
-            button(type='button', id='file-select-all', name='file-select-all')
-          h5.file-number #
-          h5.file-name Filename
-          h5.file-format Format
-          h5.file-status Status
-          h5.file-download Download
-      #file-ops
+      hr
+      #content.flex.four
+        #files.three-fourth.card
+          #file-header
+            div
+              button(type='button', id='file-select-all', name='file-select-all')
+            h5.file-number #
+            h5.file-name Filename
+            h5.file-format Format
+            h5.file-status Status
+            h5.file-download Download
+        #options.card
+          #settings.one-fourth
+            h4 Settings
+            .flex.two
+              p.three-fourth Auto-update
+              label.switch.one-fourth
+                input(type='checkbox')
+                .slider.round
+          hr
+          button(id='add-file-button', name='add-file-button') Add file
+          button(id='start-upload-button', name='start-upload-button') Start
+          button(id='download-log-file', name='download-log-file', disabled=true) Log
+        #log
+          h4 Output
+          pre#conversion-log(hidden=true)
+
         
 
     script(type='text/javascript', src='js/libraries.js')
