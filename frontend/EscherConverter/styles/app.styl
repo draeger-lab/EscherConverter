@@ -39,31 +39,8 @@ div#file-header
       height 30px
       display: inline-block
 
-//h5.file-number
-//  float left
-//  width: 20px
-//  height: auto
-//  align-self center
-//
-//h5.file-name
-//  float: left
-//
-//h5.file-number
-//h5.file-format
-//h5.file-status
-//h5.file-download
-//h5.file-name
-//  margin-left 10px
-//  margin-right: 10px
-//
-//h5.file-format
-//h5.file-status
-//h5.file-download
-//  float: right
-
 #file-header
   border-bottom 1px solid #888888
-
 
 #files
   border-right: 1px solid #888888
@@ -130,5 +107,14 @@ button#add-file-button
 input[type='checkbox']
   width: 20px
 
-h5, p
-  display: inline-block
+#files
+  > h5, p, span
+    display: inline-block
+  
+.twelve
+  > *
+    display: inline
+
+.file
+#file-header
+  display: flex
