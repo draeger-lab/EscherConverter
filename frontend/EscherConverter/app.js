@@ -11,6 +11,9 @@ var log_loaded = false;
 var App = {
   init: function () {
     console.log('init!');
+    $('.file').each(function (f) {
+      f.style.display = 'none';
+    })
   }
 };
 
@@ -25,6 +28,13 @@ $('#conversion-number-new').on('click', function () {
   $('#files > div.file').remove();
 
 });
+
+
+// Add new file row.
+$('#add-file-button').on('click', function () {
+  $('#files').append(file_row.cloneNode(true));
+});
+
 
 // Output log.
 $('#download-log-file').on('click', function () {
