@@ -28,6 +28,7 @@ def before():
 @api.after_request
 def after(response):
     db.finalize()
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 
@@ -48,6 +49,8 @@ def get_conversion_status(req_id):
         'id': cr.id,
         'status': cr.status.value,
         'submission_date': datetime.fromtimestamp(cr.submission_date),
+        'total_files': cr.file_count,
+        'uploaded_files': cr.files_uploaded
     }
     if cr.status == ConversionStatus.completed or cr.status == ConversionStatus.failed or \
                     cr.status == ConversionStatus.errored:
