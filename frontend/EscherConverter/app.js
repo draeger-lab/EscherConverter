@@ -12,22 +12,27 @@ var App = {
   init: function () {
     console.log('init!');
     $('.file').each(function (f) {
-      f.style.display = 'none';
+      f.style.display = '';
     })
   }
 };
 
-
-// Clear all and prepare for a new conversion.
-$('#conversion-number-new').on('click', function () {
-  $('#conversion-status-span').text('add files and click start');
+function cleanWorkspace() {
+  $('#files').find('div.file').remove();
   $('#conversion-status-span').removeClass();
   $('#conversion-status-span').addClass('label');
+  $('#conversion-status-span').val('status');
   $('#conversion-number-input').val('');
+  $('pre#conversion-log').text('');
+  $('pre#conversion-log').attr('hidden', true);
+}
 
-  $('#files > div.file').remove();
 
 });
+
+
+// Clear all and prepare for a new conversion.
+$('#conversion-number-new').on('click', cleanWorkspace);
 
 
 // Add new file row.
