@@ -15,6 +15,17 @@ var App = {
 };
 
 
+// Clear all and prepare for a new conversion.
+$('#conversion-number-new').on('click', function () {
+  $('#conversion-status-span').text('add files and click start');
+  $('#conversion-status-span').removeClass();
+  $('#conversion-status-span').addClass('label');
+  $('#conversion-number-input').val('');
+
+  $('#files > div.file').remove();
+
+});
+
 // Output log.
 $('#download-log-file').on('click', function () {
   var id = $('#conversion-number-input').val();
