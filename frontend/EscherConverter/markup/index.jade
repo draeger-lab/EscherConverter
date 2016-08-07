@@ -32,28 +32,47 @@ html(lang='en')
       #content.flex.four
         #files.three-fourth.card
           #file-header.flex.twelve
-            .sixth.flex.one(style='display:inline-block')
-              div.half(style='display:inline')
-                button(type='button', id='file-select-all', name='file-select-all')
-              h5.half.file-number #
-            h5.sixth.file-format Format
-            h5.sixth.file-input Upload
-            h5.sixth.file-output Download
-            h5.fourth.file-status Status
+            .sixth(style='display:inline')
+              button(type='button', id='file-select-all', name='file-select-all')
+            .third.flex.three(style='display:inline-flex')
+              h5.one.file-format Format
+              h5.one.file-input-status Input Status
+              h5.one.file-output-status Output Status
+            h5.sixth.file-input-select Input File
+            h5.sixth.file-format-select File Format
+            .sixth.flex.three(style='display:inline-flex')
+              h5.one.file-input-upload Upload Input
+              h5.one.file-input-download Input Download
+              h5.one.file-output-download Output Download
           .file.flex.twelve
-            .sixth.flex.one(style='display:inline-block')
-              div.half(style='display:inline')
-                button(type='button', name='file-select-button')
-              p.half.file-number #
-            p.sixth.file-format Format
-            p.sixth.file-input
-              input#file-input-file(type='file')
-            p.sixth.file-output
-              a(href='#')
-            p.fourth.file-status
-              span.label
-        #options.card
-          #settings.one-fourth
+            .sixth(style='display:inline')
+              button.file-select-button(type='button')
+            .third.flex.three(style='display:inline-flex')
+              p.one.file-format
+                span.label Format
+              p.one.file-input-status
+                span.label Input Status
+              p.one.file-output-status
+                span.label Output Status
+            p.sixth.file-input-select
+              label.dropimage
+                input(type='file')
+            p.sixth.file-format-select
+              select
+                option Escher (application/json)
+                option SBGN/SBML (application/xml)
+            .sixth.flex.three(style='display:inline-flex')
+              p.one.file-input-upload
+                button.tooltip-top(data-tooltip='Upload Input file')
+                  span.icono-upArrow
+              p.one.file-input-download
+                button.tooltip-top(data-tooltip='Download Input file')
+                  span.icono-downArrow
+              p.one.file-output-download
+                button.tooltip-top(data-tooltip='Download Output file')
+                  span.icono-downArrow
+        #options.one-fourth.card
+          #settings
             h4 Settings
             #auto-upload-container.flex.two
               p.three-fourth Auto-upload
