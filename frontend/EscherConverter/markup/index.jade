@@ -8,6 +8,7 @@ html(lang='en')
 
   body
     #container
+      iframe#invisible-iframe(style='display:none;')
       #header.flex.two
         #logo-container.flex
           img(src='escher-logo_128.png')
@@ -35,10 +36,22 @@ html(lang='en')
               div.half(style='display:inline')
                 button(type='button', id='file-select-all', name='file-select-all')
               h5.half.file-number #
-            h5.fourth.file-name Filename
             h5.sixth.file-format Format
-            h5.sixth.file-status Status
-            h5.sixth.file-download Download
+            h5.sixth.file-input Upload
+            h5.sixth.file-output Download
+            h5.fourth.file-status Status
+          .file.flex.twelve
+            .sixth.flex.one(style='display:inline-block')
+              div.half(style='display:inline')
+                button(type='button', name='file-select-button')
+              p.half.file-number #
+            p.sixth.file-format Format
+            p.sixth.file-input
+              input#file-input-file(type='file')
+            p.sixth.file-output
+              a(href='#')
+            p.fourth.file-status
+              span.label
         #options.card
           #settings.one-fourth
             h4 Settings
@@ -50,7 +63,7 @@ html(lang='en')
           hr
           button(id='add-file-button', name='add-file-button') Add file
           button(id='start-upload-button', name='start-upload-button') Start
-          button(id='download-log-file', name='download-log-file', disabled=true) Log
+          button(id='download-log-file', name='download-log-file', disabled=false) Log
         #log
           h4 Output
           pre#conversion-log(hidden=true)
