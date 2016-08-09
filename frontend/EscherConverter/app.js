@@ -194,4 +194,54 @@ $('#download-log-file').on('click', function () {
   }
 });
 
+// Update job status.
+function updateStatus() {
+  var idInput = $('#conversion-number-input');
+  var id = $('#conversion-number-input').val();
+  var statusSpan = $('#conversion-status-span');
+  statusSpan.removeClass();
+  statusSpan.addClass('label');
+  if (id) {
+    nanoajax.ajax({
+    method: 'GET',
+    url: `${BASE_URL}/convert/${id}`
+  }, function (code, response) {
+      var resp = JSON.parse(response);
+      if (code == 404) {
+        statusSpan.addClass('error');
+        statusSpan.text(`not found: ${id}`);
+        idInput.val("");
+      }
+      if (code == 200) {
+        switch (resp.status) {
+          case 'started':
+          case 'waiting':
+            statusSpan.addClass('warning');
+            statusSpan.text('waiting');
+            break;
+          case 'running':
+            statusSpan.addClass('warning');
+            statusSpan.text('running');
+            break;
+          case 'failed':
+          case 'errored':
+            statusSpan.addClass('error');
+            statusSpan.text(resp.status);
+            break;
+          case 'completed':
+            statusSpan.addClass('success');
+            statusSpan.text('completed');
+            break;
+        }
+      }
+    });
+  }
+  else {
+    statusSpan.text('status');
+  }
+}
+
+
+$('#conversion-status-refresh').on('click', updateStatus);
+
 module.exports = App;
