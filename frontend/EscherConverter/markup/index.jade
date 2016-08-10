@@ -59,8 +59,9 @@ html(lang='en')
                 input(type='file')
             p.sixth.file-format-select
               select
-                option(value='application/json') Escher (application/json)
-                option(value='application/xml') SBGN/SBML (application/xml)
+                option(value='application/json') Escher
+                option(value='application/xml') SBGN
+                option(value='application/xml') SBML
             .sixth.flex.three(style='display:inline-flex')
               p.one.file-input-upload
                 button.tooltip-top(data-tooltip='Upload Input file')
@@ -79,6 +80,12 @@ html(lang='en')
               label.switch.one-fourth
                 input(type='checkbox')
                 .slider.round
+            #output-format-container.flex.two
+              p.half Output Format
+              select.half
+                option(value='Escher') Escher
+                option(value='SBGN') SBGN
+                option(value='SBML') SBML
           hr
           button(id='add-file-button', name='add-file-button') Add file
           button(id='start-upload-button', name='start-upload-button') Start

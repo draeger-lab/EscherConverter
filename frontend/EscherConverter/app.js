@@ -12,9 +12,7 @@ var current_job = {};
 var App = {
   init: function () {
     console.log('init!');
-    $('.file').each(function (f) {
-      f.style.display = 'none';
-    })
+    $('.file').remove();
   }
 };
 
@@ -194,7 +192,33 @@ function uploadFile (row, button) {
   }
 }
 
-$('#conversion-number-button').on('click', function () {
+function startNewConversion() {
+  var req = {};
+  req.output_format = $('#output-format-container').find('select').val().toLowerCase();
+  req.file_count = $('.file').length;
+
+  nanoajax.ajax({
+    method: 'POST',
+    url: `${BASE_URL}/convert`,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(req)
+  }, function (statusCode, responseText, request) {
+    if (Math.floor(statusCode/100) == 2) {
+      var obj = JSON.parse(responseText);
+      $('#conversion-number-input').val(obj.id);
+      $('#conversion-number-input').attr('disabled', true);
+      $('.file').each(function (row, i, array) {
+        $(row).find('.file-input-upload > button').attr('data-url',
+          `${BASE_URL}/convert/${obj.id}/input/${i}`);
+        uploadFile(row, $(row).find('.file-input-upload > button'));
+      })
+    }
+  });
+}
+
+function searchConversionId() {
   var id = $('#conversion-number-input').val();
   console.log('Converion ID:', id);
   if (!id) {
@@ -214,51 +238,7 @@ $('#conversion-number-button').on('click', function () {
         // Add rows of files.
         for (var i = 0; i < resp.total_files ; i++) {
           file_rows.push(prepareFileRow(id, i, resp.status));
-
-          /* Old code for preparing a file row.
-          var file_row = $('.file')[0].cloneNode(true);
-          $(file_row).find('.file-number')[0].val('i+1');
-          // Make head request for each file.
-          nanoajax.ajax({
-            method: 'HEAD',
-            url: BASE_URL + '/convert/' + id + '/input/' + i
-          }, function (code, responseText) {
-            if (code === 404) {
-              switch (resp.status) {
-                case "started":
-                case "waiting":
-                  // TODO: Add upload functionality.
-                  $(file_row).find('span')[0].removeClass();
-                  $(file_row).find('span')[0].addClass('label waiting');
-                  $(file_row).find('span')[0].text('not uploaded yet');
-                  break;
-                case "running":
-                  $(file_row).find('span')[0].removeClass();
-                  $(file_row).find('span')[0].addClass('label waiting');
-                  $(file_row).find('span')[0].text('conversion running');
-                  break;
-                case "failed":
-                  $(file_row).find('span')[0].removeClass();
-                  $(file_row).find('span')[0].addClass('label error');
-                  $(file_row).find('span')[0].text('conversion failed');
-                  break;
-                case "completed":
-                  $(file_row).find('span')[0].removeClass();
-                  $(file_row).find('span')[0].addClass('label success');
-                  $(file_row).find('span').text('converted successfully');
-                  break;
-                case "errored":
-                  $(file_row).find('span')[0].removeClass();
-                  $(file_row).find('span')[0].addClass('label error');
-                  $(file_row).find('.file-status')[0].val('conversion failed');
-                  break;
-              }
-
-            }
-          });
-          */
         }
-        // $('#files')[0].appendChild(file_rows);
         $(file_rows).each(function (item) {
           $('#files')[0].appendChild(item);
         });
@@ -266,7 +246,10 @@ $('#conversion-number-button').on('click', function () {
       }
     });
   }
-});
+}
+
+
+$('#conversion-number-button').on('click', searchConversionId);
 
 
 // Clear all and prepare for a new conversion.
@@ -275,7 +258,9 @@ $('#conversion-number-new').on('click', cleanWorkspace);
 
 // Add new file row.
 $('#add-file-button').on('click', function () {
-  $('#files').append(file_row.cloneNode(true));
+  var r = file_row.cloneNode(true);
+  $(r).find('.file-select-button').text($('.file').length);
+  $('#files').append(r);
 });
 
 
@@ -347,5 +332,8 @@ function updateStatus() {
 
 
 $('#conversion-status-refresh').on('click', updateStatus);
+
+
+$('#start-upload-button').on('click', startNewConversion);
 
 module.exports = App;
