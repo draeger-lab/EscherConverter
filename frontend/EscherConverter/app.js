@@ -30,29 +30,120 @@ function cleanWorkspace() {
 
 function prepareFileRow(conversionId, fileNumber, job_status) {
   var row = file_row.cloneNode(true);
-  $(row).find('.file-select-button').val(fileNumber);
+  $(row).find('.file-select-button').text(fileNumber);
   nanoajax.ajax({
     url: `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`,
     method: 'HEAD'
-  }, function (statusCode, responseText) {
-    if (statusCode === 200) {
+  }, function (statusCode, responseText, request) {
+    if (statusCode === 404) {
       switch (job_status) {
         case 'started':
         case 'waiting':
           $(row).find('.file-format > span').removeClass();
-          $(row).find('.file-format > span').addClass('label warning');
-          $(row).find('.file-format > span').text('waiting');
+          $(row).find('.file-format > span').addClass('label');
+          $(row).find('.file-format > span').html('none');
           $(row).find('.file-input-status > span').removeClass();
           $(row).find('.file-input-status > span').addClass('label warning');
-          $(row).find('.file-input-status > span').text('waiting');
+          $(row).find('.file-input-status > span').html('waiting');
           $(row).find('.file-output-status > span').removeClass();
           $(row).find('.file-output-status > span').addClass('label normal');
-          $(row).find('.file-output-status > span').text('not started');
-          $(row).find('.file-input-upload > button').attr('data-url',
+          $(row).find('.file-output-status > span').html('not started');
+          var inputUploadButton = $(row).find('.file-input-upload > button')[0];
+          $(inputUploadButton).attr('data-url', `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(inputUploadButton).on('click', function () {
+            return uploadFile.call(undefined, row, inputUploadButton);
+          });
+          $(row).find('.file-input-download > button').attr('disabled', true);
+          $(row).find('.file-output-download > button').attr('disabled', true);
+          break;
+        case 'failed':
+        case 'errored':
+          $(row).find('.file-format > span').removeClass();
+          $(row).find('.file-format > span').addClass('label');
+          $(row).find('.file-format > span').html('none');
+          $(row).find('.file-input-status > span').removeClass();
+          $(row).find('.file-input-status > span').addClass('label error');
+          $(row).find('.file-input-status > span').html('not available');
+          $(row).find('.file-output-status > span').removeClass();
+          $(row).find('.file-output-status > span').addClass('label error');
+          $(row).find('.file-output-status > span').html('failed');
+          var inputUploadButton = $(row).find('.file-input-upload > button')[0];
+          $(inputUploadButton).attr('data-url', `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(inputUploadButton).attr('disabled', true);
+          $(row).find('.file-input-download > button').attr('disabled', true);
+          $(row).find('.file-output-download > button').attr('disabled', true);
+          break;
+      }
+    }
+    else if (statusCode/100 == 2) {
+      $(row).find('.file-format > span').removeClass();
+      $(row).find('.file-format > span').addClass('label');
+      $(row).find('.file-format > span').html(request.getResponseHeader('Content-Type'));
+      $(row).find('.file-input-status > span').removeClass();
+      $(row).find('.file-input-status > span').addClass('label success');
+      $(row).find('.file-input-status > span').html('uploaded');
+      switch (job_status) {
+        case 'started':
+        case 'waiting':
+          $(row).find('.file-output-status > span').removeClass();
+          $(row).find('.file-output-status > span').addClass('label normal');
+          $(row).find('.file-output-status > span').html('not started');
+          var inputUploadButton = $(row).find('.file-input-upload > button')[0];
+          $(inputUploadButton).attr('data-url', `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(inputUploadButton).on('click', function () {
+            return uploadFile.call(undefined, row, inputUploadButton);
+          });
+          $(row).find('.file-input-download > button').attr('data-url',
               `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
-          $(row).find('.file-input-upload > button').on('click', uploadFile(row));
-          $(row).find('.file-input-download').attr('disabled', true);
+          $(row).find('.file-input-download > button').on('click', function () {
+            return downloadFile.call(undefined, row, $(row).find('.file-input-download > button'));
+          });
+          $(row).find('.file-input-download > button').attr('disabled', true);
+          $(row).find('.file-output-download > button').attr('disabled', true);
+          break;
+        case 'failed':
+        case 'errored':
+          $(row).find('.file-output-status > span').removeClass();
+          $(row).find('.file-output-status > span').addClass('label error');
+          $(row).find('.file-output-status > span').html('failed');
+          $(row).find('.file-input-upload > button').attr('disabled', true);
+          $(row).find('.file-input-download > button').removeAttr('disabled');
+          $(row).find('.file-input-download > button').attr('data-url',
+            `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(row).find('.file-input-download > button').on('click', function () {
+            return downloadFile.call(undefined, row, $(row).find('.file-input-download > button'));
+          });
           $(row).find('.file-output-download').attr('disabled', true);
+          break;
+        case 'running':
+          $(row).find('.file-output-status > span').removeClass();
+          $(row).find('.file-output-status > span').addClass('label warning');
+          $(row).find('.file-output-status > span').html('running');
+          $(row).find('.file-input-upload > button').attr('disabled', true);
+          $(row).find('.file-input-download > button').removeAttr('disabled');
+          $(row).find('.file-input-download > button').attr('data-url',
+              `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(row).find('.file-input-download > button').on('click', function () {
+            return downloadFile.call(undefined, row, $(row).find('.file-input-download > button'));
+          });
+          $(row).find('.file-output-download').attr('disabled', true);
+          break;
+        case 'completed':
+          $(row).find('.file-output-status > span').removeClass();
+          $(row).find('.file-output-status > span').addClass('label success');
+          $(row).find('.file-output-status > span').html('converted');
+          $(row).find('.file-input-upload > button').attr('disabled', true);
+          $(row).find('.file-input-download > button').removeAttr('disabled');
+          $(row).find('.file-input-download > button').attr('data-url',
+              `${BASE_URL}/convert/${conversionId}/input/${fileNumber}`);
+          $(row).find('.file-input-download > button').on('click', function () {
+            return downloadFile.call(undefined, row, $(row).find('.file-input-download > button'));
+          });
+          $(row).find('.file-output-download > button').attr('data-url',
+              `${BASE_URL}/convert/${conversionId}/output/${fileNumber}`);
+          $(row).find('.file-output-download > button').on('click', function () {
+            return downloadFile.call(undefined, row, $(row).find('.file-output-download > button'));
+          });
           break;
       }
     }
@@ -60,32 +151,47 @@ function prepareFileRow(conversionId, fileNumber, job_status) {
   return row;
 }
 
-function uploadFile (row) {
-  this.disable();
+function downloadFile(row, button) {
   nanoajax.ajax({
     method: 'GET',
-    url: $(row).find('.file-input-select > input').val(),
-    headers: {
-      'Content-Type': $(row).find('.file-format-select > select').val()
-    }
-  }, function (fileStatusCode, fileResponseText) {
-    if (fileStatusCode == 200) {
-      nanoajax.ajax({
-        method: 'PUT',
-        url: $(this).data('url'),
-        body: fileResponseText
-      }, function (fileUploadStatusCode, fileUploadResponseText) {
-        if (fileUploadStatusCode == 200) {
-          $(row).find('.file-input-status > span').removeClass();
-          $(row).find('.file-input-status > span').addClass('label success');
-          $(row).find('.file-input-status > span').text('uploaded');
-          $(row).find('.file-format > span').removeClass();
-          $(row).find('.file-format > span').addClass('label');
-          $(row).find('.file-format > span').text('waiting');
-        }
-      })
+    url: $(button).data('url')
+  }, function (fileDownloadStatus, fileDownloadText, request) {
+    if (Math.floor(fileDownloadStatus/100) == 2) {
+      var extension = request.getResponseHeader('Content-Type').split("/")[1];
+      var id = $('#conversion-number-input').val();
+      var number = $(row).find('.file-select-button').text();
+      var file = new File([fileDownloadText], `${id}_${number}.${extension}`, {type: "text/plain;charset=utf-8"});
+      saveAs(file);
     }
   });
+}
+
+function uploadFile (row, button) {
+  $(button).attr('disabled', true);
+  var file = $(row).find('.file-input-select > label > input')[0].files[0];
+  console.log(file);
+  if (file) {
+    var reader = new FileReader();
+    reader.readAsText(file);
+    nanoajax.ajax({
+      method: 'PUT',
+      url: $(button).data('url'),
+      body: $(row).find('.file-input-select > label > input')[0].target,
+      headers: {
+        'Content-Type': $(row).find('.file-format-select > select').val()
+      }
+    }, function (fileUploadStatusCode, fileUploadResponseText) {
+      if (Math.floor(fileUploadStatusCode/100) == 2) {
+        $(row).find('.file-input-status > span').removeClass();
+        $(row).find('.file-input-status > span').addClass('label success');
+        $(row).find('.file-input-status > span').text('uploaded');
+        $(row).find('.file-format > span').removeClass();
+        $(row).find('.file-format > span').addClass('label');
+        $(row).find('.file-format > span').text($(row).find('.file-format-select > select').val());
+      }
+      $(button).removeAttr('disabled');
+    });
+  }
 }
 
 $('#conversion-number-button').on('click', function () {
@@ -96,16 +202,13 @@ $('#conversion-number-button').on('click', function () {
   }
   else {
     // Get request info.
+    $('#files').find('div.file').remove();
     nanoajax.ajax({
       url: BASE_URL + '/convert/' + id
     }, function (code, responseText) {
       console.log(responseText);
-      if (code == 404) {
-        $('#conversion-status-span').text('not found');
-        $('#conversion-status-span').addClass('error');
-        $('#conversion-number-input').val("");
-      }
-      else if (code == 200) {
+      updateStatus();
+      if (code == 200) {
         var resp = JSON.parse(responseText);
         var file_rows = [];
         // Add rows of files.
@@ -158,7 +261,8 @@ $('#conversion-number-button').on('click', function () {
         // $('#files')[0].appendChild(file_rows);
         $(file_rows).each(function (item) {
           $('#files')[0].appendChild(item);
-        })
+        });
+        console.log(file_rows);
       }
     });
   }
