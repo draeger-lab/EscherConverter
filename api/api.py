@@ -76,6 +76,17 @@ def conversion_request():
             'status': 'errored',
             'message': 'Invalid request JSON!!!'
         }), 400
+    if cr_object.output_format == 'escher':
+        cr_object.output_format = OutputFormat.escher
+    elif cr_object.output_format == 'sbgn':
+        cr_object.output_format = OutputFormat.sbgn
+    elif cr_object.output_format == 'sbml':
+        cr_object.output_format == OutputFormat.sbml
+    else:
+        return jsonify({
+            'status': 'errored',
+            'message': 'output_format must be in [escher, sbgn, sbml].'
+        }), 400
     cr_object.output_format = OutputFormat.escher
     cr_object.id = uuid.uuid1().int >> 112
     cr_object.submission_date = int(time.time())
