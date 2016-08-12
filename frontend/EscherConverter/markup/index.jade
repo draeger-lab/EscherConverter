@@ -1,0 +1,105 @@
+// EscherConverter
+
+doctype html
+html(lang='en')
+  head
+    title EscherConverter
+    include ./partials/head.jade
+
+  body
+    #container
+      iframe#invisible-iframe(style='display:none;')
+      #header.flex.two
+        #logo-container.flex
+          img(src='escher-logo_128.png')
+          h3 EscherConverter
+        #request-no-container
+          h6 Conversion Number:
+          .flex.three.input-container
+            input(id='conversion-number-input', class='', name='conversion-number-input',
+            type='number', pattern='\d*', placeholder='enter id...')
+            button.tooltip-top#conversion-number-button(name='conversion-number-button',
+            data-tooltip='Submit/Search Id')
+              span.icono-search
+            button.tooltip-top#conversion-number-new(name='conversion-number-new',
+            data-tooltip='Create new job')
+              span.icono-plus
+            button.tooltip-top#conversion-status-refresh(name='conversion-status-refresh',
+            data-tooltip='Refresh Status')
+              span.icono-sync
+          span#conversion-status-span.label status
+      hr
+      #content.flex.four
+        #files.three-fourth.card
+          #file-header.flex.twelve
+            .sixth(style='display:inline')
+              button(type='button', id='file-select-all', name='file-select-all')
+            .third.flex.three(style='display:inline-flex')
+              h5.one.file-format Format
+              h5.one.file-input-status Input Status
+              h5.one.file-output-status Output Status
+            h5.sixth.file-input-select Input File
+            h5.sixth.file-format-select File Format
+            .sixth.flex.three(style='display:inline-flex')
+              h5.one.file-input-upload Upload Input
+              h5.one.file-input-download Input Download
+              h5.one.file-output-download Output Download
+          .file.flex.twelve
+            .sixth(style='display:inline')
+              button.file-select-button(type='button')
+            .third.flex.three(style='display:inline-flex')
+              p.one.file-format
+                span.label Format
+              p.one.file-input-status
+                span.label Input Status
+              p.one.file-output-status
+                span.label Output Status
+            p.sixth.file-input-select
+              label.dropimage
+                input(type='file')
+            p.sixth.file-format-select
+              select
+                option(value='application/json') Escher
+                option(value='application/xml') SBGN
+                option(value='application/xml') SBML
+            .sixth.flex.three(style='display:inline-flex')
+              p.one.file-input-upload
+                button.tooltip-top(data-tooltip='Upload Input file')
+                  span.icono-upArrow
+              p.one.file-input-download
+                button.tooltip-top(data-tooltip='Download Input file')
+                  span.icono-downArrow
+              p.one.file-output-download
+                button.tooltip-top(data-tooltip='Download Output file')
+                  span.icono-downArrow
+        #options.one-fourth.card
+          #settings
+            h4 Settings
+            #auto-upload-container.flex.two
+              p.three-fourth Auto-upload
+              label.switch.one-fourth
+                input(type='checkbox')
+                .slider.round
+            #output-format-container.flex.two
+              p.half Output Format
+              select.half
+                option(value='Escher') Escher
+                option(value='SBGN') SBGN
+                option(value='SBML') SBML
+          hr
+          button(id='add-file-button', name='add-file-button') Add file
+          button(id='start-upload-button', name='start-upload-button') Start
+          button(id='download-log-file', name='download-log-file', disabled=false) Log
+        #log
+          h4 Output
+          pre#conversion-log(hidden=true)
+
+        
+
+    script(type='text/javascript', src='js/libraries.js')
+    script(type='text/javascript', src='js/app.js')
+    script.
+      var app = require('app');
+      app.init();
+
+

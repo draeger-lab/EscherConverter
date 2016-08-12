@@ -1,0 +1,12 @@
+/* TEAM */
+  Developer: Devesh Khandelwal
+  GitHub: @devkhan
+  Website: http://bigg.ucsd.edu/
+  Source: https://github.com/devkhan/EscherConverter
+  From: New Delhi, India
+
+/* THANKS */
+  ...
+
+/* SITE */
+  ...
