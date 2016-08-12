@@ -19,8 +19,10 @@ package edu.ucsd.sbrg.escher;
 import static java.text.MessageFormat.format;
 
 import java.awt.Window;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -447,8 +449,6 @@ public class EscherConverter extends Launcher {
   }
 
 
-<<<<<<< Updated upstream
-=======
   public static boolean extractCobraModel(File file) throws IOException, XMLStreamException {
     SBMLDocument doc = SBMLReader.read(file);
     // FBCModelPlugin modelPlugin = (FBCModelPlugin) doc.getPlugin(FBCConstants.shortLabel);
@@ -500,7 +500,6 @@ public class EscherConverter extends Launcher {
   }
 
 
->>>>>>> Stashed changes
   private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
     Validator validator;
     try {
