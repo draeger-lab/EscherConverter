@@ -426,6 +426,7 @@ public class EscherConverter extends Launcher {
         break;
 
       case SBML:
+        extractCobraModel(input);
         List<EscherMap> maps = convert(SBMLReader.read(input), properties);
         writeEscherJson(maps, output);
         success = true;
@@ -450,8 +451,6 @@ public class EscherConverter extends Launcher {
 
 
   public static boolean extractCobraModel(File file) throws IOException, XMLStreamException {
-    SBMLDocument doc = SBMLReader.read(file);
-    // FBCModelPlugin modelPlugin = (FBCModelPlugin) doc.getPlugin(FBCConstants.shortLabel);
     if (false) {
       logger.warning(format(bundle.getString("SBMLFBCNotAvailable"), file.getName()));
       return false;
