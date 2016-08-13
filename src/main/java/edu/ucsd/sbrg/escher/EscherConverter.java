@@ -19,10 +19,7 @@ package edu.ucsd.sbrg.escher;
 import static java.text.MessageFormat.format;
 
 import java.awt.Window;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -426,7 +423,9 @@ public class EscherConverter extends Launcher {
         break;
 
       case SBML:
-        extractCobraModel(input);
+        if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
+          extractCobraModel(input);
+        }
         List<EscherMap> maps = convert(SBMLReader.read(input), properties);
         writeEscherJson(maps, output);
         success = true;
@@ -460,17 +459,25 @@ public class EscherConverter extends Launcher {
       // Execute: py3 -c "from cobra import io;
       // io.save_json_model(model=io.read_sbml_model('FILENAME'), file_name='FILENAME')"
 
-      String[] command = {"python3", "-c", "\"from cobra import io;"
+      String[] command;
+      command = new String[]{"python3", "-c", "\"print('yo');from cobra import io;"
           + "io.save_json_model(model=io.read_sbml_model('" + file
           .getAbsolutePath() + "'), file_name='" + file
-          .getAbsolutePath() + ".json" + "')\""};
+          .getAbsolutePath() + ".json" + "');print('yo')\"",
+          "> /temp/log"};
+//      command = new String[] {"/usr/local/bin/python3", "-c", "\"print('yo')\""};
+      command = new String[] {"python3"};
       Process p;
       try {
-        p = new ProcessBuilder(command).start();
+//        p = new ProcessBuilder(command).redirectErrorStream(true).start();
+        p = Runtime.getRuntime().exec(command);
         p.waitFor();
         if (p.exitValue() == 0) {
           logger.info(format(bundle.getString("SBMLFBCExtractionSuccessful"), file
               .getAbsolutePath(), file.getAbsolutePath()));
+          InputStream is = p.getErrorStream();
+          is = p.getInputStream();
+          OutputStream os = p.getOutputStream();
           BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
           String cobrapy_output = "";
           cobrapy_output = reader.readLine();
