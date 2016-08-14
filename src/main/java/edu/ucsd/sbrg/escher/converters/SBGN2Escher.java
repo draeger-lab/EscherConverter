@@ -420,6 +420,7 @@ public class SBGN2Escher {
       g.getPort().forEach(p -> {
         port2GlyphMap.put(p.getId(), g.getId());
       });
+      port2GlyphMap.put(g.getId(), g.getId());
 
       // Store all labels with their respective labels.
       if (g.getLabel() != null) {
