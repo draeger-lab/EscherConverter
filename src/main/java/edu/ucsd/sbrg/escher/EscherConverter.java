@@ -515,20 +515,20 @@ public class EscherConverter extends Launcher {
       return false;
     }
 
-    //    switch (inputFormat) {
-    //    case SBGN:
-    //      logger.info(bundle.getString("ValidatingSBGN"));
-    //      return validator.validateSbgnml(input);
-    //
-    //    case SBML:
-    //      logger.info(bundle.getString("ValidatingSBML"));
-    //      return validator.validateSbmlLE(input);
-    //
-    //    case Escher:
-    //      logger.info(bundle.getString("ValidatingEscher"));
-    //      return validator.validateEscher(input);
-    //
-    //    }
+    switch (inputFormat) {
+    case SBGN:
+      logger.info(bundle.getString("ValidatingSBGN"));
+      return validator.validateSbgnml(input);
+
+    case SBML:
+      logger.info(bundle.getString("ValidatingSBML"));
+      return validator.validateSbmlLE(input);
+
+    case Escher:
+      logger.info(bundle.getString("ValidatingEscher"));
+      return validator.validateEscher(input);
+
+    }
     return false;
   }
 

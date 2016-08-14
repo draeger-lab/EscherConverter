@@ -165,7 +165,8 @@ public class SBGN2Escher {
     reaction.setMidmarker(createMidMarker(glyph));
 
     logger.fine(format(messages.getString("ReactionSegmentAddInit"), reaction.getId()));
-    document.getMap().getArc().forEach((a) -> {
+    document.getMap().getArc().stream().filter(a -> a.getClazz().equals("production") || a
+        .getClazz().equals("consumption")).collect(Collectors.toList()).forEach((a) -> {
 
       if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
@@ -173,14 +174,14 @@ public class SBGN2Escher {
       }
 
       Metabolite metabolite = new Metabolite();
-      if (a.getClazz().equals("consumption")) {
+      if (a.getClazz().equals("consumption") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         logger.info(format(messages.getString("ConsumptionArcNegativeCoeff"), a.getId()));
         metabolite.setCoefficient(-1.0);
         metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
             .getSource()))));
       }
 
-      if (a.getClazz().equals("production")) {
+      if (a.getClazz().equals("production") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         logger.info(format(messages.getString("ProductionArcNegativeCoeff"), a.getId()));
         metabolite.setCoefficient(1.0);
         metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
@@ -189,6 +190,17 @@ public class SBGN2Escher {
 
       reaction.addMetabolite(metabolite);
     });
+
+    document.getMap().getArc().stream().filter(a -> {
+      return a.getClazz().equals("catalysis") &&
+          (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
+              glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget()))));
+    })
+            .collect(Collectors.toList()).forEach((a) -> {
+
+      reaction.setGeneReactionRule(a.getId());
+    });
+
     logger.fine(format(messages.getString("ReactionSegmentAddFinish"), reaction.getId()));
 
     return reaction;
@@ -354,33 +366,31 @@ public class SBGN2Escher {
       switch (component) {
 
       case "node":
-        // TODO: Call createNode and add to EscherMap properly.
         logger.info(format(messages.getString("GlyphNode"), g.getId(), g.getClazz()));
         escherMap.addNode(createNode(g));
         break;
 
       case "reaction":
-        // TODO: Call createReaction and add to EscherMap properly.
         logger.info(format(messages.getString("GlyphReaction"), g.getId(), g.getClazz()));
         escherMap.addNode(createMidMarker(g));
         escherMap.addReaction(createReaction(g));
         break;
 
       case "text_label":
-        // TODO: Call createTextLabel and add to EscherMap properly.
         logger.info(format(messages.getString("GlyphTextLabel"), g.getId(), g.getClazz()));
         escherMap.addTextLabel(createTextLabel(g));
         break;
 
       default:
-        // TODO: Log a message saying unsupported class.
         logger.warning(format(messages.getString("GlyphUnsupportedClass"), g.getId(), g.getClazz()));
         break;
 
       }
     });
 
-    map.getArc().forEach(a -> {
+    map.getArc().stream().filter(a -> a.getClazz().equals("production") || a.getClazz().equals("consumption"))
+       .collect(Collectors.toList()).forEach(a -> {
+
       logger.info(format(messages.getString("ArcMultiMarkerCount"), a.getId(), a.getNext().size()));
       a.getNext().forEach(next -> {
         escherMap.addNode(createMultiMarker(next));
