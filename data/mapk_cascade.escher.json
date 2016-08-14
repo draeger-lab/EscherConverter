@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403663313330633435",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403631383764316635",
   "map_name" : "mapk_cascade.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -233,6 +233,7 @@
   "reactions" : {
     "99468428" : {
       "bigg_id" : "R2",
+      "gene_reaction_rule" : "arc00000a",
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 400.0,
@@ -276,6 +277,7 @@
     },
     "130731084" : {
       "bigg_id" : "R0",
+      "gene_reaction_rule" : "arc000009",
       "genes" : [ ],
       "label_x" : 540.0,
       "label_y" : 400.0,
@@ -319,6 +321,7 @@
     },
     "130731086" : {
       "bigg_id" : "R3",
+      "gene_reaction_rule" : "arc000010",
       "genes" : [ ],
       "label_x" : 500.0,
       "label_y" : 650.0,
@@ -362,6 +365,7 @@
     },
     "130731087" : {
       "bigg_id" : "R4",
+      "gene_reaction_rule" : "arc000011",
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 650.0,
@@ -405,6 +409,7 @@
     },
     "99468423" : {
       "bigg_id" : "R1",
+      "gene_reaction_rule" : "arc000003",
       "genes" : [ ],
       "label_x" : 370.0,
       "label_y" : 160.0,

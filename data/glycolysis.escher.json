@@ -1,6 +1,6 @@
 [ {
   "map_description" : "No description provided with the document.",
-  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403736396135386535",
+  "map_id" : "6F72672E7362676E2E62696E64696E67732E4D6170403234343534343561",
   "map_name" : "glycolysis.escher.json",
   "nodes" : { },
   "reactions" : { },
@@ -408,6 +408,7 @@
   "reactions" : {
     "99468428" : {
       "bigg_id" : "R0",
+      "gene_reaction_rule" : "arc000000",
       "genes" : [ ],
       "label_x" : 220.0,
       "label_y" : 160.0,
@@ -454,6 +455,7 @@
     },
     "130731083" : {
       "bigg_id" : "R1",
+      "gene_reaction_rule" : "arc000010",
       "genes" : [ ],
       "label_x" : 430.0,
       "label_y" : 160.0,
@@ -482,6 +484,7 @@
     },
     "130731084" : {
       "bigg_id" : "R2",
+      "gene_reaction_rule" : "arc000011",
       "genes" : [ ],
       "label_x" : 650.0,
       "label_y" : 160.0,
@@ -528,6 +531,7 @@
     },
     "130731087" : {
       "bigg_id" : "R9",
+      "gene_reaction_rule" : "arc00000c",
       "genes" : [ ],
       "label_x" : 980.0,
       "label_y" : 160.0,
@@ -556,6 +560,7 @@
     },
     "130731089" : {
       "bigg_id" : "R3",
+      "gene_reaction_rule" : "arc000012",
       "genes" : [ ],
       "label_x" : 870.0,
       "label_y" : 160.0,
@@ -593,6 +598,7 @@
     },
     "130731146" : {
       "bigg_id" : "R5",
+      "gene_reaction_rule" : "arc00001a",
       "genes" : [ ],
       "label_x" : 870.0,
       "label_y" : 480.0,
@@ -639,6 +645,7 @@
     },
     "130731114" : {
       "bigg_id" : "R4",
+      "gene_reaction_rule" : "arc000013",
       "genes" : [ ],
       "label_x" : 980.0,
       "label_y" : 370.0,
@@ -703,6 +710,7 @@
     },
     "130731147" : {
       "bigg_id" : "R6",
+      "gene_reaction_rule" : "arc00001b",
       "genes" : [ ],
       "label_x" : 630.0,
       "label_y" : 480.0,
@@ -731,6 +739,7 @@
     },
     "130731148" : {
       "bigg_id" : "R7",
+      "gene_reaction_rule" : "arc00001c",
       "genes" : [ ],
       "label_x" : 400.0,
       "label_y" : 480.0,
@@ -768,6 +777,7 @@
     },
     "130731149" : {
       "bigg_id" : "R8",
+      "gene_reaction_rule" : "arc00001d",
       "genes" : [ ],
       "label_x" : 150.0,
       "label_y" : 480.0,
