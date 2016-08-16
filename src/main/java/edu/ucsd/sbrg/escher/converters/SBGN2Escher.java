@@ -144,6 +144,8 @@ public class SBGN2Escher {
 
   public EscherReaction createReaction(Glyph glyph) {
     EscherReaction reaction = new EscherReaction();
+    Set<String> sources = new HashSet<>(), targets = new HashSet<>();
+
 
     reaction.setId((glyph.getId().hashCode() & 0xfffffff) + "");
     logger.info(format(messages.getString("GlyphToReactionId"), glyph.getId(), reaction.getId()));
@@ -170,6 +172,8 @@ public class SBGN2Escher {
 
       if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
+        sources.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource())));
+        targets.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())));
         createSegments(a).forEach(reaction::addSegment);
       }
 
@@ -191,11 +195,9 @@ public class SBGN2Escher {
       reaction.addMetabolite(metabolite);
     });
 
-    document.getMap().getArc().stream().filter(a -> {
-      return a.getClazz().equals("catalysis") &&
-          (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
-              glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget()))));
-    })
+    document.getMap().getArc().stream().filter(a -> a.getClazz().equals("catalysis") &&
+        (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
+            glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())))))
             .collect(Collectors.toList()).forEach((a) -> {
 
       reaction.setGeneReactionRule(a.getId());
@@ -203,6 +205,9 @@ public class SBGN2Escher {
 
     logger.fine(format(messages.getString("ReactionSegmentAddFinish"), reaction.getId()));
 
+    sources.retainAll(targets);
+    reaction.setReversibility(sources.size() > 0);
+    
     return reaction;
   }
 

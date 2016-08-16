@@ -426,6 +426,7 @@
         "bigg_id" : "ADP"
       } ],
       "name" : "R0",
+      "reversibility" : true,
       "segments" : {
         "arc000001.S0" : {
           "from_node_id" : "glyph0",
@@ -467,6 +468,7 @@
         "bigg_id" : "glucose\n6P"
       } ],
       "name" : "R1",
+      "reversibility" : true,
       "segments" : {
         "arc000008.S0" : {
           "from_node_id" : "glyph10",
@@ -502,6 +504,7 @@
         "bigg_id" : "ATP"
       } ],
       "name" : "R2",
+      "reversibility" : true,
       "segments" : {
         "arc000005.S0" : {
           "from_node_id" : "glyph11",
@@ -543,6 +546,7 @@
         "bigg_id" : "DHA-P"
       } ],
       "name" : "R9",
+      "reversibility" : false,
       "segments" : {
         "arc00002b.S0" : {
           "from_node_id" : "glyph14",
@@ -575,6 +579,7 @@
         "bigg_id" : "DHA-P"
       } ],
       "name" : "R3",
+      "reversibility" : true,
       "segments" : {
         "arc00000f.S0" : {
           "from_node_id" : "glyph16",
@@ -616,6 +621,7 @@
         "bigg_id" : "ATP"
       } ],
       "name" : "R5",
+      "reversibility" : true,
       "segments" : {
         "arc00001f.S0" : {
           "from_node_id" : "glyph42",
@@ -669,6 +675,7 @@
         "bigg_id" : "Pi"
       } ],
       "name" : "R4",
+      "reversibility" : true,
       "segments" : {
         "arc000017.S0" : {
           "from_node_id" : "glyph24",
@@ -722,6 +729,7 @@
         "bigg_id" : "3 PG"
       } ],
       "name" : "R6",
+      "reversibility" : true,
       "segments" : {
         "arc000022.S0" : {
           "from_node_id" : "glyph27",
@@ -754,6 +762,7 @@
         "bigg_id" : "PEP"
       } ],
       "name" : "R7",
+      "reversibility" : true,
       "segments" : {
         "arc000024.S0" : {
           "from_node_id" : "glyph28",
@@ -795,6 +804,7 @@
         "bigg_id" : "pyruvate"
       } ],
       "name" : "R8",
+      "reversibility" : true,
       "segments" : {
         "arc00002a.S0" : {
           "from_node_id" : "glyph34",
