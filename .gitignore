@@ -72,3 +72,8 @@ fabric.properties
 ## Python Specific
 
 *.pyc
+
+
+## Flask app
+
+api/static/*
