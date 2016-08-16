@@ -300,8 +300,13 @@ public class SBML2Escher {
       reaction.addMetabolite(createMetabolite(r));
     });
 
-    // TODO: Think of what to do about genes.
-
+    if (((Reaction)reactionGlyph.getReactionInstance()).isSetReversible()) {
+      reaction.setReversibility(((Reaction)reactionGlyph.getReactionInstance()).isReversible());
+    }
+    else {
+      reaction.setReversibility(true);
+    }
+    
     return reaction;
   }
 
@@ -371,11 +376,6 @@ public class SBML2Escher {
 
   protected double midPoint(double d1, double d2) {
     return (d1 + d2)/2;
-  }
-
-
-  protected void postProcessMap(EscherMap map) {
-
   }
 
 }
