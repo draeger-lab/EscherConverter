@@ -1,7 +1,7 @@
 // Complete JS code.
 console.log('start');
 
-var BASE_URL = "http://localhost:6969/api";
+var BASE_URL = "http://139.59.28.97/api";
 var $ = require("cash-dom");
 var nanoajax = require("nanoajax");
 var saveAs = require('file-saver').saveAs;
