@@ -30,7 +30,7 @@
     <junit.version>4.12</junit.version>
     <jsbml.version>2492</jsbml.version>  <!-- SVN revision -->
     <sbgn.version>0.2</sbgn.version>
-    <sysbio.version>1393</sysbio.version> <!-- SVN revision -->
+    <sysbio.version>1395</sysbio.version> <!-- SVN revision -->
     <jackson.version>2.7.4</jackson.version>
     <powermock.version>1.6.5</powermock.version>
     <organization.name>University of California, San Diego</organization.name>
