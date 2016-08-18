@@ -101,9 +101,11 @@ public class EscherConverter extends Launcher {
 
 
   /**
-   * @param converter
-   * @param properties
-   * @return
+   * This configures the generic {@link Escher2Standard} and sets the common layout options.
+   *
+   * @param converter The converter to configure.
+   * @param properties Command line options, to configure the converter with.
+   * @return Returns the configured converter.
    */
   public static <T> Escher2Standard<T> configure(Escher2Standard<T> converter,
     SBProperties properties) {
@@ -114,15 +116,19 @@ public class EscherConverter extends Launcher {
     converter.setReactionNodeRatio(properties.getDoubleProperty(EscherOptions.REACTION_NODE_RATIO));
     converter.setSecondaryNodeRatio(properties.getDoubleProperty(EscherOptions.SECONDARY_NODE_RATIO));
     converter.setInferCompartmentBoundaries(properties.getBooleanProperty(EscherOptions.INFER_COMPARTMENT_BOUNDS));
+
     return converter;
   }
 
 
   /**
-   * @param map
-   * @param format
-   * @param properties
-   * @return
+   * Generic method which converts the given {@link EscherMap} instance to the specified
+   * generic parameter {@code format}, by calling the corresponding converter.
+   *
+   * @param map {@link EscherMap} instance to convert.
+   * @param format Output format to convert to.
+   * @param properties Command line options, if any.
+   * @return An instance of {@code format} type created from the escher map.
    */
   @SuppressWarnings("unchecked")
   public static <T> T convert(EscherMap map, Class<? extends T> format,
@@ -148,6 +154,13 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Calls SBGN-ML to Escher converter. See {@link SBGN2Escher}.
+   *
+   * @param document SBGN-ML ({@link Sbgn}) document to convert.
+   * @param properties Command line options, if any.
+   * @return The exported {@link EscherMap} instance.
+   */
   public static EscherMap convert(Sbgn document, SBProperties
     properties) {
     SBGN2Escher converter = new SBGN2Escher();
@@ -156,6 +169,13 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Calls SBML Layout Extension to Escher converter. See {@link SBML2Escher}.
+   *
+   * @param document {@link SBMLDocument} to convert.
+   * @param properties Command line options, if any.
+   * @return A {@link List<EscherMap>} extracted from the SBML file, as there may be more than one.
+   */
   public static List<EscherMap> convert(SBMLDocument document, SBProperties properties) {
     SBML2Escher converter = new SBML2Escher();
 
@@ -163,12 +183,15 @@ public class EscherConverter extends Launcher {
   }
 
   /**
-   * @param input
-   * @param format
-   * @param properties
-   * @return
-   * @throws IOException
-   * @throws ParseException
+   * Converts given JSON {@code input} to given output {@code format}. Simply calls the
+   * {@link #convert(EscherMap, Class, SBProperties)} with the parsed JSON.
+   *
+   * @param input JSON file which has an {@link EscherMap}.
+   * @param format Output format to convert to.
+   * @param properties Command line options, if any.
+   * @return An instance of {@code format} type created from the escher map.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file.
+   * @throws ParseException Thrown if the JSON in {@code input} file is invalid.
    */
   public static <T> T convert(File input, Class<? extends T> format,
     SBProperties properties) throws IOException, ParseException {
@@ -176,13 +199,11 @@ public class EscherConverter extends Launcher {
   }
 
   /**
-   * Reads an Escher input file in JSON format and returns data structures for
-   * an in-memory representation of the information provided.
+   * Parses given JSON file into an {@link EscherMap} instance using Jackson.
    * 
-   * @param input
-   * @return An {@link EscherMap} object representing the information from the
-   *         parsed file in memory.
-   * @throws IOException
+   * @param input The {@link File} to parse.
+   * @return The {@link EscherMap} instance.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file.
    */
   public static EscherMap parseEscherJson(File input) throws IOException{
     ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
@@ -207,19 +228,19 @@ public class EscherConverter extends Launcher {
   }
 
   /**
-   * Starts the program.
+   * Starts the program. For a description of possible command-line arguments launch with option -?.
    *
-   * @param args for a description of possible command-line arguments launch with
-   *             option -?.
+   * @param args Command line options, if any.
    */
   public static void main(String args[]) {
-    // Export validation reports to file for debugging
     new EscherConverter(args);
   }
 
 
   /**
-   * @param args
+   * Called by the main method. Necessary for the SysBio library.
+   *
+   * @param args Command line options, if any.
    */
   public EscherConverter(String... args) {
     super(args);
@@ -245,22 +266,24 @@ public class EscherConverter extends Launcher {
 
 
   /**
-   * @param input
-   * @param output
-   * @param properties
-   * @throws IOException
-   * @throws TransformerException
-   * @throws ParserConfigurationException
-   * @throws SAXException
-   * @throws JAXBException
-   * @throws XMLStreamException
-   * @throws ParseException
-   * @throws SBMLException
+   * Convert files one by one by calling the {@link #convert(File, File, SBProperties)} recursively.
+   * Only called once if single file.
+   *
+   * @param input Single file or input directory to convert from.
+   * @param output Single file or output directory to convert to.
+   * @param properties Command line options, if any.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
+   * @throws TransformerException Thrown if there are problems in parsing XML file(s).
+   * @throws ParserConfigurationException Thrown if there are problems in parsing XML file(s).
+   * @throws SAXException Thrown if there are problems in parsing XML file(s).
+   * @throws JAXBException Thrown if there are problems in parsing XML file(s).
+   * @throws XMLStreamException Thrown if there are problems in parsing XML file(s).
+   * @throws ParseException Thrown if there are problems in parsing JSON file(s).
+   * @throws SBMLException Thrown if there are problems in parsing XML file(s).
    */
   public void batchProcess(File input, File output, SBProperties properties)
-      throws IOException, SBMLException, ParseException, XMLStreamException,
-      JAXBException, SAXException, ParserConfigurationException,
-      TransformerException {
+      throws ParseException, JAXBException, IOException, XMLStreamException,
+      ParserConfigurationException, SAXException, TransformerException {
     // TODO: Warn before overwriting.
 
     // Checks if output/input is directory, if it doesn't, create one.
@@ -368,17 +391,20 @@ public class EscherConverter extends Launcher {
 
 
   /**
-   * @param input
-   * @param output
-   * @param properties
-   * @throws IOException
-   * @throws ParseException
-   * @throws XMLStreamException
-   * @throws SBMLException
-   * @throws JAXBException
-   * @throws SAXException
-   * @throws TransformerException
-   * @throws ParserConfigurationException
+   * Called by {@link #batchProcess(File, File, SBProperties)} for every file. Calls the
+   * appropriate overloads.
+   *
+   * @param input Input (single) {@link File}.
+   * @param output Output (single) {@link File}.
+   * @param properties Command line options, if any.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
+   * @throws XMLStreamException Thrown if there are problems in parsing XML file(s).
+   * @throws TransformerException Thrown if there are problems in parsing XML file(s).
+   * @throws ParserConfigurationException Thrown if there are problems in parsing XML file(s).
+   * @throws SAXException Thrown if there are problems in parsing XML file(s).
+   * @throws JAXBException Thrown if there are problems in parsing XML file(s).
+   * @throws ParseException Thrown if there are problems in parsing JSON file(s).
+   * @throws SBMLException Thrown if there are problems in parsing XML file(s).
    */
   public void convert(File input, File output, SBProperties properties)
       throws IOException, ParseException,
@@ -449,6 +475,15 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Extracts CoBRA from {@link SBMLDocument} if it is FBC compliant. cobrapy must be present for
+   * this.
+   *
+   * @param file Input file.
+   * @return Result of extraction.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
+   * @throws XMLStreamException Thrown if there are problems in parsing XML file(s).
+   */
   public static boolean extractCobraModel(File file) throws IOException, XMLStreamException {
     if (false) {
       logger.warning(format(bundle.getString("SBMLFBCNotAvailable"), file.getName()));
@@ -506,6 +541,14 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Calls appropriate validator for given {@code file} using {@link InputFormat}.
+   *
+   * @param input Input file.
+   * @param inputFormat Format of input file.
+   * @return Result of validation.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
+   */
   private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
     Validator validator;
     try {
@@ -533,6 +576,13 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Serializes an {@link EscherMap} instance to JSON and writes to {@code output} file.
+   *
+   * @param map Escher map to serialize.
+   * @param output Output file to write to.
+   * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
+   */
   private void writeEscherJson(EscherMap map, File output) throws IOException {
 
     List<EscherMap> mapList = new ArrayList<>(2);
@@ -557,6 +607,12 @@ public class EscherConverter extends Launcher {
   }
 
 
+  /**
+   * Serializes a {@link List<EscherMap>} to JSON and writes to {@code output} directory.
+   *
+   * @param mapList List of Escher maps to serialize.
+   * @param output Directory to create files in.
+   */
   private void writeEscherJson(List<EscherMap> mapList, File output) {
     try {
       if (mapList.size() == 0) {
