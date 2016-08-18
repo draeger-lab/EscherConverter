@@ -27,22 +27,52 @@ public class SBGN2Escher {
   /**
    * Localization support.
    */
-  public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
   public static final  ResourceBundle messages = ResourceManager.getBundle("Messages");
+  /**
+   * Default values.
+   */
+  public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
+  /**
+   * Output Escher map.
+   */
   protected EscherMap escherMap;
+  /**
+   * Input SBGN-ML document.
+   */
   protected Sbgn document;
-  protected long escherId;
-  protected long segmentId = 0;
+  /**
+   * Generated reaction ids.
+   */
   protected long reactionId = 0;
-
+  /**
+   * List of {@link Glyph} ids.
+   */
   protected Set<String>             glyphIds;
+  /**
+   * {@link Port} ids with their respective {@link Glyph} ids.
+   */
   protected HashMap<String, String> port2GlyphMap;
+  /**
+   * {@link Arc}s' ids with their respective process ({@link Glyph}) nodes ids.
+   */
   protected HashMap<String, String> arc2GlyphMap;
+  /**
+   * List of process ({@link Glyph}) ids.
+   */
   protected Set<String>             processIds;
+  /**
+   * List of {@link Metabolite} ids.
+   */
   protected Set<String>             metaboliteIds;
+  /**
+   * {@link Glyph} ids with their respective label.
+   */
   protected HashMap<String, String> glyphId2LabelMap;
 
 
+  /**
+   * Default constructor.
+   */
   public SBGN2Escher() {
     escherMap = new EscherMap();
     port2GlyphMap = new HashMap<>();
@@ -54,6 +84,11 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Add canvas info to the internal {@link #escherMap} field.
+   *
+   * @param bbox BBox containing canvas info.
+   */
   public void addCanvasInfo(Bbox bbox) {
     Canvas canvas = new Canvas();
 
@@ -65,6 +100,7 @@ public class SBGN2Escher {
       canvas.setWidth((double) bbox.getW());
     }
     else {
+      // Add default values if no BBox is found.
       logger.info(messages.getString("RootBBoxNotFound"));
       canvas.setX(Double.valueOf(bundle.getString("default_canvas_x")));
       canvas.setY(Double.valueOf(bundle.getString("default_canvas_y")));
@@ -77,6 +113,9 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Add meta info about the map to the internal {@link #escherMap} field.
+   */
   public void addMetaInfo() {
     escherMap.setSchema(bundle.getString("escher_schema"));
     escherMap.setDescription(bundle.getString("default_description"));
@@ -93,6 +132,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create an Escher {@link Node}(metabolite) from EPN {@link Glyph}.
+   *
+   * @param glyph The {@code glyph}.
+   * @return The created {@code node}.
+   */
   public Node createNode(Glyph glyph) {
     Node node = new Node();
 
@@ -118,6 +163,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create an Escher {@link Node}(mid-marker) from process {@link Glyph}.
+   *
+   * @param glyph The {@code glyph}.
+   * @return The create {@code node}.
+   */
   public Node createMidMarker(Glyph glyph) {
     Node node = new Node();
 
@@ -130,6 +181,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create an Escher {@link Node}(multi-marker) from {@link Arc.Next}.
+   *
+   * @param next The {@code next} element.
+   * @return The created {@code node}.
+   */
   public Node createMultiMarker(Arc.Next next) {
     Node node = new Node();
 
@@ -142,6 +199,13 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create an {@link EscherReaction} from an SBGN-ML {@link Glyph}. The glyph is used to create
+   * the mid-marker.
+   *
+   * @param glyph The {@code glyph}.
+   * @return The created {@code reaction}.
+   */
   public EscherReaction createReaction(Glyph glyph) {
     EscherReaction reaction = new EscherReaction();
     Set<String> sources = new HashSet<>(), targets = new HashSet<>();
@@ -212,6 +276,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   *
+   *
+   * @param object
+   * @return
+   */
   public double extractCoefficient(Object object) {
     String id = getGlyphIdFromPortId(getIdFromSourceOrTarget(object));
 
@@ -234,6 +304,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create a {@link TextLabel} from an SBGN-ML {@link Glyph}.
+   *
+   * @param glyph The {@code glyph}.
+   * @return The created {@code text label}.
+   */
   public TextLabel createTextLabel(Glyph glyph) {
     TextLabel textLabel = new TextLabel();
 
@@ -246,6 +322,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Create a list of {@link Segment}s from an SBGN-ML {@link Arc}.
+   *
+   * @param arc The {@code arc}.
+   * @return The list of {@code segments}.
+   */
   public List<Segment> createSegments(Arc arc) {
     List<Segment> segments = new ArrayList<>();
 
@@ -305,6 +387,14 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Extract id from either a {@link Glyph} or a {@link Port}. Since the source/target of an
+   * {@link Arc} is a plain {@link Object} and it needs to be cast into a {@link Glyph} or
+   * {@link Port}, this methods checks its type and returns the id.
+   *
+   * @param sOrT The source/target object.
+   * @return The id of the source/target.
+   */
   public String getIdFromSourceOrTarget(Object sOrT) {
     if (sOrT.getClass().isAssignableFrom(Glyph.class)) {
       return ((Glyph)sOrT).getId();
@@ -316,6 +406,12 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Get {@link Glyph} id from a {@link Port} or {@link Glyph} id.
+   *
+   * @param id The {@code port} or {@code glyph} id.
+   * @return The {@code glyph} id.
+   */
   public String getGlyphIdFromPortId(String id) {
     if (glyphIds.contains(id)) {
       return id;
@@ -354,6 +450,13 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Converts {@link Sbgn} document to {@link EscherMap} by iteratively creating nodes,
+   * reactions, etc.
+   *
+   * @param document The {@code SBGN} document to convert.
+   * @return The converted {@code escher map}.
+   */
   public EscherMap convert(Sbgn document) {
     logger.info(messages.getString("SBGNImportInit"));
 
@@ -406,6 +509,9 @@ public class SBGN2Escher {
   }
 
 
+  /**
+   * Processes the input {@link Sbgn} document and populates internal helper fields.
+   */
   protected void preProcessSbgn() {
     document.getMap().getGlyph().forEach(g -> {
       // Store all glyph Ids for future retrieval.
