@@ -134,6 +134,7 @@ public class EscherConverter extends Launcher {
   public static <T> T convert(EscherMap map, Class<? extends T> format,
     SBProperties properties) {
     if (format.isAssignableFrom(SBMLDocument.class)) {
+      // File is SBML, so convert to it.
       Escher2SBML converter = new Escher2SBML();
       configure(converter, properties);
       converter.setCanvasDefaultHeight(properties.getDoubleProperty(EscherOptions.CANVAS_DEFAULT_HEIGHT));
@@ -147,6 +148,7 @@ public class EscherConverter extends Launcher {
       converter.setZ(properties.getDoubleProperty(EscherOptions.Z));
       return (T) converter.convert(map);
     } else if (format.isAssignableFrom(Sbgn.class)) {
+      // File is SBGN-ML, so convert to it.
       Escher2Standard<?> converter = configure(new Escher2SBGN(), properties);
       return (T) converter.convert(map);
     }
@@ -161,8 +163,7 @@ public class EscherConverter extends Launcher {
    * @param properties Command line options, if any.
    * @return The exported {@link EscherMap} instance.
    */
-  public static EscherMap convert(Sbgn document, SBProperties
-    properties) {
+  public static EscherMap convert(Sbgn document, SBProperties properties) {
     SBGN2Escher converter = new SBGN2Escher();
 
     return converter.convert(document);
@@ -205,15 +206,20 @@ public class EscherConverter extends Launcher {
    * @return The {@link EscherMap} instance.
    * @throws IOException Thrown if there are problems in reading the {@code input} file.
    */
-  public static EscherMap parseEscherJson(File input) throws IOException{
+  public static EscherMap parseEscherJson(File input) throws IOException {
     ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
 
     logger.info(format(bundle.getString("EscherConverter.readingFile"), input));
 
+    // An Escher array contains meta-info about the map as the first object and the actual map as
+    // second map.
     JsonNode escherJson = objectMapper.readTree(input);
+    // Meta-info.
     EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
+    // Layout map (nodes, reactions, text labels and canvas info).
     EscherMap map = objectMapper.treeToValue(escherJson.get(1), EscherMap.class);
 
+    // Put meta-info from first to second.
     map.setId(meta.getId());
     map.setName(meta.getName());
     map.setDescription(meta.getDescription());
@@ -297,8 +303,10 @@ public class EscherConverter extends Launcher {
       output.mkdir();
     }
     if (input.isFile()) {
+
       if (SBFileFilter.isJSONFile(input)) {
         logger.info(bundle.getString("AutoDetectJSON"));
+
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".xml";
@@ -315,6 +323,7 @@ public class EscherConverter extends Launcher {
       }
       else if (SBFileFilter.isSBGNFile(input)) {
         logger.info(bundle.getString("AutoDetectSBGN"));
+
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".json";
@@ -365,7 +374,8 @@ public class EscherConverter extends Launcher {
         }
         // Can also be used if only a single file is to be converted:
         batchProcess(input, output, props);
-      } catch (SBMLException | XMLStreamException | IOException | ParseException | JAXBException | SAXException | ParserConfigurationException | TransformerException exc) {
+      } catch (SBMLException | XMLStreamException | IOException | ParseException | JAXBException
+          | SAXException | ParserConfigurationException | TransformerException exc) {
         exc.printStackTrace();
       }
     } else {
@@ -425,47 +435,50 @@ public class EscherConverter extends Launcher {
 
     boolean success = false;
 
+    // Check output format.
     switch (format) {
-    case SBML:
-      SBMLDocument doc = convert(input, SBMLDocument.class, properties);
-      TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
-        getVersionNumber(), ' ', (short) 2);
-      success = true;
-      break;
-    case SBGN:
-      Sbgn sbgn = convert(input, Sbgn.class, properties);
-      SbgnUtil.writeToFile(sbgn, output);
-      success = true;
-      break;
 
-    case Escher:
-
-      switch (inputFormat) {
-
-      case SBGN:
-        EscherMap map = convert(SbgnUtil.readFromFile(input), properties);
-        writeEscherJson(map, output);
+      case SBML:
+        SBMLDocument doc = convert(input, SBMLDocument.class, properties);
+        TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
+          getVersionNumber(), ' ', (short) 2);
         success = true;
         break;
 
-      case SBML:
-        if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
-          extractCobraModel(input);
-        }
-        List<EscherMap> maps = convert(SBMLReader.read(input), properties);
-        writeEscherJson(maps, output);
+      case SBGN:
+        Sbgn sbgn = convert(input, Sbgn.class, properties);
+        SbgnUtil.writeToFile(sbgn, output);
         success = true;
         break;
 
       case Escher:
-        logger.info(bundle.getString("InputOutputFormatIdentical"));
-        break;
-      }
-      break;
+        // Check input format.
+        switch (inputFormat) {
 
-    default:
-      logger.severe(bundle.getString("UnsupportedFormat"));
-      break;
+          case SBGN:
+            EscherMap map = convert(SbgnUtil.readFromFile(input), properties);
+            writeEscherJson(map, output);
+            success = true;
+            break;
+
+          case SBML:
+            if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
+              extractCobraModel(input);
+            }
+            List<EscherMap> maps = convert(SBMLReader.read(input), properties);
+            writeEscherJson(maps, output);
+            success = true;
+            break;
+
+          case Escher:
+            logger.info(bundle.getString("InputOutputFormatIdentical"));
+            break;
+        }
+        break;
+
+      default:
+        logger.severe(bundle.getString("UnsupportedFormat"));
+        break;
     }
 
     if (success) {
@@ -500,11 +513,11 @@ public class EscherConverter extends Launcher {
           .getAbsolutePath() + "'), file_name='" + file
           .getAbsolutePath() + ".json" + "');print('yo')\"",
           "> /temp/log"};
-//      command = new String[] {"/usr/local/bin/python3", "-c", "\"print('yo')\""};
+      // command = new String[] {"/usr/local/bin/python3", "-c", "\"print('yo')\""};
       command = new String[] {"python3"};
       Process p;
       try {
-//        p = new ProcessBuilder(command).redirectErrorStream(true).start();
+        // p = new ProcessBuilder(command).redirectErrorStream(true).start();
         p = Runtime.getRuntime().exec(command);
         p.waitFor();
         if (p.exitValue() == 0) {
@@ -558,18 +571,19 @@ public class EscherConverter extends Launcher {
       return false;
     }
 
+    // Call appropriate validator according to input format.
     switch (inputFormat) {
-    case SBGN:
-      logger.info(bundle.getString("ValidatingSBGN"));
-      return validator.validateSbgnml(input);
+      case SBGN:
+        logger.info(bundle.getString("ValidatingSBGN"));
+        return validator.validateSbgnml(input);
 
-    case SBML:
-      logger.info(bundle.getString("ValidatingSBML"));
-      return validator.validateSbmlLE(input);
+      case SBML:
+        logger.info(bundle.getString("ValidatingSBML"));
+        return validator.validateSbmlLE(input);
 
-    case Escher:
-      logger.info(bundle.getString("ValidatingEscher"));
-      return validator.validateEscher(input);
+      case Escher:
+        logger.info(bundle.getString("ValidatingEscher"));
+        return validator.validateEscher(input);
 
     }
     return false;
@@ -584,9 +598,11 @@ public class EscherConverter extends Launcher {
    * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
    */
   private void writeEscherJson(EscherMap map, File output) throws IOException {
-
+    // An Escher array contains meta-info about the map as the first object and the actual map as
+    // second map. That's why we need an array of size 2.
     List<EscherMap> mapList = new ArrayList<>(2);
 
+    // Add meta info to the new object.
     mapList.add(new EscherMap());
     mapList.get(0).setId(map.getId());
     mapList.get(0).setDescription(map.getDescription());
@@ -594,6 +610,7 @@ public class EscherConverter extends Launcher {
     mapList.get(0).setSchema(map.getSchema());
     mapList.get(0).setURL(map.getURL());
 
+    // And remove it from the other object.
     map.setId(null);
     map.setName(null);
     map.setDescription(null);
@@ -616,10 +633,12 @@ public class EscherConverter extends Launcher {
   private void writeEscherJson(List<EscherMap> mapList, File output) {
     try {
       if (mapList.size() == 0) {
+        // SBML file has no layout.
         logger.warning(bundle.getString("SBMLNoLayout"));
         return;
       }
       if (output.exists() && output.isFile()) {
+        // If output is a file, we can only write one layout.
         if (mapList.size() == 1) {
           writeEscherJson(mapList.get(0), output);
         }
@@ -628,6 +647,7 @@ public class EscherConverter extends Launcher {
         }
       }
       else {
+        // Write all maps to their own file.
         mapList.forEach(map -> {
           File file = new File(Utils.ensureSlash(output.getPath()) + map.getId() + ".json");
           try {
