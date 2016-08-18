@@ -231,9 +231,11 @@ public class SBGN2Escher {
     reaction.setMidmarker(createMidMarker(glyph));
 
     logger.fine(format(messages.getString("ReactionSegmentAddInit"), reaction.getId()));
+    // This adds arcs which are either "production" or "consumption" into the reaction.
     document.getMap().getArc().stream().filter(a -> a.getClazz().equals("production") || a
         .getClazz().equals("consumption")).collect(Collectors.toList()).forEach((a) -> {
 
+      // If the arc is linked to the process node (mid-marker) of the reaction.
       if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
         logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
         sources.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource())));
@@ -259,6 +261,7 @@ public class SBGN2Escher {
       reaction.addMetabolite(metabolite);
     });
 
+    // Encode catalysis arcs as "gene_reaction_rule" for a reaction.
     document.getMap().getArc().stream().filter(a -> a.getClazz().equals("catalysis") &&
         (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
             glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())))))
@@ -269,6 +272,8 @@ public class SBGN2Escher {
 
     logger.fine(format(messages.getString("ReactionSegmentAddFinish"), reaction.getId()));
 
+    // If the the set of sources is mutually exclusive from the set of targets, then the reaction
+    // is not reversible.
     sources.retainAll(targets);
     reaction.setReversibility(sources.size() > 0);
     
@@ -337,6 +342,7 @@ public class SBGN2Escher {
     segment.setId(arc.getId() + ".S" + 0);
     segment.setFromNodeId(getGlyphIdFromPortId(getIdFromSourceOrTarget(arc.getSource())));
 
+    // A segment is created for every next element in an arc.
     for (int i = 0; i < arc.getNext().size(); i++) {
 
       Arc.Next next = arc.getNext().get(i);
@@ -397,9 +403,11 @@ public class SBGN2Escher {
    */
   public String getIdFromSourceOrTarget(Object sOrT) {
     if (sOrT.getClass().isAssignableFrom(Glyph.class)) {
+      // If cast-able to Glyph.
       return ((Glyph)sOrT).getId();
     }
     else if (sOrT.getClass().isAssignableFrom(Port.class)) {
+      // If cast-able to Port.
       return ((Port)sOrT).getId();
     }
     return null;
@@ -414,39 +422,46 @@ public class SBGN2Escher {
    */
   public String getGlyphIdFromPortId(String id) {
     if (glyphIds.contains(id)) {
+      // If a glyph id.
       return id;
     }
     else {
+      // If a port id.
       return port2GlyphMap.get(id);
     }
   }
 
 
-  private String determineComponent(String classs) {
-    // TODO: Determine class according to the SBGN PD Level 1 spec draft.
-    switch (classs) {
+  /**
+   * Maps SBGN-ML classes to Escher components.
+   *
+   * @param clazz The SBGN element's {@code class}.
+   * @return
+   */
+  private String determineComponent(String clazz) {
+    switch (clazz) {
 
-    case "macromolecule":
-    case "simple chemical":
-    case "perturbing agent":
-    case "unspecified entity":
-      return "node";
+      case "macromolecule":
+      case "simple chemical":
+      case "perturbing agent":
+      case "unspecified entity":
+        return "node";
 
-    case "tag":
-    case "annotation":
-      return "text_label";
+      case "tag":
+      case "annotation":
+        return "text_label";
 
-    case "process":
-    case "omitted process":
-    case "uncertain process":
-    case "association":
-    case "dissociation":
-      return "reaction";
+      case "process":
+      case "omitted process":
+      case "uncertain process":
+      case "association":
+      case "dissociation":
+        return "reaction";
 
-    default:
-      return classs;
+      default:
+        return clazz;
 
-    }
+      }
   }
 
 
