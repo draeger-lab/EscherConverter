@@ -18,7 +18,10 @@ import java.util.logging.Logger;
 import static java.text.MessageFormat.format;
 
 /**
- * Created by deveshkhandelwal on 20/06/16.
+ * Converter from SBML Layout Extension to Escher.
+ *
+ * @author Devesh Khandelwal
+ * Created on 20/06/16.
  */
 public class SBML2Escher {
 
@@ -27,19 +30,42 @@ public class SBML2Escher {
    */
   private static final Logger         logger = Logger.getLogger(SBGN2Escher.class.getName());
   /**
-   * Localization support.
+   * Default values,
    */
   public static final  ResourceBundle bundle = ResourceManager.getBundle("Strings");
+  /**
+   * Localization support.
+   */
   public static final  ResourceBundle messages = ResourceManager.getBundle("Messages");
+  /**
+   * List of escher maps converted from the layouts exported from the SBML document.
+   */
   protected List<EscherMap> escherMaps;
+  /**
+   * SBML document to extract escher maps from.
+   */
   protected SBMLDocument    document;
+  /**
+   * List of layouts exported from the SBML document.
+   */
   protected List<Layout>    layouts;
 
+
+  /**
+   * Default constructor.
+   */
   public SBML2Escher() {
     escherMaps = new ArrayList<>();
   }
 
 
+  /**
+   * Converts an {@link SBMLDocument} to a list of {@link EscherMap}s by iteratively creating nodes,
+   * reactions, etc.
+   *
+   * @param document The {@code SBML} document to convert.
+   * @return The extracted maps list.
+   */
   public List<EscherMap> convert(SBMLDocument document) {
     logger.fine(format(messages.getString("SBMLImportInit")));
     this.document = document;
@@ -115,6 +141,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Create a {@link Canvas} instance from an SBML {@link Layout}.
+   *
+   * @param layout The SBML {@code layout}.
+   * @return The {@code canvas} instance.
+   */
   protected Canvas addCanvasInfo(Layout layout) {
     Canvas canvas = new Canvas();
 
@@ -136,6 +168,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Create a {@link TextLabel} from a {@link TextGlyph}.
+   *
+   * @param textGlyph The {@code text glyph}.
+   * @return The created {@code text label.}
+   */
   protected TextLabel createTextLabel(TextGlyph textGlyph) {
     TextLabel textLabel = new TextLabel();
 
@@ -161,6 +199,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates a {@link Node}(metabolite) from a {@link SpeciesGlyph}.
+   *
+   * @param speciesGlyph The {@code species glyph}.
+   * @return The created {@code node}.
+   */
   protected Node createNode(SpeciesGlyph speciesGlyph) {
     Node node = new Node();
 
@@ -183,6 +227,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates a {@link Node}(mid-marker) from a {@link ReactionGlyph}.
+   *
+   * @param reactionGlyph The {@code reaction glyph}.
+   * @return The created {@code node}(mid-marker).
+   */
   protected Node createMidMarker(ReactionGlyph reactionGlyph) {
     Node node = new Node();
 
@@ -223,6 +273,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates a list of {@link Node}s(multi-markers) from a {@link SpeciesReferenceGlyph}.
+   *
+   * @param sRG The {@code species reference glyph}.
+   * @return The created {@code nodes}(multi-markers).
+   */
   protected List<Node> createMultiMarkers(SpeciesReferenceGlyph sRG) {
     logger.info(format(messages.getString("SRGToMultiMarkers"), sRG.getId()));
     List<Node> multiMarkers = new ArrayList<>();
@@ -247,6 +303,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates an {@link EscherReaction} from a {@link ReactionGlyph}.
+   *
+   * @param reactionGlyph The {@code reaction glyph}.
+   * @return The created {@code escher reaction}.
+   */
   protected EscherReaction createReaction(ReactionGlyph reactionGlyph) {
     EscherReaction reaction = new EscherReaction();
 
@@ -311,6 +373,13 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates a list of {@link Segment}s from a {@link SpeciesReferenceGlyph}.
+   *
+   * @param sRG The {@code species reference glyph}.
+   * @param rG The linked {@code reaction glyph}.
+   * @return The list of created {@code segments}.
+   */
   protected List<Segment> createSegments(SpeciesReferenceGlyph sRG, ReactionGlyph rG) {
     List<Segment> segments = new ArrayList<>();
     Segment segment = new Segment();
@@ -364,6 +433,12 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Creates a {@link Metabolite} from a {@link SpeciesReference}.
+   *
+   * @param speciesReference The {@code species reference}.
+   * @return The created {@code metabolite}.
+   */
   protected Metabolite createMetabolite(SpeciesReference speciesReference) {
     Metabolite metabolite = new Metabolite();
 
@@ -374,6 +449,13 @@ public class SBML2Escher {
   }
 
 
+  /**
+   * Calculates mid-point of two decimal values.
+   *
+   * @param d1 First value.
+   * @param d2 Second value.
+   * @return Mid-point.
+   */
   protected double midPoint(double d1, double d2) {
     return (d1 + d2)/2;
   }
