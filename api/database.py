@@ -7,6 +7,9 @@ from models import ConvertRequest, Base
 
 
 class Database(object):
+    """
+    Controls database operations, viz. add, delete, update, retrieve.
+    """
 
     db_connection_string = None
     engine = None
@@ -22,6 +25,11 @@ class Database(object):
         self.session = None
 
     def add(self, cr: ConvertRequest):
+        """
+        Adds an object to database.
+        :param cr: The object to store.
+        :return: Database addition result.
+        """
         try:
             self.session.add(cr)
             self.session.commit()
@@ -30,18 +38,34 @@ class Database(object):
             return False
 
     def retrieve(self, id):
+        """
+        Retrieves a record from the database.
+        :param id: The conversion job id to retrieve.
+        :return:
+        """
         req = self.session.query(ConvertRequest).filter_by(id=id).first()
         return req
 
     def update(self):
-        # TODO: Update status and result of conversion jobs.
+        """
+        Updates a database record.
+        :return:
+        """
         self.session.commit()
         pass
 
     def renew(self):
+        """
+        Renews the session to database.
+        :return:
+        """
         self.session = Database.session_maker()
 
     def finalize(self):
+        """
+        Close session and commit changes to database.
+        :return:
+        """
         self.session.commit()
         self.session.close()
 

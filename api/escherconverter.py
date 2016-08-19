@@ -1,17 +1,14 @@
 import glob
 import os
 import shutil
-
 import subprocess
+import time
 from threading import Thread
 
-import time
-
-from database import Database
-from models import ConvertRequest, ConversionStatus
 from config import config
-from models import OutputFormat
+from database import Database
 from models import ComponentOptions, LayoutOptions
+from models import ConvertRequest, ConversionStatus
 
 FORMAT = {
     'escher': 'Escher',
@@ -27,6 +24,9 @@ EXTENSION = {
 
 
 class EscherConverter(object):
+    """
+    Controls the execution of the JAR and actual conversion.
+    """
     jar_path = config['JAR_PATH']
     file_store = config['FILE_STORE']
     common_command = ['java', '-jar', jar_path, '--gui=false', '--log-level=FINEST']
@@ -42,9 +42,6 @@ class EscherConverter(object):
             raise ValueError("output_format is required")
         else:
             self.command.append("--format=" + FORMAT[str(options.output_format.value)])
-        # if (options.input_filename is None) and (options.id is None):
-        #     raise ValueError("id is required for file names")
-        # else:
         input_file = "--input=" + EscherConverter.file_store + str(options.id) + "/input/"
         self.command.append(input_file)
         os.makedirs(EscherConverter.file_store + str(options.id) + "/output/")
@@ -71,11 +68,19 @@ class EscherConverter(object):
         pass
 
     def convert(self):
+        """
+        Calls the internal _convert() in a separate thread.
+        :return:
+        """
         thread = Thread(target=self._convert, args=[self.options.id])
         thread.start()
 
     def _convert(self, id):
-        # TODO: Run the conversion and update database.
+        """
+        Invokes the executable JAR and updates the database.
+        :param id:
+        :return:
+        """
         db = Database(config['SQLITE_FILE'], config['DEBUG'])
         db.renew()
         options = db.retrieve(id)

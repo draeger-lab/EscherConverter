@@ -1,23 +1,28 @@
 # -*- coding: utf-8 -*-
 # Models for receiving a request and sending a response. Database objects also.
-import ejson
-import jsonpickle
+"""
+Defines model classes for database and I/O interactions.
+"""
 
 from enum import Enum
 
+import ejson
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import String
-from sqlalchemy import types
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy_enum34 import EnumType
 
-
 class OutputFormat(Enum):
+    """Output Format Enumeration
+
+    Defines the output_format of the files. Represents "--output" option in the JAR.
+
+    """
     sbml = 'sbml'
     sbgn = 'sbgn'
     escher = 'escher'
@@ -34,6 +39,17 @@ class OutputFormat(Enum):
 
 
 class ConversionStatus(Enum):
+    """Conversion Status Enumeration
+
+    Defines the status of a conversion process.
+
+    'started': Job has been started. Transient state towards 'waiting'.
+    'waiting': Waiting for files to be uploaded.
+    'running': JAR has been invoked, process is running.
+    'completed': File conversion completed successfully, see log for details.
+    'failed': File conversion failed while the JAR was running.
+    'errored': Conversion wasn't started due to an error.
+    """
     started = 'started'
     waiting = 'waiting'
     running = 'running'
@@ -60,11 +76,14 @@ class ConversionStatus(Enum):
 
 LogLevel = Enum('log_level', 'severe warning info fine finer finest')
 
+# Required for sqlalchemy.
 Base = declarative_base()
 
 
 class ConvertRequest(Base):
-
+    """
+    Represents a conversion job submitted via the API.
+    """
     __tablename__ = 'conversions'
 
     id = Column(Integer, primary_key=True, autoincrement=False)
@@ -93,7 +112,9 @@ class ConvertRequest(Base):
 
 
 class ComponentOptions(Base):
-
+    """
+    Represents the component options passed to the executable JAR.
+    """
     __tablename__ = 'component_options'
 
     id = Column(Integer, ForeignKey('conversions.id'), primary_key=True, autoincrement=False)
@@ -118,7 +139,9 @@ class ComponentOptions(Base):
 
 
 class LayoutOptions(Base):
-
+    """
+    Represents the layout options passes to the executable JAR.
+    """
     __tablename__ = 'layout_options'
 
     id = Column(Integer, ForeignKey('conversions.id'), primary_key=True, autoincrement=True)
@@ -158,19 +181,16 @@ class LayoutOptions(Base):
 
 @ejson.register_serializer(ConvertRequest)
 def cr_serializer(instance):
-    d = jsonpickle.dumps(instance.__dict__, unpicklable=True)
     return instance.__dict__
 
 
 @ejson.register_serializer(ComponentOptions)
 def co_serializer(instance):
-    d = instance.__dict__
     return instance.__dict__
 
 
 @ejson.register_serializer(LayoutOptions)
 def lo_serializer(instance):
-    d = instance.__dict__
     return instance.__dict__
 
 
