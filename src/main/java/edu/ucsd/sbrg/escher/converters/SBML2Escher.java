@@ -101,7 +101,7 @@ public class SBML2Escher {
 
       layout.getListOfReactionGlyphs().forEach((rG) -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach((sRG) -> {
-          createMultiMarkers(sRG).forEach(m -> map.addNode(m));
+          createMultiMarkers(sRG).forEach(map::addNode);
         });
       });
 
@@ -121,6 +121,7 @@ public class SBML2Escher {
       // Setting node_is_primary of nodes.
       layout.getListOfReactionGlyphs().forEach(rG -> {
         rG.getListOfSpeciesReferenceGlyphs().forEach(sRG -> {
+
           if (sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.PRODUCT ||
               sRG.getSpeciesReferenceRole() == SpeciesReferenceRole.SUBSTRATE) {
             map.getNode(sRG.getSpeciesGlyph()).setPrimary(true);
@@ -159,6 +160,7 @@ public class SBML2Escher {
       canvas.setWidth(Double.valueOf(bundle.getString("default_canvas_width")));
     }
     else {
+      // Default values if dimensions not found.
       logger.warning(messages.getString("RootDimensionsNotFound"));
       canvas.setHeight(layout.getDimensions().getHeight());
       canvas.setWidth(layout.getDimensions().getWidth());
@@ -214,13 +216,14 @@ public class SBML2Escher {
     node.setName(speciesGlyph.getSpeciesInstance().getName());
     node.setX(speciesGlyph.getBoundingBox().getPosition().x());
     node.setY(speciesGlyph.getBoundingBox().getPosition().y());
+
+    // Set label coordinates to the center of BBox.
     node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x() +
                     speciesGlyph.getBoundingBox().getDimensions().getWidth());
     node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y() +
                     speciesGlyph.getBoundingBox().getDimensions().getHeight());
 
     logger.info(format(messages.getString("SpeciesGlyphToNode"), speciesGlyph.getId()));
-    // TODO: Find out if node is primary by either role or SBO term.
     node.setPrimary(true);
 
     return node;
@@ -242,6 +245,7 @@ public class SBML2Escher {
 
     Point point = new Point();
     if (reactionGlyph.getBoundingBox() != null) {
+      // If position is available, use its center as anchor.
       logger.info(format(messages.getString("ReactionGlyphBBoxFound"), reactionGlyph.getId()));
       point.setX(reactionGlyph.getBoundingBox().getPosition().getX() + (0.5 * reactionGlyph
           .getBoundingBox().getDimensions().getWidth()));
@@ -249,6 +253,7 @@ public class SBML2Escher {
           .getBoundingBox().getDimensions().getHeight()));
     }
     else {
+      // If position is not available, calculate center of the curve.
       logger.info(format(messages.getString("ReactionGlyphBBoxNotFound"), reactionGlyph.getId()));
       point.setX(0.5 * (reactionGlyph.getCurve()
                                      .getCurveSegment(0)
@@ -275,6 +280,7 @@ public class SBML2Escher {
 
   /**
    * Creates a list of {@link Node}s(multi-markers) from a {@link SpeciesReferenceGlyph}.
+   * A multi-marker is created for every joining of two curve segments in a curve.
    *
    * @param sRG The {@code species reference glyph}.
    * @return The created {@code nodes}(multi-markers).
@@ -320,6 +326,7 @@ public class SBML2Escher {
 
     Point point = new Point();
     if (reactionGlyph.getBoundingBox() != null) {
+      // If BBox is available, use its center as anchor.
       logger.info(format(messages.getString("ReactionGlyphBBoxFound")));
       point.setX(reactionGlyph.getBoundingBox().getPosition().getX() + (0.5 * reactionGlyph
           .getBoundingBox().getDimensions().getWidth()));
@@ -327,6 +334,7 @@ public class SBML2Escher {
           .getBoundingBox().getDimensions().getHeight()));
     }
     else {
+      // If BBox is not available, calculate its center using the curve.
       logger.info(format(messages.getString("ReactionGlyphBBoxNotFound")));
       point.setX(0.5 * (reactionGlyph.getCurve()
                               .getCurveSegment(0)
@@ -346,7 +354,7 @@ public class SBML2Escher {
     reaction.setLabelX(point.getX());
     reaction.setLabelY(point.getY());
 
-    // Add metabolites.
+    // Add metabolite with positive coefficient (products).
     logger.info(format(messages.getString("ReactionGlyphProductCount"), ((Reaction)
         reactionGlyph.getReactionInstance()).getListOfProducts().size()));
     ((Reaction) reactionGlyph.getReactionInstance()).getListOfProducts().forEach((p) -> {
@@ -354,6 +362,7 @@ public class SBML2Escher {
       reaction.addMetabolite(createMetabolite(p));
     });
 
+    // Add metabolite with negative coefficient (reactants).
     logger.info(format(messages.getString("ReactionGlyphSubstrateCount"), ((Reaction)
         reactionGlyph.getReactionInstance()).getListOfReactants().size()));
     ((Reaction) reactionGlyph.getReactionInstance()).getListOfReactants().forEach((r) -> {
@@ -366,6 +375,7 @@ public class SBML2Escher {
       reaction.setReversibility(((Reaction)reactionGlyph.getReactionInstance()).isReversible());
     }
     else {
+      // If reversibility attribute is not present of reaction, use true as default.
       reaction.setReversibility(true);
     }
     
@@ -375,6 +385,7 @@ public class SBML2Escher {
 
   /**
    * Creates a list of {@link Segment}s from a {@link SpeciesReferenceGlyph}.
+   * A segment is created for every {@link CurveSegment} inside a {@link Curve}.
    *
    * @param sRG The {@code species reference glyph}.
    * @param rG The linked {@code reaction glyph}.
