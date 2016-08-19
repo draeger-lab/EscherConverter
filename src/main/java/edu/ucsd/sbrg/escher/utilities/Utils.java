@@ -25,14 +25,18 @@ import de.zbit.util.ResourceManager;
 public class Utils {
 
   /**
-   * Localization support.
+   * Default values.
    */
   private static final transient ResourceBundle bundle = ResourceManager.getBundle("Strings");
-  /**
-   * A {@link Logger} for this class.
-   */
-  private static final Logger logger = Logger.getLogger(Utils.class.getName());
 
+
+  /**
+   * Get the schema validation schema (meta-schema) file.
+   *
+   * @return The {@code JSON Schema}.
+   * @throws IOException Thrown if error in accessing the file.
+   * @throws ProcessingException Thrown if problem in parsing JSON.
+   */
   public static JsonSchema jsonSchemaSchema() throws IOException, ProcessingException {
     JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("meta_schema_file"));
 
@@ -40,6 +44,13 @@ public class Utils {
   }
 
 
+  /**
+   * Get the default Escher Schema (v1.0.0).
+   *
+   * @return The {@code JSON Schema}.
+   * @throws IOException Thrown if error in accessing the file.
+   * @throws ProcessingException Thrown if problem in parsing JSON.
+   */
   public static JsonNode defaultEscherSchema() throws IOException, ProcessingException {
     JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("default_escher_schema_file"));
 
@@ -47,6 +58,12 @@ public class Utils {
   }
 
 
+  /**
+   * Get the pre-configured {@link ObjectMapper} for (de)serialization. Necessary settings needed
+   * are set for our use case.
+   *
+   * @return The {@code object mapper}.
+   */
   public static ObjectMapper getObjectMapper() {
 
     ObjectMapper objectMapper = new ObjectMapper();
