@@ -94,10 +94,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param ec
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Create a compartment in SBML from an {@link EscherCompartment} and add it to the
+   * {@link Layout} object.
+   *
+   * @param ec The {@code escher compartment} object.
+   * @param layout The {@code layout} object.
+   * @param xOffset x-offset.
+   * @param yOffset y-offset.
    */
   private void createCompartmentGlyph(EscherCompartment ec, Layout layout,
     double xOffset, double yOffset) {

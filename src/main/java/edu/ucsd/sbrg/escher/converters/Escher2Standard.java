@@ -213,16 +213,18 @@ public abstract class Escher2Standard<T> {
   public void preprocessDataStructure(EscherMap escherMap) {
     for (Entry<String, EscherReaction> reactions : escherMap.reactions()) {
       EscherReaction reaction = reactions.getValue();
-      preprocessReaction(reaction, escherMap);
+      preProcessReaction(reaction, escherMap);
     }
   }
 
 
   /**
-   * @param reaction
-   * @param escherMap
+   * Pre-process {@link EscherReaction} objects and populates internal helper fields.
+   *
+   * @param reaction The {@code reaction} object.
+   * @param escherMap The parent {@code escher map}.
    */
-  private void preprocessReaction(EscherReaction reaction,
+  private void preProcessReaction(EscherReaction reaction,
       EscherMap escherMap) {
     Set<Segment> segments = new HashSet<Segment>();
     for (Entry<String, Segment> entry : reaction.segments()) {
@@ -354,8 +356,8 @@ public abstract class Escher2Standard<T> {
   /**
    * Inverses the given segment in place.
    *
-   * @param segment
-   * @return
+   * @param segment The {@code segment} object.
+   * @return The reversed {@code segment}.
    */
   protected Segment reverse(Segment segment) {
     logger.fine(MessageFormat

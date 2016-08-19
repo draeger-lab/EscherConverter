@@ -20,7 +20,10 @@ import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import de.zbit.util.ResourceManager;
 
 /**
- * Created by Devesh Khandelwal on 27-06-2016.
+ * Utility methods.
+ *
+ * @author Devesh Khandelwal, Andreas Dr&auml;ger
+ * Created on 27-06-2016.
  */
 public class Utils {
 

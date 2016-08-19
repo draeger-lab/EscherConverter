@@ -70,7 +70,7 @@ import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
 import edu.ucsd.sbrg.escher.utilities.Validator;
 
 /**
- * @author Andreas Dr&auml;ger
+ * @author Andreas Dr&auml;ger, Devesh Khandelwal
  */
 public class EscherConverter extends Launcher {
 
