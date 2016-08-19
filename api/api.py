@@ -1,8 +1,7 @@
 import os
+import time
 import uuid
 from datetime import datetime
-
-import time
 from glob import glob
 
 from flask import Blueprint, jsonify
@@ -62,6 +61,10 @@ def get_conversion_status(req_id):
 
 @api.route('/convert', methods=['POST'])
 def conversion_request():
+    """
+    Starts a new conversion job and returns its id and file count.
+    :return: Job details.
+    """
     if request.content_type != 'application/json':
         return jsonify({
             'status': 'errored',
@@ -113,6 +116,12 @@ def conversion_request():
 
 @api.route('/convert/<req_id>/input/<file_number>', methods=['PUT'])
 def add_file(req_id, file_number):
+    """
+    Adds a file to the input list of a conversion.
+    :param req_id: The id of the conversion.
+    :param file_number: File number.
+    :return: Status of addition.
+    """
     cr = db.retrieve(req_id)
     if cr is None:
         return jsonify({
@@ -159,6 +168,12 @@ def add_file(req_id, file_number):
 
 @api.route('/convert/<req_id>/input/<file_number>', methods=['GET'])
 def get_input_file(req_id, file_number):
+    """
+    Returns an uploaded input file, 404 if not yet uploaded.
+    :param req_id: The id of the conversion.
+    :param file_number: File number.
+    :return: File as text.
+    """
     cr = db.retrieve(req_id)
     if cr is None:
         return jsonify({
@@ -192,6 +207,12 @@ def get_input_file(req_id, file_number):
 
 @api.route('/convert/<req_id>/output/<file_number>', methods=['GET'])
 def get_output_files(req_id, file_number):
+    """
+    Returns a successfully converted file, 404 if conversion failed.
+    :param req_id: The id of the conversion.
+    :param file_number: File number.
+    :return: File as text.
+    """
     cr = db.retrieve(req_id)
     if cr is None:
         return jsonify({
@@ -232,6 +253,11 @@ def get_output_files(req_id, file_number):
 
 @api.route('/convert/<req_id>/log', methods=['GET'])
 def conversion_log(req_id):
+    """
+    Returns the log of the conversion, at the finest level, 404 if conversion errored.
+    :param req_id: The id of the conversion.
+    :return: File as text.
+    """
     cr = db.retrieve(req_id)
     if cr is None:
         return jsonify({
