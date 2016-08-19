@@ -64,7 +64,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
 
 
   /**
-   *
+   * Default constructor.
    */
   public Escher2SBGN() {
     super();

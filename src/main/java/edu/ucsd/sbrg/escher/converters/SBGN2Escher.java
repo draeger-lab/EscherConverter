@@ -16,7 +16,10 @@ import java.util.stream.Collectors;
 import static java.text.MessageFormat.format;
 
 /**
- * Created by deveshkhandelwal on 13/06/16.
+ * Converter from SBML Layout Extension to Escher.
+ *
+ * @author Devesh Khandelwal, Andreas Dr&auml;ger
+ * Created on 13/06/16.
  */
 public class SBGN2Escher {
 

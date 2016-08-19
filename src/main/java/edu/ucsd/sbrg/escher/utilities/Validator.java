@@ -28,6 +28,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 /**
+ * Validator for input files.
+ *
+ * @author Devesh Khandelwal
  * Created by deveshkhandelwal on 27/06/16.
  */
 public class Validator {
