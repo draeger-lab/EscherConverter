@@ -47,7 +47,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
 
 
   /**
-   * @param metabolite
+   * Copy constructor
    */
   public Metabolite(Metabolite metabolite) {
     super(metabolite);
@@ -131,7 +131,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
   }
 
 
-  /**
+  /* (non-JavaDoc)
    * @return the nodeRefId
    */
   public String getNodeRefId() {

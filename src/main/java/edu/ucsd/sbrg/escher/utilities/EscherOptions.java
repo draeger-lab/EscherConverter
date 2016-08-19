@@ -109,12 +109,15 @@ public interface EscherOptions extends KeyProvider {
       new Option<OutputFormat>("FORMAT", OutputFormat.class, bundle,
           new Range<OutputFormat>(OutputFormat.class,
               Range.toRangeString(OutputFormat.class)), OutputFormat.SBML);
-
+  /**
+   * Whether to combine layouts of an SBML file, if more than one.
+   */
   Option<Boolean> COMBINE = new Option<>("COMBINE", Boolean.class, bundle, Boolean.FALSE);
-
+  /**
+   * Whether to extract CoBRA model, if FBC present on SBML file.
+   */
   Option<Boolean> EXTRACT_COBRA = new Option<>("EXTRACT_COBRA", Boolean.class, bundle, Boolean
       .FALSE);
-  
   /**
    * This value is used when no width has been defined for the canvas. Since
    * the width attribute is mandatory for the layout, a default value must be

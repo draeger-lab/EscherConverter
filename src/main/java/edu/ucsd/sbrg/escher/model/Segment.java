@@ -334,7 +334,7 @@ public class Segment extends AbstractEscherBase implements Element {
 
 
   /**
-   * @return
+   * @return The {@code from} node id.
    */
   public String unsetFromNodeId() {
     String fromString = getFromNodeId();
@@ -344,7 +344,7 @@ public class Segment extends AbstractEscherBase implements Element {
 
 
   /**
-   * @return
+   * @return The {@code to} node id.
    */
   public String unsetToNodeId() {
     String toString = getToNodeId();
