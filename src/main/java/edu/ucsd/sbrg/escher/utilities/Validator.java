@@ -33,7 +33,7 @@ import java.util.logging.Logger;
 public class Validator {
 
   /**
-   * Localization support.
+   * Default values.
    */
   private static final transient ResourceBundle
       bundle           =
@@ -50,17 +50,35 @@ public class Validator {
   private static final           Logger
       logger           =
       Logger.getLogger(Validator.class.getName());
-
+  /**
+   * JSON Validator to validate Escher JSON files.
+   */
   private static final           JsonValidator JSON_VALIDATOR = JsonSchemaFactory.byDefault().getValidator();
+  /**
+   * JSON Schema to validate against.
+   */
   private JsonSchema          escherSchema;
   private SchematronValidator schematronValidator;
-  private File logFile;
 
+
+  /**
+   * Default constructor.
+   *
+   * @throws IOException See {@link Utils#defaultEscherSchema()}.
+   * @throws ProcessingException See {@link Utils#defaultEscherSchema()}.
+   */
   public Validator() throws IOException, ProcessingException {
     this(Utils.defaultEscherSchema());
   }
 
 
+  /**
+   * Constructor. Takes a custom schema to validate Escher against.
+   *
+   * @param jsonNode The {@code JSON Schema}.
+   * @throws IOException See {@link Utils#jsonSchemaSchema()}.
+   * @throws ProcessingException See {@link Utils#jsonSchemaSchema()}.
+   */
   public Validator(JsonNode jsonNode) throws IOException, ProcessingException {
     // TODO: Check if schema is valid.
     ProcessingReport report = Utils.jsonSchemaSchema().validate(jsonNode);
@@ -76,6 +94,13 @@ public class Validator {
   }
 
 
+  /**
+   * Validates an Escher JSON file.
+   *
+   * @param file The input {@code file}.
+   * @return True if valid, false otherwise.
+   * @throws IOException Thrown if problems in accessing {@code file}.
+   */
   public boolean validateEscher(File file) throws IOException {
     JsonNode node = JsonLoader.fromFile(file);
     try {
@@ -88,6 +113,13 @@ public class Validator {
   }
 
 
+  /**
+   * Validates an SBGN-ML XML file.
+   *
+   * @param file The input {@code file}.
+   * @return True if valid, false otherwise.
+   * @throws IOException Thrown if problems in accessing {@code file}.
+   */
   public boolean validateSbgnml(File file) throws IOException {
     try {
       Sbgn document = SbgnUtil.readFromFile(file);
@@ -99,6 +131,7 @@ public class Validator {
       }
     } catch (UnmarshalException e) {
       try {
+        // If parsing fails, try converting from milestone 1 to 2 first.
         logger.warning(messages.getString("ConvertM1toM2"));
         ConvertMilestone1to2.main(new String[] {file.getAbsolutePath(), file.getAbsolutePath()});
       } catch (JDOMException e1) {
@@ -125,23 +158,15 @@ public class Validator {
   }
 
 
+  /**
+   * Validates an SBGN-ML XML file.
+   *
+   * @param file The input {@code file}.
+   * @return True if valid, false otherwise.
+   */
   public boolean validateSbmlLE(File file) {
-    // TODO: SBML oofline/online validation.
+    // TODO: SBML offline/online validation.
     return true;
-//    throw new UnsupportedOperationException("Not yet implemented!");
   }
 
-
-  public void log(Issue issue) {
-    throw new UnsupportedOperationException("Not yet implemented!");
-  }
-
-
-  public void log(ProcessingMessage message) {
-    throw new UnsupportedOperationException("Not yet implemented!");
-  }
-
-  public void setLogFile(File logFile) {
-    this.logFile = logFile;
-  }
 }

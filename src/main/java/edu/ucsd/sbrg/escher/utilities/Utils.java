@@ -48,7 +48,7 @@ public class Utils {
    * Get the default Escher Schema (v1.0.0).
    *
    * @return The {@code JSON Schema}.
-   * @throws IOException Thrown if error in accessing the file.
+   * @throws IOException Thrown if error in accessing the schema file.
    * @throws ProcessingException Thrown if problem in parsing JSON.
    */
   public static JsonNode defaultEscherSchema() throws IOException, ProcessingException {
