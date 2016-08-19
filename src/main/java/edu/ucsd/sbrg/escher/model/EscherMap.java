@@ -29,22 +29,58 @@ import java.util.Set;
  */
 public class EscherMap extends AbstractEscherBase {
 
+  /**
+   * Set of nodes with common bigg_ids.
+   */
   private Map<String, Set<String>>       bigg2nodes;
+  /**
+   * Set of reactions with common bigg_ids.
+   */
   private Map<String, Set<String>>       bigg2reactions;
+  /**
+   * Canvas object.
+   */
   private Canvas                         canvas;
+  /**
+   * Compartment id to compartment map.
+   */
   private Map<String, EscherCompartment> compartments;
+  /**
+   * Description of escher map.
+   */
   private String                         description;
+  /**
+   * Escher map id.
+   */
   private String                         id;
+  /**
+   * Escher map name.
+   */
   private String                         name;
+  /**
+   * {@code nodes} object of escher map.
+   */
   private Map<String, Node>              nodes;
+  /**
+   * {@code reactions} object of escher map.
+   */
   private Map<String, EscherReaction>    reactions;
+  /**
+   * Escher map's schema version.
+   */
   private String                         schema;
+  /**
+   * {@code text_labels} object of escher map.
+   */
   private Map<String, TextLabel>         textLabels;
+  /**
+   * Escher map URL.
+   */
   private String                         url;
 
 
   /**
-   *
+   * Default constructor.
    */
   public EscherMap() {
     canvas = null;
@@ -58,7 +94,9 @@ public class EscherMap extends AbstractEscherBase {
 
 
   /**
-   * @param escherMap
+   * Copy constructor.
+   *
+   * @param escherMap {@code escher} map object.
    */
   public EscherMap(EscherMap escherMap) {
     super(escherMap);
@@ -123,6 +161,12 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  /**
+   * Removes node from {@link #nodes}.
+   *
+   * @param id Node id to be removed.
+   * @return {@code node} removed.
+   */
   public Node removeNode(String id) {
     if (nodes != null && nodes.containsKey(id)) {
       return nodes.remove(id);
@@ -627,10 +671,13 @@ public class EscherMap extends AbstractEscherBase {
   }
 
 
+  /**
+   * Post-processes {@link EscherMap} and populates internal helper fields.
+   */
   public void processMap() {
     try {
-      // Set midmarker for every reaction by going through its nodes and checking which
-      // one is a midmarker.
+      // Set mid-marker for every reaction by going through its nodes and checking which
+      // one is a mid-marker.
       reactions.forEach((k, r) -> {
         r.getNodes().forEach((s) -> {
           if (nodes.get(s).getType() == Node.Type.midmarker) {
