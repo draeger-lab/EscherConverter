@@ -133,6 +133,7 @@ public class Validator {
         return false;
       }
     } catch (UnmarshalException e) {
+      // TODO: Check if this exception is caused due to milestone mismatch and return false if the file is not a valid SBGN file at all.
       try {
         // If parsing fails, try converting from milestone 1 to 2 first.
         logger.warning(messages.getString("ConvertM1toM2"));

@@ -1,6 +1,6 @@
 language: java
 sudo: false
-script: mvn compile assembly:single && mvn clean test
+script: mvn clean compile assembly:single test
 
 jdk:
   - oraclejdk8
