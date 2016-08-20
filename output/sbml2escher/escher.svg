@@ -10,10 +10,10 @@
         <g class="canvas-group">
             <rect id="mouse-node" width="0px" height="0px" pointer-events="all"/>
             <rect id="canvas" width="800" height="600" transform="translate(0,0)" style="visibility: hidden;"/>
-            <rect class="drag-rect resize-rect" transform="translate(-50,50)" height="500" id="dragleft" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
-            <rect class="drag-rect resize-rect" transform="translate(750,50)" id="dragright" height="500" width="100" cursor="ew-resize" style="pointer-events: auto;"/>
-            <rect class="drag-rect resize-rect" transform="translate(50,-50)" height="100" id="dragtop" width="700" cursor="ns-resize" style="pointer-events: auto;"/>
-            <rect class="drag-rect resize-rect" transform="translate(50,550)" id="dragbottom" height="100" width="700" cursor="ns-resize" style="pointer-events: auto;"/>
+            <rect class="drag-rect resize-rect" transform="translate(-50,50)" height="500" id="dragleft" width="100" cursor="ew-resize" style="pointer-events: none;"/>
+            <rect class="drag-rect resize-rect" transform="translate(750,50)" id="dragright" height="500" width="100" cursor="ew-resize" style="pointer-events: none;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,-50)" height="100" id="dragtop" width="700" cursor="ns-resize" style="pointer-events: none;"/>
+            <rect class="drag-rect resize-rect" transform="translate(50,550)" id="dragbottom" height="100" width="700" cursor="ns-resize" style="pointer-events: none;"/>
         </g>
         <g id="brush-container"/>
         <g id="reactions">
@@ -41,8 +41,10 @@
                     <g class="arrowheads"/>
                     <g class="stoichiometry-labels"/></g>
                 <g class="segment-group" id="sPGK_srg_atp_c.S0">
-                    <path class="segment" d="M219.03602511652494,227.97249138285113 C257.2213398372171,236.28316557202777 302.72054938966073,236.01496769205278 334.7199934705002,235.8263450072352"/>
-                    <g class="arrowheads"/>
+                    <path class="segment" d="M231.73866018044683,230.7371002942204 C257.2213398372171,236.28316557202777 302.72054938966073,236.01496769205278 334.7199934705002,235.8263450072352"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(231.73866018044683,230.7371002942204)rotate(102.27841115920806)"/>
+                    </g>
                     <g class="stoichiometry-labels"/></g>
                 <g class="segment-group" id="sPGK_srg_13dpg_c.S1">
                     <path class="segment" d="M364.71947229628717,235.64951124021866 364.71947229628717,235.64951124021866"/>
@@ -59,8 +61,10 @@
                     <g class="arrowheads"/>
                     <g class="stoichiometry-labels"/></g>
                 <g class="segment-group" id="sPGK_srg_3pg_c.S0">
-                    <path class="segment" d="M251.34441574823308,197.117948019048 C279.5971653196458,215.15090506871456 298.7206188795558,236.03854552765495 334.7199934705002,235.8263450072352"/>
-                    <g class="arrowheads"/>
+                    <path class="segment" d="M262.3025298704584,204.11221244672626 C279.5971653196458,215.15090506871456 298.7206188795558,236.03854552765495 334.7199934705002,235.8263450072352"/>
+                    <g class="arrowheads">
+                        <path class="arrowhead" d="M-10,0 L0,13 L10,0 Z" transform="translate(262.3025298704584,204.11221244672626)rotate(122.5489762706611)"/>
+                    </g>
                     <g class="stoichiometry-labels"/></g>
             </g>
         </g>
