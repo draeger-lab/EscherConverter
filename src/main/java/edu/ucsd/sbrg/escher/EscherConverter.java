@@ -175,7 +175,8 @@ public class EscherConverter extends Launcher {
    *
    * @param document {@link SBMLDocument} to convert.
    * @param properties Command line options, if any.
-   * @return A {@link List<EscherMap>} extracted from the SBML file, as there may be more than one.
+   * @return A list of {@link EscherMap} extracted from the SBML file, as there may be more than
+   * one.
    */
   public static List<EscherMap> convert(SBMLDocument document, SBProperties properties) {
     SBML2Escher converter = new SBML2Escher();
