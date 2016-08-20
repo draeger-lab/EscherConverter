@@ -104,6 +104,7 @@
         "bigg_id" : "atp_c"
       } ],
       "name" : "Phosphoglycerate kinase",
+      "reversibility" : true,
       "segments" : {
         "PGK_srg_3pg_c.S1" : {
           "from_node_id" : "PGK_reactant_2.M1",
