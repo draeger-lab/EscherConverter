@@ -1,8 +1,8 @@
 {
   "name": "EscherConverter",
-  "version": "0.0.1",
-  "description": "Mr. Plumpy Senior",
-  "main": "EscherConverter/app.coffee",
+  "version": "1.0.0",
+  "description": "EscherConverter is a standalone program that reads files created with the graphical network editor Escher and converts them to files in community standard formats.",
+  "main": "EscherConverter/app.js",
   "scripts": {
     "start": "brunch w -s",
     "build": "brunch b -p",
@@ -10,7 +10,7 @@
   },
   "author": "Devesh Khandelwal <devesh.khandelwal@outlook.com>",
   "license": "MIT",
-  "repository": "devkhan/EscherConverter",
+  "repository": "SBRG/EscherConverter",
   "dependencies": {
     "auto-reload-brunch": "^2.2.0",
     "autoprefixer": "^6.3.6",
@@ -26,8 +26,7 @@
     "picnic": "^6.1.2",
     "postcss-brunch": "^0.5.0",
     "stylus-brunch": "^2.6.0",
-    "uglify-js-brunch": "^2.0.1",
-    "zepto": "^1.2.0"
+    "uglify-js-brunch": "^2.0.1"
   },
   "devDependencies": {
     "babel-brunch": "^6.0.5",
