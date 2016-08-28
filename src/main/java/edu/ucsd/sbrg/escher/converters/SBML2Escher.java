@@ -1,21 +1,40 @@
 package edu.ucsd.sbrg.escher.converters;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-import edu.ucsd.sbrg.escher.model.*;
-import edu.ucsd.sbrg.escher.model.Point;
-import org.sbml.jsbml.Reaction;
-import org.sbml.jsbml.SBMLDocument;
-import org.sbml.jsbml.SpeciesReference;
-import org.sbml.jsbml.ext.layout.*;
-import org.sbml.jsbml.util.ResourceManager;
+import static java.text.MessageFormat.format;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import static java.text.MessageFormat.format;
+import org.sbml.jsbml.Reaction;
+import org.sbml.jsbml.SBMLDocument;
+import org.sbml.jsbml.SpeciesReference;
+import org.sbml.jsbml.ext.layout.BoundingBox;
+import org.sbml.jsbml.ext.layout.CubicBezier;
+import org.sbml.jsbml.ext.layout.Curve;
+import org.sbml.jsbml.ext.layout.CurveSegment;
+import org.sbml.jsbml.ext.layout.Dimensions;
+import org.sbml.jsbml.ext.layout.Layout;
+import org.sbml.jsbml.ext.layout.LayoutConstants;
+import org.sbml.jsbml.ext.layout.LayoutModelPlugin;
+import org.sbml.jsbml.ext.layout.ReactionGlyph;
+import org.sbml.jsbml.ext.layout.SpeciesGlyph;
+import org.sbml.jsbml.ext.layout.SpeciesReferenceGlyph;
+import org.sbml.jsbml.ext.layout.SpeciesReferenceRole;
+import org.sbml.jsbml.ext.layout.TextGlyph;
+import org.sbml.jsbml.util.ResourceManager;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+
+import edu.ucsd.sbrg.escher.model.Canvas;
+import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherReaction;
+import edu.ucsd.sbrg.escher.model.Metabolite;
+import edu.ucsd.sbrg.escher.model.Node;
+import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.escher.model.Segment;
+import edu.ucsd.sbrg.escher.model.TextLabel;
 
 /**
  * Converter from SBML Layout Extension to Escher.
@@ -86,7 +105,7 @@ public class SBML2Escher {
 
       logger.info(format(messages.getString("TextGlyphCount"), layout.getTextGlyphCount()));
       layout.getListOfTextGlyphs().forEach(tG -> {
-//        map.addTextLabel(createTextLabel(tG));
+        //        map.addTextLabel(createTextLabel(tG));
       });
 
       logger.info(format(messages.getString("SpeciesGlyphCount"), layout.getSpeciesGlyphCount()));
@@ -214,14 +233,17 @@ public class SBML2Escher {
     node.setId(speciesGlyph.getId());
     node.setBiggId(speciesGlyph.getSpecies());
     node.setName(speciesGlyph.getSpeciesInstance().getName());
-    node.setX(speciesGlyph.getBoundingBox().getPosition().x());
-    node.setY(speciesGlyph.getBoundingBox().getPosition().y());
+
+    BoundingBox bbox = speciesGlyph.getBoundingBox();
+    org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
+    Dimensions dim = bbox.getDimensions();
+
+    node.setX((pos != null) && pos.isSetX() ? pos.x() : Double.NaN);
+    node.setY((pos != null) && pos.isSetY() ? pos.y() : Double.NaN);
 
     // Set label coordinates to the center of BBox.
-    node.setLabelX(speciesGlyph.getBoundingBox().getPosition().x() +
-                    speciesGlyph.getBoundingBox().getDimensions().getWidth());
-    node.setLabelY(speciesGlyph.getBoundingBox().getPosition().y() +
-                    speciesGlyph.getBoundingBox().getDimensions().getHeight());
+    node.setLabelX(node.getX() + dim.getWidth());
+    node.setLabelY(node.getY() + dim.getHeight());
 
     logger.info(format(messages.getString("SpeciesGlyphToNode"), speciesGlyph.getId()));
     node.setPrimary(true);
@@ -244,31 +266,28 @@ public class SBML2Escher {
     logger.info(format(messages.getString("ReactionToMidMarker"), reactionGlyph.getId()));
 
     Point point = new Point();
-    if (reactionGlyph.getBoundingBox() != null) {
+    BoundingBox bbox = reactionGlyph.getBoundingBox();
+    if ((bbox != null) || !reactionGlyph.isSetCurve()) {
       // If position is available, use its center as anchor.
       logger.info(format(messages.getString("ReactionGlyphBBoxFound"), reactionGlyph.getId()));
-      point.setX(reactionGlyph.getBoundingBox().getPosition().getX() + (0.5 * reactionGlyph
-          .getBoundingBox().getDimensions().getWidth()));
-      point.setY(reactionGlyph.getBoundingBox().getPosition().getY() + (0.5 * reactionGlyph
-          .getBoundingBox().getDimensions().getHeight()));
+      if ((bbox != null) && bbox.isSetDimensions() && bbox.isSetPosition()) {
+        org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
+        Dimensions dim = bbox.getDimensions();
+        point.setX(pos.getX() + (.5d * dim.getWidth()));
+        point.setY(pos.getY() + (.5d * dim.getHeight()));
+      } else {
+        point.setX(Double.NaN);
+        point.setY(Double.NaN);
+      }
     }
     else {
       // If position is not available, calculate center of the curve.
       logger.info(format(messages.getString("ReactionGlyphBBoxNotFound"), reactionGlyph.getId()));
-      point.setX(0.5 * (reactionGlyph.getCurve()
-                                     .getCurveSegment(0)
-                                     .getStart()
-                                     .x() + reactionGlyph.getCurve()
-                                                         .getCurveSegment(reactionGlyph.getCurve()
-                                                                                       .getCurveSegmentCount()-1)
-                                                         .getStart().x()));
-      point.setY(0.5 * (reactionGlyph.getCurve()
-                                     .getCurveSegment(0)
-                                     .getStart()
-                                     .y() + reactionGlyph.getCurve()
-                                                         .getCurveSegment(reactionGlyph.getCurve()
-                                                                                       .getCurveSegmentCount()-1)
-                                                         .getStart().y()));
+      Curve curve = reactionGlyph.getCurve();
+      point.setX(.5d * (curve.getCurveSegment(0).getStart().x() +
+          curve.getCurveSegment(curve.getCurveSegmentCount()-1).getStart().x()));
+      point.setY(.5d * (curve.getCurveSegment(0).getStart().y() +
+          curve.getCurveSegment(curve.getCurveSegmentCount()-1).getStart().y()));
     }
 
     node.setX(point.getX());
@@ -290,17 +309,19 @@ public class SBML2Escher {
     List<Node> multiMarkers = new ArrayList<>();
 
     Node node;
-    List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
-    for (int i = 0; i < (cSs.size()-1); i++) {
-      node = new Node();
+    if (sRG.isSetCurve()) {
+      List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
+      for (int i = 0; i < (cSs.size()-1); i++) {
+        node = new Node();
 
-      node.setId(sRG.getSpeciesReference() + ".M" + (i+1));
-      node.setType(Node.Type.multimarker);
+        node.setId(sRG.getSpeciesReference() + ".M" + (i+1));
+        node.setType(Node.Type.multimarker);
 
-      node.setX(midPoint(cSs.get(i).getEnd().getX(), cSs.get(i+1).getStart().getX()));
-      node.setY(midPoint(cSs.get(i).getEnd().getY(), cSs.get(i+1).getStart().getY()));
+        node.setX(midPoint(cSs.get(i).getEnd().getX(), cSs.get(i+1).getStart().getX()));
+        node.setY(midPoint(cSs.get(i).getEnd().getY(), cSs.get(i+1).getStart().getY()));
 
-      multiMarkers.add(node);
+        multiMarkers.add(node);
+      }
     }
 
     logger.info(format(messages.getString("MultiMarkerCount"), multiMarkers.size(), sRG.getId()));
@@ -322,34 +343,31 @@ public class SBML2Escher {
     reaction.setId("" + (reactionGlyph.getId().hashCode() & 0xfffffff));
     reaction.setBiggId(reactionGlyph.getReactionInstance().getId());
     logger.info(format(messages.getString("ReactionGlyphToReaction"), reactionGlyph.getId(),
-        reaction.getId()));
+      reaction.getId()));
 
     Point point = new Point();
-    if (reactionGlyph.getBoundingBox() != null) {
+    BoundingBox bbox = reactionGlyph.getBoundingBox();
+    if ((bbox != null) || !reactionGlyph.isSetCurve()) {
       // If BBox is available, use its center as anchor.
       logger.info(format(messages.getString("ReactionGlyphBBoxFound")));
-      point.setX(reactionGlyph.getBoundingBox().getPosition().getX() + (0.5 * reactionGlyph
-          .getBoundingBox().getDimensions().getWidth()));
-      point.setY(reactionGlyph.getBoundingBox().getPosition().getY() + (0.5 * reactionGlyph
-          .getBoundingBox().getDimensions().getHeight()));
+      if ((bbox != null) && bbox.isSetPosition() && bbox.isSetDimensions()) {
+        org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
+        Dimensions dim = bbox.getDimensions();
+        point.setX(pos.getX() + (.5d * dim.getWidth()));
+        point.setY(pos.getY() + (.5d * dim.getHeight()));
+      } else {
+        point.setX(Double.NaN);
+        point.setY(Double.NaN);
+      }
     }
     else {
       // If BBox is not available, calculate its center using the curve.
       logger.info(format(messages.getString("ReactionGlyphBBoxNotFound")));
-      point.setX(0.5 * (reactionGlyph.getCurve()
-                              .getCurveSegment(0)
-                              .getStart()
-                              .x() + reactionGlyph.getCurve()
-                                                  .getCurveSegment(reactionGlyph.getCurve()
-                                                                                .getCurveSegmentCount()-1)
-                                                  .getStart().x()));
-      point.setY(0.5 * (reactionGlyph.getCurve()
-                                     .getCurveSegment(0)
-                                     .getStart()
-                                     .y() + reactionGlyph.getCurve()
-                                                         .getCurveSegment(reactionGlyph.getCurve()
-                                                                                       .getCurveSegmentCount()-1)
-                                                         .getStart().y()));
+      Curve curve = reactionGlyph.getCurve();
+      point.setX(.5d * (curve.getCurveSegment(0).getStart().x() +
+          curve.getCurveSegment(curve.getCurveSegmentCount()-1).getStart().x()));
+      point.setY(.5d * (curve.getCurveSegment(0).getStart().y() +
+          curve.getCurveSegment(curve.getCurveSegmentCount()-1).getStart().y()));
     }
     reaction.setLabelX(point.getX());
     reaction.setLabelY(point.getY());
@@ -378,7 +396,7 @@ public class SBML2Escher {
       // If reversibility attribute is not present of reaction, use true as default.
       reaction.setReversibility(true);
     }
-    
+
     return reaction;
   }
 
@@ -393,18 +411,42 @@ public class SBML2Escher {
    */
   protected List<Segment> createSegments(SpeciesReferenceGlyph sRG, ReactionGlyph rG) {
     List<Segment> segments = new ArrayList<>();
-    Segment segment = new Segment();
-    List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
 
-    logger.info(format(messages.getString("CurveSegmentCount"), sRG.getId(), cSs.size()));
+    if (sRG.isSetCurve()) {
+      List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
 
-    segment.setId(sRG.getId() + ".S" + 0);
-    segment.setFromNodeId(sRG.getSpeciesGlyph());
-    for (int i = 0; i < (cSs.size()-1); i++) {
-      segment.setToNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
+      logger.info(format(messages.getString("CurveSegmentCount"), sRG.getId(), cSs.size()));
 
-      if (cSs.get(i).isCubicBezier()) {
-        CubicBezier cB = (CubicBezier) cSs.get(i);
+      Segment segment = new Segment();
+      segment.setId(sRG.getId() + ".S" + 0);
+      segment.setFromNodeId(sRG.getSpeciesGlyph());
+      for (int i = 0; i < (cSs.size()-1); i++) {
+        segment.setToNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
+
+        if (cSs.get(i).isCubicBezier()) {
+          CubicBezier cB = (CubicBezier) cSs.get(i);
+
+          org.sbml.jsbml.ext.layout.Point point;
+
+          point = cB.getBasePoint1();
+          segment.setBasePoint1(new Point(point.x(), point.y()));
+          point = cB.getBasePoint2();
+          segment.setBasePoint2(new Point(point.x(), point.y()));
+        }
+        segments.add(segment);
+        logger.info(format(messages.getString("CurveSegmentAdd"), segment.getId(), segment
+          .getFromNodeId(), segment.getToNodeId()));
+
+        segment = new Segment();
+
+        segment.setId(sRG.getId() + ".S" + (i+1));
+        segment.setFromNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
+      }
+
+      segment.setToNodeId(rG.getId());
+
+      if (cSs.get(cSs.size()-1).isCubicBezier()) {
+        CubicBezier cB = (CubicBezier) cSs.get(cSs.size()-1);
 
         org.sbml.jsbml.ext.layout.Point point;
 
@@ -413,32 +455,11 @@ public class SBML2Escher {
         point = cB.getBasePoint2();
         segment.setBasePoint2(new Point(point.x(), point.y()));
       }
+
       segments.add(segment);
       logger.info(format(messages.getString("CurveSegmentAdd"), segment.getId(), segment
-          .getFromNodeId(), segment.getToNodeId()));
-
-      segment = new Segment();
-
-      segment.setId(sRG.getId() + ".S" + (i+1));
-      segment.setFromNodeId(sRG.getSpeciesReference() + ".M" + (i+1));
-    }
-
-    segment.setToNodeId(rG.getId());
-
-    if (cSs.get(cSs.size()-1).isCubicBezier()) {
-      CubicBezier cB = (CubicBezier) cSs.get(cSs.size()-1);
-
-      org.sbml.jsbml.ext.layout.Point point;
-
-      point = cB.getBasePoint1();
-      segment.setBasePoint1(new Point(point.x(), point.y()));
-      point = cB.getBasePoint2();
-      segment.setBasePoint2(new Point(point.x(), point.y()));
-    }
-
-    segments.add(segment);
-    logger.info(format(messages.getString("CurveSegmentAdd"), segment.getId(), segment
         .getFromNodeId(), segment.getToNodeId()));
+    }
 
     return segments;
   }
