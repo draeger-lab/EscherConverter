@@ -845,7 +845,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public boolean showsGUI() {
-    return props.containsKey(GUIOptions.GUI) && props.getBooleanProperty(GUIOptions.GUI);
+    return !props.containsKey(GUIOptions.GUI) || props.getBooleanProperty(GUIOptions.GUI);
   }
 
 }
