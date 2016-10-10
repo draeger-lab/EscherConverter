@@ -1,18 +1,16 @@
 package edu.ucsd.sbrg.escher.helper;
 
-import edu.ucsd.sbrg.escher.converters.SBGN2Escher;
-import edu.ucsd.sbrg.escher.model.EscherMap;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import static org.powermock.api.mockito.PowerMockito.spy;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBException;
+
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
 
-import javax.xml.bind.JAXBException;
-import java.io.File;
-
-import static org.powermock.api.mockito.PowerMockito.spy;
+import edu.ucsd.sbrg.escher.converter.SBGN2Escher;
+import edu.ucsd.sbrg.escher.model.EscherMap;
 
 /**
  * Created by deveshkhandelwal on 01/07/16.

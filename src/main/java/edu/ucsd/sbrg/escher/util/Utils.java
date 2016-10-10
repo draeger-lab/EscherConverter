@@ -1,4 +1,4 @@
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;
 
 import java.io.IOException;
 import java.util.ResourceBundle;

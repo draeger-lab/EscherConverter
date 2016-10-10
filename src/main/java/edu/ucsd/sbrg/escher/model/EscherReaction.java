@@ -33,15 +33,11 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   /**
    * A {@link Logger} for this class.
    */
-  private static final Logger
-                                      logger =
-      Logger.getLogger(EscherReaction.class.getName());
+  private static final Logger logger = Logger.getLogger(EscherReaction.class.getName());
   /**
    * Localization support.
    */
-  public static final  ResourceBundle
-                                      bundle =
-      ResourceManager.getBundle("Messages");
+  public static final  ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * The reaction's BiGG id.
    */
@@ -125,8 +121,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setGeneReactionRule(escherReaction.getGeneReactionRule());
     }
     if (escherReaction.getGeneCount() > 0) {
-      for (Map.Entry<String, Gene> entry : escherReaction.getGenes()
-                                                         .entrySet()) {
+      for (Map.Entry<String, Gene> entry : escherReaction.getGenes().entrySet()) {
         addGene(entry.getValue().clone());
       }
     }
@@ -140,8 +135,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setLabelY(escherReaction.getLabelY().doubleValue());
     }
     if (escherReaction.getMetaboliteCount() > 0) {
-      for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites()
-                                                               .entrySet()) {
+      for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
         addMetabolite(entry.getValue().clone());
       }
     }
@@ -184,10 +178,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       metabolites.put(metabolite.getId(), metabolite);
       metaboliteList.add(metabolite);
     } else {
-      logger.warning(MessageFormat
-          .format(bundle.getString("EscherReaction.skippingNullElement"),
-              Metabolite.class.getSimpleName(),
-              isSetBiggId() ? getBiggId() : getId()));
+      logger.warning(MessageFormat.format(
+        bundle.getString("EscherReaction.skippingNullElement"),
+          Metabolite.class.getSimpleName(),
+          isSetBiggId() ? getBiggId() : getId()));
     }
   }
 
@@ -211,10 +205,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
         nodes.add(segment.getToNodeId());
       }
     } else {
-      logger.warning(MessageFormat
-          .format(bundle.getString("EscherReaction.skippingNullElement"),
-              Segment.class.getSimpleName(),
-              isSetBiggId() ? getBiggId() : getId()));
+      logger.warning(MessageFormat.format(
+        bundle.getString("EscherReaction.skippingNullElement"),
+          Segment.class.getSimpleName(),
+          isSetBiggId() ? getBiggId() : getId()));
     }
   }
 
@@ -382,8 +376,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-     * @see edu.ucsd.sbrg.escher.model.Element#getId()
-     */
+   * @see edu.ucsd.sbrg.escher.model.Element#getId()
+   */
   @Override
   public String getId() {
     return id;
@@ -497,8 +491,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
+   * @see java.lang.Object#hashCode()
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -507,14 +501,11 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((labelX == null) ? 0 : labelX.hashCode());
     result = prime * result + ((labelY == null) ? 0 : labelY.hashCode());
-    result =
-        prime * result + ((metabolites == null) ? 0 : metabolites.hashCode());
+    result = prime * result + ((metabolites == null) ? 0 : metabolites.hashCode());
     result = prime * result + ((midmarker == null) ? 0 : midmarker.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
     result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
-    result =
-        prime * result + ((reversibility == null) ? 0 :
-            reversibility.hashCode());
+    result = prime * result + ((reversibility == null) ? 0 : reversibility.hashCode());
     result = prime * result + ((segments == null) ? 0 : segments.hashCode());
     return result;
   }
@@ -723,8 +714,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
 
 
   /* (non-Javadoc)
-       * @see java.lang.Object#toString()
-       */
+   * @see java.lang.Object#toString()
+   */
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();

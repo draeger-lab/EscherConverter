@@ -73,7 +73,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle bundle = ResourceManager.getBundle("Messages");
+  private static final transient ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * A {@link Logger} for this class.
    */
@@ -118,6 +118,7 @@ public class Node extends AbstractBox implements Element {
    *
    */
   public Node() {
+    super();
     id = name = biggId = null;
     x = y = labelX = labelY = null;
     nodeType = null;

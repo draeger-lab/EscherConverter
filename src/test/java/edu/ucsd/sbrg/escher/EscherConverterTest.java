@@ -1,18 +1,29 @@
 package edu.ucsd.sbrg.escher;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import edu.ucsd.sbrg.escher.model.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.parser.ParseException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import com.fasterxml.jackson.core.JsonParseException;
 
-import static org.junit.Assert.*;
+import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherReaction;
+import edu.ucsd.sbrg.escher.model.Gene;
+import edu.ucsd.sbrg.escher.model.Metabolite;
+import edu.ucsd.sbrg.escher.model.Node;
+import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.escher.model.Segment;
 
 /**
  * Created by Devesh Khandelwal on 07-06-2016.

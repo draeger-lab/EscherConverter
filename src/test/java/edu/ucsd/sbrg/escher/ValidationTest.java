@@ -3,7 +3,8 @@ package edu.ucsd.sbrg.escher;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
-import edu.ucsd.sbrg.escher.utilities.Validator;
+
+import edu.ucsd.sbrg.escher.util.Validator;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;

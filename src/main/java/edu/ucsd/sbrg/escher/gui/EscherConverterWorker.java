@@ -36,13 +36,10 @@ public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
   /**
    * Localization support.
    */
-  public static final ResourceBundle
-      bundle =
-      ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   private EscherMap          map;
   private Class<? extends T> format;
   private SBProperties       properties;
-
 
   /**
    * @param map
@@ -50,12 +47,10 @@ public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
    * @param properties
    */
   public EscherConverterWorker(EscherMap map, Class<? extends T> format,
-      SBProperties properties) {
-    if (!format.isAssignableFrom(SBMLDocument.class) && !format
-        .isAssignableFrom(Sbgn.class)) {
-      throw new IllegalArgumentException(MessageFormat
-          .format(bundle.getString("EscherConverterWorker.unknownFormat"),
-              format.getName()));
+    SBProperties properties) {
+    if (!format.isAssignableFrom(SBMLDocument.class) && !format.isAssignableFrom(Sbgn.class)) {
+      throw new IllegalArgumentException(MessageFormat.format(
+        bundle.getString("EscherConverterWorker.unknownFormat"), format.getName()));
     }
     this.map = map;
     this.format = format;
@@ -70,4 +65,5 @@ public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
   protected T doInBackground() throws Exception {
     return EscherConverter.convert(map, format, properties);
   }
+
 }

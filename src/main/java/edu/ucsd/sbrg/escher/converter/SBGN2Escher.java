@@ -1,19 +1,34 @@
-package edu.ucsd.sbrg.escher.converters;
-
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-import edu.ucsd.sbrg.escher.model.*;
-import edu.ucsd.sbrg.escher.model.Point;
-import org.sbgn.bindings.*;
-import org.sbgn.bindings.Map;
-import org.sbml.jsbml.util.ResourceManager;
-
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+package edu.ucsd.sbrg.escher.converter;
 
 import static java.text.MessageFormat.format;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
+import org.sbgn.bindings.Arc;
+import org.sbgn.bindings.Bbox;
+import org.sbgn.bindings.Glyph;
+import org.sbgn.bindings.Map;
+import org.sbgn.bindings.Port;
+import org.sbgn.bindings.Sbgn;
+import org.sbml.jsbml.util.ResourceManager;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+
+import edu.ucsd.sbrg.escher.model.Canvas;
+import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherReaction;
+import edu.ucsd.sbrg.escher.model.Metabolite;
+import edu.ucsd.sbrg.escher.model.Node;
+import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.escher.model.Segment;
+import edu.ucsd.sbrg.escher.model.TextLabel;
 
 /**
  * Converter from SBML Layout Extension to Escher.
@@ -30,7 +45,7 @@ public class SBGN2Escher {
   /**
    * Localization support.
    */
-  public static final  ResourceBundle messages = ResourceManager.getBundle("Messages");
+  public static final  ResourceBundle messages = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Default values.
    */
@@ -161,7 +176,7 @@ public class SBGN2Escher {
       node.setLabelY((double) glyph.getBbox().getY());
     }
     node.setPrimary(true);
-    
+
     return node;
   }
 
@@ -218,57 +233,57 @@ public class SBGN2Escher {
     logger.info(format(messages.getString("GlyphToReactionId"), glyph.getId(), reaction.getId()));
     if (glyph.getLabel() == null) {
       reaction.setName("R" + reactionId++);
-      logger.info(format(messages.getString("GlyphReactionNoLabel"), glyph.getId(), reaction
-          .getName()));
+      logger.info(format(messages.getString("GlyphReactionNoLabel"), 
+        glyph.getId(), reaction.getName()));
     }
     else {
-      logger.fine(format(messages.getString("GlyphReactionLabel"), glyph.getId(), glyph.getLabel
-          ().getText()));
+      logger.fine(format(messages.getString("GlyphReactionLabel"),
+        glyph.getId(), glyph.getLabel().getText()));
       reaction.setName(glyph.getLabel().getText());
     }
     reaction.setBiggId(reaction.getName());
-    logger.fine(format(messages.getString("ReactionIdenticalNameAndBigg"), reaction.getId(),
-        reaction.getName()));
+    logger.fine(format(messages.getString("ReactionIdenticalNameAndBigg"),
+      reaction.getId(), reaction.getName()));
     reaction.setLabelX(((double) glyph.getBbox().getX()));
     reaction.setLabelY(((double) glyph.getBbox().getY()));
     reaction.setMidmarker(createMidMarker(glyph));
 
     logger.fine(format(messages.getString("ReactionSegmentAddInit"), reaction.getId()));
     // This adds arcs which are either "production" or "consumption" into the reaction.
-    document.getMap().getArc().stream().filter(a -> a.getClazz().equals("production") || a
-        .getClazz().equals("consumption")).collect(Collectors.toList()).forEach((a) -> {
+    document.getMap().getArc().stream().filter(a -> a.getClazz().equals("production") ||
+      a.getClazz().equals("consumption")).collect(Collectors.toList()).forEach((a) -> {
 
-      // If the arc is linked to the process node (mid-marker) of the reaction.
-      if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
-        logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
-        sources.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource())));
-        targets.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())));
-        createSegments(a).forEach(reaction::addSegment);
-      }
+        // If the arc is linked to the process node (mid-marker) of the reaction.
+        if (glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
+          logger.info(format(messages.getString("ReactionArcsAdd"), a.getId(), reaction.getId()));
+          sources.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource())));
+          targets.add(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())));
+          createSegments(a).forEach(reaction::addSegment);
+        }
 
-      Metabolite metabolite = new Metabolite();
-      if (a.getClazz().equals("consumption") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
-        logger.info(format(messages.getString("ConsumptionArcNegativeCoeff"), a.getId()));
-        metabolite.setCoefficient(-1.0);
-        metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
+        Metabolite metabolite = new Metabolite();
+        if (a.getClazz().equals("consumption") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
+          logger.info(format(messages.getString("ConsumptionArcNegativeCoeff"), a.getId()));
+          metabolite.setCoefficient(-1.0);
+          metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
             .getSource()))));
-      }
+        }
 
-      if (a.getClazz().equals("production") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
-        logger.info(format(messages.getString("ProductionArcNegativeCoeff"), a.getId()));
-        metabolite.setCoefficient(1.0);
-        metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
+        if (a.getClazz().equals("production") && glyph.getId().equals(arc2GlyphMap.get(a.getId()))) {
+          logger.info(format(messages.getString("ProductionArcNegativeCoeff"), a.getId()));
+          metabolite.setCoefficient(1.0);
+          metabolite.setId(glyphId2LabelMap.get(getGlyphIdFromPortId(getIdFromSourceOrTarget(a
             .getTarget()))));
-      }
+        }
 
-      reaction.addMetabolite(metabolite);
-    });
+        reaction.addMetabolite(metabolite);
+      });
 
     // Encode catalysis arcs as "gene_reaction_rule" for a reaction.
     document.getMap().getArc().stream().filter(a -> a.getClazz().equals("catalysis") &&
-        (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
-            glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())))))
-            .collect(Collectors.toList()).forEach((a) -> {
+      (glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getSource()))) ||
+          glyph.getId().equals(port2GlyphMap.get(getIdFromSourceOrTarget(a.getTarget())))))
+    .collect(Collectors.toList()).forEach((a) -> {
 
       reaction.setGeneReactionRule(a.getId());
     });
@@ -279,7 +294,7 @@ public class SBGN2Escher {
     // is not reversible.
     sources.retainAll(targets);
     reaction.setReversibility(sources.size() > 0);
-    
+
     return reaction;
   }
 
@@ -293,12 +308,8 @@ public class SBGN2Escher {
   public double extractCoefficient(Object object) {
     String id = getGlyphIdFromPortId(getIdFromSourceOrTarget(object));
 
-    Glyph glyph = document.getMap()
-                          .getGlyph()
-                          .stream()
-                          .filter(g -> g.getId()
-                                        .equals(id))
-                          .collect(Collectors.toList()).get(0);
+    Glyph glyph = document.getMap().getGlyph().stream().filter(
+      g -> g.getId().equals(id)).collect(Collectors.toList()).get(0);
 
     if (glyph.getGlyph() == null) {
       return 1.0;
@@ -365,8 +376,8 @@ public class SBGN2Escher {
       }
 
       segments.add(segment);
-      logger.fine(format(messages.getString("SegmentAdd"), segment.getId(), segment.getFromNodeId
-          (), segment.getToNodeId()));
+      logger.fine(format(messages.getString("SegmentAdd"), segment.getId(),
+        segment.getFromNodeId(), segment.getToNodeId()));
 
       segment = new Segment();
 
@@ -389,8 +400,8 @@ public class SBGN2Escher {
     }
 
     segments.add(segment);
-    logger.fine(format(messages.getString("SegmentAdd"), segment.getId(), segment.getFromNodeId
-        (), segment.getToNodeId()));
+    logger.fine(format(messages.getString("SegmentAdd"),
+      segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
 
     return segments;
   }
@@ -444,27 +455,27 @@ public class SBGN2Escher {
   private String determineComponent(String clazz) {
     switch (clazz) {
 
-      case "macromolecule":
-      case "simple chemical":
-      case "perturbing agent":
-      case "unspecified entity":
-        return "node";
+    case "macromolecule":
+    case "simple chemical":
+    case "perturbing agent":
+    case "unspecified entity":
+      return "node";
 
-      case "tag":
-      case "annotation":
-        return "text_label";
+    case "tag":
+    case "annotation":
+      return "text_label";
 
-      case "process":
-      case "omitted process":
-      case "uncertain process":
-      case "association":
-      case "dissociation":
-        return "reaction";
+    case "process":
+    case "omitted process":
+    case "uncertain process":
+    case "association":
+    case "dissociation":
+      return "reaction";
 
-      default:
-        return clazz;
+    default:
+      return clazz;
 
-      }
+    }
   }
 
 
@@ -515,7 +526,7 @@ public class SBGN2Escher {
     });
 
     map.getArc().stream().filter(a -> a.getClazz().equals("production") || a.getClazz().equals("consumption"))
-       .collect(Collectors.toList()).forEach(a -> {
+    .collect(Collectors.toList()).forEach(a -> {
 
       logger.info(format(messages.getString("ArcMultiMarkerCount"), a.getId(), a.getNext().size()));
       a.getNext().forEach(next -> {

@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.converters;
+package edu.ucsd.sbrg.escher.converter;
 
 import edu.ucsd.sbrg.escher.model.*;
 import org.sbml.jsbml.util.ResourceManager;
@@ -65,26 +65,26 @@ public abstract class Escher2Standard<T> {
    * Localization support.
    */
   public static final  ResourceBundle
-                              bundle           =
-      ResourceManager.getBundle("Messages");
+  bundle           =
+  ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Compartment codes.
    */
   public static final  ResourceBundle
-                              compCode         =
-      ResourceManager.getBundle("CompartmentCode");
+  compCode         =
+  ResourceManager.getBundle("CompartmentCode");
   /**
    * Used as a key for a mapping between data structures.
    */
   public static final  String
-                              ESCHER_NODE_LINK =
-      Escher2Standard.class.getPackage() + ".NodeLink";
+  ESCHER_NODE_LINK =
+  Escher2Standard.class.getPackage() + ".NodeLink";
   /**
    * A {@link Logger} for this class.
    */
   private static final Logger
-                              logger           =
-      Logger.getLogger(Escher2Standard.class.getName());
+  logger           =
+  Logger.getLogger(Escher2Standard.class.getName());
   /**
    *
    */
@@ -225,7 +225,7 @@ public abstract class Escher2Standard<T> {
    * @param escherMap The parent {@code escher map}.
    */
   private void preProcessReaction(EscherReaction reaction,
-      EscherMap escherMap) {
+    EscherMap escherMap) {
     Set<Segment> segments = new HashSet<Segment>();
     for (Entry<String, Segment> entry : reaction.segments()) {
       Segment segment = entry.getValue();
@@ -237,8 +237,8 @@ public abstract class Escher2Standard<T> {
         Metabolite metabolite = reaction.getMetabolite(fromNode.getBiggId());
         if (metabolite == null) {
           logger.severe(MessageFormat.format(
-              bundle.getString("Escher2Standard.node_lacking_metabolite"),
-              fromNode.getBiggId(), reaction.getBiggId()));
+            bundle.getString("Escher2Standard.node_lacking_metabolite"),
+            fromNode.getBiggId(), reaction.getBiggId()));
         } else if (metabolite.getCoefficient() > 0d) {
           segment = reverse(segment);
         }
@@ -248,8 +248,8 @@ public abstract class Escher2Standard<T> {
         Metabolite metabolite = reaction.getMetabolite(toNode.getBiggId());
         if (metabolite == null) {
           logger.severe(MessageFormat.format(
-              bundle.getString("Escher2Standard.node_lacking_metabolite"),
-              toNode.getBiggId(), reaction.getBiggId()));
+            bundle.getString("Escher2Standard.node_lacking_metabolite"),
+            toNode.getBiggId(), reaction.getBiggId()));
         } else if (metabolite.getCoefficient() <= 0d) {
           segment = reverse(segment);
         }
@@ -262,8 +262,7 @@ public abstract class Escher2Standard<T> {
       }
       if (srGlyph != null) {
         List<String>
-            segmentIds =
-            srGlyph.getConnectedSegments(reaction.getId());
+        segmentIds = srGlyph.getConnectedSegments(reaction.getId());
         if (segmentIds == null) {
           srGlyph.addConnectedSegment(reaction.getId(), segment);
           segmentIds = srGlyph.getConnectedSegments(reaction.getId());
@@ -271,14 +270,14 @@ public abstract class Escher2Standard<T> {
         boolean inconsistency = false;
         if (!segmentIds.contains(segment.getId())) {
           logger.warning(MessageFormat.format(
-              bundle.getString("Escher2Standard.inconsistent_data_structure"),
-              srGlyph.getId(), segment.getId()));
+            bundle.getString("Escher2Standard.inconsistent_data_structure"),
+            srGlyph.getId(), segment.getId()));
           inconsistency = true;
         }
         if (segmentIds.size() > 1) {
-          logger.warning(MessageFormat
-              .format(bundle.getString("Escher2Standard.multiple_arcs"),
-                  srGlyph.getId(), segments.toString()));
+          logger.warning(MessageFormat.format(
+            bundle.getString("Escher2Standard.multiple_arcs"),
+            srGlyph.getId(), segments.toString()));
           inconsistency = true;
         }
         if (inconsistency) {
@@ -290,46 +289,35 @@ public abstract class Escher2Standard<T> {
         segments.add(segment);
       }
     }
-    for (Entry<String, Metabolite> metabolites : reaction.getMetabolites()
-                                                         .entrySet()) {
+    for (Entry<String, Metabolite> metabolites : reaction.getMetabolites().entrySet()) {
       Metabolite metabolite = metabolites.getValue();
       Node srGlyph = escherMap.getNode(metabolite.getNodeRefId());
       if (srGlyph == null) {
-        logger.warning(MessageFormat
-            .format(bundle.getString("Escher2Standard.metabolite_lacking_node"),
-                metabolite.getId(), reaction.getBiggId()));
+        logger.warning(MessageFormat.format(
+            bundle.getString("Escher2Standard.metabolite_lacking_node"),
+            metabolite.getId(), reaction.getBiggId()));
         continue;
       }
       List<String> curve = srGlyph.getConnectedSegments(reaction.getId());
       Segment currSegment = reaction.getSegment(curve.get(0));
       boolean isProduct = metabolite.getCoefficient() > 0d;
       Node
-          currNode =
-          escherMap.getNode(isProduct ? currSegment.getFromNodeId() :
-              currSegment.getToNodeId());
+      currNode =
+      escherMap.getNode(isProduct ? currSegment.getFromNodeId() : currSegment.getToNodeId());
       while (!currNode.isMidmarker()) {
         for (Segment segment : segments) {
           boolean canAttach = false;
-          Segment
-              lastSegment =
-              reaction.getSegment(curve.get(curve.size() - 1));
-          String
-              toNodeId =
-              isProduct ? lastSegment.getFromNodeId() :
-                  lastSegment.getToNodeId();
-          if (toNodeId.equals(
-              isProduct ? segment.getToNodeId() : segment.getFromNodeId())) {
+          Segment lastSegment = reaction.getSegment(curve.get(curve.size() - 1));
+          String toNodeId = isProduct ? lastSegment.getFromNodeId() : lastSegment.getToNodeId();
+          if (toNodeId.equals(isProduct ? segment.getToNodeId() : segment.getFromNodeId())) {
             curve.add(segment.getId());
             canAttach = true;
-          } else if (toNodeId.equals(
-              isProduct ? segment.getFromNodeId() : segment.getToNodeId())) {
+          } else if (toNodeId.equals(isProduct ? segment.getFromNodeId() : segment.getToNodeId())) {
             curve.add(reverse(segment).getId());
             canAttach = true;
           }
           if (canAttach) {
-            currNode =
-                escherMap.getNode(isProduct ? segment.getFromNodeId() :
-                    segment.getToNodeId());
+            currNode = escherMap.getNode(isProduct ? segment.getFromNodeId() : segment.getToNodeId());
             if (currNode.isMidmarker()) {
               break;
             }
@@ -348,8 +336,7 @@ public abstract class Escher2Standard<T> {
    * @return
    */
   public String resolveCompartmentCode(String compartmentId) {
-    return compCode.containsKey(compartmentId) ?
-        compCode.getString(compartmentId) : null;
+    return compCode.containsKey(compartmentId) ? compCode.getString(compartmentId) : null;
   }
 
 
@@ -360,9 +347,9 @@ public abstract class Escher2Standard<T> {
    * @return The reversed {@code segment}.
    */
   protected Segment reverse(Segment segment) {
-    logger.fine(MessageFormat
-        .format(bundle.getString("Escher2Standard.reversed_segment"),
-            segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
+    logger.fine(MessageFormat.format(
+        bundle.getString("Escher2Standard.reversed_segment"),
+        segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
     Point point = segment.removeBasePoint1();
     segment.setBasePoint1(segment.removeBasePoint2());
     segment.setBasePoint2(point);

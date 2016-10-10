@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;
 
 /**
  * @author Andreas Dr&auml;ger

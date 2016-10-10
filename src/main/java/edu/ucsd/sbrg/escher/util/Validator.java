@@ -1,4 +1,4 @@
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
@@ -38,21 +38,15 @@ public class Validator {
   /**
    * Default values.
    */
-  private static final transient ResourceBundle
-      bundle           =
-      ResourceManager.getBundle("Strings");
+  private static final transient ResourceBundle bundle           = ResourceManager.getBundle("Strings");
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle
-      messages           =
-      ResourceManager.getBundle("Messages");
+  private static final transient ResourceBundle messages           = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * A {@link Logger} for this class.
    */
-  private static final           Logger
-      logger           =
-      Logger.getLogger(Validator.class.getName());
+  private static final           Logger logger           = Logger.getLogger(Validator.class.getName());
   /**
    * JSON Validator to validate Escher JSON files.
    */
