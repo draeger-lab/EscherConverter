@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;
 
 import de.zbit.sbml.util.SBMLtools;
 import de.zbit.util.Utils;
@@ -34,22 +34,25 @@ import java.util.logging.Logger;
 import static org.sbml.jsbml.util.Pair.pairOf;
 
 /**
+ * This class is no longer being maintained.
+ * 
  * @author Andreas Dr&auml;ger
+ * @deprecated This class has been replaced by the newer Jackson-based
+ *             {@link com.fasterxml.jackson.databind.ObjectMapper}. See
+ *             {@link edu.ucsd.sbrg.escher.EscherConverter#parseEscherJson} for
+ *             details.
  */
+@Deprecated
 public class EscherParser {
 
   /**
    * A {@link Logger} for this class.
    */
-  private static final Logger
-  logger =
-  Logger.getLogger(EscherParser.class.getName());
+  private static final Logger logger = Logger.getLogger(EscherParser.class.getName());
   /**
    * Localization support.
    */
-  public static final  ResourceBundle
-  bundle =
-  ResourceManager.getBundle("Messages");
+  public static final  ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
 
 
   /**
@@ -80,9 +83,9 @@ public class EscherParser {
     Object obj = parser.parse(reader);
     reader.close();
     if (!(obj instanceof JSONArray)) {
-      logger.warning(MessageFormat
-        .format(bundle.getString("EscherParser.JSONObjectExpected"), obj,
-          obj.getClass().getName(), JSONArray.class.getName()));
+      logger.warning(MessageFormat.format(
+        bundle.getString("EscherParser.JSONObjectExpected"),
+        obj, obj.getClass().getName(), JSONArray.class.getName()));
       return null;
     }
     JSONArray json = (JSONArray) obj;
@@ -258,9 +261,9 @@ public class EscherParser {
         g.setId(parseString(jsonGene.get(EscherKeywords.bigg_id.toString())));
         g.setName(parseString(jsonGene.get(EscherKeywords.name.toString())));
       } else {
-        logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.JSONObjectExpected"), gene,
-            gene.getClass().getName(), JSONObject.class.getName()));
+        logger.warning(MessageFormat.format(
+          bundle.getString("EscherParser.JSONObjectExpected"), gene,
+          gene.getClass().getName(), JSONObject.class.getName()));
       }
     }
     return g;
@@ -286,10 +289,8 @@ public class EscherParser {
       logger.warning(MessageFormat.format("Node {0} does not have any connected segments.", node.getId()));
     }
      */
-    node.setType(Node.Type
-      .valueOf(parseString(json.get(EscherKeywords.node_type.name()))));
-    node.setPrimary(
-      parseBoolean(json.get(EscherKeywords.node_is_primary.name())));
+    node.setType(Node.Type.valueOf(parseString(json.get(EscherKeywords.node_type.name()))));
+    node.setPrimary(parseBoolean(json.get(EscherKeywords.node_is_primary.name())));
     node.setLabelX(parseDouble(json.get(EscherKeywords.label_x.name())));
     node.setLabelY(parseDouble(json.get(EscherKeywords.label_y.name())));
     node.setX(parseDouble(json.get(EscherKeywords.x.name())));
@@ -342,9 +343,8 @@ public class EscherParser {
         reaction.addGene(parseGene(o));
       }
     } else {
-      logger.warning(MessageFormat
-        .format(bundle.getString("EscherParser.cannotParse"),
-          object.getClass().getName()));
+      logger.warning(MessageFormat.format(bundle.getString("EscherParser.cannotParse"),
+        object.getClass().getName()));
     }
     object = json.get(EscherKeywords.metabolites.toString());
     if ((object != null) && (object instanceof JSONArray)) {
@@ -354,9 +354,8 @@ public class EscherParser {
           parseMetabolite(reaction.getBiggId(), metabolites.get(i)));
       }
     } else {
-      logger.warning(MessageFormat
-        .format(bundle.getString("EscherParser.cannotParse"),
-          object.getClass().getName()));
+      logger.warning(MessageFormat.format(bundle.getString("EscherParser.cannotParse"),
+        object.getClass().getName()));
     }
     object = json.get(EscherKeywords.segments.name());
     if ((object != null) && (object instanceof JSONObject)) {
@@ -414,11 +413,7 @@ public class EscherParser {
            * Create one clone reaction for each midmarker and manipulate id and
            * curve segments.
            */
-          EscherReaction
-          reactions
-          [
-           ] =
-           new EscherReaction[setOfMidmarkers.size()];
+          EscherReaction reactions[] = new EscherReaction[setOfMidmarkers.size()];
           Iterator<Node> iterator = setOfMidmarkers.iterator();
           for (int i = 0; i < reactions.length; i++) {
             Node midmarker = iterator.next();
@@ -433,9 +428,9 @@ public class EscherParser {
       }
       linkSegmentsToReaction(reaction, listOfSegments, escherMap);
     } else {
-      logger.warning(MessageFormat
-        .format(bundle.getString("EscherParser.cannotParse"),
-          object.getClass().getName()));
+      logger.warning(MessageFormat.format(
+        bundle.getString("EscherParser.cannotParse"),
+        object.getClass().getName()));
     }
     return new EscherReaction[] {reaction};
   }
@@ -496,19 +491,19 @@ public class EscherParser {
         JSONObject m = (JSONObject) metabolite;
         metab = parseMetabolite(m.get(EscherKeywords.bigg_id.toString()), m);
         if (!metab.isSetCoefficient()) {
-          logger.warning(MessageFormat
-            .format(bundle.getString("EscherParser.undefinedStoichiometry"),
-              metab.getId(), reactionBiggId));
+          logger.warning(MessageFormat.format(
+            bundle.getString("EscherParser.undefinedStoichiometry"),
+            metab.getId(), reactionBiggId));
         } else if (metab.getCoefficient().doubleValue() == 0d) {
-          logger.warning(MessageFormat
-            .format(bundle.getString("EscherParser.zeroStoichiometry"),
-              metab.getId(), reactionBiggId));
+          logger.warning(MessageFormat.format(
+            bundle.getString("EscherParser.zeroStoichiometry"),
+            metab.getId(), reactionBiggId));
         }
       } else {
-        logger.warning(MessageFormat
-          .format(bundle.getString("EscherParser.JSONObjectExpected"),
-            metabolite, metabolite.getClass().getName(),
-            JSONObject.class.getName()));
+        logger.warning(MessageFormat.format(
+          bundle.getString("EscherParser.JSONObjectExpected"),
+          metabolite, metabolite.getClass().getName(),
+          JSONObject.class.getName()));
       }
     }
     return metab;
@@ -560,8 +555,8 @@ public class EscherParser {
       parsePoint((JSONObject) json.get(EscherKeywords.b1.name())));
     segment.setBasePoint2(
       parsePoint((JSONObject) json.get(EscherKeywords.b2.name())));
-    segment
-    .setToNodeId(parseString(json.get(EscherKeywords.to_node_id.name())));
+    segment.setToNodeId(
+      parseString(json.get(EscherKeywords.to_node_id.name())));
     return segment;
   }
 
@@ -588,4 +583,5 @@ public class EscherParser {
     label.setY(parseDouble(json.get(EscherKeywords.y.name())));
     return label;
   }
+
 }

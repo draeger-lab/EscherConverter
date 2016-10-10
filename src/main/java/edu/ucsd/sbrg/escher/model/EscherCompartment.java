@@ -30,21 +30,15 @@ public class EscherCompartment extends AbstractBox implements Element {
   /**
    * Localization support.
    */
-  private static final           ResourceBundle
-                                        bundle          =
-      ResourceManager.getBundle("Messages");
+  private static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * The mapping between compartment codes and human-readable names.
    */
-  private static final           ResourceBundle
-                                        compartmentCode =
-      ResourceManager.getBundle("CompartmentCode");
+  private static final ResourceBundle compartmentCode = ResourceManager.getBundle("CompartmentCode");
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger
-                                        logger          =
-      Logger.getLogger(EscherCompartment.class.getName());
+  private static final transient Logger logger = Logger.getLogger(EscherCompartment.class.getName());
   /**
    *
    */
@@ -120,9 +114,10 @@ public class EscherCompartment extends AbstractBox implements Element {
   @Override
   public void setId(String id) {
     if (!compartmentCode.containsKey(id)) {
-      logger.warning(MessageFormat
-          .format(bundle.getString("EscherCompartment.invalidId"), id));
+      logger.warning(MessageFormat.format(
+        bundle.getString("EscherCompartment.invalidId"), id));
     }
     this.id = id;
   }
+  
 }

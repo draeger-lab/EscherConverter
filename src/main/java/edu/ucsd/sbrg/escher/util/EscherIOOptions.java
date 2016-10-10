@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;
 
 import de.zbit.io.filefilter.MultipleFileFilter;
 import de.zbit.io.filefilter.SBFileFilter;
@@ -35,35 +35,33 @@ public interface EscherIOOptions extends KeyProvider {
   /**
    * Localization support.
    */
-  ResourceBundle
-                                     bundle   =
-      ResourceManager.getBundle("Messages");
+  ResourceBundle bundle   = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Specifies the JSON input file. If a directory is given, the conversion
    * will be recursively performed.
    */
   Option<File>
-                                     INPUT    =
-      new Option<File>("INPUT", File.class, bundle, new Range<File>(File.class,
-          new MultipleFileFilter("JSON", SBFileFilter.createJSONFileFilter(),
-              SBFileFilter.createDirectoryFilter())));
+  INPUT    =
+  new Option<File>("INPUT", File.class, bundle, new Range<File>(File.class,
+      new MultipleFileFilter("JSON", SBFileFilter.createJSONFileFilter(),
+        SBFileFilter.createDirectoryFilter())));
   /**
    * The path to the file into which the output should be written. If the
    * input is a directory, this must also be a directory in order to perform a
    * recursive conversion.
    */
   Option<File>
-                                     OUTPUT   =
-      new Option<File>("OUTPUT", File.class, bundle, new Range<File>(File.class,
-          new MultipleFileFilter("SBML, SBGN",
-              SBFileFilter.createSBMLFileFilter(),
-              SBFileFilter.createSBGNFileFilter(),
-              SBFileFilter.createDirectoryFilter())));
+  OUTPUT   =
+  new Option<File>("OUTPUT", File.class, bundle, new Range<File>(File.class,
+      new MultipleFileFilter("SBML, SBGN",
+        SBFileFilter.createSBMLFileFilter(),
+        SBFileFilter.createSBGNFileFilter(),
+        SBFileFilter.createDirectoryFilter())));
   /**
    * Definition of input and output data files as well as the format for the output.
    */
   @SuppressWarnings("unchecked")
-                      OptionGroup<?>
-                                     GROUP_IO =
-      new OptionGroup<Object>("GROUP_IO", bundle, INPUT, OUTPUT);
+  OptionGroup<?>
+  GROUP_IO =
+  new OptionGroup<Object>("GROUP_IO", bundle, INPUT, OUTPUT);
 }

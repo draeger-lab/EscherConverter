@@ -29,7 +29,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
@@ -43,6 +45,7 @@ import org.sbml.jsbml.SBMLReader;
 import org.sbml.jsbml.TidySBMLWriter;
 import org.xml.sax.SAXException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
@@ -56,48 +59,41 @@ import de.zbit.util.ResourceManager;
 import de.zbit.util.Utils;
 import de.zbit.util.prefs.KeyProvider;
 import de.zbit.util.prefs.SBProperties;
-import edu.ucsd.sbrg.escher.converters.Escher2SBGN;
-import edu.ucsd.sbrg.escher.converters.Escher2SBML;
-import edu.ucsd.sbrg.escher.converters.Escher2Standard;
-import edu.ucsd.sbrg.escher.converters.SBGN2Escher;
-import edu.ucsd.sbrg.escher.converters.SBML2Escher;
+import edu.ucsd.sbrg.escher.converter.Escher2SBGN;
+import edu.ucsd.sbrg.escher.converter.Escher2SBML;
+import edu.ucsd.sbrg.escher.converter.Escher2Standard;
+import edu.ucsd.sbrg.escher.converter.SBGN2Escher;
+import edu.ucsd.sbrg.escher.converter.SBML2Escher;
 import edu.ucsd.sbrg.escher.gui.EscherConverterUI;
 import edu.ucsd.sbrg.escher.model.EscherMap;
-import edu.ucsd.sbrg.escher.utilities.EscherIOOptions;
-import edu.ucsd.sbrg.escher.utilities.EscherOptions;
-import edu.ucsd.sbrg.escher.utilities.EscherOptions.InputFormat;
-import edu.ucsd.sbrg.escher.utilities.EscherOptions.OutputFormat;
-import edu.ucsd.sbrg.escher.utilities.Validator;
+import edu.ucsd.sbrg.escher.util.EscherIOOptions;
+import edu.ucsd.sbrg.escher.util.EscherOptions;
+import edu.ucsd.sbrg.escher.util.Validator;
+import edu.ucsd.sbrg.escher.util.EscherOptions.InputFormat;
+import edu.ucsd.sbrg.escher.util.EscherOptions.OutputFormat;
 
 /**
- * @author Andreas Dr&auml;ger, Devesh Khandelwal
+ * @author Andreas Dr&auml;ger
+ * @author Devesh Khandelwal
  */
 public class EscherConverter extends Launcher {
 
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle
-  baseBundle       =
-  ResourceManager.getBundle("Messages");
+  private static final transient ResourceBundle baseBundle       = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle
-  bundle           =
-  ResourceManager.getBundle("Messages");
+  private static final transient ResourceBundle bundle           = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * A {@link Logger} for this class.
    */
-  private static final           Logger
-  logger           =
-  Logger.getLogger(EscherConverter.class.getName());
+  private static final           Logger logger           = Logger.getLogger(EscherConverter.class.getName());
   /**
    * Generated serial version identifier.
    */
-  private static final           long
-  serialVersionUID =
-  9037698164025548416L;
+  private static final           long serialVersionUID = 9037698164025548416L;
 
 
   /**
@@ -208,13 +204,31 @@ public class EscherConverter extends Launcher {
    * @throws IOException Thrown if there are problems in reading the {@code input} file.
    */
   public static EscherMap parseEscherJson(File input) throws IOException {
-    ObjectMapper objectMapper = edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper();
-
     logger.info(format(bundle.getString("EscherConverter.readingFile"), input));
 
+    EscherMap map = parseEscherJson(new FileInputStream(input));
+
+    logger.info(format(bundle.getString("EscherConverter.readingDone"), input));
+
+    return map;
+  }
+
+
+  /**
+   * Parses an {@link InputStream} that represents an Escher JSON file into an
+   * {@link EscherMap} instance using Jackson.
+   * 
+   * @param stream
+   * @return
+   * @throws IOException
+   * @throws JsonProcessingException
+   */
+  public static EscherMap parseEscherJson(InputStream stream)
+      throws IOException, JsonProcessingException {
+    ObjectMapper objectMapper = edu.ucsd.sbrg.escher.util.Utils.getObjectMapper();
     // An Escher array contains meta-info about the map as the first object and the actual map as
     // second map.
-    JsonNode escherJson = objectMapper.readTree(input);
+    JsonNode escherJson = objectMapper.readTree(stream);
     // Meta-info.
     EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
     // Layout map (nodes, reactions, text labels and canvas info).
@@ -228,9 +242,6 @@ public class EscherConverter extends Launcher {
     map.setURL(meta.getURL());
 
     map.processMap();
-
-    logger.info(format(bundle.getString("EscherConverter.readingDone"), input));
-
     return map;
   }
 
@@ -311,8 +322,7 @@ public class EscherConverter extends Launcher {
         if (output.isDirectory()) {
           String fName = input.getName();
           fName = FileTools.removeFileExtension(fName) + ".xml";
-          output =
-              new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
+          output = new File(Utils.ensureSlash(output.getAbsolutePath()) + fName);
         }
         properties.put(InputFormat.class.getSimpleName(), InputFormat.Escher);
         convert(input, output, properties);
@@ -344,9 +354,7 @@ public class EscherConverter extends Launcher {
           output.getAbsolutePath()));
       }
       for (File file : input.listFiles()) {
-        File
-        target =
-        new File(
+        File target = new File(
           Utils.ensureSlash(output.getAbsolutePath()) + input.getName());
         batchProcess(file, target, properties);
       }
@@ -421,8 +429,8 @@ public class EscherConverter extends Launcher {
       throws IOException, ParseException,
       XMLStreamException, SBMLException, JAXBException, SAXException,
       ParserConfigurationException, TransformerException {
-    OutputFormat format = OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
     InputFormat inputFormat = InputFormat.valueOf(properties.get(InputFormat.class.getSimpleName()));
+    OutputFormat outputFormat = OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
 
     logger.warning(bundle.getString("ValidationStart"));
     if (!validateInput(input, inputFormat)) {
@@ -437,55 +445,83 @@ public class EscherConverter extends Launcher {
     boolean success = false;
 
     // Check output format.
-    switch (format) {
+    switch (outputFormat) {
 
-      case SBML:
-        SBMLDocument doc = convert(input, SBMLDocument.class, properties);
-        TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
-          getVersionNumber(), ' ', (short) 2);
+    case SBML:
+      SBMLDocument doc = convert(input, SBMLDocument.class, properties);
+      TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
+        getVersionNumber(), ' ', (short) 2);
+      success = true;
+      break;
+
+    case SBGN:
+      Sbgn sbgn = convert(input, Sbgn.class, properties);
+      SbgnUtil.writeToFile(sbgn, output);
+      success = true;
+      break;
+
+    case Escher:
+      // Check input format.
+      switch (inputFormat) {
+
+      case SBGN:
+        EscherMap map = parseSBGNML(input, properties);
+        writeEscherJson(map, output);
         success = true;
         break;
 
-      case SBGN:
-        Sbgn sbgn = convert(input, Sbgn.class, properties);
-        SbgnUtil.writeToFile(sbgn, output);
+      case SBML:
+        if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
+          extractCobraModel(input);
+        }
+        List<EscherMap> maps = convert(SBMLReader.read(input), properties);
+        writeEscherJson(maps, output);
         success = true;
         break;
 
       case Escher:
-        // Check input format.
-        switch (inputFormat) {
-
-          case SBGN:
-            EscherMap map = convert(SbgnUtil.readFromFile(input), properties);
-            writeEscherJson(map, output);
-            success = true;
-            break;
-
-          case SBML:
-            if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
-              extractCobraModel(input);
-            }
-            List<EscherMap> maps = convert(SBMLReader.read(input), properties);
-            writeEscherJson(maps, output);
-            success = true;
-            break;
-
-          case Escher:
-            logger.info(bundle.getString("InputOutputFormatIdentical"));
-            break;
-        }
+        logger.info(bundle.getString("InputOutputFormatIdentical"));
         break;
+      }
+      break;
 
-      default:
-        logger.severe(bundle.getString("UnsupportedFormat"));
-        break;
+    default:
+      logger.severe(bundle.getString("UnsupportedFormat"));
+      break;
     }
 
     if (success) {
       logger.info(format(
         "Output successfully written to file {0}.", output));
     }
+  }
+
+
+  /**
+   * @param input
+   * @param properties
+   * @return
+   * @throws JAXBException
+   */
+  public static EscherMap parseSBGNML(File input, SBProperties properties) throws JAXBException {
+    return convert(SbgnUtil.readFromFile(input), properties);
+  }
+
+  /**
+   * 
+   * @param is
+   * @param properties
+   * @return
+   * @throws JAXBException
+   */
+  public static EscherMap parseSBGNML(InputStream is, SBProperties properties) throws JAXBException {
+    JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+    Unmarshaller unmarshaller = context.createUnmarshaller();
+
+    // Now read from "is" and put the result in "sbgn"
+    Sbgn sbgnDoc = (Sbgn) unmarshaller.unmarshal(is);
+
+    return convert(sbgnDoc, properties);
   }
 
 
@@ -512,8 +548,7 @@ public class EscherConverter extends Launcher {
       command = new String[]{"python3", "-c", "\"print('yo');from cobra import io;"
           + "io.save_json_model(model=io.read_sbml_model('" + file
           .getAbsolutePath() + "'), file_name='" + file
-          .getAbsolutePath() + ".json" + "');print('yo')\"",
-          "> /temp/log"};
+          .getAbsolutePath() + ".json" + "');print('yo')\"", "> /temp/log"};
       // command = new String[] {"/usr/local/bin/python3", "-c", "\"print('yo')\""};
       command = new String[] {"python3"};
       Process p;
@@ -522,8 +557,8 @@ public class EscherConverter extends Launcher {
         p = Runtime.getRuntime().exec(command);
         p.waitFor();
         if (p.exitValue() == 0) {
-          logger.info(format(bundle.getString("SBMLFBCExtractionSuccessful"), file
-              .getAbsolutePath(), file.getAbsolutePath()));
+          logger.info(format(bundle.getString("SBMLFBCExtractionSuccessful"),
+            file.getAbsolutePath(), file.getAbsolutePath()));
           InputStream is = p.getErrorStream();
           is = p.getInputStream();
           OutputStream os = p.getOutputStream();
@@ -574,17 +609,17 @@ public class EscherConverter extends Launcher {
 
     // Call appropriate validator according to input format.
     switch (inputFormat) {
-      case SBGN:
-        logger.info(bundle.getString("ValidatingSBGN"));
-        return validator.validateSbgnml(input);
+    case SBGN:
+      logger.info(bundle.getString("ValidatingSBGN"));
+      return validator.validateSbgnml(input);
 
-      case SBML:
-        logger.info(bundle.getString("ValidatingSBML"));
-        return validator.validateSbmlLE(input);
+    case SBML:
+      logger.info(bundle.getString("ValidatingSBML"));
+      return validator.validateSbmlLE(input);
 
-      case Escher:
-        logger.info(bundle.getString("ValidatingEscher"));
-        return validator.validateEscher(input);
+    case Escher:
+      logger.info(bundle.getString("ValidatingEscher"));
+      return validator.validateEscher(input);
 
     }
     return false;
@@ -598,7 +633,7 @@ public class EscherConverter extends Launcher {
    * @param output Output file to write to.
    * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
    */
-  private void writeEscherJson(EscherMap map, File output) throws IOException {
+  public static void writeEscherJson(EscherMap map, File output) throws IOException {
     // An Escher array contains meta-info about the map as the first object and the actual map as
     // second map. That's why we need an array of size 2.
     List<EscherMap> mapList = new ArrayList<>(2);
@@ -620,8 +655,7 @@ public class EscherConverter extends Launcher {
 
     mapList.add(map);
 
-    edu.ucsd.sbrg.escher.utilities.Utils.getObjectMapper().writeValue(output, mapList);
-
+    edu.ucsd.sbrg.escher.util.Utils.getObjectMapper().writeValue(output, mapList);
   }
 
 
@@ -631,7 +665,7 @@ public class EscherConverter extends Launcher {
    * @param mapList List of Escher maps to serialize.
    * @param output Directory to create files in.
    */
-  private void writeEscherJson(List<EscherMap> mapList, File output) {
+  public static void writeEscherJson(List<EscherMap> mapList, File output) {
     try {
       if (mapList.size() == 0) {
         // SBML file has no layout.
@@ -649,8 +683,15 @@ public class EscherConverter extends Launcher {
       }
       else {
         // Write all maps to their own file.
-        mapList.forEach(map -> {
-          File file = new File(Utils.ensureSlash(output.getPath()) + map.getId() + ".json");
+        for (EscherMap map : mapList) {
+          File file;
+          if ((mapList.size() > 1) || (output.exists() && output.isDirectory())) {
+            file = new File(Utils.ensureSlash(output.getPath()) + map.getId() + ".json");
+          } else if (SBFileFilter.isJSONFile(output)) {
+            file = output;
+          } else {
+            file = new File(output.getAbsolutePath() + ".json");
+          }
           try {
             if (!file.exists()) {
               file.getParentFile().mkdirs();
@@ -660,7 +701,7 @@ public class EscherConverter extends Launcher {
           } catch (IOException e) {
             logger.severe(format(bundle.getString("FileIOError"), file.getAbsolutePath()));
           }
-        });
+        }
       }
     }
     catch (IOException e) {

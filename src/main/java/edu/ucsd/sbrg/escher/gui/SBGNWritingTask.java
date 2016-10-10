@@ -30,7 +30,6 @@ public class SBGNWritingTask extends SwingWorker<File, Void> {
 
   private OpenedFile<Sbgn> openedFile;
 
-
   /**
    * @param openedFile
    */
@@ -52,4 +51,5 @@ public class SBGNWritingTask extends SwingWorker<File, Void> {
     }
     return openedFile.getFile();
   }
+
 }

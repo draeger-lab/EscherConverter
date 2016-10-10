@@ -1,6 +1,6 @@
 package edu.ucsd.sbrg.escher;
 
-import edu.ucsd.sbrg.escher.converters.SBML2Escher;
+import edu.ucsd.sbrg.escher.converter.SBML2Escher;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import org.junit.BeforeClass;
 import org.junit.Ignore;

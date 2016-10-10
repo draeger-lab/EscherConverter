@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.converters;
+package edu.ucsd.sbrg.escher.converter;
 
 import de.zbit.sbml.util.SBMLtools;
 import edu.ucsd.sbrg.escher.model.*;
@@ -45,7 +45,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   /**
    * Localization support.
    */
-  public static final ResourceBundle bundle = ResourceManager.getBundle("Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   private String defaultCompartmentId;
   private String defaultCompartmentName;
   private String layoutId;

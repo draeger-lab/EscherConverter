@@ -16,13 +16,7 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
-import de.zbit.io.OpenedFile;
-import edu.ucsd.sbrg.escher.model.EscherMap;
-import edu.ucsd.sbrg.escher.utilities.EscherParser;
-import org.sbml.jsbml.util.ResourceManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.text.MessageFormat;
@@ -31,30 +25,38 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import javax.swing.ProgressMonitorInputStream;
+import javax.swing.SwingWorker;
+
+import org.sbml.jsbml.SBMLReader;
+import org.sbml.jsbml.util.ResourceManager;
+
+import de.zbit.io.OpenedFile;
+import de.zbit.io.filefilter.SBFileFilter;
+import de.zbit.util.prefs.SBPreferences;
+import de.zbit.util.prefs.SBProperties;
+import edu.ucsd.sbrg.escher.EscherConverter;
+import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.util.EscherOptions;
+
 /**
  * @author Andreas Dr&auml;ger
  */
 public class EscherParserWorker
-    extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
+extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
 
   /**
    *
    */
-  public static final            String
-                                                INTERMERIM_RESULTS =
-      "INTERMERIM_RESULTS";
+  public static final String INTERMERIM_RESULTS = "INTERMERIM_RESULTS";
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger
-                                                logger             =
-      Logger.getLogger(EscherParserWorker.class.getName());
+  private static final transient Logger logger = Logger.getLogger(EscherParserWorker.class.getName());
   /**
    * Localization support.
    */
-  public static final transient  ResourceBundle
-                                                bundle             =
-      ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  public static final transient ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   private File      input[];
   private Component parentComponent;
 
@@ -74,31 +76,54 @@ public class EscherParserWorker
    */
   @Override
   protected List<OpenedFile<EscherMap>> doInBackground() throws Exception {
-    List<OpenedFile<EscherMap>>
-        listOfFiles =
-        new ArrayList<OpenedFile<EscherMap>>();
-    EscherParser parser = new EscherParser();
-    for (File jsonFile : input) {
-      logger.info(MessageFormat
-          .format(bundle.getString("EscherConverter.readingFile"), jsonFile));
-      EscherMap
-          map =
-          parser.parse(new ProgressMonitorInputStream(parentComponent,
-                  MessageFormat.format(
-                      bundle.getString("EscherParserWorker.progressMessage"),
-                      jsonFile.getName()), new FileInputStream(jsonFile)),
-              EscherParser.createMapId(jsonFile));
-      OpenedFile<EscherMap>
-          openedFile =
-          new OpenedFile<EscherMap>(jsonFile, map);
-      logger.info(MessageFormat
-          .format(bundle.getString("EscherConverter.readingDone"), jsonFile));
-      publish(openedFile);
-      listOfFiles.add(openedFile);
+    List<OpenedFile<EscherMap>> listOfFiles = new ArrayList<OpenedFile<EscherMap>>();
+
+    for (File inputFile : input) {
+      logger.info(MessageFormat.format(
+        bundle.getString("EscherConverter.readingFile"), inputFile));
+
+      ProgressMonitorInputStream is = new ProgressMonitorInputStream(parentComponent,
+        MessageFormat.format(
+          bundle.getString("EscherParserWorker.progressMessage"),
+          inputFile.getName()), new FileInputStream(inputFile));
+
+      if (SBFileFilter.isJSONFile(inputFile)) {
+        EscherMap map = EscherConverter.parseEscherJson(is);
+        appendOpenedFile(listOfFiles, inputFile, map);
+
+      } else {
+        SBPreferences prefs = SBPreferences.getPreferencesFor(EscherOptions.class);
+        SBProperties props = prefs.toProperties();
+
+        if (SBFileFilter.isSBGNFile(inputFile)) {
+          appendOpenedFile(listOfFiles, inputFile, EscherConverter.parseSBGNML(is, props));
+        } else if (SBFileFilter.isSBMLFile(inputFile)) {
+          List<EscherMap> listOfMaps = EscherConverter.convert(
+            SBMLReader.read(is), props);
+          for (EscherMap escherMap : listOfMaps) {
+            appendOpenedFile(listOfFiles, inputFile, escherMap);
+          }
+        }
+      }
     }
+
     return listOfFiles;
   }
 
+
+  /**
+   * @param listOfFiles
+   * @param inputFile
+   * @param map
+   */
+  private void appendOpenedFile(List<OpenedFile<EscherMap>> listOfFiles,
+    File inputFile, EscherMap map) {
+    OpenedFile<EscherMap> openedFile = new OpenedFile<EscherMap>(inputFile, map);
+    logger.info(MessageFormat.format(
+      bundle.getString("EscherConverter.readingDone"), inputFile));
+    publish(openedFile);
+    listOfFiles.add(openedFile);
+  }
 
   /* (non-Javadoc)
    * @see javax.swing.SwingWorker#process(java.util.List)
@@ -107,4 +132,5 @@ public class EscherParserWorker
   protected void process(List<OpenedFile<EscherMap>> chunks) {
     firePropertyChange(INTERMERIM_RESULTS, null, chunks);
   }
+
 }

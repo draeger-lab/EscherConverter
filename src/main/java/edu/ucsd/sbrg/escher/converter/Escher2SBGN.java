@@ -14,7 +14,7 @@
  * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
  * ---------------------------------------------------------------------
  */
-package edu.ucsd.sbrg.escher.converters;
+package edu.ucsd.sbrg.escher.converter;
 
 import de.zbit.graph.io.def.SBGNProperties;
 import de.zbit.graph.io.def.SBGNProperties.ArcType;
@@ -56,7 +56,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
    */
   public static final  ResourceBundle
   bundle =
-  ResourceManager.getBundle("Messages");
+  ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * The SBGN map builder.
    */

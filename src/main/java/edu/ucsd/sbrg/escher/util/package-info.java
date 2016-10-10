@@ -3,4 +3,4 @@
  * 
  * @author Andreas Dr&auml;ger, Devesh Khandelwal
  */
-package edu.ucsd.sbrg.escher.utilities;
+package edu.ucsd.sbrg.escher.util;

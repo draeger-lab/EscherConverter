@@ -1,4 +1,4 @@
-package edu.ucsd.sbrg.escher.converters;
+package edu.ucsd.sbrg.escher.converter;
 
 import static java.text.MessageFormat.format;
 
@@ -7,8 +7,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import javax.swing.tree.TreeNode;
+
+import org.sbml.jsbml.ModifierSpeciesReference;
+import org.sbml.jsbml.NamedSBase;
 import org.sbml.jsbml.Reaction;
 import org.sbml.jsbml.SBMLDocument;
+import org.sbml.jsbml.SimpleSpeciesReference;
 import org.sbml.jsbml.SpeciesReference;
 import org.sbml.jsbml.ext.layout.BoundingBox;
 import org.sbml.jsbml.ext.layout.CubicBezier;
@@ -55,7 +60,7 @@ public class SBML2Escher {
   /**
    * Localization support.
    */
-  public static final  ResourceBundle messages = ResourceManager.getBundle("Messages");
+  public static final  ResourceBundle messages = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * List of escher maps converted from the layouts exported from the SBML document.
    */
@@ -85,11 +90,11 @@ public class SBML2Escher {
    * @param document The {@code SBML} document to convert.
    * @return The extracted maps list.
    */
-  public List<EscherMap> convert(SBMLDocument document) {
+  public List<EscherMap> convert(SBMLDocument doc) {
     logger.fine(format(messages.getString("SBMLImportInit")));
-    this.document = document;
+    this.document = doc;
 
-    layouts = ((LayoutModelPlugin)document.getModel().getPlugin(LayoutConstants.shortLabel)).getListOfLayouts();
+    layouts = ((LayoutModelPlugin) doc.getModel().getPlugin(LayoutConstants.shortLabel)).getListOfLayouts();
     logger.info(format(messages.getString("SBMLLayoutCount"), layouts.size()));
 
     layouts.forEach((layout) -> {
@@ -198,19 +203,24 @@ public class SBML2Escher {
   protected TextLabel createTextLabel(TextGlyph textGlyph) {
     TextLabel textLabel = new TextLabel();
 
-    if (textGlyph.getId() == null || textGlyph.getId().isEmpty()) {
+    if ((textGlyph.getId() == null) || textGlyph.getId().isEmpty()) {
       textLabel.setId("" + (textGlyph.hashCode() & 0xfffffff));
-    }
-    else {
+    } else {
       textLabel.setId(textGlyph.getId());
     }
 
-    if (textGlyph.getText() == null || textGlyph.getText().isEmpty()) {
+    if (textGlyph.isSetText() && !textGlyph.getText().isEmpty()) {
+      textLabel.setText(textGlyph.getText());
+    } else if (textGlyph.isSetOriginOfText()) {
+      NamedSBase nsb = textGlyph.getOriginOfTextInstance();
+      if (nsb != null) {
+        textLabel.setText(nsb.isSetName() ? nsb.getName() : nsb.getId());
+      }
+    }
+
+    if (!textLabel.isSetText()) {
       // TODO: Log about no text, so ignoring text label.
       logger.warning(format(messages.getString("TextGlyphNoText"), textLabel.getId()));
-    }
-    else {
-      textLabel.setText(textGlyph.getText());
     }
 
     textLabel.setX(textGlyph.getBoundingBox().getPosition().getX());
@@ -232,7 +242,10 @@ public class SBML2Escher {
     node.setType(Node.Type.metabolite);
     node.setId(speciesGlyph.getId());
     node.setBiggId(speciesGlyph.getSpecies());
-    node.setName(speciesGlyph.getSpeciesInstance().getName());
+    NamedSBase species = speciesGlyph.getSpeciesInstance();
+    if ((species != null) && (species.isSetName())) {
+      node.setName(species.getName());
+    }
 
     BoundingBox bbox = speciesGlyph.getBoundingBox();
     org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
@@ -309,7 +322,36 @@ public class SBML2Escher {
     List<Node> multiMarkers = new ArrayList<>();
 
     Node node;
+    if (sRG.isSetBoundingBox() && !sRG.isSetCurve()) {
+      // Just make up a curve.
+      SpeciesGlyph sg = sRG.getSpeciesGlyphInstance();
+      ReactionGlyph rg = sRG.getReactionGlyph();
+      SpeciesReferenceRole role = determineSpeciesReferenceRole(sRG, rg);
+      Curve curve = sRG.createCurve();
+      org.sbml.jsbml.ext.layout.Point start = null, end = null, mid = null;
+      // TODO: assuming boundingboxes and positions aren't null!
+      if ((role == SpeciesReferenceRole.SUBSTRATE) || (role == SpeciesReferenceRole.SIDESUBSTRATE)) {
+        start = sg.getBoundingBox().getPosition();
+        end = rg.getBoundingBox().getPosition();
+      } else if ((role == SpeciesReferenceRole.PRODUCT) || (role == SpeciesReferenceRole.SIDEPRODUCT)) {
+        // product
+        end = rg.getBoundingBox().getPosition();
+        start = sg.getBoundingBox().getPosition();
+      }
+      if ((start != null) && (end != null)) {
+        // Must have at least one mid-marker!
+        mid = new org.sbml.jsbml.ext.layout.Point(start.getLevel(), start.getVersion());
+        double x1 = Math.min(start.x(), end.x()), y1 = Math.min(start.y(), end.y()), z = start.z();
+        double x2 = Math.max(start.x(), end.x()), y2 = Math.max(start.y(), end.y());
+        mid.setX(x1 + (x2 - x1)/2d);
+        mid.setY(y1 + (y2 - y1)/2d);
+        mid.setZ(z);
+        curve.createLineSegment(start.clone(), mid);
+        curve.createLineSegment(mid.clone(), end.clone());
+      }
+    }
     if (sRG.isSetCurve()) {
+      // TODO: it should also work if there is no midmarker!
       List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
       for (int i = 0; i < (cSs.size()-1); i++) {
         node = new Node();
@@ -327,6 +369,44 @@ public class SBML2Escher {
     logger.info(format(messages.getString("MultiMarkerCount"), multiMarkers.size(), sRG.getId()));
 
     return multiMarkers;
+  }
+
+
+  /**
+   * @param sRG
+   * @param rg
+   * @param role
+   */
+  public SpeciesReferenceRole determineSpeciesReferenceRole(SpeciesReferenceGlyph sRG,
+    ReactionGlyph rg) {
+    SpeciesReferenceRole role = sRG.getRole();
+    if (role == null) {
+      if (sRG.isSetSBOTerm()) {
+        role = SpeciesReferenceRole.valueOf(sRG.getSBOTerm());
+      } else if (sRG.isSetReference()) {
+        NamedSBase nsb = sRG.getReferenceInstance();
+        if (nsb != null) {
+          if (nsb.isSetSBOTerm()) {
+            role = SpeciesReferenceRole.valueOf(nsb.getSBOTerm());
+          } else if (nsb instanceof SimpleSpeciesReference) {
+            if (nsb instanceof ModifierSpeciesReference) {
+              role = SpeciesReferenceRole.MODIFIER;
+            } else if (rg != null) {
+              TreeNode parent = nsb.getParent();
+              Reaction r = (Reaction) rg.getReactionInstance();
+              if (r != null) {
+                if (r.getListOfReactants() == parent) {
+                  role = SpeciesReferenceRole.SUBSTRATE;
+                } else {
+                  role = SpeciesReferenceRole.PRODUCT;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return role;
   }
 
 
@@ -445,7 +525,7 @@ public class SBML2Escher {
 
       segment.setToNodeId(rG.getId());
 
-      if (cSs.get(cSs.size()-1).isCubicBezier()) {
+      if (!cSs.isEmpty() && cSs.get(cSs.size()-1).isCubicBezier()) {
         CubicBezier cB = (CubicBezier) cSs.get(cSs.size()-1);
 
         org.sbml.jsbml.ext.layout.Point point;
