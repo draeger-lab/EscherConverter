@@ -82,3 +82,4 @@ api/static/*
 /libquaqua64.dylib
 /libquaqua64.jnilib
 /obfuscation-log.xml
+/res/
