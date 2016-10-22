@@ -34,7 +34,7 @@ import java.util.concurrent.ExecutionException;
 public class EscherMapDisplay extends JPanel {
 
   /**
-   *
+   * Generated serial version identifier.
    */
   private static final long serialVersionUID = -5400175730284648548L;
   /**
@@ -46,30 +46,23 @@ public class EscherMapDisplay extends JPanel {
    */
   private SBMLDocument          doc;
 
-
   /**
    * @param openedFile
    * @param properties
    */
-  public EscherMapDisplay(OpenedFile<EscherMap> openedFile,
-      SBProperties properties) {
+  public EscherMapDisplay(OpenedFile<EscherMap> openedFile, SBProperties properties) {
     this.openedFile = openedFile;
     EscherConverterWorker<SBMLDocument>
-        converter =
-        new EscherConverterWorker<SBMLDocument>(openedFile.getDocument(),
-            SBMLDocument.class, properties);
+    converter = new EscherConverterWorker<SBMLDocument>(
+        openedFile.getDocument(), SBMLDocument.class, properties);
     converter.addPropertyChangeListener(evt -> {
       if (evt.getNewValue().equals(SwingWorker.StateValue.DONE)) {
         try {
-          doc =
-              (SBMLDocument) ((EscherConverterWorker<?>) evt.getSource()).get();
+          doc = (SBMLDocument) ((EscherConverterWorker<?>) evt.getSource()).get();
           removeAll();
           LayoutHelper lh = new LayoutHelper(this);
           try {
-            lh.add(new SBMLLayoutViewPanel(((LayoutModelPlugin) doc.getModel()
-                                                                   .getPlugin(
-                                                                       LayoutConstants.layout))
-                .getListOfLayouts().getFirst()));
+            lh.add(new SBMLLayoutViewPanel(((LayoutModelPlugin) doc.getModel().getPlugin(LayoutConstants.layout)).getListOfLayouts().getFirst()));
           } catch (Throwable t) {
             t.printStackTrace();
             lh.add(new JScrollPane(new JTree(doc)));
@@ -82,7 +75,6 @@ public class EscherMapDisplay extends JPanel {
     converter.execute();
   }
 
-
   /**
    * @return
    */
@@ -90,11 +82,11 @@ public class EscherMapDisplay extends JPanel {
     return openedFile;
   }
 
-
   /**
    * @return
    */
   public SBMLDocument getSBMLDocument() {
     return doc;
   }
+
 }

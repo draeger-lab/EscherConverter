@@ -16,7 +16,7 @@
   <!-- =================================================================== -->
   
   <name>${project.artifactId}</name>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <url>https://github.com/SBRG/EscherConverter</url>
   <inceptionYear>2015</inceptionYear>
   <description>EscherConverter is a stand-alone program that reads files created with the graphical network editor Escher and converts them to files in community standard formats.</description>
@@ -28,9 +28,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
     <junit.version>4.12</junit.version>
-    <jsbml.version>2492</jsbml.version>  <!-- SVN revision -->
     <sbgn.version>0.2</sbgn.version>
-    <sysbio.version>1395</sysbio.version> <!-- SVN revision -->
+    <sysbio.version>1398</sysbio.version> <!-- SVN revision -->
     <jackson.version>2.7.4</jackson.version>
     <powermock.version>1.6.5</powermock.version>
     <organization.name>University of California, San Diego</organization.name>
