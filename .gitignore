@@ -77,3 +77,8 @@ fabric.properties
 ## Flask app
 
 api/static/*
+/keggdb.dat
+/keggfc.dat
+/libquaqua64.dylib
+/libquaqua64.jnilib
+/obfuscation-log.xml
