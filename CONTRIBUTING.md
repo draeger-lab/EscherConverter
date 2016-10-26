@@ -9,37 +9,23 @@ Here are a few ways you can help make this project better!
 - You can also email the maintainers of this project: @draeger and @devkhan. E-Mail Ids can be found on their profile.
 
 
-## Adding new features
+## Points to remember
 
-This section includes advice on how to build new features for the project & what kind of process it includes. 
-
-* This is how we like people to add new features:         
-* Here are some specifics on the coding style we prefer:   
-* This is how you send your pull request:                  
-* You should include the following tests:                  
-* These are the updates we hope you make to the changelog: 
+* Please go through the issues first to see if your problem is already listed or a feature request has already been made.
+* Please talk to one of maintainers before starting to work on a feature of bug fixes.
+* Please make all tests are passing and CI build is succeeding while submitting a PR. If you need help, contact the maintainers.
 
 
-# Documentation
+## Documentation
 
-
-* Help us with documentation here
-
-
-
-# Your first bugfix
-
-
-
-* If you have further questions, contact: @devkhan
-
+Currently only JavaDocs exist for the core Java executable. You can help by contributing usage guides, concept explanations, etc. Also, keep in mind to document whatever code you contributing.
 
 
 ## Contributing Code
 
 #### TODO: Write a dev setup guide.
 
-Fork the repo.
+1. 
 
 Make sure the tests pass:
 
