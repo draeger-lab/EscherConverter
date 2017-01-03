@@ -294,8 +294,8 @@ public abstract class Escher2Standard<T> {
       Node srGlyph = escherMap.getNode(metabolite.getNodeRefId());
       if (srGlyph == null) {
         logger.warning(MessageFormat.format(
-            bundle.getString("Escher2Standard.metabolite_lacking_node"),
-            metabolite.getId(), reaction.getBiggId()));
+          bundle.getString("Escher2Standard.metabolite_lacking_node"),
+          metabolite.getId(), reaction.getBiggId()));
         continue;
       }
       List<String> curve = srGlyph.getConnectedSegments(reaction.getId());
@@ -348,8 +348,8 @@ public abstract class Escher2Standard<T> {
    */
   protected Segment reverse(Segment segment) {
     logger.fine(MessageFormat.format(
-        bundle.getString("Escher2Standard.reversed_segment"),
-        segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
+      bundle.getString("Escher2Standard.reversed_segment"),
+      segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
     Point point = segment.removeBasePoint1();
     segment.setBasePoint1(segment.removeBasePoint2());
     segment.setBasePoint2(point);
@@ -430,4 +430,5 @@ public abstract class Escher2Standard<T> {
   public void setSecondaryNodeRatio(double secondaryNodeRatio) {
     this.secondaryNodeRatio = secondaryNodeRatio;
   }
+
 }
