@@ -281,10 +281,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         }
       }
       if (srGlyph != null) {
-        LineSegment
-        ls =
-        convertSegment(segment, escherMap, srGlyph.createCurve(), xOffset,
-          yOffset);
+        LineSegment ls = convertSegment(segment, escherMap, srGlyph.createCurve(), xOffset, yOffset);
         // memorize the toNode id of the segment in the lineSegment to make access easier later on.
         ls.putUserObject(ESCHER_NODE_LINK,
           isProduct ? segment.getFromNodeId() : segment.getToNodeId());
@@ -295,11 +292,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     Set<Segment> done = new HashSet<Segment>();
     for (SpeciesReferenceGlyph srGlyph : srgMap.values()) {
       Curve curve = srGlyph.getCurve();
-      Node
-      toNode =
-      escherMap.getNode(
-        curve.getCurveSegment(curve.getCurveSegmentCount() - 1)
-        .getUserObject(ESCHER_NODE_LINK).toString());
+      Node toNode = escherMap.getNode( curve.getCurveSegment(curve.getCurveSegmentCount() - 1).getUserObject(ESCHER_NODE_LINK).toString());
       while (!toNode.isMidmarker()) {
         for (Segment segment : segments) {
           if (tryToAttach(segment, curve, curve.getCurveSegmentCount() - 1,
@@ -536,18 +529,14 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     if (node.isSetWidth()) {
       width = node.getWidth().doubleValue();
     } else {
-      width =
-          node.isPrimary() ? getPrimaryNodeWidth() :
-            getSecondaryNodeRatio() * getPrimaryNodeWidth();
-          node.setWidth(width);
+      width = node.isPrimary() ? getPrimaryNodeWidth() : getSecondaryNodeRatio() * getPrimaryNodeWidth();
+      node.setWidth(width);
     }
     if (node.isSetHeight()) {
       height = node.getHeight().doubleValue();
     } else {
-      height =
-          node.isPrimary() ? getPrimaryNodeHeight() :
-            getSecondaryNodeRatio() * getPrimaryNodeHeight();
-          node.setHeight(height);
+      height = node.isPrimary() ? getPrimaryNodeHeight() : getSecondaryNodeRatio() * getPrimaryNodeHeight();
+      node.setHeight(height);
     }
     // Correct node position with offset and also because Escher uses the center whereas layout uses the top-left corner of bbox
     sGlyph.createBoundingBox(width, height, nodeDepth,
@@ -563,9 +552,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
           compartment = createCompartment(
             model, SBMLtools.toSId(node.getCompartment()), null);
         } else {
-          compartment =
-              createCompartment(model, defaultCompartmentId,
-                defaultCompartmentName);
+          compartment = createCompartment(model, defaultCompartmentId, defaultCompartmentName);
         }
         Species species = model.createSpecies(sId, compartment);
         species.setConstant(false);

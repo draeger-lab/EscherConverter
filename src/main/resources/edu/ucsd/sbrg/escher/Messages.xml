@@ -35,11 +35,9 @@
   <entry key="FORMAT">Output file format</entry>
   <entry key="FORMAT_TOOLTIP">The desired format for the conversion, e.g., SBML.</entry>
   <entry key="COMBINE">Combine multiple layouts of an SBML file.</entry>
-  <entry key="COMBINE_TOOLTIP">If the SBML file contains more than one layout, whether to combine
-    them or not. False by default.</entry>
+  <entry key="COMBINE_TOOLTIP">If the SBML file contains more than one layout, whether to combine them or not. False by default.</entry>
   <entry key="EXTRACT_COBRA">Extract CoBRA model from SBML.</entry>
-  <entry key="EXTRACT_COBRA_TOOLTIP">If SBMl file is FBC compliant, then extract cobra model
-  from it. Defaults to false.</entry>
+  <entry key="EXTRACT_COBRA_TOOLTIP">If SBMl file is FBC compliant, then extract COBRA model from it. Defaults to false.</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS">Infer compartment boundaries</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS_TOOLTIP">This converter can infer where the boundaries of compartments could be drawn. To this end, it uses each node's BiGG ids to identify the compartment of all metabolites. Assuming that compartments have rectangular shapes, the algorithm can find the outermost node on each side of the box and hence obtain the boundaries of the compartment. However, this methods will fail when metabolites are drawn inside of such a box that belong to a different compartment that is actually further outside. For this reason, this option is deactivated by default.</entry>
   <entry key="CANVAS_DEFAULT_WIDTH">Default canvas width</entry>
@@ -111,7 +109,6 @@
   <entry key="Escher2SBML.glyphIdNull">SpeciesGlyph for id=\"{0}\" is null.</entry>
   <entry key="Escher2SBML.textLabelIdNotUnique">Found text label with id=''{0}'' that is identical to the id of a {1}</entry>
   <entry key="Escher2SBML.reactionCompartmentUnknown">Could not identify compartment of reaction {0}</entry>
-  <entry key="Escher2SBML."></entry>
   
   <entry key="Escher2Standard.reversed_segment">Reversed direction of segment {0}: {1} -> {2}.</entry>
   <entry key="Escher2Standard.node_lacking_metabolite">Node ''{0}'' in reaction ''{1}'' lacks a corresponding metabolite.</entry>
@@ -179,8 +176,7 @@
   <entry key="EscherValidationFail">Not a valid Escher file</entry>
   <entry key="SBGNLanguageUnspecified">No language specified on SBGN file. Can't validate</entry>
   <entry key="ConvertM1toM2">Milestone 1 file found, converting to Milestone 2</entry>
-  <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please
-    try to convert it manually</entry>
+  <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please try to convert it manually</entry>
   <entry key="SBGNReadFail">Failure reading/parsing SBGN file</entry>
   <entry key="SBGNValidationFail">Not a valid SBGN-ML file</entry>
   <entry key="SBGNImportInit">Starting SBGN-ML to Escher conversion</entry>
@@ -191,35 +187,27 @@
   <entry key="SBGNNotesFound">notes found on SBGN map, using as description</entry>
   <entry key="SBGNNotesNotFound">notes not found on SBGN map, using default description</entry>
   <entry key="GlyphNode">glyph with id "{0}" has class "{1}", converting to node</entry>
-  <entry key="GlyphReaction">glyph with id "{0}" has class "{1}", converting to reaction +
-    mid-marker</entry>
+  <entry key="GlyphReaction">glyph with id "{0}" has class "{1}", converting to reaction + mid-marker</entry>
   <entry key="GlyphTextLabel">glyph with id "{0}" has class "{1}", converting to text label</entry>
-  <entry key="GlyphUnsupportedClass">glyph with id "{0}" has unsupported class "{1}",
-    ignoring</entry>
+  <entry key="GlyphUnsupportedClass">glyph with id "{0}" has unsupported class "{1}", ignoring</entry>
   <entry key="ArcMultiMarkerCount">arc with id {0} has {1} "next" (multi-markers) elements</entry>
-  <entry key="GlyphLabelBBoxUnavailable">glyph with id {0} does not have bbox on its label,
-    using parent bbox</entry>
+  <entry key="GlyphLabelBBoxUnavailable">glyph with id {0} does not have bbox on its label, using parent bbox</entry>
   <entry key="GlyphToReactionId">glyph({0}) -> reaction({1})</entry>
-  <entry key="GlyphReactionNoLabel">glyph with id "{0}" has no label, reaction name set to
-    {1}</entry>
+  <entry key="GlyphReactionNoLabel">glyph with id "{0}" has no label, reaction name set to {1}</entry>
   <entry key="GlyphReactionLabel">glyph with id "{0}" has label "{1}", using as reaction name</entry>
-  <entry key="ReactionIdenticalNameAndBigg">reaction "{0}" has identical name and bigg_id:
-    {1}</entry>
+  <entry key="ReactionIdenticalNameAndBigg">reaction "{0}" has identical name and bigg_id: {1}</entry>
   <entry key="ReactionSegmentAddInit">adding segments(arcs) to reaction {0}</entry>
   <entry key="ReactionSegmentAddFinish">added segments(arcs) to reaction {0}</entry>
   <entry key="ReactionArcsAdd">arc({0}) belongs to reaction({1}), adding segments</entry>
-  <entry key="ConsumptionArcNegativeCoeff">arc({0}) is consumption arc, setting coefficient
-    negative</entry>
-  <entry key="ProductionArcNegativeCoeff">arc({0}) is production arc, setting coefficient
-    positive</entry>
+  <entry key="ConsumptionArcNegativeCoeff">arc({0}) is consumption arc, setting coefficient negative</entry>
+  <entry key="ProductionArcNegativeCoeff">arc({0}) is production arc, setting coefficient positive</entry>
   <entry key="ArcSegmentCount">arc({0}) has {1} "next" elements, so {1}+1 segments</entry>
   <entry key="SegmentAdd">segment({0}) added from {1} to {2}</entry>
   <entry key="SBMLImportInit">starting SBML to Escher conversion</entry>
   <entry key="SBMLLayoutCount">sbml layout extension: {0} layouts found</entry>
   <entry key="SBMLLayoutConversionInit">layout id: {0}</entry>
   <entry key="RootDimensionsFound">dimensions found on layout, using as canvas values</entry>
-  <entry key="RootDimensionsNotFound">dimensions not found on layout, using default canvas
-    values</entry>
+  <entry key="RootDimensionsNotFound">dimensions not found on layout, using default canvas values</entry>
   <entry key="TextGlyphCount">text glyphs found: {0}</entry>
   <entry key="SpeciesGlyphCount">species glyphs (metabolites) found: {0}</entry>
   <entry key="ReactionGlyphCount">reaction glyphs found: {0}</entry>
@@ -227,33 +215,26 @@
   <entry key="SpeciesGlyphToNode">creating node(metabolite) from species glyph ({0})</entry>
   <entry key="ReactionToMidMarker">creation mid-marker from reaction({0})</entry>
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
-  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating
-    coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating coordinates</entry>
   <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
   <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
   <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
-  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label
-    coordinates</entry>
-  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating label
-  coordinates from curve</entry>
-  <entry key="ReactionGlyphProductCount">reaction glyph ({0}) has {1} products</entry>
-  <entry key="ReactionGlyphSubstrateCount">reaction glyph ({0}) has {1} substrates
-    (reactants)</entry>
-  <entry key="MetaboliteCoefficient">metabolite(species): {0}, coefficient: {1}</entry>
+  <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label coordinates</entry>
+  <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating label coordinates from curve</entry>
+  <entry key="ReactionGlyphProductCount">reaction glyph ({0}) has {1,number,integer} products</entry>
+  <entry key="ReactionGlyphSubstrateCount">reaction glyph ({0}) has {1,number,integer} substrates (reactants)</entry>
+  <entry key="MetaboliteCoefficient">metabolite(species): {0}, coefficient: {1,number}</entry>
   <entry key="SRGToSegments">adding segments: rg: {0}, srg: {1}, reaction: {2}</entry>
   <entry key="CurveSegmentCount">srg({0}) has {1} curve segments in its curve</entry>
   <entry key="CurveSegmentAdd">segment "{0}" created from "{1}" to "{2}"</entry>
   <entry key="PrimaryNode">srg({0}) set to primary node</entry>
   <entry key="SecondaryNode">srg({0}) set to secondary node</entry>
   <entry key="SBMLNoLayout">sbml file has no layout(s), nothing to write</entry>
-  <entry key="SingleFileMultipleLayout">sbml file has multiple layout, but the output is a
-    directory, writing nothing</entry>
+  <entry key="SingleFileMultipleLayout">sbml file has multiple layout, but the output is a directory, writing nothing</entry>
   <entry key="BatchModeOutputNotDirectory">output must be a directory in batch mode. exiting.</entry>
-  <entry key="SBMLFBCNotAvailable">file {0} doesn't have a fbc-compliant model, skipping
-    extraction of COBRA model</entry>
+  <entry key="SBMLFBCNotAvailable">file {0} doesn't have a fbc-compliant model, skipping extraction of COBRA model</entry>
   <entry key="SBMLFBCInit">fbc model found on file {0}, using cobrapy to extract model</entry>
   <entry key="SBMLFBCExtractionSuccessful">cobra model written to {0}</entry>
   <entry key="SBMLFBCExtractionFailed">couldn't extract cobra model, log follows:</entry>
-
 
 </properties>
