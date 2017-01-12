@@ -1,10 +1,7 @@
-/*
- * $Id$
- * $URL$
- * ---------------------------------------------------------------------
- * This file is part of the program BioNetView.
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2016 by the University of California, San Diego.
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -16,13 +13,24 @@
  */
 package edu.ucsd.sbrg.escher.converter;
 
-import edu.ucsd.sbrg.escher.model.*;
+import static java.text.MessageFormat.format;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.logging.Logger;
+
 import org.sbml.jsbml.util.ResourceManager;
 
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.logging.Logger;
+import edu.ucsd.sbrg.escher.model.EscherMap;
+import edu.ucsd.sbrg.escher.model.EscherReaction;
+import edu.ucsd.sbrg.escher.model.Metabolite;
+import edu.ucsd.sbrg.escher.model.Node;
+import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.escher.model.Segment;
 
 /**
  * @param T the output format
@@ -64,27 +72,19 @@ public abstract class Escher2Standard<T> {
   /**
    * Localization support.
    */
-  public static final  ResourceBundle
-  bundle           =
-  ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  public static final  ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Compartment codes.
    */
-  public static final  ResourceBundle
-  compCode         =
-  ResourceManager.getBundle("CompartmentCode");
+  public static final  ResourceBundle compCode = ResourceManager.getBundle("CompartmentCode");
   /**
    * Used as a key for a mapping between data structures.
    */
-  public static final  String
-  ESCHER_NODE_LINK =
-  Escher2Standard.class.getPackage() + ".NodeLink";
+  public static final  String ESCHER_NODE_LINK = Escher2Standard.class.getPackage() + ".NodeLink";
   /**
    * A {@link Logger} for this class.
    */
-  private static final Logger
-  logger           =
-  Logger.getLogger(Escher2Standard.class.getName());
+  private static final Logger logger = Logger.getLogger(Escher2Standard.class.getName());
   /**
    *
    */
@@ -126,8 +126,7 @@ public abstract class Escher2Standard<T> {
       if (rId == null) {
         rId = pair.getKey();
       } else if (!rId.equals(pair.getKey())) {
-        logger.warning(
-            "Error: multiple reaction identifiers used in this node's connected segments.");
+        logger.warning("Error: multiple reaction identifiers used in this node's connected segments.");
         return null;
       }
     }
@@ -236,8 +235,7 @@ public abstract class Escher2Standard<T> {
         srGlyph = escherMap.getNode(fromNode.getId());
         Metabolite metabolite = reaction.getMetabolite(fromNode.getBiggId());
         if (metabolite == null) {
-          logger.severe(MessageFormat.format(
-            bundle.getString("Escher2Standard.node_lacking_metabolite"),
+          logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
             fromNode.getBiggId(), reaction.getBiggId()));
         } else if (metabolite.getCoefficient() > 0d) {
           segment = reverse(segment);
@@ -247,8 +245,7 @@ public abstract class Escher2Standard<T> {
         srGlyph = escherMap.getNode(toNode.getId());
         Metabolite metabolite = reaction.getMetabolite(toNode.getBiggId());
         if (metabolite == null) {
-          logger.severe(MessageFormat.format(
-            bundle.getString("Escher2Standard.node_lacking_metabolite"),
+          logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
             toNode.getBiggId(), reaction.getBiggId()));
         } else if (metabolite.getCoefficient() <= 0d) {
           segment = reverse(segment);
@@ -269,14 +266,12 @@ public abstract class Escher2Standard<T> {
         }
         boolean inconsistency = false;
         if (!segmentIds.contains(segment.getId())) {
-          logger.warning(MessageFormat.format(
-            bundle.getString("Escher2Standard.inconsistent_data_structure"),
+          logger.warning(format(bundle.getString("Escher2Standard.inconsistent_data_structure"),
             srGlyph.getId(), segment.getId()));
           inconsistency = true;
         }
         if (segmentIds.size() > 1) {
-          logger.warning(MessageFormat.format(
-            bundle.getString("Escher2Standard.multiple_arcs"),
+          logger.warning(format(bundle.getString("Escher2Standard.multiple_arcs"),
             srGlyph.getId(), segments.toString()));
           inconsistency = true;
         }
@@ -293,17 +288,14 @@ public abstract class Escher2Standard<T> {
       Metabolite metabolite = metabolites.getValue();
       Node srGlyph = escherMap.getNode(metabolite.getNodeRefId());
       if (srGlyph == null) {
-        logger.warning(MessageFormat.format(
-          bundle.getString("Escher2Standard.metabolite_lacking_node"),
+        logger.warning(format(bundle.getString("Escher2Standard.metabolite_lacking_node"),
           metabolite.getId(), reaction.getBiggId()));
         continue;
       }
       List<String> curve = srGlyph.getConnectedSegments(reaction.getId());
       Segment currSegment = reaction.getSegment(curve.get(0));
       boolean isProduct = metabolite.getCoefficient() > 0d;
-      Node
-      currNode =
-      escherMap.getNode(isProduct ? currSegment.getFromNodeId() : currSegment.getToNodeId());
+      Node currNode = escherMap.getNode(isProduct ? currSegment.getFromNodeId() : currSegment.getToNodeId());
       while (!currNode.isMidmarker()) {
         for (Segment segment : segments) {
           boolean canAttach = false;
@@ -347,8 +339,7 @@ public abstract class Escher2Standard<T> {
    * @return The reversed {@code segment}.
    */
   protected Segment reverse(Segment segment) {
-    logger.fine(MessageFormat.format(
-      bundle.getString("Escher2Standard.reversed_segment"),
+    logger.fine(format(bundle.getString("Escher2Standard.reversed_segment"),
       segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
     Point point = segment.removeBasePoint1();
     segment.setBasePoint1(segment.removeBasePoint2());

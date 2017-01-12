@@ -1,10 +1,7 @@
-/*
- * $Id$
- * $URL$
- * ---------------------------------------------------------------------
- * This file is part of the program BioNetView.
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2016 by the University of California, San Diego.
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -305,7 +302,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Element#getId()
+   * @see edu.ucsd.EscherConverter.escher.Element#getId()
    */
   @Override
   public String getId() {
@@ -350,7 +347,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#getX()
+   * @see edu.ucsd.EscherConverter.escher.Box#getX()
    */
   @Override
   public Double getX() {
@@ -359,7 +356,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#getY()
+   * @see edu.ucsd.EscherConverter.escher.Box#getY()
    */
   @Override
   public Double getY() {
@@ -459,7 +456,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Element#isSetId()
+   * @see edu.ucsd.EscherConverter.escher.Element#isSetId()
    */
   @Override
   public boolean isSetId() {
@@ -516,7 +513,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#isSetX()
+   * @see edu.ucsd.EscherConverter.escher.Box#isSetX()
    */
   @Override
   public boolean isSetX() {
@@ -525,7 +522,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#isSetY()
+   * @see edu.ucsd.EscherConverter.escher.Box#isSetY()
    */
   @Override
   public boolean isSetY() {
@@ -637,7 +634,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* /(non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#setX(java.lang.Double)
+   * @see edu.ucsd.EscherConverter.escher.Box#setX(java.lang.Double)
    */
   @Override
   public void setX(Double x) {
@@ -646,7 +643,7 @@ public class Node extends AbstractBox implements Element {
 
 
   /* (non-Javadoc)
-   * @see edu.ucsd.BioNetView.escher.Box#setY(java.lang.Double)
+   * @see edu.ucsd.EscherConverter.escher.Box#setY(java.lang.Double)
    */
   @Override
   public void setY(Double y) {

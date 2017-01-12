@@ -1,5 +1,15 @@
-/*
- * 
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
+ *
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation. A copy of the license
+ * agreement is provided in the file named "LICENSE.txt" included with
+ * this software distribution and also available online as
+ * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
+ * ---------------------------------------------------------------------
  */
 package edu.ucsd.sbrg.math;
 
@@ -30,13 +40,13 @@ public class Geometry {
    * @return
    */
   public static Point bezier(double t, Point start, Point end, Point b1,
-      Point b2) {
+    Point b2) {
     double x1 = start.getX(), y1 = start.getY(), x2 = end.getX(),
         y2 =
-            end.getY();
+        end.getY();
     double b1x = Double.NaN, b1y = Double.NaN, b2x = Double.NaN,
         b2y =
-            Double.NaN;
+        Double.NaN;
     return bezier(t, x1, y1, x2, y2, b1x, b1y, b2x, b2y);
   }
 
@@ -54,7 +64,7 @@ public class Geometry {
    * @return
    */
   public static Point bezier(double t, double x1, double y1, double x2,
-      double y2, double b1x, double b1y, double b2x, double b2y) {
+    double y2, double b1x, double b1y, double b2x, double b2y) {
     assert 0d <= t && t <= 1d;
     double diff = 1d - t;
     double c0x = x1 * diff, c0y = y1 * diff;
@@ -100,7 +110,7 @@ public class Geometry {
     final Point b2 = new Point(Double.NaN, Double.NaN);
     final double x = 4893.858d / 1000d, y = 2802.73025d / 1000d, w = 30d,
         h =
-            30d;
+        30d;
     final Shape shape = new Ellipse2D.Double(x, y, w, h);
     //		for (double t = 0d; t <= 1d; t += .01) {
     //			Point bezier = bezier(t, start, end, b1, b2);
@@ -132,17 +142,17 @@ public class Geometry {
           g2.fillOval(b2.getX().intValue(), b2.getY().intValue(), w, h);
         }
         g2.draw(new CubicCurve2D.Double(start.getX(), start.getY(), b1.getX(),
-            b1.getY(), b2.getX(), b2.getY(), end.getX(), end.getY()));
+          b1.getY(), b2.getX(), b2.getY(), end.getX(), end.getY()));
         Point2D
-            point =
-            findIntersection(shape,
-                new CubicCurve2D.Double(start.getX(), start.getY(), b1.getX(),
-                    b1.getY(), b2.getX(), b2.getY(), end.getX(), end.getY()));
+        point =
+        findIntersection(shape,
+          new CubicCurve2D.Double(start.getX(), start.getY(), b1.getX(),
+            b1.getY(), b2.getX(), b2.getY(), end.getX(), end.getY()));
         System.out.println(point);
         if (point != null) {
           g2.setColor(Color.RED);
           g2.fillOval((int) Math.round(point.getX()),
-              (int) Math.round(point.getY()), w + 5, h + 5);
+            (int) Math.round(point.getY()), w + 5, h + 5);
         }
       }
     }));
@@ -160,8 +170,8 @@ public class Geometry {
     Point2D b1 = curve.getCtrlP1();
     Point2D b2 = curve.getCtrlP2();
     return convert(
-        bezier(t, start.getX(), start.getY(), end.getX(), end.getY(), b1.getX(),
-            b1.getY(), b2.getX(), b2.getY()));
+      bezier(t, start.getX(), start.getY(), end.getX(), end.getY(), b1.getX(),
+        b1.getY(), b2.getX(), b2.getY()));
   }
 
 
@@ -194,7 +204,7 @@ public class Geometry {
    * @return {@code null} if no intersection exists.
    */
   public static Point2D.Double findIntersection(Shape shape,
-      CubicCurve2D curve) {
+    CubicCurve2D curve) {
     double l = 0d, r = 1d, t, error = 1e-25d;
     int count = 0, maxCount = 100;
     do {

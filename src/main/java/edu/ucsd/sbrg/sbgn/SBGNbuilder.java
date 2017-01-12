@@ -1,5 +1,15 @@
-/**
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
  *
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation. A copy of the license
+ * agreement is provided in the file named "LICENSE.txt" included with
+ * this software distribution and also available online as
+ * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
+ * ---------------------------------------------------------------------
  */
 package edu.ucsd.sbrg.sbgn;
 
@@ -96,7 +106,7 @@ public class SBGNbuilder {
   private void checkId(String id, SBGNBase base) {
     if (id2element.containsKey(id)) {
       throw new IllegalArgumentException(
-          MessageFormat.format("Duplicate id ''{0}''", id));
+        MessageFormat.format("Duplicate id ''{0}''", id));
     }
     id2element.put(id, base);
   }
@@ -110,7 +120,7 @@ public class SBGNbuilder {
    * @return
    */
   public Arc createArc(String id, SBGNBase source, SBGNBase target,
-      ArcType arcType) {
+    ArcType arcType) {
     Arc arc = objectFactory.createArc();
     checkId(id, arc);
     arc.setId(id);
@@ -186,7 +196,7 @@ public class SBGNbuilder {
    */
   public Bbox createBbox(Double x, Double y, Double width, Double height) {
     return createBbox(toDouble(x), toDouble(y), toDouble(width),
-        toDouble(height));
+      toDouble(height));
   }
 
 
@@ -223,7 +233,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, Bbox bbox,
-      boolean isClone) {
+    boolean isClone) {
     Glyph glyph = createGlyph(id, type, bbox);
     if (isClone) {
       glyph.setClone(objectFactory.createGlyphClone());
@@ -240,7 +250,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, Bbox bbox,
-      GlyphOrientation orientation) {
+    GlyphOrientation orientation) {
     return createGlyph(id, type, bbox, orientation, false);
   }
 
@@ -254,7 +264,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, Bbox bbox,
-      GlyphOrientation orientation, boolean isClone) {
+    GlyphOrientation orientation, boolean isClone) {
     Glyph glyph = createGlyph(id, type, bbox, isClone);
     glyph.setOrientation(orientation.toString());
     return glyph;
@@ -271,7 +281,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, double x, double y,
-      double width, double height) {
+    double width, double height) {
     return createGlyph(id, type, createBbox(x, y, width, height));
   }
 
@@ -287,7 +297,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, double x, double y,
-      double width, double height, boolean isClone) {
+    double width, double height, boolean isClone) {
     return createGlyph(id, type, createBbox(x, y, width, height), isClone);
   }
 
@@ -303,7 +313,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, GlyphType type, double x, double y,
-      double width, double height, GlyphOrientation orientation) {
+    double width, double height, GlyphOrientation orientation) {
     return createGlyph(id, type, createBbox(x, y, width, height), orientation);
   }
 
@@ -331,7 +341,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, String labelText, GlyphType type,
-      Bbox bbox) {
+    Bbox bbox) {
     Glyph glyph = createGlyph(id, labelText, type);
     if (bbox != null) {
       glyph.setBbox(bbox);
@@ -351,7 +361,7 @@ public class SBGNbuilder {
    * @return
    */
   public Glyph createGlyph(String id, String labelText, GlyphType type,
-      double x, double y, double width, double height) {
+    double x, double y, double width, double height) {
     return createGlyph(id, labelText, type, createBbox(x, y, width, height));
   }
 
@@ -409,7 +419,7 @@ public class SBGNbuilder {
    * @return
    */
   public Label createLabel(String text, double x, double y, double width,
-      double height) {
+    double height) {
     return createLabel(text, createBbox(x, y, width, height));
   }
 
@@ -446,7 +456,7 @@ public class SBGNbuilder {
    * @return
    */
   public Map createMap(Language language, double x, double y, double width,
-      double height) {
+    double height) {
     return createMap(language, createBbox(x, y, width, height));
   }
 
@@ -463,12 +473,12 @@ public class SBGNbuilder {
     Notes notes = objectFactory.createSBGNBaseNotes();
     if ((text != null) && (text.length() > 0)) {
       DocumentBuilder
-          db =
-          DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      db =
+      DocumentBuilderFactory.newInstance().newDocumentBuilder();
       Document doc = db.newDocument();
       Element
-          element =
-          doc.createElementNS("http://www.w3.org/1999/xhtml", "html:body");
+      element =
+      doc.createElementNS("http://www.w3.org/1999/xhtml", "html:body");
       doc.appendChild(element);
       element.appendChild(doc.createTextNode(text));
       notes.getAny().add(element);
@@ -566,7 +576,7 @@ public class SBGNbuilder {
     int result = 1;
     result =
         prime * result + ((objectFactory == null) ? 0 :
-            objectFactory.hashCode());
+          objectFactory.hashCode());
     return result;
   }
 
