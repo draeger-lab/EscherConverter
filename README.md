@@ -1,4 +1,4 @@
-# EscherConverter<sup>1.0</sup> [![Build Status](https://travis-ci.org/SBRG/EscherConverter.svg?branch=master)](https://travis-ci.org/SBRG/EscherConverter)
+# EscherConverter<sup>1.2</sup> [![Build Status](https://travis-ci.org/SBRG/EscherConverter.svg?branch=master)](https://travis-ci.org/SBRG/EscherConverter)
 
 EscherConverter is a standalone program that reads files created with the graphical network editor [Escher](http://escher.github.io) and converts them to files in community standard formats.
 
@@ -31,7 +31,8 @@ EscherConverter includes several third-party libraries, which we here list and a
 * JSBML
 * libSBGN
 * Pixel-Mixer icons
-* yFiles (only in the first version)
+* yFiles (obfuscated)
+* Randelshofer's macOS filechooser
 * Jackson
  
 ##### Author: Andreas Dräger (@draeger)
