@@ -1,10 +1,7 @@
-/*
- * $Id$
- * $URL$
- * ---------------------------------------------------------------------
- * This file is part of the program BioNetView.
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2016 by the University of California, San Diego.
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as

@@ -1,3 +1,16 @@
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
+ *
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation. A copy of the license
+ * agreement is provided in the file named "LICENSE.txt" included with
+ * this software distribution and also available online as
+ * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
+ * ---------------------------------------------------------------------
+ */
 package edu.ucsd.sbrg.escher;
 
 import edu.ucsd.sbrg.escher.helper.SbgnEscherTestTuple;
@@ -29,9 +42,9 @@ import static org.powermock.api.mockito.PowerMockito.spy;
 public class SBGN2EscherTest {
 
   private static List<String> listOfFilePaths = Arrays.asList(
-      "data/mapk_cascade.sbgn.xml",
-      "data/e_coli_core_metabolism.sbgn.xml"
-  );
+    "data/mapk_cascade.sbgn.xml",
+    "data/e_coli_core_metabolism.sbgn.xml"
+      );
 
   private static List<SbgnEscherTestTuple> list = new ArrayList<>();
 
@@ -66,7 +79,7 @@ public class SBGN2EscherTest {
 
   @Test
   @Parameters({
-      "0", "1"
+    "0", "1"
   })
   public void nodesShouldBeEqualTest(int index) {
     SbgnEscherTestTuple tuple = list.get(index);
@@ -79,16 +92,16 @@ public class SBGN2EscherTest {
         .filter(e -> e.getValue().getType() != Node.Type.multimarker).count();
 
     assertEquals("failure - " + tuple.file.getName() + " doesn't have " + tuple
-        .numberOfMetabolites +
-        " nodes"
-        + ".", tuple.numberOfMetabolites, nodeCountWOMultiMarkers);
+      .numberOfMetabolites +
+      " nodes"
+      + ".", tuple.numberOfMetabolites, nodeCountWOMultiMarkers);
   }
 
 
 
   @Test
   @Parameters({
-      "0", "1"
+    "0", "1"
   })
   public void createReactionCallsCountMatches(int index) {
     SbgnEscherTestTuple tuple = list.get(index);
@@ -99,7 +112,7 @@ public class SBGN2EscherTest {
 
   @Test
   @Parameters({
-      "0", "1"
+    "0", "1"
   })
   public void addCanvasCalled(int index) {
     SbgnEscherTestTuple tuple = list.get(index);

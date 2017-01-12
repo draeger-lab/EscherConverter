@@ -29,7 +29,8 @@
     <project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
     <junit.version>4.12</junit.version>
     <sbgn.version>0.2</sbgn.version>
-    <sysbio.version>1398</sysbio.version> <!-- SVN revision -->
+    <sysbio.version>1403</sysbio.version> <!-- SVN revision -->
+    <quaqua.version>9</quaqua.version>
     <jackson.version>2.7.4</jackson.version>
     <powermock.version>1.6.5</powermock.version>
     <organization.name>University of California, San Diego</organization.name>
@@ -74,19 +75,6 @@
   <!-- =================================================================== -->
 
   <repositories>
-    <repository>
-      <id>ebi-repo</id>
-      <name>The EBI repository</name>
-      <url>http://www.ebi.ac.uk/~maven/m2repo</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-    <repository>
-      <id>JSBML</id>
-      <name>The JSBML repository</name>
-      <url>http://jsbml.sourceforge.net/m2repo_snapshots/</url>
-    </repository>
     <!-- Local libraries are an in-project repository -->
     <!-- Add the dependencies and put them in -->
     <!-- ${project.basedir}/lib/groupId/artifactId/version/ -->
@@ -120,7 +108,7 @@
     <dependency>
       <groupId>org.sbml.jsbml</groupId>
       <artifactId>jsbml</artifactId>
-      <version>1.2-SNAPSHOT</version>
+      <version>1.2</version>
     </dependency>
     
     <dependency>
@@ -139,6 +127,12 @@
       <groupId>de.zbit</groupId>
       <artifactId>SysBio</artifactId>
       <version>${sysbio.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>ch.randelshofer</groupId>
+      <artifactId>quaqua</artifactId>
+      <version>${quaqua.version}</version>
     </dependency>
 
     <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->

@@ -2,11 +2,11 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <!-- 
  * $I$
- * $URL: https://rarepos.cs.uni-tuebingen.de/svn-path/SysBio/trunk/resources/edu/ucsd/sbrg/bionetview/Messages.xml $
+ * $URL: https://rarepos.cs.uni-tuebingen.de/svn-path/SysBio/trunk/resources/edu/ucsd/sbrg/EscherConverter/Messages.xml $
  *********************************************************************** 
- * This file is part of the interactive pathway explorer BioNetView.
+ * This file is part of the interactive pathway explorer EscherConverter.
  * 
- * Copyright (C) 2013-2014 by the University of California, San Diego.
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free

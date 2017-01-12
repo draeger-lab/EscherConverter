@@ -1,3 +1,16 @@
+/* ---------------------------------------------------------------------
+ * This file is part of the program EscherConverter.
+ *
+ * Copyright (C) 2013-2017 by the University of California, San Diego.
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation. A copy of the license
+ * agreement is provided in the file named "LICENSE.txt" included with
+ * this software distribution and also available online as
+ * <http://www.gnu.org/licenses/lgpl-3.0-standalone.html>.
+ * ---------------------------------------------------------------------
+ */
 package edu.ucsd.sbrg.escher;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -54,33 +67,33 @@ public class ValidationTest {
 
   @Test
   @Parameters({
-      "data/mapk_cascade.escher.json|false",
-      "data/e_coli_core_metabolism.escher.json|true",
-      "data/TestMap_vcard.escher.json|false"
+    "data/mapk_cascade.escher.json|false",
+    "data/e_coli_core_metabolism.escher.json|true",
+    "data/TestMap_vcard.escher.json|false"
   })
   public void escherValidationTest(String filePath, boolean isValid) throws IOException,
-      ProcessingException {
+  ProcessingException {
     validator = new Validator();
     file = new File(filePath);
 
     assertEquals("failure - validator failing on valid JSON", isValid, validator.validateEscher
-        (file));
+      (file));
   }
 
 
   // TODO: Add more SBGN files to test validator.
   @Test
   @Parameters({
-      "data/mapk_cascade.sbgn.xml|true",
-      "data/central_plant_metabolism.sbgn.xml|false"
+    "data/mapk_cascade.sbgn.xml|true",
+    "data/central_plant_metabolism.sbgn.xml|false"
   })
   public void sbgnValidationTest(String filePath, boolean isValid) throws IOException,
-      ProcessingException {
+  ProcessingException {
     validator = new Validator();
     file = new File(filePath);
 
     assertEquals("failure - validator failing on valid SBGN", isValid, validator.validateSbgnml
-        (file));
+      (file));
   }
 
 
