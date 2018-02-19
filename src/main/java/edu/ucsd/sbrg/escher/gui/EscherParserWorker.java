@@ -16,7 +16,7 @@ package edu.ucsd.sbrg.escher.gui;
 import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
-import java.text.MessageFormat;
+import static java.text.MessageFormat.format;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -76,12 +76,10 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
     List<OpenedFile<EscherMap>> listOfFiles = new ArrayList<OpenedFile<EscherMap>>();
 
     for (File inputFile : input) {
-      logger.info(MessageFormat.format(
-        bundle.getString("EscherConverter.readingFile"), inputFile));
+      logger.info(format(bundle.getString("EscherConverter.readingFile"), inputFile));
 
       ProgressMonitorInputStream is = new ProgressMonitorInputStream(parentComponent,
-        MessageFormat.format(
-          bundle.getString("EscherParserWorker.progressMessage"),
+        format(bundle.getString("EscherParserWorker.progressMessage"),
           inputFile.getName()), new FileInputStream(inputFile));
 
       if (SBFileFilter.isJSONFile(inputFile)) {
@@ -116,8 +114,7 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
   private void appendOpenedFile(List<OpenedFile<EscherMap>> listOfFiles,
     File inputFile, EscherMap map) {
     OpenedFile<EscherMap> openedFile = new OpenedFile<EscherMap>(inputFile, map);
-    logger.info(MessageFormat.format(
-      bundle.getString("EscherConverter.readingDone"), inputFile));
+    logger.info(format(bundle.getString("EscherConverter.readingDone"), inputFile));
     publish(openedFile);
     listOfFiles.add(openedFile);
   }

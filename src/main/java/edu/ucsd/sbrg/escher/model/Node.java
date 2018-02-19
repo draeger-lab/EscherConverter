@@ -372,11 +372,8 @@ public class Node extends AbstractBox implements Element {
     final int prime = 31;
     int result = super.hashCode();
     result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
-    result =
-        prime * result + ((compartment == null) ? 0 : compartment.hashCode());
-    result =
-        prime * result + ((connectedSegments == null) ? 0 :
-          connectedSegments.hashCode());
+    result = prime * result + ((compartment == null) ? 0 : compartment.hashCode());
+    result = prime * result + ((connectedSegments == null) ? 0 : connectedSegments.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((isPrimary == null) ? 0 : isPrimary.hashCode());
     result = prime * result + ((labelX == null) ? 0 : labelX.hashCode());
@@ -684,4 +681,5 @@ public class Node extends AbstractBox implements Element {
     builder.append("]");
     return builder.toString();
   }
+
 }

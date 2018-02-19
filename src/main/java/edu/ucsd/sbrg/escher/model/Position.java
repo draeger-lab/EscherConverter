@@ -47,4 +47,5 @@ public interface Position extends EscherBase {
    * @param y the y to set
    */
   void setY(Double y);
+
 }

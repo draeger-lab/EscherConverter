@@ -41,4 +41,5 @@ public class Canvas extends AbstractBox {
   public Canvas clone() {
     return new Canvas(this);
   }
+
 }

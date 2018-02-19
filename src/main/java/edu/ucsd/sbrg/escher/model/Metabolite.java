@@ -144,8 +144,7 @@ public class Metabolite extends AbstractEscherBase implements Element {
     final int prime = 31;
     int result = super.hashCode();
     result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
-    result =
-        prime * result + ((coefficient == null) ? 0 : coefficient.hashCode());
+    result = prime * result + ((coefficient == null) ? 0 : coefficient.hashCode());
     result = prime * result + ((nodeRefId == null) ? 0 : nodeRefId.hashCode());
     return result;
   }
@@ -219,4 +218,5 @@ public class Metabolite extends AbstractEscherBase implements Element {
     builder.append("]");
     return builder.toString();
   }
+
 }

@@ -72,4 +72,5 @@ public class Point extends AbstractPosition {
     setY(scale * getY());
     return this;
   }
+
 }

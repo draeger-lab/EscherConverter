@@ -182,4 +182,5 @@ public class Gene extends AbstractEscherBase implements Element {
     builder.append("]");
     return builder.toString();
   }
+
 }

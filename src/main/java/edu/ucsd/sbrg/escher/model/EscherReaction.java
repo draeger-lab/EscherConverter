@@ -177,8 +177,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     } else {
       logger.warning(MessageFormat.format(
         bundle.getString("EscherReaction.skippingNullElement"),
-          Metabolite.class.getSimpleName(),
-          isSetBiggId() ? getBiggId() : getId()));
+        Metabolite.class.getSimpleName(),
+        isSetBiggId() ? getBiggId() : getId()));
     }
   }
 
@@ -204,8 +204,8 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     } else {
       logger.warning(MessageFormat.format(
         bundle.getString("EscherReaction.skippingNullElement"),
-          Segment.class.getSimpleName(),
-          isSetBiggId() ? getBiggId() : getId()));
+        Segment.class.getSimpleName(),
+        isSetBiggId() ? getBiggId() : getId()));
     }
   }
 
@@ -740,4 +740,5 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     builder.append("]");
     return builder.toString();
   }
+
 }

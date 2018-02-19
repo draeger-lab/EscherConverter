@@ -13,9 +13,9 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
+import static java.text.MessageFormat.format;
+
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.text.MessageFormat;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,8 +65,7 @@ public class SBMLLayoutViewPanel extends JPanel {
    * @param layout
    */
   public void setSBMLLayout(Layout layout) {
-    logger.fine(MessageFormat.format(
-      "Received layout with id=''{0}''.", layout.getId()));
+    logger.fine(format("Received layout with id=''{0}''.", layout.getId()));
     LayoutDirectionTask layoutTask = new LayoutDirectionTask(layout, this);
     layoutTask.addPropertyChangeListener(evt -> {
       if (evt.getPropertyName().equals("state")

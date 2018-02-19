@@ -32,4 +32,5 @@ public interface Element extends EscherBase {
    * @param id the id to set
    */
   void setId(String id);
+
 }

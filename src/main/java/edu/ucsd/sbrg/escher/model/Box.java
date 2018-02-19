@@ -47,4 +47,5 @@ public interface Box extends EscherBase, Position {
    * @return {@code true} if the requested property is not {@code null}.
    */
   boolean isSetWidth();
+
 }

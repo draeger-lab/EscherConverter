@@ -18,8 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * @author Andreas Dr&auml;ger
  */
-public abstract class AbstractPosition extends AbstractEscherBase
-    implements Position {
+public abstract class AbstractPosition extends AbstractEscherBase implements Position {
 
   /**
    *
@@ -183,4 +182,5 @@ public abstract class AbstractPosition extends AbstractEscherBase
     builder.append("]");
     return builder.toString();
   }
+
 }

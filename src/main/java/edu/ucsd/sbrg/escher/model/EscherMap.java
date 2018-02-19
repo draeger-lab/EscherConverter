@@ -148,12 +148,9 @@ public class EscherMap extends AbstractEscherBase {
     nodes.put(node.getId(), node);
     if (node.isSetBiggId()) {
       if (!bigg2nodes.containsKey(node.getBiggId())) {
-        Set<String> nodeSet = new HashSet<String>();
-        nodeSet.add(node.getId());
-        bigg2nodes.put(node.getBiggId(), nodeSet);
-      } else {
-        bigg2nodes.get(node.getBiggId()).add(node.getId());
+        bigg2nodes.put(node.getBiggId(), new HashSet<String>());
       }
+      bigg2nodes.get(node.getBiggId()).add(node.getId());
     }
   }
 
@@ -179,12 +176,9 @@ public class EscherMap extends AbstractEscherBase {
     reactions.put(reaction.getId(), reaction);
     if (reaction.isSetBiggId()) {
       if (!bigg2reactions.containsKey(reaction.getBiggId())) {
-        Set<String> reactionSet = new HashSet<String>();
-        reactionSet.add(reaction.getId());
-        bigg2reactions.put(reaction.getBiggId(), reactionSet);
-      } else {
-        bigg2reactions.get(reaction.getBiggId()).add(reaction.getId());
+        bigg2reactions.put(reaction.getBiggId(), new HashSet<String>());
       }
+      bigg2reactions.get(reaction.getBiggId()).add(reaction.getId());
     }
   }
 
@@ -457,23 +451,19 @@ public class EscherMap extends AbstractEscherBase {
 
 
   /* (non-Javadoc)
-       * @see java.lang.Object#hashCode()
-       */
+   * @see java.lang.Object#hashCode()
+   */
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result =
-        prime * result + ((bigg2nodes == null) ? 0 : bigg2nodes.hashCode());
-    result =
-        prime * result + ((bigg2reactions == null) ? 0 :
-            bigg2reactions.hashCode());
+    result = prime * result + ((bigg2nodes == null) ? 0 : bigg2nodes.hashCode());
+    result = prime * result + ((bigg2reactions == null) ? 0 : bigg2reactions.hashCode());
     result = prime * result + ((canvas == null) ? 0 : canvas.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
     result = prime * result + ((reactions == null) ? 0 : reactions.hashCode());
-    result =
-        prime * result + ((textLabels == null) ? 0 : textLabels.hashCode());
+    result = prime * result + ((textLabels == null) ? 0 : textLabels.hashCode());
     return result;
   }
 
@@ -671,20 +661,18 @@ public class EscherMap extends AbstractEscherBase {
   /**
    * Post-processes {@link EscherMap} and populates internal helper fields.
    */
-  public void processMap() {
+  public void postprocessMap() {
     try {
-      // Set mid-marker for every reaction by going through its nodes and checking which
-      // one is a mid-marker.
+      // Set mid-marker for every reaction by going through its nodes and
+      // checking which one is a mid-marker.
       reactions.forEach((k, r) -> {
         r.getNodes().forEach((s) -> {
           if (nodes.get(s).getType() == Node.Type.midmarker) {
             r.setMidmarker(nodes.get(s));
           }
         });
-      });
 
-      // Set nodeRefIds for metabolites.
-      reactions.forEach((k, r) -> {
+        // Set nodeRefIds for metabolites.
         r.getMetabolites().forEach((mk, mv) -> {
           r.getNodes().forEach((s) -> {
             try {
@@ -702,14 +690,12 @@ public class EscherMap extends AbstractEscherBase {
 
           });
         });
-      });
 
-      // Bigg2Reactions.
-      reactions.forEach((k, v) -> {
-        if (!bigg2reactions.containsKey(v.getBiggId())) {
+        // Bigg2Reactions.
+        if (!bigg2reactions.containsKey(r.getBiggId())) {
           Set<String> reactionSet = new HashSet<>();
-          reactionSet.add(v.getId());
-          bigg2reactions.put(v.getBiggId(), reactionSet);
+          reactionSet.add(r.getId());
+          bigg2reactions.put(r.getBiggId(), reactionSet);
         }
       });
 
@@ -722,23 +708,19 @@ public class EscherMap extends AbstractEscherBase {
           Set<String> nodeSet = new HashSet<>();
           nodeSet.add(v.getId());
           bigg2nodes.put(v.getBiggId(), nodeSet);
-        }
-        else {
+        } else {
           bigg2nodes.get(v.getBiggId()).add(v.getId());
         }
-      });
 
-      // Store compartments.
-      nodes.forEach((k, v) -> {
+        // Store compartments.
         EscherCompartment compartment = new EscherCompartment();
 
-        if (v.getCompartment() == null) {
-          return;
-        }
-        compartment.setId(v.getCompartment());
+        if (v.getCompartment() != null) {
+          compartment.setId(v.getCompartment());
 
-        if (!compartments.containsKey(compartment.getId())) {
-          compartments.put(compartment.getId(), compartment);
+          if (!compartments.containsKey(compartment.getId())) {
+            compartments.put(compartment.getId(), compartment);
+          }
         }
       });
 
@@ -747,4 +729,5 @@ public class EscherMap extends AbstractEscherBase {
       ex.printStackTrace();
     }
   }
+
 }
