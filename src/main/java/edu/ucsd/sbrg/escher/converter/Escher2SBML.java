@@ -16,7 +16,6 @@ package edu.ucsd.sbrg.escher.converter;
 import static java.text.MessageFormat.format;
 
 import java.text.MessageFormat;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -28,6 +27,7 @@ import java.util.logging.Logger;
 import javax.xml.stream.XMLStreamException;
 
 import org.sbml.jsbml.Compartment;
+import org.sbml.jsbml.ListOf;
 import org.sbml.jsbml.Model;
 import org.sbml.jsbml.NamedSBase;
 import org.sbml.jsbml.Reaction;
@@ -257,8 +257,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     }
     // Go through each metabolite and connect it to the reaction.
     Map<String, SpeciesReferenceGlyph> srgMap = new HashMap<String, SpeciesReferenceGlyph>();
-    for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites()
-        .entrySet()) {
+    for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
       Metabolite metabolite = entry.getValue();
       // Each metabolite can be represented in multiple nodes, so we need to find those in this reaction, but also these can be multiple...
       Set<Node> setOfNodes = escherReaction.intersect(escherMap.getNodes(metabolite.getId()));
@@ -328,14 +327,18 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
           }
         }
       }
-      if (reaction.isSetListOfProducts() && reaction.getListOfProducts()
-          .contains(srGlyph
-            .getSpeciesReferenceInstance())) {
-        Collections.reverse(curve.getListOfCurveSegments());
+      if (reaction.isSetListOfProducts() && reaction.getListOfProducts().contains(srGlyph.getSpeciesReferenceInstance())) {
+        ListOf<CurveSegment> lcs = curve.getListOfCurveSegments();
+        curve.unsetListOfCurveSegments();
+        //Collections.reverse(lcs);
+        //curve.setListOfCurveSegments(lcs);
         // Reversing all curve segments seems not to be necessary.
         //				for (CurveSegment segment : curve.getListOfCurveSegments()) {
         //					reverse(segment);
         //				}
+        for (int i = lcs.size() - 1; i >= 0; i--) {
+          curve.addCurveSegment(lcs.remove(i));
+        }
       }
     }
     segments.removeAll(done);
@@ -625,8 +628,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @return
    */
   private String createSpeciesGlyphId(Node node, Layout layout) {
-    return SBMLtools.toSId(node.isSetId() ? node.getId() :
-      createId("sg_", layout.getSpeciesGlyphCount()));
+    String prefix = "sg_";
+    return SBMLtools.toSId(node.isSetId() ? prefix + node.getId() :
+      createId(prefix, layout.getSpeciesGlyphCount()));
   }
 
 

@@ -133,4 +133,5 @@ public class TextLabel extends AbstractBox implements Element {
     builder.append("]");
     return builder.toString();
   }
+
 }

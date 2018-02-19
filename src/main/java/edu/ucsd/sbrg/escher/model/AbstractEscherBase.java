@@ -94,8 +94,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   public int hashCode() {
     final int prime = 31;
     int result = super.hashCode();
-    result =
-        prime * result + ((userObjects == null) ? 0 : userObjects.hashCode());
+    result = prime * result + ((userObjects == null) ? 0 : userObjects.hashCode());
     return result;
   }
 
@@ -125,4 +124,5 @@ public abstract class AbstractEscherBase implements EscherBase {
   public Set<String> userObjectKeys() {
     return userObjects.keySet();
   }
+
 }

@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Segment extends AbstractEscherBase implements Element {
 
   /**
-   *
+   * Beziér base point 1
    */
   private Point  b1;
   /**
-   *
+   * Beziér base point 2
    */
   private Point  b2;
   /**
@@ -194,8 +194,7 @@ public class Segment extends AbstractEscherBase implements Element {
     int result = super.hashCode();
     result = prime * result + ((b1 == null) ? 0 : b1.hashCode());
     result = prime * result + ((b2 == null) ? 0 : b2.hashCode());
-    result =
-        prime * result + ((fromNodeId == null) ? 0 : fromNodeId.hashCode());
+    result = prime * result + ((fromNodeId == null) ? 0 : fromNodeId.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((toNodeId == null) ? 0 : toNodeId.hashCode());
     return result;
@@ -348,4 +347,5 @@ public class Segment extends AbstractEscherBase implements Element {
     setToNodeId(null);
     return toString;
   }
+
 }

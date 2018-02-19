@@ -238,7 +238,7 @@ public class EscherConverter extends Launcher {
     map.setSchema(meta.getSchema());
     map.setURL(meta.getURL());
 
-    map.processMap();
+    map.postprocessMap();
     return map;
   }
 

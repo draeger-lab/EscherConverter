@@ -43,4 +43,5 @@ public interface EscherBase extends Cloneable {
    * @return
    */
   Set<Map.Entry<String, Object>> userObjectEntrySet();
+
 }

@@ -13,13 +13,14 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
+import static java.text.MessageFormat.format;
+
 import java.awt.Component;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -87,12 +88,10 @@ public class EscherConverterUI extends BaseFrame {
       if (url != null) {
         UIManager.put(key, new ImageIcon(url));
         if (UIManager.getIcon(key) == null) {
-          logger.warning(MessageFormat.format(
-            bundle.getString("EscherConverterUI.couldNotLoadImage"), key));
+          logger.warning(format(bundle.getString("EscherConverterUI.couldNotLoadImage"), key));
         }
       } else {
-        logger.warning(MessageFormat.format(
-          bundle.getString("EscherConverterUI.invalidURL"), key));
+        logger.warning(format(bundle.getString("EscherConverterUI.invalidURL"), key));
       }
     }
     icons = new LinkedList<Image>();
@@ -214,8 +213,7 @@ public class EscherConverterUI extends BaseFrame {
    */
   @Override
   public URL getURLLicense() {
-    return getClass()
-        .getResource(bundle.getString("EscherConverterUI.License"));
+    return getClass().getResource(bundle.getString("EscherConverterUI.License"));
   }
 
 
@@ -236,8 +234,8 @@ public class EscherConverterUI extends BaseFrame {
     GeneralFileFilter filterJSON = SBFileFilter.createJSONFileFilter();
     GeneralFileFilter filterSBML = SBFileFilter.createSBMLFileFilter();
     GeneralFileFilter filterSBGN = SBFileFilter.createSBGNFileFilter();
-    SBPreferences prefs = SBPreferences.getPreferencesFor(GUIOptions.class);
     if ((files == null) || (files.length == 0)) {
+      SBPreferences prefs = SBPreferences.getPreferencesFor(GUIOptions.class);
       files = GUITools.openFileDialog(this, prefs.get(GUIOptions.OPEN_DIR), false, true, JFileChooser.FILES_AND_DIRECTORIES, filterJSON, filterSBML, filterSBGN);
     }
     if ((files != null) && (files.length > 0)) {
@@ -252,10 +250,30 @@ public class EscherConverterUI extends BaseFrame {
       }
       files = accepted.toArray(new File[0]);
       EscherParserWorker worker = new EscherParserWorker(this, files);
-      worker.addPropertyChangeListener(this);
+      worker.addPropertyChangeListener(evt -> {
+        if (evt.getPropertyName().equals(EscherParserWorker.INTERMERIM_RESULTS)) {
+          @SuppressWarnings("unchecked") List<OpenedFile<EscherMap>>
+          list = (List<OpenedFile<EscherMap>>) evt.getNewValue();
+          for (OpenedFile<EscherMap> openedFile : list) {
+            // TODO: add to GUI
+            logger.info(openedFile.getFile().getAbsolutePath());
+            String title = openedFile.getDocument().getName();
+            if ((title == null) || (title.length() == 0)) {
+              title = openedFile.getDocument().getId();
+              if ((title == null) || (title.length() == 0)) {
+                title = openedFile.getFile().getName();
+              }
+            }
+            SBPreferences prefs = SBPreferences.getPreferencesFor(EscherOptions.class);
+            tabbedPane.addTab(title, new EscherMapDisplay(openedFile, prefs.toProperties()));
+            tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+          }
+          listOfOpenedFiles.addAll(list);
+        }
+      });
       worker.execute();
       if (!notAccepted.isEmpty()) {
-        logger.warning(MessageFormat.format(
+        logger.warning(format(
           "Unable to open {0,choice,1#file|1<the {0,number,integer} files} {1}.",
           notAccepted.toString()));
       }
@@ -269,27 +287,6 @@ public class EscherConverterUI extends BaseFrame {
    */
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    if ((evt.getSource() instanceof EscherParserWorker) &&
-        evt.getPropertyName().equals(
-          EscherParserWorker.INTERMERIM_RESULTS)) {
-      @SuppressWarnings("unchecked") List<OpenedFile<EscherMap>>
-      list = (List<OpenedFile<EscherMap>>) evt.getNewValue();
-      for (OpenedFile<EscherMap> openedFile : list) {
-        // TODO: add to GUI
-        logger.info(openedFile.getFile().getAbsolutePath());
-        SBPreferences prefs = SBPreferences.getPreferencesFor(EscherOptions.class);
-        String title = openedFile.getDocument().getName();
-        if ((title == null) || (title.length() == 0)) {
-          title = openedFile.getDocument().getId();
-          if ((title == null) || (title.length() == 0)) {
-            title = openedFile.getFile().getName();
-          }
-        }
-        tabbedPane.addTab(title, new EscherMapDisplay(openedFile, prefs.toProperties()));
-        tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
-      }
-      listOfOpenedFiles.addAll(list);
-    }
   }
 
 
@@ -325,14 +322,13 @@ public class EscherConverterUI extends BaseFrame {
         new OpenedFile<SBMLDocument>(destination, (SBMLDocument) result),
         this);
     } else {
-      throw new IllegalArgumentException(MessageFormat.format(
+      throw new IllegalArgumentException(format(
         bundle.getString("EscherConverterWorker.unknownFormat"),
         result.getClass().getName()));
     }
     writer.addPropertyChangeListener(evt -> {
       if (evt.getNewValue().equals(SwingWorker.StateValue.DONE)) {
-        logger.info(MessageFormat.format(
-          bundle.getString("EscherConverterUI.fileWritten"),  destination));
+        logger.info(format(bundle.getString("EscherConverterUI.fileWritten"),  destination));
       }
     });
     writer.execute();
