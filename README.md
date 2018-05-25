@@ -13,8 +13,6 @@ ________________________________________________________________________________
 
 ## Quick-start
 
-#### OR
-
 Get a local copy of EscherConverter from [here](https://github.com/SBRG/EscherConverter/releases/latest). As a Java™ application, the only thing needed is a valid Java(JRE) 8+ installation present. After that you can either open the JAr by double-clicking it or use it from the command line as below.
 
 On Unix-like system (Ubuntu, Fedora, macOS, etc.):
