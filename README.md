@@ -13,8 +13,6 @@ ________________________________________________________________________________
 
 ## Quick-start
 
-**Try out the live web version [here](http://139.59.18.143/).**
-
 #### OR
 
 Get a local copy of EscherConverter from [here](https://github.com/SBRG/EscherConverter/releases/latest). As a Java™ application, the only thing needed is a valid Java(JRE) 8+ installation present. After that you can either open the JAr by double-clicking it or use it from the command line as below.
