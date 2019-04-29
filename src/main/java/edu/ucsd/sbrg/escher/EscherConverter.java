@@ -173,7 +173,8 @@ public class EscherConverter extends Launcher {
    */
   public static List<EscherMap> convert(SBMLDocument document, SBProperties properties) {
     SBML2Escher converter = new SBML2Escher();
-
+    converter.setNodeHeight(properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_HEIGHT));
+    converter.setNodeWidth(properties.getDoubleProperty(EscherOptions.PRIMARY_NODE_WIDTH));
     return converter.convert(document);
   }
 
@@ -248,7 +249,7 @@ public class EscherConverter extends Launcher {
    * @param args Command line options, if any.
    */
   public static void main(String args[]) {
-    new EscherConverter(args);
+	new EscherConverter(args);
   }
 
 
@@ -842,7 +843,7 @@ public class EscherConverter extends Launcher {
    */
   @Override
   public boolean showsGUI() {
-    return !props.containsKey(GUIOptions.GUI) || props.getBooleanProperty(GUIOptions.GUI);
+	  	return !props.containsKey(GUIOptions.GUI) || props.getBooleanProperty(GUIOptions.GUI);
   }
 
 }

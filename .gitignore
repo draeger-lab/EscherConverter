@@ -85,3 +85,7 @@ api/static/*
 /libquaqua64.jnilib
 /obfuscation-log.xml
 /res/
+
+# Eclipse
+**/.metadata
+/bin/
