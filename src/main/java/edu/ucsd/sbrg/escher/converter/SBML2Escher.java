@@ -39,6 +39,7 @@ import edu.ucsd.sbrg.escher.model.Node;
 import edu.ucsd.sbrg.escher.model.Point;
 import edu.ucsd.sbrg.escher.model.Segment;
 import edu.ucsd.sbrg.escher.model.TextLabel;
+import edu.ucsd.sbrg.escher.util.EscherOptions;
 
 /**
  * Converter from SBML Layout Extension to Escher.
@@ -72,13 +73,22 @@ public class SBML2Escher {
    * List of layouts exported from the SBML document.
    */
   protected List<Layout>    layouts;
-
+  
+  /**
+   * The height of primary nodes; in case bounding boxes have no dimensions
+   */
+  protected double primary_node_height;
+  
+  /**
+   * The width of primary nodes; in case bounding boxes have no dimensions
+   */
+  protected double primary_node_width;
 
   /**
    * Default constructor.
    */
   public SBML2Escher() {
-    escherMaps = new ArrayList<>();
+    escherMaps = new ArrayList<>(); 
   }
 
   /**
@@ -289,8 +299,14 @@ public class SBML2Escher {
         point.setX(pos.getX() + dim.getWidth() / 2d);
         point.setY(pos.getY() + dim.getHeight()/ 2d);
       } else {
-        point.setX(Double.NaN);
-        point.setY(Double.NaN);
+    	  if((bbox != null) && bbox.isSetPosition()){
+    		  org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
+    		  point.setX(pos.getX() + primary_node_width/2);
+    	      point.setY(pos.getY() + primary_node_height/2);
+    	  }else{
+    		  point.setX(Double.NaN);
+    		  point.setY(Double.NaN);
+    	  }
       }
     }
     else {
@@ -462,8 +478,14 @@ public class SBML2Escher {
         point.setX(pos.getX() + dim.getWidth() / 2d);
         point.setY(pos.getY() + dim.getHeight()/ 2d);
       } else {
-        point.setX(Double.NaN);
-        point.setY(Double.NaN);
+    	  if((bbox != null) && bbox.isSetPosition()){
+    		  org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
+    		  point.setX(pos.getX() + primary_node_width/2);
+    	      point.setY(pos.getY() + primary_node_height/2);
+    	  }else{
+    		  point.setX(Double.NaN);
+    		  point.setY(Double.NaN);
+    	  }
       }
     }
     else {
@@ -552,6 +574,16 @@ public class SBML2Escher {
       segments.add(segment);
       logger.info(format(messages.getString("CurveSegmentAdd"),
         segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
+    }else{
+    	// at the moment only straight lines are supported
+		Segment segment = new Segment();
+		segment.setId(sRG.getId() + ".S" + 0);
+   	    segment.setFromNodeId(rG.getId());
+		segment.setToNodeId(sRG.getSpeciesGlyph());
+	    segments.add(segment);
+	    logger.info(format(messages.getString("CurveSegmentAdd"),
+	        segment.getId(), segment.getFromNodeId(), segment.getToNodeId()));
+    	// TODO draw curves instead of straight lines
     }
 
     return segments;
@@ -607,6 +639,14 @@ public class SBML2Escher {
    */
   protected double midPoint(double d1, double d2) {
     return (d1 + d2)/2;
+  }
+  
+  public void setNodeHeight(double height){
+	  this.primary_node_height = height;
+  }
+  
+  public void setNodeWidth(double width){
+	  this.primary_node_width = width;
   }
 
 }
