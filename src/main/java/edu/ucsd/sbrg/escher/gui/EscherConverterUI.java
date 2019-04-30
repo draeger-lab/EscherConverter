@@ -368,7 +368,7 @@ public class EscherConverterUI extends BaseFrame {
                 SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
             
             // make sure that pathname ends with .sbgn or .xml
-            if (!filename .endsWith(".sbgn") && !filename.endsWith(".xml"))
+            if (!filename.toLowerCase().endsWith(".sbgn") && !filename.toLowerCase().endsWith(".xml"))
                    filename += ".sbgn";
             savedFile = checkFile(new File(filename));
             
@@ -386,7 +386,7 @@ public class EscherConverterUI extends BaseFrame {
                 SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
             
             // make sure that pathname ends with .sbml or .xml
-            if (!filename .endsWith(".sbml") && !filename.endsWith(".xml"))
+            if (!filename.toLowerCase().endsWith(".sbml") && !filename.toLowerCase().endsWith(".xml"))
                    filename += ".sbml";
             savedFile = checkFile(new File(filename));
           }
@@ -405,7 +405,7 @@ public class EscherConverterUI extends BaseFrame {
           converter.execute();
         } else {
         	// make sure that pathname ends with .json
-           if (!filename .endsWith(".json"))
+           if (!filename.toLowerCase().endsWith(".json"))
                  filename += ".json";
            savedFile = checkFile(new File(filename));
           // Just save the JSON map, nothing to do.
