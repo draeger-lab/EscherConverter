@@ -341,22 +341,37 @@ public class EscherConverterUI extends BaseFrame {
   @Override
   public File saveFileAs() {
     String dir = SBPreferences.getPreferencesFor(GUIOptions.class).get(GUIOptions.SAVE_DIR);
-    JFileChooser fc = GUITools.createJFileChooser(dir, false, false, JFileChooser.FILES_ONLY,
-      SBFileFilter.createJSONFileFilter(),
-      SBFileFilter.createSBGNFileFilter(),
-      SBFileFilter.createSBMLFileFilterL3V1());
+    
+    // make sure the extension filter corresponds to the preferred output format
+    String format = SBPreferences.getPreferencesFor(EscherOptions.class).get(EscherOptions.FORMAT);
+    GeneralFileFilter filter = null;
+    switch (format){
+    case "SBGN": filter = SBFileFilter.createSBGNFileFilter(); break;
+    case "JSON": filter = SBFileFilter.createJSONFileFilter(); break;
+    default: filter = SBFileFilter.createSBMLFileFilterL3V1(); break;
+    }
+    JFileChooser fc = GUITools.createJFileChooser(dir, false, false, JFileChooser.FILES_ONLY, filter);
     File savedFile = null;
     if (fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-      savedFile = checkFile(fc.getSelectedFile());
+        savedFile = checkFile(fc.getSelectedFile());
       if ((savedFile != null) && (savedFile.getParentFile() != null)) {
         // Do conversion
         EscherMapDisplay display = (EscherMapDisplay) tabbedPane.getSelectedComponent();
         EscherMap map = display.getOpenedFile().getDocument();
+        
+        String filename = fc.getSelectedFile().getAbsolutePath().toString();
+        
         if (!SBFileFilter.isJSONFile(fc.getSelectedFile())) {
           EscherConverterWorker<?> converter;
           if (fc.getFileFilter().getDescription().toUpperCase().contains("SBGN")) {
             converter = new EscherConverterWorker<Sbgn>(map, Sbgn.class,
                 SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
+            
+            // make sure that pathname ends with .sbgn or .xml
+            if (!filename .endsWith(".sbgn") && !filename.endsWith(".xml"))
+                   filename += ".sbgn";
+            savedFile = checkFile(new File(filename));
+            
             /*} else if (fc.getFileFilter().getDescription().toUpperCase().contains("PNG")) {
           // TODO: save as image!!!
              */
@@ -369,7 +384,13 @@ public class EscherConverterUI extends BaseFrame {
             // we still need to do a fresh conversion.
             converter = new EscherConverterWorker<SBMLDocument>(map, SBMLDocument.class,
                 SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
+            
+            // make sure that pathname ends with .sbml or .xml
+            if (!filename .endsWith(".sbml") && !filename.endsWith(".xml"))
+                   filename += ".sbml";
+            savedFile = checkFile(new File(filename));
           }
+          
           final File output = savedFile;
           final Component window = this;
           converter.addPropertyChangeListener(evt -> {
@@ -383,6 +404,10 @@ public class EscherConverterUI extends BaseFrame {
           });
           converter.execute();
         } else {
+        	// make sure that pathname ends with .json
+           if (!filename .endsWith(".json"))
+                 filename += ".json";
+           savedFile = checkFile(new File(filename));
           // Just save the JSON map, nothing to do.
           try {
             saveFile(map, savedFile);
