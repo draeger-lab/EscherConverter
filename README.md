@@ -39,8 +39,7 @@ EscherConverter includes several third-party libraries, which we here list and a
 ## Options include:
 
 `--help, -?` 
-
-: displays help information
+	displays help information
 
 #### Input and output
 `--input=<string>`
