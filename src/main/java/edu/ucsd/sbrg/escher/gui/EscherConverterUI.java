@@ -227,7 +227,10 @@ public class EscherConverterUI extends BaseFrame {
   }
 
 
-  /* (non-Javadoc)
+  /* 
+   * This essentially calls the file chooser, checks the opened files and calls a worker to read the files
+   * @param files Only applicable if files are provided via the command line
+   * (non-Javadoc)
    * @see de.zbit.gui.BaseFrame#openFile(java.io.File[])
    */
   @Override
