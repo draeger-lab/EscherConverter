@@ -57,6 +57,8 @@ import edu.ucsd.sbrg.escher.util.EscherIOOptions;
 import edu.ucsd.sbrg.escher.util.EscherOptions;
 
 /**
+ * 
+ * Main class of the User Interface of EscherConverter
  * @author Andreas Dr&auml;ger
  */
 public class EscherConverterUI extends BaseFrame {
