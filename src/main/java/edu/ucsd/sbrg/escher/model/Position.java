@@ -14,6 +14,7 @@
 package edu.ucsd.sbrg.escher.model;
 
 /**
+ * A base class for a position with x and y coordinates
  * @author Andreas Dr&auml;ger
  */
 public interface Position extends EscherBase {

@@ -22,6 +22,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
+ * Includes all the elements of an EscherMap
  * @author Andreas Dr&auml;ger
  */
 public class EscherMap extends AbstractEscherBase {

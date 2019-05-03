@@ -89,6 +89,7 @@ public class SBMLLayoutViewPanel extends JPanel {
       }
     });
     layoutTask.execute();
+    System.out.println("displayed");
   }
 
 }
