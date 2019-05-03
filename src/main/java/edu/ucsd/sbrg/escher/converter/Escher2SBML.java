@@ -92,11 +92,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /* (non-Javadoc)
+   * Converts an {@link EscherMap} to an {@link SBML} document
    * @see edu.ucsd.sbrg.escher.converters.Escher2Standard#convert(edu.ucsd.sbrg.escher.model.EscherMap)
    */
   @Override
   public SBMLDocument convert(EscherMap map) {
     preprocessDataStructure(map);
+    // needed for canvas size
     Canvas canvas = map.getCanvas();
     double xOffset = canvas.isSetX() ? canvas.getX().doubleValue() : 0d;
     double yOffset = canvas.isSetY() ? canvas.getY().doubleValue() : 0d;
@@ -129,8 +131,8 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * Create a compartment in SBML from an {@link EscherCompartment} and add it to the
    * {@link Layout} object.
    *
-   * @param ec The {@code escher compartment} object.
-   * @param layout The {@code layout} object.
+   * @param ec The {@link EscherCompartment} object.
+   * @param layout The {@link Layout} object of the SBML model
    * @param xOffset x-offset.
    * @param yOffset y-offset.
    */
@@ -152,13 +154,14 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param escherMap
-   * @param node2glyph
-   * @param multimarkers
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Convert an {@link EscherMap} node to a glyph for SBML
+   * @param node The node to be converted
+   * @param escherMap The {@link EscherMap} the node is in
+   * @param node2glyph A hash map of the nodes and converted glyphs
+   * @param multimarkers A hash map of the multimarker node ids and the nodes themselves
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private void convertNode(Node node, EscherMap escherMap,
     Map<String, String> node2glyph, Map<String, Node> multimarkers,
@@ -178,7 +181,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         convertMultimarker(node, multimarkers, xOffset, yOffset);
         break;
       default:
-        converteTextLabel(node, layout, xOffset, yOffset);
+        convertTextLabel(node, layout, xOffset, yOffset);
         break;
       }
     }
@@ -186,11 +189,12 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param node2glyph
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Converts nodes of type exchange
+   * @param node The node to be converted
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private void convertExchange(Node node, Map<String, String> node2glyph,
     Layout layout, double xOffset, double yOffset) {
@@ -211,8 +215,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param multimarkers
+   * Converts (postpones the processing of) nodes of type multimarker
+   * @param node The node to be converted
+   * @param multimarkers A hash map of the multimarker node ids and the nodes themselves
    */
   private void convertMultimarker(Node node, Map<String, Node> multimarkers,
     double xOffset, double yOffset) {
@@ -227,12 +232,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Converts the text label nodes to text glyphs
+   * @param node The text label node to be converted
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
-  private void converteTextLabel(Node node, Layout layout, double xOffset,
+  private void convertTextLabel(Node node, Layout layout, double xOffset,
     double yOffset) {
     createTextGlyph(node, layout, xOffset, yOffset);
     logger.info(format(bundle.getString("Escher2SBML.skippingNode"), node.toString()));
@@ -240,12 +246,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param escherReaction
-   * @param escherMap
-   * @param layout
-   * @param node2glyph
-   * @param xOffset
-   * @param yOffset
+   * Converts an {@link EscherReaction} to a {@link ReactionGlyph}
+   * @param escherReaction The reaction to be converted
+   * @param escherMap The {@link EscherMap} the {@code escherReaction} is in
+   * @param layout The {@link Layout} object of the SBML model
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private Reaction convertReaction(EscherReaction escherReaction,
     EscherMap escherMap, Layout layout, Map<String, String> node2glyph,
@@ -351,14 +358,15 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param fromNode
-   * @param toNode
-   * @param basePoint1
-   * @param basePoint2
-   * @param curve
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Converts a segment to a line segment
+   * @param fromNode The node the segment starts from
+   * @param toNode The node where the segment ends
+   * @param basePoint1 base point for the curve TODO
+   * @param basePoint2 base point for the curve
+   * @param curve A curve object as used by {@link SBML}
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A line segment (either a cubic bezier or a line)
    */
   private LineSegment convertSegment(Node fromNode, Node toNode,
     Point basePoint1, Point basePoint2, Curve curve, double xOffset,
@@ -398,12 +406,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param segment
-   * @param map
-   * @param curve
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Extracts all necessary parameters from the segment needed for converting it to a line segment
+   * @param segment The segment to be converted
+   * @param map The {@link EscherMap} the {@code segment} is in
+   * @param curve A curve object as used by SBML
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A line segment (either a cubic bezier or a line)
    */
   private LineSegment convertSegment(Segment segment, EscherMap map,
     Curve curve, double xOffset, double yOffset) {
@@ -414,9 +423,10 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
+   * Creates an id
    * @param prefix
    * @param count
-   * @return
+   * @return A string id
    */
   private String createId(String prefix, int count) {
     return prefix + (count + 1);
@@ -424,12 +434,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param escherReaction
-   * @param layout
-   * @param node2glyph
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Creates a reaction glyph from an {@link EscherReaction}
+   * @param escherReaction The {@link EscherReaction} to be converted
+   * @param layout The {@link Layout} object of the SBML model
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A {@link ReactionGlyph}
    */
   private ReactionGlyph createReactionGlyph(EscherReaction escherReaction,
     Layout layout, Map<String, String> node2glyph, double xOffset,
@@ -482,12 +493,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param node2glyph
-   * @param layout
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Midmarker nodes are converted. These are usually nodes in the middle of an arrow, so usually reactions.
+   * @param node The node to be converted (of type "midmarker")
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A {@link ReactionGlyph} if an id can be extracted, {@code null} otherwise
    */
   private ReactionGlyph convertMidmarker(Node node,
     Map<String, String> node2glyph, Layout layout, double xOffset,
@@ -532,12 +544,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param node2glyph
-   * @param layout
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Convert a node of type "metabolite"
+   * @param node The node to be converted (of type "metabolite")
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A {@link SpeciesGlyph}
    */
   private SpeciesGlyph convertMetabolite(Node node,
     Map<String, String> node2glyph, Layout layout, double xOffset,
@@ -595,10 +608,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param model
-   * @param compartmentId
-   * @param compartmentName
-   * @return
+   * Creates a {@link Compartment}
+   * @param model The SBML model
+   * @param compartmentId Id of the compartment
+   * @param compartmentName Name of the compartment
+   * @return A {@ link Compartment}
    */
   private Compartment createCompartment(Model model, String compartmentId,
     String compartmentName) {
@@ -623,10 +637,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param layout
-   * @return
-   */
+   * Creates a {@link SpeciesGlyph} id (starting with sg_)
+   * @param node The node for which the id is to be created
+   * @param layout The {@link Layout} object of the SBML model
+   * @return A a {@link SpeciesGlyph} id (starting with sg_)
+   */ 
   private String createSpeciesGlyphId(Node node, Layout layout) {
     String prefix = "sg_";
     return SBMLtools.toSId(node.isSetId() ? prefix + node.getId() :
@@ -635,13 +650,14 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param metabolite
-   * @param setOfNodes
-   * @param layout
-   * @param node2glyph
-   * @param rGlyph
-   * @param reaction
-   * @return
+   * Creates a hash map of all {@link SpeciesReferenceGlyph}s and their ids corresponding to one {@code metabolite} of an {@link EscherReaction}
+   * @param metabolite A {@link Metabolite} of an {@link EscherReaction}
+   * @param setOfNodes A set of nodes represented by this {@code metabolite}
+   * @param layout The {@link Layout} object of the SBML model
+   * @param node2glyph A hash map of the node ids and their converted glyph ids
+   * @param rGlyph The {@link ReactionGlyph} the {@code metabolite} is in.
+   * @param reaction The {@link Reaction} the {@code metabolite} is in.
+   * @return A hash map of all {@link SpeciesReferenceGlyph}s and their ids
    */
   private Map<String, SpeciesReferenceGlyph> createSpeciesReferenceGlyphs(
     Metabolite metabolite, Set<Node> setOfNodes, Layout layout,
@@ -729,11 +745,12 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param reaction
-   * @param rGlyph
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Create a text glyph from an {@link EscherReaction}
+   * @param reaction The {@link EscherReaction} the text glyph is extracted from
+   * @param rGlyph The reaction glyph the text glyph corresponds to and where the text glyph has to be positioned next to
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private void createTextGlyph(EscherReaction reaction, ReactionGlyph rGlyph,
     Layout layout, double xOffset, double yOffset) {
@@ -747,11 +764,12 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param layout
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Create a text glyph from a node
+   * @param node The node the text glyph is extracted from
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A {@link TextGyph}
    */
   private TextGlyph createTextGlyph(Node node, Layout layout, double xOffset,
     double yOffset) {
@@ -760,12 +778,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param node
-   * @param layout
-   * @param xOffset
-   * @param yOffset
-   * @param referenceGlyph
-   * @return
+   * Create a text glyph from a node
+   * @param node The node the text glyph is extracted from
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @param referenceGlyph The (reaction or species) glyph the text glyph references
+   * @return A {@link TextGlyph}
    */
   private TextGlyph createTextGlyph(Node node, Layout layout, double xOffset,
     double yOffset, AbstractReferenceGlyph referenceGlyph) {
@@ -806,10 +825,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param label
-   * @param layout
-   * @param xOffset
-   * @param yOffset
+   * Creates a text glyph from a text label in an {@link EscherMap}, and puts it into the {@code layout}
+   * @param label A {@link TextLabel} of an {@link EscherMap}
+   * @param layout The {@link Layout} object of the SBML model
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private void createTextGlyph(TextLabel label, Layout layout, double xOffset,
     double yOffset) {
@@ -832,8 +852,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param layout
-   * @return
+   * Creates a {@link TextGlyph} id (starting with tg_)
+   * @param layout The {@link Layout} object of the SBML model
+   * @return A string {@link TextGlyph} id (starting with tg_)
    */
   private String createTextGlyphId(Layout layout) {
     return createId("tg_", layout.getTextGlyphCount());
@@ -841,9 +862,10 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param label
-   * @param layout
-   * @return
+   * Creates a {@link TextGlyph} id, if possible from the id of the {@link TextLabel}
+   * @param label A {@link TextLabel}
+   * @param layout The {@link Layout} object of the SBML model
+   * @return A string {@link TextGlyph} id
    */
   private String createTextGlyphId(TextLabel label, Layout layout) {
     return label.isSetId() ? SBMLtools.toSId(label.getId()) : createTextGlyphId(layout);
@@ -899,9 +921,10 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param escherMap
-   * @param xOffset
-   * @param yOffset
+   * Initiates a layout as created by the {@link LayoutModelPlugin}
+   * @param escherMap The {@link EscherMap} the layout is to be created from
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
    */
   private Layout initLayout(EscherMap escherMap, double xOffset,
     double yOffset) {
@@ -1009,13 +1032,14 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
-   * @param segment
-   * @param targetCurve
-   * @param targetCurveSegmentIndex
-   * @param escherMap
-   * @param xOffset
-   * @param yOffset
-   * @return
+   * Tries to attach a segment to a node
+   * @param segment The {@link Segment} to be attached
+   * @param targetCurve The {@link Curve} object of the current {@link SpeciesReferenceGlyph} the {@code segment} will be part of
+   * @param targetCurveSegmentIndex Index of the {@code segment} within the {@code targetCurve}
+   * @param escherMap The {@link EscherMap} the {@code segment} is part of
+   * @param xOffset x-offset of the document
+   * @param yOffset y-offset of the document
+   * @return A boolean: {@code true} if the segment could be attached, {@code false} otherwise
    */
   private boolean tryToAttach(Segment segment, Curve targetCurve,
     int targetCurveSegmentIndex, EscherMap escherMap, double xOffset,
