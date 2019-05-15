@@ -278,6 +278,7 @@ public class EscherConverterUI extends BaseFrame {
               }
             }
             SBPreferences prefs = SBPreferences.getPreferencesFor(EscherOptions.class);
+            // TODO: does not work when loading an SBML file.
             tabbedPane.addTab(title, new EscherMapDisplay(openedFile, prefs.toProperties()));
             tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
           }
