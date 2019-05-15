@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="EscherConverter">
+  <bannerLeft>
+    <name>EscherConverter</name>
+    <src></src>
+  </bannerLeft>
+  <body>
+    <links>
+      <item name="Javadoc" href="javadoc/index.html" />
+    </links>
+
+    <menu name="Menu">
+      <item name="Introduction and How To" href="index.html"/>
+      <item name="Documentation Javadoc" href="javadoc/index.html"/>
+      
+    </menu>
+
+    <menu ref="reports"/>
+
+  </body>
+</project>
