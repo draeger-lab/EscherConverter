@@ -237,7 +237,7 @@ public class SBML2Escher {
    * Creates a {@link Node}(metabolite) from a {@link SpeciesGlyph}.
    *
    * @param speciesGlyph The {@code species glyph}.
-   * @return The created {@code node}.
+   * @return The created {@code node} of type "metabolite"
    */
   protected Node createNode(SpeciesGlyph speciesGlyph) {
     Node node = new Node();
@@ -414,9 +414,10 @@ public class SBML2Escher {
 
 
   /**
-   * @param sRG
-   * @param rg
-   * @param role
+   * Finds out whether a {@link SpeciesReferenceGlyph} is a product, substrate or modifier.
+   * @param sRG The {@link SpeciesReferenceGlyph}
+   * @param rg The {@link ReactionGlyph} the {@code sRG} is linked to
+   * @param role A {@link SpeciesReferenceRole} (product, substrate or modifier)
    */
   public SpeciesReferenceRole determineSpeciesReferenceRole(SpeciesReferenceGlyph sRG,
     ReactionGlyph rg) {
@@ -591,8 +592,9 @@ public class SBML2Escher {
 
 
   /**
-   * @param cs
-   * @param segment
+   * Gets base points from an SBML {@link CurveSegments} and adds them to an {@link EscherMap} {@link Segment}
+   * @param cs A {@link CurveSegment} of an SBML model
+   * @param segment A {@link Segment} of an {@link EscherMap}
    */
   private void copyBasePoints(CurveSegment cs, Segment segment, boolean forward) {
     CubicBezier cB = (CubicBezier) cs;

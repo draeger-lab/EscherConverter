@@ -117,8 +117,9 @@ public abstract class Escher2Standard<T> {
 
 
   /**
-   * @param set
-   * @return
+   * Returns the reaction id of a set of segments, gives warning if multiple ones are used in segments
+   * @param set of segments
+   * @return String of the reaction id
    */
   protected String extractReactionId(Set<Entry<String, List<String>>> set) {
     String rId = null;
@@ -207,6 +208,7 @@ public abstract class Escher2Standard<T> {
 
 
   /**
+   * Pre-processes every reaction in a data structure
    * @param escherMap
    */
   public void preprocessDataStructure(EscherMap escherMap) {

@@ -57,6 +57,8 @@ import edu.ucsd.sbrg.escher.util.EscherIOOptions;
 import edu.ucsd.sbrg.escher.util.EscherOptions;
 
 /**
+ * 
+ * Main class of the User Interface of EscherConverter
  * @author Andreas Dr&auml;ger
  */
 public class EscherConverterUI extends BaseFrame {
@@ -119,16 +121,16 @@ public class EscherConverterUI extends BaseFrame {
    */
   private static final long serialVersionUID = 3462628903511253555L;
   /**
-   *
+   * List in case more than one file is open at the same time.
    */
   private List<OpenedFile<EscherMap>> listOfOpenedFiles;
   /**
-   *
+   * The pane containing all tabs for different files.
    */
   private JTabbedPane                 tabbedPane;
 
 
-  /**
+  /** Starts the user interface.
    * @param appConf
    */
   public EscherConverterUI(AppConf appConf) {
@@ -143,8 +145,9 @@ public class EscherConverterUI extends BaseFrame {
 
 
   /**
-   * @param f
-   * @return
+   * Checks whether a given file can be written into.
+   * @param f The file which is to be checked
+   * @return The file if it can be written into, null otherwise.
    */
   private File checkFile(File f) {
     if (f.exists()) {
@@ -226,18 +229,26 @@ public class EscherConverterUI extends BaseFrame {
   }
 
 
-  /* (non-Javadoc)
+  /* 
+   * This essentially calls the file chooser, checks the opened files and calls a worker to read the files
+   * @param files Only applicable if files are provided via the command line
+   * (non-Javadoc)
    * @see de.zbit.gui.BaseFrame#openFile(java.io.File[])
    */
   @Override
   protected File[] openFile(File... files) {
+	// Create filters for all three possible input types
     GeneralFileFilter filterJSON = SBFileFilter.createJSONFileFilter();
     GeneralFileFilter filterSBML = SBFileFilter.createSBMLFileFilter();
     GeneralFileFilter filterSBGN = SBFileFilter.createSBGNFileFilter();
+    
+    // if this is true, no input files were given via the command line, therefore a file chooser needs to be opened
     if ((files == null) || (files.length == 0)) {
       SBPreferences prefs = SBPreferences.getPreferencesFor(GUIOptions.class);
       files = GUITools.openFileDialog(this, prefs.get(GUIOptions.OPEN_DIR), false, true, JFileChooser.FILES_AND_DIRECTORIES, filterJSON, filterSBML, filterSBGN);
     }
+    
+    // if files are provided, they are checked
     if ((files != null) && (files.length > 0)) {
       List<File> accepted = new LinkedList<File>();
       List<File> notAccepted = new LinkedList<File>();
@@ -257,6 +268,8 @@ public class EscherConverterUI extends BaseFrame {
           for (OpenedFile<EscherMap> openedFile : list) {
             // TODO: add to GUI
             logger.info(openedFile.getFile().getAbsolutePath());
+            
+            // takes care that tabs have correct names
             String title = openedFile.getDocument().getName();
             if ((title == null) || (title.length() == 0)) {
               title = openedFile.getDocument().getId();
@@ -271,6 +284,8 @@ public class EscherConverterUI extends BaseFrame {
           listOfOpenedFiles.addAll(list);
         }
       });
+      
+      // this executes doInBackground in EscherParserWorker 
       worker.execute();
       if (!notAccepted.isEmpty()) {
         logger.warning(format(
@@ -291,8 +306,9 @@ public class EscherConverterUI extends BaseFrame {
 
 
   /**
+   * Calls the correct writer depending on the format the file is to be saved as
    * @param result      can be {@link EscherMap}, {@link SBMLDocument}, or {@link Sbgn}
-   * @param destination
+   * @param destination File in which the result is to be saved
    * @throws FileNotFoundException
    */
   private <T> void saveFile(final T result, final File destination)
@@ -335,7 +351,10 @@ public class EscherConverterUI extends BaseFrame {
   }
 
 
-  /* (non-Javadoc)
+  /* 
+   * Calls a file chooser for saving. In case the output is SBML, it is converted again.
+   * The file is then saved with the correct output extension.
+   * (non-Javadoc)
    * @see de.zbit.gui.BaseFrame#saveFileAs()
    */
   @Override

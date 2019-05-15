@@ -70,6 +70,7 @@ import edu.ucsd.sbrg.escher.util.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.util.EscherOptions.OutputFormat;
 
 /**
+ * Main class of the application.
  * @author Andreas Dr&auml;ger
  * @author Devesh Khandelwal
  */
@@ -506,10 +507,10 @@ public class EscherConverter extends Launcher {
   }
 
   /**
-   * 
-   * @param is
-   * @param properties
-   * @return
+   * Parses an SBGNML input and calls a convert method to {@link EscherMap}.
+   * @param is InputStream of the SBGNML file.
+   * @param properties Command line arguments, if applicable
+   * @return The file {@code is} converted to {@link EscherMap}
    * @throws JAXBException
    */
   public static EscherMap parseSBGNML(InputStream is, SBProperties properties) throws JAXBException {

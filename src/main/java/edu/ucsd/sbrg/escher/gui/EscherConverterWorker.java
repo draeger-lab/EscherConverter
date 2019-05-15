@@ -39,9 +39,10 @@ public class EscherConverterWorker<T> extends SwingWorker<T, Void> {
   private SBProperties       properties;
 
   /**
-   * @param map
-   * @param format
-   * @param properties
+   * 
+   * @param map The {@link EscherMap} to be converted
+   * @param format The format the {@code map} is to be converted to (either {@link SBMLDocument} or {@link Sbgn})
+   * @param properties Command line arguments
    */
   public EscherConverterWorker(EscherMap map, Class<? extends T> format,
     SBProperties properties) {

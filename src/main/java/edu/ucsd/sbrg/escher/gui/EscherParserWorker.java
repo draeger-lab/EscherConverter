@@ -37,6 +37,7 @@ import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.util.EscherOptions;
 
 /**
+ * Handles by which parser a given file should be parsed depending on the format and calls convert function on it.
  * @author Andreas Dr&auml;ger
  */
 public class EscherParserWorker
@@ -54,12 +55,21 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
    * Localization support.
    */
   public static final transient ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  
+  /**
+   * (List of) input files
+   */
   private File      input[];
+  
+  /**
+   * The component which called this class.
+   */
   private Component parentComponent;
 
 
-  /**
-   * @param input
+  /** Constructor
+   * @param parentComponent The component which called this class.
+   * @param input The file which is to be parsed
    */
   public EscherParserWorker(Component parentComponent, File... input) {
     super();
@@ -69,6 +79,7 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
 
 
   /* (non-Javadoc)
+   * Selects how the input files are to be parsed depending on their format. Then calls function to convert them.
    * @see javax.swing.SwingWorker#doInBackground()
    */
   @Override
@@ -107,9 +118,10 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
 
 
   /**
-   * @param listOfFiles
-   * @param inputFile
-   * @param map
+   * Adds an input file to the list of already opened files and gives status information
+   * @param listOfFiles List of already opened files
+   * @param inputFile The just opened file
+   * @param map EscherMap of the input file
    */
   private void appendOpenedFile(List<OpenedFile<EscherMap>> listOfFiles,
     File inputFile, EscherMap map) {
@@ -120,6 +132,7 @@ extends SwingWorker<List<OpenedFile<EscherMap>>, OpenedFile<EscherMap>> {
   }
 
   /* (non-Javadoc)
+   * Shows information about current status of opening files to user
    * @see javax.swing.SwingWorker#process(java.util.List)
    */
   @Override

@@ -21,6 +21,7 @@ import javax.swing.*;
 import java.io.File;
 
 /**
+ * Writes the {@link Sbgn} into a file
  * @author Andreas Dr&auml;ger
  */
 public class SBGNWritingTask extends SwingWorker<File, Void> {
@@ -36,6 +37,7 @@ public class SBGNWritingTask extends SwingWorker<File, Void> {
 
 
   /* (non-Javadoc)
+   * Writes an Sbgn to a file
    * @see javax.swing.SwingWorker#doInBackground()
    */
   @Override
