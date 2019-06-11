@@ -14,6 +14,7 @@
 package edu.ucsd.sbrg.escher.model;
 
 /**
+ * A base class for a box with height and width
  * @author Andreas Dr&auml;ger
  */
 public interface Box extends EscherBase, Position {

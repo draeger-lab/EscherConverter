@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Base class for all Escher objects
  * @author Andreas Dr&auml;ger
  */
 public interface EscherBase extends Cloneable {

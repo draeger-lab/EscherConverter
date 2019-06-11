@@ -30,6 +30,7 @@ import de.zbit.sbml.layout.y.LayoutDirectionTask;
 import de.zbit.util.Utils;
 
 /**
+ * The panel the SBML is displayed in.
  * @author Andreas Dr&auml;ger
  */
 public class SBMLLayoutViewPanel extends JPanel {
@@ -61,8 +62,8 @@ public class SBMLLayoutViewPanel extends JPanel {
   }
 
   /**
-   * 
-   * @param layout
+   * Draws a given layout, using the SysBio library
+   * @param layout A {@link Layout} from an {@link SBMLDocument}
    */
   public void setSBMLLayout(Layout layout) {
     logger.fine(format("Received layout with id=''{0}''.", layout.getId()));

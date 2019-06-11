@@ -31,6 +31,7 @@ import de.zbit.util.prefs.SBProperties;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 
 /**
+ * An EscherMap needs first be converted into an {@link SBMLDocument} which can then be displayed
  * @author Andreas Dr&auml;ger
  */
 public class EscherMapDisplay extends JPanel {
@@ -44,13 +45,13 @@ public class EscherMapDisplay extends JPanel {
    */
   private OpenedFile<EscherMap> openedFile;
   /**
-   *
+   * The {@link SBMLDocument} which is actually displayed.
    */
   private SBMLDocument          doc;
 
   /**
-   * @param openedFile
-   * @param properties
+   * @param openedFile The opened {@link EscherMap} file
+   * @param properties Command line arguments
    */
   public EscherMapDisplay(OpenedFile<EscherMap> openedFile, SBProperties properties) {
     this.openedFile = openedFile;

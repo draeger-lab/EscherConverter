@@ -26,6 +26,7 @@ import de.zbit.util.prefs.OptionGroup;
 import de.zbit.util.prefs.Range;
 
 /**
+ * Input and output options
  * @author Andreas Dr&auml;ger
  */
 public interface EscherIOOptions extends KeyProvider {
