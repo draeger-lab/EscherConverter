@@ -33,6 +33,7 @@
 		<jackson.version>2.7.4</jackson.version>
 		<powermock.version>1.6.5</powermock.version>
 		<organization.name>University of Tübingen</organization.name>
+		<dependency.locations.enabled>false</dependency.locations.enabled>
 	</properties>
 
 	<organization>
@@ -65,6 +66,12 @@
 			<name>Devesh Khandelwal</name>
 			<url>https://github.com/devkhan</url>
 			<id>devkhan</id>
+		</developer>
+		<developer>
+			<email>mabuwu83@gmail.com</email>
+			<name>Maria Heitmeier</name>
+			<url>https://github.com/MariaHei</url>
+			<id>MariaHei</id>
 		</developer>
 	</developers>
 
@@ -361,15 +368,15 @@
 		<outputDirectory>target/site</outputDirectory>
 		<plugins>
 			<!--  Generation of the Javadoc -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.3</version>
 				<configuration>
 					<overview>${project.basedir}/src/main/javadoc/overview.html</overview>
 				</configuration>
-			</plugin>
-			<!-- Generation of project information for the website -->
+			</plugin> -->
+			<!-- Generation of project information for the website (run mvn:site with outcommented maven-javadoc-plugin) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
