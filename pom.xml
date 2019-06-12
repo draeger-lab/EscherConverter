@@ -32,7 +32,7 @@
 		<quaqua.version>9</quaqua.version>
 		<jackson.version>2.7.4</jackson.version>
 		<powermock.version>1.6.5</powermock.version>
-		<organization.name>University of California, San Diego</organization.name>
+		<organization.name>University of Tübingen</organization.name>
 	</properties>
 
 	<organization>
@@ -55,7 +55,7 @@
 
 	<developers>
 		<developer>
-			<email>andraeger@eng.ucsd.edu</email>
+			<email>draeger@informatik.uni-tuebingen.de</email>
 			<name>Andreas Dräger</name>
 			<url>https://github.com/draeger/</url>
 			<id>draeger</id>
