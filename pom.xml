@@ -360,7 +360,7 @@
 	<reporting>
 		<outputDirectory>target/site</outputDirectory>
 		<plugins>
-		<!-- 
+			<!--  Generation of the Javadoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -369,7 +369,7 @@
 					<overview>${project.basedir}/src/main/javadoc/overview.html</overview>
 				</configuration>
 			</plugin>
-			-->
+			<!-- Generation of project information for the website -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
