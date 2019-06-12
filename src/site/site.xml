@@ -2,20 +2,32 @@
 <project name="EscherConverter">
   <bannerLeft>
     <name>EscherConverter</name>
-    <src></src>
+    <height>500</height>
+    <width>1000</width>
   </bannerLeft>
+
+  <bannerRight>
+    <src>images/escher-logo_128.png</src>
+  </bannerRight>
   <body>
     <links>
-      <item name="Javadoc" href="javadoc/index.html" />
+      <item name="Javadoc" href="java/index.html" />
+      <item name="Escher" href="https://escher.github.io/#/"/>
     </links>
 
     <menu name="Menu">
       <item name="Introduction and How To" href="index.html"/>
-      <item name="Documentation Javadoc" href="javadoc/index.html"/>
+      <item name="Documentation Javadoc" href="java/index.html"/>
+      <item name="Escher" href="https://escher.github.io/#/"/>
       
     </menu>
 
     <menu ref="reports"/>
 
   </body>
+    <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.7</version>
+  </skin>
 </project>

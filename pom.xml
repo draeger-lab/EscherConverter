@@ -1,373 +1,386 @@
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.ucsd.sbrg</groupId>
-  <artifactId>EscherConverter</artifactId>
-  
-  <!-- Output to jar format -->
-  <packaging>jar</packaging>
-  
-  
-  <!-- =================================================================== -->
-  <!-- General project information                                         -->
-  <!-- =================================================================== -->
-  
-  <name>${project.artifactId}</name>
-  <version>1.2.0</version>
-  <url>https://github.com/SBRG/EscherConverter</url>
-  <inceptionYear>2015</inceptionYear>
-  <description>EscherConverter is a stand-alone program that reads files created with the graphical network editor Escher and converts them to files in community standard formats.</description>
-  
-  <properties>
-    <jdk.version>1.8</jdk.version>
-    <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
-    <year>${maven.build.timestamp}</year><!-- This property is used for filtering the variable ${year} in some resource files -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
-    <junit.version>4.12</junit.version>
-    <sbgn.version>0.2</sbgn.version>
-    <sysbio.version>1403</sysbio.version> <!-- SVN revision -->
-    <quaqua.version>9</quaqua.version>
-    <jackson.version>2.7.4</jackson.version>
-    <powermock.version>1.6.5</powermock.version>
-    <organization.name>University of California, San Diego</organization.name>
-  </properties>
-  
-  <organization>
-    <name>${organization.name}</name>
-    <url>http://sbrg.ucsd.edu</url>
-  </organization>
-  
-  <issueManagement>
-    <url>https://github.com/SBRG/EscherConverter/issues</url>
-    <system>GitHub Issues</system>
-  </issueManagement>
-  
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>${project.license.url}</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  
-  <developers>
-    <developer>
-      <email>andraeger@eng.ucsd.edu</email>
-      <name>Andreas Dräger</name>
-      <url>https://github.com/draeger/</url>
-      <id>draeger</id>
-    </developer>
-    <developer>
-      <email>devesh.khandelwal@outlook.com</email>
-      <name>Devesh Khandelwal</name>
-      <url>https://github.com/devkhan</url>
-      <id>devkhan</id>
-    </developer>
-  </developers>
-  
-  
-  <!-- =================================================================== -->
-  <!-- Repositories -->
-  <!-- =================================================================== -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <repositories>
-    <!-- Local libraries are an in-project repository -->
-    <!-- Add the dependencies and put them in -->
-    <!-- ${project.basedir}/lib/groupId/artifactId/version/ -->
-    <repository>
-      <id>libs</id>
-      <url>file://${project.basedir}/lib</url>
-    </repository>
-  </repositories>
-  
-  <!-- =================================================================== -->
-  <!-- Dependencies                                                        -->
-  <!-- =================================================================== -->
-  
-  <dependencies>
-    
-    <!-- To update or install local non-MAVEN JAR files run the command in the comments -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope></scope>
-    </dependency>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.ucsd.sbrg</groupId>
+	<artifactId>EscherConverter</artifactId>
 
-    <dependency>
-      <groupId>org.apache.maven.surefire</groupId>
-      <artifactId>surefire-junit4</artifactId>
-      <version>2.19.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.sbml.jsbml</groupId>
-      <artifactId>jsbml</artifactId>
-      <version>1.4</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org</groupId>
-      <artifactId>sbgn</artifactId>
-      <version>${sbgn.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.googlecode.json-simple</groupId>
-      <artifactId>json-simple</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>de.zbit</groupId>
-      <artifactId>SysBio</artifactId>
-      <version>${sysbio.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>ch.randelshofer</groupId>
-      <artifactId>quaqua</artifactId>
-      <version>${quaqua.version}</version>
-    </dependency>
+	<!-- Output to jar format -->
+	<packaging>jar</packaging>
 
-    <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>${jackson.version}</version>
-    </dependency>
 
-    <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>${jackson.version}</version>
-    </dependency>
+	<!-- =================================================================== -->
+	<!-- General project information -->
+	<!-- =================================================================== -->
 
-    <!-- https://mvnrepository.com/artifact/com.github.fge/json-schema-validator -->
-    <dependency>
-      <groupId>com.github.fge</groupId>
-      <artifactId>json-schema-validator</artifactId>
-      <version>2.2.6</version>
-    </dependency>
+	<name>${project.artifactId}</name>
+	<version>1.2.0</version>
+	<url>https://github.com/SBRG/EscherConverter</url>
+	<inceptionYear>2015</inceptionYear>
+	<description>EscherConverter is a stand-alone program that reads files created with the graphical network editor Escher and converts them to files in community standard formats.</description>
 
-    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.10.19</version>
-      <scope>test</scope>
-    </dependency>
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+		<year>${maven.build.timestamp}</year><!-- This property is used for filtering 
+			the variable ${year} in some resource files -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
+		<junit.version>4.12</junit.version>
+		<sbgn.version>0.2</sbgn.version>
+		<sysbio.version>1403</sysbio.version> <!-- SVN revision -->
+		<quaqua.version>9</quaqua.version>
+		<jackson.version>2.7.4</jackson.version>
+		<powermock.version>1.6.5</powermock.version>
+		<organization.name>University of California, San Diego</organization.name>
+	</properties>
 
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
+	<organization>
+		<name>${organization.name}</name>
+		<url>http://sbrg.ucsd.edu</url>
+	</organization>
 
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-mockito</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
+	<issueManagement>
+		<url>https://github.com/SBRG/EscherConverter/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
 
-    <dependency>
-      <groupId>pl.pragmatists</groupId>
-      <artifactId>JUnitParams</artifactId>
-      <version>1.0.5</version>
-      <scope>test</scope>
-    </dependency>
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>${project.license.url}</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-    <!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-      <version>1.1.3</version>
-    </dependency>
+	<developers>
+		<developer>
+			<email>andraeger@eng.ucsd.edu</email>
+			<name>Andreas Dräger</name>
+			<url>https://github.com/draeger/</url>
+			<id>draeger</id>
+		</developer>
+		<developer>
+			<email>devesh.khandelwal@outlook.com</email>
+			<name>Devesh Khandelwal</name>
+			<url>https://github.com/devkhan</url>
+			<id>devkhan</id>
+		</developer>
+	</developers>
 
-  </dependencies>
-  
-  
-  <!-- =================================================================== -->
-  <!-- Building                                                            -->
-  <!-- =================================================================== -->
-  
-  <!-- To build the project run: -->
-  <!-- mvn clean compile package assembly:single -->
-  
-  <build>
-  
-    <finalName>${project.artifactId}-${project.version}</finalName>
-    
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-      <resource>
-                <directory>${project.build.directory}/site/</directory>
-                <targetPath>${basedir}/docs/</targetPath>
-        </resource>
-    </resources>
-    
-    <pluginManagement>
-    
-      <plugins>
-      
-        <!-- Download source code in Eclipse, best practice [OPTIONAL!] -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-eclipse-plugin</artifactId>
-          <version>2.9</version>
-          <configuration>
-            <downloadSources>true</downloadSources>
-            <downloadJavadocs>false</downloadJavadocs>
-          </configuration>
-        </plugin>
-      
-        <!-- Set a JDK compiler level -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.3</version>
-          <configuration>
-            <source>${jdk.version}</source>
-            <target>${jdk.version}</target>
-          </configuration>
-        </plugin>
-        
-        <!-- This lets us include a splash screen through Maven. -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifestEntries>
-                <SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
-              </manifestEntries>
-            </archive>
-          </configuration>
-        </plugin>
-        
-        <!-- Assemble executable JAR -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.6</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              </manifest>
-              <manifestEntries>
-                <SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
-              </manifestEntries>
-            </archive>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <finalName>${project.artifactId}-${project.version}</finalName>
-            <appendAssemblyId>false</appendAssemblyId>
-            <!--<descriptor>assembly.xml</descriptor>--> <!-- Details of the assembly are described in this file -->
-          </configuration>
-          <executions>
-            <execution>
-              <id>make-assembly</id> <!-- this is used for inheritance merges -->
-              <phase>package</phase> <!-- bind to the packaging phase -->
-              <goals>
-                <!-- This will create a JAR with all dependencies -->
-                <!-- mvn clean compile assembly:single -->
-                <goal>single</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        
-        <!-- Website -->
-         <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.7.1</version>
-        <configuration>
-                <locales>en</locales>
-        </configuration>
-        <executions>
-                <execution>
-                        <id>attach-descriptor</id>
-                        <goals>
-                                <goal>attach-descriptor</goal>
-                        </goals>
-                </execution>
-        </executions>
-        <dependencies>
-                <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.7</version>
-                </dependency>
-        </dependencies>
- </plugin> 
 
-        <!-- Run tests -->
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.surefire</groupId>
-              <artifactId>surefire-junit4</artifactId>
-              <version>2.19.1</version>
-            </dependency>
-          </dependencies>
-          <configuration>
-            <systemProperties>
-              <property>
-                <name>java.util.logging.config.file</name>
-                <value>logging.properties</value>
-              </property>
-            </systemProperties>
-          </configuration>
-        </plugin>
-        
-        <plugin>
-        <artifactId>maven-resources-plugin</artifactId> 
-        <version>2.7</version>
-        <configuration>
-        </configuration>
- </plugin>
-        
-      </plugins>
-    </pluginManagement>
-  
-  </build>
-  
-  
-  <!-- =================================================================== -->
-  <!-- Building project documentation files                                -->
-  <!-- =================================================================== -->
-  
-  <!-- see https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.3</version>
-        <configuration>
-          <overview>${project.basedir}/src/main/javadoc/overview.html</overview>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-  
+	<!-- =================================================================== -->
+	<!-- Repositories -->
+	<!-- =================================================================== -->
+
+	<repositories>
+		<!-- Local libraries are an in-project repository -->
+		<!-- Add the dependencies and put them in -->
+		<!-- ${project.basedir}/lib/groupId/artifactId/version/ -->
+		<repository>
+			<id>libs</id>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+	</repositories>
+
+	<!-- =================================================================== -->
+	<!-- Dependencies -->
+	<!-- =================================================================== -->
+
+	<dependencies>
+
+		<!-- To update or install local non-MAVEN JAR files run the command in 
+			the comments -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope></scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-junit4</artifactId>
+			<version>2.19.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sbml.jsbml</groupId>
+			<artifactId>jsbml</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org</groupId>
+			<artifactId>sbgn</artifactId>
+			<version>${sbgn.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.zbit</groupId>
+			<artifactId>SysBio</artifactId>
+			<version>${sysbio.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.randelshofer</groupId>
+			<artifactId>quaqua</artifactId>
+			<version>${quaqua.version}</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.fge/json-schema-validator -->
+		<dependency>
+			<groupId>com.github.fge</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>2.2.6</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<version>1.0.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+
+	</dependencies>
+
+
+	<!-- =================================================================== -->
+	<!-- Building -->
+	<!-- =================================================================== -->
+
+	<!-- To build the project run: -->
+	<!-- mvn clean compile package assembly:single -->
+
+	<build>
+
+		<finalName>${project.artifactId}-${project.version}</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>${project.build.directory}/site/</directory>
+				<targetPath>${basedir}/docs/</targetPath>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<!-- Download source code in Eclipse, best practice [OPTIONAL!] -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>false</downloadJavadocs>
+					</configuration>
+				</plugin>
+
+				<!-- Set a JDK compiler level -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
+
+				<!-- This lets us include a splash screen through Maven. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<!-- Assemble executable JAR -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+							<manifestEntries>
+								<SplashScreen-Image>edu/ucsd/sbrg/escher/gui/EscherSplash.gif</SplashScreen-Image>
+							</manifestEntries>
+						</archive>
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
+						<finalName>${project.artifactId}-${project.version}</finalName>
+						<appendAssemblyId>false</appendAssemblyId>
+						<!--<descriptor>assembly.xml</descriptor> --> <!-- Details of the assembly are described in this file -->
+					</configuration>
+					<executions>
+						<execution>
+							<id>make-assembly</id> <!-- this is used for inheritance merges -->
+							<phase>package</phase> <!-- bind to the packaging phase -->
+							<goals>
+								<!-- This will create a JAR with all dependencies -->
+								<!-- mvn clean compile assembly:single -->
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Website -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+					<configuration>
+						<locales>en</locales>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-descriptor</id>
+							<goals>
+								<goal>attach-descriptor</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>1.7</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- Run tests -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.19.1</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit4</artifactId>
+							<version>2.19.1</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<systemProperties>
+							<property>
+								<name>java.util.logging.config.file</name>
+								<value>logging.properties</value>
+							</property>
+						</systemProperties>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+
+	<!-- =================================================================== -->
+	<!-- Building project documentation files -->
+	<!-- =================================================================== -->
+
+	<!-- see https://maven.apache.org/plugins/maven-javadoc-plugin/examples/javadoc-resources.html -->
+	<reporting>
+		<outputDirectory>target/site</outputDirectory>
+		<plugins>
+			<!--  Generation of the Javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.3</version>
+				<configuration>
+					<overview>${project.basedir}/src/main/javadoc/overview.html</overview>
+				</configuration>
+			</plugin>
+			<!-- Generation of project information for the website -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+			
+			</plugin>
+
+		</plugins>
+
+	</reporting>
+
+
+
 </project>
