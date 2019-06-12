@@ -7,7 +7,7 @@
   </bannerLeft>
 
   <bannerRight>
-    <src>https://github.com/draeger-lab/EscherConverter/blob/master/src/main/resources/edu/ucsd/sbrg/escher/gui/escher-logo_256.png</src>
+    <src>images/escher-logo_128.png</src>
   </bannerRight>
   <body>
     <links>
