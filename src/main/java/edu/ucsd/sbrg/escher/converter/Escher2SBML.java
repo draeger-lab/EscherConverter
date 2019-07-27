@@ -166,6 +166,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   private void convertNode(Node node, EscherMap escherMap,
     Map<String, String> node2glyph, Map<String, Node> multimarkers,
     Layout layout, double xOffset, double yOffset) {
+	  
     if (node.isSetType()) {
       switch (node.getType()) {
       case metabolite:
@@ -266,9 +267,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     Map<String, SpeciesReferenceGlyph> srgMap = new HashMap<String, SpeciesReferenceGlyph>();
     for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
       Metabolite metabolite = entry.getValue();
+      if (metabolite.getId() != null){
       // Each metabolite can be represented in multiple nodes, so we need to find those in this reaction, but also these can be multiple...
       Set<Node> setOfNodes = escherReaction.intersect(escherMap.getNodes(metabolite.getId()));
       srgMap.putAll(createSpeciesReferenceGlyphs(metabolite, setOfNodes, layout, node2glyph, rGlyph, reaction));
+      }
     }
     // Create a set of all segments to be processed
     Set<Segment> segments = new HashSet<Segment>();
@@ -278,6 +281,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       Node toNode = escherMap.getNode(segment.getToNodeId());
       SpeciesReferenceGlyph srGlyph = null;
       boolean isProduct = false;
+      if(toNode!=null && fromNode!=null){
       if (fromNode.isMetabolite()) {
         srGlyph = srgMap.get(fromNode.getBiggId());
         //				if (!fromNode.isSetBiggId() || (escherReaction.getMetabolite(fromNode.getBiggId()) == null) || !escherReaction.getMetabolite(fromNode.getBiggId()).isSetCoefficient()) {
@@ -309,6 +313,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
           isProduct = true;
         }
       }
+    }
       if (srGlyph != null) {
         LineSegment ls = convertSegment(segment, escherMap, srGlyph.createCurve(), xOffset, yOffset);
         // memorize the toNode id of the segment in the lineSegment to make access easier later on.
@@ -674,7 +679,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       sGlyph = layout.getSpeciesGlyph(node2glyph.get(node.getId()));
       if (sGlyph != null) {
         String srGlyphId = reaction.getId() + "_srg_" + metabolite.getId();
+        srGlyphId = srGlyphId.replaceAll("\\+", "");
         if (model.containsUniqueNamedSBase(srGlyphId)) {
+        	
           int i = 0;
           do {
             i++;
@@ -684,6 +691,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
             metabolite.getId(), reaction.getId(), ++i));
         }
         SpeciesReferenceGlyph srGlyph = rGlyph.createSpeciesReferenceGlyph(SBMLtools.toSId(srGlyphId), sGlyph.getId());
+        
         sGlyph.putUserObject(ESCHER_NODE_LINK, node);
         // Create the core object for this species reference
         SimpleSpeciesReference ssr = null;
@@ -968,6 +976,12 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       model.setName(escherMap.getName());
     }
     LayoutModelPlugin layoutPlugin = (LayoutModelPlugin) model.getPlugin(LayoutConstants.shortLabel);
+    if(model.getId().equals(layoutId)){
+    	String layoutIdOld = layoutId;
+    	layoutId = layoutId + "_1";
+    	logger.warning(format(bundle.getString("Escher2SBML.layoutIDnotunique"), layoutIdOld, layoutId,
+    	         model.getId()));
+    }
     Layout layout = layoutPlugin.createLayout(layoutId);
     layout.setName(layoutName);
     layout.createDimensions(width, height, nodeDepth);

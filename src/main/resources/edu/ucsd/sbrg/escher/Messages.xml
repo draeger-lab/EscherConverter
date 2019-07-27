@@ -107,6 +107,7 @@
   <entry key="Escher2SBML.glyphIdNull">SpeciesGlyph for id=\"{0}\" is null.</entry>
   <entry key="Escher2SBML.textLabelIdNotUnique">Found text label with id=''{0}'' that is identical to the id of a {1}</entry>
   <entry key="Escher2SBML.reactionCompartmentUnknown">Could not identify compartment of reaction {0}</entry>
+  <entry key="Escher2SBML.layoutIDnotunique">Layout identifier {0} changed to {1} as it is the same as model's id {2}.</entry>
   
   <entry key="Escher2Standard.reversed_segment">Reversed direction of segment {0}: {1} -> {2}.</entry>
   <entry key="Escher2Standard.node_lacking_metabolite">Node ''{0}'' in reaction ''{1}'' lacks a corresponding metabolite.</entry>
