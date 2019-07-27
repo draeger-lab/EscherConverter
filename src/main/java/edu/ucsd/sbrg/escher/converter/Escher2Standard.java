@@ -232,7 +232,15 @@ public abstract class Escher2Standard<T> {
       Segment segment = entry.getValue();
       Node fromNode = escherMap.getNode(segment.getFromNodeId());
       Node toNode = escherMap.getNode(segment.getToNodeId());
+      
       Node srGlyph = null;
+      if(toNode == null){
+    	  logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
+    			  segment.getToNodeId(), reaction.getBiggId()));
+      }else if (fromNode == null){
+    	  logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
+    			  segment.getFromNodeId(), reaction.getBiggId()));
+      }else{
       if (fromNode.isMetabolite()) {
         srGlyph = escherMap.getNode(fromNode.getId());
         Metabolite metabolite = reaction.getMetabolite(fromNode.getBiggId());
@@ -258,6 +266,7 @@ public abstract class Escher2Standard<T> {
         // Here we have no information about directionality and just keep it as given.
         fromNode.addConnectedSegment(reaction.getId(), segment);
         toNode.addConnectedSegment(reaction.getId(), segment);
+      }
       }
       if (srGlyph != null) {
         List<String>

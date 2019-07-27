@@ -114,6 +114,7 @@
   <entry key="Escher2Standard.inconsistent_data_structure">Inconsistent data structure! Glyph ''{0}'' does not contain pointer to segment ''{1}''.</entry>
   <entry key="Escher2Standard.multiple_arcs">Data structure indicates that glyph ''{0}'' participates in reaction ''{1}'' with multiple arcs: {1}.</entry>
   <entry key="Escher2Standard.metabolite_lacking_node">Metabolite ''{0}'' in reaction ''{1}'' lacks a corresponding node.</entry>
+  <entry key="Escher2Standard.missing_node">Node ''{0}'' cannot be found in reaction ''{1}''.</entry>
   
   <entry key="EscherCompartment.invalidId">Invalid compartment identifier ''{0}''.</entry>
   
