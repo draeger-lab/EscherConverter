@@ -107,12 +107,14 @@
   <entry key="Escher2SBML.glyphIdNull">SpeciesGlyph for id=\"{0}\" is null.</entry>
   <entry key="Escher2SBML.textLabelIdNotUnique">Found text label with id=''{0}'' that is identical to the id of a {1}</entry>
   <entry key="Escher2SBML.reactionCompartmentUnknown">Could not identify compartment of reaction {0}</entry>
+  <entry key="Escher2SBML.layoutIDnotunique">Layout identifier {0} changed to {1} as it is the same as model's id {2}.</entry>
   
   <entry key="Escher2Standard.reversed_segment">Reversed direction of segment {0}: {1} -> {2}.</entry>
   <entry key="Escher2Standard.node_lacking_metabolite">Node ''{0}'' in reaction ''{1}'' lacks a corresponding metabolite.</entry>
   <entry key="Escher2Standard.inconsistent_data_structure">Inconsistent data structure! Glyph ''{0}'' does not contain pointer to segment ''{1}''.</entry>
   <entry key="Escher2Standard.multiple_arcs">Data structure indicates that glyph ''{0}'' participates in reaction ''{1}'' with multiple arcs: {1}.</entry>
   <entry key="Escher2Standard.metabolite_lacking_node">Metabolite ''{0}'' in reaction ''{1}'' lacks a corresponding node.</entry>
+  <entry key="Escher2Standard.missing_node">Node ''{0}'' cannot be found in reaction ''{1}''.</entry>
   
   <entry key="EscherCompartment.invalidId">Invalid compartment identifier ''{0}''.</entry>
   
