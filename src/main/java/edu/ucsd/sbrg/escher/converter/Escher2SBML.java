@@ -102,6 +102,8 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     Canvas canvas = map.getCanvas();
     double xOffset = canvas.isSetX() ? canvas.getX().doubleValue() : 0d;
     double yOffset = canvas.isSetY() ? canvas.getY().doubleValue() : 0d;
+    double canvasWidth = canvas.getWidth();
+    double canvasHeight = canvas.getWidth();
     Map<String, String> node2glyph = new HashMap<String, String>();
     Map<String, Node> multimarkers = new HashMap<String, Node>();
     Layout layout = initLayout(map, xOffset, yOffset);
@@ -119,7 +121,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         String id = entry.getKey();
         if (!(id.equalsIgnoreCase("n") || id.equalsIgnoreCase(getDefaultCompartmentId())
             || id.equalsIgnoreCase("e"))) {
-          createCompartmentGlyph(entry.getValue(), layout, xOffset, yOffset);
+          createCompartmentGlyph(entry.getValue(), layout, xOffset, yOffset, canvasWidth, canvasHeight);
         }
       }
     }
@@ -137,11 +139,44 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @param yOffset y-offset.
    */
   private void createCompartmentGlyph(EscherCompartment ec, Layout layout,
-    double xOffset, double yOffset) {
+    double xOffset, double yOffset, double canvasWidth, double canvasHeight) {
+	//TODO
+	//for now, if no x and y coordinates are available, the compartment is set around all nodes
     CompartmentGlyph cg = layout.createCompartmentGlyph(ec.getId() + "_glyph");
-    double x = ec.getX() - xOffset - getPrimaryNodeWidth();
-    double y = ec.getY() - yOffset - getPrimaryNodeHeight();
-    cg.createBoundingBox(ec.getWidth(), ec.getHeight(), getNodeDepth(), x, y, getZ());
+    double x;
+    double y; 
+    double width; 
+    double height; 
+    if(ec.getX()==null){
+    	x = xOffset;
+    	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
+      	      ec.getName(), "x-offset", "x-offset of the canvas: "+ xOffset));
+    }else{
+    	x= ec.getX() - xOffset - getPrimaryNodeWidth();
+    	
+    }
+    if(ec.getY()==null){
+    	y = yOffset;
+    	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
+      	      ec.getName(), "y-offset", "y-offset of the canvas: "+yOffset));
+    }else{
+    	y= ec.getY() - yOffset - getPrimaryNodeWidth();
+    }
+    if(ec.getWidth()==null ){
+    	width = canvasWidth;
+    	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
+      	      ec.getName(), "the width", "the width of the canvas: "+canvasWidth));
+    }else{
+    	width = ec.getWidth();
+    }
+    if(ec.getHeight()==null ){
+    	height = canvasHeight;
+    	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
+        	      ec.getName(), "the height", "the height of the canvas: "+canvasHeight));
+    }else{
+    	height = ec.getHeight();
+    }
+    cg.createBoundingBox(width, height, getNodeDepth(), x, y, getZ());
     cg.setCompartment(SBMLtools.toSId(ec.getId()));
     NamedSBase compartment = cg.getCompartmentInstance();
     if ((compartment != null) && compartment.isSetName()) {
@@ -150,6 +185,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       text.createBoundingBox(compartment.getName().length() * 5d,
         getNodeLabelHeight(), getNodeDepth(), x, y, getZ());
     }
+    
   }
 
 
