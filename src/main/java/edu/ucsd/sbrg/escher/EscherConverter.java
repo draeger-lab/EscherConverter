@@ -693,7 +693,9 @@ public class EscherConverter extends Launcher {
           }
           try {
             if (!file.exists()) {
-              file.getParentFile().mkdirs();
+            	if(file.getParentFile() != null){
+            		file.getParentFile().mkdirs();
+            	}
               file.createNewFile();
             }
             writeEscherJson(map, file);
