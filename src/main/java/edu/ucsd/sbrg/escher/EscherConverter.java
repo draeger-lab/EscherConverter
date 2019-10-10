@@ -228,6 +228,10 @@ public class EscherConverter extends Launcher {
     // An Escher array contains meta-info about the map as the first object and the actual map as
     // second map.
     JsonNode escherJson = objectMapper.readTree(stream);
+    if(escherJson.get(0) == null) {
+      logger.severe(format(bundle.getString("EscherConverter.missingMetaInfo")));
+      throw new IOException("Missing or misplaced meta-info: File is malformatted"){};
+    }
     // Meta-info.
     EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
     // Layout map (nodes, reactions, text labels and canvas info).

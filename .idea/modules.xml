@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EscherConverter.iml" filepath="$PROJECT_DIR$/.idea/EscherConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/EscherConverter.iml" filepath="$PROJECT_DIR$/EscherConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
     </modules>

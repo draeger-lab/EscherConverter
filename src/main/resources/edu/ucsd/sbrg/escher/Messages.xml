@@ -123,6 +123,7 @@
   <entry key="EscherConverter.launchingBatchProcessing">Launching batch processing of {0}.</entry>
   <entry key="EscherConverter.incompleteCMDArgs">Incomplete command-line argument list. Please make sure to provide at least an input and an output file. Nothing to do.</entry>
   <entry key="EscherConverter.readingFile">Reading input file {0}.</entry>
+  <entry key="EscherConverter.missingMetaInfo">Missing or misplaced meta-info: File seems to be malformatted.</entry>
   <entry key="EscherConverter.validationErrors">There are {0,number,integer} validation problems.</entry>
   <entry key="EscherConverter.creatingDir">Creating directory {0}.</entry>
   <entry key="EscherConverter.cannotWriteToFile">"Batch processing requires an output directory to be given. Cannot write to file {0}.</entry>
