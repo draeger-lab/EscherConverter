@@ -177,6 +177,7 @@
   <entry key="JSONSchemaValid">JSON Schema validator successful</entry>
   <entry key="JSONSchemaInvalid">JSON Schema validator unsuccessful</entry>
   <entry key="EscherValidationFail">Not a valid Escher file</entry>
+  <entry key="EscherValidationFail.NotJson">Not a valid Escher nor a valid JSON file (empty file)</entry>
   <entry key="SBGNLanguageUnspecified">No language specified on SBGN file. Can't validate</entry>
   <entry key="ConvertM1toM2">Milestone 1 file found, converting to Milestone 2</entry>
   <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please try to convert it manually</entry>
