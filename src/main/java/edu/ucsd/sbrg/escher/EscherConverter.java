@@ -446,9 +446,12 @@ public class EscherConverter extends Launcher {
       if (!validateInput(input, inputFormat)) {
         logger.warning(bundle.getString("ValidationFailed"));
 
-        // TODO: Replace condition variable to a --ignore-validation variable.
-        if (true) {
+        // Unless the --ignore-validation option has been set to true, do not continue
+        if (properties.getBoolean(EscherOptions.IGNORE_VALIDATION)) {
           logger.warning(bundle.getString("ValidationSkip"));
+        } else {
+          logger.warning(bundle.getString("ValidationAbort"));
+          return;
         }
       }
 
