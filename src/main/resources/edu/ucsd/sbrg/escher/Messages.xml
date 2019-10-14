@@ -224,6 +224,7 @@
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
   <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating coordinates</entry>
   <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
+    <entry key="SRGToMultiMarkersNullRole">species reference glyph ({0}) had no assigned role. Its role was set to undefinded.</entry>
   <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
   <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label coordinates</entry>
