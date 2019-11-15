@@ -36,45 +36,51 @@
             <dimensions width="270" height="20"/>
           </boundingBox>
         </speciesGlyph>
+		<speciesGlyph id="glyph_F6P" species="Fructose-6-phosphate">
+          <boundingBox id="bb_06">
+            <position x="50" y="400"/>
+            <dimensions width="270" height="20"/>
+          </boundingBox>
+        </speciesGlyph>
       </listOfSpeciesGlyphs>
       <listOfReactionGlyphs>
         <reactionGlyph id="glyph_Hexokinase" reaction="Hexokinase">
           <curve>
             <listOfCurveSegments>
-              <lineSegment>
+              <curveSegment type="LineSegment">
                 <start x="170" y="100">
                 </start>
                 <end x="170" y="130">
                 </end>
-              </lineSegment>
+              </curveSegment>
             </listOfCurveSegments>
           </curve>
           <listOfSpeciesReferenceGlyphs>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_01" speciesReference="ref_Gluc" speciesGlyph="glyph_Gluc" role="1">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_01" speciesReference="ref_Gluc" speciesGlyph="glyph_Gluc" role="substrate">
               <curve>
                 <listOfCurveSegments>
-                  <lineSegment>
+                  <curveSegment type="LineSegment">
                     <start x="170" y="100">
                     </start>
                     <end x="170" y="50">
                     </end>
-                  </lineSegment>
+                  </curveSegment>
                 </listOfCurveSegments>
               </curve>
             </speciesReferenceGlyph>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_11" speciesReference="ref_G6P_1" speciesGlyph="glyph_G6P" role="2">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_11" speciesReference="ref_G6P_1" speciesGlyph="glyph_G6P" role="product">
               <curve>
                 <listOfCurveSegments>
-                  <lineSegment>
+                  <curveSegment type="LineSegment">
                     <start x="170" y="130">
                     </start>
                     <end x="170" y="180">
                     </end>
-                  </lineSegment>
+                  </curveSegment>
                 </listOfCurveSegments>
               </curve>
             </speciesReferenceGlyph>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_22" speciesReference="ref_ATP_1" speciesGlyph="glyph_ATP_1" role="3">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_22" speciesReference="ref_ATP_1" speciesGlyph="glyph_ATP_1" role="sidesubstrate">
               <curve>
                 <listOfCurveSegments>
                   <cubicBezier>
@@ -90,7 +96,7 @@
                 </listOfCurveSegments>
               </curve>
             </speciesReferenceGlyph>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_23" speciesReference="ref_ADP_1" speciesGlyph="glyph_ADP_1" role="4">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_23" speciesReference="ref_ADP_1" speciesGlyph="glyph_ADP_1" role="sideproduct">
               <curve>
                 <listOfCurveSegments>
                   <cubicBezier>
@@ -111,36 +117,36 @@
         <reactionGlyph id="glyph_PGIsomerase" reaction="Phosphoglucoseisomerase">
           <curve>
             <listOfCurveSegments>
-              <lineSegment>
+              <curveSegment type="LineSegment">
                 <start x="170" y="270">
                 </start>
                 <end x="170" y="300">
                 </end>
-              </lineSegment>
+              </curveSegment>
             </listOfCurveSegments>
           </curve>
           <listOfSpeciesReferenceGlyphs>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_02" speciesReference="ref_G6P_2" speciesGlyph="glyph_G6P" role="1">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_02" speciesReference="ref_G6P_2" speciesGlyph="glyph_G6P" role="substrate">
               <curve>
                 <listOfCurveSegments>
-                  <lineSegment>
+                  <curveSegment type="LineSegment">
                     <start x="170" y="270">
                     </start>
                     <end x="170" y="220">
                     </end>
-                  </lineSegment>
+                  </curveSegment>
                 </listOfCurveSegments>
               </curve>
             </speciesReferenceGlyph>
-            <speciesReferenceGlyph id="SpeciesReferenceGlyph_12" speciesReference="ref_F6P_1" speciesGlyph="glyph_F6P" role="2">
+            <speciesReferenceGlyph id="SpeciesReferenceGlyph_12" speciesReference="ref_F6P_1" speciesGlyph="glyph_F6P" role="product">
               <curve>
                 <listOfCurveSegments>
-                  <lineSegment>
+                  <curveSegment type="LineSegment">
                     <start x="170" y="300">
                     </start>
                     <end x="170" y="350">
                     </end>
-                  </lineSegment>
+                  </curveSegment>
                 </listOfCurveSegments>
               </curve>
             </speciesReferenceGlyph>
