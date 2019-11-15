@@ -37,7 +37,7 @@
   <entry key="EXTRACT_COBRA">Extract CoBRA model from SBML.</entry>
   <entry key="EXTRACT_COBRA_TOOLTIP">If SBMl file is FBC compliant, then extract COBRA model from it. Defaults to false.</entry>
   <entry key="IGNORE_VALIDATION">Ignore the result of input-file validation.</entry>
-  <entry key="IGNORE_VALIDATION_TOOLTIP">Forces the program to try to convert files judged invalid.</entry>
+  <entry key="IGNORE_VALIDATION_TOOLTIP">Forces the program to try to convert files judged invalid. No guarantee that anything sensible will happen or the program will even terminate: Only use this if you are certain that the file is valid</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS">Infer compartment boundaries</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS_TOOLTIP">This converter can infer where the boundaries of compartments could be drawn. To this end, it uses each node's BiGG ids to identify the compartment of all metabolites. Assuming that compartments have rectangular shapes, the algorithm can find the outermost node on each side of the box and hence obtain the boundaries of the compartment. However, this methods will fail when metabolites are drawn inside of such a box that belong to a different compartment that is actually further outside. For this reason, this option is deactivated by default.</entry>
   <entry key="CANVAS_DEFAULT_WIDTH">Default canvas width</entry>
