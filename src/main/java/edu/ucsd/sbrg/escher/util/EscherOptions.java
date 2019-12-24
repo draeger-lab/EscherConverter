@@ -114,6 +114,12 @@ public interface EscherOptions extends KeyProvider {
   Option<Boolean> EXTRACT_COBRA = new Option<>("EXTRACT_COBRA", Boolean.class, bundle, Boolean.FALSE);
 
   /**
+   * Whether to ignore the validation-result (will be printed anyways): Forces the program to try conversion
+   * even if the input file is judged invalid
+   */
+  Option<Boolean> IGNORE_VALIDATION = new Option<>("IGNORE_VALIDATION", Boolean.class, bundle, Boolean.FALSE);
+
+  /**
    * This value is used when no width has been defined for the canvas. Since
    * the width attribute is mandatory for the layout, a default value must be
    * provided in these cases.

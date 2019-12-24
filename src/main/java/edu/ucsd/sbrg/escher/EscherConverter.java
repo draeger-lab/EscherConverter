@@ -227,21 +227,31 @@ public class EscherConverter extends Launcher {
     ObjectMapper objectMapper = edu.ucsd.sbrg.escher.util.Utils.getObjectMapper();
     // An Escher array contains meta-info about the map as the first object and the actual map as
     // second map.
-    JsonNode escherJson = objectMapper.readTree(stream);
-    // Meta-info.
-    EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
-    // Layout map (nodes, reactions, text labels and canvas info).
-    EscherMap map = objectMapper.treeToValue(escherJson.get(1), EscherMap.class);
+    try {
+      JsonNode escherJson = objectMapper.readTree(stream);
 
-    // Put meta-info from first to second.
-    map.setId(meta.getId());
-    map.setName(meta.getName());
-    map.setDescription(meta.getDescription());
-    map.setSchema(meta.getSchema());
-    map.setURL(meta.getURL());
+      if(escherJson.get(0) == null) {
+        logger.severe(format(bundle.getString("EscherConverter.missingMetaInfo")));
+        throw new IOException(format(bundle.getString("EscherConverter.missingMetaInfo"))){};
+      }
+      // Meta-info.
+      EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
+      // Layout map (nodes, reactions, text labels and canvas info).
+      EscherMap map = objectMapper.treeToValue(escherJson.get(1), EscherMap.class);
 
-    map.postprocessMap();
-    return map;
+      // Put meta-info from first to second.
+      map.setId(meta.getId());
+      map.setName(meta.getName());
+      map.setDescription(meta.getDescription());
+      map.setSchema(meta.getSchema());
+      map.setURL(meta.getURL());
+
+      map.postprocessMap();
+      return map;
+    } catch(JsonProcessingException e) {
+      logger.severe(bundle.getString("EscherValidationFail.NotJson"));
+      throw e;
+    }
   }
 
   /**
@@ -432,66 +442,73 @@ public class EscherConverter extends Launcher {
     OutputFormat outputFormat = OutputFormat.valueOf(properties.getProperty(EscherOptions.FORMAT));
 
     logger.warning(bundle.getString("ValidationStart"));
-    if (!validateInput(input, inputFormat)) {
-      logger.warning(bundle.getString("ValidationFailed"));
+    try {
+      if (!validateInput(input, inputFormat)) {
+        logger.warning(bundle.getString("ValidationFailed"));
 
-      // TODO: Replace condition variable to a --ignore-validation variable.
-      if (true) {
-        logger.warning(bundle.getString("ValidationSkip"));
-      }
-    }
-
-    boolean success = false;
-
-    // Check output format.
-    switch (outputFormat) {
-
-    case SBML:
-      SBMLDocument doc = convert(input, SBMLDocument.class, properties);
-      TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
-        getVersionNumber(), ' ', (short) 2);
-      success = true;
-      break;
-
-    case SBGN:
-      Sbgn sbgn = convert(input, Sbgn.class, properties);
-      SbgnUtil.writeToFile(sbgn, output);
-      success = true;
-      break;
-
-    case Escher:
-      // Check input format.
-      switch (inputFormat) {
-
-      case SBGN:
-        EscherMap map = parseSBGNML(input, properties);
-        writeEscherJson(map, output);
-        success = true;
-        break;
-
-      case SBML:
-        if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
-          extractCobraModel(input);
+        // Unless the --ignore-validation option has been set to true, do not continue
+        if (properties.getBoolean(EscherOptions.IGNORE_VALIDATION)) {
+          logger.warning(bundle.getString("ValidationSkip"));
+        } else {
+          logger.warning(bundle.getString("ValidationAbort"));
+          return;
         }
-        List<EscherMap> maps = convert(SBMLReader.read(input), properties);
-        writeEscherJson(maps, output);
-        success = true;
-        break;
-
-      case Escher:
-        logger.info(bundle.getString("InputOutputFormatIdentical"));
-        break;
       }
-      break;
 
-    default:
-      logger.severe(bundle.getString("UnsupportedFormat"));
-      break;
-    }
+      boolean success = false;
 
-    if (success) {
-      logger.info(format(
-        "Output successfully written to file {0}.", output));
+      // Check output format.
+      switch (outputFormat) {
+
+        case SBML:
+          SBMLDocument doc = convert(input, SBMLDocument.class, properties);
+          TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
+                  getVersionNumber(), ' ', (short) 2);
+          success = true;
+          break;
+
+        case SBGN:
+          Sbgn sbgn = convert(input, Sbgn.class, properties);
+          SbgnUtil.writeToFile(sbgn, output);
+          success = true;
+          break;
+
+        case Escher:
+          // Check input format.
+          switch (inputFormat) {
+
+            case SBGN:
+              EscherMap map = parseSBGNML(input, properties);
+              writeEscherJson(map, output);
+              success = true;
+              break;
+
+            case SBML:
+              if (properties.getBooleanProperty(EscherOptions.EXTRACT_COBRA)) {
+                extractCobraModel(input);
+              }
+              List<EscherMap> maps = convert(SBMLReader.read(input), properties);
+              writeEscherJson(maps, output);
+              success = true;
+              break;
+
+            case Escher:
+              logger.info(bundle.getString("InputOutputFormatIdentical"));
+              break;
+          }
+          break;
+
+        default:
+          logger.severe(bundle.getString("UnsupportedFormat"));
+          break;
+      }
+
+      if (success) {
+        logger.info(format(
+                "Output successfully written to file {0}.", output));
+      }
+    } catch(JsonProcessingException e) {
+      logger.severe(bundle.getString("EscherValidationFail.NotJson"));
     }
   }
 

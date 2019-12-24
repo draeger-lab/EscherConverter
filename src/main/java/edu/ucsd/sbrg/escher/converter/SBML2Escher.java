@@ -95,7 +95,7 @@ public class SBML2Escher {
    * Converts an {@link SBMLDocument} to a list of {@link EscherMap}s by iteratively creating nodes,
    * reactions, etc.
    *
-   * @param document The {@code SBML} document to convert.
+   * @param doc The {@code SBML} document to convert.
    * @return The extracted maps list.
    */
   public List<EscherMap> convert(SBMLDocument doc) {
@@ -369,6 +369,12 @@ public class SBML2Escher {
     if (sRG.isSetCurve()) {
       // TODO: it should also work if there is no midmarker!
       List<CurveSegment> cSs = sRG.getCurve().getListOfCurveSegments();
+
+      if(sRG.getRole() == null) {
+        sRG.setRole(SpeciesReferenceRole.UNDEFINED);
+        logger.warning(format(messages.getString("SRGToMultiMarkersNullRole"), sRG.getId()));
+      }
+
       if (SBO.isChildOf(sRG.getRole().toSBOterm(), SpeciesReferenceRole.PRODUCT.toSBOterm())) {
         for (int i = 0; i < cSs.size() - 1; i++) {
           node = new Node();
@@ -417,7 +423,7 @@ public class SBML2Escher {
    * Finds out whether a {@link SpeciesReferenceGlyph} is a product, substrate or modifier.
    * @param sRG The {@link SpeciesReferenceGlyph}
    * @param rg The {@link ReactionGlyph} the {@code sRG} is linked to
-   * @param role A {@link SpeciesReferenceRole} (product, substrate or modifier)
+   * @return role A {@link SpeciesReferenceRole} (product, substrate or modifier)
    */
   public SpeciesReferenceRole determineSpeciesReferenceRole(SpeciesReferenceGlyph sRG,
     ReactionGlyph rg) {
@@ -592,7 +598,7 @@ public class SBML2Escher {
 
 
   /**
-   * Gets base points from an SBML {@link CurveSegments} and adds them to an {@link EscherMap} {@link Segment}
+   * Gets base points from an SBML {@link CurveSegment} and adds them to an {@link EscherMap} {@link Segment}
    * @param cs A {@link CurveSegment} of an SBML model
    * @param segment A {@link Segment} of an {@link EscherMap}
    */

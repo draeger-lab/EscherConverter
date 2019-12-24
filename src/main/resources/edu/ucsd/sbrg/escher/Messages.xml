@@ -36,6 +36,8 @@
   <entry key="COMBINE_TOOLTIP">If the SBML file contains more than one layout, whether to combine them or not. False by default.</entry>
   <entry key="EXTRACT_COBRA">Extract CoBRA model from SBML.</entry>
   <entry key="EXTRACT_COBRA_TOOLTIP">If SBMl file is FBC compliant, then extract COBRA model from it. Defaults to false.</entry>
+  <entry key="IGNORE_VALIDATION">Ignore the result of input-file validation.</entry>
+  <entry key="IGNORE_VALIDATION_TOOLTIP">Forces the program to try to convert files judged invalid. No guarantee that anything sensible will happen or the program will even terminate: Only use this if you are certain that the file is valid</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS">Infer compartment boundaries</entry>
   <entry key="INFER_COMPARTMENT_BOUNDS_TOOLTIP">This converter can infer where the boundaries of compartments could be drawn. To this end, it uses each node's BiGG ids to identify the compartment of all metabolites. Assuming that compartments have rectangular shapes, the algorithm can find the outermost node on each side of the box and hence obtain the boundaries of the compartment. However, this methods will fail when metabolites are drawn inside of such a box that belong to a different compartment that is actually further outside. For this reason, this option is deactivated by default.</entry>
   <entry key="CANVAS_DEFAULT_WIDTH">Default canvas width</entry>
@@ -123,6 +125,7 @@
   <entry key="EscherConverter.launchingBatchProcessing">Launching batch processing of {0}.</entry>
   <entry key="EscherConverter.incompleteCMDArgs">Incomplete command-line argument list. Please make sure to provide at least an input and an output file. Nothing to do.</entry>
   <entry key="EscherConverter.readingFile">Reading input file {0}.</entry>
+  <entry key="EscherConverter.missingMetaInfo">Missing or misplaced meta-info: File seems to be malformatted.</entry>
   <entry key="EscherConverter.validationErrors">There are {0,number,integer} validation problems.</entry>
   <entry key="EscherConverter.creatingDir">Creating directory {0}.</entry>
   <entry key="EscherConverter.cannotWriteToFile">"Batch processing requires an output directory to be given. Cannot write to file {0}.</entry>
@@ -169,6 +172,7 @@
   <entry key="AutoDetectFail">AutoDetect: Cannot determine file type. Skipping</entry>
   <entry key="ValidationStart">Validating document</entry>
   <entry key="ValidationFailed">Validation failed</entry>
+  <entry key="ValidationAbort">Not converting invalid file (Ignore validation if you are sure that the file is correct). </entry>
   <entry key="ValidationSkip">Ignoring unsuccessful validation and moving forward</entry>
   <entry key="InputOutputFormatIdentical">Input and output formats identical. Skipping file</entry>
   <entry key="UnsupportedFormat">Unknown or unsupported format. Skipping file</entry>
@@ -176,6 +180,7 @@
   <entry key="JSONSchemaValid">JSON Schema validator successful</entry>
   <entry key="JSONSchemaInvalid">JSON Schema validator unsuccessful</entry>
   <entry key="EscherValidationFail">Not a valid Escher file</entry>
+  <entry key="EscherValidationFail.NotJson">Not a valid Escher nor a valid JSON file (empty file)</entry>
   <entry key="SBGNLanguageUnspecified">No language specified on SBGN file. Can't validate</entry>
   <entry key="ConvertM1toM2">Milestone 1 file found, converting to Milestone 2</entry>
   <entry key="ConvertM1toM2Fail">Failure converting Milestone 1 file to Milestone 2. Please try to convert it manually</entry>
@@ -219,6 +224,7 @@
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
   <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating coordinates</entry>
   <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
+    <entry key="SRGToMultiMarkersNullRole">species reference glyph ({0}) had no assigned role. Its role was set to undefinded.</entry>
   <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
   <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label coordinates</entry>

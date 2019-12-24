@@ -254,6 +254,7 @@ public class EscherConverterUI extends BaseFrame {
       List<File> notAccepted = new LinkedList<File>();
       for (File file : files) {
         if (filterJSON.accept(file) || filterSBML.accept(file) || filterSBGN.accept(file)) {
+          // TODO: ignore empty files here?
           accepted.add(file);
         } else {
           notAccepted.add(file);
