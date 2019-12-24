@@ -232,7 +232,7 @@ public class EscherConverter extends Launcher {
 
       if(escherJson.get(0) == null) {
         logger.severe(format(bundle.getString("EscherConverter.missingMetaInfo")));
-        throw new IOException("Missing or misplaced meta-info: File is malformatted"){};
+        throw new IOException(format(bundle.getString("EscherConverter.missingMetaInfo"))){};
       }
       // Meta-info.
       EscherMap meta = objectMapper.treeToValue(escherJson.get(0), EscherMap.class);
