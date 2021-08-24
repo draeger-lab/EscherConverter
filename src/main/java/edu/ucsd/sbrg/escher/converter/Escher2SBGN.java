@@ -19,7 +19,9 @@ import de.zbit.graph.io.def.SBGNProperties.ArcType;
 import de.zbit.graph.io.def.SBGNProperties.GlyphType;
 import de.zbit.sbml.util.SBMLtools;
 import edu.ucsd.sbrg.escher.model.*;
+import edu.ucsd.sbrg.escher.model.Canvas;
 import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.math.Geometry;
 import edu.ucsd.sbrg.sbgn.SBGNbuilder;
 import org.sbgn.bindings.*;
 import org.sbgn.bindings.Arc.End;
@@ -31,9 +33,14 @@ import org.sbml.jsbml.util.StringTools;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.awt.*;
+import java.awt.geom.CubicCurve2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
@@ -432,12 +439,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
     List<String>
     connectedSegments =
     metaboliteNode.getConnectedSegments(reaction.getId());
-    System.out.println("Connected Segments: " + connectedSegments);
     Segment segment = reaction.getSegment(connectedSegments.get(0));
-      System.out.println("From Node: " + escherMap.getNode(segment.getFromNodeId()));
-      System.out.println("To Node: " + escherMap.getNode(segment.getToNodeId()));
-      System.out.println("BP1: " + segment.getBasePoint1());
-      System.out.println("BP2: " + segment.getBasePoint2());
     Node source, target;
     SBGNBase sourceBase, targetBase;
     double x1, y1, x2, y2;
@@ -509,6 +511,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       isProduct ? ArcType.production : ArcType.consumption);
     arc.setStart(builder.createArcStart(convertCoordinate(x1, xOffset),
       convertCoordinate(y1, yOffset)));
+      System.out.println("Start: " + x1 + " - " + y1);
     coeff = Math.abs(coeff);
     if (coeff != 1d) {
       // Create cardinality labels for the edges if necessary.
@@ -553,6 +556,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
       arc.getGlyph().add(cardinalityGlyph);
     }
     // add individual segments
+      Node prevNode = null;
     for (int i = 1; i < connectedSegments.size(); i++) {
       Segment nextSeg = reaction.getSegment(connectedSegments.get(i));
       Node nextNode = escherMap.getNode(nextSeg.getToNodeId());
@@ -561,6 +565,12 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         next =
         builder.createArcNext(convertCoordinate(nextNode.getX(), xOffset),
           convertCoordinate(nextNode.getY(), yOffset));
+          if(prevNode == null) {
+              System.out.println("Next No. " + i + ": " + (nextNode.getX()-x1) + " - " + (nextNode.getY()-y1));
+          }
+          else {
+              System.out.println("Next No. " + i + ": " + (nextNode.getX()-prevNode.getX()) + " - " + (nextNode.getY()-prevNode.getY()));
+          }
         if (segment.isSetBasePoint1()) {
           next.getPoint()
           .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
@@ -572,6 +582,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         arc.getNext().add(next);
       }
       segment = nextSeg;
+      prevNode = nextNode;
     }
     End
     end =

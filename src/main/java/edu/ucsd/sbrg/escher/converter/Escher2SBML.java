@@ -16,12 +16,8 @@ package edu.ucsd.sbrg.escher.converter;
 import static java.text.MessageFormat.format;
 
 import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.xml.stream.XMLStreamException;
@@ -487,8 +483,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     Layout layout, Map<String, String> node2glyph, double xOffset,
     double yOffset) {
     ReactionGlyph rGlyph = null;
-    if (escherReaction.isSetId() && node2glyph.containsKey(escherReaction.getId())) {
-      rGlyph = layout.getReactionGlyph(node2glyph.get(escherReaction.getId()));
+    String rId = "R_" + escherReaction.getId();
+    if (escherReaction.isSetId() && node2glyph.containsKey(rId)) {
+      rGlyph = layout.getReactionGlyph(node2glyph.get(rId));
     }
     if (rGlyph == null) {
       // It can still be null if there is another glyph in the layout that is not a reaction glyph but has an identical id.
@@ -547,6 +544,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     double yOffset) {
     String rId = extractReactionId(node.getConnectedSegments());
     if (rId != null) {
+      rId = "R_" + rId;
       String rSId = SBMLtools.toSId(rId);
       Model model = layout.getModel();
       if (!model.containsUniqueNamedSBase(rSId)) {
@@ -598,7 +596,8 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     double yOffset) {
     SpeciesGlyph sGlyph;
     sGlyph = layout.createSpeciesGlyph(createSpeciesGlyphId(node, layout));
-    node2glyph.put(node.getId(), sGlyph.getId());
+    String nodeId = "M_" + node.getId();
+    node2glyph.put(nodeId, sGlyph.getId());
     // Not defined in SBML Layout: sGlyph.setName(node.getName());
     double width;
     double height;
@@ -712,7 +711,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     new HashMap<String, SpeciesReferenceGlyph>();
     Set<Compartment> setOfCompartments = new HashSet<Compartment>();
     for (Node node : setOfNodes) {
-      sGlyph = layout.getSpeciesGlyph(node2glyph.get(node.getId()));
+      sGlyph = layout.getSpeciesGlyph(node2glyph.get("M_" + node.getId()));
       if (sGlyph != null) {
         String srGlyphId = reaction.getId() + "_srg_" + metabolite.getId();
         srGlyphId = srGlyphId.replaceAll("\\+", "");
