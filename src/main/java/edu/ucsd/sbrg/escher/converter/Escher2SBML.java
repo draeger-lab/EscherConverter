@@ -23,21 +23,7 @@ import java.util.logging.Logger;
 import javax.xml.stream.XMLStreamException;
 
 import org.sbml.jsbml.*;
-import org.sbml.jsbml.ext.layout.AbstractReferenceGlyph;
-import org.sbml.jsbml.ext.layout.BoundingBox;
-import org.sbml.jsbml.ext.layout.CompartmentGlyph;
-import org.sbml.jsbml.ext.layout.CubicBezier;
-import org.sbml.jsbml.ext.layout.Curve;
-import org.sbml.jsbml.ext.layout.CurveSegment;
-import org.sbml.jsbml.ext.layout.Layout;
-import org.sbml.jsbml.ext.layout.LayoutConstants;
-import org.sbml.jsbml.ext.layout.LayoutModelPlugin;
-import org.sbml.jsbml.ext.layout.LineSegment;
-import org.sbml.jsbml.ext.layout.ReactionGlyph;
-import org.sbml.jsbml.ext.layout.SpeciesGlyph;
-import org.sbml.jsbml.ext.layout.SpeciesReferenceGlyph;
-import org.sbml.jsbml.ext.layout.SpeciesReferenceRole;
-import org.sbml.jsbml.ext.layout.TextGlyph;
+import org.sbml.jsbml.ext.layout.*;
 import org.sbml.jsbml.util.ResourceManager;
 
 import de.zbit.sbml.util.SBMLtools;
@@ -192,7 +178,6 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
                              Layout layout, double xOffset, double yOffset) {
 
         if (node.isSetType()) {
-            EscherReaction escherReaction = escherMap.getReaction(extractReactionId(node.getConnectedSegments()));
             switch (node.getType()) {
                 case metabolite:
                     convertMetabolite(node, node2glyph, layout, xOffset, yOffset);
@@ -249,24 +234,31 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
      */
     private void convertMultimarker(Node node, EscherMap escherMap, Map<String, Node> multimarkers,
                                     double xOffset, double yOffset, Map<String, String> node2glyph, Layout layout) {
-        if (node.isSetId()) {
-            // If Reaction multimarker is belonging to is exchange reaction and drawn as a straight line then put
-            // multimarker at half the distance from before
-            EscherReaction escherReaction = escherMap.getReaction(extractReactionId(node.getConnectedSegments()));
-            boolean isExchange = escherReaction.getMetaboliteCount() == 1;
-            boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
-            if (isExchange && isStraight) {
-                Node metNode = escherMap.getNode(escherReaction.getMetaboliteList().get(0).getNodeRefId());
-                double x = metNode.getX() + (node.getX() - metNode.getX()) / 2;
-                double y = metNode.getY() + (node.getY() - metNode.getY()) / 2;
-                node.setX(x);
-                node.setY(y);
+        // Check if multimarker is connected to at least one metabolite, if not, multimarker is not converted
+        if (checkIfConnectedToMetabolite(node.getConnectedSegments(), escherMap)) {
+            if (node.isSetId()) {
+                // If Reaction multimarker is belonging to is exchange reaction and drawn as a straight line then put
+                // multimarker at half the distance from before
+                EscherReaction escherReaction = escherMap.getReaction(extractReactionId(node.getConnectedSegments()));
+                String nodeRefId = escherReaction.getMetaboliteList().get(0).getNodeRefId();
+                boolean isExchange = escherReaction.getMetaboliteCount() == 1;
+                boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
+                if (isExchange && isStraight && nodeRefId != null) {
+                    Node metNode = escherMap.getNode(nodeRefId);
+                    double x = metNode.getX() + (node.getX() - metNode.getX()) / 2;
+                    double y = metNode.getY() + (node.getY() - metNode.getY()) / 2;
+                    node.setX(x);
+                    node.setY(y);
+                }
+                // process these later...
+                multimarkers.put(node.getId(), node);
+            } else {
+                logger.warning(format(bundle.getString("Escher2SBML.undefinedID"),
+                        node.toString()));
             }
-            // process these later...
-            multimarkers.put(node.getId(), node);
         } else {
-            logger.warning(format(bundle.getString("Escher2SBML.undefinedID"),
-                    node.toString()));
+            logger.warning(format(bundle.getString("Escher2SBML.disconnectedMarker"),
+                    node.getType(), node.toString()));
         }
     }
 
@@ -300,61 +292,63 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
                                      EscherMap escherMap, Layout layout, Map<String, String> node2glyph,
                                      double xOffset, double yOffset) {
         Metabolite met = escherReaction.getMetaboliteList().get(0);
-        Node metNode = escherMap.getNode(met.getNodeRefId());
         boolean isExchange = (escherReaction.getMetaboliteCount() == 1);
-        String exchangeNodeId = metNode.getId() + "_ex";
-        // If reaction is exchange reaction a new node has to be created representing the metabolite in the
-        // extracellular space.
-        if (isExchange && !node2glyph.containsKey("M_" + exchangeNodeId)) {
-            boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
-            Node lastNode = null;
-            Node exchangeNode = new Node();
-            // Find Multimarker at the end of the reaction (only connected to a single segment)
-            // and create new metabolite marker at this position for the exchanged metabolite
-            for (String nodeID : escherReaction.getNodes()) {
-                lastNode = escherMap.getNode(nodeID);
-                if (lastNode.getConnectedSegments().size() == 1) {
-                    Node midmarker = escherReaction.getMidmarker();
-                    exchangeNode.setId(exchangeNodeId);
-                    if (isStraight) {
-                        exchangeNode.setX(metNode.getX() + (midmarker.getX() - metNode.getX()) * 2);
-                        exchangeNode.setY(metNode.getY() + (midmarker.getY() - metNode.getY()) * 2);
-                    } else {
-                        exchangeNode.setX(lastNode.getX());
-                        exchangeNode.setY(lastNode.getY());
+        boolean isFirstNodeRefIdSet = met.isSetNodeRefId();
+        Node metNode = null;
+        if (isExchange && isFirstNodeRefIdSet) {
+            metNode = escherMap.getNode(met.getNodeRefId());
+            String exchangeNodeId = metNode.getId() + "_ex";
+            // If reaction is exchange reaction a new node has to be created representing the metabolite in the
+            // extracellular space.
+            if (!node2glyph.containsKey("M_" + exchangeNodeId)) {
+                boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
+                Node lastNode;
+                Node exchangeNode = new Node();
+                // Find Multimarker (or Midmarker) at the end of the reaction (only connected to a single segment)
+                // and create new metabolite marker at this position for the exchanged metabolite
+                for (String nodeID : escherReaction.getNodes()) {
+                    lastNode = escherMap.getNode(nodeID);
+                    if (lastNode.getConnectedSegments(escherReaction.getId()).size() == 1 && !lastNode.isMetabolite()) {
+                        exchangeNode.setId(exchangeNodeId);
+                        if (isStraight) {
+                            exchangeNode.setX(metNode.getX() + (lastNode.getX() - metNode.getX()) * 2);
+                            exchangeNode.setY(metNode.getY() + (lastNode.getY() - metNode.getY()) * 2);
+                        } else {
+                            exchangeNode.setX(lastNode.getX());
+                            exchangeNode.setY(lastNode.getY());
+                        }
+                        exchangeNode.setHeight(metNode.getHeight());
+                        exchangeNode.setWidth(metNode.getWidth());
+                        exchangeNode.setName(metNode.getName() + "_ex");
+                        exchangeNode.setBiggId(metNode.getBiggId() + "_ex");
+                        exchangeNode.setLabelX(exchangeNode.getX() + 20);
+                        exchangeNode.setLabelY(exchangeNode.getY() + 20);
+                        convertMetabolite(exchangeNode, node2glyph, layout, xOffset, yOffset);
+                        break;
                     }
-                    exchangeNode.setHeight(metNode.getHeight());
-                    exchangeNode.setWidth(metNode.getWidth());
-                    exchangeNode.setName(metNode.getName() + "_ex");
-                    exchangeNode.setBiggId(metNode.getBiggId() + "_ex");
-                    exchangeNode.setLabelX(exchangeNode.getX() + 20);
-                    exchangeNode.setLabelY(exchangeNode.getY() + 20);
-                    convertMetabolite(exchangeNode, node2glyph, layout, xOffset, yOffset);
-                    break;
                 }
-            }
-            // If all segments of the reaction are roughly straight the label of the reaction also has to be moved
-            // Therefore the label is moved to the vicinity of the midmarker. The label is placed on a circle with
-            // a radius of 20 around the midmarker, whereby is exact orientation is dependent on the orientation of the
-            // reaction segments to the horizontal axis (0: horizontal, 1:vertical).
-            if (isStraight) {
-                String[] reacNodeIDs = new String[escherReaction.getNodes().size()];
-                escherReaction.getNodes().toArray(reacNodeIDs);
-                Node midNode = escherReaction.getMidmarker();
-                double dx = Math.abs(metNode.getX() - midNode.getX());
-                double dy = Math.abs(metNode.getY() - midNode.getY());
-                double orient = Math.abs(Math.atan(dy / dx) / (Math.PI / 2.0));
-                double midPointX = metNode.getX() + (exchangeNode.getX() - metNode.getX()) / 2;
-                double midPointY = metNode.getY() + (exchangeNode.getY() - metNode.getY()) / 2;
-                escherReaction.setLabelX(midPointX + orient * 20);
-                escherReaction.setLabelY(midPointY + (1 - orient) * 20);
+                // If all segments of the reaction are roughly straight the label of the reaction also has to be moved
+                // Therefore the label is moved to the vicinity of the midmarker. The label is placed on a circle with
+                // a radius of 20 around the midmarker, whereby is exact orientation is dependent on the orientation of the
+                // reaction segments to the horizontal axis (0: horizontal, 1:vertical).
+                if (isStraight) {
+                    String[] reacNodeIDs = new String[escherReaction.getNodes().size()];
+                    escherReaction.getNodes().toArray(reacNodeIDs);
+                    double dx = Math.abs(metNode.getX() - exchangeNode.getX());
+                    double dy = Math.abs(metNode.getY() - exchangeNode.getY());
+                    double orient = Math.abs(Math.atan(dy / dx) / (Math.PI / 2.0));
+                    double midPointX = metNode.getX() + (exchangeNode.getX() - metNode.getX()) / 2;
+                    double midPointY = metNode.getY() + (exchangeNode.getY() - metNode.getY()) / 2;
+                    escherReaction.setLabelX(midPointX + orient * 20);
+                    escherReaction.setLabelY(midPointY + (1 - orient) * 20);
+                }
             }
         }
         ReactionGlyph rGlyph = createReactionGlyph(escherReaction, layout, node2glyph, xOffset, yOffset);
         Reaction reaction = (Reaction) rGlyph.getReactionInstance();
         // For exchange reaction the species reference glyphs have to be created for the previously created node
         // of the exchange metabolite
-        if (isExchange) {
+        if (isExchange && isFirstNodeRefIdSet) {
             String id = metNode.getId() + "_ex";
             SpeciesGlyph sGlyph = layout.getSpeciesGlyph("sg_" + id);
             SpeciesReferenceGlyph srGlyph;
@@ -363,7 +357,6 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
                 sGlyph.setSBOTerm(291); // turns the node into an empty set node
                 srGlyphId = srGlyphId.replaceAll("\\+", "");
                 srGlyph = rGlyph.createSpeciesReferenceGlyph(SBMLtools.toSId(srGlyphId), sGlyph.getId());
-                System.out.println("SrGlyph: " + srGlyph.getId());
                 if (met.getCoefficient() < 0d) {
                     srGlyph.setRole(SpeciesReferenceRole.PRODUCT);
                 } else {
@@ -376,10 +369,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         }
         // Go through each metabolite and connect it to the reaction.
         Map<String, SpeciesReferenceGlyph> srgMap = new HashMap<String, SpeciesReferenceGlyph>();
-        for (
-                Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().
-
-                entrySet()) {
+        for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
             Metabolite metabolite = entry.getValue();
             if (metabolite.getId() != null) {
                 // Each metabolite can be represented in multiple nodes, so we need to find those in this reaction, but also these can be multiple...
@@ -391,8 +381,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         // Create a set of all segments to be processed
         Set<Segment> segments = new HashSet<Segment>();
         boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
-        for (
-                Entry<String, Segment> entry : escherReaction.segments()) {
+        for (Entry<String, Segment> entry : escherReaction.segments()) {
             Segment segment = entry.getValue();
             Node fromNode = escherMap.getNode(segment.getFromNodeId());
             Node toNode = escherMap.getNode(segment.getToNodeId());
@@ -400,7 +389,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
             boolean isProduct = false;
             // If all reaction is exchange reaction and all its segments are roughly straight then put their
             // base points at the halfway point
-            if (isExchange && isStraight) {
+            if (isExchange && isStraight && isFirstNodeRefIdSet) {
                 Point bp1 = segment.getBasePoint1();
                 Point bp2 = segment.getBasePoint2();
                 double metX = metNode.getX();
@@ -464,13 +453,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
                 SpeciesReferenceGlyph srGlyph : srgMap.values()) {
             Curve curve = srGlyph.getCurve();
             Node toNode = escherMap.getNode(curve.getCurveSegment(curve.getCurveSegmentCount() - 1).getUserObject(ESCHER_NODE_LINK).toString());
-            while (!toNode.isMidmarker()) {
+            while (!toNode.isMidmarker() && (toNode.getConnectedSegments().size() != 1 || toNode.isMetabolite())) {
                 for (Segment segment : segments) {
                     if (tryToAttach(segment, curve, curve.getCurveSegmentCount() - 1,
                             escherMap, xOffset, yOffset)) {
                         done.add(segment);
                         toNode = escherMap.getNode(curve.getCurveSegment(curve.getCurveSegmentCount() - 1).getUserObject(ESCHER_NODE_LINK).toString());
-                        if (toNode.isMidmarker()) {
+                        if (toNode.isMidmarker() || (toNode.getConnectedSegments().size() == 1 && !toNode.isMetabolite())) {
                             break;
                         }
                     }
@@ -652,57 +641,63 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     private ReactionGlyph convertMidmarker(Node node, EscherMap escherMap,
                                            Map<String, String> node2glyph, Layout layout, double xOffset,
                                            double yOffset) {
-        String ogRId = extractReactionId(node.getConnectedSegments());
-        EscherReaction escherReaction = escherMap.getReaction(ogRId);
-        boolean isExchange = escherReaction.getMetaboliteCount() == 1;
-        boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
-        if (ogRId != null) {
-            String rId = "R_" + ogRId;
-            String rSId = SBMLtools.toSId(rId);
-            Model model = layout.getModel();
-            if (!model.containsUniqueNamedSBase(rSId)) {
-                ReactionGlyph rGlyph = layout.createReactionGlyph(rSId);
-                node2glyph.put(rId, rSId);
-                double width;
-                double height;
-                if (node.isSetWidth()) {
-                    width = node.getWidth().doubleValue();
-                } else {
-                    width = getPrimaryNodeWidth() * getReactionNodeRatio();
-                    node.setWidth(width);
+        // Check if midmarker is connected to at least one metabolite, if not, midmarker is not converted
+        if (checkIfConnectedToMetabolite(node.getConnectedSegments(), escherMap)) {
+            String ogRId = extractReactionId(node.getConnectedSegments());
+            EscherReaction escherReaction = escherMap.getReaction(ogRId);
+            boolean isExchange = escherReaction.getMetaboliteCount() == 1;
+            boolean isStraight = checkIfAllSegmentsStraight(escherReaction.getSegments().values(), escherMap);
+            if (ogRId != null) {
+                String rId = "R_" + ogRId;
+                String rSId = SBMLtools.toSId(rId);
+                Model model = layout.getModel();
+                if (!model.containsUniqueNamedSBase(rSId)) {
+                    ReactionGlyph rGlyph = layout.createReactionGlyph(rSId);
+                    node2glyph.put(rId, rSId);
+                    double width;
+                    double height;
+                    if (node.isSetWidth()) {
+                        width = node.getWidth().doubleValue();
+                    } else {
+                        width = getPrimaryNodeWidth() * getReactionNodeRatio();
+                        node.setWidth(width);
+                    }
+                    if (node.isSetHeight()) {
+                        height = node.getHeight().doubleValue();
+                    } else {
+                        height = getPrimaryNodeHeight() * getReactionNodeRatio();
+                        node.setHeight(height);
+                    }
+                    double x = node.getX();
+                    double y = node.getY();
+                    // If corresponding reaction it is exchange reaction and all its segments are straight
+                    // move midmarker to the halfway point
+                    if (isExchange && isStraight) {
+                        Node metNode = escherMap.getNode(escherReaction.getMetaboliteList().get(0).getNodeRefId());
+                        double metX = metNode.getX();
+                        double metY = metNode.getY();
+                        x = metX + (x - metX) / 2;
+                        y = metY + (y - metY) / 2;
+                        node.setX(x);
+                        node.setY(y);
+                    }
+                    // Also shift node because again the center of the node would be used as coordinate instead of upper-left corner
+                    rGlyph.createBoundingBox(width, height, nodeDepth,
+                            x - xOffset - width / 2d,
+                            y - yOffset - height / 2d, z);
+                    if (node.isSetName()) {
+                        rGlyph.setName(node.getName());
+                    } else if (node.isSetBiggId()) {
+                        rGlyph.setName(node.getBiggId());
+                    }
+                    rGlyph.putUserObject(ESCHER_NODE_LINK, node);
+                    //Do that later... createTextGlyph(node, layout, xOffset, yOffset, rGlyph); (when the actual reaction is treated)
+                    return rGlyph;
                 }
-                if (node.isSetHeight()) {
-                    height = node.getHeight().doubleValue();
-                } else {
-                    height = getPrimaryNodeHeight() * getReactionNodeRatio();
-                    node.setHeight(height);
-                }
-                double x = node.getX();
-                double y = node.getY();
-                // If corresponding reaction it is exchange reaction and all its segments are straight
-                // move midmarker to the halfway point
-                if (isExchange && isStraight) {
-                    Node metNode = escherMap.getNode(escherReaction.getMetaboliteList().get(0).getNodeRefId());
-                    double metX = metNode.getX();
-                    double metY = metNode.getY();
-                    x = metX + (x - metX) / 2;
-                    y = metY + (y - metY) / 2;
-                    node.setX(x);
-                    node.setY(y);
-                }
-                // Also shift node because again the center of the node would be used as coordinate instead of upper-left corner
-                rGlyph.createBoundingBox(width, height, nodeDepth,
-                        x - xOffset - width / 2d,
-                        y - yOffset - height / 2d, z);
-                if (node.isSetName()) {
-                    rGlyph.setName(node.getName());
-                } else if (node.isSetBiggId()) {
-                    rGlyph.setName(node.getBiggId());
-                }
-                rGlyph.putUserObject(ESCHER_NODE_LINK, node);
-                //Do that later... createTextGlyph(node, layout, xOffset, yOffset, rGlyph); (when the actual reaction is treated)
-                return rGlyph;
             }
+        } else {
+            logger.warning(format(bundle.getString("Escher2SBML.disconnectedMarker"),
+                    node.getType(), node.toString()));
         }
         return null;
     }
@@ -1256,7 +1251,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     private boolean checkIfStraightLine(List<Point> coordinates) {
 
 
-        double threshold = 100;
+        double tolerance = 200;
 
         if (coordinates.size() <= 2) {
             return true;
@@ -1265,11 +1260,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         Point p1 = coordinates.get(0);
         Point p2 = coordinates.get(1);
 
-        double dx = p2.getX() - p1.getX();
-        double dy = p2.getY() - p1.getY();
+        double dx12 = p2.getX() - p1.getX();
+        double dy12 = p2.getY() - p1.getY();
 
         for (int i = 2; i < coordinates.size(); i++) {
-            if ((dy * (coordinates.get(i).getX() - p1.getX()) - dx * (coordinates.get(i).getY() - p1.getY())) > threshold) {
+            if (Math.abs((dy12 * (coordinates.get(i).getX() - p1.getX()) - dx12 * (coordinates.get(i).getY() - p1.getY()))) > tolerance) {
                 return false;
             }
         }
@@ -1313,6 +1308,56 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         }
 
         return isStraight;
+    }
+
+
+    /**
+     * Checks if mid-/multimarker is connected to a metabolite node(possibly over other markers) given their connected Segments
+     *
+     * @param conSegs         Connected segments of mid-/multimarker to check
+     * @param escherMap       escherMap corresponding to marker
+     * @param visitedSegments used to store which segments were already visited
+     * @return boolean stating whether marker is connected to a metabolite node
+     */
+    private boolean checkIfConnectedToMetabolite(Set<Entry<String, List<String>>> conSegs, EscherMap escherMap, List<String> visitedSegments) {
+
+
+        // Iterate over every reactionID
+        for (Entry<String, List<String>> entry : conSegs) {
+            EscherReaction reaction = escherMap.getReaction(entry.getKey());
+            // Iterate over every segment connected to marker within this reaction
+            for (String segId : entry.getValue()) {
+                // If segment already visited in previous recursion -> skip
+                if (!visitedSegments.contains(segId)) {
+                    visitedSegments.add(segId);
+                    Segment seg = reaction.getSegment(segId);
+                    Node fromNode = escherMap.getNode(seg.getFromNodeId());
+                    Node toNode = escherMap.getNode(seg.getToNodeId());
+                    // If start or end node of segment -> return true
+                    if (fromNode.isMetabolite() || toNode.isMetabolite()) {
+                        return true;
+                    } else { // Otherwise, get Segments of start and end Node and repeat this process for both if either finally ends up in metabolite return true
+                        Set<Entry<String, List<String>>> fConSegs = fromNode.getConnectedSegments();
+                        Set<Entry<String, List<String>>> tConSegs = toNode.getConnectedSegments();
+                        return checkIfConnectedToMetabolite(fConSegs, escherMap, visitedSegments) || checkIfConnectedToMetabolite(tConSegs, escherMap, visitedSegments);
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if mid-/multimarker is connected to a metabolite node(possibly over other markers) given their connected Segments
+     *
+     * @param conSegs   Connected segments of mid-/multimarker to check
+     * @param escherMap escherMap corresponding to marker
+     * @return boolean stating whether marker is connected to a metabolite node
+     */
+    private boolean checkIfConnectedToMetabolite(Set<Entry<String, List<String>>> conSegs, EscherMap escherMap) {
+
+        return checkIfConnectedToMetabolite(conSegs, escherMap, new ArrayList<>());
     }
 
 }
