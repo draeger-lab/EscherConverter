@@ -464,7 +464,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
                         }
                     }
                 }
-                if(toNode.getConnectedSegments().size() <= 1 && toNode.isMultimarker()) {
+                if((toNode.getConnectedSegments().size() <= 1) && toNode.isMultimarker()) {
                     break;
                 }
             }

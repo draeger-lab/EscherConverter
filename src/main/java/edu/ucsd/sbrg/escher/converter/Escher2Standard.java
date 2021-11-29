@@ -317,12 +317,12 @@ public abstract class Escher2Standard<T> implements StringLiterals {
           }
           if (canAttach) {
             currNode = escherMap.getNode(isProduct ? segment.getFromNodeId() : segment.getToNodeId());
-            if (currNode.isMidmarker() || (currNode.getConnectedSegments().size() <= 1 && currNode.isMultimarker())) {
+            if (currNode.isMidmarker() || ((currNode.getConnectedSegments().size() <= 1) && currNode.isMultimarker())) {
               break;
             }
           }
         }
-        if(currNode.getConnectedSegments().size() <= 1 && currNode.isMultimarker()) {
+        if((currNode.getConnectedSegments().size() <= 1) && currNode.isMultimarker()) {
           break;
         }
       }
