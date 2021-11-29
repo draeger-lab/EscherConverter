@@ -13,7 +13,6 @@
  */
 package edu.ucsd.sbrg.escher.converter;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import de.zbit.graph.io.def.SBGNProperties;
 import de.zbit.graph.io.def.SBGNProperties.ArcType;
 import de.zbit.graph.io.def.SBGNProperties.GlyphType;
@@ -21,22 +20,16 @@ import de.zbit.sbml.util.SBMLtools;
 import edu.ucsd.sbrg.escher.model.*;
 import edu.ucsd.sbrg.escher.model.Canvas;
 import edu.ucsd.sbrg.escher.model.Point;
-import edu.ucsd.sbrg.math.Geometry;
 import edu.ucsd.sbrg.sbgn.SBGNbuilder;
 import org.sbgn.bindings.*;
 import org.sbgn.bindings.Arc.End;
 import org.sbgn.bindings.Arc.Next;
 import org.sbgn.bindings.Glyph.Callout;
-import org.sbml.jsbml.Reaction;
 import org.sbml.jsbml.util.ResourceManager;
 import org.sbml.jsbml.util.StringTools;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.awt.*;
-import java.awt.geom.CubicCurve2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.*;
@@ -51,6 +44,7 @@ import java.util.logging.Logger;
  * @since 1.0
  */
 public class Escher2SBGN extends Escher2Standard<Sbgn> {
+
 
     /**
      * A {@link java.util.logging.Logger} for this class.
@@ -68,7 +62,6 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
      * The SBGN map builder.
      */
     private SBGNbuilder builder;
-
 
     /**
      * Default constructor.
@@ -113,7 +106,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
             for (Map.Entry<String, EscherCompartment> entry : escherMap
                     .compartments()) {
                 String id = entry.getKey();
-                if (!(id.equalsIgnoreCase("n") || id.equalsIgnoreCase("e"))) {
+                if (!(id.equalsIgnoreCase(BiggCompartmentStrings.nucleus) || id.equalsIgnoreCase(BiggCompartmentStrings.extracellularSpace))) {
                     EscherCompartment compartment = entry.getValue();
                     Glyph
                             compGlyph =
@@ -183,7 +176,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         if ((glyph != null) && getInferCompartmentBoundaries() && node
                 .isSetCompartment()) {
             String id = node.getCompartment();
-            if (!(id.equalsIgnoreCase("n") || id.equalsIgnoreCase("e"))) {
+            if (!(id.equalsIgnoreCase(BiggCompartmentStrings.nucleus) || id.equalsIgnoreCase(BiggCompartmentStrings.extracellularSpace))) {
                 glyph.setCompartmentRef(builder.getSBGNBase(id));
             }
         }
@@ -238,13 +231,13 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
                     boolean isProduct = reac.getMetaboliteList().get(0).getCoefficient() > 0d;
                     String exId;
                     if(isReversible) {
-                        exId = SBMLtools.toSId(rId + "_ex");
+                        exId = SBMLtools.toSId(rId + exchangeSuffix);
                     }
                     else if(isProduct) {
-                        exId = SBMLtools.toSId(rId + "_source");
+                        exId = SBMLtools.toSId(rId + sourceSuffix);
                     }
                     else {
-                        exId = SBMLtools.toSId(rId + "_sink");
+                        exId = SBMLtools.toSId(rId + sinkSuffix);
                     }
                     Glyph exGlyph = builder.createGlyph(exId, metNode.getName(),
                             GlyphType.source_and_sink, convertCoordinate(mid_x, xOffset) - metNode.getWidth() / 2d,
@@ -343,8 +336,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         Node midmarker = reaction.getMidmarker();
         if (midmarker == null) {
             logger.warning(MessageFormat
-                    .format(bundle.getString("Escher2SBGN.mi" +
-                            "dmarkerMissing"), reaction));
+                    .format(bundle.getString("Escher2SBGN.midmarkerMissing"), reaction));
             return;
         }
         Glyph processGlyph = (Glyph) node2glyph.get(midmarker.getId());
@@ -506,19 +498,18 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
     Arc
     arc =
     builder.createArc(SBMLtools
-      .toSId("r" + reaction.getId() + "_n" + metabolite.getNodeRefId()),
+      .toSId(reactionPrefix + reaction.getId() + "_" + metabolitePrefix + metabolite.getNodeRefId()),
       sourceBase, targetBase,
       isProduct ? ArcType.production : ArcType.consumption);
     arc.setStart(builder.createArcStart(convertCoordinate(x1, xOffset),
       convertCoordinate(y1, yOffset)));
-      System.out.println("Start: " + x1 + " - " + y1);
     coeff = Math.abs(coeff);
     if (coeff != 1d) {
       // Create cardinality labels for the edges if necessary.
       Glyph
       cardinalityGlyph =
       builder.createGlyph(
-        SBMLtools.toSId("cardinality_" + metabolite.getNodeRefId()),
+        SBMLtools.toSId(cardinalityGlyphPrefix + metabolite.getNodeRefId()),
         StringTools.toString(Locale.ENGLISH, coeff),
         GlyphType.cardinality);
       double width = getPrimaryNodeWidth() * getReactionNodeRatio();
@@ -565,12 +556,6 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         next =
         builder.createArcNext(convertCoordinate(nextNode.getX(), xOffset),
           convertCoordinate(nextNode.getY(), yOffset));
-          if(prevNode == null) {
-              System.out.println("Next No. " + i + ": " + (nextNode.getX()-x1) + " - " + (nextNode.getY()-y1));
-          }
-          else {
-              System.out.println("Next No. " + i + ": " + (nextNode.getX()-prevNode.getX()) + " - " + (nextNode.getY()-prevNode.getY()));
-          }
         if (segment.isSetBasePoint1()) {
           next.getPoint()
           .add(convertPoint(segment.getBasePoint1(), xOffset, yOffset));
@@ -621,7 +606,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         if(isReversible) {
             sourceBase = sourceBase2 = node2glyph.get(og_midmarker.getId());
             targetBase = node2glyph.get(metaboliteNode.getId());
-            targetBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + "_ex"));
+            targetBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + exchangeSuffix));
             x1 = new_midmarker_point.getX();
             y1 = new_midmarker_point.getY();
             x2 = metaboliteNode.getX();
@@ -629,7 +614,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         }
         else if(isProduct) {
             sourceBase = targetBase2 = node2glyph.get(og_midmarker.getId());
-            sourceBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + "_source"));
+            sourceBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + sourceSuffix));
             targetBase = node2glyph.get(metaboliteNode.getId());
             x1 = new_midmarker_point.getX();
             y1 = new_midmarker_point.getY();
@@ -639,7 +624,7 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         else {
             sourceBase = node2glyph.get(metaboliteNode.getId());
             targetBase = sourceBase2 = node2glyph.get(og_midmarker.getId());
-            targetBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + "_sink"));
+            targetBase2 = node2glyph.get(SBMLtools.toSId(og_midmarker.getId() + sinkSuffix));
             x1 = metaboliteNode.getX();
             y1 = metaboliteNode.getY();
             x2 = new_midmarker_point.getX();
@@ -648,10 +633,8 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
 
 
         // Create Arc between metabolite and midmarker
-        Arc
-                arc =
-                builder.createArc(SBMLtools
-                                .toSId("r" + reaction.getId() + "_n" + metabolite.getNodeRefId()),
+        Arc arc = builder.createArc(SBMLtools.toSId(reactionPrefix + reaction.getId() + "_"
+                                        + metabolitePrefix + metabolite.getNodeRefId()),
                         sourceBase, targetBase,
                         isReversible || isProduct ? ArcType.production : ArcType.consumption);
         arc.setStart(builder.createArcStart(convertCoordinate(x1, xOffset),
@@ -659,7 +642,8 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         arc.setEnd(builder.createArcEnd(convertCoordinate(x2, xOffset), convertCoordinate(y2, yOffset)));
 
         // Create arc between source/sink and midmarker
-        Arc ex_arc = builder.createArc(SBMLtools.toSId("r" + reaction.getId() + "_n" + metabolite.getNodeRefId() + "_ex"),
+        Arc ex_arc = builder.createArc(SBMLtools.toSId(reactionPrefix + reaction.getId() + "_"
+                        + metabolitePrefix + metabolite.getNodeRefId() + exchangeSuffix),
                 sourceBase2, targetBase2,
                 isReversible || !isProduct ? ArcType.production : ArcType.consumption);
         ex_arc.setStart(builder.createArcStart(convertCoordinate(x1, xOffset),
@@ -671,12 +655,12 @@ public class Escher2SBGN extends Escher2Standard<Sbgn> {
         if(coeff != 1d) {
             Glyph cardinalityGlyph =
                     builder.createGlyph(
-                            SBMLtools.toSId("cardinality_" + metabolite.getNodeRefId()),
+                            SBMLtools.toSId(cardinalityGlyphPrefix + metabolite.getNodeRefId()),
                             StringTools.toString(Locale.ENGLISH, coeff),
                             GlyphType.cardinality);
             Glyph cardinalityGlyphEx =
                     builder.createGlyph(
-                            SBMLtools.toSId("cardinality_" + metabolite.getNodeRefId() + "_ex"),
+                            SBMLtools.toSId(cardinalityGlyphPrefix + metabolite.getNodeRefId() + exchangeSuffix),
                             StringTools.toString(Locale.ENGLISH, coeff),
                             GlyphType.cardinality);
             double width = getPrimaryNodeWidth() * getReactionNodeRatio();
