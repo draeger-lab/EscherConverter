@@ -207,6 +207,9 @@ public class SBGNbuilder {
    */
   public Glyph createGlyph(String id, GlyphType type) {
     Glyph glyph = objectFactory.createGlyph();
+    if(id2element.containsKey(id)) {
+
+    }
     checkId(id, glyph);
     glyph.setId(id);
     glyph.setClazz(type.toString());

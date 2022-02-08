@@ -111,7 +111,15 @@
   <entry key="Escher2SBML.reactionCompartmentUnknown">Could not identify compartment of reaction {0}</entry>
   <entry key="Escher2SBML.layoutIDnotunique">Layout identifier {0} changed to {1} as it is the same as model's id {2}.</entry>
   <entry key="Escher2SBML.metaboliteId_missing">{0} is not a valid id for a metabolite in reaction {1}.</entry>
-  <entry key="Escher2SBML.inferredCompartment">In Compartment ''{0}'' {1} was not available and was therefore set to {2}.</entry>
+  <entry key="Escher2SBML.inferredCompartmentXoffset">In Compartment ''{0}'' the x-offset was not available and was
+    therefore set to the x-offset of the canvas: {2}.</entry>
+  <entry key="Escher2SBML.inferredCompartmentYoffset">In Compartment ''{0}'' the y-offset was not available and was
+    therefore set to the y-offset of the canvas: {2}.</entry>
+  <entry key="Escher2SBML.inferredCompartmentWidth">In Compartment ''{0}'' the width was not available and was
+    therefore set to the width of the canvas: {2}.</entry>
+  <entry key="Escher2SBML.inferredCompartmentHeight">In Compartment ''{0}'' the height was not available and was
+    therefore set to the height of the canvas: {2}.</entry>
+  <entry key="Escher2SBML.disconnectedMarker">The {0} {1} is not connected to any metabolite.</entry>
   
   <entry key="Escher2Standard.reversed_segment">Reversed direction of segment {0}: {1} -> {2}.</entry>
   <entry key="Escher2Standard.node_lacking_metabolite">Node ''{0}'' in reaction ''{1}'' lacks a corresponding metabolite.</entry>

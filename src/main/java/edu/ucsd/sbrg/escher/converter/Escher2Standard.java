@@ -15,12 +15,8 @@ package edu.ucsd.sbrg.escher.converter;
 
 import static java.text.MessageFormat.format;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import org.sbml.jsbml.util.ResourceManager;
@@ -37,7 +33,7 @@ import edu.ucsd.sbrg.escher.model.Segment;
  * @author Andreas Dr&auml;ger
  * @since 1.0
  */
-public abstract class Escher2Standard<T> {
+public abstract class Escher2Standard<T> implements StringLiterals {
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -307,7 +303,7 @@ public abstract class Escher2Standard<T> {
       Segment currSegment = reaction.getSegment(curve.get(0));
       boolean isProduct = metabolite.getCoefficient() > 0d;
       Node currNode = escherMap.getNode(isProduct ? currSegment.getFromNodeId() : currSegment.getToNodeId());
-      while (!currNode.isMidmarker()) {
+      while(!currNode.isMidmarker()) {
         for (Segment segment : segments) {
           boolean canAttach = false;
           Segment lastSegment = reaction.getSegment(curve.get(curve.size() - 1));
@@ -321,13 +317,17 @@ public abstract class Escher2Standard<T> {
           }
           if (canAttach) {
             currNode = escherMap.getNode(isProduct ? segment.getFromNodeId() : segment.getToNodeId());
-            if (currNode.isMidmarker()) {
+            if (currNode.isMidmarker() || ((currNode.getConnectedSegments().size() <= 1) && currNode.isMultimarker())) {
               break;
             }
           }
         }
+        if((currNode.getConnectedSegments().size() <= 1) && currNode.isMultimarker()) {
+          break;
+        }
       }
-      if (isProduct) {
+
+        if (isProduct) {
         Collections.reverse(srGlyph.getConnectedSegments(reaction.getId()));
       }
     }
