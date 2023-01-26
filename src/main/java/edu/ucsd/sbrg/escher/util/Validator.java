@@ -13,15 +13,17 @@
  */
 package edu.ucsd.sbrg.escher.util;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.github.fge.jackson.JsonLoader;
-import com.github.fge.jsonschema.core.exceptions.ProcessingException;
-import com.github.fge.jsonschema.core.report.ProcessingMessage;
-import com.github.fge.jsonschema.core.report.ProcessingReport;
-import com.github.fge.jsonschema.main.JsonSchema;
-import com.github.fge.jsonschema.main.JsonSchemaFactory;
-import com.github.fge.jsonschema.main.JsonValidator;
-import de.zbit.util.ResourceManager;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.UnmarshalException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.jdom.JDOMException;
 import org.sbgn.ConvertMilestone1to2;
 import org.sbgn.SbgnUtil;
@@ -30,15 +32,15 @@ import org.sbgn.schematron.Issue;
 import org.sbgn.schematron.SchematronValidator;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.UnmarshalException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.github.fge.jackson.JsonLoader;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+import com.github.fge.jsonschema.main.JsonSchema;
+import com.github.fge.jsonschema.main.JsonSchemaFactory;
+import com.github.fge.jsonschema.main.JsonValidator;
+
+import de.zbit.util.ResourceManager;
 
 /**
  * Validator for input files.
@@ -134,7 +136,7 @@ public class Validator {
     try {
       Sbgn document = SbgnUtil.readFromFile(file);
 
-      if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals
+      if ((document.getMap().getLanguage() == null) || !document.getMap().getLanguage().equals
           ("process description")) {
         logger.warning(messages.getString("SBGNLanguageUnspecified"));
         return false;
@@ -158,7 +160,7 @@ public class Validator {
       SchematronValidator.setSvrlDump(true);
       List<Issue> issues = SchematronValidator.validate(file);
 
-      if (issues == null || issues.isEmpty()) {
+      if ((issues == null) || issues.isEmpty()) {
         return true;
       }
     } catch (TransformerException | SAXException | ParserConfigurationException e) {
