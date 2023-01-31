@@ -71,11 +71,11 @@ public class Node extends AbstractBox implements Element {
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  private static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger logger = Logger.getLogger(Node.class.getName());
+  private static final Logger logger = Logger.getLogger(Node.class.getName());
   /**
    * This node's BiGG id. Can be {@code null}.
    */
@@ -140,13 +140,13 @@ public class Node extends AbstractBox implements Element {
       setId(node.getId());
     }
     if (node.isSetPrimary()) {
-      setPrimary(node.isPrimary().booleanValue());
+      setPrimary(node.isPrimary());
     }
     if (node.isSetLabelX()) {
-      setLabelX(node.getLabelX().doubleValue());
+      setLabelX(node.getLabelX());
     }
     if (node.isSetLabelY()) {
-      setLabelY(node.getLabelY().doubleValue());
+      setLabelY(node.getLabelY());
     }
     if (node.isSetName()) {
       setName(node.getName());
@@ -174,7 +174,7 @@ public class Node extends AbstractBox implements Element {
   public void addConnectedSegment(String reactionId, String segmentId) {
     List<String> listOfSegments = connectedSegments.get(reactionId);
     if (listOfSegments == null) {
-      listOfSegments = new ArrayList<String>();
+      listOfSegments = new ArrayList<>();
     }
     if (!listOfSegments.contains(segmentId)) {
       listOfSegments.add(segmentId);
@@ -391,7 +391,7 @@ public class Node extends AbstractBox implements Element {
    */
   private void initConnectedSegments() {
     if (!isSetConnectedSegments()) {
-      connectedSegments = new HashMap<String, List<String>>();
+      connectedSegments = new HashMap<>();
     }
   }
 
@@ -552,11 +552,11 @@ public class Node extends AbstractBox implements Element {
         if ((idParts.length > 2) &&
             ((compartment.length() > 1) || Utils.isNumber(compartment, true) ||
                 Character.isUpperCase(compartment.charAt(0)))) {
-          int i = 2;
-          while (Utils.isNumber(idParts[i], true)) {
-            i++;
-          }
-          compartment = idParts[i];
+          //int i = 2;
+          //while (Utils.isNumber(idParts[i], true)) {
+          //  i++;
+          //}
+          compartment = idParts[idParts.length - 1];
         }
       } else {
         logger.warning(MessageFormat

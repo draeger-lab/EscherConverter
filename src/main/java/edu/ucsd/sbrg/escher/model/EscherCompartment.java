@@ -36,7 +36,7 @@ public class EscherCompartment extends AbstractBox implements Element {
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger logger = Logger.getLogger(EscherCompartment.class.getName());
+  private static final Logger logger = Logger.getLogger(EscherCompartment.class.getName());
   /**
    *
    */
@@ -112,8 +112,7 @@ public class EscherCompartment extends AbstractBox implements Element {
   @Override
   public void setId(String id) {
     if (!compartmentCode.containsKey(id)) {
-      logger.warning(MessageFormat.format(
-        bundle.getString("EscherCompartment.invalidId"), id));
+      logger.warning(MessageFormat.format(bundle.getString("EscherCompartment.invalidId"), id));
     }
     this.id = id;
   }

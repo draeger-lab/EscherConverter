@@ -46,10 +46,10 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   public AbstractPosition(AbstractPosition position) {
     super(position);
     if (position.isSetX()) {
-      setX(position.getX().doubleValue());
+      setX(position.getX());
     }
     if (position.isSetY()) {
-      setY(position.getY().doubleValue());
+      setY(position.getY());
     }
   }
 
@@ -88,13 +88,9 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
       return false;
     }
     if (y == null) {
-      if (other.y != null) {
-        return false;
-      }
-    } else if (!y.equals(other.y)) {
-      return false;
+      return other.y == null;
     }
-    return true;
+    return y.equals(other.y);
   }
 
 
