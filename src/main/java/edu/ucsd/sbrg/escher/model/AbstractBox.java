@@ -45,10 +45,10 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public AbstractBox(AbstractBox box) {
     super(box);
     if (box.isSetHeight()) {
-      setHeight(box.getHeight().doubleValue());
+      setHeight(box.getHeight());
     }
     if (box.isSetWidth()) {
-      setWidth(box.getWidth().doubleValue());
+      setWidth(box.getWidth());
     }
   }
 
@@ -76,13 +76,8 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
       return false;
     }
     if (width == null) {
-      if (other.width != null) {
-        return false;
-      }
-    } else if (!width.equals(other.width)) {
-      return false;
-    }
-    return true;
+      return other.width == null;
+    } else return width.equals(other.width);
   }
 
 

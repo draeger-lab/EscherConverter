@@ -22,11 +22,30 @@
   <comment>
     This file contains a mapping of the abbreviated compartment code within
     BiGG 2.0 identifiers to its corresponding human-readable names.
+    See http://bigg.ucsd.edu/compartments/.
   </comment>
-  
-  <entry key="p">Periplasm</entry>
-  <entry key="e">Extra-organism</entry>
-  <entry key="c">Cytosol</entry>
-  <entry key="n">No compartment</entry>
+
+  <entry key="c">cytosol</entry>
+  <entry key="e">extracellular space</entry>
+  <entry key="p">periplasm</entry>
+  <entry key="m">mitochondria</entry>
+  <entry key="x">peroxisome/glyoxysome</entry>
+  <entry key="r">endoplasmic reticulum</entry>
+  <entry key="v">vacuole</entry>
+  <entry key="n">nucleus</entry>
+  <entry key="g">golgi apparatus</entry>
+  <entry key="u">thylakoid</entry>
+  <entry key="l">lysosome</entry>
+  <entry key="h">chloroplast</entry>
+  <entry key="f">flagellum</entry>
+  <entry key="s">eyespot</entry>
+  <entry key="im">intermembrane space of mitochondria</entry>
+  <entry key="cx">carboxyzome</entry>
+  <entry key="um">thylakoid membrane</entry>
+  <entry key="cm">cytosolic membrane</entry>
+  <entry key="i">inner mitochondrial compartment</entry>
+  <entry key="mm">mitochondrial intermembrane</entry>
+  <entry key="w">wildtype staph aureus</entry>
+  <entry key="y">cytochrome complex</entry>
   
 </properties>

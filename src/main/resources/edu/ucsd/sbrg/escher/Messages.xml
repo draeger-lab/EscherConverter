@@ -102,7 +102,7 @@
   <entry key="Escher2SBML.skippingNode">Skipping node {0}</entry>
   <entry key="Escher2SBML.noNodeWithBiGGId">No corresponding metabolite found for from node with BiGG id {0}</entry>
   <entry key="Escher2SBML.metaboliteWithoutStoichiometry">No stoichiometry information available for metabolite with BiGG id=\"{0}\" in reaction {1}</entry>
-  <entry key="Escher2SBML.segmentsLost">Could not attach the following segments to the graph: {0}</entry>
+  <entry key="Escher2SBML.segmentsLost">Could not attach the following segments to the graph in reaction ''{1}'': {0}</entry>
   <entry key="Escher2SBML.done">done</entry>
   <entry key="Escher2SBML.metaboliteDuplication">Metabolite {0} either participates in reaction {1} {2,number,integer} times or the reaction occurs more than once in the display.</entry>
   <entry key="Escher2SBML.replacementGlyph">Replacing duplicate BiGG id entry {0} with new glyph!</entry>
@@ -224,7 +224,7 @@
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using its coordinates</entry>
   <entry key="ReactionGlyphBBoxNotFound">reaction glyph ({0}) has no bbox, calculating coordinates</entry>
   <entry key="SRGToMultiMarkers">creating multi-markers from species reference glyph ({0})</entry>
-    <entry key="SRGToMultiMarkersNullRole">species reference glyph ({0}) had no assigned role. Its role was set to undefinded.</entry>
+  <entry key="SRGToMultiMarkersNullRole">species reference glyph ({0}) had no assigned role. Its role was set to undefinded.</entry>
   <entry key="MultiMarkerCount">{0} multi-markers created from species reference glyph ({1})</entry>
   <entry key="ReactionGlyphToReaction">reaction glyph ({0}) -> reaction ({1})</entry>
   <entry key="ReactionGlyphBBoxFound">reaction glyph ({0}) has bbox, using for label coordinates</entry>

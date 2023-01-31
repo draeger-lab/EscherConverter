@@ -1,34 +1,17 @@
 package edu.ucsd.sbrg.escher.converter;
 
-import static java.text.MessageFormat.format;
+import edu.ucsd.sbrg.escher.model.Point;
+import edu.ucsd.sbrg.escher.model.*;
+import org.apache.xerces.impl.dv.util.HexBin;
+import org.sbgn.bindings.Map;
+import org.sbgn.bindings.*;
+import org.sbml.jsbml.util.ResourceManager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import org.sbgn.bindings.Arc;
-import org.sbgn.bindings.Bbox;
-import org.sbgn.bindings.Glyph;
-import org.sbgn.bindings.Map;
-import org.sbgn.bindings.Port;
-import org.sbgn.bindings.Sbgn;
-import org.sbml.jsbml.util.ResourceManager;
-
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-
-import edu.ucsd.sbrg.escher.model.Canvas;
-import edu.ucsd.sbrg.escher.model.EscherMap;
-import edu.ucsd.sbrg.escher.model.EscherReaction;
-import edu.ucsd.sbrg.escher.model.Metabolite;
-import edu.ucsd.sbrg.escher.model.Node;
-import edu.ucsd.sbrg.escher.model.Point;
-import edu.ucsd.sbrg.escher.model.Segment;
-import edu.ucsd.sbrg.escher.model.TextLabel;
+import static java.text.MessageFormat.format;
 
 /**
  * Converter from SBML Layout Extension to Escher.

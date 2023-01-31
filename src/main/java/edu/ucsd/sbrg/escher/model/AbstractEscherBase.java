@@ -25,7 +25,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   /**
    *
    */
-  private Map<String, Object> userObjects;
+  private final Map<String, Object> userObjects;
 
 
   /**
@@ -33,7 +33,7 @@ public abstract class AbstractEscherBase implements EscherBase {
    */
   public AbstractEscherBase() {
     super();
-    userObjects = new HashMap<String, Object>();
+    userObjects = new HashMap<>();
   }
 
 
@@ -68,13 +68,9 @@ public abstract class AbstractEscherBase implements EscherBase {
     }
     AbstractEscherBase other = (AbstractEscherBase) obj;
     if (userObjects == null) {
-      if (other.userObjects != null) {
-        return false;
-      }
-    } else if (!userObjects.equals(other.userObjects)) {
-      return false;
+      return other.userObjects == null;
     }
-    return true;
+    return userObjects.equals(other.userObjects);
   }
 
 

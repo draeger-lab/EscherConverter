@@ -16,6 +16,7 @@ package edu.ucsd.sbrg.sbgn;
 import de.zbit.graph.io.def.SBGNProperties.ArcType;
 import de.zbit.graph.io.def.SBGNProperties.GlyphOrientation;
 import de.zbit.graph.io.def.SBGNProperties.GlyphType;
+import org.jetbrains.annotations.NotNull;
 import org.sbgn.bindings.*;
 import org.sbgn.bindings.Arc.End;
 import org.sbgn.bindings.Arc.Next;
@@ -205,7 +206,7 @@ public class SBGNbuilder {
    * @param type
    * @return
    */
-  public Glyph createGlyph(String id, GlyphType type) {
+  public Glyph createGlyph(String id, @NotNull GlyphType type) {
     Glyph glyph = objectFactory.createGlyph();
     checkId(id, glyph);
     glyph.setId(id);

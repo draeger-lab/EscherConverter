@@ -99,13 +99,9 @@ public class Metabolite extends AbstractEscherBase implements Element {
       return false;
     }
     if (nodeRefId == null) {
-      if (other.nodeRefId != null) {
-        return false;
-      }
-    } else if (!nodeRefId.equals(other.nodeRefId)) {
-      return false;
+      return other.nodeRefId == null;
     }
-    return true;
+    return nodeRefId.equals(other.nodeRefId);
   }
 
 

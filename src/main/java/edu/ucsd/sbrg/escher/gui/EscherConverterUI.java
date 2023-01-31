@@ -13,33 +13,6 @@
  */
 package edu.ucsd.sbrg.escher.gui;
 
-import static java.text.MessageFormat.format;
-
-import java.awt.Component;
-import java.awt.Image;
-import java.beans.PropertyChangeEvent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Logger;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JTabbedPane;
-import javax.swing.JToolBar;
-import javax.swing.SwingWorker;
-import javax.swing.UIManager;
-
-import org.sbgn.bindings.Sbgn;
-import org.sbml.jsbml.SBMLDocument;
-import org.sbml.jsbml.util.ResourceManager;
-
 import de.zbit.AppConf;
 import de.zbit.gui.BaseFrame;
 import de.zbit.gui.GUIOptions;
@@ -55,6 +28,24 @@ import edu.ucsd.sbrg.escher.EscherConverter;
 import edu.ucsd.sbrg.escher.model.EscherMap;
 import edu.ucsd.sbrg.escher.util.EscherIOOptions;
 import edu.ucsd.sbrg.escher.util.EscherOptions;
+import org.sbgn.bindings.Sbgn;
+import org.sbml.jsbml.SBMLDocument;
+import org.sbml.jsbml.util.ResourceManager;
+
+import javax.swing.*;
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Logger;
+
+import static java.text.MessageFormat.format;
 
 /**
  * 
@@ -66,13 +57,11 @@ public class EscherConverterUI extends BaseFrame {
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger
-  logger = Logger.getLogger(EscherConverterUI.class.getName());
+  private static final Logger logger = Logger.getLogger(EscherConverterUI.class.getName());
   /**
    * Localization support.
    */
-  public static final            ResourceBundle
-  bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  public static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * Program icons
    */
@@ -83,7 +72,7 @@ public class EscherConverterUI extends BaseFrame {
    */
   static {
     final String iconName = "escher-logo_";
-    int resolutions[] = new int[] {16, 32, 48, 128, 256};
+    int[] resolutions = new int[] {16, 32, 48, 128, 256};
     for (int resolution : resolutions) {
       String key = iconName + resolution;
       URL url = EscherConverterUI.class.getResource(key + ".png");
@@ -96,10 +85,10 @@ public class EscherConverterUI extends BaseFrame {
         logger.warning(format(bundle.getString("EscherConverterUI.invalidURL"), key));
       }
     }
-    icons = new LinkedList<Image>();
+    icons = new LinkedList<>();
     for (int res : resolutions) {
       Object icon = UIManager.get(iconName + res);
-      if ((icon != null) && (icon instanceof ImageIcon)) {
+      if ((icon instanceof ImageIcon)) {
         icons.add(((ImageIcon) icon).getImage());
       }
     }
@@ -136,7 +125,7 @@ public class EscherConverterUI extends BaseFrame {
   public EscherConverterUI(AppConf appConf) {
     super(appConf);
     setIconImages(icons);
-    listOfOpenedFiles = new ArrayList<OpenedFile<EscherMap>>();
+    listOfOpenedFiles = new ArrayList<>();
     SBProperties props = appConf.getCmdArgs();
     if (props.containsKey(EscherIOOptions.INPUT)) {
       openFile(new File(props.get(EscherIOOptions.INPUT)));
@@ -183,7 +172,19 @@ public class EscherConverterUI extends BaseFrame {
    */
   @Override
   protected JToolBar createJToolBar() {
-    return createDefaultToolBar();
+    JToolBar toolbar = createDefaultToolBar();
+    // This is just a workaround because for some reason the help icon dosn't
+    // get painted anymore. However, I want to avoid messing around in SysBio.
+    for (Component c : toolbar.getComponents()) {
+      if (c instanceof JButton) {
+        JButton button = (JButton) c;
+        if (button.getIcon() == null) {
+          button.setIcon(UIManager.getIcon("ICON_HELP_16"));
+          button.setBorderPainted(false);
+        }
+      }
+    }
+    return toolbar;
   }
 
 
@@ -194,10 +195,8 @@ public class EscherConverterUI extends BaseFrame {
   protected Component createMainComponent() {
     Icon icon = UIManager.getIcon("EscherWatermark");
     tabbedPane = new JTabbedPaneDraggableAndCloseable((ImageIcon) icon);
-    tabbedPane.addChangeListener(evt -> {
-      GUITools.setEnabled(tabbedPane.getTabCount() > 0, getJMenuBar(),
-        getJToolBar(), BaseAction.FILE_CLOSE, BaseAction.FILE_SAVE_AS);
-    });
+    tabbedPane.addChangeListener(evt -> GUITools.setEnabled(tabbedPane.getTabCount() > 0, getJMenuBar(),
+      getJToolBar(), BaseAction.FILE_CLOSE, BaseAction.FILE_SAVE_AS));
     return tabbedPane;
   }
 
@@ -250,8 +249,8 @@ public class EscherConverterUI extends BaseFrame {
     
     // if files are provided, they are checked
     if ((files != null) && (files.length > 0)) {
-      List<File> accepted = new LinkedList<File>();
-      List<File> notAccepted = new LinkedList<File>();
+      List<File> accepted = new LinkedList<>();
+      List<File> notAccepted = new LinkedList<>();
       for (File file : files) {
         if (filterJSON.accept(file) || filterSBML.accept(file) || filterSBGN.accept(file)) {
           // TODO: ignore empty files here?
@@ -313,8 +312,7 @@ public class EscherConverterUI extends BaseFrame {
    * @param destination File in which the result is to be saved
    * @throws FileNotFoundException
    */
-  private <T> void saveFile(final T result, final File destination)
-      throws FileNotFoundException {
+  private <T> void saveFile(final T result, final File destination) throws FileNotFoundException {
     SwingWorker<?, ?> writer;
     if (result instanceof EscherMap) {
       writer = new SwingWorker<File, Void>() {
@@ -334,11 +332,9 @@ public class EscherConverterUI extends BaseFrame {
       };
 
     } else if (result instanceof Sbgn) {
-      writer = new SBGNWritingTask(new OpenedFile<Sbgn>(destination, (Sbgn) result));
+      writer = new SBGNWritingTask(new OpenedFile<>(destination, (Sbgn) result));
     } else if (result instanceof SBMLDocument) {
-      writer = new SBMLWritingTask(
-        new OpenedFile<SBMLDocument>(destination, (SBMLDocument) result),
-        this);
+      writer = new SBMLWritingTask(new OpenedFile<>(destination, (SBMLDocument) result), this);
     } else {
       throw new IllegalArgumentException(format(
         bundle.getString("EscherConverterWorker.unknownFormat"),
@@ -365,8 +361,8 @@ public class EscherConverterUI extends BaseFrame {
     
     // make sure the extension filter corresponds to the preferred output format
     String format = SBPreferences.getPreferencesFor(EscherOptions.class).get(EscherOptions.FORMAT);
-    GeneralFileFilter filter = null;
-    switch (format){
+    GeneralFileFilter filter;
+    switch (format) {
     case "SBGN": filter = SBFileFilter.createSBGNFileFilter(); break;
     case "JSON": filter = SBFileFilter.createJSONFileFilter(); break;
     default: filter = SBFileFilter.createSBMLFileFilterL3V1(); break;
@@ -380,17 +376,18 @@ public class EscherConverterUI extends BaseFrame {
         EscherMapDisplay display = (EscherMapDisplay) tabbedPane.getSelectedComponent();
         EscherMap map = display.getOpenedFile().getDocument();
         
-        String filename = fc.getSelectedFile().getAbsolutePath().toString();
+        String filename = fc.getSelectedFile().getAbsolutePath();
         
         if (!SBFileFilter.isJSONFile(fc.getSelectedFile())) {
           EscherConverterWorker<?> converter;
           if (fc.getFileFilter().getDescription().toUpperCase().contains("SBGN")) {
-            converter = new EscherConverterWorker<Sbgn>(map, Sbgn.class,
-                SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
+            converter = new EscherConverterWorker<>(map, Sbgn.class,
+                    SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
             
             // make sure that pathname ends with .sbgn or .xml
-            if (!filename.toLowerCase().endsWith(".sbgn") && !filename.toLowerCase().endsWith(".xml"))
-                   filename += ".sbgn";
+            if (!filename.toLowerCase().endsWith(".sbgn") && !filename.toLowerCase().endsWith(".xml")) {
+              filename += ".sbgn";
+            }
             savedFile = checkFile(new File(filename));
             
             /*} else if (fc.getFileFilter().getDescription().toUpperCase().contains("PNG")) {
@@ -403,12 +400,13 @@ public class EscherConverterUI extends BaseFrame {
             // changed when necessary; it is not a 1:1 mapping from the original
             // map! Hence, even though we have already an SBMLDocument in memory
             // we still need to do a fresh conversion.
-            converter = new EscherConverterWorker<SBMLDocument>(map, SBMLDocument.class,
-                SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
+            converter = new EscherConverterWorker<>(map, SBMLDocument.class,
+                    SBPreferences.getPreferencesFor(EscherOptions.class).toProperties());
             
             // make sure that pathname ends with .sbml or .xml
-            if (!filename.toLowerCase().endsWith(".sbml") && !filename.toLowerCase().endsWith(".xml"))
-                   filename += ".sbml";
+            if (!filename.toLowerCase().endsWith(".sbml") && !filename.toLowerCase().endsWith(".xml")) {
+              filename += ".sbml";
+            }
             savedFile = checkFile(new File(filename));
           }
           
@@ -426,8 +424,9 @@ public class EscherConverterUI extends BaseFrame {
           converter.execute();
         } else {
         	// make sure that pathname ends with .json
-           if (!filename.toLowerCase().endsWith(".json"))
-                 filename += ".json";
+           if (!filename.toLowerCase().endsWith(".json")) {
+             filename += ".json";
+           }
            savedFile = checkFile(new File(filename));
           // Just save the JSON map, nothing to do.
           try {

@@ -33,7 +33,7 @@ import edu.ucsd.sbrg.escher.model.Point;
 import edu.ucsd.sbrg.escher.model.Segment;
 
 /**
- * @param T the output format
+ * @param <T> the output format
  * @author Andreas Dr&auml;ger
  * @since 1.0
  */
@@ -213,8 +213,7 @@ public abstract class Escher2Standard<T> {
    */
   public void preprocessDataStructure(EscherMap escherMap) {
     for (Entry<String, EscherReaction> reactions : escherMap.reactions()) {
-      EscherReaction reaction = reactions.getValue();
-      preProcessReaction(reaction, escherMap);
+      preProcessReaction(reactions.getValue(), escherMap);
     }
   }
 
@@ -225,52 +224,50 @@ public abstract class Escher2Standard<T> {
    * @param reaction The {@code reaction} object.
    * @param escherMap The parent {@code escher map}.
    */
-  private void preProcessReaction(EscherReaction reaction,
-    EscherMap escherMap) {
-    Set<Segment> segments = new HashSet<Segment>();
+  private void preProcessReaction(EscherReaction reaction, EscherMap escherMap) {
+    Set<Segment> segments = new HashSet<>();
     for (Entry<String, Segment> entry : reaction.segments()) {
       Segment segment = entry.getValue();
       Node fromNode = escherMap.getNode(segment.getFromNodeId());
       Node toNode = escherMap.getNode(segment.getToNodeId());
-      
+
       Node srGlyph = null;
-      if(toNode == null){
-    	  logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
-    			  segment.getToNodeId(), reaction.getBiggId()));
-      }else if (fromNode == null){
-    	  logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
-    			  segment.getFromNodeId(), reaction.getBiggId()));
-      }else{
-      if (fromNode.isMetabolite()) {
-        srGlyph = escherMap.getNode(fromNode.getId());
-        Metabolite metabolite = reaction.getMetabolite(fromNode.getBiggId());
-        if (metabolite == null) {
-          logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
-            fromNode.getBiggId(), reaction.getBiggId()));
-        } else if (metabolite.getCoefficient() > 0d) {
-          segment = reverse(segment);
-        }
-        toNode.addConnectedSegment(reaction.getId(), segment);
-      } else if (toNode.isMetabolite()) {
-        srGlyph = escherMap.getNode(toNode.getId());
-        Metabolite metabolite = reaction.getMetabolite(toNode.getBiggId());
-        if (metabolite == null) {
-          logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
-            toNode.getBiggId(), reaction.getBiggId()));
-        } else if (metabolite.getCoefficient() <= 0d) {
-          segment = reverse(segment);
-        }
-        fromNode.addConnectedSegment(reaction.getId(), segment);
+      if (toNode == null) {
+        logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
+                segment.getToNodeId(), reaction.getBiggId()));
+      } else if (fromNode == null) {
+        logger.severe(format(bundle.getString("Escher2Standard.missing_node"),
+                segment.getFromNodeId(), reaction.getBiggId()));
       } else {
-        // Attach segments to midmarkers and multimarkers.
-        // Here we have no information about directionality and just keep it as given.
-        fromNode.addConnectedSegment(reaction.getId(), segment);
-        toNode.addConnectedSegment(reaction.getId(), segment);
-      }
+        if (fromNode.isMetabolite()) {
+          srGlyph = escherMap.getNode(fromNode.getId());
+          Metabolite metabolite = reaction.getMetabolite(fromNode.getBiggId());
+          if (metabolite == null) {
+            logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
+                    fromNode.getBiggId(), reaction.getBiggId()));
+          } else if (metabolite.getCoefficient() > 0d) {
+            segment = reverse(segment);
+          }
+          toNode.addConnectedSegment(reaction.getId(), segment);
+        } else if (toNode.isMetabolite()) {
+          srGlyph = escherMap.getNode(toNode.getId());
+          Metabolite metabolite = reaction.getMetabolite(toNode.getBiggId());
+          if (metabolite == null) {
+            logger.severe(format(bundle.getString("Escher2Standard.node_lacking_metabolite"),
+                    toNode.getBiggId(), reaction.getBiggId()));
+          } else if (metabolite.getCoefficient() <= 0d) {
+            segment = reverse(segment);
+          }
+          fromNode.addConnectedSegment(reaction.getId(), segment);
+        } else {
+          // Attach segments to midmarkers and multimarkers.
+          // Here we have no information about directionality and just keep it as given.
+          fromNode.addConnectedSegment(reaction.getId(), segment);
+          toNode.addConnectedSegment(reaction.getId(), segment);
+        }
       }
       if (srGlyph != null) {
-        List<String>
-        segmentIds = srGlyph.getConnectedSegments(reaction.getId());
+        List<String> segmentIds = srGlyph.getConnectedSegments(reaction.getId());
         if (segmentIds == null) {
           srGlyph.addConnectedSegment(reaction.getId(), segment);
           segmentIds = srGlyph.getConnectedSegments(reaction.getId());

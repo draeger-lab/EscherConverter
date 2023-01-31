@@ -37,12 +37,15 @@ public class SBGNWritingTask extends SwingWorker<File, Void> {
 
 
   /* (non-Javadoc)
-   * Writes an Sbgn to a file
+   * Writes Sbgn to a file
    * @see javax.swing.SwingWorker#doInBackground()
    */
   @Override
   protected File doInBackground() throws Exception {
     try {
+      // This might require the following command-line flag for security reasons
+      // when executing the application:
+      // java --add-opens java.base/java.lang=ALL-UNNAMED ...
       SbgnUtil.writeToFile(openedFile.getDocument(), openedFile.getFile());
     } catch (Throwable t) {
       t.printStackTrace();

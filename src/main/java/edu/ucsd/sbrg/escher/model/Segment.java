@@ -128,13 +128,9 @@ public class Segment extends AbstractEscherBase implements Element {
       return false;
     }
     if (toNodeId == null) {
-      if (other.toNodeId != null) {
-        return false;
-      }
-    } else if (!toNodeId.equals(other.toNodeId)) {
-      return false;
+      return other.toNodeId == null;
     }
-    return true;
+    return toNodeId.equals(other.toNodeId);
   }
 
 

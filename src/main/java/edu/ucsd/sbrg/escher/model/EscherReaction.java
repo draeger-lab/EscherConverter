@@ -98,9 +98,9 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     id = name = biggId = null;
     reversibility = null;
     labelX = labelY = null;
-    segments = new HashMap<String, Segment>();
-    metabolites = new HashMap<String, Metabolite>();
-    nodes = new HashSet<String>();
+    segments = new HashMap<>();
+    metabolites = new HashMap<>();
+    nodes = new HashSet<>();
     metaboliteList = new ArrayList<>();
     geneList = new ArrayList<>();
   }
@@ -126,10 +126,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setId(escherReaction.getId());
     }
     if (escherReaction.isSetLabelX()) {
-      setLabelX(escherReaction.getLabelX().doubleValue());
+      setLabelX(escherReaction.getLabelX());
     }
     if (escherReaction.isSetLabelY()) {
-      setLabelY(escherReaction.getLabelY().doubleValue());
+      setLabelY(escherReaction.getLabelY());
     }
     if (escherReaction.getMetaboliteCount() > 0) {
       for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
@@ -143,7 +143,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setName(escherReaction.getName());
     }
     if (escherReaction.isSetReversibility()) {
-      setReversibility(escherReaction.getReversibility().booleanValue());
+      setReversibility(escherReaction.getReversibility());
     }
     if (escherReaction.getSegmentCount() > 0) {
       for (Map.Entry<String, Segment> entry : escherReaction.segments()) {
@@ -158,7 +158,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    */
   public void addGene(Gene gene) {
     if (genes == null) {
-      genes = new HashMap<String, Gene>();
+      genes = new HashMap<>();
     }
     genes.put(gene.getId(), gene);
   }
@@ -170,7 +170,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   public void addMetabolite(Metabolite metabolite) {
     if (metabolite != null) {
       if (metabolites == null) {
-        metabolites = new HashMap<String, Metabolite>();
+        metabolites = new HashMap<>();
       }
       metabolites.put(metabolite.getId(), metabolite);
       metaboliteList.add(metabolite);
@@ -189,11 +189,11 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   public void addSegment(Segment segment) {
     if (segment != null) {
       if (segments == null) {
-        segments = new HashMap<String, Segment>();
+        segments = new HashMap<>();
       }
       segments.put(segment.getId(), segment);
       if (nodes == null) {
-        nodes = new HashSet<String>();
+        nodes = new HashSet<>();
       }
       if (segment.isSetFromNodeId()) {
         nodes.add(segment.getFromNodeId());
@@ -308,13 +308,9 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       return false;
     }
     if (segments == null) {
-      if (other.segments != null) {
-        return false;
-      }
-    } else if (!segments.equals(other.segments)) {
-      return false;
+      return other.segments == null;
     }
-    return true;
+    return segments.equals(other.segments);
   }
 
 
@@ -513,7 +509,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    * @return
    */
   public Set<Node> intersect(Set<Node> nodes) {
-    Set<Node> intersection = new HashSet<Node>();
+    Set<Node> intersection = new HashSet<>();
     for (Node node : nodes) {
       if (this.nodes.contains(node.getId())) {
         intersection.add(node);

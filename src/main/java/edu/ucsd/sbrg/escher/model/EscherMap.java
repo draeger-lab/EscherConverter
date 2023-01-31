@@ -82,12 +82,12 @@ public class EscherMap extends AbstractEscherBase {
    */
   public EscherMap() {
     canvas = null;
-    nodes = new HashMap<String, Node>();
-    reactions = new HashMap<String, EscherReaction>();
-    textLabels = new HashMap<String, TextLabel>();
-    bigg2nodes = new HashMap<String, Set<String>>();
-    bigg2reactions = new HashMap<String, Set<String>>();
-    compartments = new HashMap<String, EscherCompartment>();
+    nodes = new HashMap<>();
+    reactions = new HashMap<>();
+    textLabels = new HashMap<>();
+    bigg2nodes = new HashMap<>();
+    bigg2reactions = new HashMap<>();
+    compartments = new HashMap<>();
   }
 
 
@@ -128,6 +128,11 @@ public class EscherMap extends AbstractEscherBase {
         addTextLabel(entry.getValue().clone());
       }
     }
+    if (escherMap.getCompartmentCount() > 0) {
+      for (EscherCompartment c : escherMap.compartments.values()) {
+        addCompartment(c.clone());
+      }
+    }
     if (escherMap.isSetURL()) {
       setURL(escherMap.getURL());
     }
@@ -149,7 +154,7 @@ public class EscherMap extends AbstractEscherBase {
     nodes.put(node.getId(), node);
     if (node.isSetBiggId()) {
       if (!bigg2nodes.containsKey(node.getBiggId())) {
-        bigg2nodes.put(node.getBiggId(), new HashSet<String>());
+        bigg2nodes.put(node.getBiggId(), new HashSet<>());
       }
       bigg2nodes.get(node.getBiggId()).add(node.getId());
     }
@@ -177,7 +182,7 @@ public class EscherMap extends AbstractEscherBase {
     reactions.put(reaction.getId(), reaction);
     if (reaction.isSetBiggId()) {
       if (!bigg2reactions.containsKey(reaction.getBiggId())) {
-        bigg2reactions.put(reaction.getBiggId(), new HashSet<String>());
+        bigg2reactions.put(reaction.getBiggId(), new HashSet<>());
       }
       bigg2reactions.get(reaction.getBiggId()).add(reaction.getId());
     }
@@ -259,13 +264,8 @@ public class EscherMap extends AbstractEscherBase {
       return false;
     }
     if (textLabels == null) {
-      if (other.textLabels != null) {
-        return false;
-      }
-    } else if (!textLabels.equals(other.textLabels)) {
-      return false;
-    }
-    return true;
+      return other.textLabels == null;
+    } else return textLabels.equals(other.textLabels);
   }
 
 
@@ -337,7 +337,7 @@ public class EscherMap extends AbstractEscherBase {
    */
   public Set<Node> getNodes(String biggId) {
     Set<String> nodeIds = bigg2nodes.get(biggId);
-    Set<Node> set = new HashSet<Node>();
+    Set<Node> set = new HashSet<>();
     if (nodeIds != null) {
       for (String id : nodeIds) {
         set.add(getNode(id));
@@ -378,7 +378,7 @@ public class EscherMap extends AbstractEscherBase {
    */
   public Set<EscherReaction> getReactions(String biggId) {
     Set<String> reactionIds = bigg2reactions.get(biggId);
-    Set<EscherReaction> set = new HashSet<EscherReaction>();
+    Set<EscherReaction> set = new HashSet<>();
     if (reactionIds != null) {
       for (String id : reactionIds) {
         set.add(getReaction(id));
@@ -674,23 +674,21 @@ public class EscherMap extends AbstractEscherBase {
         });
 
         // Set nodeRefIds for metabolites.
-        r.getMetabolites().forEach((mk, mv) -> {
-          r.getNodes().forEach((s) -> {
-            try {
-              Node node = nodes.get(s);
-              if (node.getBiggId() == null) {
-                return;
-              }
-              if (node.getBiggId().equals(mv.getId())) {
-                mv.setNodeRefId(node.getId());
-              }
+        r.getMetabolites().forEach((mk, mv) -> r.getNodes().forEach((s) -> {
+          try {
+            Node node = nodes.get(s);
+            if (node.getBiggId() == null) {
+              return;
             }
-            catch (NullPointerException ex) {
-              ex.getMessage();
+            if (node.getBiggId().equals(mv.getId())) {
+              mv.setNodeRefId(node.getId());
             }
+          }
+          catch (NullPointerException ex) {
+            ex.getMessage();
+          }
 
-          });
-        });
+        }));
 
         // Bigg2Reactions.
         if (!bigg2reactions.containsKey(r.getBiggId())) {

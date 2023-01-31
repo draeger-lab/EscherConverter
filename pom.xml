@@ -14,26 +14,23 @@
 	<!-- =================================================================== -->
 
 	<name>${project.artifactId}</name>
-	<version>1.2.1</version>
+	<version>1.2.2</version>
 	<url>https://github.com/SBRG/EscherConverter</url>
 	<inceptionYear>2015</inceptionYear>
 	<description>EscherConverter is a stand-alone program that reads files created with the graphical network editor Escher and converts them to files in community standard formats.</description>
 
 	<properties>
-		<jdk.version>1.8</jdk.version>
-		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
-		<year>${maven.build.timestamp}</year><!-- This property is used for filtering 
-			the variable ${year} in some resource files -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
-		<junit.version>4.13.1</junit.version>
-		<sbgn.version>0.2</sbgn.version>
-		<sysbio.version>1403</sysbio.version> <!-- SVN revision -->
-		<quaqua.version>9</quaqua.version>
-		<jackson.version>2.7.4</jackson.version>
-		<powermock.version>1.6.5</powermock.version>
-		<organization.name>University of Tübingen</organization.name>
-		<dependency.locations.enabled>false</dependency.locations.enabled>
+	  <jdk.version>1.8</jdk.version>
+	  <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+	  <!-- The following property is used for filtering the variable ${year} in some resource files -->
+	  <year>${maven.build.timestamp}</year>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <project.license.url>http://www.opensource.org/licenses/mit-license.php</project.license.url>
+	  <sysbio.version>1403</sysbio.version> <!-- SVN revision -->
+	  <jackson.version>2.7.4</jackson.version>
+	  <powermock.version>1.6.5</powermock.version>
+	  <organization.name>University of Tübingen</organization.name>
+	  <dependency.locations.enabled>false</dependency.locations.enabled>
 	</properties>
 
 	<organization>
@@ -56,7 +53,7 @@
 
 	<developers>
 		<developer>
-			<email>draeger@informatik.uni-tuebingen.de</email>
+			<email>andreas.draeger@uni-tuebingen.de</email>
 			<name>Andreas Dräger</name>
 			<url>https://github.com/draeger/</url>
 			<id>draeger</id>
@@ -88,6 +85,7 @@
 			<id>libs</id>
 			<url>file://${project.basedir}/lib</url>
 		</repository>
+
 	</repositories>
 
 	<!-- =================================================================== -->
@@ -96,13 +94,22 @@
 
 	<dependencies>
 
-		<!-- To update or install local non-MAVEN JAR files run the command in 
-			the comments -->
+		<!--
+		  To update or install local non-MAVEN JAR files run the command in
+		  the comments
+		-->
+
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.12.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope></scope>
+			<version>4.13.2</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -115,13 +122,13 @@
 		<dependency>
 			<groupId>org.sbml.jsbml</groupId>
 			<artifactId>jsbml</artifactId>
-			<version>1.4</version>
+			<version>1.6.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org</groupId>
 			<artifactId>sbgn</artifactId>
-			<version>${sbgn.version}</version>
+			<version>0.2</version>
 		</dependency>
 
 		<dependency>
@@ -139,31 +146,33 @@
 		<dependency>
 			<groupId>ch.randelshofer</groupId>
 			<artifactId>quaqua</artifactId>
-			<version>${quaqua.version}</version>
+			<version>9.1</version>
 		</dependency>
+		
+        <dependency>
+          <groupId>com.apple.mrj</groupId>
+          <artifactId>mrjtoolkitstubs</artifactId>
+          <version>1.0</version>
+        </dependency>
 
-		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 
-		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.fge/json-schema-validator -->
 		<dependency>
 			<groupId>com.github.fge</groupId>
 			<artifactId>json-schema-validator</artifactId>
 			<version>2.2.6</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -192,11 +201,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
 		<dependency>
 			<groupId>org.jdom</groupId>
-			<artifactId>jdom2</artifactId>
-		  <version>2.0.6.1</version>
+			<artifactId>jdom</artifactId>
+		  <version>1.1</version>
 		</dependency>
 		
         <dependency>
@@ -204,20 +212,30 @@
 		  <artifactId>jaxb-api</artifactId>
 		  <version>2.2.11</version>
 		</dependency>
+
         <dependency>
 		  <groupId>com.sun.xml.bind</groupId>
 		  <artifactId>jaxb-core</artifactId>
 		  <version>2.2.11</version>
 		</dependency>
+
 		<dependency>
 		  <groupId>com.sun.xml.bind</groupId>
 		  <artifactId>jaxb-impl</artifactId>
 		  <version>2.2.11</version>
 		</dependency>
+
 		<dependency>
 		  <groupId>javax.activation</groupId>
 		  <artifactId>activation</artifactId>
 		  <version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>13.0</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
@@ -321,6 +339,30 @@
 					</executions>
 				</plugin>
 
+				<!--
+				Packaging EscherConverter as a Java app for macOS.
+				clean package appbundle:bundle
+				-->
+				<plugin>
+					<groupId>sh.tak.appbundler</groupId>
+					<artifactId>appbundle-maven-plugin</artifactId>
+					<version>1.2.0</version>
+					<configuration>
+						<bundleName>${project.name}</bundleName> <!-- name of the disk and not the app name -->
+						<iconFile>edu/ucsd/sbrg/escher/gui/escher-logo.icns</iconFile>
+						<mainClass>edu.ucsd.sbrg.escher.EscherConverter</mainClass>
+						<generateDiskImageFile>true</generateDiskImageFile>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>bundle</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
 				<!-- Website -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -341,7 +383,7 @@
 						<dependency>
 							<groupId>org.apache.maven.doxia</groupId>
 							<artifactId>doxia-module-markdown</artifactId>
-							<version>1.7</version>
+							<version>1.8</version>
 						</dependency>
 					</dependencies>
 				</plugin>
@@ -349,15 +391,18 @@
 				<!-- Run tests -->
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.19.1</version>
+					<version>3.0.0-M8</version>
 					<dependencies>
 						<dependency>
-							<groupId>org.apache.maven.surefire</groupId>
-							<artifactId>surefire-junit4</artifactId>
-							<version>2.19.1</version>
+							<groupId>org.junit.jupiter</groupId>
+							<artifactId>junit-jupiter-engine</artifactId>
+							<version>5.9.1</version>
 						</dependency>
 					</dependencies>
 					<configuration>
+						<argLine>
+							--add-opens java.base/java.util=ALL-UNNAMED
+						</argLine>
 						<systemProperties>
 							<property>
 								<name>java.util.logging.config.file</name>
@@ -370,8 +415,13 @@
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.7</version>
-					<configuration>
-					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.shared</groupId>
+							<artifactId>maven-filtering</artifactId>
+							<version>1.3</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 
 			</plugins>
@@ -397,18 +447,15 @@
 					<overview>${project.basedir}/src/main/javadoc/overview.html</overview>
 				</configuration>
 			</plugin> -->
-			<!-- Generation of project information for the website (run mvn:site with outcommented maven-javadoc-plugin) -->
+			<!-- Generation of project information for the website (run mvn:site with out-commented maven-javadoc-plugin) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.7</version>
-			
 			</plugin>
 
 		</plugins>
 
 	</reporting>
-
-
 
 </project>
