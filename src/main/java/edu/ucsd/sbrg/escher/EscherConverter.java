@@ -38,10 +38,7 @@ import edu.ucsd.sbrg.escher.util.Validator;
 import org.json.simple.parser.ParseException;
 import org.sbgn.SbgnUtil;
 import org.sbgn.bindings.Sbgn;
-import org.sbml.jsbml.SBMLDocument;
-import org.sbml.jsbml.SBMLException;
-import org.sbml.jsbml.SBMLReader;
-import org.sbml.jsbml.TidySBMLWriter;
+import org.sbml.jsbml.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -240,9 +237,9 @@ public class EscherConverter extends Launcher {
 
       map.postprocessMap();
       return map;
-    } catch(JsonProcessingException e) {
+    } catch(JsonProcessingException exc) {
       logger.severe(bundle.getString("EscherValidationFail.NotJson"));
-      throw e;
+      throw exc;
     }
   }
 
@@ -454,6 +451,14 @@ public class EscherConverter extends Launcher {
       case SBML:
         SBMLDocument doc = convert(input, SBMLDocument.class, properties);
         TidySBMLWriter.write(doc, output, System.getProperty("app.name"), getVersionNumber(), ' ', (short) 2);
+        /*doc.checkConsistencyOffline();
+        Map<String, String> errors = new HashMap<>();
+        for (int i = 0; i < doc.getErrorCount(); i++) {
+          SBMLError error = doc.getError(i);
+          if (error.isError()) {
+            System.out.println(error.toString());
+          }
+        }*/
         success = true;
         break;
 
@@ -497,8 +502,9 @@ public class EscherConverter extends Launcher {
         logger.info(format(
           "Output successfully written to file {0}.", output));
       }
-    } catch(JsonProcessingException e) {
+    } catch(JsonProcessingException exc) {
       logger.severe(bundle.getString("EscherValidationFail.NotJson"));
+      throw new IOException(exc);
     }
   }
 

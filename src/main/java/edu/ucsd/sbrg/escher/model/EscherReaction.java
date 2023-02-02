@@ -89,6 +89,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    * connecting arcs in this reaction.
    */
   private Map<String, Segment>    segments;
+  /**
+   * Indicator if the list of metabolites contains any reactants, i.e., substrates.
+   */
+  private boolean hasReactants = false;
+  /**
+   * Indicator if the list of metabolites contains any prodcuts.
+   */
+  private boolean hasProducts = false;
 
 
   /**
@@ -175,6 +183,13 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       }
       metabolites.put(metabolite.getId(), metabolite);
       metaboliteList.add(metabolite);
+      if (metabolite.isSetCoefficient()) {
+        if (metabolite.getCoefficient() < 0d) {
+          hasReactants = true;
+        } else {
+          hasProducts = true;
+        }
+      }
     } else {
       logger.warning(MessageFormat.format(
         bundle.getString("EscherReaction.skippingNullElement"),
@@ -689,7 +704,17 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     if (metabolites == null) {
       metabolites = new HashMap<>();
     }
-    metaboliteList.forEach((m) -> metabolites.put(m.getId(), m));
+    //metaboliteList.forEach((m) -> addMetabolite(m));
+    metaboliteList.forEach((m) -> {
+      metabolites.put(m.getId(), m);
+      if (m.isSetCoefficient()) {
+        if (m.getCoefficient() < 0d) {
+          hasReactants = true;
+        } else {
+          hasProducts = true;
+        }
+      }
+    });
   }
 
 
@@ -736,6 +761,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     builder.append(metabolites);
     builder.append("]");
     return builder.toString();
+  }
+
+  public boolean hasReactants() {
+    return hasReactants;
+  }
+
+  public boolean hasProducts() {
+    return hasProducts;
   }
 
 }

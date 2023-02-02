@@ -103,7 +103,7 @@
   <entry key="Escher2SBML.skippingNode">Skipping node {0}</entry>
   <entry key="Escher2SBML.noNodeWithBiGGId">No corresponding metabolite found for from node with BiGG id {0}</entry>
   <entry key="Escher2SBML.metaboliteWithoutStoichiometry">No stoichiometry information available for metabolite with BiGG id=\"{0}\" in reaction {1}</entry>
-  <entry key="Escher2SBML.segmentsLost">Could not attach the following segments to the graph in reaction ''{1}'': {0}</entry>
+  <entry key="Escher2SBML.segmentsLost">Could not attach the following segments to the graph for the reaction with the ID ''{1}'': {0}</entry>
   <entry key="Escher2SBML.done">done</entry>
   <entry key="Escher2SBML.metaboliteDuplication">Metabolite {0} either participates in reaction {1} {2,number,integer} times or the reaction occurs more than once in the display.</entry>
   <entry key="Escher2SBML.replacementGlyph">Replacing duplicate BiGG id entry {0} with new glyph!</entry>

@@ -49,9 +49,13 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * Localization support.
    */
   public static final ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  public static final String ID_PREFIX_REACTION = "R_";
   public static final String ID_PREFIX_REACTION_GLYPH = "RG_";
   public static final String ID_PREFIX_SPECIES_GLYPH = "SG_";
   public static final String ID_PREFIX_TEXT_GLYPH = "TG_";
+  public static final String COMPARTMENT_EXTRACELLUAR_SPACE = "e";
+  public static final String ID_PREFIX_SPECIES = "M_";
+  private static final String ID_PREFIX_EMPTY_SET = ID_PREFIX_SPECIES_GLYPH + "empty_set_";
   private String defaultCompartmentId;
   private String defaultCompartmentName;
   private String layoutId;
@@ -75,10 +79,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     double yOffset = canvas.isSetY() ? canvas.getY() : 0d;
     double canvasWidth = canvas.getWidth();
     double canvasHeight = canvas.getWidth();
-    Map<String, Node> multimarkers = new HashMap<>();
     Layout layout = initLayout(map, xOffset, yOffset);
     for (Map.Entry<String, Node> entry : map.nodes()) {
-      convertNode(entry.getValue(), map, multimarkers, layout, xOffset, yOffset);
+      convertNode(entry.getValue(), map, layout, xOffset, yOffset);
     }
     for (Map.Entry<String, EscherReaction> entry : map.reactions()) {
       convertReaction(entry.getValue(), map, layout, xOffset, yOffset);
@@ -89,7 +92,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     if (getInferCompartmentBoundaries()) {
       for (Map.Entry<String, EscherCompartment> entry : map.compartments()) {
         String id = entry.getKey();
-        if (!(id.equalsIgnoreCase(getDefaultCompartmentId()) || id.equalsIgnoreCase("e"))) {
+        if (!(id.equalsIgnoreCase(getDefaultCompartmentId()) || id.equalsIgnoreCase(COMPARTMENT_EXTRACELLUAR_SPACE))) {
           createCompartmentGlyph(entry.getValue(), layout, xOffset, yOffset, canvasWidth, canvasHeight);
         }
       }
@@ -118,32 +121,29 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 	//TODO
 	//for now, if no x and y coordinates are available, the compartment is set around all nodes
     CompartmentGlyph cg = layout.createCompartmentGlyph(ec.getId() + "_glyph");
-    double x;
-    double y; 
-    double width; 
-    double height; 
-    if (ec.getX()==null) {
+    double x, y, width, height;
+    if (ec.getX() == null) {
     	x = xOffset;
     	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
       	      ec.getName(), "x-offset", "x-offset of the canvas: " + xOffset));
     } else {
     	x= ec.getX() - xOffset - getPrimaryNodeWidth();
     }
-    if (ec.getY()==null) {
+    if (ec.getY() == null) {
     	y = yOffset;
     	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
       	      ec.getName(), "y-offset", "y-offset of the canvas: " + yOffset));
     } else {
-    	y= ec.getY() - yOffset - getPrimaryNodeWidth();
+    	y = ec.getY() - yOffset - getPrimaryNodeWidth();
     }
-    if (ec.getWidth()==null ) {
+    if (ec.getWidth() == null) {
     	width = canvasWidth;
     	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
       	      ec.getName(), "the width", "the width of the canvas: " + canvasWidth));
     } else {
     	width = ec.getWidth();
     }
-    if (ec.getHeight()==null ) {
+    if (ec.getHeight() == null) {
     	height = canvasHeight;
     	logger.severe(format(bundle.getString("Escher2SBML.inferredCompartment"),
         	      ec.getName(), "the height", "the height of the canvas: " + canvasHeight));
@@ -154,7 +154,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     cg.setCompartment(SBMLtools.toSId(ec.getId()));
     NamedSBase compartment = cg.getCompartmentInstance();
     if ((compartment != null) && compartment.isSetName()) {
-      TextGlyph text = layout.createTextGlyph(cg.getId() + "_tg");
+      TextGlyph text = layout.createTextGlyph(createId(ID_PREFIX_TEXT_GLYPH, cg.getId()));
       text.setOriginOfText(compartment);
       text.createBoundingBox(compartment.getName().length() * 5d,
         getNodeLabelHeight(), getNodeDepth(), x, y, getZ());
@@ -167,13 +167,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * Convert an {@link EscherMap} node to a glyph for SBML
    * @param node The node to be converted
    * @param escherMap The {@link EscherMap} the node is in
-   * @param multimarkers A hash map of the multimarker node ids and the nodes themselves
    * @param layout The {@link Layout} object of the SBML model
    * @param xOffset x-offset of the document
    * @param yOffset y-offset of the document
    */
-  private void convertNode(Node node, EscherMap escherMap, Map<String, Node> multimarkers,
-    Layout layout, double xOffset, double yOffset) {
+  private void convertNode(Node node, EscherMap escherMap, Layout layout, double xOffset, double yOffset) {
 	  
     if (node.isSetType()) {
       switch (node.getType()) {
@@ -187,7 +185,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         convertExchange(node, layout, xOffset, yOffset);
         break;
       case multimarker:
-        convertMultimarker(node, multimarkers, xOffset, yOffset);
+        convertMultimarker(node, layout, xOffset, yOffset);
         break;
       default:
         convertTextLabel(node, layout, xOffset, yOffset);
@@ -205,33 +203,44 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @param yOffset y-offset of the document
    */
   private void convertExchange(Node node, Layout layout, double xOffset, double yOffset) {
-    Model model = layout.getModel();
-    String id = "empty_set";
-    int i = 0;
-    do {
-      i++;
-    } while (model.containsUniqueNamedSBase(id + "_" + i));
-    id += "_" + i;
-    //TODO!
-    SpeciesGlyph emptySet = layout.createSpeciesGlyph(id);
-    emptySet.createBoundingBox(node.getWidth() / 2d, node.getHeight() / 2d,
-      getNodeDepth(), node.getX() - xOffset, node.getY() - yOffset, getZ());
+    createEmptySetGlyph(node, layout, xOffset, yOffset);
     logger.warning(format(bundle.getString("Escher2SBML.exchangeNotSupported"), node.getId()));
+  }
+
+  private void createEmptySetGlyph(Node node, Layout layout, double xOffset, double yOffset) {
+    SpeciesGlyph emptySet = layout.createSpeciesGlyph(createId(ID_PREFIX_EMPTY_SET, node.getId()));
+    double scale = 3d;
+    double width = getPrimaryNodeWidth()/scale;
+    double height = getPrimaryNodeWidth()/scale;
+    emptySet.createBoundingBox(width, height, 0d,
+            shiftCoordinatesToUpperLeftCorner(node.getX(), xOffset, width),
+            shiftCoordinatesToUpperLeftCorner(node.getY(), yOffset, height), z);
+    emptySet.setSBOTerm(SBO.getEmptySet());
+    node.putUserObject(ESCHER_NODE_LINK, emptySet);
   }
 
 
   /**
    * Converts (postpones the processing of) nodes of type multimarker
    * @param node The node to be converted
-   * @param multimarkers A hash map of the multimarker node ids and the nodes themselves
    */
-  private void convertMultimarker(Node node, Map<String, Node> multimarkers, double xOffset, double yOffset) {
-    if (node.isSetId()) {
-      // process these later...
-      multimarkers.put(node.getId(), node);
+  private void convertMultimarker(Node node, Layout layout, double xOffset, double yOffset) {
+    if (!node.isSetId()) {
+      logger.warning(format(bundle.getString("Escher2SBML.undefinedID"), node.toString()));
     } else {
-      logger.warning(format(bundle.getString("Escher2SBML.undefinedID"),
-        node.toString()));
+      boolean hasMultipleConnections = false;
+      for (Iterator<Entry<String, List<String>>> it = node.getConnectedSegments().iterator(); it.hasNext(); ) {
+        List<String> segments = it.next().getValue();
+        if (segments.size() > 1) {
+          hasMultipleConnections = true;
+        }
+      }
+      if (!hasMultipleConnections) {
+        /* This multimarker has only one connection to a midmarker, i.e., it represents a source or sink node, which we
+         * have to make explicit.
+         */
+        createEmptySetGlyph(node, layout, xOffset, yOffset);
+      }
     }
   }
 
@@ -274,12 +283,20 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     }
     // Create a set of all segments to be processed
     Set<Segment> segments = new HashSet<>();
+    Map<String, Segment> toNodeId2Segment = new HashMap<>();
     for (Entry<String, Segment> entry : escherReaction.segments()) {
       Segment segment = entry.getValue();
       Node fromNode = escherMap.getNode(segment.getFromNodeId());
       Node toNode = escherMap.getNode(segment.getToNodeId());
       SpeciesReferenceGlyph srGlyph = null;
       boolean isProduct = false;
+      /* Go through all segments and turn them around if necessary according to the definition in the specification of
+       * SBML Level 3 Version 1 Layout Release 1, page 17, lines 36-37, https://doi.org/10.1515/jib-2015-267.
+       * "the line segments have their start element at the ReactionGlyph and their end element at the SpeciesGlyph" for
+       * reactants and products. This means, the end point of a line segment have to be metabolites, irrespective of
+       * their role (it does not matter whether they are consumed or produced). Also, segments have to point away from
+       * midmarkers, i.e., reaction glyphs.
+       */
       if ((toNode != null) && (fromNode != null)) {
         if (fromNode.isMetabolite()) {
           srGlyph = srgMap.get(fromNode.getBiggId());
@@ -289,9 +306,9 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
               logger.severe(format(bundle.getString("Escher2SBML.metaboliteWithoutStoichiometry"),
                       fromNode.getBiggId(), escherReaction.getBiggId()));
             } else if (m.getCoefficient() > 0d) {
-              segment = reverse(segment);
               isProduct = true;
             }
+            segment = reverse(segment);
           } else {
             logger.severe(format(bundle.getString("Escher2SBML.noNodeWithBiGGId"), fromNode.getBiggId()));
           }
@@ -303,12 +320,19 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
           } else if (!m.isSetCoefficient()) {
             logger.severe(format(bundle.getString("Escher2SBML.metaboliteWithoutStoichiometry"),
                     toNode.getBiggId(), escherReaction.getBiggId()));
-          } else {
-            if (m.getCoefficient() <= 0d) {
-              segment = reverse(segment);
-            } else {
-              isProduct = true;
-            }
+          } else if (m.getCoefficient() > 0d) {
+            isProduct = true;
+          }
+        } else if (toNode.isMidmarker()) {
+          segment = reverse(segment);
+          SpeciesGlyph sg = (SpeciesGlyph) fromNode.getUserObject(ESCHER_NODE_LINK);
+          if (sg != null) {
+            // fromNode has to be a multimarker (now actually the new toNode, but the pointer hasn't changed).
+            isProduct = escherReaction.hasReactants();
+            String srGlyphId = createSpeciesReferenceGlyphID(sg.getId(), reaction, layout.getModel());
+            srGlyph = rGlyph.createSpeciesReferenceGlyph(srGlyphId, sg.getId());
+            srGlyph.setRole(isProduct ? SpeciesReferenceRole.PRODUCT : SpeciesReferenceRole.SUBSTRATE);
+            srgMap.put(srGlyph.getId(), srGlyph);
           }
         }
       }
@@ -318,43 +342,75 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         ls.putUserObject(ESCHER_NODE_LINK, isProduct ? segment.getFromNodeId() : segment.getToNodeId());
       } else {
         segments.add(segment);
+        toNodeId2Segment.put(segment.getToNodeId(), segment);
       }
     }
-    Set<Segment> done = new HashSet<>();
-    for (SpeciesReferenceGlyph srGlyph : srgMap.values()) {
-      Curve curve = srGlyph.getCurve();
-      Node toNode = escherMap.getNode(curve.getCurveSegment(curve.getCurveSegmentCount() - 1).getUserObject(ESCHER_NODE_LINK).toString());
-      while (!toNode.isMidmarker()) {
-        for (Segment segment : segments) {
-          if (tryToAttach(segment, curve, curve.getCurveSegmentCount() - 1, escherMap, xOffset, yOffset)) {
-            done.add(segment);
-            toNode = escherMap.getNode(curve.getCurveSegment(curve.getCurveSegmentCount() - 1).getUserObject(ESCHER_NODE_LINK).toString());
-            if (toNode.isMidmarker()) {
-              break;
-            }
-          }
-        }
-      }
-      if (reaction.isSetListOfProducts() && reaction.getListOfProducts().contains(srGlyph.getSpeciesReferenceInstance())) {
-        ListOf<CurveSegment> lcs = curve.getListOfCurveSegments();
-        curve.unsetListOfCurveSegments();
-        //Collections.reverse(lcs);
-        //curve.setListOfCurveSegments(lcs);
-        // Reversing all curve segments seems not to be necessary.
-        //				for (CurveSegment segment : curve.getListOfCurveSegments()) {
-        //					reverse(segment);
-        //				}
-        for (int i = lcs.size() - 1; i >= 0; i--) {
-          curve.addCurveSegment(lcs.remove(i));
-        }
+    // At this point, all segements point from midmarkers to metabolites.
+
+    /* 1) We need to glue the remaining segments to substrate and product first.
+     * 2) Next, we need to glue the still remaining segments (if any) to the side substrates and sideproducts
+     * 3) Last, we glue the left-over segments to any other speciesReferenceGlyphy we have.
+     */
+    // So, let's store the diffent kinds of nodes in separate maps so that we can prioritze when drawing connections.
+    Map<String, SpeciesReferenceGlyph> srgMapMain = new HashMap<>();
+    Map<String, SpeciesReferenceGlyph> srgMapSide = new HashMap<>();
+    Map<String, SpeciesReferenceGlyph> srgMapOther = new HashMap<>();
+    for (Entry<String, SpeciesReferenceGlyph> entry : srgMap.entrySet()) {
+      SpeciesReferenceGlyph srg = entry.getValue();
+      switch (srg.getRole()) {
+        case SUBSTRATE:
+        case PRODUCT:
+          srgMapMain.put(entry.getKey(), srg);
+          break;
+        case SIDESUBSTRATE:
+        case SIDEPRODUCT:
+          srgMapSide.put(entry.getKey(), srg);
+          break;
+        case ACTIVATOR:
+        case INHIBITOR:
+        case MODIFIER:
+          // In later versions there might be separate entries for modifiers.
+        case UNDEFINED:
+        default:
+          srgMapOther.put(entry.getKey(), srg);
+          break;
       }
     }
-    segments.removeAll(done);
+    // Now we create the connections from midmarkers to the metabolites
+    Set<String> stickyNodes = new HashSet<>(); // collect from node ids that are already in the graph.
+    stickyNodes.add(escherReaction.getMidmarker().getId());
+    stickyNodes.addAll(connect(srgMapMain, stickyNodes, escherMap, xOffset, yOffset, segments, toNodeId2Segment));
+    stickyNodes.addAll(connect(srgMapSide, stickyNodes, escherMap, xOffset, yOffset, segments, toNodeId2Segment));
+    connect(srgMapOther, stickyNodes, escherMap, xOffset, yOffset, segments, toNodeId2Segment);
     if (!segments.isEmpty()) {
-      logger.warning(format(bundle.getString("Escher2SBML.segmentsLost"), segments, escherReaction.getBiggId()));
+      logger.warning(format(bundle.getString("Escher2SBML.segmentsLost"), segments, reaction.getId()));
     }
     logger.fine(bundle.getString("Escher2SBML.done"));
     return reaction;
+  }
+
+  private Set<String> connect(Map<String, SpeciesReferenceGlyph> map, Set<String> sticky,
+                              EscherMap escherMap, double xOffset, double yOffset, Set<Segment> segments,
+                              Map<String, Segment> toNodeId2Segment) {
+    Set<String> stickyNodes = new HashSet<>(); // collect from node ids that are already in the graph.
+    String currFromNode = null;
+    for (SpeciesReferenceGlyph srg : map.values()) {
+      // Those either (main) substraintes or (main) products)
+      do {
+        ListOf<CurveSegment> listOfCurveSegments = srg.getCurve().getListOfCurveSegments();
+        String fromId = listOfCurveSegments.getFirst().getStart().getUserObject(ESCHER_NODE_LINK).toString();
+        Segment segment = toNodeId2Segment.get(fromId);
+        if (segment != null) {
+          currFromNode = segment.getFromNodeId();
+          stickyNodes.add(currFromNode);
+          convertSegment(segment, escherMap, srg.getCurve(), xOffset, yOffset);
+          // Move the last line segment, i.e., the newly created one, to the first position to retain the order.
+          listOfCurveSegments.add(0, listOfCurveSegments.remove(listOfCurveSegments.size() - 1));
+          segments.remove(segment);
+        }
+      } while ((currFromNode != null) && !sticky.contains(currFromNode));
+    }
+    return stickyNodes;
   }
 
   /**
@@ -421,13 +477,17 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       //				y = start.getY();
       //			}
     }
-    lineSegment.createStart(x, y, z);
+    lineSegment.createStart(x, y, z).putUserObject(ESCHER_NODE_LINK, fromNode.getId());
     x = toNode.getX() - xOffset;
     y = toNode.getY() - yOffset;
-    lineSegment.createEnd(x, y, z);
+    lineSegment.createEnd(x, y, z).putUserObject(ESCHER_NODE_LINK, toNode.getId());
     return lineSegment;
   }
 
+  @NotNull
+  private String createId(String prefix, String id) {
+    return SBMLtools.toSId(prefix + id);
+  }
 
   /**
    * Extracts all necessary parameters from the segment needed for converting it to a line segment
@@ -439,9 +499,10 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @return A line segment (either a cubic bezier or a line)
    */
   private LineSegment convertSegment(Segment segment, EscherMap map, Curve curve, double xOffset, double yOffset) {
-    return convertSegment(map.getNode(segment.getFromNodeId()),
-      map.getNode(segment.getToNodeId()), segment.getBasePoint1(),
-      segment.getBasePoint2(), curve, xOffset, yOffset);
+    LineSegment ls = convertSegment(map.getNode(segment.getFromNodeId()),
+            map.getNode(segment.getToNodeId()), segment.getBasePoint1(),
+            segment.getBasePoint2(), curve, xOffset, yOffset);
+    return ls;
   }
 
 
@@ -478,12 +539,15 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     }
     if (escherReaction.isSetBiggId()) {
       Reaction reaction;
-      String reactionId = SBMLtools.toSId(escherReaction.getBiggId());
+      String reactionId = createId(ID_PREFIX_REACTION, escherReaction.getBiggId());
       Model model = layout.getModel();
       if (!model.containsReaction(reactionId)) {
         reaction = model.createReaction(reactionId);
         if (escherReaction.isSetMidmarker() && escherReaction.getMidmarker().isSetCompartment()) {
           reaction.setCompartment(SBMLtools.toSId(escherReaction.getMidmarker().getCompartment()));
+          if (!model.containsCompartment(reaction.getCompartment())) {
+            createCompartment(model, reaction.getCompartment());
+          }
         }
       } else if (rGlyph.isSetReaction()) {
         reaction = model.getReaction(rGlyph.getReaction());
@@ -519,8 +583,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @param yOffset y-offset of the document
    * @return A {@link ReactionGlyph} if an id can be extracted, {@code null} otherwise
    */
-  private ReactionGlyph convertMidmarker(Node node, Layout layout, double xOffset,
-    double yOffset) {
+  private ReactionGlyph convertMidmarker(Node node, Layout layout, double xOffset, double yOffset) {
     String rId = extractReactionId(node.getConnectedSegments());
     if (rId != null) {
       String rSId = SBMLtools.toSId(ID_PREFIX_REACTION_GLYPH + rId);
@@ -543,8 +606,8 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         }
         // Also shift node because again the center of the node would be used as coordinate instead of upper-left corner
         rGlyph.createBoundingBox(width, height, nodeDepth,
-          node.getX() - xOffset - width / 2d,
-          node.getY() - yOffset - height / 2d, z);
+                shiftCoordinatesToUpperLeftCorner(node.getX(), xOffset, width),
+                shiftCoordinatesToUpperLeftCorner(node.getY(), yOffset, height), z);
         if (node.isSetName()) {
           rGlyph.setName(node.getName());
         } else if (node.isSetBiggId()) {
@@ -556,6 +619,17 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       }
     }
     return null;
+  }
+
+  /**
+   * Shifts the postion because Escher uses the center of the node as its coordinate instead of upper-left corner
+   * @param position either of the dimensions x, y, or z, just needs to match the size
+   * @param offset general offset of the canvas in this dimention (x, y, or z offset)
+   * @param size with, height, or depth, matching which coordinate is used.
+   * @return shifted coordinate
+   */
+  private double shiftCoordinatesToUpperLeftCorner(double position, double offset, double size) {
+    return position - offset - size / 2d;
   }
 
 
@@ -586,10 +660,11 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     }
     // Correct node position with offset and also because Escher uses the center whereas layout uses the top-left corner of bbox
     sGlyph.createBoundingBox(width, height, nodeDepth,
-      node.getX() - xOffset - width / 2d, node.getY() - yOffset - height / 2d, z);
+            shiftCoordinatesToUpperLeftCorner(node.getX(), xOffset, width),
+            shiftCoordinatesToUpperLeftCorner(node.getY(), yOffset, height), z);
     sGlyph.setSBOTerm(SBO.getSimpleMolecule());
     if (node.isSetBiggId()) {
-      String sId = SBMLtools.toSId(node.getBiggId());
+      String sId = createId(ID_PREFIX_SPECIES, node.getBiggId());
       Model model = layout.getModel();
       if (!model.containsSpecies(sId)) {
         Compartment compartment;
@@ -602,6 +677,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         species.setConstant(false);
         species.setHasOnlySubstanceUnits(true);
         species.setBoundaryCondition(false);
+        species.setInitialAmount(Double.NaN);
         if (node.isSetBiggId()) {
           species.addCVTerm(new CVTerm(CVTerm.Qualifier.BQB_IS, "https://identifiers.org/bigg.metabolite/" + node.getBiggId()));
         }
@@ -620,20 +696,28 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
 
 
   /**
+   *
+   * @param model
+   * @param compartmentId
+   * @return
+   */
+  private Compartment createCompartment(Model model, String compartmentId) {
+    return createCompartment(model, compartmentId, null);
+  }
+
+  /**
    * Creates a {@link Compartment}
    * @param model The SBML model
    * @param compartmentId Id of the compartment
    * @param compartmentName Name of the compartment
    * @return A {@link Compartment}
    */
-  private Compartment createCompartment(Model model, String compartmentId,
-    String compartmentName) {
+  private Compartment createCompartment(Model model, String compartmentId, String compartmentName) {
     Compartment compartment = model.getCompartment(compartmentId);
     if (compartment == null) {
       compartment = model.createCompartment(compartmentId);
       compartment.setConstant(true);
-      if (compartmentId.equals(defaultCompartmentId) || compartmentId
-          .equals("n")) {
+      if (compartmentId.equals(defaultCompartmentId)) {
         compartment.setSBOTerm(410); // implicit compartment
       } else {
         compartment.setSBOTerm(SBO.getCompartment()); // physical compartment
@@ -643,6 +727,10 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       }
       compartment.setName(compartmentName);
       compartment.setSpatialDimensions(3);
+      compartment.setSize(Double.NaN);
+      if (compCode.containsKey(compartmentId)) {
+        compartment.addCVTerm(new CVTerm(CVTerm.Qualifier.BQB_IS, "https://identifiers.org/bigg.compartment/" + compartmentId));
+      }
     }
     return compartment;
   }
@@ -655,8 +743,8 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @return A a {@link SpeciesGlyph} id (starting with sg_)
    */ 
   private String createSpeciesGlyphId(Node node, Layout layout) {
-    return SBMLtools.toSId(node.isSetId() ? ID_PREFIX_SPECIES_GLYPH + node.getId() :
-      createId(ID_PREFIX_SPECIES_GLYPH, layout.getSpeciesGlyphCount()));
+    return node.isSetId() ? createId(ID_PREFIX_SPECIES_GLYPH, node.getId()) :
+            createId(ID_PREFIX_SPECIES_GLYPH, layout.getSpeciesGlyphCount());
   }
 
 
@@ -673,51 +761,42 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
   private Map<String, SpeciesReferenceGlyph> createSpeciesReferenceGlyphs(
     Metabolite metabolite, Set<Node> setOfNodes, Layout layout, ReactionGlyph rGlyph, Reaction reaction) {
     String biggID = metabolite.getId();
-    String sId = SBMLtools.toSId(biggID);
     SpeciesGlyph sGlyph;
     Model model = reaction.getModel();
     Map<String, SpeciesReferenceGlyph> srgMap = new HashMap<>();
-    Set<Compartment> setOfCompartments = new HashSet<>();
+    Set<String> setOfCompartments = new HashSet<>();
     for (Node node : setOfNodes) {
-      sGlyph = layout.getSpeciesGlyph(ID_PREFIX_SPECIES_GLYPH + node.getId());
+      sGlyph = layout.getSpeciesGlyph(createId(ID_PREFIX_SPECIES_GLYPH, node.getId()));
       if (sGlyph != null) {
-        String srGlyphId = reaction.getId() + "_srg_" + metabolite.getId();
-        srGlyphId = srGlyphId.replaceAll("\\+", "");
-        if (model.containsUniqueNamedSBase(srGlyphId)) {
-          int i = 0;
-          do {
-            i++;
-          } while (model.containsUniqueNamedSBase(srGlyphId + "_" + i));
-          srGlyphId += "_" + i;
-          logger.warning(format(bundle.getString("Escher2SBML.metaboliteDuplication"),
-            metabolite.getId(), reaction.getId(), ++i));
-        }
-        SpeciesReferenceGlyph srGlyph = rGlyph.createSpeciesReferenceGlyph(SBMLtools.toSId(srGlyphId), sGlyph.getId());
-        
+        String srGlyphId = createSpeciesReferenceGlyphID(metabolite.getId(), reaction, model);
+        SpeciesReferenceGlyph srGlyph = rGlyph.createSpeciesReferenceGlyph(srGlyphId, sGlyph.getId());
+
         sGlyph.putUserObject(ESCHER_NODE_LINK, node);
         // Create the core object for this species reference
         SimpleSpeciesReference ssr = null;
+        String sId = createId(ID_PREFIX_SPECIES, biggID);
         if (metabolite.isSetCoefficient()) {
+          /* Note:
+           * The SBO terms for the species references in SBML core are just set to reactant/product and not more
+           * specific because the same core model could have multiple graphical displays in which the roles may differ.
+           * So we want to be more general.
+           */
           if (metabolite.getCoefficient() < 0d) {
             ssr = reaction.createReactant(reaction.getId() + "_reactant_" + (reaction.getReactantCount() + 1), sId);
             ((SpeciesReference) ssr).setStoichiometry(-metabolite.getCoefficient());
-            ssr.setSBOTerm(SBO.getReactant());
             srGlyph.setRole(node.isPrimary() ? SpeciesReferenceRole.SUBSTRATE : SpeciesReferenceRole.SIDESUBSTRATE);
-          } else if (metabolite.getCoefficient() > 0d) {
+            ssr.setSBOTerm(SBO.getReactant());
+          } else { // metabolite.getCoefficient() >= 0d
             ssr = reaction.createProduct(reaction.getId() + "_product_" + (reaction.getProductCount() + 1), sId);
             ((SpeciesReference) ssr).setStoichiometry(metabolite.getCoefficient());
             srGlyph.setRole(node.isPrimary() ? SpeciesReferenceRole.PRODUCT : SpeciesReferenceRole.SIDEPRODUCT);
+            ssr.setSBOTerm(SBO.getProduct());
           }
         }
         if (ssr == null) {
           ssr = reaction.createModifier(reaction.getId() + "_modifier_" + (reaction.getModifierCount() + 1), sId);
-          if (Double.isNaN(metabolite.getCoefficient())) {
-            srGlyph.setRole(SpeciesReferenceRole.UNDEFINED);
-            ssr.setSBOTerm(SpeciesReferenceRole.UNDEFINED.toSBOterm());
-          } else {
-            srGlyph.setRole(SpeciesReferenceRole.MODIFIER);
-            ssr.setSBOTerm(SBO.getModifier());
-          }
+          srGlyph.setRole(Double.isNaN(metabolite.getCoefficient()) ? SpeciesReferenceRole.UNDEFINED : SpeciesReferenceRole.MODIFIER);
+          ssr.setSBOTerm(srGlyph.getRole().toSBOterm());
         }
         if (ssr instanceof SpeciesReference) {
           SpeciesReference sr = (SpeciesReference) ssr;
@@ -725,7 +804,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
         }
         Species species = ssr.getSpeciesInstance();
         if ((species != null) && (species.isSetCompartment())) {
-          setOfCompartments.add(species.getCompartmentInstance());
+          setOfCompartments.add(species.getCompartment());
         }
         srGlyph.setSBOTerm(srGlyph.getSpeciesReferenceRole().toSBOterm());
         srGlyph.setSpeciesReference(ssr);
@@ -742,12 +821,29 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
       if (setOfCompartments.size() == 1) {
         reaction.setCompartment(setOfCompartments.iterator().next());
       } else {
-        //TODO: What to do?
-        //reaction.setCompartment(createCompartment(model, compartmentId, compartmentName));
+        /* This is normally not an error because some reactions operate across compartments and can't be assigned to
+         * either one of them.
+         */
         logger.warning(format(bundle.getString("Escher2SBML.reactionCompartmentUnknown"), reaction.getId()));
       }
     }
     return srgMap;
+  }
+
+  @NotNull
+  private static String createSpeciesReferenceGlyphID(String nodeID, Reaction reaction, Model model) {
+    String srGlyphId = reaction.getId() + "_srg_" + nodeID;
+    srGlyphId = srGlyphId.replaceAll("\\+", "");
+    if (model.containsUniqueNamedSBase(srGlyphId)) {
+      int i = 0;
+      do {
+        i++;
+      } while (model.containsUniqueNamedSBase(srGlyphId + "_" + i));
+      srGlyphId += "_" + i;
+      logger.warning(format(bundle.getString("Escher2SBML.metaboliteDuplication"),
+        nodeID, reaction.getId(), ++i));
+    }
+    return SBMLtools.toSId(srGlyphId);
   }
 
 
@@ -759,8 +855,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @param xOffset x-offset of the document
    * @param yOffset y-offset of the document
    */
-  private void createTextGlyph(EscherReaction reaction, ReactionGlyph rGlyph,
-    Layout layout, double xOffset, double yOffset) {
+  private void createTextGlyph(EscherReaction reaction, ReactionGlyph rGlyph, Layout layout, double xOffset, double yOffset) {
     double x = reaction.getLabelX() - xOffset;
     double y = reaction.getLabelY() - yOffset - reactionLabelHeight;
     TextGlyph label = layout.createTextGlyph(createTextGlyphId(layout));
@@ -778,8 +873,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @param yOffset y-offset of the document
    * @return A {@link TextGlyph}
    */
-  private TextGlyph createTextGlyph(Node node, Layout layout, double xOffset,
-    double yOffset) {
+  private TextGlyph createTextGlyph(Node node, Layout layout, double xOffset, double yOffset) {
     return createTextGlyph(node, layout, xOffset, yOffset, null);
   }
 
@@ -874,7 +968,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
    * @return A string {@link TextGlyph} id
    */
   private String createTextGlyphId(TextLabel label, Layout layout) {
-    return label.isSetId() ? SBMLtools.toSId(label.getId()) : createTextGlyphId(layout);
+    return label.isSetId() ? SBMLtools.toSId(ID_PREFIX_TEXT_GLYPH + label.getId()) : createTextGlyphId(layout);
   }
 
 
@@ -937,8 +1031,7 @@ public class Escher2SBML extends Escher2Standard<SBMLDocument> {
     double width = canvas.isSetWidth() ? canvas.getWidth() - xOffset : getCanvasDefaultWidth();
     double height = canvas.isSetHeight() ? canvas.getHeight() - yOffset : getCanvasDefaultHeight();
     SBMLDocument doc = new SBMLDocument(3, 1);
-    Model model = doc.createModel(
-      escherMap.isSetId() ? SBMLtools.toSId(escherMap.getId()) : "_default");
+    Model model = doc.createModel(escherMap.isSetId() ? SBMLtools.toSId(escherMap.getId()) : "_default");
     if (escherMap.isSetDescription() || escherMap.isSetURL()) {
       try {
         boolean both = false;
