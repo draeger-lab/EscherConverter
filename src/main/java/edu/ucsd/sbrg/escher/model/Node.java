@@ -570,8 +570,7 @@ public class Node extends AbstractBox implements Element {
   /**
    * @param connectedSegments the connected segments to set
    */
-  public void setConnectedSegments(
-    Map<String, List<String>> connectedSegments) {
+  public void setConnectedSegments(Map<String, List<String>> connectedSegments) {
     this.connectedSegments = connectedSegments;
   }
 

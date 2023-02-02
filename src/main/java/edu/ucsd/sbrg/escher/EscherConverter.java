@@ -266,9 +266,9 @@ public class EscherConverter extends Launcher {
 
       map.postprocessMap();
       return map;
-    } catch(JsonProcessingException e) {
+    } catch(JsonProcessingException exc) {
       logger.severe(bundle.getString("EscherValidationFail.NotJson"));
-      throw e;
+      throw exc;
     }
   }
 
@@ -482,7 +482,14 @@ public class EscherConverter extends Launcher {
           SBMLDocument doc = convert(input, SBMLDocument.class, properties);
           TidySBMLWriter.write(doc, output, System.getProperty("app.name"),
                   getVersionNumber(), ' ', (short) 2);
-          success = true;
+          /*doc.checkConsistencyOffline();
+        Map<String, String> errors = new HashMap<>();
+        for (int i = 0; i < doc.getErrorCount(); i++) {
+          SBMLError error = doc.getError(i);
+          if (error.isError()) {
+            System.out.println(error.toString());
+          }
+        }*/success = true;
           break;
 
         case SBGN:
@@ -525,8 +532,9 @@ public class EscherConverter extends Launcher {
         logger.info(format(
                 "Output successfully written to file {0}.", output));validate(output, outputFormat.toString());
       }
-    } catch(JsonProcessingException e) {
+    } catch(JsonProcessingException exc) {
       logger.severe(bundle.getString("EscherValidationFail.NotJson"));
+      throw new IOException(exc);
     }
   }
 

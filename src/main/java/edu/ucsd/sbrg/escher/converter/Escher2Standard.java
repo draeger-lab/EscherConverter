@@ -70,7 +70,7 @@ public abstract class Escher2Standard<T> implements StringLiterals {
    */
   public static final  ResourceBundle bundle = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
-   * Compartment codes.
+   * Compartment codes
    */
   public static final  ResourceBundle compCode = ResourceManager.getBundle("CompartmentCode");
   /**
