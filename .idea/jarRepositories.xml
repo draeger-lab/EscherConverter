@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="nexus.bio.di.uminho.pt" />
+      <option name="name" value="nexus.bio.di.uminho.pt" />
+      <option name="url" value="https://nexus.bio.di.uminho.pt/content/repositories/thirdparty" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="libs" />
+      <option name="name" value="libs" />
+      <option name="url" value="file://C:\Users\brown\oss\EscherConverter/lib" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo1.maven.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="ea038c65-53b6-4514-8004-2d9bea0e153f" />
+      <option name="name" value="ea038c65-53b6-4514-8004-2d9bea0e153f" />
+      <option name="url" value="https://nexus.bio.di.uminho.pt/content/repositories/thirdparty/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="atlassian-external" />
+      <option name="name" value="atlassian-external" />
+      <option name="url" value="https://packages.atlassian.com/mvn/maven-atlassian-external" />
+    </remote-repository>
+  </component>
+</project>
