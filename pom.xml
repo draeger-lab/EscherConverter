@@ -30,7 +30,7 @@
 		<sbgn.version>0.2</sbgn.version>
 		<sysbio.version>1403</sysbio.version> <!-- SVN revision -->
 		<quaqua.version>9</quaqua.version>
-		<jackson.version>2.7.4</jackson.version>
+		<jackson.version>2.13.0</jackson.version>
 		<powermock.version>1.6.5</powermock.version>
 		<organization.name>University of Tübingen</organization.name>
 		<dependency.locations.enabled>false</dependency.locations.enabled>
