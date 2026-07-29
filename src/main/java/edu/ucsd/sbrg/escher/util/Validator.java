@@ -22,23 +22,6 @@ import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.fge.jsonschema.main.JsonValidator;
 import de.zbit.util.ResourceManager;
-import org.jdom.JDOMException;
-import org.sbgn.ConvertMilestone1to2;
-import org.sbgn.SbgnUtil;
-import org.sbgn.bindings.Sbgn;
-import org.sbgn.schematron.Issue;
-import org.sbgn.schematron.SchematronValidator;
-import org.xml.sax.SAXException;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.UnmarshalException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 /**
  * Validator for input files.
@@ -51,11 +34,11 @@ public class Validator {
   /**
    * Default values.
    */
-  private static final transient ResourceBundle bundle           = ResourceManager.getBundle("Strings");
+  private static final ResourceBundle bundle           = ResourceManager.getBundle("Strings");
   /**
    * Localization support.
    */
-  private static final transient ResourceBundle messages           = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
+  private static final ResourceBundle messages           = ResourceManager.getBundle("edu.ucsd.sbrg.escher.Messages");
   /**
    * A {@link Logger} for this class.
    */
@@ -134,8 +117,7 @@ public class Validator {
     try {
       Sbgn document = SbgnUtil.readFromFile(file);
 
-      if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals
-          ("process description")) {
+      if (document.getMap().getLanguage() == null || !document.getMap().getLanguage().equals("process description")) {
         logger.warning(messages.getString("SBGNLanguageUnspecified"));
         return false;
       }
@@ -175,9 +157,39 @@ public class Validator {
    * @param file The input {@code file}.
    * @return True if valid, false otherwise.
    */
-  public boolean validateSbmlLE(File file) {
-    // TODO: SBML offline/online validation.
+  public boolean validateSbmlLE(File file) throws IOException {
+    try {
+      SBMLDocument doc = SBMLReader.read(file);
+      doc.checkConsistencyOffline();
+      //doc.checkConsistency();
+      SBMLErrorLog log = doc.getListOfErrors();
+      // TODO: improve by providing more options and making use of the other categories.
+      printErrorMessagesByCategory(log.getErrorsBySeverity(FATAL), Level.SEVERE);
+      printErrorMessagesByCategory(log.getErrorsBySeverity(ERROR), Level.WARNING);
+      printErrorMessagesByCategory(log.getErrorsBySeverity(WARNING), Level.WARNING);
+      printErrorMessagesByCategory(log.getErrorsBySeverity(INFO), Level.ALL);
+    } catch (XMLStreamException exc) {
+      throw new IOException(exc);
+    }
     return true;
+  }
+
+  private static void printErrorMessagesByCategory(List<SBMLError> listOfErrors, Level level) {
+    Map<String, List<SBMLError>> byCategory = new HashMap<>();
+    for (SBMLError e : listOfErrors) {
+      if (!byCategory.containsKey(e.getCategory())) {
+        byCategory.put(e.getCategory(), new LinkedList<>());
+      }
+      byCategory.get(e.getCategory()).add(e);
+    }
+    for (String category : byCategory.keySet()) {
+      // TODO: localize and improve the error message.
+      List<SBMLError> list = byCategory.get(category);
+      logger.info(category + ": " + list.size());
+      for (SBMLError e : list) {
+        logger.log(level, e.getMessage() + "\n" + e.getExcerpt());
+      }
+    }
   }
 
 }

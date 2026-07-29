@@ -64,6 +64,29 @@ import edu.ucsd.sbrg.escher.util.EscherOptions;
 import edu.ucsd.sbrg.escher.util.Validator;
 import edu.ucsd.sbrg.escher.util.EscherOptions.InputFormat;
 import edu.ucsd.sbrg.escher.util.EscherOptions.OutputFormat;
+import edu.ucsd.sbrg.escher.util.Validator;
+import org.json.simple.parser.ParseException;
+import org.sbgn.SbgnUtil;
+import org.sbgn.bindings.Sbgn;
+import org.sbml.jsbml.*;
+import org.xml.sax.SAXException;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.TransformerException;
+import java.awt.*;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
+
+import static java.text.MessageFormat.format;
 
 /**
  * Main class of the application.
@@ -121,8 +144,7 @@ public class EscherConverter extends Launcher {
    * @return An instance of {@code format} type created from the escher map.
    */
   @SuppressWarnings("unchecked")
-  public static <T> T convert(EscherMap map, Class<? extends T> format,
-    SBProperties properties) {
+  public static <T> T convert(EscherMap map, Class<? extends T> format, SBProperties properties) {
     if (format.isAssignableFrom(SBMLDocument.class)) {
       // File is SBML, so convert to it.
       Escher2SBML converter = new Escher2SBML();
@@ -193,7 +215,7 @@ public class EscherConverter extends Launcher {
 
   /**
    * Parses given JSON file into an {@link EscherMap} instance using Jackson.
-   * 
+   *
    * @param input The {@link File} to parse.
    * @return The {@link EscherMap} instance.
    * @throws IOException Thrown if there are problems in reading the {@code input} file.
@@ -212,7 +234,7 @@ public class EscherConverter extends Launcher {
   /**
    * Parses an {@link InputStream} that represents an Escher JSON file into an
    * {@link EscherMap} instance using Jackson.
-   * 
+   *
    * @param stream
    * @return
    * @throws IOException
@@ -400,7 +422,7 @@ public class EscherConverter extends Launcher {
 
   /**
    * Does some very basic file path interpretation.
-   * 
+   *
    * @param path an input path (can be relative or start with tilde)
    * @return a {@link File} representing the absolute path.
    */
@@ -439,10 +461,10 @@ public class EscherConverter extends Launcher {
 
     logger.warning(bundle.getString("ValidationStart"));
     try {
-      if (!validateInput(input, inputFormat)) {
+      if (!validate(input, inputFormat.toString())) {
         logger.warning(bundle.getString("ValidationFailed"));
 
-        // Unless the --ignore-validation option has been set to true, do not continue
+        // Unless the --ignore-validation option has been set to true (default for now), do not continue
         if (properties.getBoolean(EscherOptions.IGNORE_VALIDATION)) {
           logger.warning(bundle.getString("ValidationSkip"));
         } else {
@@ -501,7 +523,7 @@ public class EscherConverter extends Launcher {
 
       if (success) {
         logger.info(format(
-                "Output successfully written to file {0}.", output));
+                "Output successfully written to file {0}.", output));validate(output, outputFormat.toString());
       }
     } catch(JsonProcessingException e) {
       logger.severe(bundle.getString("EscherValidationFail.NotJson"));
@@ -606,11 +628,11 @@ public class EscherConverter extends Launcher {
    * Calls appropriate validator for given {@code file} using {@link InputFormat}.
    *
    * @param input Input file.
-   * @param inputFormat Format of input file.
+   * @param format Format of input file.
    * @return Result of validation.
    * @throws IOException Thrown if there are problems in reading the {@code input} file(s).
    */
-  private boolean validateInput(File input, InputFormat inputFormat) throws IOException {
+  private boolean validate(File input, String format) throws IOException {
     Validator validator;
     try {
       // TODO: Add support for custom schema file.
@@ -620,16 +642,16 @@ public class EscherConverter extends Launcher {
     }
 
     // Call appropriate validator according to input format.
-    switch (inputFormat) {
-    case SBGN:
+    switch (format) {
+    case "SBGN":
       logger.info(bundle.getString("ValidatingSBGN"));
       return validator.validateSbgnml(input);
 
-    case SBML:
+    case "SBML":
       logger.info(bundle.getString("ValidatingSBML"));
-      return validator.validateSbmlLE(input);
+      return true; //validator.validateSbmlLE(input);
 
-    case Escher:
+    case "Escher":
       logger.info(bundle.getString("ValidatingEscher"));
       return validator.validateEscher(input);
 
