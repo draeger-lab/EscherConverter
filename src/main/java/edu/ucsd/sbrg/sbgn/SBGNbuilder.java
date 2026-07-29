@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -16,6 +17,7 @@ package edu.ucsd.sbrg.sbgn;
 import de.zbit.graph.io.def.SBGNProperties.ArcType;
 import de.zbit.graph.io.def.SBGNProperties.GlyphOrientation;
 import de.zbit.graph.io.def.SBGNProperties.GlyphType;
+import org.jetbrains.annotations.NotNull;
 import org.sbgn.bindings.*;
 import org.sbgn.bindings.Arc.End;
 import org.sbgn.bindings.Arc.Next;
@@ -205,7 +207,7 @@ public class SBGNbuilder {
    * @param type
    * @return
    */
-  public Glyph createGlyph(String id, GlyphType type) {
+  public Glyph createGlyph(String id, @NotNull GlyphType type) {
     Glyph glyph = objectFactory.createGlyph();
     if(id2element.containsKey(id)) {
 

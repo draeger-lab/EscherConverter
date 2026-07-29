@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -45,10 +46,10 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
   public AbstractPosition(AbstractPosition position) {
     super(position);
     if (position.isSetX()) {
-      setX(position.getX().doubleValue());
+      setX(position.getX());
     }
     if (position.isSetY()) {
-      setY(position.getY().doubleValue());
+      setY(position.getY());
     }
   }
 
@@ -87,13 +88,9 @@ public abstract class AbstractPosition extends AbstractEscherBase implements Pos
       return false;
     }
     if (y == null) {
-      if (other.y != null) {
-        return false;
-      }
-    } else if (!y.equals(other.y)) {
-      return false;
+      return other.y == null;
     }
-    return true;
+    return y.equals(other.y);
   }
 
 

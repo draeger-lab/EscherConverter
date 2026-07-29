@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -45,10 +46,10 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
   public AbstractBox(AbstractBox box) {
     super(box);
     if (box.isSetHeight()) {
-      setHeight(box.getHeight().doubleValue());
+      setHeight(box.getHeight());
     }
     if (box.isSetWidth()) {
-      setWidth(box.getWidth().doubleValue());
+      setWidth(box.getWidth());
     }
   }
 
@@ -76,13 +77,8 @@ public abstract class AbstractBox extends AbstractPosition implements Box {
       return false;
     }
     if (width == null) {
-      if (other.width != null) {
-        return false;
-      }
-    } else if (!width.equals(other.width)) {
-      return false;
-    }
-    return true;
+      return other.width == null;
+    } else return width.equals(other.width);
   }
 
 

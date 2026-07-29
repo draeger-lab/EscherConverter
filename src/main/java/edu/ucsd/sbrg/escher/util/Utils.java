@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -13,29 +14,24 @@
  */
 package edu.ucsd.sbrg.escher.util;
 
-import java.io.IOException;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.*;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
-
 import de.zbit.util.ResourceManager;
+
+import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Utility methods.
  *
- * @author Devesh Khandelwal, Andreas Dr&auml;ger
+ * @author Devesh Khandelwal
+ * @author Andreas Dr&auml;ger
  * Created on 27-06-2016.
  */
 public class Utils {
@@ -43,7 +39,7 @@ public class Utils {
   /**
    * Default values.
    */
-  private static final transient ResourceBundle bundle = ResourceManager.getBundle("Strings");
+  private static final ResourceBundle bundle = ResourceManager.getBundle("Strings");
 
 
   /**
@@ -65,12 +61,9 @@ public class Utils {
    *
    * @return The {@code JSON Schema}.
    * @throws IOException Thrown if error in accessing the schema file.
-   * @throws ProcessingException Thrown if problem in parsing JSON.
    */
-  public static JsonNode defaultEscherSchema() throws IOException, ProcessingException {
-    JsonNode jsonNode = JsonLoader.fromResource(bundle.getString("default_escher_schema_file"));
-
-    return jsonNode;
+  public static JsonNode defaultEscherSchema() throws IOException {
+    return JsonLoader.fromResource(bundle.getString("default_escher_schema_file"));
   }
 
 
@@ -81,7 +74,6 @@ public class Utils {
    * @return The {@code object mapper}.
    */
   public static ObjectMapper getObjectMapper() {
-
     ObjectMapper objectMapper = new ObjectMapper();
 
     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

@@ -299,7 +299,7 @@ public class SBML2Escher {
         point.setX(pos.getX() + dim.getWidth() / 2d);
         point.setY(pos.getY() + dim.getHeight()/ 2d);
       } else {
-    	  if((bbox != null) && bbox.isSetPosition()){
+    	  if((bbox != null) && bbox.isSetPosition()) {
     		  org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
     		  point.setX(pos.getX() + primary_node_width/2);
     	      point.setY(pos.getY() + primary_node_height/2);
@@ -485,7 +485,7 @@ public class SBML2Escher {
         point.setX(pos.getX() + dim.getWidth() / 2d);
         point.setY(pos.getY() + dim.getHeight()/ 2d);
       } else {
-    	  if((bbox != null) && bbox.isSetPosition()){
+    	  if((bbox != null) && bbox.isSetPosition()) {
     		  org.sbml.jsbml.ext.layout.Point pos = bbox.getPosition();
     		  point.setX(pos.getX() + primary_node_width/2);
     	      point.setY(pos.getY() + primary_node_height/2);
@@ -649,11 +649,11 @@ public class SBML2Escher {
     return (d1 + d2)/2;
   }
   
-  public void setNodeHeight(double height){
+  public void setNodeHeight(double height) {
 	  this.primary_node_height = height;
   }
   
-  public void setNodeWidth(double width){
+  public void setNodeWidth(double width) {
 	  this.primary_node_width = width;
   }
 

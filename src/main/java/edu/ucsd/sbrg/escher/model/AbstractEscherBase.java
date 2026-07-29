@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -25,7 +26,7 @@ public abstract class AbstractEscherBase implements EscherBase {
   /**
    *
    */
-  private Map<String, Object> userObjects;
+  private final Map<String, Object> userObjects;
 
 
   /**
@@ -33,7 +34,7 @@ public abstract class AbstractEscherBase implements EscherBase {
    */
   public AbstractEscherBase() {
     super();
-    userObjects = new HashMap<String, Object>();
+    userObjects = new HashMap<>();
   }
 
 
@@ -68,13 +69,9 @@ public abstract class AbstractEscherBase implements EscherBase {
     }
     AbstractEscherBase other = (AbstractEscherBase) obj;
     if (userObjects == null) {
-      if (other.userObjects != null) {
-        return false;
-      }
-    } else if (!userObjects.equals(other.userObjects)) {
-      return false;
+      return other.userObjects == null;
     }
-    return true;
+    return userObjects.equals(other.userObjects);
   }
 
 

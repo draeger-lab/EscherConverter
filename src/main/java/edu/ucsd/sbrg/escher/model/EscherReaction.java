@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -88,6 +89,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    * connecting arcs in this reaction.
    */
   private Map<String, Segment>    segments;
+  /**
+   * Indicator if the list of metabolites contains any reactants, i.e., substrates.
+   */
+  private boolean hasReactants = false;
+  /**
+   * Indicator if the list of metabolites contains any prodcuts.
+   */
+  private boolean hasProducts = false;
 
 
   /**
@@ -98,9 +107,9 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     id = name = biggId = null;
     reversibility = null;
     labelX = labelY = null;
-    segments = new HashMap<String, Segment>();
-    metabolites = new HashMap<String, Metabolite>();
-    nodes = new HashSet<String>();
+    segments = new HashMap<>();
+    metabolites = new HashMap<>();
+    nodes = new HashSet<>();
     metaboliteList = new ArrayList<>();
     geneList = new ArrayList<>();
   }
@@ -126,10 +135,10 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setId(escherReaction.getId());
     }
     if (escherReaction.isSetLabelX()) {
-      setLabelX(escherReaction.getLabelX().doubleValue());
+      setLabelX(escherReaction.getLabelX());
     }
     if (escherReaction.isSetLabelY()) {
-      setLabelY(escherReaction.getLabelY().doubleValue());
+      setLabelY(escherReaction.getLabelY());
     }
     if (escherReaction.getMetaboliteCount() > 0) {
       for (Map.Entry<String, Metabolite> entry : escherReaction.getMetabolites().entrySet()) {
@@ -143,7 +152,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       setName(escherReaction.getName());
     }
     if (escherReaction.isSetReversibility()) {
-      setReversibility(escherReaction.getReversibility().booleanValue());
+      setReversibility(escherReaction.getReversibility());
     }
     if (escherReaction.getSegmentCount() > 0) {
       for (Map.Entry<String, Segment> entry : escherReaction.segments()) {
@@ -158,7 +167,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    */
   public void addGene(Gene gene) {
     if (genes == null) {
-      genes = new HashMap<String, Gene>();
+      genes = new HashMap<>();
     }
     genes.put(gene.getId(), gene);
   }
@@ -170,10 +179,17 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   public void addMetabolite(Metabolite metabolite) {
     if (metabolite != null) {
       if (metabolites == null) {
-        metabolites = new HashMap<String, Metabolite>();
+        metabolites = new HashMap<>();
       }
       metabolites.put(metabolite.getId(), metabolite);
       metaboliteList.add(metabolite);
+      if (metabolite.isSetCoefficient()) {
+        if (metabolite.getCoefficient() < 0d) {
+          hasReactants = true;
+        } else {
+          hasProducts = true;
+        }
+      }
     } else {
       logger.warning(MessageFormat.format(
         bundle.getString("EscherReaction.skippingNullElement"),
@@ -189,11 +205,11 @@ public class EscherReaction extends AbstractEscherBase implements Element {
   public void addSegment(Segment segment) {
     if (segment != null) {
       if (segments == null) {
-        segments = new HashMap<String, Segment>();
+        segments = new HashMap<>();
       }
       segments.put(segment.getId(), segment);
       if (nodes == null) {
-        nodes = new HashSet<String>();
+        nodes = new HashSet<>();
       }
       if (segment.isSetFromNodeId()) {
         nodes.add(segment.getFromNodeId());
@@ -308,13 +324,9 @@ public class EscherReaction extends AbstractEscherBase implements Element {
       return false;
     }
     if (segments == null) {
-      if (other.segments != null) {
-        return false;
-      }
-    } else if (!segments.equals(other.segments)) {
-      return false;
+      return other.segments == null;
     }
-    return true;
+    return segments.equals(other.segments);
   }
 
 
@@ -513,7 +525,7 @@ public class EscherReaction extends AbstractEscherBase implements Element {
    * @return
    */
   public Set<Node> intersect(Set<Node> nodes) {
-    Set<Node> intersection = new HashSet<Node>();
+    Set<Node> intersection = new HashSet<>();
     for (Node node : nodes) {
       if (this.nodes.contains(node.getId())) {
         intersection.add(node);
@@ -692,7 +704,17 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     if (metabolites == null) {
       metabolites = new HashMap<>();
     }
-    metaboliteList.forEach((m) -> metabolites.put(m.getId(), m));
+    //metaboliteList.forEach((m) -> addMetabolite(m));
+    metaboliteList.forEach((m) -> {
+      metabolites.put(m.getId(), m);
+      if (m.isSetCoefficient()) {
+        if (m.getCoefficient() < 0d) {
+          hasReactants = true;
+        } else {
+          hasProducts = true;
+        }
+      }
+    });
   }
 
 
@@ -739,6 +761,14 @@ public class EscherReaction extends AbstractEscherBase implements Element {
     builder.append(metabolites);
     builder.append("]");
     return builder.toString();
+  }
+
+  public boolean hasReactants() {
+    return hasReactants;
+  }
+
+  public boolean hasProducts() {
+    return hasProducts;
   }
 
 }

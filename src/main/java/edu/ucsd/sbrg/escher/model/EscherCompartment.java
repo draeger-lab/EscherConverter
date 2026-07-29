@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -35,7 +36,7 @@ public class EscherCompartment extends AbstractBox implements Element {
   /**
    * A {@link Logger} for this class.
    */
-  private static final transient Logger logger = Logger.getLogger(EscherCompartment.class.getName());
+  private static final Logger logger = Logger.getLogger(EscherCompartment.class.getName());
   /**
    *
    */
@@ -111,8 +112,7 @@ public class EscherCompartment extends AbstractBox implements Element {
   @Override
   public void setId(String id) {
     if (!compartmentCode.containsKey(id)) {
-      logger.warning(MessageFormat.format(
-        bundle.getString("EscherCompartment.invalidId"), id));
+      logger.warning(MessageFormat.format(bundle.getString("EscherCompartment.invalidId"), id));
     }
     this.id = id;
   }

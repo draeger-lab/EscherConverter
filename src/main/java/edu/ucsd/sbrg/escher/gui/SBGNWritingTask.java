@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -37,12 +38,15 @@ public class SBGNWritingTask extends SwingWorker<File, Void> {
 
 
   /* (non-Javadoc)
-   * Writes an Sbgn to a file
+   * Writes Sbgn to a file
    * @see javax.swing.SwingWorker#doInBackground()
    */
   @Override
   protected File doInBackground() throws Exception {
     try {
+      // This might require the following command-line flag for security reasons
+      // when executing the application:
+      // java --add-opens java.base/java.lang=ALL-UNNAMED ...
       SbgnUtil.writeToFile(openedFile.getDocument(), openedFile.getFile());
     } catch (Throwable t) {
       t.printStackTrace();

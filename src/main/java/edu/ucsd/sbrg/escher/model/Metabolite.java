@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -99,13 +100,9 @@ public class Metabolite extends AbstractEscherBase implements Element {
       return false;
     }
     if (nodeRefId == null) {
-      if (other.nodeRefId != null) {
-        return false;
-      }
-    } else if (!nodeRefId.equals(other.nodeRefId)) {
-      return false;
+      return other.nodeRefId == null;
     }
-    return true;
+    return nodeRefId.equals(other.nodeRefId);
   }
 
 

@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------
  * This file is part of the program EscherConverter.
  *
- * Copyright (C) 2013-2017 by the University of California, San Diego.
+ * Copyright (C) 2013-2023 by the University of California, San Diego.
+ * and the Eberhard Karl University of Tübingen.
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -29,6 +30,7 @@ public class Gene extends AbstractEscherBase implements Element {
    */
   private String name;
 
+  private Annotation annotation;
 
   /**
    *
@@ -48,6 +50,9 @@ public class Gene extends AbstractEscherBase implements Element {
     if (gene.isSetName()) {
       setName(gene.getName());
     }
+    if (gene.isSetAnnotation()) {
+      setAnnotation(annotation.clone());
+    }
   }
 
 
@@ -55,6 +60,11 @@ public class Gene extends AbstractEscherBase implements Element {
     this();
     setId(biggId);
     setName(name);
+  }
+
+  public Gene(String biggId, String name, Annotation annotation) {
+    this(biggId, name);
+    setAnnotation(annotation);
   }
 
 
@@ -96,6 +106,13 @@ public class Gene extends AbstractEscherBase implements Element {
     } else if (!name.equals(other.name)) {
       return false;
     }
+    if (annotation == null) {
+      if (other.annotation != null) {
+        return false;
+      }
+    } else if (!annotation.equals(other.annotation)) {
+      return false;
+    }
     return true;
   }
 
@@ -128,6 +145,7 @@ public class Gene extends AbstractEscherBase implements Element {
     int result = super.hashCode();
     result = prime * result + ((biggId == null) ? 0 : biggId.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
+    result = prime * result + ((annotation == null) ? 0 : annotation.hashCode());
     return result;
   }
 
@@ -167,6 +185,20 @@ public class Gene extends AbstractEscherBase implements Element {
     this.name = name;
   }
 
+  @JsonProperty("annotation")
+  public Annotation getAnnotation() {
+    return annotation;
+  }
+
+  @JsonProperty("annotation")
+  public void setAnnotation(Annotation annotation) {
+    this.annotation = annotation;
+  }
+
+
+  public boolean isSetAnnotation() {
+    return annotation != null;
+  }
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -179,6 +211,8 @@ public class Gene extends AbstractEscherBase implements Element {
     builder.append(biggId);
     builder.append(", name=");
     builder.append(name);
+    builder.append(", annotation=");
+    builder.append(isSetAnnotation() ? annotation.toString() : "null");
     builder.append("]");
     return builder.toString();
   }
