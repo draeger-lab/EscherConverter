@@ -30,7 +30,7 @@
 		<sbgn.version>0.2</sbgn.version>
 		<sysbio.version>1403</sysbio.version> <!-- SVN revision -->
 		<quaqua.version>9</quaqua.version>
-		<jackson.version>2.18.6</jackson.version>
+		<jackson.version>2.18.8</jackson.version>
 		<powermock.version>1.6.5</powermock.version>
 		<organization.name>University of Tübingen</organization.name>
 		<dependency.locations.enabled>false</dependency.locations.enabled>
@@ -153,6 +153,13 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 
