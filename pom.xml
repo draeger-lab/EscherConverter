@@ -156,6 +156,13 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.github.fge/json-schema-validator -->
 		<dependency>
 			<groupId>com.github.fge</groupId>
